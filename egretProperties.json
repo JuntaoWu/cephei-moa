@@ -41,6 +41,10 @@
     },
     {
       "name": "promise"
+    },
+    {
+      "name": "lodash",
+      "path": "../3rdparty-libs/lodash"
     }
   ]
 }
