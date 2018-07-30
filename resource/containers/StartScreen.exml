@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.StartScreen" width="640" height="1386" xmlns:e="http://ns.egret.com/eui">
+    <e:Image id="startBackground" left="0" right="0" bottom="0" top="0" source="start-background" />
+    <e:Group>
+        <e:Image source="userinfo-background" width="640"></e:Image>
+    </e:Group>
+    <e:Group y="201">
+        <e:Button id="btnJoinRoom">
+            <e:Skin>
+                <e:Image source="btn-join" width="640"></e:Image>
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+    <e:Group y="637">
+        <e:Button id="btnCreateRoom">
+            <e:Skin>
+                <e:Image source="btn-create" width="640"></e:Image>
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+    <e:Group id="navigationBar" y="1011" width="640">
+        <e:Button left="0" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-board"></e:Image>
+                <e:Label text="公告" y="70" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button x="164.36" y="3">
+            <e:Skin>
+                <e:Image source="btn-share"></e:Image>
+                <e:Label text="分享" y="120" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button x="387.85" y="0">
+            <e:Skin>
+                <e:Image source="btn-rank"></e:Image>
+                <e:Label text="排行" y="120" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button right="0" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-settings"></e:Image>
+                <e:Label text="设置" y="70" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+</e:Skin>

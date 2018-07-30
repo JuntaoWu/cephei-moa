@@ -1,8 +1,12 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background",
 			"name": "preload"
+		},
+		{
+			"keys": "loading-background,progress-bg,progress",
+			"name": "loading"
 		}
 	],
 	"resources": [
@@ -132,9 +136,159 @@
 			"name": "egret_icon_png"
 		},
 		{
-			"name": "description_json",
+			"url": "config/description.json",
 			"type": "json",
-			"url": "config/description.json"
+			"name": "description_json"
+		},
+		{
+			"url": "assets/loading/loading-background.png",
+			"type": "image",
+			"name": "loading-background"
+		},
+		{
+			"url": "assets/loading/progress.png",
+			"type": "image",
+			"name": "progress"
+		},
+		{
+			"url": "assets/loading/progress-bg.png",
+			"type": "image",
+			"name": "progress-bg"
+		},
+		{
+			"url": "assets/background/start-background.png",
+			"type": "image",
+			"name": "start-background"
+		},
+		{
+			"url": "assets/start/btn-share.png",
+			"type": "image",
+			"name": "btn-share"
+		},
+		{
+			"url": "assets/start/btn-board.png",
+			"type": "image",
+			"name": "btn-board"
+		},
+		{
+			"url": "assets/start/btn-create.png",
+			"type": "image",
+			"name": "btn-create"
+		},
+		{
+			"url": "assets/start/btn-join.png",
+			"type": "image",
+			"name": "btn-join"
+		},
+		{
+			"url": "assets/start/userinfo-background.png",
+			"type": "image",
+			"name": "userinfo-background"
+		},
+		{
+			"url": "assets/start/btn-rank.png",
+			"type": "image",
+			"name": "btn-rank"
+		},
+		{
+			"url": "assets/start/btn-settings.png",
+			"type": "image",
+			"name": "btn-settings"
+		},
+		{
+			"url": "assets/seat/avatar-background.png",
+			"type": "image",
+			"name": "avatar-background"
+		},
+		{
+			"url": "assets/seat/btn-confirm.png",
+			"type": "image",
+			"name": "btn-confirm"
+		},
+		{
+			"url": "assets/seat/btn-help.png",
+			"type": "image",
+			"name": "btn-help"
+		},
+		{
+			"url": "assets/seat/btn-input-identity.png",
+			"type": "image",
+			"name": "btn-input-identity"
+		},
+		{
+			"url": "assets/seat/color-black.png",
+			"type": "image",
+			"name": "color-black"
+		},
+		{
+			"url": "assets/seat/color-blue.png",
+			"type": "image",
+			"name": "color-blue"
+		},
+		{
+			"url": "assets/seat/color-green.png",
+			"type": "image",
+			"name": "color-green"
+		},
+		{
+			"url": "assets/seat/color-orange.png",
+			"type": "image",
+			"name": "color-orange"
+		},
+		{
+			"url": "assets/seat/color-purple.png",
+			"type": "image",
+			"name": "color-purple"
+		},
+		{
+			"url": "assets/seat/color-red.png",
+			"type": "image",
+			"name": "color-red"
+		},
+		{
+			"url": "assets/seat/color-white.png",
+			"type": "image",
+			"name": "color-white"
+		},
+		{
+			"url": "assets/seat/color-yellow.png",
+			"type": "image",
+			"name": "color-yellow"
+		},
+		{
+			"url": "assets/seat/game-init-background.png",
+			"type": "image",
+			"name": "game-init-background"
+		},
+		{
+			"url": "assets/seat/master-avatar-background.png",
+			"type": "image",
+			"name": "master-avatar-background"
+		},
+		{
+			"url": "assets/seat/seat-background.png",
+			"type": "image",
+			"name": "seat-background"
+		},
+		{
+			"url": "assets/seat/self-mark.png",
+			"type": "image",
+			"name": "self-mark"
+		},
+		{
+			"url": "assets/seat/waiting-for-all-ready.png",
+			"type": "image",
+			"name": "waiting-for-all-ready"
+		},
+		{
+			"url": "assets/seat/waiting-for-master-start.png",
+			"type": "image",
+			"name": "waiting-for-master-start"
+		},
+		{
+			"url": "assets/shared/small-dialog-background.png",
+			"type": "image",
+			"name": "small-dialog-background"
 		}
 	]
 }

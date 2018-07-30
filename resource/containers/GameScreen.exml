@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.GameScreen" width="640" height="1386" xmlns:e="http://ns.egret.com/eui">
+    <e:Image id="gameBackground" left="0" right="0" bottom="0" top="0" source="seat-background" />
+    <e:Group>
+        <e:Label text="{roomName}" textColor="0x000000"></e:Label>
+        <e:Group x="189">
+            <e:Label text="{currentPlayers}" textColor="0x000000"></e:Label>
+            <e:Label text="/" textColor="0x000000" x="101"></e:Label>
+            <e:Label text="{maxPlayers}" textColor="0x000000" x="187"></e:Label>
+        </e:Group>
+    </e:Group>
+    <e:Group width="100%" anchorOffsetY="0" x="0" y="66.76">
+        <e:Image source="game-init-background" anchorOffsetX="0" width="100%" horizontalCenter="0"></e:Image>
+        <e:Label text="选座" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
+    </e:Group>
+    <e:Group anchorOffsetY="0" height="328.76" x="0" y="701.03" anchorOffsetX="0" width="632.97">
+        <e:Button>
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+            </e:Skin>
+        </e:Button>
+        <e:Button x="158">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+            </e:Skin>
+        </e:Button>
+        <e:Button x="317">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+            </e:Skin>
+        </e:Button>
+        <e:Button x="470">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+            </e:Skin>
+        </e:Button>
+        <e:Button y="170">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+            </e:Skin>
+        </e:Button>
+        <e:Button y="170" x="158">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+            </e:Skin>
+        </e:Button>
+        <e:Button y="170" x="317">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+            </e:Skin>
+        </e:Button>
+        <e:Button y="170" x="470">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+    <e:Group id="navigationBar" width="640" y="1059">
+        <e:Button visible="{isNormalClient}" width="100%">
+            <e:Skin>
+                <e:Image source="waiting-for-master-start"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Button visible="{isMasterClient}" width="100%">
+            <e:Skin>
+                <e:Image source="waiting-for-all-ready"></e:Image>
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+</e:Skin>

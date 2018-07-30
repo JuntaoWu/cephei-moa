@@ -1,6 +1,6 @@
 {
-  "engineVersion": "5.2.4",
-  "compilerVersion": "5.2.4",
+  "engineVersion": "5.2.5",
+  "compilerVersion": "5.2.5",
   "template": {},
   "target": {
     "current": "web"
@@ -43,8 +43,16 @@
       "name": "promise"
     },
     {
+      "name": "puremvc",
+      "path": "../3rdparty-libs/puremvc"
+    },
+    {
       "name": "lodash",
       "path": "../3rdparty-libs/lodash"
+    },
+    {
+      "name": "photon",
+      "path": "../3rdparty-libs/photon"
     }
   ]
 }

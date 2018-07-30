@@ -27,25 +27,30 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
+class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
+
+    private labelText: egret.TextField;
+
+    private progressBg: egret.Bitmap;
+    private progressBar: egret.Bitmap;
+    private loadingLabel: egret.DisplayObject;
 
     public constructor() {
         super();
-        this.createView();
+        this.skinName = "skins.LoadingUI";
+        this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
     }
 
-    private textField: egret.TextField;
+    public createCompleteEvent(event: eui.UIEvent): void {
+        this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
-    private createView(): void {
-        this.textField = new egret.TextField();
-        this.addChild(this.textField);
-        this.textField.y = 300;
-        this.textField.width = 480;
-        this.textField.height = 100;
-        this.textField.textAlign = "center";
+        this.progressBg.y = this.stage.stageHeight - 30;
+        this.progressBar.y = this.stage.stageHeight - 30;
+        this.loadingLabel.y = this.stage.stageHeight - 60;
     }
 
     public onProgress(current: number, total: number): void {
-        this.textField.text = `Loading...${current}/${total}`;
+        this.labelText.text = `${current}/${total}`;
+        this.progressBar.width = this.stage.width * current / total;
     }
 }
