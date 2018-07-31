@@ -5,5 +5,6 @@ module game {
         UserStartGame,
         EventRequestGameStates,
         EventLoadSceneItemFromServer,
+        TakeSeat,
     }
 }

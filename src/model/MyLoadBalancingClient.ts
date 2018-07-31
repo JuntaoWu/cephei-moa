@@ -31,6 +31,7 @@ module game {
         public stateChangeSubject = () => { };
         public updateRoomInfoSubject = () => { };
         public onJoinRoomSubject = () => { };
+        public receiveMessageSubject = (event, message, sender) => { };
 
         start() {
             // connect if no fb auth required 
@@ -49,18 +50,17 @@ module game {
             this.output("Error " + errorCode + ": " + errorMsg);
         }
 
-        onEvent(code: number, content: any, actorNr: number) {
-            var mess = content && content.message;
-            var sender = content && content.senderName;
-            switch (code) {
+        onEvent(event: CustomPhotonEvents, message: any, actorNr: number) {
+            var sender = this.myRoomActors()[actorNr];
+            switch (event) {
                 case CustomPhotonEvents.UserMessage:
                     if (actorNr)
-                        this.output(sender + ": " + mess, this.myRoomActors()[actorNr].getCustomProperty("color"));
+                        this.output(actorNr + ": " + message, sender.getCustomProperty("color"));
                     else
-                        this.output(sender + ": " + mess);
+                        this.output(actorNr + ": " + message);
                     break;
                 case CustomPhotonEvents.UserStartGame:
-                    this.output(sender + ": started the game", this.myRoomActors()[actorNr].getCustomProperty("color"));
+                    this.output(actorNr + ": started the game", this.myRoomActors()[actorNr].getCustomProperty("color"));
                     break;
                 case CustomPhotonEvents.EventRequestGameStates:
                     this.raiseEvent(CustomPhotonEvents.EventLoadSceneItemFromServer, null, {
@@ -68,9 +68,10 @@ module game {
                     });
                     break;
                 default:
+                    this.receiveMessageSubject(event, message, sender);
                     break;
             }
-            this.logger.debug("onEvent", code, "content:", content, "actor:", actorNr);
+            this.logger.debug("onEvent", event, "message:", message, "actor:", actorNr);
 
         }
         updateUserIdAndNickname(vals, logger) {
@@ -153,7 +154,7 @@ module game {
 
             this.updateRoomInfo();
         }
-        
+
         onActorSuspend(actor: Photon.LoadBalancing.Actor) {
             this.output("Actor " + (actor.name || actor.actorNr) + " suspended", actor.getCustomProperty("color"));
 
@@ -179,7 +180,7 @@ module game {
             return currentDictionary[name] && currentDictionary[name].active;
         }
 
-        sendMessage(message: string) {
+        sendMessage(event: CustomPhotonEvents, message?: string) {
             try {
                 //todo: Use chat client to send messages to players not in the room.
                 //if (/\/invite:/.test(message)) {
@@ -189,7 +190,7 @@ module game {
                 //    });
                 //}
                 //default:
-                this.raiseEvent(CustomPhotonEvents.UserMessage, { message: message, senderName: "user" + (this.myActor().name || this.myActor().actorNr) });
+                this.raiseEvent(event, message);
                 this.output('me[' + (this.myActor().name || this.myActor().actorNr) + ']: ' + message, this.myActor().getCustomProperty("color"));
             }
             catch (err) {
@@ -199,7 +200,7 @@ module game {
 
         startGame() {
             try {
-                this.raiseEvent(CustomPhotonEvents.UserStartGame, { message: "", senderName: "user" + (this.myActor().name || this.myActor().actorNr) });
+                this.raiseEvent(CustomPhotonEvents.UserStartGame, { message: "", sender: this.myActor().actorNr });
                 this.output('me[' + (this.myActor().name || this.myActor().actorNr) + ']: ' + "start the game", this.myActor().getCustomProperty("color"));
             }
             catch (err) {

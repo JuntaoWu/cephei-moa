@@ -66,6 +66,7 @@ class Main extends eui.UILayer {
         await platform.login();
         const userInfo = await platform.getUserInfo();
         console.log(userInfo);
+        game.CommonData.logon = userInfo;
     }
 
     private async loadResource() {

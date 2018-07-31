@@ -17,7 +17,8 @@ module game {
 			roomName: undefined,
 			phase: GamePhase.Preparing,
 			players: 0,
-			maxPlayers: 6
+			maxPlayers: 6,
+			seats: []
 		};
 
 		private _loadBalancingClient: MyLoadBalancingClient;
@@ -37,6 +38,10 @@ module game {
 				this._loadBalancingClient.onJoinRoomSubject = () => {
 					this.onJoinRoom();
 				};
+
+				this._loadBalancingClient.receiveMessageSubject = (event, message, sender) => {
+					this.onMessage(event, message, sender);
+				}
 			}
 			return this._loadBalancingClient;
 		}
@@ -70,7 +75,7 @@ module game {
 				}
 			}
 			else {
-				
+
 			}
 		}
 
@@ -78,10 +83,35 @@ module game {
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 		}
 
+		private changeSeat() {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat, 6);
+		}
+
+		private onMessage(event: CustomPhotonEvents, message: string, sender: Photon.LoadBalancing.Actor) {
+
+			switch (event) {
+				case CustomPhotonEvents.TakeSeat: {
+					const seatNumber = +message;
+					// No one's taken this seatNumber yet
+					if (!this.gameState.seats[seatNumber]) {
+						this.gameState.seats[seatNumber] = sender;
+						
+						//this.sendNotification(SEAT_UPDATE, this.gameState.seats);
+					}
+					else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
+						// Someone else's already taken this seat.
+					}
+
+					break;
+				}
+			}
+		}
+
 		private generateRoomNumber() {
 			let random = _.padStart(Math.floor(1000 * Math.random()).toString(), 3, '0');
 			let name = parseInt(`${random}${new Date().getMilliseconds()}`).toString(10);
 			return _.padStart(name, 6, '0').toUpperCase();
+
 		}
 
 		private createRoomWithDefaultOptions() {

@@ -7,5 +7,7 @@ module game {
         public maxPlayers: number;
 
         public phase: GamePhase;
+
+        public seats: Array<any>
     }
 }
