@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background,wait-1-players-enough,wait-2-master-confirm,wait-3-set-identity,wait-4-others-process,wait-5-vote,wait-6-others-vote,enter-info",
 			"name": "preload"
 		},
 		{
@@ -289,6 +289,41 @@
 			"url": "assets/shared/small-dialog-background.png",
 			"type": "image",
 			"name": "small-dialog-background"
+		},
+		{
+			"url": "assets/game/wait-1-players-enough.png",
+			"type": "image",
+			"name": "wait-1-players-enough"
+		},
+		{
+			"url": "assets/game/wait-2-master-confirm.png",
+			"type": "image",
+			"name": "wait-2-master-confirm"
+		},
+		{
+			"url": "assets/game/wait-3-set-identity.png",
+			"type": "image",
+			"name": "wait-3-set-identity"
+		},
+		{
+			"url": "assets/game/wait-4-others-process.png",
+			"type": "image",
+			"name": "wait-4-others-process"
+		},
+		{
+			"url": "assets/game/wait-5-vote.png",
+			"type": "image",
+			"name": "wait-5-vote"
+		},
+		{
+			"url": "assets/game/wait-6-others-vote.png",
+			"type": "image",
+			"name": "wait-6-others-vote"
+		},
+		{
+			"url": "assets/game/enter-info.png",
+			"type": "image",
+			"name": "enter-info"
 		}
 	]
 }

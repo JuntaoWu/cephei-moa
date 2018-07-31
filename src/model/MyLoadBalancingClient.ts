@@ -186,11 +186,13 @@ module game {
                 //if (/\/invite:/.test(message)) {
                 //    let people = message.match(/\/invite:(.*)/)[1];
                 //    this.raiseEvent(3, { room: this.myRoom().name }, {
-                //        receivers: 1
+                //        receivers: Photon.LoadBalancing.Constants.ReceiverGroup.Others
                 //    });
                 //}
                 //default:
-                this.raiseEvent(event, message);
+                this.raiseEvent(event, message, {
+                    receivers: Photon.LoadBalancing.Constants.ReceiverGroup.All
+                });
                 this.output('me[' + (this.myActor().name || this.myActor().actorNr) + ']: ' + message, this.myActor().getCustomProperty("color"));
             }
             catch (err) {

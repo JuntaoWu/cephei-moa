@@ -17,7 +17,7 @@
 	"game": [
 		"bin-debug/model/common/Constants.js",
 		"bin-debug/view/panel/BasePanel.js",
-		"bin-debug/model/GameProxy.js",
+		"bin-debug/model/MyLoadBalancingClient.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
@@ -30,8 +30,9 @@
 		"bin-debug/controller/ViewPrepCommand.js",
 		"bin-debug/controller/commands/GameCommand.js",
 		"bin-debug/controller/commands/SceneCommand.js",
-		"bin-debug/view/panel/StartScreen.js",
-		"bin-debug/model/MyLoadBalancingClient.js",
+		"bin-debug/model/GameProxy.js",
+		"bin-debug/AssetAdapter.js",
+		"bin-debug/model/common/CommonData.js",
 		"bin-debug/ApplicationFacade.js",
 		"bin-debug/model/common/CustomPhotonEvents.js",
 		"bin-debug/model/common/Scene.js",
@@ -45,6 +46,6 @@
 		"bin-debug/view/panel/GameScreen.js",
 		"bin-debug/view/panel/JoinWindow.js",
 		"bin-debug/view/panel/Shade.js",
-		"bin-debug/AssetAdapter.js"
+		"bin-debug/view/panel/StartScreen.js"
 	]
 }

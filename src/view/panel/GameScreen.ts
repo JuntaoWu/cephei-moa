@@ -18,6 +18,10 @@ module game {
         public currentPlayers: number = 0;
         public maxPlayers: number = 0;
 
+        public isInitial: boolean = false;
+        public isWaiting: boolean = false;
+        public isAllReady: boolean = false;
+        
         public constructor() {
             super();
 

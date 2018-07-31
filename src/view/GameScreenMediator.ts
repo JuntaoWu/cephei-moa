@@ -33,6 +33,7 @@ module game {
             switch (notification.getName()) {
                 case GameProxy.PLAYER_UPDATE: {
                     this.updateGameScreen(data);
+                    break;
                 }
             }
         }
@@ -40,6 +41,27 @@ module game {
         public updateGameScreen(data: GameState) {
             this.gameScreen.currentPlayers = data.players;
             this.gameScreen.maxPlayers = data.maxPlayers;
+
+            let isAllReady = this.proxy.gameState.seats.length == data.maxPlayers && this.proxy.gameState.seats.every(seat => seat.actorNr !== undefined);
+            let isWaiting = !isAllReady && this.proxy.gameState.seats.some(seat => seat.actorNr == this.proxy.actorNr);
+
+            switch (data.phase) {
+                case GamePhase.Preparing:
+                    this.gameScreen.isInitial = !isWaiting && !isAllReady;
+                    this.gameScreen.isWaiting = isWaiting;
+                    this.gameScreen.isAllReady = isAllReady;
+                    break;
+                case GamePhase.Ready:
+                    this.gameScreen.isInitial = false;
+                    this.gameScreen.isWaiting = false;
+                    this.gameScreen.isAllReady = false;
+                    break;
+                case GamePhase.Input:
+                    this.gameScreen.isInitial = false;
+                    this.gameScreen.isWaiting = false;
+                    this.gameScreen.isAllReady = false;
+                    break;
+            }
         }
 
         public get gameScreen(): GameScreen {
