@@ -40,5 +40,59 @@ module game {
             this.joinWindow.show();
         }
 
+        public userInfoWindow: UserInfoWindow;
+        public showUserInfoWindow(): void {
+            if (!this.userInfoWindow) {
+                this.userInfoWindow = new UserInfoWindow();
+            }
+            this.addChild(this.userInfoWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+        
+        public noticeWindow: NoticeWindow;
+        public showNoticeWindow(): void {
+            if (!this.noticeWindow) {
+                this.noticeWindow = new NoticeWindow();
+            }
+            this.addChild(this.noticeWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public rankWindow: RankWindow;
+        public showRankWindow(): void {
+            if (!this.rankWindow) {
+                this.rankWindow = new RankWindow();
+            }
+            this.addChild(this.rankWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public guideWindow: RankWindow;
+        public showGuideWindow(): void {
+            if (!this.guideWindow) {
+                this.guideWindow = new RankWindow();
+            }
+            this.addChild(this.guideWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public settingWindow: SettingWindow;
+        public showSettingWindow(): void {
+            if (!this.settingWindow) {
+                this.settingWindow = new SettingWindow();
+            }
+            this.addChild(this.settingWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public aboutWindow: AboutWindow;
+        public showAboutWindow(): void {
+            if (!this.aboutWindow) {
+                this.aboutWindow = new AboutWindow();
+            }
+            this.addChild(this.aboutWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
     }
 }
