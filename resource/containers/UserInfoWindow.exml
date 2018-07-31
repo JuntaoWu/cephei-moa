@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.UserInfoWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
+        xmlns:game="game.*">
+	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
+	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="240">
+		<e:Label text="我的信息" bold="true" textColor="0x020202" horizontalCenter="0" y="25" />
+       	<e:Group height="170" y="70" horizontalCenter="0">
+			<e:Image source="userinfo-background" width="620" verticalCenter="0" horizontalCenter="0" height="160"></e:Image>
+			<e:Image source="btn-share" width="110" verticalCenter="0" x="75" height="110"></e:Image>
+			<e:Label text="账号" bold="true"  size="60" textColor="0x050505" verticalCenter="0" x="240"/>
+		</e:Group>
+	</e:Group>
+	<e:Group id="content" width="600" horizontalCenter="0" anchorOffsetY="0" height="700" y="245">
+		<e:Group horizontalCenter="0" verticalCenter="0" width="600">
+			<e:Image source="meihua" horizontalCenter="0" y="50"></e:Image>
+			<e:Image source="sep" horizontalCenter="0"></e:Image>
+			<e:Image source="score2" horizontalCenter="0"  y="10"></e:Image>
+			<e:Label text="2" bold="true"  y="45" horizontalCenter="-105"/>
+			<e:Label text="3" bold="true"  y="45" horizontalCenter="105"/>
+			<e:Label text="共5局" bold="true"  horizontalCenter="0" y="100" textColor="0x020202"/>
+			<e:Group y="150" left="0">
+				<e:Image source="win_rate" horizontalCenter="0" ></e:Image>
+				<e:Label text="40%" horizontalCenter="0" y="60"/>
+			</e:Group>
+			<e:Group y="150" left="154">
+				<e:Image source="room6" horizontalCenter="0" ></e:Image>
+				<e:Label text="50%" horizontalCenter="0" y="60"/>
+			</e:Group>
+			<e:Group y="150" left="308">
+				<e:Image source="room7" horizontalCenter="0" ></e:Image>
+				<e:Label text="10%" horizontalCenter="0" y="60"/>
+			</e:Group>
+			<e:Group y="150" right="0">
+				<e:Image source="room8" horizontalCenter="0" ></e:Image>
+				<e:Label text="0%" horizontalCenter="0" y="60"/>
+			</e:Group>
+			
+			<e:Group y="350" left="60">
+				<e:Image source="team_xu_2" horizontalCenter="0" ></e:Image>
+				<e:Label text="0%" horizontalCenter="0" y="55"/>
+			</e:Group>
+			<e:Group y="350" right="60">
+				<e:Image source="team_lao_2" horizontalCenter="0" ></e:Image>
+				<e:Label text="0%" horizontalCenter="0" y="55"/>
+			</e:Group>
+		</e:Group>
+	</e:Group>
+    <e:Group id="navigationBar" y="1011" width="640" height="135">
+		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
+			<e:Skin states="up,down">
+				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+			</e:Skin>
+		</e:Button>
+	</e:Group>
+</e:Skin>

@@ -11,6 +11,12 @@ module game {
             this.startScreen.btnCreateRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createRoomClick, this);
             this.startScreen.btnJoinRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.joinRoomClick, this);
 
+            this.startScreen.headGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showMyInfo, this);
+            this.startScreen.btnNotice.addEventListener(egret.TouchEvent.TOUCH_TAP, this.noticeClick, this);
+            this.startScreen.btnRank.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankClick, this);
+            this.startScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.guideClick, this);
+            this.startScreen.btnSetting.addEventListener(egret.TouchEvent.TOUCH_TAP, this.settingClick, this);
+
             console.log("StartScreen initData:");
             this.initData();
         }
@@ -25,6 +31,26 @@ module game {
 
         public joinRoomClick(event: egret.TouchEvent) {
             this.sendNotification(SceneCommand.SHOW_JOIN_WINDOW);
+        }
+
+        private noticeClick(event: egret.TouchEvent) {
+            this.sendNotification(SceneCommand.SHOW_NOTICE_WINDOW);
+        }
+
+        private rankClick(event: egret.TouchEvent) {
+            this.sendNotification(SceneCommand.SHOW_RANK_WINDOW);
+        }
+        
+        private guideClick(event: egret.TouchEvent) {
+            this.sendNotification(SceneCommand.SHOW_GUIDE_WINDOW);
+        }
+        
+        private settingClick(event: egret.TouchEvent) {
+            this.sendNotification(SceneCommand.SHOW_SETTING_WINDOW);
+        }
+
+        private showMyInfo(): void {
+            this.sendNotification(SceneCommand.SHOW_USERINFO_WINDOW);
         }
 
         public listNotificationInterests(): Array<any> {

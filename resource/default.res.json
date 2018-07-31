@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background,btn-guide,rank1,rank2,rank3,rank_bg,sep,btn-back,auth_rate_2,fang1,fang2,game6_1,game6_2,game7_1,game7_2,game8_1,game8_2,auth_player_1,auth_player_2,auth_rate_1,huang2,ji1,ji2,jushu1,jushu2,lao1,lao2,mu1,mu2,huang1,xu1,xu2,yao1,yao2,zheng1,zheng2,role,role2,team_lao_3,team_lao_4,team_xu_3,team_xu_4,win_rate_1,win_rate_2,total_rate_2,total_play_1,total_play_2,total_rate_1,setting2,about,close,back_2,room8,score2,team_lao_2,team_xu_2,win_rate,room6,room7,meihua,btn-create-small,btn-join-small",
 			"name": "preload"
 		},
 		{
@@ -289,6 +289,311 @@
 			"url": "assets/shared/small-dialog-background.png",
 			"type": "image",
 			"name": "small-dialog-background"
+		},
+		{
+			"url": "assets/start/btn-guide.png",
+			"type": "image",
+			"name": "btn-guide"
+		},
+		{
+			"url": "assets/ItemRenderer/rank/rank1.png",
+			"type": "image",
+			"name": "rank1"
+		},
+		{
+			"url": "assets/ItemRenderer/rank/rank2.png",
+			"type": "image",
+			"name": "rank2"
+		},
+		{
+			"url": "assets/ItemRenderer/rank/rank3.png",
+			"type": "image",
+			"name": "rank3"
+		},
+		{
+			"url": "assets/ItemRenderer/rank/rank_bg.png",
+			"type": "image",
+			"name": "rank_bg"
+		},
+		{
+			"url": "assets/ItemRenderer/rank/sep.png",
+			"type": "image",
+			"name": "sep"
+		},
+		{
+			"url": "assets/Button/btn-back.png",
+			"type": "image",
+			"name": "btn-back"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/auth_rate_2.png",
+			"type": "image",
+			"name": "auth_rate_2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/fang1.png",
+			"type": "image",
+			"name": "fang1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/fang2.png",
+			"type": "image",
+			"name": "fang2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/game6_1.png",
+			"type": "image",
+			"name": "game6_1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/game6_2.png",
+			"type": "image",
+			"name": "game6_2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/game7_1.png",
+			"type": "image",
+			"name": "game7_1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/game7_2.png",
+			"type": "image",
+			"name": "game7_2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/game8_1.png",
+			"type": "image",
+			"name": "game8_1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/game8_2.png",
+			"type": "image",
+			"name": "game8_2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/auth_player_1.png",
+			"type": "image",
+			"name": "auth_player_1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/auth_player_2.png",
+			"type": "image",
+			"name": "auth_player_2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/auth_rate_1.png",
+			"type": "image",
+			"name": "auth_rate_1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/huang2.png",
+			"type": "image",
+			"name": "huang2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/ji1.png",
+			"type": "image",
+			"name": "ji1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/ji2.png",
+			"type": "image",
+			"name": "ji2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/jushu1.png",
+			"type": "image",
+			"name": "jushu1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/jushu2.png",
+			"type": "image",
+			"name": "jushu2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/lao1.png",
+			"type": "image",
+			"name": "lao1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/lao2.png",
+			"type": "image",
+			"name": "lao2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/mu1.png",
+			"type": "image",
+			"name": "mu1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/mu2.png",
+			"type": "image",
+			"name": "mu2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/huang1.png",
+			"type": "image",
+			"name": "huang1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/xu1.png",
+			"type": "image",
+			"name": "xu1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/xu2.png",
+			"type": "image",
+			"name": "xu2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/yao1.png",
+			"type": "image",
+			"name": "yao1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/yao2.png",
+			"type": "image",
+			"name": "yao2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/zheng1.png",
+			"type": "image",
+			"name": "zheng1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/zheng2.png",
+			"type": "image",
+			"name": "zheng2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/role.png",
+			"type": "image",
+			"name": "role"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/role2.png",
+			"type": "image",
+			"name": "role2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/team_lao_3.png",
+			"type": "image",
+			"name": "team_lao_3"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/team_lao_4.png",
+			"type": "image",
+			"name": "team_lao_4"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/team_xu_3.png",
+			"type": "image",
+			"name": "team_xu_3"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/team_xu_4.png",
+			"type": "image",
+			"name": "team_xu_4"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/win_rate_1.png",
+			"type": "image",
+			"name": "win_rate_1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/win_rate_2.png",
+			"type": "image",
+			"name": "win_rate_2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/total_rate_2.png",
+			"type": "image",
+			"name": "total_rate_2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/total_play_1.png",
+			"type": "image",
+			"name": "total_play_1"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/total_play_2.png",
+			"type": "image",
+			"name": "total_play_2"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/total_rate_1.png",
+			"type": "image",
+			"name": "total_rate_1"
+		},
+		{
+			"url": "assets/Panel/setting2.png",
+			"type": "image",
+			"name": "setting2"
+		},
+		{
+			"url": "assets/Panel/about.png",
+			"type": "image",
+			"name": "about"
+		},
+		{
+			"url": "assets/shared/close.png",
+			"type": "image",
+			"name": "close"
+		},
+		{
+			"url": "assets/seat/back_2.png",
+			"type": "image",
+			"name": "back_2"
+		},
+		{
+			"url": "assets/myInfo/room8.png",
+			"type": "image",
+			"name": "room8"
+		},
+		{
+			"url": "assets/myInfo/score2.png",
+			"type": "image",
+			"name": "score2"
+		},
+		{
+			"url": "assets/myInfo/team_lao_2.png",
+			"type": "image",
+			"name": "team_lao_2"
+		},
+		{
+			"url": "assets/myInfo/team_xu_2.png",
+			"type": "image",
+			"name": "team_xu_2"
+		},
+		{
+			"url": "assets/myInfo/win_rate.png",
+			"type": "image",
+			"name": "win_rate"
+		},
+		{
+			"url": "assets/myInfo/room6.png",
+			"type": "image",
+			"name": "room6"
+		},
+		{
+			"url": "assets/myInfo/room7.png",
+			"type": "image",
+			"name": "room7"
+		},
+		{
+			"url": "assets/myInfo/meihua.png",
+			"type": "image",
+			"name": "meihua"
+		},
+		{
+			"url": "assets/start/btn-create-small.png",
+			"type": "image",
+			"name": "btn-create-small"
+		},
+		{
+			"url": "assets/start/btn-join-small.png",
+			"type": "image",
+			"name": "btn-join-small"
 		}
 	]
 }
