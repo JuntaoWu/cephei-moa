@@ -18,12 +18,10 @@ module game {
         public currentPlayers: number = 0;
         public maxPlayers: number = 0;
 
-<<<<<<< HEAD
         public isInitial: boolean = false;
         public isWaiting: boolean = false;
         public isAllReady: boolean = false;
         
-=======
         public btnSeat1 :eui.Button;
         public btnSeat2 :eui.Button;
         public btnSeat3 :eui.Button;
@@ -34,7 +32,6 @@ module game {
         public btnSeat8 :eui.Button;
 
 
->>>>>>> d8902ba63467ee0007987befce445871757d7be3
         public constructor() {
             super();
 
