@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.GameScreen" width="640" height="1386" xmlns:e="http://ns.egret.com/eui">
+<e:Skin class="skins.GameScreen" width="640" height="1386" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
     <e:Image id="gameBackground" left="0" right="0" bottom="0" top="0" source="seat-background" />
     <e:Group>
         <e:Label text="{roomName}" textColor="0x000000"></e:Label>
@@ -14,49 +14,52 @@
         <e:Label text="选座" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
     </e:Group>
     <e:Group anchorOffsetY="0" height="328.76" x="0" y="701.03" anchorOffsetX="0" width="632.97">
-        <e:Button>
+        <e:Button id="btnSeat1" label="">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+                <e:Image id="content" x="50" y="50"/>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnSeat2" x="158">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+                <e:Image id="content" x="50" y="50"/>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnSeat3" x="317">
+            <e:Skin>
+                <e:Image source="avatar-background" />
+                <e:Image source="color-red" />
+                <e:Image id="content"  x="50" y="50"/>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnSeat4" x="470">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
             </e:Skin>
         </e:Button>
-        <e:Button x="158">
+        <e:Button id="btnSeat5" y="170">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
             </e:Skin>
         </e:Button>
-        <e:Button x="317">
+        <e:Button id="btnSeat6" y="170" x="158">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
             </e:Skin>
         </e:Button>
-        <e:Button x="470">
+        <e:Button id="btnSeat7" y="170" x="317">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
             </e:Skin>
         </e:Button>
-        <e:Button y="170">
-            <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
-            </e:Skin>
-        </e:Button>
-        <e:Button y="170" x="158">
-            <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
-            </e:Skin>
-        </e:Button>
-        <e:Button y="170" x="317">
-            <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
-            </e:Skin>
-        </e:Button>
-        <e:Button y="170" x="470">
+        <e:Button id="btnSeat8" y="170" x="470">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />

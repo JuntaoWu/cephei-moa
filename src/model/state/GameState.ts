@@ -8,6 +8,6 @@ module game {
 
         public phase: GamePhase;
 
-        public seats: Array<any>
+        public seats: Array<any>;
     }
 }

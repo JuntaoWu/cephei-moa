@@ -18,6 +18,16 @@ module game {
         public currentPlayers: number = 0;
         public maxPlayers: number = 0;
 
+        public btnSeat1 :eui.Button;
+        public btnSeat2 :eui.Button;
+        public btnSeat3 :eui.Button;
+        public btnSeat4 :eui.Button;
+        public btnSeat5 :eui.Button;
+        public btnSeat6 :eui.Button;
+        public btnSeat7 :eui.Button;
+        public btnSeat8 :eui.Button;
+
+
         public constructor() {
             super();
 

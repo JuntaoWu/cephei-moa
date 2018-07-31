@@ -190,7 +190,9 @@ module game {
                 //    });
                 //}
                 //default:
-                this.raiseEvent(event, message);
+                this.raiseEvent(event, message,{
+                    receivers: Photon.LoadBalancing.Constants.ReceiverGroup.All
+                });
                 this.output('me[' + (this.myActor().name || this.myActor().actorNr) + ']: ' + message, this.myActor().getCustomProperty("color"));
             }
             catch (err) {

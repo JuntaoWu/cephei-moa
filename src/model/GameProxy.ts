@@ -10,6 +10,8 @@ module game {
 		}
 
 		public static PLAYER_UPDATE: string = "player_update";
+		public static SEAT_UPDATE: string = "seat_update";
+		public static SEAT_DESTORY:string = "seat_destory";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -83,28 +85,40 @@ module game {
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 		}
 
-		private changeSeat() {
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat, 6);
-		}
+		//接受广播
 
 		private onMessage(event: CustomPhotonEvents, message: string, sender: Photon.LoadBalancing.Actor) {
-
 			switch (event) {
 				case CustomPhotonEvents.TakeSeat: {
 					const seatNumber = +message;
-					// No one's taken this seatNumber yet
-					if (!this.gameState.seats[seatNumber]) {
-						this.gameState.seats[seatNumber] = sender;
-						
-						//this.sendNotification(SEAT_UPDATE, this.gameState.seats);
-					}
-					else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
-						// Someone else's already taken this seat.
-					}
 
+					//if (!this.gameState.seats.some(seat => seat && seat.actorNr == this.loadBalancingClient.myActor().actorNr)){
+						// No one's taken this seatNumber yet
+						if (!this.gameState.seats[seatNumber]) {
+							//this.sendNotification(GameProxy.SEAT_UPDATE,seatNumber);
+							this.gameState.seats[seatNumber] = sender;						
+							this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
+							console.log("同步啊");
+						}else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
+							// Someone else's already taken this seat.
+							console.log("已经有其他人选择这个位置");
+						}
+					//}
+					// if(this.gameState.seats.some(seat => seat && seat.actorNr == this.loadBalancingClient.myActor().actorNr)){
+					// 	if(!this.gameState.seats[seatNumber]){
+					// 		let seatNo = this.gameState.seats.findIndex(seat => seat == this.loadBalancingClient.myActor());
+					// 		// this.gameState.seats[seatNo]=undefined;
+					// 		// this.sendNotification(GameProxy.SEAT_DESTORY,seatNo);
+					// 		this.gameState.seats[seatNumber] = sender;						
+					// 		this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
+					// 	}else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
+					// 		console.log("已经有其他人选择这个位置");
+					// 	}
+					// }
 					break;
 				}
 			}
+			console.log(this.gameState.seats);
 		}
 
 		private generateRoomNumber() {
@@ -172,5 +186,9 @@ module game {
 			this.roomName = undefined;
 		}
 
+		//找座位
+		public joinSeat(seatNumber:string){
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat,seatNumber);
+		}
 	}
 }

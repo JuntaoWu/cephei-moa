@@ -25,7 +25,12 @@ module game {
             this.facade().registerCommand(GameCommand.START_GAME, GameCommand);
             this.facade().registerCommand(GameCommand.CREATE_ROOM, GameCommand);
             this.facade().registerCommand(GameCommand.JOIN_ROOM, GameCommand);
+            this.facade().registerCommand(GameCommand.JOIN_SEAT,GameCommand);
         }
+
+        //找座位
+        public static JOIN_SEAT:string = "join_seat";
+        public static SEAT_UPDATE:string="seat_update";
 
         public async execute(notification: puremvc.INotification): Promise<any> {
             var gameProxy: GameProxy = <GameProxy><any>(this.facade().retrieveProxy(GameProxy.NAME));
@@ -39,6 +44,10 @@ module game {
                     gameProxy.joinRoom(data);
                     break;
                 }
+                case GameCommand.JOIN_SEAT:{
+                    gameProxy.joinSeat(data);
+                    break;
+                }                
             }
         }
     }
