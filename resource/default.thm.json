@@ -19,6 +19,7 @@
 		"resource/components/RankListItemRenderer.exml",
 		"resource/components/Shade.exml",
 		"resource/containers/AboutWindow.exml",
+		"resource/eui_skins/ButtonSkin.exml",
 		"resource/containers/GameScreen.exml",
 		"resource/containers/JoinWindow.exml",
 		"resource/containers/LoadingUI.exml",

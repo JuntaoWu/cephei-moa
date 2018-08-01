@@ -11,7 +11,10 @@ module game {
 
 		public static PLAYER_UPDATE: string = "player_update";
 		public static SEAT_UPDATE: string = "seat_update";
-		public static SEAT_DESTORY:string = "seat_destory";
+		public static START_JS:string="start_js";
+		public static CHOOSE_JS_END:string="choose_js_end";
+		public static START_GAME:string="start_game";
+		public static FIRST_ONE:string="first_one";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -21,7 +24,8 @@ module game {
 			phase: GamePhase.Preparing,
 			players: 0,
 			maxPlayers: 6,
-			seats: []
+			seats: [],
+			role: []
 		};
 
 		private _loadBalancingClient: MyLoadBalancingClient;
@@ -87,40 +91,89 @@ module game {
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 		}
 
-		//接受广播
-
 		private onMessage(event: CustomPhotonEvents, message: string, sender: Photon.LoadBalancing.Actor) {
 			switch (event) {
-				case CustomPhotonEvents.TakeSeat: {
-					const seatNumber = +message;
+				case CustomPhotonEvents.TakeSeat: {	
 
-					//if (!this.gameState.seats.some(seat => seat && seat.actorNr == this.loadBalancingClient.myActor().actorNr)){
-						// No one's taken this seatNumber yet
-						if (!this.gameState.seats[seatNumber]) {
-							//this.sendNotification(GameProxy.SEAT_UPDATE,seatNumber);
-							this.gameState.seats[seatNumber] = sender;						
-							this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
-							console.log("同步啊");
-						}else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
-							// Someone else's already taken this seat.
-							console.log("已经有其他人选择这个位置");
-						}
-					//}
-					// if(this.gameState.seats.some(seat => seat && seat.actorNr == this.loadBalancingClient.myActor().actorNr)){
+					if (message == "destory1"){
+						this.gameState.seats[1]=undefined;	
+					}else if(message == "destory2"){
+						this.gameState.seats[2]=undefined;
+					}else if(message == "destory3"){
+						this.gameState.seats[3]=undefined;
+					}else if(message == "destory4"){
+						this.gameState.seats[4]=undefined;
+					}else if(message == "destory5"){
+						this.gameState.seats[5]=undefined;
+					}else if(message == "destory6"){
+						this.gameState.seats[6]=undefined;
+					}else if(message == "destory7"){
+						this.gameState.seats[7]=undefined;
+					}else if(message == "destory8"){
+						this.gameState.seats[8]=undefined;
+					}else{
+						const seatNumber = +message;
+						this.gameState.seats[seatNumber] = sender;
+						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);					
+					}
+
+					// if (!this.gameState.seats.some(seat => seat && seat.actorNr == this.loadBalancingClient.myActor().actorNr)){
+					// 	if (!this.gameState.seats[seatNumber]) {
+					// 		this.gameState.seats[seatNumber] = sender;						
+					// 		this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
+					// 	}else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
+					// 		// Someone else's already taken this seat.
+					// 	}
+					// }else{
 					// 	if(!this.gameState.seats[seatNumber]){
 					// 		let seatNo = this.gameState.seats.findIndex(seat => seat == this.loadBalancingClient.myActor());
-					// 		// this.gameState.seats[seatNo]=undefined;
-					// 		// this.sendNotification(GameProxy.SEAT_DESTORY,seatNo);
+					// 		this.gameState.seats[seatNo]=undefined;
 					// 		this.gameState.seats[seatNumber] = sender;						
 					// 		this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
 					// 	}else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
 					// 		console.log("已经有其他人选择这个位置");
 					// 	}
 					// }
+					break;					
+				}
+				case CustomPhotonEvents.startjs:{
+					this.sendNotification(GameProxy.START_JS);
 					break;
 				}
+				case CustomPhotonEvents.Chooserole:{
+					if (message == "destory1"){
+						this.gameState.role[1]=undefined;	
+					}else if(message == "destory2"){
+						this.gameState.role[2]=undefined;
+					}else if(message == "destory3"){
+						this.gameState.role[3]=undefined;
+					}else if(message == "destory4"){
+						this.gameState.role[4]=undefined;
+					}else if(message == "destory5"){
+						this.gameState.role[5]=undefined;
+					}else if(message == "destory6"){
+						this.gameState.role[6]=undefined;
+					}else if(message == "destory7"){
+						this.gameState.role[7]=undefined;
+					}else if(message == "destory8"){
+						this.gameState.role[8]=undefined;
+					}else{
+						const jsNumber = +message;
+						this.gameState.role[jsNumber] = sender;
+					}
+					console.log(this.gameState.role);
+					this.sendNotification(GameProxy.CHOOSE_JS_END,this.gameState.role);
+					break;
+				}		
+				case CustomPhotonEvents.startgame:{
+					this.sendNotification(GameProxy.START_GAME);
+					break;
+				}	
+				case CustomPhotonEvents.firstoneNr:{
+					this.sendNotification(GameProxy.FIRST_ONE,message);
+					break;
+				}	
 			}
-			console.log(this.gameState.seats);
 		}
 
 		private generateRoomNumber() {
@@ -188,9 +241,12 @@ module game {
 			this.roomName = undefined;
 		}
 
-		//找座位
 		public joinSeat(seatNumber:string){
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat,seatNumber);
+		}
+
+		public chooserole(jsNumber:string){
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.Chooserole,jsNumber);
 		}
 	}
 }
