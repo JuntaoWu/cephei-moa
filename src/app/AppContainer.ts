@@ -16,7 +16,7 @@ module game {
          */
         public enterStartScreen(): void {
             // SoundPool.playBGM("generic-music_mp3");
-
+            
             this.addChild(this.startScreen);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
@@ -94,5 +94,51 @@ module game {
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
+        public popupHandleWindow: PopupHandleWindow;
+        public showPopupHandleWindow(b: boolean): void {
+            if (!this.popupHandleWindow) {
+                this.popupHandleWindow = new PopupHandleWindow();
+            }
+            this.popupHandleWindow.setMessage(b);
+            this.addChild(this.popupHandleWindow);
+            this.popupHandleWindow.show();
+        }
+        
+        public popupPromptWindow: PopupPromptWindow;
+        public showPopupPromptWindow(str: string): void {
+            if (!this.popupPromptWindow) {
+                this.popupPromptWindow = new PopupPromptWindow();
+            }
+            this.popupPromptWindow.setMessage(str);
+            this.addChild(this.popupPromptWindow);
+            this.popupPromptWindow.show();
+        }
+        
+        public popupRoleWindow: PopupRoleWindow;
+        public showPopupRoleWindow(): void {
+            if (!this.popupRoleWindow) {
+                this.popupRoleWindow = new PopupRoleWindow();
+            }
+            this.addChild(this.popupRoleWindow);
+            this.popupRoleWindow.show();
+        }
+        
+        public popupResultWindow: PopupResultWindow;
+        public showPopupResultWindow(): void {
+            if (!this.popupResultWindow) {
+                this.popupResultWindow = new PopupResultWindow();
+            }
+            this.addChild(this.popupResultWindow);
+            this.popupResultWindow.show();
+        }
+        
+        public popupGameInfoWindow: PopupGameInfoWindow;
+        public showPopupGameInfoWindow(): void {
+            if (!this.popupGameInfoWindow) {
+                this.popupGameInfoWindow = new PopupGameInfoWindow();
+            }
+            this.addChild(this.popupGameInfoWindow);
+            this.popupGameInfoWindow.show();
+        }
     }
 }

@@ -26,7 +26,8 @@ module game {
         }
 
         public createRoomClick(event: egret.TouchEvent) {
-            this.sendNotification(GameCommand.CREATE_ROOM);
+            // this.sendNotification(GameCommand.CREATE_ROOM);
+            this.sendNotification(SceneCommand.SHOW_HANDLE_POPUP);
         }
 
         public joinRoomClick(event: egret.TouchEvent) {
@@ -42,7 +43,10 @@ module game {
         }
         
         private guideClick(event: egret.TouchEvent) {
-            this.sendNotification(SceneCommand.SHOW_GUIDE_WINDOW);
+            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP);
+            this.sendNotification(SceneCommand.SHOW_ROLE_POPUP);
+            this.sendNotification(SceneCommand.SHOW_RESULT_POPUP);
+            this.sendNotification(SceneCommand.SHOW_GAMEINFO_POPUP);
         }
         
         private settingClick(event: egret.TouchEvent) {

@@ -6,23 +6,23 @@
 		<e:Label text="排行" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
 		<e:ToggleButton id="winRateButton" selected="true" y="100" left="30">
 			<e:Skin states="up,upAndSelected">
-				<e:Image source="win_rate_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
+				<e:Image source="win_rate_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0"
 				         bottom="0" />
-				<e:Image source="win_rate_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
+				<e:Image source="win_rate_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0"
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
 		<e:ToggleButton id="roleButton" y="100" horizontalCenter="0">
 			<e:Skin states="up,upAndSelected">
-				<e:Image source="role2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0" bottom="0" />
-				<e:Image source="role" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0" top="0"
+				<e:Image source="btn-role2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0" bottom="0" />
+				<e:Image source="btn-role" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0"
 				         bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
 		<e:ToggleButton id="gameNumButton" y="100" right="30">
 			<e:Skin states="up,upAndSelected">
-				<e:Image source="jushu2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0" bottom="0" />
-				<e:Image source="jushu1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0" top="0"
+				<e:Image source="jushu2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0" bottom="0" />
+				<e:Image source="jushu1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0"
 				         bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
