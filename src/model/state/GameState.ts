@@ -8,6 +8,8 @@ module game {
 
         public phase: GamePhase;
 
-        public seats: Array<any>;
+        public seats: Array<Photon.LoadBalancing.Actor>;
+
+        public role:Array<any>;
     }
 }

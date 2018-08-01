@@ -12,6 +12,26 @@
     <e:Group width="100%" anchorOffsetY="0" x="0" y="66.76">
         <e:Image source="game-init-background" anchorOffsetX="0" width="100%" horizontalCenter="0"></e:Image>
         <e:Label text="选座" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
+			<e:Button id="btnjs1" label="Button" x="60" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="btnjs2" label="Button" x="200" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin"/>
+			<e:Button id="btnjs3" label="Button" x="340" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="btnjs4" label="Button" x="480" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="btnjs5" label="Button" x="60" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="btnjs6" label="Button" x="200" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="btnjs7" label="Button" x="340" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="btnjs8" label="Button" x="480" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="shunwei1" label="Button" x="70" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="shunwei2" label="Button" x="210" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin"/>
+			<e:Button id="shunwei3" label="Button" x="350" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="shunwei4" label="Button" x="490" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="shunwei5" label="Button" x="70" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="shunwei6" label="Button" x="210" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="shunwei7" label="Button" x="350" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="shunwei8" label="Button" x="490" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
+			<e:Button id="Anim1" label="Button" x="60" y="100" width="200" height="200"/>
+			<e:Button id="Anim2" label="Button" x="340" y="100" width="200" height="200"/>
+			<e:Button id="Anim3" label="Button" x="60" y="350" width="200" height="200"/>
+			<e:Button id="Anim4" label="Button" x="340" y="350" width="200" height="200"/>
     </e:Group>
     <e:Group anchorOffsetY="0" height="328.76" x="0" y="701.03" anchorOffsetX="0" width="632.97">
         <e:Button id="btnSeat1" label="">
@@ -32,37 +52,42 @@
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content"  x="50" y="50"/>
+                <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat4" x="470">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
+                <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat5" y="170">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
+                <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat6" y="170" x="158">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
+                <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat7" y="170" x="317">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
+                <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat8" y="170" x="470">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
+                <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
     </e:Group>
@@ -77,5 +102,7 @@
                 <e:Image source="waiting-for-all-ready"></e:Image>
             </e:Skin>
         </e:Button>
+			<e:Button id="startjs" label="Button" x="300" y="15" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90"/>
+			<e:Button id="startgame" label="Button" x="300" y="15" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90"/>
     </e:Group>
 </e:Skin>

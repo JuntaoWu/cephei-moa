@@ -6,5 +6,9 @@ module game {
         EventRequestGameStates,
         EventLoadSceneItemFromServer,
         TakeSeat,
+        startjs,
+        Chooserole,
+        startgame,
+        firstoneNr,
     }
 }
