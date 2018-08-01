@@ -20,6 +20,7 @@ module game {
         public btnSetting: eui.Button;
 
         public nickName: string = "nickName";
+        public avatarUrl: string = "btn-share";
 
         public constructor() {
             super();

@@ -34,8 +34,37 @@ export class WxgamePlugin implements plugins.Command {
                 }
                 content = "var egret = window.egret;" + content;
                 if (filename == 'main.js') {
-                    content += ";window.Main = Main;"
+                    content += ";window.Main = Main;window.game = game;"
+                    fs.readdirSync("./src/view/panel").forEach(name => {
+                        var dotIndex = name.indexOf(".");
+                        name = name.slice(0, dotIndex);
+                        content += `;window["game"]["${name}"] = game.${name};`;
+                    });
                 }
+
+                if (filename == 'libs/modules/photon/photon.js' || filename == 'libs/modules/photon/photon.min.js') {
+                    content += ";window.Photon = Photon";
+                    content += ";window.Exitgames = Exitgames";
+                }
+
+                if (filename == 'libs/modules/puremvc/puremvc.js' || filename == 'libs/modules/puremvc/puremvc.min.js') {
+                    content = content.replace(/var rootExport = function \(root, __umodule__\) {/g, `var rootExport = function (root, __umodule__) {
+                        root['puremvc'] = __umodule__;`);
+                    content = content.replace(/\).call\(this\)/g, `).call(window)`);
+                    content = content.replace(/rootExport\(global, factory\(require/g, `rootExport(window, factory.call(this, require`);
+                }
+
+                if (filename == 'libs/modules/lodash/lodash.js') {
+                    content = content.replace(`var root = freeGlobal || freeSelf || Function('return this')();`,
+                        `var root = freeSelf || window;`);
+                    content = content.replace(`var _ = runInContext();`, `var _ = runInContext();
+                        root._ = _;`)
+                }
+                if (filename == 'libs/modules/lodash/lodash.min.js') {
+                    content = content.replace(`Xe=Ye||Qe||Function("return this")()`,
+                        `Xe=Qe||window`);
+                }
+
                 file.contents = new Buffer(content);
             }
         }

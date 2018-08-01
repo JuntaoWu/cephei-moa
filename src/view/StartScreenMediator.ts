@@ -22,7 +22,11 @@ module game {
         }
 
         public async initData() {
-
+            const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
+            accountProxy.loadUserInfo().then(userInfo => {
+                this.startScreen.nickName = userInfo.nickName;
+                this.startScreen.avatarUrl = userInfo.avatarUrl;
+            });
         }
 
         public createRoomClick(event: egret.TouchEvent) {

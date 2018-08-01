@@ -3,7 +3,7 @@
     <e:Image id="startBackground" left="0" right="0" bottom="-2" top="2" source="start-background" />
     <e:Group id="headGroup" height="200">
         <e:Image source="userinfo-background" width="640" verticalCenter="0"></e:Image>
-        <e:Image source="btn-share" width="120" verticalCenter="0" x="75" height="120"></e:Image>
+        <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="75" height="120"></e:Image>
         <e:Label text="{nickName}" bold="true"  size="70" textColor="0x050505" verticalCenter="0" x="240"/>
     </e:Group>
     <e:Scroller id="contentScroller" y="200" horizontalCenter="0">
