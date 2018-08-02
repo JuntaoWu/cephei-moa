@@ -3,7 +3,7 @@
     <game:Shade id="overlay" />
     <e:Group id="container" width="640" height="600" horizontalCenter="0" verticalCenter="0">
         <e:Image source="small-dialog-background" left="0" right="0" top="0" bottom="0"></e:Image>
-        <e:TextInput id="txtRoomName" text="hahahah" horizontalCenter="0" verticalCenter="0"></e:TextInput>
+        <e:TextInput id="txtRoomName" text="" horizontalCenter="0" verticalCenter="0"></e:TextInput>
         <e:Button id="closeButton" label="Confirm join this room" x="214.5" y="416.67">
         </e:Button>
     </e:Group>

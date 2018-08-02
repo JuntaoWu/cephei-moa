@@ -10,5 +10,7 @@ module game {
         Chooserole,
         startgame,
         firstoneNr,
+        nextNr,
+        onegameend,
     }
 }

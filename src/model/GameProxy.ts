@@ -15,6 +15,8 @@ module game {
 		public static CHOOSE_JS_END:string="choose_js_end";
 		public static START_GAME:string="start_game";
 		public static FIRST_ONE:string="first_one";
+		public static NEXT_NR:string="next_nr";
+		public static ONE_GAME_END:string="one_game_end";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -25,7 +27,8 @@ module game {
 			players: 0,
 			maxPlayers: 6,
 			seats: [],
-			role: []
+			role: [],
+			shunwei_one_been:[]
 		};
 
 		private _loadBalancingClient: MyLoadBalancingClient;
@@ -116,24 +119,6 @@ module game {
 						this.gameState.seats[seatNumber] = sender;
 						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);					
 					}
-
-					// if (!this.gameState.seats.some(seat => seat && seat.actorNr == this.loadBalancingClient.myActor().actorNr)){
-					// 	if (!this.gameState.seats[seatNumber]) {
-					// 		this.gameState.seats[seatNumber] = sender;						
-					// 		this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
-					// 	}else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
-					// 		// Someone else's already taken this seat.
-					// 	}
-					// }else{
-					// 	if(!this.gameState.seats[seatNumber]){
-					// 		let seatNo = this.gameState.seats.findIndex(seat => seat == this.loadBalancingClient.myActor());
-					// 		this.gameState.seats[seatNo]=undefined;
-					// 		this.gameState.seats[seatNumber] = sender;						
-					// 		this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
-					// 	}else if(this.gameState.seats[seatNumber].actorNr != sender.actorNr) {
-					// 		console.log("已经有其他人选择这个位置");
-					// 	}
-					// }
 					break;					
 				}
 				case CustomPhotonEvents.startjs:{
@@ -161,7 +146,6 @@ module game {
 						const jsNumber = +message;
 						this.gameState.role[jsNumber] = sender;
 					}
-					console.log(this.gameState.role);
 					this.sendNotification(GameProxy.CHOOSE_JS_END,this.gameState.role);
 					break;
 				}		
@@ -173,6 +157,14 @@ module game {
 					this.sendNotification(GameProxy.FIRST_ONE,message);
 					break;
 				}	
+				case CustomPhotonEvents.nextNr:{
+					this.sendNotification(GameProxy.NEXT_NR,message);
+					break;
+				}
+				case CustomPhotonEvents.onegameend:{
+					this.sendNotification(GameProxy.ONE_GAME_END);
+					break;
+				}
 			}
 		}
 

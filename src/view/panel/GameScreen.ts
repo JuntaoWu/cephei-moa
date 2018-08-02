@@ -52,7 +52,17 @@ module game {
         public shunwei6:eui.Button;
         public shunwei7:eui.Button;
         public shunwei8:eui.Button;
-
+        public onegameend:eui.Image;
+        public onespeakend:eui.Image;
+        public fangzhenskill:eui.Image;
+        public fangzhenskill1:eui.Image;
+        public fangzhenskill2:eui.Image;
+        public fangzhenskill3:eui.Image;
+        public fangzhenskill4:eui.Image;
+        public fangzhenskill5:eui.Image;
+        public fangzhenskill6:eui.Image;
+        public fangzhenskill7:eui.Image;
+        public fangzhenskill8:eui.Image;
 
         public constructor() {
             super();
@@ -81,6 +91,17 @@ module game {
             this.shunwei6.visible=false;
             this.shunwei7.visible=false;
             this.shunwei8.visible=false;
+            this.onegameend.visible=false;
+            this.onespeakend.visible=false;
+            this.fangzhenskill.visible=false;
+            this.fangzhenskill1.visible=false;
+            this.fangzhenskill2.visible=false;
+            this.fangzhenskill3.visible=false;
+            this.fangzhenskill4.visible=false;
+            this.fangzhenskill5.visible=false;
+            this.fangzhenskill6.visible=false;
+            this.fangzhenskill7.visible=false;
+            this.fangzhenskill8.visible=false;
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
