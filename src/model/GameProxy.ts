@@ -16,6 +16,11 @@ module game {
 		public static START_GAME:string="start_game";
 		public static FIRST_ONE:string="first_one";
 
+		public static INPUT_NUMBER:string="input_number";
+		public static DELETE_NUMBER:string="delete_number";
+		public static CANCEL_INPUT:string="cancel_input";
+		public static FINISH_INPUT:string="finish_input";
+
 		public roomName: string;
 		public isMasterClient: boolean;
 		public actorNr: number;

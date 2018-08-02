@@ -1,0 +1,11 @@
+{"file":"seat.png","frames":{
+"yellow":{"x":132,"y":330,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"green":{"x":66,"y":272,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"orange":{"x":0,"y":272,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"red":{"x":136,"y":264,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"white":{"x":136,"y":198,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"black":{"x":136,"y":132,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"blue":{"x":136,"y":66,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"purple":{"x":136,"y":0,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"head_bg2":{"x":0,"y":136,"w":134,"h":134,"offX":0,"offY":0,"sourceW":134,"sourceH":134},
+"head_bg":{"x":0,"y":0,"w":134,"h":134,"offX":0,"offY":0,"sourceW":134,"sourceH":134}}}

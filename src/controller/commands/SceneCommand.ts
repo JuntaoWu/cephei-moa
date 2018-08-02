@@ -32,6 +32,13 @@ module game {
         public static SHOW_ROLE_POPUP: string = "show_role_popup";
         public static SHOW_RESULT_POPUP: string = "show_result_popup";
         public static SHOW_GAMEINFO_POPUP: string = "show_info_window";
+        public static SHOW_NUMBER_KEYBOARD: string = "show_number_keyboard"
+
+        public static SHOW_GUIDE_VIDEO: string = "show_guide_video";
+        public static SHOW_GUIDE_PROCESS: string = "show_guide_process";
+        public static SHOW_GUIDE_ROLE: string = "show_guide_role";
+        public static SHOW_GUIDE_WINJUDGE: string = "show_guide_winjudge";
+        public static SHOW_GUIDE_TERM: string = "show_guide_term";
 
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
@@ -52,6 +59,12 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_ROLE_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_RESULT_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GAMEINFO_POPUP, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_NUMBER_KEYBOARD, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_GUIDE_VIDEO, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_GUIDE_PROCESS, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_GUIDE_ROLE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_GUIDE_WINJUDGE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_GUIDE_TERM, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -116,6 +129,31 @@ module game {
                 }
                 case SceneCommand.SHOW_GAMEINFO_POPUP: {
                     appMediator.main.showPopupGameInfoWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_NUMBER_KEYBOARD: {
+                    appMediator.main.showPopupNumberKeyboard();
+                    break;
+                }
+                
+                case SceneCommand.SHOW_GUIDE_VIDEO: {
+                    appMediator.main.showGuideVideoWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_GUIDE_PROCESS: {
+                    appMediator.main.showGuideGameProcessWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_GUIDE_ROLE: {
+                    appMediator.main.showGuideRoleSkillWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_GUIDE_WINJUDGE: {
+                    appMediator.main.showGuideWinJudgeWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_GUIDE_TERM: {
+                    appMediator.main.showGuideGameTermWindow();
                     break;
                 }
             }

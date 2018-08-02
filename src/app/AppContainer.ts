@@ -67,10 +67,10 @@ module game {
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
-        public guideWindow: RankWindow;
+        public guideWindow: GuideWindow;
         public showGuideWindow(): void {
             if (!this.guideWindow) {
-                this.guideWindow = new RankWindow();
+                this.guideWindow = new GuideWindow();
             }
             this.addChild(this.guideWindow);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
@@ -139,6 +139,60 @@ module game {
             }
             this.addChild(this.popupGameInfoWindow);
             this.popupGameInfoWindow.show();
+        }
+        
+        public guideVideoWindow: GuideVideoWindow;
+        public showGuideVideoWindow(): void {
+            if (!this.guideVideoWindow) {
+                this.guideVideoWindow = new GuideVideoWindow();
+            }
+            this.addChild(this.guideVideoWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public guideGameProcessWindow: GuideGameProcessWindow;
+        public showGuideGameProcessWindow(): void {
+            if (!this.guideGameProcessWindow) {
+                this.guideGameProcessWindow = new GuideGameProcessWindow();
+            }
+            this.addChild(this.guideGameProcessWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public guideRoleSkillWindow: GuideRoleSkillWindow;
+        public showGuideRoleSkillWindow(): void {
+            if (!this.guideRoleSkillWindow) {
+                this.guideRoleSkillWindow = new GuideRoleSkillWindow();
+            }
+            this.addChild(this.guideRoleSkillWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public guideWinJudgeWindow: GuideWinJudgeWindow;
+        public showGuideWinJudgeWindow(): void {
+            if (!this.guideWinJudgeWindow) {
+                this.guideWinJudgeWindow = new GuideWinJudgeWindow();
+            }
+            this.addChild(this.guideWinJudgeWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public guideGameTermWindow: GuideGameTermWindow;
+        public showGuideGameTermWindow(): void {
+            if (!this.guideGameTermWindow) {
+                this.guideGameTermWindow = new GuideGameTermWindow();
+            }
+            this.addChild(this.guideGameTermWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public popupNumberKeyboard: PopupNumberKeyboard;
+        public showPopupNumberKeyboard(): void {
+            if (!this.popupNumberKeyboard) {
+                this.popupNumberKeyboard = new PopupNumberKeyboard();
+            }
+            this.addChild(this.popupNumberKeyboard);
+            this.popupNumberKeyboard.show();
         }
     }
 }

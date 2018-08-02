@@ -134,60 +134,60 @@
 			<e:Button id="Anim3" label="Button" x="60" y="350" width="200" height="200"/>
 			<e:Button id="Anim4" label="Button" x="340" y="350" width="200" height="200"/>
     </e:Group>
-    <e:Group anchorOffsetY="0" height="328.76" x="0" y="701.03" anchorOffsetX="0" width="632.97">
+    <e:Group anchorOffsetY="0" y="700" anchorOffsetX="0" width="620" horizontalCenter="0">
         <e:Button id="btnSeat1" label="">
             <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
+                <e:Image source="head_bg" x="20" y="15"/>
+                <e:Image source="red" />
                 <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnSeat2" x="158">
+        <e:Button id="btnSeat2" x="155">
             <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
+                <e:Image source="head_bg" x="20" y="15"/>
+                <e:Image source="orange" />
                 <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnSeat3" x="317">
+        <e:Button id="btnSeat3" x="310">
             <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
+                <e:Image source="head_bg" x="20" y="15"/>
+                <e:Image source="yellow" />
                 <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnSeat4" x="470">
+        <e:Button id="btnSeat4" x="465">
             <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
+                <e:Image source="head_bg" x="20" y="15"/>
+                <e:Image source="green" />
                 <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat5" y="170">
             <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
+                <e:Image source="head_bg" x="20" y="15"/>
+                <e:Image source="blue" />
                 <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat6" y="170" x="158">
             <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
+                <e:Image source="head_bg" x="20" y="15"/>
+                <e:Image source="purple" />
                 <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat7" y="170" x="317">
             <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
+                <e:Image source="head_bg" x="20" y="15"/>
+                <e:Image source="white" />
                 <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat8" y="170" x="470">
             <e:Skin>
-                <e:Image source="avatar-background" />
-                <e:Image source="color-red" />
+                <e:Image source="head_bg" x="20" y="15"/>
+                <e:Image source="black" />
                 <e:Image id="content" x="50" y="50"/>
             </e:Skin>
         </e:Button>

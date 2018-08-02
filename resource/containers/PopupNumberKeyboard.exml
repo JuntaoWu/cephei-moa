@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.PopupNumberKeyboard" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*">
+    <game:Shade id="overlay" />
+    <e:Group id="container" width="640" horizontalCenter="0" bottom="0">
+        <e:Image source="number-keyboard-bg" horizontalCenter="0"></e:Image>
+        <e:Image id="cancel" source="input_cancel" x="60" y="30" scaleX="1.5" scaleY="1.5"></e:Image>
+        <e:Image source="input_room" horizontalCenter="0" y="30"></e:Image>
+        <e:Image id="confirm" source="input_ok" y="30" right="60" scaleX="1.5" scaleY="1.5"></e:Image>
+
+
+        <e:BitmapLabel id="num1" text="1"  font="numberKeyboard_fnt" y="90"/>
+        <e:BitmapLabel id="num2" text="2"  font="numberKeyboard_fnt" y="90" horizontalCenter="0"/>
+        <e:BitmapLabel id="num3" text="3"  font="numberKeyboard_fnt" y="90" right="0"/>
+
+        <e:BitmapLabel id="num4" text="4"  font="numberKeyboard_fnt" y="190"/>
+        <e:BitmapLabel id="num5" text="5"  font="numberKeyboard_fnt" y="190" horizontalCenter="0"/>
+        <e:BitmapLabel id="num6" text="6"  font="numberKeyboard_fnt" y="190" right="0"/>
+
+        <e:BitmapLabel id="num7" text="7"  font="numberKeyboard_fnt" y="295"/>
+        <e:BitmapLabel id="num8" text="8"  font="numberKeyboard_fnt" y="295" horizontalCenter="0"/>
+        <e:BitmapLabel id="num9" text="9"  font="numberKeyboard_fnt" y="295" right="0"/>
+
+        <e:BitmapLabel id="num0" text="0"  font="numberKeyboard_fnt" y="395" horizontalCenter="0"/>
+        <e:Image id="delete" source="num_del" y="395" right="0"></e:Image>
+    </e:Group>
+</e:Skin>
