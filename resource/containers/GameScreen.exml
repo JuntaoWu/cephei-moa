@@ -16,6 +16,15 @@
             <e:Label text="{maxPlayers}" textColor="0x000000" x="187"></e:Label>
         </e:Group>
     </e:Group>
+<<<<<<< HEAD
+=======
+    <e:Group y="50" width="600" horizontalCenter="0" height="540" visible="false">
+        <e:Image source="game-init-background" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
+        <e:Label text="选座" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
+        <e:Label text="点击对应颜色的座位\n入座或换座\n选好座位后等待房主开局" x="72.5" y="244.5" textColor="0x000000" size="45" fontFamily="SimHei"
+                textAlign="center" verticalAlign="middle"></e:Label>
+    </e:Group>
+>>>>>>> 88b6a61ea9081ffb36d7ece70a984be7abe28204
     <e:Group y="50" width="600" horizontalCenter="0" height="540">
         <e:Image source="game-box-border" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
         <e:Group visible="{isPhasePreparing}" y="50" width="600" horizontalCenter="0" height="540">
@@ -73,7 +82,11 @@
                          verticalCenter="0" size="25" bold="true"></e:Label>
             </e:Group>
         </e:Group>
+<<<<<<< HEAD
         <e:Group visible="false" horizontalCenter="0">
+=======
+        <e:Group horizontalCenter="0" visible="false">
+>>>>>>> 88b6a61ea9081ffb36d7ece70a984be7abe28204
             <e:Label text="第一轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Group y="40" horizontalCenter="0">
                 <e:Label text="你是" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
@@ -113,6 +126,7 @@
                 </e:Group>
             </e:Group>
         </e:Group>
+<<<<<<< HEAD
         <e:Button id="btnjs1" label="Button" x="60" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" />
         <e:Button id="btnjs2" label="Button" x="200" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0"
                   height="100" skinName="skins.ButtonSkin" />
@@ -147,6 +161,67 @@
         <e:Button id="Anim2" label="Button" x="340" y="100" width="200" height="200" />
         <e:Button id="Anim3" label="Button" x="60" y="350" width="200" height="200" />
         <e:Button id="Anim4" label="Button" x="340" y="350" width="200" height="200" />
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<e:Group width="600" height="536.36" x="-22.94" y="0" anchorOffsetX="0" anchorOffsetY="0">
+				<e:Button id="btnjs1" label="许愿" x="59" y="97" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="btnjs2" label="方震" x="198.99999999999997" y="97" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1"/>
+				<e:Button id="btnjs3" label="姬云浮" x="339" y="97" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="btnjs4" label="黄烟烟" x="479" y="97" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="btnjs5" label="木户加奈" x="59" y="347" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="btnjs6" label="老朝奉" x="198.99999999999997" y="347" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="btnjs7" label="药不然" x="339" y="347" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="btnjs8" label="郑国渠" x="479" y="347" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="shunwei1" label="Button" x="69.00000000000001" y="107" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill1" label="Button" x="79.00000000000001" y="117" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="shunwei2" label="Button" x="208.99999999999997" y="107" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill2" label="Button" x="218.99999999999997" y="117" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1"/>
+				<e:Button id="shunwei3" label="Button" x="349" y="107" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill3" label="Button" x="359" y="117" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="shunwei4" label="Button" x="489.00000000000006" y="107" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill4" label="Button" x="499.00000000000006" y="117" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="shunwei5" label="Button" x="69.00000000000001" y="357.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill5" label="Button" x="79.00000000000001" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="shunwei6" label="Button" x="208.99999999999997" y="357.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill6" label="Button" x="218.99999999999997" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="shunwei7" label="Button" x="349" y="357.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill7" label="Button" x="359" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="shunwei8" label="Button" x="489.00000000000006" y="357.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill8" label="Button" x="499.00000000000006" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+				<e:Button id="Anim1" label="Button" x="59" y="97" width="200" height="200" scaleX="1" scaleY="1"/>
+				<e:Button id="Anim2" label="Button" x="339" y="97" width="200" height="200" scaleX="1" scaleY="1"/>
+				<e:Button id="Anim3" label="Button" x="59" y="347" width="200" height="200" scaleX="1" scaleY="1"/>
+				<e:Button id="Anim4" label="Button" x="339" y="347" width="200" height="200" scaleX="1" scaleY="1"/>
+				<e:Button id="toupiao1" label="Button" x="69" y="107" width="200" height="200" scaleX="1" scaleY="1"/>
+				<e:Button id="toupiao2" label="Button" x="349" y="107" width="200" height="200" scaleX="1" scaleY="1"/>
+				<e:Button id="toupiao3" label="Button" x="69" y="357" width="200" height="200" scaleX="1" scaleY="1"/>
+				<e:Button id="toupiao4" label="Button" x="349" y="357" width="200" height="200" scaleX="1" scaleY="1"/>
+				<e:Label id="toupiao11" text="0" x="106" y="312" anchorOffsetX="0" width="95.21" anchorOffsetY="0" height="33.03" textColor="0x000000" textAlign="center"/>
+				<e:Label id="toupiao21" text="0" x="403.79" y="308.97" anchorOffsetX="0" width="95.21" anchorOffsetY="0" height="33.03" textColor="0x000000" textAlign="center"/>
+				<e:Label id="toupiao31" text="0" x="119" y="559.36" anchorOffsetX="0" width="95.21" anchorOffsetY="0" height="33.03" textColor="0x000000" textAlign="center"/>
+				<e:Label id="toupiao41" text="0" x="402.73" y="551.97" anchorOffsetX="0" width="95.21" anchorOffsetY="0" height="33.03" textColor="0x000000" textAlign="center"/>
+				<e:Label id="piaoshu" text="0/2" x="81.4" y="42.47" anchorOffsetX="0" width="95.21" anchorOffsetY="0" height="33.03" textColor="0x000000" textAlign="center"/>
+				<e:Button id="qingkong" label="清空票数" x="269" y="30" width="100" height="50"/>
+			</e:Group>
+>>>>>>> 88b6a61ea9081ffb36d7ece70a984be7abe28204
     </e:Group>
     <e:Group anchorOffsetY="0" y="700" anchorOffsetX="0" width="620" horizontalCenter="0">
         <e:Button id="btnSeat1" label="">
@@ -154,6 +229,8 @@
                 <e:Image source="head_bg" x="20" y="15"/>
                 <e:Image source="red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50" y="1"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat2" x="155">
@@ -161,6 +238,8 @@
                 <e:Image source="head_bg" x="20" y="15"/>
                 <e:Image source="orange" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat3" x="310">
@@ -168,6 +247,8 @@
                 <e:Image source="head_bg" x="20" y="15"/>
                 <e:Image source="yellow" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat4" x="465">
@@ -175,6 +256,8 @@
                 <e:Image source="head_bg" x="20" y="15"/>
                 <e:Image source="green" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat5" y="170">
@@ -182,6 +265,8 @@
                 <e:Image source="head_bg" x="20" y="15"/>
                 <e:Image source="blue" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat6" y="170" x="158">
@@ -189,6 +274,8 @@
                 <e:Image source="head_bg" x="20" y="15"/>
                 <e:Image source="purple" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat7" y="170" x="317">
@@ -196,6 +283,8 @@
                 <e:Image source="head_bg" x="20" y="15"/>
                 <e:Image source="white" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat8" y="170" x="470">
@@ -203,12 +292,14 @@
                 <e:Image source="head_bg" x="20" y="15"/>
                 <e:Image source="black" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
     </e:Group>
-    <e:Group id="navigationBar" width="640" y="1059">
-        <e:Group visible="{isNormalClient}">
-            <e:Button enabled="false" width="100%" visible="{isWaiting}">
+    <e:Group id="navigationBar" width="640" y="1059" height="130">
+        <e:Group visible="false">
+            <e:Button enabled="false" width="100%" visible="false">
                 <e:Skin>
                     <e:Image source="wait-1-players-enough"></e:Image>
                 </e:Skin>
@@ -224,8 +315,8 @@
                 </e:Skin>
             </e:Button>
         </e:Group>
-        <e:Group visible="{isMasterClient}">
-            <e:Button enabled="false" width="100%" visible="{isWaiting}">
+        <e:Group visible="false">
+            <e:Button enabled="false" width="100%" visible="false">
                 <e:Skin>
                     <e:Image source="wait-1-players-enough"></e:Image>
                 </e:Skin>
@@ -241,7 +332,21 @@
                 </e:Skin>
             </e:Button>
         </e:Group>
+<<<<<<< HEAD
         <e:Button id="startgame" label="Button" x="300" y="15" anchorOffsetX="0" width="250" anchorOffsetY="0"
                   height="90" />
+=======
+			<e:Group width="243.94" height="87.88" x="300.95" y="15" anchorOffsetY="0" anchorOffsetX="0">
+				<e:Button id="startjs" label="开始选角色" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+				<e:Button id="startgame" label="开始第一轮" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+				<e:Button id="onegameend" label="开始发言" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+				<e:Button id="onespeakend" label="开始投票" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+				<e:Button id="fangzhenskill" label="方震技能" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+				<e:Button id="toupiaoqueren" label="确认投票" x="0.95" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+			</e:Group>
+
+
+
+>>>>>>> 88b6a61ea9081ffb36d7ece70a984be7abe28204
     </e:Group>
 </e:Skin>

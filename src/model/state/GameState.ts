@@ -10,6 +10,8 @@ module game {
 
         public seats: Array<any>;
 
-        public role:Array<any>;
+        public role:Array<Photon.LoadBalancing.Actor>;
+
+        public shunwei_one_been:Array<Photon.LoadBalancing.Actor>;
     }
 }

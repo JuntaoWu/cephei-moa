@@ -10,5 +10,9 @@ module game {
         Chooserole,
         startgame,
         firstoneNr,
+        nextNr,
+        onegameend,
+        tongzhi,
+        toupiaoui,
     }
 }
