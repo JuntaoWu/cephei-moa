@@ -52,17 +52,28 @@ module game {
         public shunwei6:eui.Button;
         public shunwei7:eui.Button;
         public shunwei8:eui.Button;
-        public onegameend:eui.Image;
-        public onespeakend:eui.Image;
-        public fangzhenskill:eui.Image;
-        public fangzhenskill1:eui.Image;
-        public fangzhenskill2:eui.Image;
-        public fangzhenskill3:eui.Image;
-        public fangzhenskill4:eui.Image;
-        public fangzhenskill5:eui.Image;
-        public fangzhenskill6:eui.Image;
-        public fangzhenskill7:eui.Image;
-        public fangzhenskill8:eui.Image;
+        public onegameend:eui.Button;
+        public onespeakend:eui.Button;
+        public fangzhenskill:eui.Button;
+        public fangzhenskill1:eui.Button;
+        public fangzhenskill2:eui.Button;
+        public fangzhenskill3:eui.Button;
+        public fangzhenskill4:eui.Button;
+        public fangzhenskill5:eui.Button;
+        public fangzhenskill6:eui.Button;
+        public fangzhenskill7:eui.Button;
+        public fangzhenskill8:eui.Button;
+        public toupiao1:eui.Button;
+        public toupiao2:eui.Button;
+        public toupiao3:eui.Button;
+        public toupiao4:eui.Button;
+        public toupiao11:eui.Label;
+        public toupiao21:eui.Label;
+        public toupiao31:eui.Label;
+        public toupiao41:eui.Label;
+        public qingkong:eui.Button;
+        public piaoshu:eui.Label;
+        public toupiaoqueren:eui.Button;
 
         public constructor() {
             super();
@@ -102,6 +113,17 @@ module game {
             this.fangzhenskill6.visible=false;
             this.fangzhenskill7.visible=false;
             this.fangzhenskill8.visible=false;
+            this.toupiao1.visible=false;
+            this.toupiao2.visible=false;
+            this.toupiao3.visible=false;
+            this.toupiao4.visible=false;
+            this.toupiao11.visible=false;
+            this.toupiao21.visible=false;
+            this.toupiao31.visible=false;
+            this.toupiao41.visible=false;
+            this.qingkong.visible=false;
+            this.piaoshu.visible=false;
+            this.toupiaoqueren.visible=false;
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {

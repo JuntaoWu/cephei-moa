@@ -12,5 +12,7 @@ module game {
         firstoneNr,
         nextNr,
         onegameend,
+        tongzhi,
+        toupiaoui,
     }
 }

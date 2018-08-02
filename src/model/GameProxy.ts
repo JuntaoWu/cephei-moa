@@ -17,6 +17,8 @@ module game {
 		public static FIRST_ONE:string="first_one";
 		public static NEXT_NR:string="next_nr";
 		public static ONE_GAME_END:string="one_game_end";
+		public static TONGZHI:string="tongzhi";
+		public static TOUPIAO_UI:string="toupiao_ui";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -163,6 +165,14 @@ module game {
 				}
 				case CustomPhotonEvents.onegameend:{
 					this.sendNotification(GameProxy.ONE_GAME_END);
+					break;
+				}
+				case CustomPhotonEvents.tongzhi:{
+					this.sendNotification(GameProxy.TONGZHI,message);
+					break;
+				}
+				case CustomPhotonEvents.toupiaoui:{
+					this.sendNotification(GameProxy.TOUPIAO_UI);
 					break;
 				}
 			}

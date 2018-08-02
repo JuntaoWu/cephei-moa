@@ -28,7 +28,17 @@ module game {
         }
 
         public listNotificationInterests(): Array<any> {
-            return [GameProxy.PLAYER_UPDATE, GameProxy.SEAT_UPDATE,GameProxy.START_JS,GameProxy.CHOOSE_JS_END,GameProxy.START_GAME,GameProxy.FIRST_ONE,GameProxy.NEXT_NR,GameProxy.ONE_GAME_END];
+            return [GameProxy.PLAYER_UPDATE, 
+            GameProxy.SEAT_UPDATE,
+            GameProxy.START_JS,
+            GameProxy.CHOOSE_JS_END,
+            GameProxy.START_GAME,
+            GameProxy.FIRST_ONE,
+            GameProxy.NEXT_NR,
+            GameProxy.ONE_GAME_END,
+            GameProxy.TONGZHI,
+            GameProxy.TOUPIAO_UI
+            ];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
@@ -64,6 +74,14 @@ module game {
                 }
                 case GameProxy.ONE_GAME_END:{
                     this.onegameend();
+                    break;
+                }
+                case GameProxy.TONGZHI:{
+                    this.tongzhi(data);
+                    break;
+                }
+                case GameProxy.TOUPIAO_UI:{
+                    this.toupiaoui();
                     break;
                 }
             }
@@ -139,6 +157,11 @@ module game {
             this.gameScreen.onegameend.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onegameend2,this);
             this.gameScreen.onespeakend.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onespeakend,this);
 
+            this.gameScreen.toupiao1.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => {this.toupiao("1")}),this);
+            this.gameScreen.toupiao2.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => {this.toupiao("2")}),this);
+            this.gameScreen.toupiao3.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => {this.toupiao("3")}),this);
+            this.gameScreen.toupiao4.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => {this.toupiao("4")}),this);
+
             this.gameScreen.fangzhenskill.addEventListener(egret.TouchEvent.TOUCH_TAP,this.fangzhenskill,this);
             this.gameScreen.fangzhenskill1.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => { this.fangzhenskilling("1") }),this);
             this.gameScreen.fangzhenskill2.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => { this.fangzhenskilling("2") }),this);
@@ -148,6 +171,8 @@ module game {
             this.gameScreen.fangzhenskill6.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => { this.fangzhenskilling("6") }),this);
             this.gameScreen.fangzhenskill7.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => { this.fangzhenskilling("7") }),this);
             this.gameScreen.fangzhenskill8.addEventListener(egret.TouchEvent.TOUCH_TAP,(() => { this.fangzhenskilling("8") }),this);
+            this.gameScreen.qingkong.addEventListener(egret.TouchEvent.TOUCH_TAP,this.qingkong,this);
+            this.gameScreen.toupiaoqueren.addEventListener(egret.TouchEvent.TOUCH_TAP,this.toupiaoqueren,this);
         }
 
         public findSeat2(seatNumber: string) {
@@ -739,14 +764,81 @@ module game {
             }           
         }
 
+        public tongzhi(message:string){
+            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP,message);
+        }
+
         public onegameend2(){
             this.gameScreen.onegameend.visible=false;
-            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP,"第一轮结束，开始发言");
+            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi,"第一轮结束，开始发言");
             this.gameScreen.onespeakend.visible=true;
         }
 
         public onespeakend(){
-            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP,"录入票数");
+            this.gameScreen.onespeakend.visible=false;
+            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi,"开始录入票数");
+            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.toupiaoui);
+        }
+
+        public toupiaoui(){
+            this.gameScreen.toupiao1.visible=true;
+            this.gameScreen.toupiao2.visible=true;
+            this.gameScreen.toupiao3.visible=true;
+            this.gameScreen.toupiao4.visible=true;
+            this.gameScreen.toupiao11.visible=true;
+            this.gameScreen.toupiao21.visible=true;
+            this.gameScreen.toupiao31.visible=true;
+            this.gameScreen.toupiao41.visible=true;
+            this.gameScreen.qingkong.visible=true;
+            this.gameScreen.piaoshu.visible=true;
+            this.gameScreen.toupiaoqueren.visible=true;
+        }
+
+        public qingkong(){
+            this.baowu1=0;
+            this.baowu2=0;
+            this.baowu3=0;
+            this.baowu4=0;
+            this.gameScreen.toupiao11.text="0";
+            this.gameScreen.toupiao21.text="0";
+            this.gameScreen.toupiao31.text="0";
+            this.gameScreen.toupiao41.text="0";            
+            this.gameScreen.piaoshu.text="0/2";
+            this.sypiaoshu=2;
+        }
+
+        public baowu1:number=0;
+        public baowu2:number=0;
+        public baowu3:number=0;
+        public baowu4:number=0;
+        public sypiaoshu:number=2;
+        public toupiao(baowuNr:string){
+            if (this.sypiaoshu<=0){
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP,"你的票数不足");
+            }else{
+                if (baowuNr=="1"){
+                this.baowu1++;
+                this.sypiaoshu--;
+                this.gameScreen.toupiao11.text=this.baowu1.toString();
+            }else if(baowuNr=="2"){
+                this.baowu2++;
+                this.sypiaoshu--;
+                this.gameScreen.toupiao21.text=this.baowu2.toString();
+            }else if(baowuNr=="3"){
+                this.baowu3++;
+                this.sypiaoshu--;
+                this.gameScreen.toupiao31.text=this.baowu3.toString();
+            }else if(baowuNr=="4"){
+                this.baowu4++;
+                this.sypiaoshu--;
+                this.gameScreen.toupiao41.text=this.baowu4.toString();
+            }
+            this.gameScreen.piaoshu.text=this.sypiaoshu+"/2";
+            }            
+        }
+
+        public toupiaoqueren(){
+
         }
     }
 }
