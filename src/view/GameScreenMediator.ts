@@ -137,10 +137,24 @@ module game {
                 //let content = this.gameScreen.btnSeat1.getChildByName("XXXX") as eui.Image;
                 content.source = "resource/assets/seat/color-black.png";
                 content.visible=true;
+                if (seats[1]==this.proxy.loadBalancingClient.myRoomMasterActorNr()){
+                    let roommaster = this.gameScreen.btnSeat1.getChildAt(3) as eui.Image;
+                    roommaster.source = "resource/assets/Slider/thumb.png";
+                    roommaster.visible=true;
+                }     
+                if (this.proxy.gameState.seats[1].isLocal){
+                    let myself = this.gameScreen.btnSeat1.getChildAt(4) as eui.Image;
+                    myself.source = "resource/assets/seat/self-mark.png";
+                    myself.visible=true;
+                }           
                 a1=1;
             }else{
                 let content = this.gameScreen.btnSeat1.getChildAt(2) as eui.Image;
                 content.visible=false;
+                let roommaster = this.gameScreen.btnSeat1.getChildAt(3) as eui.Image;
+                roommaster.visible=false;
+                let myself = this.gameScreen.btnSeat1.getChildAt(4) as eui.Image;
+                myself.visible=false;
                 a1=0;
             }
             if (seats[2]) {

@@ -39,6 +39,8 @@
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50" y="1"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat2" x="158">
@@ -46,6 +48,8 @@
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat3" x="317">
@@ -53,6 +57,8 @@
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat4" x="470">
@@ -60,6 +66,8 @@
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat5" y="170">
@@ -67,6 +75,8 @@
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat6" y="170" x="158">
@@ -74,6 +84,8 @@
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat7" y="170" x="317">
@@ -81,6 +93,8 @@
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat8" y="170" x="470">
@@ -88,6 +102,8 @@
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
                 <e:Image id="content" x="50" y="50"/>
+                <e:Image id="roommaster" x="50"/>
+                <e:Image id="myself" x="50" y="100"/>
             </e:Skin>
         </e:Button>
     </e:Group>
