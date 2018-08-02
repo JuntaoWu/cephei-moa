@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.GuideVideoWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
+        xmlns:game="game.*">
+	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
+	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="80">
+		<e:Label text="视频教程" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
+	</e:Group>
+	
+	<e:Scroller id="contentScroller" scrollPolicyH="off" horizontalCenter="0" anchorOffsetY="0" y="80">
+		<e:viewport>
+			<e:Group horizontalCenter="0">
+				<e:Image source="video1" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
+				<e:Image source="video2" y="290" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
+				<e:Image source="video3" y="580" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
+			</e:Group>
+		</e:viewport>
+	</e:Scroller>
+    <e:Group id="navigationBar" y="1130" height="135" horizontalCenter="0" width="640">
+		<e:Button id="closeButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
+			<e:Skin states="up,down">
+				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+			</e:Skin>
+		</e:Button>
+	</e:Group>
+</e:Skin>

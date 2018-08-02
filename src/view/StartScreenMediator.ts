@@ -36,6 +36,7 @@ module game {
 
         public joinRoomClick(event: egret.TouchEvent) {
             this.sendNotification(SceneCommand.SHOW_JOIN_WINDOW);
+            this.sendNotification(SceneCommand.SHOW_NUMBER_KEYBOARD);
         }
 
         private noticeClick(event: egret.TouchEvent) {
@@ -47,10 +48,7 @@ module game {
         }
         
         private guideClick(event: egret.TouchEvent) {
-            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP);
-            this.sendNotification(SceneCommand.SHOW_ROLE_POPUP);
-            this.sendNotification(SceneCommand.SHOW_RESULT_POPUP);
-            this.sendNotification(SceneCommand.SHOW_GAMEINFO_POPUP);
+            this.sendNotification(SceneCommand.SHOW_GUIDE_WINDOW);
         }
         
         private settingClick(event: egret.TouchEvent) {

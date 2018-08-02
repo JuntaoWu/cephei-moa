@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.TermItemRenderer" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Group>
+        <e:Label text="铁真宝" textColor="0x020202" bold="true" size="32"/>
+        <e:Label text="系统给出的真宝" textColor="0x020202" bold="true" size="28" y="35"/>
+    </e:Group>
+</e:Skin>

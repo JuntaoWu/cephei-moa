@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.PopupRoleWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
     <game:Shade id="overlay" />
-    <e:Group id="container" width="640" horizontalCenter="0" verticalCenter="0">
-        <e:Image height="100%" source="small-dialog-background" horizontalCenter="0"></e:Image>
+    <e:Group id="container" width="640" horizontalCenter="0" verticalCenter="0" height="730">
+        <e:Image height="100%" source="small-dialog-background" horizontalCenter="0" scale9Grid="77,70,462,280"></e:Image>
         <e:Group horizontalCenter="0" top="65" bottom="200">
             <e:Label text="{role.name}" bold="true" horizontalCenter="0" textColor="0x000000"/>
             <e:Image source="{role.res}" horizontalCenter="0" y="48"></e:Image>

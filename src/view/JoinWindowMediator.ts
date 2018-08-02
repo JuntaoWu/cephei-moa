@@ -6,6 +6,7 @@ module game {
         public static NAME: string = "JoinWindowMediator";
 
         private proxy: GameProxy;
+        private numStr: string = "";
 
         public constructor(viewComponent: any) {
             super(JoinWindowMediator.NAME, viewComponent);
@@ -27,11 +28,31 @@ module game {
         }
 
         public listNotificationInterests(): Array<any> {
-            return [];
+            return [GameProxy.INPUT_NUMBER, GameProxy.DELETE_NUMBER, GameProxy.CANCEL_INPUT, GameProxy.FINISH_INPUT];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.INPUT_NUMBER:
+                    this.numStr += data;
+                    this.joinWindow.txtRoomName.text = this.numStr;
+                    break;
+                case GameProxy.DELETE_NUMBER:
+                    this.numStr = this.numStr.substr(0, this.numStr.length - 1);
+                    this.joinWindow.txtRoomName.text = this.numStr;
+                    break;
+                case GameProxy.CANCEL_INPUT:
+                    this.numStr = "";
+                    this.confirmClick();
+                    this.joinWindow.close();
+                    break;
+                case GameProxy.FINISH_INPUT:
+                    this.numStr = "";
+                    this.confirmClick();
+                    this.joinWindow.close();
+                    break;
+            }
         }
 
         public get joinWindow(): JoinWindow {
