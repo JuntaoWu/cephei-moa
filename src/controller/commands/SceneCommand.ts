@@ -18,6 +18,21 @@ module game {
 
         public static SHOW_JOIN_WINDOW: string = "show_join_window";
 
+        public static SHOW_USERINFO_WINDOW: string = "show_user_window";
+
+        public static SHOW_NOTICE_WINDOW: string = "show_notice_window";
+        public static SHOW_RANK_WINDOW: string = "show_rank_window";
+        public static SHOW_GUIDE_WINDOW: string = "show_guide_window";
+        public static SHOW_SETTING_WINDOW: string = "show_setting_window";
+
+        public static SHOW_ABOUT_WINDOW: string = "show_about_window";
+
+        public static SHOW_HANDLE_POPUP: string = "show_handle_popup";
+        public static SHOW_PROMPT_POPUP: string = "show_prompt_popup";
+        public static SHOW_ROLE_POPUP: string = "show_role_popup";
+        public static SHOW_RESULT_POPUP: string = "show_result_popup";
+        public static SHOW_GAMEINFO_POPUP: string = "show_info_window";
+
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
         }
@@ -26,6 +41,17 @@ module game {
             super.initializeNotifier(key);
             this.facade().registerCommand(SceneCommand.CHANGE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_JOIN_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_USERINFO_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_NOTICE_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_RANK_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_GUIDE_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_SETTING_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_ABOUT_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_HANDLE_POPUP, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_PROMPT_POPUP, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_ROLE_POPUP, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_RESULT_POPUP, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_GAMEINFO_POPUP, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -46,6 +72,51 @@ module game {
                 }
                 case SceneCommand.SHOW_JOIN_WINDOW: {
                     appMediator.main.showJoinWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_USERINFO_WINDOW: {
+                    appMediator.main.showUserInfoWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_NOTICE_WINDOW: {
+                    appMediator.main.showNoticeWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_RANK_WINDOW: {
+                    appMediator.main.showRankWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_GUIDE_WINDOW: {
+                    appMediator.main.showGuideWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_SETTING_WINDOW: {
+                    appMediator.main.showSettingWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_ABOUT_WINDOW: {
+                    appMediator.main.showAboutWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_HANDLE_POPUP: {
+                    appMediator.main.showPopupHandleWindow(data);
+                    break;
+                }
+                case SceneCommand.SHOW_PROMPT_POPUP: {
+                    appMediator.main.showPopupPromptWindow(data);
+                    break;
+                }
+                case SceneCommand.SHOW_ROLE_POPUP: {
+                    appMediator.main.showPopupRoleWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_RESULT_POPUP: {
+                    appMediator.main.showPopupResultWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_GAMEINFO_POPUP: {
+                    appMediator.main.showPopupGameInfoWindow();
+                    break;
                 }
             }
         }

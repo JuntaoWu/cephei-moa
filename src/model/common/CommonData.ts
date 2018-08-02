@@ -2,6 +2,6 @@
 module game {
 
     export class CommonData {
-        public static logon: string;
+        public static logon: UserInfo;
     }
 }

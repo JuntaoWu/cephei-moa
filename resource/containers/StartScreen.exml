@@ -1,43 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.StartScreen" width="640" height="1386" xmlns:e="http://ns.egret.com/eui">
-    <e:Image id="startBackground" left="0" right="0" bottom="0" top="0" source="start-background" />
-    <e:Group>
-        <e:Image source="userinfo-background" width="640"></e:Image>
+    <e:Image id="startBackground" left="0" right="0" bottom="-2" top="2" source="start-background" />
+    <e:Group id="headGroup" height="200">
+        <e:Image source="userinfo-background" width="640" verticalCenter="0"></e:Image>
+        <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="75" height="120"></e:Image>
+        <e:Label text="{nickName}" bold="true"  size="70" textColor="0x050505" verticalCenter="0" x="240"/>
     </e:Group>
-    <e:Group y="201">
-        <e:Button id="btnJoinRoom">
-            <e:Skin>
-                <e:Image source="btn-join" width="640"></e:Image>
-            </e:Skin>
-        </e:Button>
-    </e:Group>
-    <e:Group y="637">
-        <e:Button id="btnCreateRoom">
-            <e:Skin>
-                <e:Image source="btn-create" width="640"></e:Image>
-            </e:Skin>
-        </e:Button>
-    </e:Group>
-    <e:Group id="navigationBar" y="1011" width="640">
-        <e:Button left="0" verticalCenter="0">
+    <e:Scroller id="contentScroller" y="200" horizontalCenter="0">
+        <e:viewport>
+            <e:Group>
+                <e:Group width="620" height="400" horizontalCenter="0">
+                    <e:Image source="small-dialog-background" left="0" right="0" top="0" bottom="0"></e:Image>
+                    <e:Label text="古董助手" bold="true" size="60" horizontalCenter="0" y="80" textColor="0x020202"/>
+                    <e:Button id="btnJoinRoom" left="40" y="240" scaleX="0.8" scaleY="0.8">
+                        <e:Skin>
+                            <e:Image source="btn-join-small"></e:Image>
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="btnCreateRoom" right="40" y="240" scaleX="0.8" scaleY="0.8">
+                        <e:Skin>
+                            <e:Image source="btn-create-small"></e:Image>
+                        </e:Skin>
+                    </e:Button>
+                </e:Group>
+                <e:Group y="410">
+                    <e:Image source="small-dialog-background" left="0" right="0" top="0" bottom="0"></e:Image>
+                    <e:Label text="古董剧本游戏" bold="true" size="60" horizontalCenter="0" y="80" textColor="0x020202"/>
+                    <e:Button id="btnJoin" y="240" scaleX="0.8" scaleY="0.8" horizontalCenter="0">
+                        <e:Skin>
+                            <e:Image source="btn-join-small"></e:Image>
+                        </e:Skin>
+                    </e:Button>
+                    <!--<e:Button id="btnCreateRoom">
+                        <e:Skin>
+                            <e:Image source="btn-create" width="640"></e:Image>
+                        </e:Skin>
+                    </e:Button>-->
+                </e:Group>
+            </e:Group>
+        </e:viewport>
+    </e:Scroller>
+    <e:Group id="navigationBar" y="1011" width="640" height="160">
+        <e:Button id="btnNotice" left="20" verticalCenter="0">
             <e:Skin>
                 <e:Image source="btn-board"></e:Image>
                 <e:Label text="公告" y="70" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
-        <e:Button x="164.36" y="3">
-            <e:Skin>
-                <e:Image source="btn-share"></e:Image>
-                <e:Label text="分享" y="120" textColor="0x000000" horizontalCenter="0"></e:Label>
-            </e:Skin>
-        </e:Button>
-        <e:Button x="387.85" y="0">
+        <e:Button id="btnRank" x="180" verticalCenter="0">
             <e:Skin>
                 <e:Image source="btn-rank"></e:Image>
-                <e:Label text="排行" y="120" textColor="0x000000" horizontalCenter="0"></e:Label>
+                <e:Label text="排行" y="130" textColor="0x000000" horizontalCenter="0"></e:Label>
             </e:Skin>
         </e:Button>
-        <e:Button right="0" verticalCenter="0">
+        <e:Button id="btnGuide" x="380" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-guide"></e:Image>
+                <e:Label text="指南" y="130" textColor="0x000000" horizontalCenter="0"></e:Label>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnSetting" right="20" verticalCenter="0">
             <e:Skin>
                 <e:Image source="btn-settings"></e:Image>
                 <e:Label text="设置" y="70" textColor="0x000000" horizontalCenter="0"></e:Label>

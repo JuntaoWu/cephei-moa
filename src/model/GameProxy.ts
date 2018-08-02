@@ -18,6 +18,7 @@ module game {
 
 		public roomName: string;
 		public isMasterClient: boolean;
+		public actorNr: number;
 		public gameState: GameState = {
 			roomName: undefined,
 			phase: GamePhase.Preparing,
@@ -86,6 +87,7 @@ module game {
 		}
 
 		private onJoinRoom() {
+			this.actorNr = this.loadBalancingClient.myActor().actorNr;
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 		}
 

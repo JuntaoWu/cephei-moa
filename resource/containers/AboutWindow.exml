@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.AboutWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
+        xmlns:game="game.*">
+	<e:Image height="{imgHeight}" width="640" source="about" />
+</e:Skin>
