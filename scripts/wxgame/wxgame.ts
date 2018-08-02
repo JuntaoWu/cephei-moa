@@ -47,11 +47,19 @@ export class WxgamePlugin implements plugins.Command {
                     content += ";window.Exitgames = Exitgames";
                 }
 
-                if (filename == 'libs/modules/puremvc/puremvc.js' || filename == 'libs/modules/puremvc/puremvc.min.js') {
+                if (filename == 'libs/modules/puremvc/puremvc.js') {
                     content = content.replace(/var rootExport = function \(root, __umodule__\) {/g, `var rootExport = function (root, __umodule__) {
                         root['puremvc'] = __umodule__;`);
                     content = content.replace(/\).call\(this\)/g, `).call(window)`);
                     content = content.replace(/rootExport\(global, factory\(require/g, `rootExport(window, factory.call(this, require`);
+                }
+
+                if (filename == 'libs/modules/puremvc/puremvc.min.js') {
+                    content = content.replace(/var n=function\(i,n\){/g, `var n=function(i,n){i.puremvc=n;`);
+                    content = content.replace(/\).call\(this\)/g, `).call(window)`);
+                    content = content.replace(/n\(global,i\(/g, `n(window,i.call(this,`);
+                    
+                    content += ";window.puremvc = puremvc";
                 }
 
                 if (filename == 'libs/modules/lodash/lodash.js') {
@@ -63,6 +71,7 @@ export class WxgamePlugin implements plugins.Command {
                 if (filename == 'libs/modules/lodash/lodash.min.js') {
                     content = content.replace(`Xe=Ye||Qe||Function("return this")()`,
                         `Xe=Qe||window`);
+                    content = content.replace(`gu=_u();`, `gu=_u();Xe._=gu;`);
                 }
 
                 file.contents = new Buffer(content);
