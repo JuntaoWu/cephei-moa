@@ -23,7 +23,7 @@ module game {
 			roomName: undefined,
 			phase: GamePhase.Preparing,
 			players: 0,
-			maxPlayers: 6,
+			maxPlayers: 2,
 			seats: [],
 			role: []
 		};
@@ -77,6 +77,7 @@ module game {
 			this.gameState.players = myRoomActorCount;
 
 			if (this.isMasterClient) {
+				this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 				if (this.gameState.phase == GamePhase.Preparing) {
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 				}
@@ -84,11 +85,14 @@ module game {
 			else {
 
 			}
+			this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 		}
 
 		private onJoinRoom() {
 			this.actorNr = this.loadBalancingClient.myActor().actorNr;
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
+
+			this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState") || this.gameState;
 		}
 
 		private onMessage(event: CustomPhotonEvents, message: string, sender: Photon.LoadBalancing.Actor) {
@@ -113,8 +117,16 @@ module game {
 						this.gameState.seats[8]=undefined;
 					}else{
 						const seatNumber = +message;
-						this.gameState.seats[seatNumber] = sender;
-						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);					
+						this.gameState.seats[seatNumber] = {
+							actorNr: sender.actorNr,
+							name: sender.name
+						};
+						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);	
+						this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);				
+					}
+
+					if(this.isMasterClient) {
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 					}
 
 					// if (!this.gameState.seats.some(seat => seat && seat.actorNr == this.loadBalancingClient.myActor().actorNr)){
@@ -137,6 +149,11 @@ module game {
 					break;					
 				}
 				case CustomPhotonEvents.startjs:{
+					this.gameState.phase = GamePhase.Ready;
+					if(this.isMasterClient) {
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+					}
+					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					this.sendNotification(GameProxy.START_JS);
 					break;
 				}
@@ -189,7 +206,7 @@ module game {
 				this.loadBalancingClient.createRoom(this.roomName, {
 					isVisible: true,
 					isOpen: true,
-					maxPlayers: 8,
+					maxPlayers: 2,
 					suspendedPlayerLiveTime: -1,
 					emptyRoomLiveTime: 12000,
 					uniqueUserId: false,
@@ -247,6 +264,11 @@ module game {
 
 		public chooserole(jsNumber:string){
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.Chooserole,jsNumber);
+		}
+
+		public startChooseRole() {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.startjs);
+			
 		}
 	}
 }

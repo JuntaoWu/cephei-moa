@@ -21,6 +21,10 @@ module game {
         public isInitial: boolean = false;
         public isWaiting: boolean = false;
         public isAllReady: boolean = false;
+        public isBindingIdentity: boolean = false;
+
+        public isPhasePreparing: boolean = false;
+        public isPhaseReady: boolean = false;
         
         public btnSeat1 :eui.Button;
         public btnSeat2 :eui.Button;
@@ -84,7 +88,7 @@ module game {
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
-            this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 10;
+            this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 200;
             // this.poweredLabel.y = this.stage.stageHeight - this.poweredLabel.height - 30;
 
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);

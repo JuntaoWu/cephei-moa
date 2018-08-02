@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.GameScreen" width="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-    <e:Image id="gameBackground" source="seat-background"  x="0" y="0" width="640" height="1138"/>
+<e:Skin class="skins.GameScreen" width="640" height="1386" xmlns:e="http://ns.egret.com/eui"
+        xmlns:w="http://ns.egret.com/wing">
+    <e:Image id="gameBackground" source="seat-background" x="0" y="0" width="640" height="1386" />
     <e:Group>
         <e:Button id="quitButton" anchorOffsetY="0" anchorOffsetX="0">
-			<e:Skin states="up,down">
-				<e:Image source="back_2" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
-			</e:Skin>
-		</e:Button>
+            <e:Skin states="up,down">
+                <e:Label text="{parent.isMasterClient}" textColor="0x000000"></e:Label>
+                <e:Image source="back_2" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+            </e:Skin>
+        </e:Button>
         <e:Label text="{roomName}" x="60" textColor="0x000000"></e:Label>
         <e:Group x="200">
             <e:Label text="{currentPlayers}" textColor="0x000000"></e:Label>
@@ -14,181 +16,193 @@
             <e:Label text="{maxPlayers}" textColor="0x000000" x="187"></e:Label>
         </e:Group>
     </e:Group>
-    <e:Group visible="false" y="50" width="600" horizontalCenter="0" height="540">
-        <e:Image source="game-init-background" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
-        <e:Label text="选座" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
-        <e:Label text="点击对应颜色的座位\n入座或换座\n选好座位后等待房主开局" x="72.5" y="244.5" textColor="0x000000" size="45" fontFamily="SimHei"
-                textAlign="center" verticalAlign="middle"></e:Label>
-    </e:Group>
     <e:Group y="50" width="600" horizontalCenter="0" height="540">
         <e:Image source="game-box-border" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
-        <e:Group visible="false">
+        <e:Group visible="{isPhasePreparing}" y="50" width="600" horizontalCenter="0" height="540">
+            <e:Label text="选座" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
+            <e:Label text="点击对应颜色的座位\n入座或换座\n选好座位后等待房主开局" x="72.5" y="244.5" textColor="0x000000" size="45" fontFamily="SimHei"
+                     textAlign="center" verticalAlign="middle"></e:Label>
+        </e:Group>
+        <e:Group visible="{isPhaseReady}">
             <e:Label text="录入身份" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
-            <e:Label text="选择对应图标，录入抽到的身份" y="40" textColor="0x000000" fontFamily="SimHei"
-                    textAlign="center" verticalAlign="middle" horizontalCenter="0"></e:Label>
+            <e:Label text="选择对应图标，录入抽到的身份" y="40" textColor="0x000000" fontFamily="SimHei" textAlign="center" verticalAlign="middle"
+                     horizontalCenter="0"></e:Label>
             <e:Group y="60" horizontalCenter="0">
                 <e:Group height="210" width="150">
-                    <e:Image source="role1"  verticalCenter="0" horizontalCenter="0"></e:Image>
-                    <e:Label text="许愿"  textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0"/>
+                    <e:Image source="role1" verticalCenter="0" horizontalCenter="0"></e:Image>
+                    <e:Label text="许愿" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                 </e:Group>
                 <e:Group x="150" height="210" width="150">
                     <e:Image source="role2" verticalCenter="0" horizontalCenter="0"></e:Image>
-                    <e:Label text="方震"  textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0"/>
+                    <e:Label text="方震" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                 </e:Group>
                 <e:Group x="300" height="210" width="150">
-                    <e:Image source="role3"  verticalCenter="0" horizontalCenter="0"></e:Image>
-                    <e:Label text="姬云浮"  textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0"/>
+                    <e:Image source="role3" verticalCenter="0" horizontalCenter="0"></e:Image>
+                    <e:Label text="姬云浮" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                 </e:Group>
                 <e:Group x="450" height="210" width="150">
-                    <e:Image source="role4-5"  verticalCenter="0" horizontalCenter="0"></e:Image>
-                    <e:Label text="黄烟烟"  textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0"/>
+                    <e:Image source="role4-5" verticalCenter="0" horizontalCenter="0"></e:Image>
+                    <e:Label text="黄烟烟" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                 </e:Group>
                 <e:Group y="220" height="210" width="150">
-                    <e:Image source="role4-5"  verticalCenter="0" horizontalCenter="0"></e:Image>
-                    <e:Label text="木户加奈"  textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0"/>
+                    <e:Image source="role4-5" verticalCenter="0" horizontalCenter="0"></e:Image>
+                    <e:Label text="木户加奈" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                 </e:Group>
                 <e:Group y="220" x="150" height="210" width="150">
-                    <e:Image source="role6"  verticalCenter="0" horizontalCenter="0"></e:Image>
-                    <e:Label text="老朝奉"  textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0"/>
+                    <e:Image source="role6" verticalCenter="0" horizontalCenter="0"></e:Image>
+                    <e:Label text="老朝奉" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                 </e:Group>
                 <e:Group y="220" x="300" height="210" width="150">
-                    <e:Image source="role7"  verticalCenter="0" horizontalCenter="0"></e:Image>
-                    <e:Label text="药不然"  textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0"/>
+                    <e:Image source="role7" verticalCenter="0" horizontalCenter="0"></e:Image>
+                    <e:Label text="药不然" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                 </e:Group>
                 <e:Group y="220" x="450" height="210" width="150">
-                    <e:Image source="role8"  verticalCenter="0" horizontalCenter="0"></e:Image>
-                    <e:Label text="郑国渠"  textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0"/>
+                    <e:Image source="role8" verticalCenter="0" horizontalCenter="0"></e:Image>
+                    <e:Label text="郑国渠" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                 </e:Group>
-            
             </e:Group>
         </e:Group>
         <e:Group visible="false">
-            <e:Label text="即将开始第一轮" y="160" textColor="0x000000" fontFamily="SimHei"
-                    textAlign="center" verticalAlign="middle" horizontalCenter="0" bold="true" size="25"></e:Label>
+            <e:Label text="即将开始第一轮" y="160" textColor="0x000000" fontFamily="SimHei" textAlign="center" verticalAlign="middle"
+                     horizontalCenter="0" bold="true" size="25"></e:Label>
             <e:Group y="360" horizontalCenter="0">
-                <e:Label text="点击" textColor="0x000000" fontFamily="SimHei"
-                        textAlign="center" verticalAlign="middle" verticalCenter="0" x="0" size="25" bold="true"></e:Label> 
-                <e:Image source="auth2" verticalCenter="0" x="55"></e:Image>       
-                <e:Label text=",开始本轮" textColor="0x000000" fontFamily="SimHei"
-                        textAlign="center" verticalAlign="middle" x="110" verticalCenter="0" size="25" bold="true"></e:Label>        
+                <e:Label text="点击" textColor="0x000000" fontFamily="SimHei" textAlign="center" verticalAlign="middle" verticalCenter="0"
+                         x="0" size="25" bold="true"></e:Label>
+                <e:Image source="auth2" verticalCenter="0" x="55"></e:Image>
+                <e:Label text=",开始本轮" textColor="0x000000" fontFamily="SimHei" textAlign="center" verticalAlign="middle" x="110"
+                         verticalCenter="0" size="25" bold="true"></e:Label>
             </e:Group>
         </e:Group>
-        <e:Group horizontalCenter="0">
+        <e:Group visible="false" horizontalCenter="0">
             <e:Label text="第一轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Group y="40" horizontalCenter="0">
-                <e:Label text="你是" textColor="0x000000" fontFamily="SimHei"
-                        verticalAlign="middle" verticalCenter="0" x="0" size="25" bold="true"></e:Label> 
-                <e:Label text="木户加奈" textColor="0x000000" fontFamily="SimHei"
-                        verticalAlign="middle" verticalCenter="0" x="52" size="30" bold="true" width="125" textAlign="center"></e:Label> 
-                <e:Label text=",选择1个你要鉴定的宝物" textColor="0x000000" fontFamily="SimHei"
-                        verticalAlign="middle" x="180" verticalCenter="0" size="25" bold="true"></e:Label>        
+                <e:Label text="你是" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
+                         bold="true"></e:Label>
+                <e:Label text="木户加奈" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="52" size="30"
+                         bold="true" width="125" textAlign="center"></e:Label>
+                <e:Label text=",选择1个你要鉴定的宝物" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="180" verticalCenter="0"
+                         size="25" bold="true"></e:Label>
             </e:Group>
             <e:Group y="80" horizontalCenter="0">
-                <e:Label text="点击" textColor="0x000000" fontFamily="SimHei"
-                        verticalAlign="middle" verticalCenter="0" x="0" size="25" bold="true"></e:Label> 
-                <e:Image source="auth2" verticalCenter="0" x="55"></e:Image>       
-                <e:Label text=",开始本轮" textColor="0x000000" fontFamily="SimHei"
-                        verticalAlign="middle" x="110" verticalCenter="0" size="25" bold="true"></e:Label>        
+                <e:Label text="点击" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
+                         bold="true"></e:Label>
+                <e:Image source="auth2" verticalCenter="0" x="55"></e:Image>
+                <e:Label text=",开始本轮" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="110" verticalCenter="0"
+                         size="25" bold="true"></e:Label>
             </e:Group>
             <e:Group y="150" horizontalCenter="0" width="434">
                 <e:Group>
                     <e:Image source="bg2"></e:Image>
                     <e:Image source="t1" verticalCenter="0"></e:Image>
-                    <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28"/>
+                    <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28" />
                 </e:Group>
                 <e:Group x="250">
                     <e:Image source="bg2"></e:Image>
                     <e:Image source="t1" verticalCenter="0"></e:Image>
-                    <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28"/>
+                    <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28" />
                 </e:Group>
                 <e:Group y="200">
                     <e:Image source="bg2"></e:Image>
                     <e:Image source="t1" verticalCenter="0"></e:Image>
-                    <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28"/>
+                    <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28" />
                 </e:Group>
                 <e:Group x="250" y="200">
                     <e:Image source="bg2"></e:Image>
                     <e:Image source="t1" verticalCenter="0"></e:Image>
-                    <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28"/>
+                    <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28" />
                 </e:Group>
             </e:Group>
         </e:Group>
-			<e:Button id="btnjs1" label="Button" x="60" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="btnjs2" label="Button" x="200" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin"/>
-			<e:Button id="btnjs3" label="Button" x="340" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="btnjs4" label="Button" x="480" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="btnjs5" label="Button" x="60" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="btnjs6" label="Button" x="200" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="btnjs7" label="Button" x="340" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="btnjs8" label="Button" x="480" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="shunwei1" label="Button" x="70" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="shunwei2" label="Button" x="210" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin"/>
-			<e:Button id="shunwei3" label="Button" x="350" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="shunwei4" label="Button" x="490" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="shunwei5" label="Button" x="70" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="shunwei6" label="Button" x="210" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="shunwei7" label="Button" x="350" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="shunwei8" label="Button" x="490" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100"/>
-			<e:Button id="Anim1" label="Button" x="60" y="100" width="200" height="200"/>
-			<e:Button id="Anim2" label="Button" x="340" y="100" width="200" height="200"/>
-			<e:Button id="Anim3" label="Button" x="60" y="350" width="200" height="200"/>
-			<e:Button id="Anim4" label="Button" x="340" y="350" width="200" height="200"/>
+        <e:Button id="btnjs1" label="Button" x="60" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" />
+        <e:Button id="btnjs2" label="Button" x="200" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" skinName="skins.ButtonSkin" />
+        <e:Button id="btnjs3" label="Button" x="340" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="btnjs4" label="Button" x="480" y="100" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="btnjs5" label="Button" x="60" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" />
+        <e:Button id="btnjs6" label="Button" x="200" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="btnjs7" label="Button" x="340" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="btnjs8" label="Button" x="480" y="350" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="shunwei1" label="Button" x="70" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="shunwei2" label="Button" x="210" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" skinName="skins.ButtonSkin" />
+        <e:Button id="shunwei3" label="Button" x="350" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="shunwei4" label="Button" x="490" y="110" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="shunwei5" label="Button" x="70" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="shunwei6" label="Button" x="210" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="shunwei7" label="Button" x="350" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="shunwei8" label="Button" x="490" y="360" anchorOffsetX="0" width="100" anchorOffsetY="0"
+                  height="100" />
+        <e:Button id="Anim1" label="Button" x="60" y="100" width="200" height="200" />
+        <e:Button id="Anim2" label="Button" x="340" y="100" width="200" height="200" />
+        <e:Button id="Anim3" label="Button" x="60" y="350" width="200" height="200" />
+        <e:Button id="Anim4" label="Button" x="340" y="350" width="200" height="200" />
     </e:Group>
     <e:Group anchorOffsetY="0" height="328.76" x="0" y="701.03" anchorOffsetX="0" width="632.97">
         <e:Button id="btnSeat1" label="">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content" x="50" y="50"/>
+                <e:Image id="content" x="50" y="50" />
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat2" x="158">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content" x="50" y="50"/>
+                <e:Image id="content" x="50" y="50" />
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat3" x="317">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content" x="50" y="50"/>
+                <e:Image id="content" x="50" y="50" />
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat4" x="470">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content" x="50" y="50"/>
+                <e:Image id="content" x="50" y="50" />
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat5" y="170">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content" x="50" y="50"/>
+                <e:Image id="content" x="50" y="50" />
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat6" y="170" x="158">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content" x="50" y="50"/>
+                <e:Image id="content" x="50" y="50" />
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat7" y="170" x="317">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content" x="50" y="50"/>
+                <e:Image id="content" x="50" y="50" />
             </e:Skin>
         </e:Button>
         <e:Button id="btnSeat8" y="170" x="470">
             <e:Skin>
                 <e:Image source="avatar-background" />
                 <e:Image source="color-red" />
-                <e:Image id="content" x="50" y="50"/>
+                <e:Image id="content" x="50" y="50" />
             </e:Skin>
         </e:Button>
     </e:Group>
@@ -216,7 +230,7 @@
                     <e:Image source="wait-1-players-enough"></e:Image>
                 </e:Skin>
             </e:Button>
-            <e:Button width="100%" visible="{isAllReady}">
+            <e:Button id="startjs" width="100%" visible="{isAllReady}">
                 <e:Skin>
                     <e:Image source="enter-info"></e:Image>
                 </e:Skin>
@@ -227,7 +241,7 @@
                 </e:Skin>
             </e:Button>
         </e:Group>
-        			<e:Button id="startjs" label="Button" x="300" y="15" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90"/>
-			<e:Button id="startgame" label="Button" x="300" y="15" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90"/>
+        <e:Button id="startgame" label="Button" x="300" y="15" anchorOffsetX="0" width="250" anchorOffsetY="0"
+                  height="90" />
     </e:Group>
 </e:Skin>
