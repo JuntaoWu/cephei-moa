@@ -24,6 +24,7 @@ module game {
 		public static DELETE_NUMBER:string="delete_number";
 		public static CANCEL_INPUT:string="cancel_input";
 		public static FINISH_INPUT:string="finish_input";
+		public static PIAO_SHU:string="piao_shu";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -35,7 +36,8 @@ module game {
 			maxPlayers: 2,
 			seats: [],
 			role: [],
-			shunwei_one_been:[]
+			shunwei_one_been:[],
+			toupiao: []
 		};
 
 		private _loadBalancingClient: MyLoadBalancingClient;
@@ -195,6 +197,12 @@ module game {
 				}
 				case CustomPhotonEvents.toupiaoui:{
 					this.sendNotification(GameProxy.TOUPIAO_UI);
+					break;
+				}
+				case CustomPhotonEvents.piaoshu:{
+					let seatNo = this.gameState.seats.findIndex(seat => seat == this.loadBalancingClient.myActor());
+					this.gameState.toupiao[seatNo]=message;
+					this.sendNotification(GameProxy.PIAO_SHU,this.gameState.toupiao);
 					break;
 				}
 			}

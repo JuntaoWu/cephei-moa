@@ -37,7 +37,8 @@ module game {
             GameProxy.NEXT_NR,
             GameProxy.ONE_GAME_END,
             GameProxy.TONGZHI,
-            GameProxy.TOUPIAO_UI
+            GameProxy.TOUPIAO_UI,
+            GameProxy.PIAO_SHU
             ];
         }
 
@@ -83,6 +84,10 @@ module game {
                 }
                 case GameProxy.TOUPIAO_UI: {
                     this.toupiaoui();
+                    break;
+                }
+                case GameProxy.PIAO_SHU:{
+                    this.piaoshujisuan(data);
                     break;
                 }
             }
@@ -195,6 +200,7 @@ module game {
             }
         }
 
+        public roomrenshu:number=2;
         public touxiang(seats: Array<any>) {
             let i: number = 0;
             let a1: number = 0;
@@ -400,7 +406,7 @@ module game {
             }
             i = a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8;
 
-            if (i == 2) {
+            if (i == this.roomrenshu) {
                 this.gameScreen.btnSeat1.enabled = false;
                 this.gameScreen.btnSeat2.enabled = false;
                 this.gameScreen.btnSeat3.enabled = false;
@@ -440,7 +446,7 @@ module game {
                 }
             });
 
-            if (i == 2) {
+            if (i == this.roomrenshu) {
                 this.gameScreen.btnjs1.visible = false;
                 this.gameScreen.btnjs2.visible = false;
                 this.gameScreen.btnjs3.visible = false;
@@ -845,7 +851,30 @@ module game {
         }
 
         public toupiaoqueren() {
+            this.gameScreen.toupiao1.enabled=false;
+            this.gameScreen.toupiao2.enabled=false;
+            this.gameScreen.toupiao3.enabled=false;
+            this.gameScreen.toupiao4.enabled=false;
+            this.gameScreen.qingkong.enabled=false;
+            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.piaoshu,"0"+this.baowu1+"0"+this.baowu2+"0"+this.baowu3+"0"+this.baowu4);
+        }
 
+        public piaoshujisuan(toupiao:Array<any>){
+            if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
+                let i:number=0;
+                this.proxy.gameState.toupiao.forEach(element => {
+                    if (element){
+                        i++;
+                    }
+                });
+                if (i==this.roomrenshu){
+                    this.toupiaoend();
+                }
+            }
+        }
+
+        public toupiaoend(){
+            
         }
     }
 }

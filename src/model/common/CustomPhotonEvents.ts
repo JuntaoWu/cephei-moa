@@ -14,5 +14,6 @@ module game {
         onegameend,
         tongzhi,
         toupiaoui,
+        piaoshu,
     }
 }
