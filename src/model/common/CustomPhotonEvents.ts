@@ -15,5 +15,8 @@ module game {
         tongzhi,
         toupiaoui,
         piaoshu,
+        toupiaoend,
+        starttwo,
+        startgametongbu,
     }
 }

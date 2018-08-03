@@ -78,6 +78,10 @@ module game {
         public qingkong:eui.Button;
         public piaoshu:eui.Label;
         public toupiaoqueren:eui.Button;
+        public startno2:eui.Button;
+        public onejieguo:eui.Label;
+        public lcfskill:eui.Button;
+        public lcfskillpass:eui.Button;
 
         public constructor() {
             super();
@@ -128,6 +132,10 @@ module game {
             this.qingkong.visible=false;
             this.piaoshu.visible=false;
             this.toupiaoqueren.visible=false;
+            this.startno2.visible=false;
+            this.onejieguo.visible=false;
+            this.lcfskill.visible=false;
+            this.lcfskillpass.visible=false;
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {

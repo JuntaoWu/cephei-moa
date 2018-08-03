@@ -24,12 +24,12 @@
     </e:Group>
     <e:Group y="50" width="600" horizontalCenter="0" height="540">
         <e:Image source="game-box-border" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
-        <e:Group visible="{isPhasePreparing}" y="50" width="600" horizontalCenter="0" height="540">
+        <e:Group y="50" width="600" horizontalCenter="0" height="540" visible="false">
             <e:Label text="选座" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Label text="点击对应颜色的座位\n入座或换座\n选好座位后等待房主开局" x="72.5" y="244.5" textColor="0x000000" size="45" fontFamily="SimHei"
                      textAlign="center" verticalAlign="middle"></e:Label>
         </e:Group>
-        <e:Group visible="{isPhaseReady}">
+        <e:Group visible="false">
             <e:Label text="录入身份" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Label text="选择对应图标，录入抽到的身份" y="40" textColor="0x000000" fontFamily="SimHei" textAlign="center" verticalAlign="middle"
                      horizontalCenter="0"></e:Label>
@@ -178,6 +178,7 @@
             <e:Button id="toupiao4" label="Button" x="349" y="357" width="200" height="200" scaleX="1" scaleY="1" />
             <e:Label id="toupiao11" text="0" x="106" y="312" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
                      height="33.03" textColor="0x000000" textAlign="center" />
+					<e:Label id="onejieguo" text="第一轮投票" x="234.73" y="38" anchorOffsetX="0" width="168.21" anchorOffsetY="0" height="53.03" textColor="0x000000" textAlign="center"/>
             <e:Label id="toupiao21" text="0" x="403.79" y="308.97" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
                      height="33.03" textColor="0x000000" textAlign="center" />
             <e:Label id="toupiao31" text="0" x="119" y="559.36" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
@@ -307,18 +308,21 @@
                 </e:Button>
             </e:Group>
             <e:Group width="243.94" height="87.88" x="300.95" y="15" anchorOffsetY="0" anchorOffsetX="0">
-                <e:Button id="startjs" label="开始选角色" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250"
+                <e:Button id="startjs" label="开始选角色" x="0" y="0" anchorOffsetX="0" width="250"
                           anchorOffsetY="0" height="90" scaleX="1" scaleY="1" />
-                <e:Button id="startgame" label="开始第一轮" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250"
+                <e:Button id="startgame" label="开始第一轮" x="0" y="0" anchorOffsetX="0" width="250"
                           anchorOffsetY="0" height="90" scaleX="1" scaleY="1" />
-                <e:Button id="onegameend" label="开始发言" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250"
+                <e:Button id="onegameend" label="开始发言" x="0" y="0" anchorOffsetX="0" width="250"
                           anchorOffsetY="0" height="90" scaleX="1" scaleY="1" />
-                <e:Button id="onespeakend" label="开始投票" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250"
+                <e:Button id="onespeakend" label="开始投票" x="0" y="0" anchorOffsetX="0" width="250"
                           anchorOffsetY="0" height="90" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill" label="方震技能" x="-0.9499999999999886" y="0" anchorOffsetX="0" width="250"
+                <e:Button id="fangzhenskill" label="方震技能" x="0" y="0" anchorOffsetX="0" width="250"
                           anchorOffsetY="0" height="90" scaleX="1" scaleY="1" />
-                <e:Button id="toupiaoqueren" label="确认投票" x="0.95" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
+                <e:Button id="toupiaoqueren" label="确认投票" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
                           height="90" scaleX="1" scaleY="1" />
+							<e:Button id="startno2" label="开始第二轮" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+							<e:Button id="lcfskill" label="老朝奉技能" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+							<e:Button id="lcfskillpass" label="跳过技能" x="-281" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
             </e:Group>
         </e:Group>
     </e:Skin>
