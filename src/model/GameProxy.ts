@@ -110,6 +110,7 @@ module game {
 
 		private onJoinRoom() {
 			this.actorNr = this.loadBalancingClient.myActor().actorNr;
+			
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 
 			this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState") || this.gameState;
@@ -148,7 +149,7 @@ module game {
 					break;
 				}
 				case CustomPhotonEvents.startjs: {
-					this.gameState.phase = GamePhase.Ready;
+					this.gameState.phase = GamePhase.ChoosingRole;
 					if (this.isMasterClient) {
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 					}
@@ -181,6 +182,7 @@ module game {
 					break;
 				}
 				case CustomPhotonEvents.startgame: {
+					this.gameState.phase = GamePhase.FirstRound;
 					this.sendNotification(GameProxy.START_GAME);
 					break;
 				}

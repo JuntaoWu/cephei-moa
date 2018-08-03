@@ -24,7 +24,9 @@ module game {
         public isBindingIdentity: boolean = false;
 
         public isPhasePreparing: boolean = false;
-        public isPhaseReady: boolean = false;
+        public isPhaseChoosingRole: boolean = false;
+        public isPhaseStartGame: boolean = false;
+        public isPhaseFirstRound: boolean = false;
         
         public btnSeat1 :eui.Button;
         public btnSeat2 :eui.Button;

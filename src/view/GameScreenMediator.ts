@@ -86,7 +86,7 @@ module game {
                     this.toupiaoui();
                     break;
                 }
-                case GameProxy.PIAO_SHU:{
+                case GameProxy.PIAO_SHU: {
                     this.piaoshujisuan(data);
                     break;
                 }
@@ -108,18 +108,35 @@ module game {
                     this.gameScreen.isWaiting = isWaiting;
                     this.gameScreen.isAllReady = isAllReady;
                     this.gameScreen.isPhasePreparing = true;
+                    this.gameScreen.isPhaseChoosingRole = false;
+                    this.gameScreen.isPhaseFirstRound = false;
                     break;
-                case GamePhase.Ready:
+                case GamePhase.ChoosingRole:
                     this.gameScreen.isInitial = false;
                     this.gameScreen.isWaiting = false;
                     this.gameScreen.isAllReady = false;
                     this.gameScreen.isBindingIdentity = true;
-                    this.gameScreen.isPhaseReady = true;
+                    this.gameScreen.isPhasePreparing = false;
+                    this.gameScreen.isPhaseChoosingRole = true;
+                    this.gameScreen.isPhaseFirstRound = false;
                     break;
-                case GamePhase.Input:
+                case GamePhase.StartGame:
                     this.gameScreen.isInitial = false;
                     this.gameScreen.isWaiting = false;
                     this.gameScreen.isAllReady = false;
+                    this.gameScreen.isPhasePreparing = false;
+                    this.gameScreen.isPhaseChoosingRole = false;
+                    this.gameScreen.isPhaseStartGame = true;
+                    this.gameScreen.isPhaseFirstRound = true;
+                    break;
+                case GamePhase.FirstRound:
+                    this.gameScreen.isInitial = false;
+                    this.gameScreen.isWaiting = false;
+                    this.gameScreen.isAllReady = false;
+                    this.gameScreen.isPhasePreparing = false;
+                    this.gameScreen.isPhaseChoosingRole = false;
+                    this.gameScreen.isPhaseStartGame = false;
+                    this.gameScreen.isPhaseFirstRound = true;
                     break;
             }
         }
@@ -200,7 +217,7 @@ module game {
             }
         }
 
-        public roomrenshu:number=2;
+        public roomrenshu: number = 2;
         public touxiang(seats: Array<any>) {
             let i: number = 0;
             let a1: number = 0;
@@ -851,30 +868,30 @@ module game {
         }
 
         public toupiaoqueren() {
-            this.gameScreen.toupiao1.enabled=false;
-            this.gameScreen.toupiao2.enabled=false;
-            this.gameScreen.toupiao3.enabled=false;
-            this.gameScreen.toupiao4.enabled=false;
-            this.gameScreen.qingkong.enabled=false;
-            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.piaoshu,"0"+this.baowu1+"0"+this.baowu2+"0"+this.baowu3+"0"+this.baowu4);
+            this.gameScreen.toupiao1.enabled = false;
+            this.gameScreen.toupiao2.enabled = false;
+            this.gameScreen.toupiao3.enabled = false;
+            this.gameScreen.toupiao4.enabled = false;
+            this.gameScreen.qingkong.enabled = false;
+            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.piaoshu, "0" + this.baowu1 + "0" + this.baowu2 + "0" + this.baowu3 + "0" + this.baowu4);
         }
 
-        public piaoshujisuan(toupiao:Array<any>){
+        public piaoshujisuan(toupiao: Array<any>) {
             if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
-                let i:number=0;
+                let i: number = 0;
                 this.proxy.gameState.toupiao.forEach(element => {
-                    if (element){
+                    if (element) {
                         i++;
                     }
                 });
-                if (i==this.roomrenshu){
+                if (i == this.roomrenshu) {
                     this.toupiaoend();
                 }
             }
         }
 
-        public toupiaoend(){
-            
+        public toupiaoend() {
+
         }
     }
 }
