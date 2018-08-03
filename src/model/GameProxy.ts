@@ -11,34 +11,27 @@ module game {
 
 		public static PLAYER_UPDATE: string = "player_update";
 		public static SEAT_UPDATE: string = "seat_update";
-		public static START_JS:string="start_js";
-		public static CHOOSE_JS_END:string="choose_js_end";
-		public static START_GAME:string="start_game";
-		public static FIRST_ONE:string="first_one";
-		public static NEXT_NR:string="next_nr";
-		public static ONE_GAME_END:string="one_game_end";
-		public static TONGZHI:string="tongzhi";
-		public static TOUPIAO_UI:string="toupiao_ui";
-
-		public static INPUT_NUMBER:string="input_number";
-		public static DELETE_NUMBER:string="delete_number";
-		public static CANCEL_INPUT:string="cancel_input";
-		public static FINISH_INPUT:string="finish_input";
-		public static PIAO_SHU:string="piao_shu";
+		public static START_JS: string = "start_js";
+		public static CHOOSE_JS_END: string = "choose_js_end";
+		public static START_GAME: string = "start_game";
+		public static FIRST_ONE: string = "first_one";
+		public static NEXT_NR: string = "next_nr";
+		public static ONE_GAME_END: string = "one_game_end";
+		public static TONGZHI: string = "tongzhi";
+		public static TOUPIAO_UI: string = "toupiao_ui";
+		public static ZONG_PIAOSHU: string = "zong_piaoshu";
+		public static INPUT_NUMBER: string = "input_number";
+		public static DELETE_NUMBER: string = "delete_number";
+		public static CANCEL_INPUT: string = "cancel_input";
+		public static FINISH_INPUT: string = "finish_input";
+		public static PIAO_SHU: string = "piao_shu";
+		public static TOUPIAO_END: string = "toupiao_end";
+		public static START_TWO: string = "start_two";
 
 		public roomName: string;
 		public isMasterClient: boolean;
 		public actorNr: number;
-		public gameState: GameState = {
-			roomName: undefined,
-			phase: GamePhase.Preparing,
-			players: 0,
-			maxPlayers: 2,
-			seats: [],
-			role: [],
-			shunwei_one_been:[],
-			toupiao: []
-		};
+		public gameState: GameState = new GameState();
 
 		public isActorMaster(actorModel: ActorModel): boolean {
 			return actorModel && actorModel.actorNr == this.loadBalancingClient.myRoomMasterActorNr();
@@ -97,10 +90,13 @@ module game {
 			this.gameState.players = myRoomActorCount;
 
 			if (this.isMasterClient) {
-				this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 				if (this.gameState.phase == GamePhase.Preparing) {
+					
+					console.log("哈哈哈");
+					this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 				}
+
 			}
 			else {
 
@@ -187,6 +183,7 @@ module game {
 					break;
 				}
 				case CustomPhotonEvents.firstoneNr: {
+					this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState");
 					this.sendNotification(GameProxy.FIRST_ONE, message);
 					break;
 				}
@@ -206,12 +203,33 @@ module game {
 					this.sendNotification(GameProxy.TOUPIAO_UI);
 					break;
 				}
-				case CustomPhotonEvents.piaoshu:{
-					let seatNo = this.gameState.seats.findIndex(seat => seat == this.loadBalancingClient.myActor());
-					this.gameState.toupiao[seatNo]=message;
-					this.sendNotification(GameProxy.PIAO_SHU,this.gameState.toupiao);
+				case CustomPhotonEvents.piaoshu: {
+					let seatNo = this.gameState.seats.findIndex(seat => seat && seat.actorNr == sender.actorNr);
+					this.gameState.toupiao[seatNo] = message;
+					this.sendNotification(GameProxy.PIAO_SHU, this.gameState.toupiao);
 					break;
 				}
+				case CustomPhotonEvents.toupiaoend: {
+					let zongpiaoshu: number = 0;
+					this.gameState.toupiao.forEach(element => {
+						const piaoshu = +element;
+						zongpiaoshu += piaoshu;
+					});
+					this.sendNotification(GameProxy.ZONG_PIAOSHU, zongpiaoshu);
+					break;
+				}
+				case CustomPhotonEvents.starttwo: {
+					this.sendNotification(GameProxy.START_TWO);
+					break;
+				}
+			}
+		}
+
+		public startgametongbu() {
+			if (this.isMasterClient) {
+				console.log("房主同步");
+				this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+				this.loadBalancingClient.sendMessage(CustomPhotonEvents.firstoneNr, this.gameState.firstone.toString());
 			}
 		}
 
@@ -290,7 +308,6 @@ module game {
 
 		public startChooseRole() {
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.startjs);
-
 		}
 	}
 }
