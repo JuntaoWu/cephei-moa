@@ -92,7 +92,6 @@ module game {
 			if (this.isMasterClient) {
 				if (this.gameState.phase == GamePhase.Preparing) {
 
-					console.log("哈哈哈");
 					this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 				}
@@ -186,6 +185,7 @@ module game {
 				case CustomPhotonEvents.firstoneNr: {
 					this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState");
 					this.sendNotification(GameProxy.FIRST_ONE, message);
+					console.log("哇哇哇");
 					break;
 				}
 				case CustomPhotonEvents.nextNr: {
@@ -228,10 +228,18 @@ module game {
 
 		public startgametongbu() {
 			if (this.isMasterClient) {
-				console.log("房主同步");
+				console.log("哈哈哈哈");
 				this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 				this.loadBalancingClient.sendMessage(CustomPhotonEvents.firstoneNr, this.gameState.firstone.toString());
 			}
+		}
+
+		public lcfskilltongbu(){
+			this.loadBalancingClient.myRoom().setCustomProperty("gameState",this.gameState,false,null);
+		}
+
+		public ybrskilltongbu(){
+			this.loadBalancingClient.myRoom().setCustomProperty("gameState",this.gameState,false,null);
 		}
 
 		private generateRoomNumber() {

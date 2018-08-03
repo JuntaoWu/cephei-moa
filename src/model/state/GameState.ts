@@ -21,6 +21,8 @@ module game {
         public hyyskill:number=100;
         public mhjnskill:number=100;
         public firstone: number = 0;
+        public onelcfskill:boolean=false;
+        public oneybrskill:number=0;
 
         //public initialized: boolean = false;
     }

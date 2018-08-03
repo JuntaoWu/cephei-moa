@@ -84,6 +84,16 @@ module game {
         public onejieguo:eui.Label;
         public lcfskill:eui.Button;
         public lcfskillpass:eui.Button;
+        public ybrskill:eui.Button;
+        public ybrskillpass:eui.Button;
+        public ybrskill1:eui.Button;
+        public ybrskill2:eui.Button;
+        public ybrskill3:eui.Button;
+        public ybrskill4:eui.Button;
+        public ybrskill5:eui.Button;
+        public ybrskill6:eui.Button;
+        public ybrskill7:eui.Button;
+        public ybrskill8:eui.Button;
 
         public constructor() {
             super();
@@ -138,6 +148,16 @@ module game {
             this.onejieguo.visible=false;
             this.lcfskill.visible=false;
             this.lcfskillpass.visible=false;
+            this.ybrskill.visible=false;
+            this.ybrskillpass.visible=false;
+            this.ybrskill1.visible=false;
+            this.ybrskill2.visible=false;
+            this.ybrskill3.visible=false;
+            this.ybrskill4.visible=false;
+            this.ybrskill5.visible=false;
+            this.ybrskill6.visible=false;
+            this.ybrskill7.visible=false;
+            this.ybrskill8.visible=false;
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
