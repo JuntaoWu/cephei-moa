@@ -17,7 +17,6 @@
 	"game": [
 		"bin-debug/model/common/Constants.js",
 		"bin-debug/view/panel/BasePanel.js",
-		"bin-debug/view/GameScreenMediator.js",
 		"bin-debug/view/PopupNumberKeyboardMediator.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
@@ -34,6 +33,7 @@
 		"bin-debug/model/AccountProxy.js",
 		"bin-debug/model/GameProxy.js",
 		"bin-debug/model/MyLoadBalancingClient.js",
+		"bin-debug/model/common/ActorModel.js",
 		"bin-debug/model/common/CommonData.js",
 		"bin-debug/ApplicationFacade.js",
 		"bin-debug/model/common/CustomPhotonEvents.js",
@@ -42,7 +42,6 @@
 		"bin-debug/model/state/GamePhase.js",
 		"bin-debug/model/state/GameState.js",
 		"bin-debug/view/ApplicationMediator.js",
-		"bin-debug/AssetAdapter.js",
 		"bin-debug/view/GameScreenMediator.js",
 		"bin-debug/view/GuideGameTermWindowMediator.js",
 		"bin-debug/view/GuideWindowMediator.js",

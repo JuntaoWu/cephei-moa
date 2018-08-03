@@ -8,11 +8,11 @@ module game {
 
         public phase: GamePhase;
 
-        public seats: Array<any>;
+        public seats: Array<ActorModel>;
 
-        public role:Array<Photon.LoadBalancing.Actor>;
+        public role:Array<ActorModel>;
 
-        public shunwei_one_been:Array<Photon.LoadBalancing.Actor>;
+        public shunwei_one_been:Array<ActorModel>;
         public toupiao:Array<any>;
     }
 }

@@ -40,6 +40,14 @@ module game {
 			toupiao: []
 		};
 
+		public isActorMaster(actorModel: ActorModel): boolean {
+			return actorModel && actorModel.actorNr == this.loadBalancingClient.myRoomMasterActorNr();
+		}
+
+		public isActorLocal(actorModel: ActorModel): boolean {
+			return actorModel && actorModel.actorNr == this.loadBalancingClient.myActor().actorNr;
+		}
+
 		private _loadBalancingClient: MyLoadBalancingClient;
 		public get loadBalancingClient(): MyLoadBalancingClient {
 			if (!this._loadBalancingClient) {
@@ -109,93 +117,90 @@ module game {
 
 		private onMessage(event: CustomPhotonEvents, message: string, sender: Photon.LoadBalancing.Actor) {
 			switch (event) {
-				case CustomPhotonEvents.TakeSeat: {	
+				case CustomPhotonEvents.TakeSeat: {
 
-					if (message == "destory1"){
-						this.gameState.seats[1]=undefined;	
-					}else if(message == "destory2"){
-						this.gameState.seats[2]=undefined;
-					}else if(message == "destory3"){
-						this.gameState.seats[3]=undefined;
-					}else if(message == "destory4"){
-						this.gameState.seats[4]=undefined;
-					}else if(message == "destory5"){
-						this.gameState.seats[5]=undefined;
-					}else if(message == "destory6"){
-						this.gameState.seats[6]=undefined;
-					}else if(message == "destory7"){
-						this.gameState.seats[7]=undefined;
-					}else if(message == "destory8"){
-						this.gameState.seats[8]=undefined;
-					}else{
+					if (message == "destory1") {
+						this.gameState.seats[1] = undefined;
+					} else if (message == "destory2") {
+						this.gameState.seats[2] = undefined;
+					} else if (message == "destory3") {
+						this.gameState.seats[3] = undefined;
+					} else if (message == "destory4") {
+						this.gameState.seats[4] = undefined;
+					} else if (message == "destory5") {
+						this.gameState.seats[5] = undefined;
+					} else if (message == "destory6") {
+						this.gameState.seats[6] = undefined;
+					} else if (message == "destory7") {
+						this.gameState.seats[7] = undefined;
+					} else if (message == "destory8") {
+						this.gameState.seats[8] = undefined;
+					} else {
 						const seatNumber = +message;
-						this.gameState.seats[seatNumber] = {
-							actorNr: sender.actorNr,
-							name: sender.name
-						};
-						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);	
-						this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);				
+						this.gameState.seats[seatNumber] = new ActorModel(sender);
+						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
+						this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					}
 
-					if(this.isMasterClient) {
+					if (this.isMasterClient) {
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 					}
-					break;					
+					break;
 				}
-				case CustomPhotonEvents.startjs:{
+				case CustomPhotonEvents.startjs: {
 					this.gameState.phase = GamePhase.Ready;
-					if(this.isMasterClient) {
+					if (this.isMasterClient) {
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 					}
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					this.sendNotification(GameProxy.START_JS);
 					break;
 				}
-				case CustomPhotonEvents.Chooserole:{
-					if (message == "destory1"){
-						this.gameState.role[1]=undefined;	
-					}else if(message == "destory2"){
-						this.gameState.role[2]=undefined;
-					}else if(message == "destory3"){
-						this.gameState.role[3]=undefined;
-					}else if(message == "destory4"){
-						this.gameState.role[4]=undefined;
-					}else if(message == "destory5"){
-						this.gameState.role[5]=undefined;
-					}else if(message == "destory6"){
-						this.gameState.role[6]=undefined;
-					}else if(message == "destory7"){
-						this.gameState.role[7]=undefined;
-					}else if(message == "destory8"){
-						this.gameState.role[8]=undefined;
-					}else{
+				case CustomPhotonEvents.Chooserole: {
+					if (message == "destory1") {
+						this.gameState.role[1] = undefined;
+					} else if (message == "destory2") {
+						this.gameState.role[2] = undefined;
+					} else if (message == "destory3") {
+						this.gameState.role[3] = undefined;
+					} else if (message == "destory4") {
+						this.gameState.role[4] = undefined;
+					} else if (message == "destory5") {
+						this.gameState.role[5] = undefined;
+					} else if (message == "destory6") {
+						this.gameState.role[6] = undefined;
+					} else if (message == "destory7") {
+						this.gameState.role[7] = undefined;
+					} else if (message == "destory8") {
+						this.gameState.role[8] = undefined;
+					} else {
 						const jsNumber = +message;
-						this.gameState.role[jsNumber] = sender;
+						this.gameState.role[jsNumber] = new ActorModel(sender);
 					}
-					this.sendNotification(GameProxy.CHOOSE_JS_END,this.gameState.role);
-					break;
-				}		
-				case CustomPhotonEvents.startgame:{
-					this.sendNotification(GameProxy.START_GAME);
-					break;
-				}	
-				case CustomPhotonEvents.firstoneNr:{
-					this.sendNotification(GameProxy.FIRST_ONE,message);
-					break;
-				}	
-				case CustomPhotonEvents.nextNr:{
-					this.sendNotification(GameProxy.NEXT_NR,message);
+					this.sendNotification(GameProxy.CHOOSE_JS_END, this.gameState.role);
 					break;
 				}
-				case CustomPhotonEvents.onegameend:{
+				case CustomPhotonEvents.startgame: {
+					this.sendNotification(GameProxy.START_GAME);
+					break;
+				}
+				case CustomPhotonEvents.firstoneNr: {
+					this.sendNotification(GameProxy.FIRST_ONE, message);
+					break;
+				}
+				case CustomPhotonEvents.nextNr: {
+					this.sendNotification(GameProxy.NEXT_NR, message);
+					break;
+				}
+				case CustomPhotonEvents.onegameend: {
 					this.sendNotification(GameProxy.ONE_GAME_END);
 					break;
 				}
-				case CustomPhotonEvents.tongzhi:{
-					this.sendNotification(GameProxy.TONGZHI,message);
+				case CustomPhotonEvents.tongzhi: {
+					this.sendNotification(GameProxy.TONGZHI, message);
 					break;
 				}
-				case CustomPhotonEvents.toupiaoui:{
+				case CustomPhotonEvents.toupiaoui: {
 					this.sendNotification(GameProxy.TOUPIAO_UI);
 					break;
 				}
@@ -273,17 +278,17 @@ module game {
 			this.roomName = undefined;
 		}
 
-		public joinSeat(seatNumber:string){
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat,seatNumber);
+		public joinSeat(seatNumber: string) {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat, seatNumber);
 		}
 
-		public chooserole(jsNumber:string){
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.Chooserole,jsNumber);
+		public chooserole(jsNumber: string) {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.Chooserole, jsNumber);
 		}
 
 		public startChooseRole() {
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.startjs);
-			
+
 		}
 	}
 }
