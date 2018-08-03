@@ -91,7 +91,7 @@ module game {
 
 			if (this.isMasterClient) {
 				if (this.gameState.phase == GamePhase.Preparing) {
-					
+
 					console.log("哈哈哈");
 					this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
@@ -106,7 +106,7 @@ module game {
 
 		private onJoinRoom() {
 			this.actorNr = this.loadBalancingClient.myActor().actorNr;
-			
+
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 
 			this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState") || this.gameState;
@@ -179,6 +179,7 @@ module game {
 				}
 				case CustomPhotonEvents.startgame: {
 					this.gameState.phase = GamePhase.FirstRound;
+					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					this.sendNotification(GameProxy.START_GAME);
 					break;
 				}
