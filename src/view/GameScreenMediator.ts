@@ -185,7 +185,7 @@ module game {
             if (this.proxy.gameState.seats[seatNumber]) {
 
             } else {
-                let seatNo = this.proxy.gameState.seats.findIndex(seat => seat == this.proxy.loadBalancingClient.myActor());
+                let seatNo = this.proxy.gameState.seats.findIndex(seat => seat && seat.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
                 if (seatNo == -1) {
 
                 } else {
@@ -210,12 +210,12 @@ module game {
                 //let content = this.gameScreen.btnSeat1.getChildByName("XXXX") as eui.Image;
                 content.source = "resource/assets/seat/color-black.png";
                 content.visible = true;
-                if (this.proxy.gameState.seats[1].actorNr == this.proxy.loadBalancingClient.myRoomMasterActorNr()) {
+                if (this.proxy.isActorMaster(seats[1])) {
                     let roommaster = this.gameScreen.btnSeat1.getChildAt(3) as eui.Image;
                     roommaster.source = "resource/assets/Slider/thumb.png";
                     roommaster.visible = true;
                 }
-                if (this.proxy.gameState.seats[1].isLocal) {
+                if (this.proxy.isActorLocal(seats[1])) {
                     let myself = this.gameScreen.btnSeat1.getChildAt(4) as eui.Image;
                     myself.source = "resource/assets/seat/self-mark.png";
                     myself.visible = true;
@@ -234,12 +234,12 @@ module game {
                 let content = this.gameScreen.btnSeat2.getChildAt(2) as eui.Image;
                 content.source = "resource/assets/seat/color-blue.png";
                 content.visible = true;
-                if (this.proxy.gameState.seats[2].actorNr == this.proxy.loadBalancingClient.myRoomMasterActorNr()) {
+                if (this.proxy.isActorMaster(seats[2])) {
                     let roommaster = this.gameScreen.btnSeat2.getChildAt(3) as eui.Image;
                     roommaster.source = "resource/assets/Slider/thumb.png";
                     roommaster.visible = true;
                 }
-                if (this.proxy.gameState.seats[2].isLocal) {
+                if (this.proxy.isActorLocal(seats[2])) {
                     let myself = this.gameScreen.btnSeat2.getChildAt(4) as eui.Image;
                     myself.source = "resource/assets/seat/self-mark.png";
                     myself.visible = true;
@@ -258,12 +258,12 @@ module game {
                 let content = this.gameScreen.btnSeat3.getChildAt(2) as eui.Image;
                 content.source = "resource/assets/seat/color-green.png";
                 content.visible = true;
-                if (this.proxy.gameState.seats[3].actorNr == this.proxy.loadBalancingClient.myRoomMasterActorNr()) {
+                if (this.proxy.isActorMaster(seats[3])) {
                     let roommaster = this.gameScreen.btnSeat3.getChildAt(3) as eui.Image;
                     roommaster.source = "resource/assets/Slider/thumb.png";
                     roommaster.visible = true;
                 }
-                if (this.proxy.gameState.seats[3].isLocal) {
+                if (this.proxy.isActorLocal(seats[3])) {
                     let myself = this.gameScreen.btnSeat3.getChildAt(4) as eui.Image;
                     myself.source = "resource/assets/seat/self-mark.png";
                     myself.visible = true;
@@ -282,12 +282,12 @@ module game {
                 let content = this.gameScreen.btnSeat4.getChildAt(2) as eui.Image;
                 content.source = "resource/assets/seat/color-orange.png";
                 content.visible = true;
-                if (this.proxy.gameState.seats[4].actorNr == this.proxy.loadBalancingClient.myRoomMasterActorNr()) {
+                if (this.proxy.isActorMaster(seats[4])) {
                     let roommaster = this.gameScreen.btnSeat4.getChildAt(3) as eui.Image;
                     roommaster.source = "resource/assets/Slider/thumb.png";
                     roommaster.visible = true;
                 }
-                if (this.proxy.gameState.seats[4].isLocal) {
+                if (this.proxy.isActorLocal(seats[4])) {
                     let myself = this.gameScreen.btnSeat4.getChildAt(4) as eui.Image;
                     myself.source = "resource/assets/seat/self-mark.png";
                     myself.visible = true;
@@ -306,12 +306,12 @@ module game {
                 let content = this.gameScreen.btnSeat5.getChildAt(2) as eui.Image;
                 content.source = "resource/assets/seat/color-purple.png";
                 content.visible = true;
-                if (this.proxy.gameState.seats[5].actorNr == this.proxy.loadBalancingClient.myRoomMasterActorNr()) {
+                if (this.proxy.isActorMaster(seats[5])) {
                     let roommaster = this.gameScreen.btnSeat5.getChildAt(3) as eui.Image;
                     roommaster.source = "resource/assets/Slider/thumb.png";
                     roommaster.visible = true;
                 }
-                if (this.proxy.gameState.seats[5].isLocal) {
+                if (this.proxy.isActorLocal(seats[5])) {
                     let myself = this.gameScreen.btnSeat5.getChildAt(4) as eui.Image;
                     myself.source = "resource/assets/seat/self-mark.png";
                     myself.visible = true;
@@ -330,12 +330,12 @@ module game {
                 let content = this.gameScreen.btnSeat6.getChildAt(2) as eui.Image;
                 content.source = "resource/assets/seat/color-red.png";
                 content.visible = true;
-                if (this.proxy.gameState.seats[6].actorNr == this.proxy.loadBalancingClient.myRoomMasterActorNr()) {
+                if (this.proxy.isActorMaster(seats[6])) {
                     let roommaster = this.gameScreen.btnSeat6.getChildAt(3) as eui.Image;
                     roommaster.source = "resource/assets/Slider/thumb.png";
                     roommaster.visible = true;
                 }
-                if (this.proxy.gameState.seats[6].isLocal) {
+                if (this.proxy.isActorLocal(seats[6])) {
                     let myself = this.gameScreen.btnSeat6.getChildAt(4) as eui.Image;
                     myself.source = "resource/assets/seat/self-mark.png";
                     myself.visible = true;
@@ -354,12 +354,12 @@ module game {
                 let content = this.gameScreen.btnSeat7.getChildAt(2) as eui.Image;
                 content.source = "resource/assets/seat/color-white.png";
                 content.visible = true;
-                if (this.proxy.gameState.seats[7].actorNr == this.proxy.loadBalancingClient.myRoomMasterActorNr()) {
+                if (this.proxy.isActorMaster(seats[7])) {
                     let roommaster = this.gameScreen.btnSeat7.getChildAt(3) as eui.Image;
                     roommaster.source = "resource/assets/Slider/thumb.png";
                     roommaster.visible = true;
                 }
-                if (this.proxy.gameState.seats[7].isLocal) {
+                if (this.proxy.isActorLocal(seats[7])) {
                     let myself = this.gameScreen.btnSeat7.getChildAt(4) as eui.Image;
                     myself.source = "resource/assets/seat/self-mark.png";
                     myself.visible = true;
@@ -378,12 +378,12 @@ module game {
                 let content = this.gameScreen.btnSeat8.getChildAt(2) as eui.Image;
                 content.source = "resource/assets/seat/color-yellow.png";
                 content.visible = true;
-                if (this.proxy.gameState.seats[8].actorNr == this.proxy.loadBalancingClient.myRoomMasterActorNr()) {
+                if (this.proxy.isActorMaster(seats[8])) {
                     let roommaster = this.gameScreen.btnSeat8.getChildAt(3) as eui.Image;
                     roommaster.source = "resource/assets/Slider/thumb.png";
                     roommaster.visible = true;
                 }
-                if (this.proxy.gameState.seats[8].isLocal) {
+                if (this.proxy.isActorLocal(seats[8])) {
                     let myself = this.gameScreen.btnSeat8.getChildAt(4) as eui.Image;
                     myself.source = "resource/assets/seat/self-mark.png";
                     myself.visible = true;
@@ -456,7 +456,7 @@ module game {
         }
 
         public choosejs(jsNumber: string) {
-            let jsNo = this.proxy.gameState.role.findIndex(js => js == this.proxy.loadBalancingClient.myActor());
+            let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
             if (this.proxy.gameState.role[jsNumber]) {
                 if (jsNo.toString() == jsNumber) {
                     if (jsNumber == "1") {
@@ -548,12 +548,12 @@ module game {
         public first_one(message: string) {
             const firstoneNr = +message;
             this.proxy.gameState.shunwei_one_been[1] = this.proxy.gameState.seats[firstoneNr];
-            if (this.proxy.gameState.seats[firstoneNr].isLocal) {
+            if (this.proxy.isActorLocal(this.proxy.gameState.seats[firstoneNr])) {
                 this.gameScreen.Anim1.visible = true;
                 this.gameScreen.Anim2.visible = true;
                 this.gameScreen.Anim3.visible = true;
                 this.gameScreen.Anim4.visible = true;
-                if (this.proxy.gameState.role[2].isLocal) {
+                if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
                     this.gameScreen.Anim1.enabled = false;
                     this.gameScreen.Anim2.enabled = false;
                     this.gameScreen.Anim3.enabled = false;
@@ -684,12 +684,12 @@ module game {
         public shunwei2(nextNr: string) {
             this.proxy.gameState.shunwei_one_been.push(this.proxy.gameState.seats[nextNr]);
             const Nr = +nextNr;
-            if (this.proxy.gameState.seats[Nr].isLocal) {
+            if (this.proxy.isActorLocal(this.proxy.gameState.seats[Nr])) {
                 this.gameScreen.Anim1.visible = true;
                 this.gameScreen.Anim2.visible = true;
                 this.gameScreen.Anim3.visible = true;
                 this.gameScreen.Anim4.visible = true;
-                if (this.proxy.gameState.role[2].isLocal) {
+                if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
                     this.gameScreen.Anim1.enabled = false;
                     this.gameScreen.Anim2.enabled = false;
                     this.gameScreen.Anim3.enabled = false;
@@ -740,7 +740,7 @@ module game {
         }
 
         public fangzhenskilling(Nr: string) {
-            if (this.proxy.gameState.seats[Nr].isLocal) {
+            if (this.proxy.isActorLocal(this.proxy.gameState.seats[Nr])) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "不能对自己使用此技能");
             } else {
                 this.fangzhenskilling2(Nr);
