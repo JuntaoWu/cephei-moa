@@ -27,6 +27,10 @@ module game {
 		public static PIAO_SHU: string = "piao_shu";
 		public static TOUPIAO_END: string = "toupiao_end";
 		public static START_TWO: string = "start_two";
+		public static ONE_YBRSKILL: string = "one_ybrskill";
+		public static ONE_ZGQSKILL: string = "one_zgqskill";
+		public static TOUREN: string = "touren";
+		public static TOUREN_JIEGUO:string="touren_jieguo";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -185,7 +189,6 @@ module game {
 				case CustomPhotonEvents.firstoneNr: {
 					this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState");
 					this.sendNotification(GameProxy.FIRST_ONE, message);
-					console.log("哇哇哇");
 					break;
 				}
 				case CustomPhotonEvents.nextNr: {
@@ -210,9 +213,39 @@ module game {
 					this.sendNotification(GameProxy.PIAO_SHU, this.gameState.toupiao);
 					break;
 				}
+				case CustomPhotonEvents.piaoshu2: {
+					let seatNo = this.gameState.seats.findIndex(seat => seat && seat.actorNr == sender.actorNr);
+					this.gameState.toupiao2[seatNo] = message;
+					this.sendNotification(GameProxy.PIAO_SHU, this.gameState.toupiao2);
+					break;
+				}
+				case CustomPhotonEvents.piaoshu3: {
+					let seatNo = this.gameState.seats.findIndex(seat => seat && seat.actorNr == sender.actorNr);
+					this.gameState.toupiao3[seatNo] = message;
+					this.sendNotification(GameProxy.PIAO_SHU, this.gameState.toupiao3);
+					break;
+				}
 				case CustomPhotonEvents.toupiaoend: {
 					let zongpiaoshu: number = 0;
 					this.gameState.toupiao.forEach(element => {
+						const piaoshu = +element;
+						zongpiaoshu += piaoshu;
+					});
+					this.sendNotification(GameProxy.ZONG_PIAOSHU, zongpiaoshu);
+					break;
+				}
+				case CustomPhotonEvents.toupiaoend2: {
+					let zongpiaoshu: number = 0;
+					this.gameState.toupiao2.forEach(element => {
+						const piaoshu = +element;
+						zongpiaoshu += piaoshu;
+					});
+					this.sendNotification(GameProxy.ZONG_PIAOSHU, zongpiaoshu);
+					break;
+				}
+				case CustomPhotonEvents.toupiaoend3: {
+					let zongpiaoshu: number = 0;
+					this.gameState.toupiao3.forEach(element => {
 						const piaoshu = +element;
 						zongpiaoshu += piaoshu;
 					});
@@ -223,23 +256,94 @@ module game {
 					this.sendNotification(GameProxy.START_TWO);
 					break;
 				}
+				case CustomPhotonEvents.onelcftongbu: {
+					this.gameState.onelcfskill = true;
+					break;
+				}
+				case CustomPhotonEvents.twolcftongbu: {
+					this.gameState.twolcfskill = true;
+					break;
+				}
+				case CustomPhotonEvents.threelcftongbu: {
+					this.gameState.threelcfskill = true;
+					break;
+				}
+				case CustomPhotonEvents.oneybrtongbu: {
+					const Nr = +message;
+					this.gameState.oneybrskill = Nr;
+					this.sendNotification(GameProxy.ONE_YBRSKILL, Nr);
+					break;
+				}
+				case CustomPhotonEvents.twoybrtongbu: {
+					const Nr = +message;
+					this.gameState.twoybrskill = Nr;
+					this.sendNotification(GameProxy.ONE_YBRSKILL, Nr);
+					break;
+				}
+				case CustomPhotonEvents.threeybrtongbu: {
+					const Nr = +message;
+					this.gameState.threeybrskill = Nr;
+					this.sendNotification(GameProxy.ONE_YBRSKILL, Nr);
+					break;
+				}
+				case CustomPhotonEvents.onezgqtongbu: {
+					const Nr = +message;
+					this.gameState.onezgqskill = Nr;
+					this.sendNotification(GameProxy.ONE_ZGQSKILL, Nr);
+					break;
+				}
+				case CustomPhotonEvents.twozgqtongbu: {
+					const Nr = +message;
+					this.gameState.twozgqskill = Nr;
+					this.sendNotification(GameProxy.ONE_ZGQSKILL, Nr);
+					break;
+				}
+				case CustomPhotonEvents.threezgqtongbu: {
+					const Nr = +message;
+					this.gameState.threezgqskill = Nr;
+					this.sendNotification(GameProxy.ONE_ZGQSKILL, Nr);
+					break;
+				}
+				case CustomPhotonEvents.lunci: {
+					const Nr = +message;
+					this.gameState.lunci = Nr;
+					console.log(this.gameState.lunci);
+					break;
+				}
+				case CustomPhotonEvents.touren: {
+					this.sendNotification(GameProxy.TOUREN);
+					break;
+				}
+				case CustomPhotonEvents.tourenjieguo:{
+					const Nr= +message;
+					if (sender.actorNr==this.gameState.role[1].actorNr){
+						this.gameState.touren[1]=this.gameState.seats[Nr];
+					}else if(sender.actorNr==this.gameState.role[2].actorNr){
+						this.gameState.touren[2]=this.gameState.seats[Nr];
+					}else if(sender.actorNr==this.gameState.role[3].actorNr){
+						this.gameState.touren[3]=this.gameState.seats[Nr];
+					}else if(sender.actorNr==this.gameState.role[4].actorNr){
+						this.gameState.touren[4]=this.gameState.seats[Nr];
+					}else if(sender.actorNr==this.gameState.role[5].actorNr){
+						this.gameState.touren[5]=this.gameState.seats[Nr];
+					}else if(sender.actorNr==this.gameState.role[6].actorNr){
+						this.gameState.touren[6]=this.gameState.seats[Nr];
+					}else if(sender.actorNr==this.gameState.role[7].actorNr){
+						this.gameState.touren[7]=this.gameState.seats[Nr];
+					}else if(sender.actorNr==this.gameState.role[8].actorNr){
+						this.gameState.touren[8]=this.gameState.seats[Nr];
+					}
+					this.sendNotification(GameProxy.TOUREN_JIEGUO,this.gameState.touren);
+					break;
+				}
 			}
 		}
 
 		public startgametongbu() {
 			if (this.isMasterClient) {
-				console.log("哈哈哈哈");
 				this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 				this.loadBalancingClient.sendMessage(CustomPhotonEvents.firstoneNr, this.gameState.firstone.toString());
 			}
-		}
-
-		public lcfskilltongbu(){
-			this.loadBalancingClient.myRoom().setCustomProperty("gameState",this.gameState,false,null);
-		}
-
-		public ybrskilltongbu(){
-			this.loadBalancingClient.myRoom().setCustomProperty("gameState",this.gameState,false,null);
 		}
 
 		private generateRoomNumber() {
@@ -255,7 +359,7 @@ module game {
 				this.loadBalancingClient.createRoom(this.roomName, {
 					isVisible: true,
 					isOpen: true,
-					maxPlayers: 2,
+					maxPlayers: 3,
 					suspendedPlayerLiveTime: -1,
 					emptyRoomLiveTime: 12000,
 					uniqueUserId: false,
