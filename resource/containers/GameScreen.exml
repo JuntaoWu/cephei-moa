@@ -78,7 +78,7 @@
                 </e:Button>
             </e:Group>
         </e:Group>
-        <e:Group visible="{isPhaseStartGame}" horizontalCenter="0">
+        <e:Group horizontalCenter="0" visible="{isPhaseStartGame}">
             <e:Label text="即将开始第一轮" y="160" textColor="0x000000" fontFamily="SimHei" textAlign="center" verticalAlign="middle"
                      horizontalCenter="0" bold="true" size="25"></e:Label>
             <e:Group y="360" horizontalCenter="0">
@@ -89,7 +89,7 @@
                          verticalCenter="0" size="25" bold="true"></e:Label>
             </e:Group>
         </e:Group>
-        <e:Group visible="false" horizontalCenter="0">
+        <e:Group horizontalCenter="0" visible="false">
             <e:Label text="第一轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Group y="40" horizontalCenter="0">
                 <e:Label text="你是" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
