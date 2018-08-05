@@ -29,6 +29,7 @@
 
 class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
 
+    private loadingText: egret.TextField;
     private labelText: egret.TextField;
 
     private progressBg: egret.Bitmap;
@@ -52,5 +53,10 @@ class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
     public onProgress(current: number, total: number): void {
         this.labelText.text = `${current}/${total}`;
         this.progressBar.width = this.stage.width * current / total;
+    }
+
+    public showInformation(message) {
+        this.loadingText.text = message;
+        this.labelText.text = "";
     }
 }

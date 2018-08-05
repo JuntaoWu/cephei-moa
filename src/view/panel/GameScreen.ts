@@ -21,11 +21,14 @@ module game {
         public isInitial: boolean = false;
         public isWaiting: boolean = false;
         public isAllReady: boolean = false;
-        public isBindingIdentity: boolean = false;
+        public isAllRolesReady: boolean = false;
+        public canChooseSeat: boolean = true;
+        public isChoosingRole: boolean = false;
+        public isChoosingRoleOrMasterClient: boolean = false;
+        public isAllRolesReadyAndNormalClient: boolean = false;
 
         public isPhasePreparing: boolean = false;
         public isPhaseChoosingRole: boolean = false;
-        public isPhaseStartGame: boolean = false;
         public isPhaseFirstRound: boolean = false;
 
         public btnSeat1: eui.Button;

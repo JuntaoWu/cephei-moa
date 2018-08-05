@@ -29,6 +29,8 @@
 
 class Main extends eui.UILayer {
 
+    private loadingView: LoadingUI;
+
     public constructor() {
         super();
         Object.entries = typeof Object.entries === 'function' ? Object.entries : obj => Object.keys(obj).map(k => [k, obj[k]] as [string, any]);
@@ -56,17 +58,16 @@ class Main extends eui.UILayer {
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
         this.runGame().catch(e => {
-            console.log(e);
-        })
+            this.loadingView.showInformation(e);
+        });
     }
 
     private async runGame() {
-        await this.loadResource()
+        await this.loadResource();
+
+        await AccountAdapter.login();
+
         this.createGameScene();
-        await platform.login();
-        const userInfo = await platform.getUserInfo();
-        console.log(userInfo);
-        game.CommonData.logon = userInfo;
     }
 
     private async loadResource() {
@@ -75,21 +76,10 @@ class Main extends eui.UILayer {
             await this.loadTheme();
 
             await RES.loadGroup("loading", 1);
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
+            this.loadingView = new LoadingUI();
+            this.stage.addChild(this.loadingView);
 
-            await RES.loadGroup("preload", 0, loadingView);
-
-            egret.Tween.get(loadingView).to({ alpha: 0 }, 1500).call(() => {
-                this.stage.removeChild(loadingView);
-            });
-
-            // return new Promise((resolve, reject) => {
-            //     egret.Tween.get(loadingView).to({ alpha: 0 }, 1500).call(() => {
-            //         this.stage.removeChild(loadingView);
-            //         resolve();
-            //     });
-            // });
+            await RES.loadGroup("preload", 0, this.loadingView);
         }
         catch (e) {
             console.error(e);
@@ -104,8 +94,7 @@ class Main extends eui.UILayer {
             theme.addEventListener(eui.UIEvent.COMPLETE, () => {
                 resolve();
             }, this);
-
-        })
+        });
     }
 
     private textfield: egret.TextField;
@@ -114,6 +103,11 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
+
+        egret.Tween.get(this.loadingView).to({ alpha: 0 }, 1500).call(() => {
+            this.stage.removeChild(this.loadingView);
+        });
+
         const appContainer = new game.AppContainer();
         this.addChild(appContainer);
 

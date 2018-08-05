@@ -4,8 +4,10 @@ module game {
     export class Constants {
 
         public static ServiceEndpoint: string = "https://cephei-moa.herokuapp.com/";
-        //public static Endpoint: string = "https://cephei-moa.herokuapp.com/miniGame/";
-        public static Endpoint: string = "";
+        public static get Endpoint(): string {
+            return platform.name == "DebugPlatform" ? "" : "https://cephei-moa.herokuapp.com/miniGame/";
+        };
+        //public static Endpoint: string = "";
 
         public static Endpoints = {
             photonMasterServer: "127.0.0.1:9090",

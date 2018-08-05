@@ -129,8 +129,10 @@ module game {
             this.gameScreen.maxPlayers = data.maxPlayers;
 
             let allValidSeats = this.proxy.gameState.seats.filter(seat => seat && seat.actorNr !== undefined);
+            let allValidRoles = this.proxy.gameState.role.filter(r => r && r.actorNr != undefined);
 
             let isAllReady = allValidSeats.length == data.maxPlayers;
+            let isAllRolesReady = allValidRoles.length == data.maxPlayers;
             let isWaiting = !isAllReady && this.proxy.gameState.seats.some(seat => seat && seat.actorNr == this.proxy.actorNr);
 
             switch (data.phase) {
@@ -138,6 +140,11 @@ module game {
                     this.gameScreen.isInitial = !isWaiting && !isAllReady;
                     this.gameScreen.isWaiting = isWaiting;
                     this.gameScreen.isAllReady = isAllReady;
+                    this.gameScreen.isAllRolesReady = false;
+                    this.gameScreen.canChooseSeat = !isAllReady;
+                    this.gameScreen.isChoosingRole = false;
+                    this.gameScreen.isChoosingRoleOrMasterClient = false;
+                    this.gameScreen.isAllRolesReadyAndNormalClient = false;
                     this.gameScreen.isPhasePreparing = true;
                     this.gameScreen.isPhaseChoosingRole = false;
                     this.gameScreen.isPhaseFirstRound = false;
@@ -146,27 +153,26 @@ module game {
                     this.gameScreen.isInitial = false;
                     this.gameScreen.isWaiting = false;
                     this.gameScreen.isAllReady = false;
-                    this.gameScreen.isBindingIdentity = true;
+                    this.gameScreen.isAllRolesReady = isAllRolesReady;
+                    this.gameScreen.canChooseSeat = false;
+                    this.gameScreen.isChoosingRole = !isAllRolesReady;
+                    this.gameScreen.isChoosingRoleOrMasterClient = !isAllRolesReady || this.gameScreen.isMasterClient;
+                    this.gameScreen.isAllRolesReadyAndNormalClient = isAllRolesReady && this.gameScreen.isNormalClient;
                     this.gameScreen.isPhasePreparing = false;
                     this.gameScreen.isPhaseChoosingRole = true;
                     this.gameScreen.isPhaseFirstRound = false;
-                    break;
-                case GamePhase.StartGame:
-                    this.gameScreen.isInitial = false;
-                    this.gameScreen.isWaiting = false;
-                    this.gameScreen.isAllReady = false;
-                    this.gameScreen.isPhasePreparing = false;
-                    this.gameScreen.isPhaseChoosingRole = false;
-                    this.gameScreen.isPhaseStartGame = true;
-                    this.gameScreen.isPhaseFirstRound = true;
                     break;
                 case GamePhase.FirstRound:
                     this.gameScreen.isInitial = false;
                     this.gameScreen.isWaiting = false;
                     this.gameScreen.isAllReady = false;
+                    this.gameScreen.isAllRolesReady = false;
+                    this.gameScreen.canChooseSeat = false;
+                    this.gameScreen.isChoosingRole = false;
+                    this.gameScreen.isChoosingRoleOrMasterClient = false;
+                    this.gameScreen.isAllRolesReadyAndNormalClient = false;
                     this.gameScreen.isPhasePreparing = false;
                     this.gameScreen.isPhaseChoosingRole = false;
-                    this.gameScreen.isPhaseStartGame = false;
                     this.gameScreen.isPhaseFirstRound = true;
                     break;
             }
@@ -279,224 +285,48 @@ module game {
         }
 
         public roomrenshu: number = 3;
-        public touxiang(seats: Array<any>) {
-            let i: number = 0;
-            let a1: number = 0;
-            let a2: number = 0;
-            let a3: number = 0;
-            let a4: number = 0;
-            let a5: number = 0;
-            let a6: number = 0;
-            let a7: number = 0;
-            let a8: number = 0;
-            if (seats[1]) {
-                let content = this.gameScreen.btnSeat1.getChildAt(2) as eui.Image;
-                //let content = this.gameScreen.btnSeat1.getChildByName("XXXX") as eui.Image;
-                content.source = "resource/assets/seat/color-black.png";
-                content.visible = true;
-                if (this.proxy.isActorMaster(seats[1])) {
-                    let roommaster = this.gameScreen.btnSeat1.getChildAt(3) as eui.Image;
-                    roommaster.source = "resource/assets/Slider/thumb.png";
-                    roommaster.visible = true;
-                }
-                if (this.proxy.isActorLocal(seats[1])) {
-                    let myself = this.gameScreen.btnSeat1.getChildAt(4) as eui.Image;
-                    myself.source = "resource/assets/seat/self-mark.png";
-                    myself.visible = true;
-                }
-                a1 = 1;
-            } else {
-                let content = this.gameScreen.btnSeat1.getChildAt(2) as eui.Image;
-                content.visible = false;
-                let roommaster = this.gameScreen.btnSeat1.getChildAt(3) as eui.Image;
-                roommaster.visible = false;
-                let myself = this.gameScreen.btnSeat1.getChildAt(4) as eui.Image;
-                myself.visible = false;
-                a1 = 0;
-            }
-            if (seats[2]) {
-                let content = this.gameScreen.btnSeat2.getChildAt(2) as eui.Image;
-                content.source = "resource/assets/seat/color-blue.png";
-                content.visible = true;
-                if (this.proxy.isActorMaster(seats[2])) {
-                    let roommaster = this.gameScreen.btnSeat2.getChildAt(3) as eui.Image;
-                    roommaster.source = "resource/assets/Slider/thumb.png";
-                    roommaster.visible = true;
-                }
-                if (this.proxy.isActorLocal(seats[2])) {
-                    let myself = this.gameScreen.btnSeat2.getChildAt(4) as eui.Image;
-                    myself.source = "resource/assets/seat/self-mark.png";
-                    myself.visible = true;
-                }
-                a2 = 1;
-            } else {
-                let content = this.gameScreen.btnSeat2.getChildAt(2) as eui.Image;
-                content.visible = false;
-                let roommaster = this.gameScreen.btnSeat2.getChildAt(3) as eui.Image;
-                roommaster.visible = false;
-                let myself = this.gameScreen.btnSeat2.getChildAt(4) as eui.Image;
-                myself.visible = false;
-                a2 = 0;
-            }
-            if (seats[3]) {
-                let content = this.gameScreen.btnSeat3.getChildAt(2) as eui.Image;
-                content.source = "resource/assets/seat/color-green.png";
-                content.visible = true;
-                if (this.proxy.isActorMaster(seats[3])) {
-                    let roommaster = this.gameScreen.btnSeat3.getChildAt(3) as eui.Image;
-                    roommaster.source = "resource/assets/Slider/thumb.png";
-                    roommaster.visible = true;
-                }
-                if (this.proxy.isActorLocal(seats[3])) {
-                    let myself = this.gameScreen.btnSeat3.getChildAt(4) as eui.Image;
-                    myself.source = "resource/assets/seat/self-mark.png";
-                    myself.visible = true;
-                }
-                a3 = 1;;
-            } else {
-                let content = this.gameScreen.btnSeat3.getChildAt(2) as eui.Image;
-                content.visible = false;
-                let roommaster = this.gameScreen.btnSeat3.getChildAt(3) as eui.Image;
-                roommaster.visible = false;
-                let myself = this.gameScreen.btnSeat3.getChildAt(4) as eui.Image;
-                myself.visible = false;
-                a3 = 0;
-            }
-            if (seats[4]) {
-                let content = this.gameScreen.btnSeat4.getChildAt(2) as eui.Image;
-                content.source = "resource/assets/seat/color-orange.png";
-                content.visible = true;
-                if (this.proxy.isActorMaster(seats[4])) {
-                    let roommaster = this.gameScreen.btnSeat4.getChildAt(3) as eui.Image;
-                    roommaster.source = "resource/assets/Slider/thumb.png";
-                    roommaster.visible = true;
-                }
-                if (this.proxy.isActorLocal(seats[4])) {
-                    let myself = this.gameScreen.btnSeat4.getChildAt(4) as eui.Image;
-                    myself.source = "resource/assets/seat/self-mark.png";
-                    myself.visible = true;
-                }
-                a4 = 1;
-            } else {
-                let content = this.gameScreen.btnSeat4.getChildAt(2) as eui.Image;
-                content.visible = false;
-                let roommaster = this.gameScreen.btnSeat4.getChildAt(3) as eui.Image;
-                roommaster.visible = false;
-                let myself = this.gameScreen.btnSeat4.getChildAt(4) as eui.Image;
-                myself.visible = false;
-                a4 = 0;
-            }
-            if (seats[5]) {
-                let content = this.gameScreen.btnSeat5.getChildAt(2) as eui.Image;
-                content.source = "resource/assets/seat/color-purple.png";
-                content.visible = true;
-                if (this.proxy.isActorMaster(seats[5])) {
-                    let roommaster = this.gameScreen.btnSeat5.getChildAt(3) as eui.Image;
-                    roommaster.source = "resource/assets/Slider/thumb.png";
-                    roommaster.visible = true;
-                }
-                if (this.proxy.isActorLocal(seats[5])) {
-                    let myself = this.gameScreen.btnSeat5.getChildAt(4) as eui.Image;
-                    myself.source = "resource/assets/seat/self-mark.png";
-                    myself.visible = true;
-                }
-                a5 = 1;
-            } else {
-                let content = this.gameScreen.btnSeat5.getChildAt(2) as eui.Image;
-                content.visible = false;
-                let roommaster = this.gameScreen.btnSeat5.getChildAt(3) as eui.Image;
-                roommaster.visible = false;
-                let myself = this.gameScreen.btnSeat5.getChildAt(4) as eui.Image;
-                myself.visible = false;
-                a5 = 0;
-            }
-            if (seats[6]) {
-                let content = this.gameScreen.btnSeat6.getChildAt(2) as eui.Image;
-                content.source = "resource/assets/seat/color-red.png";
-                content.visible = true;
-                if (this.proxy.isActorMaster(seats[6])) {
-                    let roommaster = this.gameScreen.btnSeat6.getChildAt(3) as eui.Image;
-                    roommaster.source = "resource/assets/Slider/thumb.png";
-                    roommaster.visible = true;
-                }
-                if (this.proxy.isActorLocal(seats[6])) {
-                    let myself = this.gameScreen.btnSeat6.getChildAt(4) as eui.Image;
-                    myself.source = "resource/assets/seat/self-mark.png";
-                    myself.visible = true;
-                }
-                a6 = 1;
-            } else {
-                let content = this.gameScreen.btnSeat6.getChildAt(2) as eui.Image;
-                content.visible = false;
-                let roommaster = this.gameScreen.btnSeat6.getChildAt(3) as eui.Image;
-                roommaster.visible = false;
-                let myself = this.gameScreen.btnSeat6.getChildAt(4) as eui.Image;
-                myself.visible = false;
-                a6 = 0;
-            }
-            if (seats[7]) {
-                let content = this.gameScreen.btnSeat7.getChildAt(2) as eui.Image;
-                content.source = "resource/assets/seat/color-white.png";
-                content.visible = true;
-                if (this.proxy.isActorMaster(seats[7])) {
-                    let roommaster = this.gameScreen.btnSeat7.getChildAt(3) as eui.Image;
-                    roommaster.source = "resource/assets/Slider/thumb.png";
-                    roommaster.visible = true;
-                }
-                if (this.proxy.isActorLocal(seats[7])) {
-                    let myself = this.gameScreen.btnSeat7.getChildAt(4) as eui.Image;
-                    myself.source = "resource/assets/seat/self-mark.png";
-                    myself.visible = true;
-                }
-                a7 = 1;
-            } else {
-                let content = this.gameScreen.btnSeat7.getChildAt(2) as eui.Image;
-                content.visible = false;
-                let roommaster = this.gameScreen.btnSeat7.getChildAt(3) as eui.Image;
-                roommaster.visible = false;
-                let myself = this.gameScreen.btnSeat7.getChildAt(4) as eui.Image;
-                myself.visible = false;
-                a7 = 0;
-            }
-            if (seats[8]) {
-                let content = this.gameScreen.btnSeat8.getChildAt(2) as eui.Image;
-                content.source = "resource/assets/seat/color-yellow.png";
-                content.visible = true;
-                if (this.proxy.isActorMaster(seats[8])) {
-                    let roommaster = this.gameScreen.btnSeat8.getChildAt(3) as eui.Image;
-                    roommaster.source = "resource/assets/Slider/thumb.png";
-                    roommaster.visible = true;
-                }
-                if (this.proxy.isActorLocal(seats[8])) {
-                    let myself = this.gameScreen.btnSeat8.getChildAt(4) as eui.Image;
-                    myself.source = "resource/assets/seat/self-mark.png";
-                    myself.visible = true;
-                }
-                a8 = 1;
-            } else {
-                let content = this.gameScreen.btnSeat8.getChildAt(2) as eui.Image;
-                content.visible = false;
-                let roommaster = this.gameScreen.btnSeat8.getChildAt(3) as eui.Image;
-                roommaster.visible = false;
-                let myself = this.gameScreen.btnSeat8.getChildAt(4) as eui.Image;
-                myself.visible = false;
-                a8 = 0;
-            }
-            i = a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8;
+        public touxiang(seats: Array<ActorModel>) {
 
-            if (i == this.roomrenshu) {
-                this.gameScreen.btnSeat1.enabled = false;
-                this.gameScreen.btnSeat2.enabled = false;
-                this.gameScreen.btnSeat3.enabled = false;
-                this.gameScreen.btnSeat4.enabled = false;
-                this.gameScreen.btnSeat5.enabled = false;
-                this.gameScreen.btnSeat6.enabled = false;
-                this.gameScreen.btnSeat7.enabled = false;
-                this.gameScreen.btnSeat8.enabled = false;
-                if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
-                    this.gameScreen.startjs.visible = true;
+            const seatConfig = {
+                "1": { controlName: "btnSeat1", defaultSource: "color-black" },
+                "2": { controlName: "btnSeat2", defaultSource: "color-blue" },
+                "3": { controlName: "btnSeat3", defaultSource: "color-green" },
+                "4": { controlName: "btnSeat4", defaultSource: "color-orange" },
+                "5": { controlName: "btnSeat5", defaultSource: "color-purple" },
+                "6": { controlName: "btnSeat6", defaultSource: "color-red" },
+                "7": { controlName: "btnSeat7", defaultSource: "color-white" },
+                "8": { controlName: "btnSeat8", defaultSource: "color-yellow" },
+            };
+
+            seats.forEach((seat, index) => {
+                if (!seatConfig[index]) {
+                    return;
                 }
-            }
+                const config = seatConfig[index];
+                const control = this.gameScreen[config.controlName];
+                let content = control.getChildByName("content") as eui.Image;
+                let nickName = control.getChildByName("nickName") as eui.Label;
+                let normalBg = control.getChildByName("normalBg") as eui.Image;
+                let masterBg = control.getChildByName("masterBg") as eui.Image;
+                let selfMark = control.getChildByName("selfMark") as eui.Image;
+
+                if (seats[index]) {
+                    content.source = seats[index].avatarUrl || config.defaultSource;
+                    nickName.text = seats[index].name || "blank name";
+                    masterBg.visible = this.proxy.isActorMaster(seats[index]);
+                    normalBg.visible = !masterBg.visible;
+                    selfMark.visible = this.proxy.isActorLocal(seats[index]);
+                    content.visible = true;
+                    nickName.visible = true;
+                }
+                else {
+                    normalBg.visible = true;
+                    masterBg.visible = false;
+                    selfMark.visible = false;
+                    content.visible = false;
+                    nickName.visible = false;
+                }
+            });
         }
 
         public startjschoose2() {
@@ -649,10 +479,24 @@ module game {
         }
 
         public first_one(message: string) {
-            this.gameScreen.Anim1.label = this.proxy.gameState.baowulist[0];
-            this.gameScreen.Anim2.label = this.proxy.gameState.baowulist[1];
-            this.gameScreen.Anim3.label = this.proxy.gameState.baowulist[2];
-            this.gameScreen.Anim4.label = this.proxy.gameState.baowulist[3];
+
+            const animConfig = [
+                { controlName: "Anim1", index: 0 },
+                { controlName: "Anim2", index: 1 },
+                { controlName: "Anim3", index: 2 },
+                { controlName: "Anim4", index: 3 },
+            ];
+
+            animConfig.forEach(anim => {
+                const animName = this.proxy.gameState.baowulist[anim.index];
+                const antiqueObject = this.proxy.antiquesMap.get(animName);
+                let control = this.gameScreen[anim.controlName] as eui.Button;
+                let image = control.getChildByName("antique-content") as eui.Image;
+                image.source = antiqueObject.source;
+                let label = control.getChildByName("antique-label") as eui.Label;
+                label.text = antiqueObject.name;
+            });
+
             const firstoneNr = +message;
             this.proxy.gameState.shunwei_one_been[1] = this.proxy.gameState.seats[firstoneNr];
             this.xingdong(firstoneNr);

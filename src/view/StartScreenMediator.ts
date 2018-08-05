@@ -23,10 +23,13 @@ module game {
 
         public async initData() {
             const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
-            accountProxy.loadUserInfo().then(userInfo => {
-                this.startScreen.nickName = userInfo.nickName;
-                this.startScreen.avatarUrl = userInfo.avatarUrl;
-            });
+            const gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
+
+            const userInfo = await accountProxy.loadUserInfo();
+            this.startScreen.nickName = userInfo.nickName;
+            this.startScreen.avatarUrl = userInfo.avatarUrl;
+
+            await gameProxy.initialize();
         }
 
         public createRoomClick(event: egret.TouchEvent) {
@@ -46,11 +49,11 @@ module game {
         private rankClick(event: egret.TouchEvent) {
             this.sendNotification(SceneCommand.SHOW_RANK_WINDOW);
         }
-        
+
         private guideClick(event: egret.TouchEvent) {
             this.sendNotification(SceneCommand.SHOW_GUIDE_WINDOW);
         }
-        
+
         private settingClick(event: egret.TouchEvent) {
             this.sendNotification(SceneCommand.SHOW_SETTING_WINDOW);
         }

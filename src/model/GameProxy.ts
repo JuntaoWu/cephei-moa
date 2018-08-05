@@ -9,6 +9,15 @@ module game {
 			super(GameProxy.NAME);
 		}
 
+		public async initialize() {
+			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
+			const userInfo = await accountProxy.loadUserInfo();
+
+			this.loadBalancingClient.setCustomAuthentication(`openId=${userInfo.openId}`,
+				Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom);
+			this.loadBalancingClient.start();
+		}
+
 		public static PLAYER_UPDATE: string = "player_update";
 		public static SEAT_UPDATE: string = "seat_update";
 		public static START_JS: string = "start_js";
@@ -43,6 +52,15 @@ module game {
 
 		public isActorLocal(actorModel: ActorModel): boolean {
 			return actorModel && actorModel.actorNr == this.loadBalancingClient.myActor().actorNr;
+		}
+
+		
+		private _antiquesMap : Map<string, any>;
+		public get antiquesMap() : Map<string, any> {
+			if(!this._antiquesMap) {
+				this._antiquesMap = new Map<string, any>(Object.entries(RES.getRes("antiques_json")));
+			}
+			return this._antiquesMap;
 		}
 
 		private _loadBalancingClient: MyLoadBalancingClient;
@@ -107,8 +125,13 @@ module game {
 			this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 		}
 
-		private onJoinRoom() {
+		private async onJoinRoom() {
+			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
+			const userInfo = await accountProxy.loadUserInfo();
 			this.actorNr = this.loadBalancingClient.myActor().actorNr;
+
+			this.loadBalancingClient.myActor().setCustomProperty("avatarUrl", userInfo.avatarUrl);
+			this.loadBalancingClient.myActor().setCustomProperty("nickName", userInfo.nickName);
 
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 
@@ -177,7 +200,9 @@ module game {
 						const jsNumber = +message;
 						this.gameState.role[jsNumber] = new ActorModel(sender);
 					}
+
 					this.sendNotification(GameProxy.CHOOSE_JS_END, this.gameState.role);
+					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					break;
 				}
 				case CustomPhotonEvents.startgame: {
@@ -363,7 +388,7 @@ module game {
 					maxPlayers: this.gameState.maxPlayers,
 					suspendedPlayerLiveTime: -1,
 					emptyRoomLiveTime: 12000,
-					uniqueUserId: false,
+					uniqueUserId: true,
 					propsListedInLobby: []
 				});
 			}

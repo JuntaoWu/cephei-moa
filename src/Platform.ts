@@ -5,28 +5,35 @@
  * 由于不同平台的接口形式各有不同，白鹭推荐开发者将所有接口封装为基于 Promise 的异步形式
  */
 declare interface Platform {
+    name: string;
 
     getUserInfo(): Promise<any>;
 
-    login(): Promise<any>
+    login(): Promise<any>;
+
+    getVersion(): Promise<any>;
 
 }
 
 class DebugPlatform implements Platform {
-    async getUserInfo() {
-        return { nickName: "username" }
+
+    public name: string = "DebugPlatform";
+
+    public async getUserInfo() {
+        return { nickName: "username" };
     }
-    async login() {
+    public async login() {
+        return { code: "debug" };
+    }
+
+    public async getVersion() {
 
     }
 }
-
 
 if (!window.platform) {
     window.platform = new DebugPlatform();
 }
-
-
 
 declare let platform: Platform;
 
