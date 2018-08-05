@@ -280,8 +280,14 @@
         </e:Button>
     </e:Group>
     <e:Group id="navigationBar" width="640" y="1059" height="130">
-        <e:Group visible="!{isPhaseFirstRound}">
-        <e:Group visible="{isNormalClient}">
+        <e:Button>
+            <e:Skin>
+                <e:Image source="btn-help" />
+            </e:Skin>
+        </e:Button>
+        <e:Group anchorOffsetX="0" right="0" width="520" y="0">
+        <e:Group visible="!{isPhaseFirstRound}" width="100%">
+        <e:Group visible="{isNormalClient}" width="100%">
             <e:Button enabled="false" width="100%" visible="{isWaiting}">
                 <e:Skin>
                     <e:Image source="wait-1-players-enough"></e:Image>
@@ -303,7 +309,7 @@
                 </e:Skin>
             </e:Button>
         </e:Group>
-        <e:Group visible="{isMasterClient}">
+        <e:Group visible="{isMasterClient}" width="100%">
             <e:Button enabled="false" width="100%" visible="{isWaiting}">
                 <e:Skin>
                     <e:Image source="wait-1-players-enough"></e:Image>
@@ -342,6 +348,7 @@
 					<e:Button id="ybrskillpass" label="跳过技能" x="-281" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
 					<e:Button id="zgqskill" label="郑国渠技能" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
 					<e:Button id="zgqskillpass" label="跳过技能" x="-281" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+        </e:Group>
         </e:Group>
     </e:Group>
 </e:Skin>
