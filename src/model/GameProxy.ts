@@ -30,7 +30,7 @@ module game {
 		public static ONE_YBRSKILL: string = "one_ybrskill";
 		public static ONE_ZGQSKILL: string = "one_zgqskill";
 		public static TOUREN: string = "touren";
-		public static TOUREN_JIEGUO:string="touren_jieguo";
+		public static TOUREN_JIEGUO: string = "touren_jieguo";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -314,26 +314,27 @@ module game {
 					this.sendNotification(GameProxy.TOUREN);
 					break;
 				}
-				case CustomPhotonEvents.tourenjieguo:{
-					const Nr= +message;
-					if (sender.actorNr==this.gameState.role[1].actorNr){
-						this.gameState.touren[1]=this.gameState.seats[Nr];
-					}else if(sender.actorNr==this.gameState.role[2].actorNr){
-						this.gameState.touren[2]=this.gameState.seats[Nr];
-					}else if(sender.actorNr==this.gameState.role[3].actorNr){
-						this.gameState.touren[3]=this.gameState.seats[Nr];
-					}else if(sender.actorNr==this.gameState.role[4].actorNr){
-						this.gameState.touren[4]=this.gameState.seats[Nr];
-					}else if(sender.actorNr==this.gameState.role[5].actorNr){
-						this.gameState.touren[5]=this.gameState.seats[Nr];
-					}else if(sender.actorNr==this.gameState.role[6].actorNr){
-						this.gameState.touren[6]=this.gameState.seats[Nr];
-					}else if(sender.actorNr==this.gameState.role[7].actorNr){
-						this.gameState.touren[7]=this.gameState.seats[Nr];
-					}else if(sender.actorNr==this.gameState.role[8].actorNr){
-						this.gameState.touren[8]=this.gameState.seats[Nr];
+				case CustomPhotonEvents.tourenjieguo: {
+					const Nr = +message;
+					if (this.gameState.role[1] && sender.actorNr == this.gameState.role[1].actorNr) {
+						this.gameState.touren[1] = this.gameState.seats[Nr];
+					} else if (this.gameState.role[2] && sender.actorNr == this.gameState.role[2].actorNr) {
+						this.gameState.touren[2] = this.gameState.seats[Nr];
+					} else if (this.gameState.role[3] && sender.actorNr == this.gameState.role[3].actorNr) {
+						this.gameState.touren[3] = this.gameState.seats[Nr];
+					} else if (this.gameState.role[4] && sender.actorNr == this.gameState.role[4].actorNr) {
+						this.gameState.touren[4] = this.gameState.seats[Nr];
+					} else if (this.gameState.role[5] && sender.actorNr == this.gameState.role[5].actorNr) {
+						this.gameState.touren[5] = this.gameState.seats[Nr];
+					} else if (this.gameState.role[6] && sender.actorNr == this.gameState.role[6].actorNr) {
+						this.gameState.touren[6] = this.gameState.seats[Nr];
+					} else if (this.gameState.role[7] && sender.actorNr == this.gameState.role[7].actorNr) {
+						this.gameState.touren[7] = this.gameState.seats[Nr];
+					} else if (this.gameState.role[8] && sender.actorNr == this.gameState.role[8].actorNr) {
+						this.gameState.touren[8] = this.gameState.seats[Nr];
 					}
-					this.sendNotification(GameProxy.TOUREN_JIEGUO,this.gameState.touren);
+					this.sendNotification(GameProxy.TOUREN_JIEGUO, this.gameState.touren);
+					console.log(this.gameState.touren);
 					break;
 				}
 			}

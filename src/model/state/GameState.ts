@@ -19,6 +19,10 @@ module game {
         public toupiao2: Array<any> = [];
         public toupiao3: Array<any> = [];
         public baowulist: Array<any> = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"];
+        public baowulist2: Array<any> = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"];
+        public toupiaojieguo1:Array<any> = [];
+        public toupiaojieguo2:Array<any> = [];
+        public toupiaojieguo3:Array<any> = [];
         public onezj: Array<any> = ["真", "真", "假", "假"];
         public twozj: Array<any> = ["真", "真", "假", "假"];
         public threezj: Array<any> = ["真", "真", "假", "假"];
