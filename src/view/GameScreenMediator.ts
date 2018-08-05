@@ -1718,6 +1718,10 @@ module game {
             }
         }
 
+        public baowu1_sx: number;
+        public baowu2_sx: number;
+        public baowu3_sx: number;
+        public baowu4_sx: number;
         public toupiaoend(message: string) {
             this.gameScreen.qingkong.visible = false;
             this.gameScreen.piaoshu.visible = false;
@@ -1739,6 +1743,45 @@ module game {
             this.gameScreen.toupiao21.text = this.baowu2.toString();
             this.gameScreen.toupiao31.text = this.baowu3.toString();
             this.gameScreen.toupiao41.text = this.baowu4.toString();
+
+            if (this.proxy.gameState.lunci == 1) {
+                this.baowu1_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[0]);
+                this.baowu2_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[1]);
+                this.baowu3_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[2]);
+                this.baowu4_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[3]);
+                this.proxy.gameState.toupiaojieguo1[0] = { baowu: this.proxy.gameState.baowulist[0], piaoshu: this.baowu1, sx: this.baowu1_sx, zhenjia: this.proxy.gameState.onezj[0] };
+                this.proxy.gameState.toupiaojieguo1[1] = { baowu: this.proxy.gameState.baowulist[1], piaoshu: this.baowu2, sx: this.baowu2_sx, zhenjia: this.proxy.gameState.onezj[1] };
+                this.proxy.gameState.toupiaojieguo1[2] = { baowu: this.proxy.gameState.baowulist[2], piaoshu: this.baowu3, sx: this.baowu3_sx, zhenjia: this.proxy.gameState.onezj[2] };
+                this.proxy.gameState.toupiaojieguo1[3] = { baowu: this.proxy.gameState.baowulist[3], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.onezj[3] };
+                this.proxy.gameState.toupiaojieguo1 = _(this.proxy.gameState.toupiaojieguo1).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
+                console.log(this.proxy.gameState.toupiaojieguo1);
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo1[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo1[1].baowu + "  " + this.proxy.gameState.toupiaojieguo1[1].zhenjia);
+            } else if (this.proxy.gameState.lunci == 2) {
+                this.baowu1_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[4]);
+                this.baowu2_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[5]);
+                this.baowu3_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[6]);
+                this.baowu4_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[7]);
+                this.proxy.gameState.toupiaojieguo2[0] = { baowu: this.proxy.gameState.baowulist[4], piaoshu: this.baowu1, sx: this.baowu1_sx, zhenjia: this.proxy.gameState.twozj[0] };
+                this.proxy.gameState.toupiaojieguo2[1] = { baowu: this.proxy.gameState.baowulist[5], piaoshu: this.baowu2, sx: this.baowu2_sx, zhenjia: this.proxy.gameState.twozj[1] };
+                this.proxy.gameState.toupiaojieguo2[2] = { baowu: this.proxy.gameState.baowulist[6], piaoshu: this.baowu3, sx: this.baowu3_sx, zhenjia: this.proxy.gameState.twozj[2] };
+                this.proxy.gameState.toupiaojieguo2[3] = { baowu: this.proxy.gameState.baowulist[7], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.twozj[3] };
+                this.proxy.gameState.toupiaojieguo2 = _(this.proxy.gameState.toupiaojieguo2).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
+                console.log(this.proxy.gameState.toupiaojieguo2);
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo2[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo2[1].baowu + "  " + this.proxy.gameState.toupiaojieguo2[1].zhenjia);
+            } else if (this.proxy.gameState.lunci == 3) {
+                this.baowu1_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[8]);
+                this.baowu2_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[9]);
+                this.baowu3_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[10]);
+                this.baowu4_sx = this.proxy.gameState.baowulist2.findIndex(baowu => baowu == this.proxy.gameState.baowulist[11]);
+                this.proxy.gameState.toupiaojieguo3[0] = { baowu: this.proxy.gameState.baowulist[8], piaoshu: this.baowu1, sx: this.baowu1_sx, zhenjia: this.proxy.gameState.threezj[0] };
+                this.proxy.gameState.toupiaojieguo3[1] = { baowu: this.proxy.gameState.baowulist[9], piaoshu: this.baowu2, sx: this.baowu2_sx, zhenjia: this.proxy.gameState.threezj[1] };
+                this.proxy.gameState.toupiaojieguo3[2] = { baowu: this.proxy.gameState.baowulist[10], piaoshu: this.baowu3, sx: this.baowu3_sx, zhenjia: this.proxy.gameState.threezj[2] };
+                this.proxy.gameState.toupiaojieguo3[3] = { baowu: this.proxy.gameState.baowulist[11], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.threezj[3] };
+                this.proxy.gameState.toupiaojieguo3 = _(this.proxy.gameState.toupiaojieguo3).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
+                console.log(this.proxy.gameState.toupiaojieguo3);
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo3[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo3[1].baowu + "  " + this.proxy.gameState.toupiaojieguo3[1].zhenjia);
+            }
+
             if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
                 this.gameScreen.startno2.visible = true;
             }
@@ -1799,14 +1842,38 @@ module game {
             this.gameScreen.toupiao41.visible = false;
             this.gameScreen.startno2.visible = false;
             this.proxy.gameState.lunci = 99;
-            this.gameScreen.shunwei1.enabled = true;
-            this.gameScreen.shunwei2.enabled = true;
-            this.gameScreen.shunwei3.enabled = true;
-            this.gameScreen.shunwei4.enabled = true;
-            this.gameScreen.shunwei5.enabled = true;
-            this.gameScreen.shunwei6.enabled = true;
-            this.gameScreen.shunwei7.enabled = true;
-            this.gameScreen.shunwei8.enabled = true;
+            this.gameScreen.shunwei1.visible = true;
+            this.gameScreen.shunwei2.visible = true;
+            this.gameScreen.shunwei3.visible = true;
+            this.gameScreen.shunwei4.visible = true;
+            this.gameScreen.shunwei5.visible = true;
+            this.gameScreen.shunwei6.visible = true;
+            this.gameScreen.shunwei7.visible = true;
+            this.gameScreen.shunwei8.visible = true;
+            if (!this.proxy.gameState.seats[1]) {
+                this.gameScreen.shunwei1.visible = false;
+            }
+            if (!this.proxy.gameState.seats[2]) {
+                this.gameScreen.shunwei2.visible = false;
+            }
+            if (!this.proxy.gameState.seats[3]) {
+                this.gameScreen.shunwei3.visible = false;
+            }
+            if (!this.proxy.gameState.seats[4]) {
+                this.gameScreen.shunwei4.visible = false;
+            }
+            if (!this.proxy.gameState.seats[5]) {
+                this.gameScreen.shunwei5.visible = false;
+            }
+            if (!this.proxy.gameState.seats[6]) {
+                this.gameScreen.shunwei6.visible = false;
+            }
+            if (!this.proxy.gameState.seats[7]) {
+                this.gameScreen.shunwei7.visible = false;
+            }
+            if (!this.proxy.gameState.seats[8]) {
+                this.gameScreen.shunwei8.visible = false;
+            }
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])
                 || this.proxy.isActorLocal(this.proxy.gameState.role[2])
                 || this.proxy.isActorLocal(this.proxy.gameState.role[3])
@@ -1822,8 +1889,56 @@ module game {
             }
         }
 
-        public tourenjieguo(message: string) {
-            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "选人结果");
+        public tourenjieguo(touren: Array<any>) {
+            let message1: string;
+            let message2: string;
+            let message3: string;
+            let i: number = 0;
+            touren.forEach(element => {
+                if (element) {
+                    i++;
+                }
+            });
+
+            if (i == this.roomrenshu) {
+                let lcfpiao: number = 0;
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[1] == this.proxy.gameState.role[6]) {
+                    lcfpiao++;
+                }
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[2] == this.proxy.gameState.role[6]) {
+                    lcfpiao++;
+                }
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[3] == this.proxy.gameState.role[6]) {
+                    lcfpiao++;
+                }
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[4] == this.proxy.gameState.role[6]) {
+                    lcfpiao++;
+                }
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[5] == this.proxy.gameState.role[6]) {
+                    lcfpiao++;
+                }
+                if (lcfpiao >= 3) {
+                    //找到老朝奉
+                    message1 = "找到老朝奉";
+                } else {
+                    message1 = "没找到老朝奉";
+                }
+                if (this.proxy.gameState.role[1] && this.proxy.gameState.touren[6] == this.proxy.gameState.role[1]) {
+                    //找到许愿
+                    message2 = "找到许愿";
+                } else {
+                    message2 = "没找到许愿";
+                }
+                if (this.proxy.gameState.role[2] && this.proxy.gameState.touren[7] == this.proxy.gameState.role[2]) {
+                    //找到方震
+                    message3 = "找到方震";
+                } else {
+                    message3 = "没找到方震";
+                }
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, message1 + " " + message2 + " " + message3);
+                //this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "游戏结果");
+            }
+
         }
     }
 }
