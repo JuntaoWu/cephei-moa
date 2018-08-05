@@ -255,7 +255,7 @@ module game {
 				this.loadBalancingClient.createRoom(this.roomName, {
 					isVisible: true,
 					isOpen: true,
-					maxPlayers: 2,
+					maxPlayers: this.gameState.maxPlayers,
 					suspendedPlayerLiveTime: -1,
 					emptyRoomLiveTime: 12000,
 					uniqueUserId: false,

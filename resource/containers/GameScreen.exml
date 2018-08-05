@@ -89,7 +89,7 @@
                          verticalCenter="0" size="25" bold="true"></e:Label>
             </e:Group>
         </e:Group>
-        <e:Group horizontalCenter="0" visible="false">
+        <e:Group horizontalCenter="0" visible="{isPhaseFirstRound}">
             <e:Label text="第一轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Group y="40" horizontalCenter="0">
                 <e:Label text="你是" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
@@ -129,7 +129,7 @@
                 </e:Group>
             </e:Group>
         </e:Group>
-        <e:Group width="600" height="536.36" x="-22.94" y="0" anchorOffsetX="0" anchorOffsetY="0">
+        <e:Group visible="{isPhaseFirstRound}" width="600" height="536.36" x="-22.94" y="0" anchorOffsetX="0" anchorOffsetY="0">
             <e:Button id="shunwei1" label="Button" x="69.00000000000001" y="107" anchorOffsetX="0" width="100"
                       anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
 					<e:Button id="shunwei2" label="Button" x="208.99999999999997" y="107" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1"/>
@@ -193,7 +193,7 @@
             <e:Button id="qingkong" label="清空票数" x="269" y="30" width="100" height="50" />
         </e:Group>
     </e:Group>
-    <e:Group anchorOffsetY="0" y="700" anchorOffsetX="0" width="620" horizontalCenter="0">
+    <e:Group anchorOffsetY="0" y="600" anchorOffsetX="0" width="620" horizontalCenter="0">
         <e:Button id="btnSeat1" label="">
             <e:Skin>
                 <e:Image source="head_bg" x="20" y="15" />
@@ -268,6 +268,7 @@
         </e:Button>
     </e:Group>
     <e:Group id="navigationBar" width="640" y="1059" height="130">
+        <e:Group visible="!{isPhaseFirstRound}">
         <e:Group visible="{isNormalClient}">
             <e:Button enabled="false" width="100%" visible="{isWaiting}">
                 <e:Skin>
@@ -309,7 +310,8 @@
             <e:Button visible="{isPhaseStartGame}" id="startgame" label="开始第一轮" x="-0.9499999999999886" y="0"
                       anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1" />
         </e:Group>
-        <e:Group width="243.94" height="87.88" x="300.95" y="15" anchorOffsetY="0" anchorOffsetX="0">
+        </e:Group>
+        <e:Group visible="{isPhaseFirstRound}" width="243.94" height="87.88" x="300.95" y="15" anchorOffsetY="0" anchorOffsetX="0">
             <e:Button id="onegameend" label="开始发言" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
                       height="90" scaleX="1" scaleY="1" />
             <e:Button id="onespeakend" label="开始投票" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
