@@ -129,7 +129,7 @@
                 </e:Group>
             </e:Group>
         </e:Group>
-        <e:Group visible="{isPhaseFirstRound}" width="600" height="536.36" x="-22.94" y="0" anchorOffsetX="0" anchorOffsetY="0">
+        <e:Group width="600" height="536.36" x="-22.94" y="0" anchorOffsetX="0" anchorOffsetY="0" visible="{isPhaseFirstRound}">
             <e:Button id="shunwei1" label="Button" x="69.00000000000001" y="107" anchorOffsetX="0" width="100"
                       anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
 					<e:Button id="shunwei2" label="Button" x="208.99999999999997" y="107" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1"/>
@@ -146,7 +146,7 @@
 					<e:Button id="ybrskill5" label="Button" x="79.00000000000001" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
 					<e:Button id="ybrskill6" label="Button" x="218.99999999999997" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
 					<e:Button id="ybrskill7" label="Button" x="359" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
-					<e:Button id="ybrskill8" label="Button" x="499.00000000000006" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>
+					<e:Button id="ybrskill8" label="Button" x="499.00000000000006" y="367.00000000000006" anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1"/>                    
             <e:Button id="fangzhenskill1" label="Button" x="79.00000000000001" y="117" anchorOffsetX="0" width="100"
                       anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
 
@@ -191,6 +191,18 @@
             <e:Label id="piaoshu" text="0/2" x="81.4" y="42.47" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
                      height="33.03" textColor="0x000000" textAlign="center" />
             <e:Button id="qingkong" label="清空票数" x="269" y="30" width="100" height="50" />
+            <e:Button id="zgqskill1" label="Button" x="59" y="97" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="zgqskill2" label="Button" x="339" y="97" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="zgqskill3" label="Button" x="59" y="347" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="zgqskill4" label="Button" x="339" y="347" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="Anim5" label="Button" x="59" y="97" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="Anim6" label="Button" x="339" y="97" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="Anim7" label="Button" x="59" y="347" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="Anim8" label="Button" x="339" y="347" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="Anim9" label="Button" x="59" y="97" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="Anim10" label="Button" x="339" y="97" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="Anim11" label="Button" x="59" y="347" width="200" height="200" scaleX="1" scaleY="1" />
+            <e:Button id="Anim12" label="Button" x="339" y="347" width="200" height="200" scaleX="1" scaleY="1" />
         </e:Group>
     </e:Group>
     <e:Group anchorOffsetY="0" y="600" anchorOffsetX="0" width="620" horizontalCenter="0">
@@ -328,6 +340,8 @@
                       height="90" scaleX="1" scaleY="1" />
 					<e:Button id="ybrskill" label="药不然技能" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
 					<e:Button id="ybrskillpass" label="跳过技能" x="-281" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+					<e:Button id="zgqskill" label="郑国渠技能" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
+					<e:Button id="zgqskillpass" label="跳过技能" x="-281" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0" height="90" scaleX="1" scaleY="1"/>
         </e:Group>
     </e:Group>
 </e:Skin>
