@@ -39,6 +39,7 @@ module game {
         public twozgqskill: number = 100;
         public threezgqskill: number = 100;
         public lunci:number=1;
+        public defen:number=0;
 
         //public initialized: boolean = false;
     }
