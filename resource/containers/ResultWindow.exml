@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.ResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
+    <e:Image source="start-background" left="0" right="0" bottom="0" top="0"/>
+    <e:Scroller id="contentScroller" horizontalCenter="0">
+        <e:viewport>
+            <e:Group>
+                <e:Group  horizontalCenter="0" y="40">
+                    <e:Image source="jzj" />
+                    <e:Image source="true2"  x="75"/>
+                    <e:Image source="share_team_xu"  x="180"/>
+                    <e:Image source="teasure12"  x="180" y="47"/>
+
+                    <e:Image source="result2"  y="110" horizontalCenter="0"/>
+
+                    <e:Image source="lose"  y="280" horizontalCenter="0"/>
+                </e:Group>
+                <e:Group y="730">
+                    <e:Image source="round1" horizontalCenter="0"/>
+                </e:Group>
+                <e:Group y="845">
+                    <e:Image source="round2" horizontalCenter="0"/>
+                </e:Group>
+                <e:Group y="950">
+                    <e:Image source="round3" horizontalCenter="0"/>
+                </e:Group>
+                <e:Group y="1050" horizontalCenter="0">
+                    <e:Label text="鉴宝部分许愿方得分" textColor="0x050505"/>
+                    <e:Label text="4" textColor="0xa50606" x="315"/>
+                </e:Group>
+                <e:Group y="1150" horizontalCenter="0">
+                    <e:Group scaleX="0.8" scaleY="0.8">
+                        <e:Label text="许愿" textColor="0x000000" horizontalCenter="0" />
+                        <e:Image name="normalBg" source="head_bg"  y="50"/>
+                        <e:Image source="red" x="-20" y="35" />
+                    </e:Group>
+                    <e:Group x="170" scaleX="0.8" scaleY="0.8">
+                        <e:Label text="老朝奉" textColor="0x000000" horizontalCenter="0" />
+                        <e:Image name="normalBg" source="head_bg"  y="50"/>
+                        <e:Image source="red" x="-20" y="35" />
+                    </e:Group>
+                    <e:Group x="340" scaleX="0.8" scaleY="0.8">
+                        <e:Label text="方震" textColor="0x000000" horizontalCenter="0" />
+                        <e:Image name="normalBg" source="head_bg"  y="50"/>
+                        <e:Image source="red" x="-20" y="35" />
+                    </e:Group>
+                    <e:Group y="200" horizontalCenter="0">
+                        <e:Label text="许愿方投票结果" textColor="0x050505" horizontalCenter="0"/>
+                        
+                        <e:Group y="55" scaleX="0.8" scaleY="0.8">
+                            <e:Group>
+                                <e:Image name="normalBg" source="head_bg" />
+                                <e:Image source="red" x="-20" y="-15" />
+                                <e:Label text="方震" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                            <e:Image source="vote1" verticalCenter="0" x="140"/>
+                            <e:Group x="182">
+                                <e:Image name="normalBg" source="head_bg" />
+                                <e:Image source="red" x="-20" y="-15" />
+                                <e:Label text="方震" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                        </e:Group>
+                    </e:Group>
+                </e:Group>
+                <e:Group y="1647" horizontalCenter="0">
+                    <e:Group x="0">
+                        <e:Label text="老朝奉找许愿" textColor="0x050505" horizontalCenter="0"/>
+                        
+                        <e:Group y="55" scaleX="0.8" scaleY="0.8">
+                            <e:Group>
+                                <e:Image name="normalBg" source="head_bg" />
+                                <e:Image source="red" x="-20" y="-15" />
+                                <e:Label text="方震" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                            <e:Image source="vote1" verticalCenter="0" x="140"/>
+                            <e:Group x="182">
+                                <e:Image name="normalBg" source="head_bg" />
+                                <e:Image source="red" x="-20" y="-15" />
+                                <e:Label text="方震" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                        </e:Group>
+                    </e:Group>
+                    <e:Group x="320">
+                        <e:Label text="药不然找方震" textColor="0x050505" horizontalCenter="0"/>
+                        
+                        <e:Group y="55" scaleX="0.8" scaleY="0.8">
+                            <e:Group>
+                                <e:Image name="normalBg" source="head_bg" />
+                                <e:Image source="red" x="-20" y="-15" />
+                                <e:Label text="方震" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                            <e:Image source="vote1" verticalCenter="0" x="140"/>
+                            <e:Group x="182">
+                                <e:Image name="normalBg" source="head_bg" />
+                                <e:Image source="red" x="-20" y="-15" />
+                                <e:Label text="方震" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                        </e:Group>
+                    </e:Group>
+                </e:Group>
+                <e:Group y="1900" horizontalCenter="0">
+                    <e:Label text="鉴人部分许愿方得分" textColor="0x050505"/>
+                    <e:Label text="4" textColor="0xa50606" x="315"/>
+                </e:Group>
+                
+                <e:Group y="1970" horizontalCenter="0">
+                    <e:Label text="许愿方总分" textColor="0x050505" size="40"/>
+                    <e:Label text="4" textColor="0xa50606" x="220" verticalCenter="0"/>
+                </e:Group>
+                <e:Group y="2000" horizontalCenter="0" height="150">
+                </e:Group>
+            </e:Group>
+        </e:viewport>
+    </e:Scroller>
+    
+    <e:Group id="navigationBar" y="1011" width="640" >
+        <e:Button id="shareButton" anchorOffsetY="0" anchorOffsetX="0" left="70">
+            <e:Skin states="up,down">
+                <e:Image source="share2" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+            </e:Skin>
+        </e:Button>
+        <e:Button id="confirmButton" anchorOffsetY="0" anchorOffsetX="0" right="70">
+            <e:Skin states="up,down">
+                <e:Image source="ok3" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+</e:Skin>

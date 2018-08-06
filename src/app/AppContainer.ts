@@ -123,10 +123,10 @@ module game {
             this.popupRoleWindow.show();
         }
         
-        public popupResultWindow: PopupResultWindow;
+        public popupResultWindow: PopupVoteResultWindow;
         public showPopupResultWindow(): void {
             if (!this.popupResultWindow) {
-                this.popupResultWindow = new PopupResultWindow();
+                this.popupResultWindow = new PopupVoteResultWindow();
             }
             this.addChild(this.popupResultWindow);
             this.popupResultWindow.show();

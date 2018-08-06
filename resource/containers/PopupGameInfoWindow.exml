@@ -4,18 +4,18 @@
     <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="1000">
         <e:Group left="70" y="61">
             <e:Label text="你" bold="true" textColor="0x000000" x="30"/>
-            <e:Image source="btn-help" y="40"></e:Image>
+            <e:Image source="{role.res}" y="40"></e:Image>
             <e:Group x="150" y="44">
-                <e:Label text="测试1" bold="true" textColor="0x000000" horizontalCenter="0"/>
-                <e:Label text="许愿阵营" bold="true" textColor="0x000000" y="40" horizontalCenter="0"/>
-                <e:Label text="许愿" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>
+                <e:Label text="{userName}" bold="true" textColor="0x000000" horizontalCenter="0"/>
+                <e:Label text="{role.camp}" bold="true" textColor="0x000000" y="40" horizontalCenter="0"/>
+                <e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>
             </e:Group>
         </e:Group>
         <e:Group left="70" y="235">
-            <e:Image source="huangyanyan"></e:Image>
-            <e:Group x="150" height="100%">
-                <e:Label text="许愿阵营" bold="true" textColor="0x000000" y="40" horizontalCenter="0"/>
-                <e:Label text="许愿" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>
+            <e:Image source="{role.skillRes}"></e:Image>
+            <e:Group x="150" height="100%" verticalCenter="0">
+                <e:Label text="{role.skillDescription}" bold="true" textColor="0x000000" horizontalCenter="0" verticalCenter="0"/>
+                <!--<e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>-->
             </e:Group>
         </e:Group>
         <e:Group left="70" y="400">

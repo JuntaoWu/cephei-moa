@@ -1,0 +1,58 @@
+{
+  "许愿": {
+    "name": "许愿",
+    "res": "role1",
+    "camp": "许愿阵营",
+    "skillDescription": "每轮可鉴定两个宝物",
+    "skillRes": ""
+  },
+  "方震": {
+    "name": "方震",
+    "res": "role2",
+    "camp": "许愿阵营",
+    "skillDescription": "",
+    "skillRes": ""
+  },
+  "姬云浮": {
+    "name": "姬云浮",
+    "res": "role3",
+    "camp": "许愿阵营",
+    "skillDescription": "",
+    "skillRes": ""
+  },
+  "黄烟烟": {
+    "name": "黄烟烟",
+    "res": "role4-5",
+    "camp": "许愿阵营",
+    "skillDescription": "",
+    "skillRes": ""
+  },
+  "木户加奈": {
+    "name": "木户加奈",
+    "res": "role4-5",
+    "camp": "许愿阵营",
+    "skillDescription": "",
+    "skillRes": ""
+  },
+  "老朝奉": {
+    "name": "老朝奉",
+    "res": "role6",
+    "camp": "老朝奉阵营",
+    "skillDescription": "",
+    "skillRes": ""
+  },
+  "药不然": {
+    "name": "药不然",
+    "res": "role7",
+    "camp": "老朝奉阵营",
+    "skillDescription": "",
+    "skillRes": ""
+  },
+  "郑国渠": {
+    "name": "郑国渠",
+    "res": "role8",
+    "camp": "老朝奉阵营",
+    "skillDescription": "",
+    "skillRes": ""
+  }
+}

@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
+<e:Skin class="skins.PopupVoteResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
     <game:Shade id="overlay" />
     <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="650">
-        <e:Group id="appraisalGroup" visible="false" horizontalCenter="0" y="120">    
-            <e:Group horizontalCenter="0" width="500">
-                <e:Image source="t1"></e:Image>
-                <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" x="148" bold="true"/>
-                <e:Label text="鉴定结果为" verticalCenter="0" x="220" textColor="0x020202" bold="true"/>
-                <e:Image source="true" verticalCenter="0" x="379"></e:Image>
-            </e:Group>
-            <e:Group horizontalCenter="0" width="500" y="180">
-                <e:Image source="t1"></e:Image>
-                <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" x="148" bold="true"/>
-                <e:Label text="鉴定结果为" verticalCenter="0" x="220" textColor="0x020202" bold="true"/>
-                <e:Image source="true" verticalCenter="0" x="379"></e:Image>
-            </e:Group>
-        </e:Group>
         <e:Group id="voteGroup" horizontalCenter="0" bottom="170">
             <e:Label text="投票结果" textColor="0x020202" bold="true" horizontalCenter="0" size="20"/>
             <e:Group horizontalCenter="0" y="30">

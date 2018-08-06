@@ -10,15 +10,26 @@ module game {
         //public static Endpoint: string = "";
 
         public static Endpoints = {
-            photonMasterServer: "127.0.0.1:9090",
+            // photonMasterServer: "127.0.0.1:9090",
             //photonAsyncService: "http://127.0.0.1:44301/api",
             //photonNotificationService: "http://127.0.0.1:44302",
-            //photonMasterServer: "192.168.2.202:9090",
+            photonMasterServer: "192.168.2.202:9090",
             // photonAsyncService: "http://192.168.2.202:44301/api",
             // photonNotificationService: "http://192.168.2.202:44302",
         }
 
         public static photonMasterServer: string = "";
+    }
+
+    export const gameType = {
+        six: "六人局",
+        seven: "七人局",
+        eight: "八人局",
+    }
+
+    export const gameCamp = {
+        xuyuan: "许愿阵营",
+        laochaofen: "老朝奉阵营",
     }
 
 }
