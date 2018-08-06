@@ -50,7 +50,7 @@ module game {
                     break;
                 case GameProxy.FINISH_INPUT:
                     this.numStr = "";
-                    this.joinWindow.txtRoomName.text = this.numStr;
+                    // this.joinWindow.txtRoomName.text = this.numStr;
                     this.confirmClick();
                     this.joinWindow.close();
                     break;

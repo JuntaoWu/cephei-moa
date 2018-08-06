@@ -20,7 +20,8 @@ module game {
 
             const userInfo = await accountProxy.loadUserInfo();
             let role = "许愿"
-            this.popupGameInfoWindow.role = this.proxy.roleMap.get(role);
+            //todo: 
+            //this.popupGameInfoWindow.role = this.proxy.rolesMap.get(role);
             this.popupGameInfoWindow.userName = userInfo.nickName;
         }
 

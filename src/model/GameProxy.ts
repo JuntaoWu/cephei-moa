@@ -53,14 +53,6 @@ module game {
 		public isActorLocal(actorModel: ActorModel): boolean {
 			return actorModel && actorModel.actorNr == this.loadBalancingClient.myActor().actorNr;
 		}
-
-		private _roleMap : Map<string, any>;
-		public get roleMap() : Map<string, any> {
-			if(!this._roleMap) {
-				this._roleMap = new Map<string, any>(Object.entries(RES.getRes("role_json")));
-			}
-			return this._roleMap;
-		}
 		
 		private _antiquesMap : Map<string, any>;
 		public get antiquesMap() : Map<string, any> {
@@ -86,10 +78,6 @@ module game {
 			}
 			return this._rolesMap;
 		}
-		public set rolesMap(v: Map<string, any>) {
-			this._rolesMap = v;
-		}
-
 
 		private _loadBalancingClient: MyLoadBalancingClient;
 		public get loadBalancingClient(): MyLoadBalancingClient {
