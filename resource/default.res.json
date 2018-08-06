@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background,btn-guide,rank1,rank2,rank3,rank_bg,sep,btn-back,auth_rate_2,fang1,fang2,game6_1,game6_2,game7_1,game7_2,game8_1,game8_2,auth_player_1,auth_player_2,auth_rate_1,huang2,ji1,ji2,jushu1,jushu2,lao1,lao2,mu1,mu2,huang1,xu1,xu2,yao1,yao2,zheng1,zheng2,team_lao_3,team_lao_4,team_xu_3,team_xu_4,win_rate_1,win_rate_2,total_rate_2,total_play_1,total_play_2,total_rate_1,setting2,about,close,back_2,room8,score2,team_lao_2,team_xu_2,win_rate,room6,room7,meihua,btn-create-small,btn-join-small,wait-1-players-enough,wait-2-master-confirm,wait-3-set-identity,wait-4-others-process,wait-5-vote,wait-6-others-vote,enter-info,vote_over,auth3,auth4,cancel,cancel2,enter_info,ok,ok_2,ok2,ok3,ok4,skip,skip2,btn-start,talk_over,black_2,white_2,round2,round3,round1,t12,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,false,true,self_info,game-box-border,auth2,bg3,bg2,role_json,role1,role7,role8,role3,role4-5,role6,btn-role,btn-role2,auth3_png,auth4_png,btn-back_png,cancel_png,cancel2_png,enter_info_png,ok_png,ok2_png,ok3_png,ok4_png,ok_2_png,skip_png,skip2_png,start_png,talk_over_png,vote_over_png,rank1_png,rank2_png,rank3_png,rank_bg_png,sep_png,about_png,setting2_png,black_2_png,white_2_png,auth_player_1_png,auth_player_2_png,auth_rate_1_png,auth_rate_2_png,btn-role_png,btn-role2_png,fang1_png,fang2_png,game6_1_png,game6_2_png,game7_1_png,game7_2_png,game8_1_png,game8_2_png,huang1_png,huang2_png,ji1_png,ji2_png,jushu1_png,jushu2_png,lao1_png,lao2_png,mu1_png,mu2_png,team_lao_3_png,team_lao_4_png,team_xu_3_png,team_xu_4_png,total_play_1_png,total_play_2_png,total_rate_1_png,total_rate_2_png,win_rate_1_png,win_rate_2_png,xu1_png,xu2_png,yao1_png,yao2_png,zheng1_png,zheng2_png,role2_json,auth2_png,bg2_png,bg3_png,enter-info_png,false_png,game-box-border_png,role1_png,role2_png,role3_png,role4-5_png,role6_png,role7_png,role8_png,round1_png,round2_png,round3_png,self_info_png,t1_png,t10_png,t11_png,t12_png,t2_png,t3_png,t4_png,t5_png,t6_png,t7_png,t8_png,t9_png,true_png,wait-1-players-enough_png,wait-2-master-confirm_png,wait-3-set-identity_png,wait-4-others-process_png,wait-5-vote_png,wait-6-others-vote_png,meihua_png,room6_png,room7_png,room8_png,score2_png,team_lao_2_png,team_xu_2_png,win_rate_png,back_2_png,close_png,btn-create-small_png,btn-guide_png,btn-join-small_png,number-keyboard-bg,numberKeyboard_png,input_cancel,input_ok,input_room,input_vote,num_del,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,manual1,manual2,manual3,manual4,manual5,video3,video1,video2,seat_json,game-term_json,antiques_json,seats_json,seats2_json",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background,btn-guide,rank1,rank2,rank3,rank_bg,sep,btn-back,auth_rate_2,fang1,fang2,game6_1,game6_2,game7_1,game7_2,game8_1,game8_2,auth_player_1,auth_player_2,auth_rate_1,huang2,ji1,ji2,jushu1,jushu2,lao1,lao2,mu1,mu2,huang1,xu1,xu2,yao1,yao2,zheng1,zheng2,team_lao_3,team_lao_4,team_xu_3,team_xu_4,win_rate_1,win_rate_2,total_rate_2,total_play_1,total_play_2,total_rate_1,setting2,about,close,back_2,room8,score2,team_lao_2,team_xu_2,win_rate,room6,room7,meihua,btn-create-small,btn-join-small,wait-1-players-enough,wait-2-master-confirm,wait-3-set-identity,wait-4-others-process,wait-5-vote,wait-6-others-vote,enter-info,vote_over,auth3,auth4,cancel,cancel2,enter_info,ok,ok_2,ok2,ok3,ok4,skip,skip2,btn-start,talk_over,black_2,white_2,round2,round3,round1,t12,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,false,true,self_info,game-box-border,auth2,bg3,bg2,role_json,role1,role7,role8,role3,role4-5,role6,btn-role,btn-role2,btn-back_png,cancel_png,cancel2_png,enter_info_png,ok_png,ok2_png,ok3_png,ok4_png,ok_2_png,skip_png,start_png,talk_over_png,vote_over_png,rank1_png,rank2_png,rank3_png,rank_bg_png,sep_png,about_png,setting2_png,black_2_png,white_2_png,btn-role_png,btn-role2_png,fang1_png,fang2_png,game6_1_png,game6_2_png,game7_1_png,game7_2_png,game8_1_png,game8_2_png,huang1_png,huang2_png,ji1_png,ji2_png,jushu1_png,jushu2_png,lao1_png,lao2_png,mu1_png,mu2_png,team_lao_3_png,team_lao_4_png,team_xu_3_png,team_xu_4_png,total_play_1_png,total_play_2_png,total_rate_1_png,total_rate_2_png,win_rate_1_png,win_rate_2_png,xu1_png,xu2_png,yao1_png,yao2_png,zheng1_png,zheng2_png,bg2_png,bg3_png,enter-info_png,false_png,game-box-border_png,role1_png,role2_png,role3_png,role4-5_png,role6_png,role7_png,role8_png,round1_png,round2_png,round3_png,self_info_png,t1_png,t10_png,t11_png,t12_png,t2_png,t3_png,t4_png,t5_png,t6_png,t7_png,t8_png,t9_png,true_png,wait-1-players-enough_png,wait-2-master-confirm_png,wait-3-set-identity_png,wait-4-others-process_png,wait-5-vote_png,wait-6-others-vote_png,meihua_png,room6_png,room7_png,room8_png,score2_png,team_lao_2_png,team_xu_2_png,win_rate_png,back_2_png,close_png,btn-create-small_png,btn-guide_png,btn-join-small_png,number-keyboard-bg,numberKeyboard_png,input_cancel,input_ok,input_room,input_vote,num_del,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,manual1,manual2,manual3,manual4,manual5,video3,video1,video2,seat_json,game-term_json,antiques_json,seats_json,seats2_json",
 			"name": "preload"
 		},
 		{
@@ -992,16 +992,6 @@
 			"name": "game-term_json"
 		},
 		{
-			"url": "assets/Button/auth3.png",
-			"type": "image",
-			"name": "auth3_png"
-		},
-		{
-			"url": "assets/Button/auth4.png",
-			"type": "image",
-			"name": "auth4_png"
-		},
-		{
 			"url": "assets/Button/btn-back.png",
 			"type": "image",
 			"name": "btn-back_png"
@@ -1050,11 +1040,6 @@
 			"url": "assets/Button/skip.png",
 			"type": "image",
 			"name": "skip_png"
-		},
-		{
-			"url": "assets/Button/skip2.png",
-			"type": "image",
-			"name": "skip2_png"
 		},
 		{
 			"url": "assets/Button/start.png",
@@ -1115,26 +1100,6 @@
 			"url": "assets/RadioButton/white_2.png",
 			"type": "image",
 			"name": "white_2_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/rank/auth_player_1.png",
-			"type": "image",
-			"name": "auth_player_1_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/rank/auth_player_2.png",
-			"type": "image",
-			"name": "auth_player_2_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/rank/auth_rate_1.png",
-			"type": "image",
-			"name": "auth_rate_1_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/rank/auth_rate_2.png",
-			"type": "image",
-			"name": "auth_rate_2_png"
 		},
 		{
 			"url": "assets/ToggleSwitch/rank/btn-role.png",
@@ -1315,16 +1280,6 @@
 			"url": "assets/ToggleSwitch/rank/zheng2.png",
 			"type": "image",
 			"name": "zheng2_png"
-		},
-		{
-			"url": "assets/config/role.json",
-			"type": "json",
-			"name": "role2_json"
-		},
-		{
-			"url": "assets/game/auth2.png",
-			"type": "image",
-			"name": "auth2_png"
 		},
 		{
 			"url": "assets/game/bg2.png",
@@ -1567,19 +1522,19 @@
 			"name": "btn-join-small_png"
 		},
 		{
-			"name": "antiques_json",
+			"url": "config/antiques.json",
 			"type": "json",
-			"url": "config/antiques.json"
+			"name": "antiques_json"
 		},
 		{
-			"name": "seats_json",
+			"url": "config/seats.json",
 			"type": "json",
-			"url": "config/seats.json"
+			"name": "seats_json"
 		},
 		{
-			"name": "seats2_json",
+			"url": "config/seats.json",
 			"type": "json",
-			"url": "config/seats.json"
+			"name": "seats2_json"
 		}
 	]
 }

@@ -71,6 +71,19 @@ module game {
 			return this._seatsMap;
 		}
 
+
+		private _rolesMap: Map<string, any>;
+		public get rolesMap(): Map<string, any> {
+			if (!this._rolesMap) {
+				this._rolesMap = new Map<string, any>(Object.entries(RES.getRes("role_json")));
+			}
+			return this._rolesMap;
+		}
+		public set rolesMap(v: Map<string, any>) {
+			this._rolesMap = v;
+		}
+
+
 		private _loadBalancingClient: MyLoadBalancingClient;
 		public get loadBalancingClient(): MyLoadBalancingClient {
 			if (!this._loadBalancingClient) {

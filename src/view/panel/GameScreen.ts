@@ -13,6 +13,7 @@ module game {
 
         //bindings:
         public roomName: string = "";
+        public role: any;
         public isMasterClient: boolean = false;
         public isNormalClient: boolean = true;
         public currentPlayers: number = 0;
@@ -33,6 +34,7 @@ module game {
 
         public isMyTurn = false;
         public isOthersTurn = false;
+        public isAuthing = false;
 
         public isPhasePreparing: boolean = false;
         public isPhaseChoosingRole: boolean = false;
@@ -63,6 +65,8 @@ module game {
         public btnjs8: eui.Button;
         public startjs: eui.Button;
         public startgame: eui.Button;
+        public btnAuth: eui.Button;
+        public btnSkipAuth: eui.Button;
         public Anim1: eui.Button;
         public Anim2: eui.Button;
         public Anim3: eui.Button;

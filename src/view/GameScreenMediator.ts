@@ -2,10 +2,27 @@
 
 module game {
 
+    const animConfig = [
+        { controlName: "Anim1", index: 0 },
+        { controlName: "Anim2", index: 1 },
+        { controlName: "Anim3", index: 2 },
+        { controlName: "Anim4", index: 3 },
+        { controlName: "Anim5", index: 4 },
+        { controlName: "Anim6", index: 5 },
+        { controlName: "Anim7", index: 6 },
+        { controlName: "Anim8", index: 7 },
+        { controlName: "Anim9", index: 8 },
+        { controlName: "Anim10", index: 9 },
+        { controlName: "Anim11", index: 10 },
+        { controlName: "Anim12", index: 11 },
+    ];
+
     export class GameScreenMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "GameScreenMediator";
 
         private proxy: GameProxy;
+
+
 
         public constructor(viewComponent: any) {
             super(GameScreenMediator.NAME, viewComponent);
@@ -135,6 +152,13 @@ module game {
             let isAllRolesReady = allValidRoles.length == data.maxPlayers;
             let isWaiting = !isAllReady && this.proxy.gameState.seats.some(seat => seat && seat.actorNr == this.proxy.actorNr);
 
+            if (isAllRolesReady) {
+                //set current player's role
+                let roleIndex = data.role.findIndex(r => this.proxy.isActorLocal(r));
+                let myRole = this.proxy.rolesMap.get(roleIndex.toString());
+                this.gameScreen.role = myRole;
+            }
+
             switch (data.phase) {
                 case GamePhase.Preparing:
                     this.gameScreen.isInitial = !isWaiting && !isAllReady;
@@ -208,10 +232,21 @@ module game {
 
             this.gameScreen.startgame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startgame, this);
 
-            this.gameScreen.Anim1.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("0", event) }), this);
-            this.gameScreen.Anim2.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("1", event) }), this);
-            this.gameScreen.Anim3.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("2", event) }), this);
-            this.gameScreen.Anim4.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("3", event) }), this);
+            this.gameScreen.Anim1.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(1, event) }), this);
+            this.gameScreen.Anim2.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(2, event) }), this);
+            this.gameScreen.Anim3.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(3, event) }), this);
+            this.gameScreen.Anim4.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(4, event) }), this);
+            this.gameScreen.Anim5.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(5, event) }), this);
+            this.gameScreen.Anim6.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(6, event) }), this);
+            this.gameScreen.Anim7.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(7, event) }), this);
+            this.gameScreen.Anim8.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(8, event) }), this);
+            this.gameScreen.Anim9.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(9, event) }), this);
+            this.gameScreen.Anim10.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(10, event) }), this);
+            this.gameScreen.Anim11.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(11, event) }), this);
+            this.gameScreen.Anim12.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(12, event) }), this);
+
+            this.gameScreen.btnAuth.addEventListener(egret.TouchEvent.TOUCH_TAP, this.chooseAnim, this);
+            this.gameScreen.btnSkipAuth.addEventListener(egret.TouchEvent.TOUCH_TAP, this.skipAuth, this);
 
             this.gameScreen.shunwei1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.shunwei("1") }), this);
             this.gameScreen.shunwei2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.shunwei("2") }), this);
@@ -263,14 +298,7 @@ module game {
             this.gameScreen.zgqskill2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("1") }), this);
             this.gameScreen.zgqskill3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("2") }), this);
             this.gameScreen.zgqskill4.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("3") }), this);
-            this.gameScreen.Anim5.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("4", event) }), this);
-            this.gameScreen.Anim6.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("5", event) }), this);
-            this.gameScreen.Anim7.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("6", event) }), this);
-            this.gameScreen.Anim8.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("7", event) }), this);
-            this.gameScreen.Anim9.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("8", event) }), this);
-            this.gameScreen.Anim10.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("9", event) }), this);
-            this.gameScreen.Anim11.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("10", event) }), this);
-            this.gameScreen.Anim12.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("11", event) }), this);
+
         }
 
         public findSeat2(seatNumber: string) {
@@ -482,20 +510,7 @@ module game {
 
         public first_one(message: string) {
 
-            const animConfig = [
-                { controlName: "Anim1", index: 0 },
-                { controlName: "Anim2", index: 1 },
-                { controlName: "Anim3", index: 2 },
-                { controlName: "Anim4", index: 3 },
-                { controlName: "Anim5", index: 4 },
-                { controlName: "Anim6", index: 5 },
-                { controlName: "Anim7", index: 6 },
-                { controlName: "Anim8", index: 7 },
-                { controlName: "Anim9", index: 8 },
-                { controlName: "Anim10", index: 9 },
-                { controlName: "Anim11", index: 10 },
-                { controlName: "Anim12", index: 11 },
-            ];
+
 
             animConfig.forEach(anim => {
                 const animName = this.proxy.gameState.baowulist[anim.index];
@@ -530,6 +545,7 @@ module game {
                     this.gameScreen.Anim11.visible = true;
                     this.gameScreen.Anim12.visible = true;
                 }
+
                 //方震技能
                 if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
                     this.gameScreen.Anim1.enabled = false;
@@ -544,11 +560,11 @@ module game {
                     this.gameScreen.Anim10.enabled = false;
                     this.gameScreen.Anim11.enabled = false;
                     this.gameScreen.Anim12.enabled = false;
-                    this.gameScreen.fangzhenskill.visible = true;
                 }
 
                 this.gameScreen.isMyTurn = true;
                 this.gameScreen.isOthersTurn = false;
+                this.gameScreen.isAuthing = true;
             }
             else {
                 // 其他玩家正在鉴宝
@@ -557,6 +573,7 @@ module game {
                 this.gameScreen.processingPlayer = actor;
                 this.gameScreen.isMyTurn = false;
                 this.gameScreen.isOthersTurn = true;
+                this.gameScreen.isAuthing = false;
             }
         }
 
@@ -599,364 +616,335 @@ module game {
             this.gameScreen.Anim10.visible = false;
             this.gameScreen.Anim11.visible = false;
             this.gameScreen.Anim12.visible = false;
+            this.selectedAnims.length = 0;
         }
 
-        public xuyuanjineng: number = 0;
-        public frist: number = 100;
-        public chooseAnim(message: string, event: egret.TouchEvent) {
-            const Nr = +message;
+        private selectedAnims = [];
+
+        public chooseAnimReal(number: number, event: egret.TouchEvent) {
+            if (this.selectedAnims.find(anim => anim == number)) {
+                // you have choosed this anim already.
+                return;
+            }
+            let bgNormal = event.currentTarget.getChildByName("antique-normal");
+            let bgSelected = event.currentTarget.getChildByName("antique-selected");
+            bgNormal.visible = false;
+            bgSelected.visible = true;
+
+            this.selectedAnims.push(number);
+
+            if (this.selectedAnims.length >= this.gameScreen.role.roleCheckCount) {
+                this.gameScreen.btnAuth.enabled = true;
+            }
+
+            if (this.selectedAnims.length > this.gameScreen.role.roleCheckCount) {
+                let shiftAnim = this.selectedAnims.shift();
+                animConfig.forEach((anim, index) => {
+                    if (anim.index == shiftAnim) {
+                        let control: eui.Button = this.gameScreen[anim.controlName];
+                        let shiftControlBgNormal = control.getChildByName("antique-normal");
+                        let shiftControlBgSelected = control.getChildByName("antique-selected");
+                        shiftControlBgNormal.visible = true;
+                        shiftControlBgSelected.visible = false;
+                    }
+                });
+            }
+        }
+
+        public skipAuth(event: egret.TouchEvent) {
+            // 方震跳过鉴宝
+            if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
+                this.gameScreen.fangzhenskill.visible = true;
+                this.gameScreen.isAuthing = false;
+            }
+        }
+
+        public chooseAnim(event: egret.TouchEvent) {
+
+            const results = [];
+            this.gameScreen.isAuthing = false;
 
             //许愿技能
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
                 if (this.ybrskill1 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.ybrskill1--;
-                    this.AnimVis();
-                    this.chuanshunwei();
-                } else {
-                    if (this.xuyuanjineng == 0) {
-                        event.currentTarget.enabled = false;
-                        let bgNormal = event.currentTarget.getChildByName("antique-normal");
-                        let bgSelected = event.currentTarget.getChildByName("antique-selected");
-                        bgNormal.visible = false;
-                        bgSelected.visible = true;
-                        // if (Nr == 0) {
-
-                        //     this.gameScreen.Anim1.enabled = false;
-                        // } else if (Nr == 1) {
-                        //     this.gameScreen.Anim2.enabled = false;
-                        // } else if (Nr == 2) {
-                        //     this.gameScreen.Anim3.enabled = false;
-                        // } else if (Nr == 3) {
-                        //     this.gameScreen.Anim4.enabled = false;
-                        // } else if (Nr == 4) {
-                        //     this.gameScreen.Anim5.enabled = false;
-                        // } else if (Nr == 5) {
-                        //     this.gameScreen.Anim6.enabled = false;
-                        // } else if (Nr == 6) {
-                        //     this.gameScreen.Anim7.enabled = false;
-                        // } else if (Nr == 7) {
-                        //     this.gameScreen.Anim8.enabled = false;
-                        // } else if (Nr == 8) {
-                        //     this.gameScreen.Anim9.enabled = false;
-                        // } else if (Nr == 9) {
-                        //     this.gameScreen.Anim10.enabled = false;
-                        // } else if (Nr == 10) {
-                        //     this.gameScreen.Anim11.enabled = false;
-                        // } else if (Nr == 11) {
-                        //     this.gameScreen.Anim12.enabled = false;
-                        // }
-                        this.xuyuanjineng++;
-                        this.frist = Nr;
-                    } else if (this.xuyuanjineng == 1) {
-                        let skilled1: string;
-                        let skilled2: string;
-                        if (this.proxy.gameState.lunci == 1) {
-                            if (this.proxy.gameState.onelcfskill) {
-                                if (this.proxy.gameState.onezj[this.frist] == "真") {
-                                    skilled1 = "假";
-                                } else {
-                                    skilled1 = "真";
-                                }
-                                if (this.proxy.gameState.onezj[Nr] == "真") {
-                                    skilled2 = "假";
-                                } else {
-                                    skilled2 = "真";
-                                }
-                                if (this.proxy.gameState.onezgqskill == this.frist) {
-                                    skilled1 = "你无法鉴定此宝物";
-                                }
-                                if (this.proxy.gameState.onezgqskill == Nr) {
-                                    skilled2 = "你无法鉴定此宝物";
-                                }
-                                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2)
-                            } else {
-                                skilled1 = this.proxy.gameState.onezj[this.frist];
-                                skilled2 = this.proxy.gameState.onezj[Nr];
-                                if (this.proxy.gameState.onezgqskill == this.frist) {
-                                    skilled1 = "你无法鉴定此宝物";
-                                }
-                                if (this.proxy.gameState.onezgqskill == Nr) {
-                                    skilled2 = "你无法鉴定此宝物";
-                                }
-                                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2);
-                            }
-                        } else if (this.proxy.gameState.lunci == 2) {
-                            if (this.proxy.gameState.twolcfskill) {
-                                if (this.proxy.gameState.twozj[this.frist - 4] == "真") {
-                                    skilled1 = "假";
-                                } else {
-                                    skilled1 = "真";
-                                }
-                                if (this.proxy.gameState.twozj[Nr - 4] == "真") {
-                                    skilled2 = "假";
-                                } else {
-                                    skilled2 = "真";
-                                }
-                                if (this.proxy.gameState.twozgqskill == this.frist - 4) {
-                                    skilled1 = "你无法鉴定此宝物";
-                                }
-                                if (this.proxy.gameState.twozgqskill == Nr - 4) {
-                                    skilled2 = "你无法鉴定此宝物";
-                                }
-                                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2)
-                            } else {
-                                skilled1 = this.proxy.gameState.twozj[this.frist - 4];
-                                skilled2 = this.proxy.gameState.twozj[Nr - 4];
-                                if (this.proxy.gameState.twozgqskill == this.frist - 4) {
-                                    skilled1 = "你无法鉴定此宝物";
-                                }
-                                if (this.proxy.gameState.twozgqskill == Nr - 4) {
-                                    skilled2 = "你无法鉴定此宝物";
-                                }
-                                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2);
-                            }
-                        } else if (this.proxy.gameState.lunci == 3) {
-                            if (this.proxy.gameState.threelcfskill) {
-                                if (this.proxy.gameState.threezj[this.frist - 8] == "真") {
-                                    skilled1 = "假";
-                                } else {
-                                    skilled1 = "真";
-                                }
-                                if (this.proxy.gameState.threezj[Nr - 8] == "真") {
-                                    skilled2 = "假";
-                                } else {
-                                    skilled2 = "真";
-                                }
-                                if (this.proxy.gameState.threezgqskill == this.frist - 8) {
-                                    skilled1 = "你无法鉴定此宝物";
-                                }
-                                if (this.proxy.gameState.threezgqskill == Nr - 8) {
-                                    skilled2 = "你无法鉴定此宝物";
-                                }
-                                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2)
-                            } else {
-                                skilled1 = this.proxy.gameState.threezj[this.frist - 8];
-                                skilled2 = this.proxy.gameState.threezj[Nr - 8];
-                                if (this.proxy.gameState.threezgqskill == this.frist - 8) {
-                                    skilled1 = "你无法鉴定此宝物";
-                                }
-                                if (this.proxy.gameState.threezgqskill == Nr - 8) {
-                                    skilled2 = "你无法鉴定此宝物";
-                                }
-                                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2);
-                            }
-                        }
-                        this.AnimVis();
-                        this.chuanshunwei();
-                        this.xuyuanjineng = 0;
-                    }
                 }
-            } else if (this.proxy.isActorLocal(this.proxy.gameState.role[3])) {
+                else {
+                    if (this.proxy.gameState.lunci == 1) {
+                        if (this.proxy.gameState.onelcfskill) {
+                            results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]] == "真" ? "假" : "真";
+                            results[1] = this.proxy.gameState.onezj[this.selectedAnims[1]] == "真" ? "假" : "真";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
+                            results[1] = this.proxy.gameState.onezj[this.selectedAnims[1]];
+                        }
+
+                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[1]) {
+                            results[1] = "你无法鉴定此宝物";
+                        }
+                    }
+                    else if (this.proxy.gameState.lunci == 2) {
+
+                        if (this.proxy.gameState.twolcfskill) {
+                            results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4] == "真" ? "假" : "真";
+                            results[1] = this.proxy.gameState.twozj[this.selectedAnims[1] - 4] == "真" ? "假" : "真";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
+                            results[1] = this.proxy.gameState.twozj[this.selectedAnims[1] - 4];
+                        }
+
+                        if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                        if (this.proxy.gameState.twozgqskill == this.selectedAnims[1] - 4) {
+                            results[1] = "你无法鉴定此宝物";
+                        }
+                    }
+                    else if (this.proxy.gameState.lunci == 3) {
+
+                        if (this.proxy.gameState.threelcfskill) {
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8] == "真" ? "假" : "真";
+                            results[1] = this.proxy.gameState.threezj[this.selectedAnims[1] - 8] == "真" ? "假" : "真";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
+                            results[1] = this.proxy.gameState.threezj[this.selectedAnims[1] - 8];
+                        }
+
+                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[0] - 8) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[1] - 8) {
+                            results[1] = "你无法鉴定此宝物";
+                        }
+                    }
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0] + "   " + "“" + this.proxy.gameState.baowulist[this.selectedAnims[1]] + "”" + " 是 " + results[1]);
+                }
+                this.AnimVis();
+                this.chuanshunwei();
+            }
+            else if (this.proxy.isActorLocal(this.proxy.gameState.role[3])) {
                 if (this.ybrskill3 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.ybrskill3--;
-                } else {
+                }
+                else {
                     if (this.proxy.gameState.lunci == 1) {
-                        if (this.proxy.gameState.onezgqskill == Nr) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
+                            results[0] = "你无法鉴定此宝物";
                         }
-                    } else if (this.proxy.gameState.lunci == 2) {
-                        if (this.proxy.gameState.twozgqskill == Nr - 4) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
-                        }
-                    } else if (this.proxy.gameState.lunci == 3) {
-                        if (this.proxy.gameState.threezgqskill == Nr - 8) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                        else {
+                            results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
                         }
                     }
+                    else if (this.proxy.gameState.lunci == 2) {
+                        if (this.proxy.gameState.twozgqskill == this.selectedAnims[0]) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
+                        }
+                    }
+                    else if (this.proxy.gameState.lunci == 3) {
+                        if (this.proxy.gameState.threezgqskill == this.selectedAnims[0]) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
+                        }
+                    }
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 }
                 this.AnimVis();
-                console.log(this.proxy.gameState.lunci);
                 this.chuanshunwei();
-            } else if (this.proxy.isActorLocal(this.proxy.gameState.role[4])) {
+            }
+            else if (this.proxy.isActorLocal(this.proxy.gameState.role[4])) {
+
                 if (this.ybrskill4 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.ybrskill4--;
-                } else if (this.proxy.gameState.hyyskill == 1 && this.proxy.gameState.lunci == 1) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                } else if (this.proxy.gameState.hyyskill == 2 && this.proxy.gameState.lunci == 2) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                } else if (this.proxy.gameState.hyyskill == 3 && this.proxy.gameState.lunci == 3) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                } else {
+                }
+                else {
                     if (this.proxy.gameState.lunci == 1) {
-                        if (this.proxy.gameState.onezgqskill == Nr) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else if (this.proxy.gameState.onelcfskill) {
-                            let skilled: string;
-                            if (this.proxy.gameState.onezj[Nr] == "真") {
-                                skilled = "假";
-                            } else {
-                                skilled = "真";
-                            }
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+
+                        if (this.proxy.gameState.onelcfskill) {
+                            results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]] == "真" ? "假" : "真";
                         }
-                    } else if (this.proxy.gameState.lunci == 2) {
-                        if (this.proxy.gameState.twozgqskill == Nr - 4) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else if (this.proxy.gameState.twolcfskill) {
-                            let skilled: string;
-                            if (this.proxy.gameState.twozj[Nr - 4] == "真") {
-                                skilled = "假";
-                            } else {
-                                skilled = "真";
-                            }
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                        else {
+                            results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
                         }
-                    } else if (this.proxy.gameState.lunci == 3) {
-                        if (this.proxy.gameState.threezgqskill == Nr - 8) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else if (this.proxy.gameState.threelcfskill) {
-                            let skilled: string;
-                            if (this.proxy.gameState.threezj[Nr - 8] == "真") {
-                                skilled = "假";
-                            } else {
-                                skilled = "真";
-                            }
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+
+                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[0] || this.proxy.gameState.hyyskill == 1) {
+                            results[0] = "你无法鉴定此宝物";
                         }
                     }
+                    else if (this.proxy.gameState.lunci == 2) {
+                        if (this.proxy.gameState.twolcfskill) {
+                            results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4] == "真" ? "假" : "真";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
+                        }
+
+                        if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4 || this.proxy.gameState.hyyskill == 2) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                    }
+                    else if (this.proxy.gameState.lunci == 3) {
+                        if (this.proxy.gameState.threelcfskill) {
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0]] == "真" ? "假" : "真";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0]];
+                        }
+
+                        if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8 || this.proxy.gameState.hyyskill == 3) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                    }
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
                 this.AnimVis();
                 this.chuanshunwei();
-            } else if (this.proxy.isActorLocal(this.proxy.gameState.role[5])) {
+            }
+            else if (this.proxy.isActorLocal(this.proxy.gameState.role[5])) {
                 if (this.ybrskill5 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.ybrskill5--;
-                } else if (this.proxy.gameState.mhjnskill == 1 && this.proxy.gameState.lunci == 1) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                } else if (this.proxy.gameState.mhjnskill == 2 && this.proxy.gameState.lunci == 2) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                } else if (this.proxy.gameState.mhjnskill == 3 && this.proxy.gameState.lunci == 3) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                } else {
+                }
+                else {
                     if (this.proxy.gameState.lunci == 1) {
-                        if (this.proxy.gameState.onezgqskill == Nr) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else if (this.proxy.gameState.onelcfskill) {
-                            let skilled: string;
-                            if (this.proxy.gameState.onezj[Nr] == "真") {
-                                skilled = "假";
-                            } else {
-                                skilled = "真";
-                            }
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+
+                        if (this.proxy.gameState.onelcfskill) {
+                            results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]] == "真" ? "假" : "真";
                         }
-                    } else if (this.proxy.gameState.lunci == 2) {
-                        if (this.proxy.gameState.twozgqskill == Nr - 4) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else if (this.proxy.gameState.twolcfskill) {
-                            let skilled: string;
-                            if (this.proxy.gameState.twozj[Nr - 4] == "真") {
-                                skilled = "假";
-                            } else {
-                                skilled = "真";
-                            }
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                        else {
+                            results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
                         }
-                    } else if (this.proxy.gameState.lunci == 3) {
-                        if (this.proxy.gameState.threezgqskill == Nr - 8) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else if (this.proxy.gameState.threelcfskill) {
-                            let skilled: string;
-                            if (this.proxy.gameState.threezj[Nr - 8] == "真") {
-                                skilled = "假";
-                            } else {
-                                skilled = "真";
-                            }
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+
+                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[0] || this.proxy.gameState.mhjnskill == 1) {
+                            results[0] = "你无法鉴定此宝物";
                         }
                     }
+                    else if (this.proxy.gameState.lunci == 2) {
+                        if (this.proxy.gameState.twolcfskill) {
+                            results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4] == "真" ? "假" : "真";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
+                        }
+
+                        if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4 || this.proxy.gameState.mhjnskill == 2) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                    }
+                    else if (this.proxy.gameState.lunci == 3) {
+                        if (this.proxy.gameState.threelcfskill) {
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0]] == "真" ? "假" : "真";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0]];
+                        }
+
+                        if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8 || this.proxy.gameState.mhjnskill == 3) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                    }
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 }
                 this.AnimVis();
                 this.chuanshunwei();
-            } else if (this.proxy.isActorLocal(this.proxy.gameState.role[6])) {
+            }
+            else if (this.proxy.isActorLocal(this.proxy.gameState.role[6])) {
                 if (this.ybrskill6 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.ybrskill6--;
-                    this.chuanshunwei();
-                } else {
+                }
+                else {
                     if (this.proxy.gameState.lunci == 1) {
-                        if (this.proxy.gameState.onezgqskill == Nr) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
+                            results[0] = "你无法鉴定此宝物";
                         }
-                    } else if (this.proxy.gameState.lunci == 2) {
-                        if (this.proxy.gameState.twozgqskill == Nr - 4) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                        else {
+                            results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
                         }
-                    } else if (this.proxy.gameState.lunci == 3) {
-                        if (this.proxy.gameState.threezgqskill == Nr - 8) {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                        } else {
-                            this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                    }
+                    else if (this.proxy.gameState.lunci == 2) {
+                        if (this.proxy.gameState.twozgqskill == this.selectedAnims[0]) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
+                        }
+                    }
+                    else if (this.proxy.gameState.lunci == 3) {
+                        if (this.proxy.gameState.threezgqskill == this.selectedAnims[0]) {
+                            results[0] = "你无法鉴定此宝物";
+                        }
+                        else {
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
                         }
                     }
                     this.gameScreen.lcfskill.visible = true;
                     this.gameScreen.lcfskillpass.visible = true;
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
                 this.AnimVis();
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[7])) {
                 if (this.proxy.gameState.lunci == 1) {
-                    if (this.proxy.gameState.onezgqskill == Nr) {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                    } else {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                    if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
+                        results[0] = "你无法鉴定此宝物";
                     }
-                } else if (this.proxy.gameState.lunci == 2) {
-                    if (this.proxy.gameState.twozgqskill == Nr - 4) {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                    } else {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
-                    }
-                } else if (this.proxy.gameState.lunci == 3) {
-                    if (this.proxy.gameState.threezgqskill == Nr - 8) {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
-                    } else {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                    else {
+                        results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
                     }
                 }
-                this.AnimVis();
+                else if (this.proxy.gameState.lunci == 2) {
+                    if (this.proxy.gameState.twozgqskill == this.selectedAnims[0]) {
+                        results[0] = "你无法鉴定此宝物";
+                    }
+                    else {
+                        results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
+                    }
+                }
+                else if (this.proxy.gameState.lunci == 3) {
+                    if (this.proxy.gameState.threezgqskill == this.selectedAnims[0]) {
+                        results[0] = "你无法鉴定此宝物";
+                    }
+                    else {
+                        results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
+                    }
+                }
                 this.gameScreen.ybrskill.visible = true;
                 this.gameScreen.ybrskillpass.visible = true;
-            } else if (this.proxy.isActorLocal(this.proxy.gameState.role[8])) {
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                this.AnimVis();
+            }
+            else if (this.proxy.isActorLocal(this.proxy.gameState.role[8])) {
                 if (this.ybrskill8 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.ybrskill8--;
-                    this.chuanshunwei();
-                } else {
-                    if (this.proxy.gameState.lunci == 1) {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
-                    } else if (this.proxy.gameState.lunci == 2) {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
-                    } else if (this.proxy.gameState.lunci == 3) {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
-                    }
-                    this.gameScreen.zgqskill.visible = true;
-                    this.gameScreen.zgqskillpass.visible = true;
                 }
+                else {
+                    if (this.proxy.gameState.lunci == 1) {
+                        results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
+                    }
+                    else if (this.proxy.gameState.lunci == 2) {
+                        results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
+                    }
+                    else if (this.proxy.gameState.lunci == 3) {
+                        results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
+                    }
+                }
+                this.gameScreen.zgqskill.visible = true;
+                this.gameScreen.zgqskillpass.visible = true;
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 this.AnimVis();
             }
         }
@@ -1458,7 +1446,10 @@ module game {
                 control.enabled = true;
             });
 
+            this.gameScreen.isMyTurn = false;
+            this.gameScreen.isOthersTurn = false;
             this.gameScreen.isVoteVisible = true;
+
             this.gameScreen.qingkong.enabled = true;
             this.gameScreen.toupiaoqueren.enabled = true;
             if (this.proxy.gameState.lunci == 1) {
