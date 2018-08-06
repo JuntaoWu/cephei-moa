@@ -1601,6 +1601,9 @@ module game {
                 this.proxy.gameState.toupiaojieguo1 = _(this.proxy.gameState.toupiaojieguo1).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo1);
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo1[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo1[1].baowu + "  " + this.proxy.gameState.toupiaojieguo1[1].zhenjia);
+
+                //this.proxy.gameState.toupiao[1]%100
+
                 if (this.proxy.gameState.toupiaojieguo1[0].zhenjia == "真") {
                     this.proxy.gameState.defen++;
                 }

@@ -48,7 +48,7 @@
 		"bin-debug/view/GuideWindowMediator.js",
 		"bin-debug/view/JoinWindowMediator.js",
 		"bin-debug/view/PopupGameInfoWindowMediator.js",
-		"bin-debug/view/panel/UserInfoWindow.js",
+		"bin-debug/ApplicationFacade.js",
 		"bin-debug/view/PopupNumberKeyboardMediator.js",
 		"bin-debug/view/PopupResultWindowMediator.js",
 		"bin-debug/view/PopupRoleWindowMediator.js",
@@ -81,6 +81,6 @@
 		"bin-debug/view/panel/Shade.js",
 		"bin-debug/view/panel/StartScreen.js",
 		"bin-debug/view/panel/TermItemRenderer.js",
-		"bin-debug/ApplicationFacade.js"
+		"bin-debug/view/panel/UserInfoWindow.js"
 	]
 }
