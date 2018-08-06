@@ -16,6 +16,7 @@
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
+		"resource/components/ActorUI.exml",
 		"resource/components/GameRoundSkin.exml",
 		"resource/components/PopupWindowSkin.exml",
 		"resource/components/RankListItemRenderer.exml",

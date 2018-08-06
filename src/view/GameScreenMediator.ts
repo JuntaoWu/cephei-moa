@@ -147,7 +147,7 @@ module game {
                     this.gameScreen.isAllRolesReadyAndNormalClient = false;
                     this.gameScreen.isPhasePreparing = true;
                     this.gameScreen.isPhaseChoosingRole = false;
-                    this.gameScreen.isPhaseFirstRound = false;
+                    this.gameScreen.isPhaseGameInProgress = false;
                     break;
                 case GamePhase.ChoosingRole:
                     this.gameScreen.isInitial = false;
@@ -160,9 +160,9 @@ module game {
                     this.gameScreen.isAllRolesReadyAndNormalClient = isAllRolesReady && this.gameScreen.isNormalClient;
                     this.gameScreen.isPhasePreparing = false;
                     this.gameScreen.isPhaseChoosingRole = true;
-                    this.gameScreen.isPhaseFirstRound = false;
+                    this.gameScreen.isPhaseGameInProgress = false;
                     break;
-                case GamePhase.FirstRound:
+                case GamePhase.GameInProgress:
                     this.gameScreen.isInitial = false;
                     this.gameScreen.isWaiting = false;
                     this.gameScreen.isAllReady = false;
@@ -173,7 +173,10 @@ module game {
                     this.gameScreen.isAllRolesReadyAndNormalClient = false;
                     this.gameScreen.isPhasePreparing = false;
                     this.gameScreen.isPhaseChoosingRole = false;
-                    this.gameScreen.isPhaseFirstRound = true;
+                    this.gameScreen.isPhaseGameInProgress = true;
+                    this.gameScreen.isFirstRound = data.lunci == 1;
+                    this.gameScreen.isSecondRound = data.lunci == 2;
+                    this.gameScreen.isThirdRound = data.lunci == 3;
                     break;
             }
         }
@@ -205,10 +208,10 @@ module game {
 
             this.gameScreen.startgame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startgame, this);
 
-            this.gameScreen.Anim1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("0") }), this);
-            this.gameScreen.Anim2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("1") }), this);
-            this.gameScreen.Anim3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("2") }), this);
-            this.gameScreen.Anim4.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("3") }), this);
+            this.gameScreen.Anim1.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("0", event) }), this);
+            this.gameScreen.Anim2.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("1", event) }), this);
+            this.gameScreen.Anim3.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("2", event) }), this);
+            this.gameScreen.Anim4.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("3", event) }), this);
 
             this.gameScreen.shunwei1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.shunwei("1") }), this);
             this.gameScreen.shunwei2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.shunwei("2") }), this);
@@ -260,14 +263,14 @@ module game {
             this.gameScreen.zgqskill2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("1") }), this);
             this.gameScreen.zgqskill3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("2") }), this);
             this.gameScreen.zgqskill4.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("3") }), this);
-            this.gameScreen.Anim5.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("4") }), this);
-            this.gameScreen.Anim6.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("5") }), this);
-            this.gameScreen.Anim7.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("6") }), this);
-            this.gameScreen.Anim8.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("7") }), this);
-            this.gameScreen.Anim9.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("8") }), this);
-            this.gameScreen.Anim10.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("9") }), this);
-            this.gameScreen.Anim11.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("10") }), this);
-            this.gameScreen.Anim12.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseAnim("11") }), this);
+            this.gameScreen.Anim5.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("4", event) }), this);
+            this.gameScreen.Anim6.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("5", event) }), this);
+            this.gameScreen.Anim7.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("6", event) }), this);
+            this.gameScreen.Anim8.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("7", event) }), this);
+            this.gameScreen.Anim9.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("8", event) }), this);
+            this.gameScreen.Anim10.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("9", event) }), this);
+            this.gameScreen.Anim11.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("10", event) }), this);
+            this.gameScreen.Anim12.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnim("11", event) }), this);
         }
 
         public findSeat2(seatNumber: string) {
@@ -284,7 +287,6 @@ module game {
             }
         }
 
-        public roomrenshu: number = 2;
         public touxiang(seats: Array<ActorModel>) {
 
             const seatConfig = {
@@ -353,7 +355,7 @@ module game {
                 }
             });
 
-            if (i == this.roomrenshu) {
+            if (i == this.proxy.gameState.maxPlayers) {
                 this.gameScreen.btnjs1.visible = false;
                 this.gameScreen.btnjs2.visible = false;
                 this.gameScreen.btnjs3.visible = false;
@@ -485,6 +487,14 @@ module game {
                 { controlName: "Anim2", index: 1 },
                 { controlName: "Anim3", index: 2 },
                 { controlName: "Anim4", index: 3 },
+                { controlName: "Anim5", index: 4 },
+                { controlName: "Anim6", index: 5 },
+                { controlName: "Anim7", index: 6 },
+                { controlName: "Anim8", index: 7 },
+                { controlName: "Anim9", index: 8 },
+                { controlName: "Anim10", index: 9 },
+                { controlName: "Anim11", index: 10 },
+                { controlName: "Anim12", index: 11 },
             ];
 
             animConfig.forEach(anim => {
@@ -536,6 +546,17 @@ module game {
                     this.gameScreen.Anim12.enabled = false;
                     this.gameScreen.fangzhenskill.visible = true;
                 }
+
+                this.gameScreen.isMyTurn = true;
+                this.gameScreen.isOthersTurn = false;
+            }
+            else {
+                // 其他玩家正在鉴宝
+                let actor = this.proxy.gameState.seats[message];
+                this.gameScreen.processingActorUI.update(actor);
+                this.gameScreen.processingPlayer = actor;
+                this.gameScreen.isMyTurn = false;
+                this.gameScreen.isOthersTurn = true;
             }
         }
 
@@ -582,8 +603,9 @@ module game {
 
         public xuyuanjineng: number = 0;
         public frist: number = 100;
-        public chooseAnim(message: string) {
+        public chooseAnim(message: string, event: egret.TouchEvent) {
             const Nr = +message;
+
             //许愿技能
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
                 if (this.ybrskill1 > 0) {
@@ -593,31 +615,37 @@ module game {
                     this.chuanshunwei();
                 } else {
                     if (this.xuyuanjineng == 0) {
-                        if (Nr == 0) {
-                            this.gameScreen.Anim1.enabled = false;
-                        } else if (Nr == 1) {
-                            this.gameScreen.Anim2.enabled = false;
-                        } else if (Nr == 2) {
-                            this.gameScreen.Anim3.enabled = false;
-                        } else if (Nr == 3) {
-                            this.gameScreen.Anim4.enabled = false;
-                        } else if (Nr == 4) {
-                            this.gameScreen.Anim5.enabled = false;
-                        } else if (Nr == 5) {
-                            this.gameScreen.Anim6.enabled = false;
-                        } else if (Nr == 6) {
-                            this.gameScreen.Anim7.enabled = false;
-                        } else if (Nr == 7) {
-                            this.gameScreen.Anim8.enabled = false;
-                        } else if (Nr == 8) {
-                            this.gameScreen.Anim9.enabled = false;
-                        } else if (Nr == 9) {
-                            this.gameScreen.Anim10.enabled = false;
-                        } else if (Nr == 10) {
-                            this.gameScreen.Anim11.enabled = false;
-                        } else if (Nr == 11) {
-                            this.gameScreen.Anim12.enabled = false;
-                        }
+                        event.currentTarget.enabled = false;
+                        let bgNormal = event.currentTarget.getChildByName("antique-normal");
+                        let bgSelected = event.currentTarget.getChildByName("antique-selected");
+                        bgNormal.visible = false;
+                        bgSelected.visible = true;
+                        // if (Nr == 0) {
+
+                        //     this.gameScreen.Anim1.enabled = false;
+                        // } else if (Nr == 1) {
+                        //     this.gameScreen.Anim2.enabled = false;
+                        // } else if (Nr == 2) {
+                        //     this.gameScreen.Anim3.enabled = false;
+                        // } else if (Nr == 3) {
+                        //     this.gameScreen.Anim4.enabled = false;
+                        // } else if (Nr == 4) {
+                        //     this.gameScreen.Anim5.enabled = false;
+                        // } else if (Nr == 5) {
+                        //     this.gameScreen.Anim6.enabled = false;
+                        // } else if (Nr == 6) {
+                        //     this.gameScreen.Anim7.enabled = false;
+                        // } else if (Nr == 7) {
+                        //     this.gameScreen.Anim8.enabled = false;
+                        // } else if (Nr == 8) {
+                        //     this.gameScreen.Anim9.enabled = false;
+                        // } else if (Nr == 9) {
+                        //     this.gameScreen.Anim10.enabled = false;
+                        // } else if (Nr == 10) {
+                        //     this.gameScreen.Anim11.enabled = false;
+                        // } else if (Nr == 11) {
+                        //     this.gameScreen.Anim12.enabled = false;
+                        // }
                         this.xuyuanjineng++;
                         this.frist = Nr;
                     } else if (this.xuyuanjineng == 1) {
@@ -1411,37 +1439,37 @@ module game {
         }
 
         public toupiaoui() {
-            this.gameScreen.toupiao1.enabled = true;
-            this.gameScreen.toupiao2.enabled = true;
-            this.gameScreen.toupiao3.enabled = true;
-            this.gameScreen.toupiao4.enabled = true;
+            const animConfig = [
+                { controlName: "toupiao1", index: 0 },
+                { controlName: "toupiao2", index: 1 },
+                { controlName: "toupiao3", index: 2 },
+                { controlName: "toupiao4", index: 3 }
+            ];
+
+            animConfig.forEach(anim => {
+                const animName = this.proxy.gameState.baowulist[(this.proxy.gameState.lunci - 1) * 4 + anim.index];
+                const antiqueObject = this.proxy.antiquesMap.get(animName);
+                let control = this.gameScreen[anim.controlName] as eui.Button;
+                let image = control.getChildByName("antique-content") as eui.Image;
+                image.source = antiqueObject.source;
+                let label = control.getChildByName("antique-label") as eui.Label;
+                label.text = antiqueObject.name;
+
+                control.enabled = true;
+            });
+
+            this.gameScreen.isVoteVisible = true;
             this.gameScreen.qingkong.enabled = true;
             this.gameScreen.toupiaoqueren.enabled = true;
-            this.gameScreen.toupiao1.visible = true;
-            this.gameScreen.toupiao2.visible = true;
-            this.gameScreen.toupiao3.visible = true;
-            this.gameScreen.toupiao4.visible = true;
             if (this.proxy.gameState.lunci == 1) {
-                this.gameScreen.toupiao1.label = this.proxy.gameState.baowulist[0];
-                this.gameScreen.toupiao2.label = this.proxy.gameState.baowulist[1];
-                this.gameScreen.toupiao3.label = this.proxy.gameState.baowulist[2];
-                this.gameScreen.toupiao4.label = this.proxy.gameState.baowulist[3];
                 this.zongpiaoshu = 2;
                 this.sypiaoshu = 2;
                 this.muqianpiaoshu = 2;
             } else if (this.proxy.gameState.lunci == 2) {
-                this.gameScreen.toupiao1.label = this.proxy.gameState.baowulist[4];
-                this.gameScreen.toupiao2.label = this.proxy.gameState.baowulist[5];
-                this.gameScreen.toupiao3.label = this.proxy.gameState.baowulist[6];
-                this.gameScreen.toupiao4.label = this.proxy.gameState.baowulist[7];
                 this.zongpiaoshu = 4;
                 this.sypiaoshu += 2;
                 this.muqianpiaoshu += 2;
             } else if (this.proxy.gameState.lunci == 3) {
-                this.gameScreen.toupiao1.label = this.proxy.gameState.baowulist[8];
-                this.gameScreen.toupiao2.label = this.proxy.gameState.baowulist[9];
-                this.gameScreen.toupiao3.label = this.proxy.gameState.baowulist[10];
-                this.gameScreen.toupiao4.label = this.proxy.gameState.baowulist[11];
                 this.zongpiaoshu = 6;
                 this.sypiaoshu += 2;
                 this.muqianpiaoshu += 2;
@@ -1513,6 +1541,7 @@ module game {
 
         public toupiaoqueren() {
             this.sypiaoshu = this.muqianpiaoshu;
+            this.gameScreen.isVoteVisible = false;
             this.gameScreen.toupiao1.enabled = false;
             this.gameScreen.toupiao2.enabled = false;
             this.gameScreen.toupiao3.enabled = false;
@@ -1551,7 +1580,7 @@ module game {
                         }
                     });
                 }
-                if (i == this.roomrenshu) {
+                if (i == this.proxy.gameState.maxPlayers) {
                     if (this.proxy.gameState.lunci == 1) {
                         this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.toupiaoend);
                     } else if (this.proxy.gameState.lunci == 2) {
@@ -1680,10 +1709,7 @@ module game {
         }
 
         public starttwo() {
-            this.gameScreen.toupiao1.visible = false;
-            this.gameScreen.toupiao2.visible = false;
-            this.gameScreen.toupiao3.visible = false;
-            this.gameScreen.toupiao4.visible = false;
+            this.gameScreen.isVoteVisible = false;
             this.gameScreen.toupiao11.visible = false;
             this.gameScreen.toupiao21.visible = false;
             this.gameScreen.toupiao31.visible = false;
@@ -1692,28 +1718,17 @@ module game {
             this.gameScreen.onejieguo.visible = false;
             if (this.proxy.gameState.lunci == 1) {
                 this.proxy.gameState.lunci = 2;
-                this.gameScreen.Anim5.label = this.proxy.gameState.baowulist[4];
-                this.gameScreen.Anim6.label = this.proxy.gameState.baowulist[5];
-                this.gameScreen.Anim7.label = this.proxy.gameState.baowulist[6];
-                this.gameScreen.Anim8.label = this.proxy.gameState.baowulist[7];
                 this.proxy.gameState.shunwei_two_been[1] = this.proxy.gameState.shunwei_one_been[this.proxy.gameState.shunwei_one_been.length - 1];
                 this.xingdong(this.proxy.gameState.seats.findIndex(seat => seat && seat.actorNr == this.proxy.gameState.shunwei_two_been[1].actorNr));
             } else if (this.proxy.gameState.lunci == 2) {
                 this.proxy.gameState.lunci = 3;
-                this.gameScreen.Anim9.label = this.proxy.gameState.baowulist[8];
-                this.gameScreen.Anim10.label = this.proxy.gameState.baowulist[9];
-                this.gameScreen.Anim11.label = this.proxy.gameState.baowulist[10];
-                this.gameScreen.Anim12.label = this.proxy.gameState.baowulist[11];
                 this.proxy.gameState.shunwei_three_been[1] = this.proxy.gameState.shunwei_two_been[this.proxy.gameState.shunwei_two_been.length - 1];
                 this.xingdong(this.proxy.gameState.seats.findIndex(seat => seat && seat.actorNr == this.proxy.gameState.shunwei_three_been[1].actorNr));
             }
         }
 
         public tourenui() {
-            this.gameScreen.toupiao1.visible = false;
-            this.gameScreen.toupiao2.visible = false;
-            this.gameScreen.toupiao3.visible = false;
-            this.gameScreen.toupiao4.visible = false;
+            this.gameScreen.isVoteVisible = false;
             this.gameScreen.toupiao11.visible = false;
             this.gameScreen.toupiao21.visible = false;
             this.gameScreen.toupiao31.visible = false;
@@ -1779,7 +1794,7 @@ module game {
                 }
             });
 
-            if (i == this.roomrenshu) {
+            if (i == this.proxy.gameState.maxPlayers) {
                 let lcfpiao: number = 0;
                 if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[1] == this.proxy.gameState.role[6]) {
                     lcfpiao++;
