@@ -26,11 +26,25 @@ module game {
         public isChoosingRole: boolean = false;
         public isChoosingRoleOrMasterClient: boolean = false;
         public isAllRolesReadyAndNormalClient: boolean = false;
+        public isFirstRound = false;
+        public isSecondRound = false;
+        public isThirdRound = false;
+        public isVoteVisible: boolean = false;
+
+        public isMyTurn = false;
+        public isOthersTurn = false;
 
         public isPhasePreparing: boolean = false;
         public isPhaseChoosingRole: boolean = false;
-        public isPhaseFirstRound: boolean = false;
+        public isPhaseGameInProgress: boolean = false;
 
+        public processingPlayer: ActorModel = {
+            avatarUrl: "",
+            name: ""
+        };
+
+        public antiquesVote: eui.Group;
+        public processingActorUI: ActorUI;
         public btnSeat1: eui.Button;
         public btnSeat2: eui.Button;
         public btnSeat3: eui.Button;

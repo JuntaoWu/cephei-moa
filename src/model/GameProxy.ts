@@ -54,13 +54,21 @@ module game {
 			return actorModel && actorModel.actorNr == this.loadBalancingClient.myActor().actorNr;
 		}
 
-		
-		private _antiquesMap : Map<string, any>;
-		public get antiquesMap() : Map<string, any> {
-			if(!this._antiquesMap) {
+
+		private _antiquesMap: Map<string, any>;
+		public get antiquesMap(): Map<string, any> {
+			if (!this._antiquesMap) {
 				this._antiquesMap = new Map<string, any>(Object.entries(RES.getRes("antiques_json")));
 			}
 			return this._antiquesMap;
+		}
+
+		private _seatsMap: Map<string, any>;
+		public get seatsMap(): Map<string, any> {
+			if (!this._seatsMap) {
+				this._seatsMap = new Map<string, any>(Object.entries(RES.getRes("seats_json")));
+			}
+			return this._seatsMap;
 		}
 
 		private _loadBalancingClient: MyLoadBalancingClient;
@@ -160,7 +168,10 @@ module game {
 						this.gameState.seats[8] = undefined;
 					} else {
 						const seatNumber = +message;
-						this.gameState.seats[seatNumber] = new ActorModel(sender);
+						let actorModel = new ActorModel(sender);
+						let color = this.seatsMap.get(seatNumber.toString());
+						actorModel.color = color;
+						this.gameState.seats[seatNumber] = actorModel;
 						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
 						this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					}
@@ -206,7 +217,7 @@ module game {
 					break;
 				}
 				case CustomPhotonEvents.startgame: {
-					this.gameState.phase = GamePhase.FirstRound;
+					this.gameState.phase = GamePhase.GameInProgress;
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					this.sendNotification(GameProxy.START_GAME);
 					break;
