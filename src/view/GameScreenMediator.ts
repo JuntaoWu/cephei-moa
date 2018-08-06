@@ -442,6 +442,13 @@ module game {
         }
 
         public startgame2() {
+            let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
+            if (jsNo <= 5) {
+                this.proxy.gameState.zhenying = "许愿阵营";
+            } else {
+                this.proxy.gameState.zhenying = "老朝奉阵营";
+            }
+            this.proxy.gameState.juese = this.proxy.gameState.jueselist[jsNo - 1];
             if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
                 this.gameScreen.startgame.visible = false;
                 this.baowusuiji(this.proxy.gameState.baowulist);
@@ -610,6 +617,13 @@ module game {
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
                 if (this.ybrskill1 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                    if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.gameState.onetouxi = true;
+                    } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.gameState.twotouxi = true;
+                    } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.gameState.threetouxi = true;
+                    }
                     this.ybrskill1--;
                     this.AnimVis();
                     this.chuanshunwei();
@@ -669,7 +683,8 @@ module game {
                                 if (this.proxy.gameState.onezgqskill == Nr) {
                                     skilled2 = "你无法鉴定此宝物";
                                 }
-                                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2)
+                                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2);
+
                             } else {
                                 skilled1 = this.proxy.gameState.onezj[this.frist];
                                 skilled2 = this.proxy.gameState.onezj[Nr];
@@ -681,6 +696,10 @@ module game {
                                 }
                                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2);
                             }
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[this.frist];
+                            this.proxy.gameState.onezhenjia = skilled1;
+                            this.proxy.gameState.onebaowu2 = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia2 = skilled2;
                         } else if (this.proxy.gameState.lunci == 2) {
                             if (this.proxy.gameState.twolcfskill) {
                                 if (this.proxy.gameState.twozj[this.frist - 4] == "真") {
@@ -711,6 +730,10 @@ module game {
                                 }
                                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2);
                             }
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[this.frist];
+                            this.proxy.gameState.twozhenjia = skilled1;
+                            this.proxy.gameState.twobaowu2 = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia2 = skilled2;
                         } else if (this.proxy.gameState.lunci == 3) {
                             if (this.proxy.gameState.threelcfskill) {
                                 if (this.proxy.gameState.threezj[this.frist - 8] == "真") {
@@ -741,6 +764,10 @@ module game {
                                 }
                                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.frist] + "”" + " 是 " + skilled1 + "   " + "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled2);
                             }
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.frist];
+                            this.proxy.gameState.threezhenjia = skilled1;
+                            this.proxy.gameState.threebaowu2 = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia2 = skilled2;
                         }
                         this.AnimVis();
                         this.chuanshunwei();
@@ -750,26 +777,49 @@ module game {
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[3])) {
                 if (this.ybrskill3 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                    if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.gameState.onetouxi = true;
+                    } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.gameState.twotouxi = true;
+                    } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.gameState.threetouxi = true;
+                    }
+                    this.proxy.gameState.onetouxi = true;
                     this.ybrskill3--;
                 } else {
                     if (this.proxy.gameState.lunci == 1) {
                         if (this.proxy.gameState.onezgqskill == Nr) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = "你无法鉴定此宝物";
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = this.proxy.gameState.onezj[Nr];
                         }
+
                     } else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twozgqskill == Nr - 4) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = "你无法鉴定此宝物";
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = this.proxy.gameState.onezj[Nr - 4];
                         }
+
                     } else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threezgqskill == Nr - 8) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = "你无法鉴定此宝物";
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = this.proxy.gameState.onezj[Nr - 8];
                         }
+
                     }
                 }
                 this.AnimVis();
@@ -778,17 +828,32 @@ module game {
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[4])) {
                 if (this.ybrskill4 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                    if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.gameState.onetouxi = true;
+                    } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.gameState.twotouxi = true;
+                    } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.gameState.threetouxi = true;
+                    }
                     this.ybrskill4--;
                 } else if (this.proxy.gameState.hyyskill == 1 && this.proxy.gameState.lunci == 1) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                    this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                    this.proxy.gameState.onezhenjia = "你无法鉴定此宝物";
                 } else if (this.proxy.gameState.hyyskill == 2 && this.proxy.gameState.lunci == 2) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                    this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                    this.proxy.gameState.twozhenjia = "你无法鉴定此宝物";
                 } else if (this.proxy.gameState.hyyskill == 3 && this.proxy.gameState.lunci == 3) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                    this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                    this.proxy.gameState.threezhenjia = "你无法鉴定此宝物";
                 } else {
                     if (this.proxy.gameState.lunci == 1) {
                         if (this.proxy.gameState.onezgqskill == Nr) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = "你无法鉴定此宝物";
                         } else if (this.proxy.gameState.onelcfskill) {
                             let skilled: string;
                             if (this.proxy.gameState.onezj[Nr] == "真") {
@@ -797,12 +862,18 @@ module game {
                                 skilled = "真";
                             }
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = skilled;
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = this.proxy.gameState.onezj[Nr];
                         }
                     } else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twozgqskill == Nr - 4) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = "你无法鉴定此宝物";
                         } else if (this.proxy.gameState.twolcfskill) {
                             let skilled: string;
                             if (this.proxy.gameState.twozj[Nr - 4] == "真") {
@@ -811,12 +882,18 @@ module game {
                                 skilled = "真";
                             }
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = skilled;
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = this.proxy.gameState.onezj[Nr - 4];
                         }
                     } else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threezgqskill == Nr - 8) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = "你无法鉴定此宝物";
                         } else if (this.proxy.gameState.threelcfskill) {
                             let skilled: string;
                             if (this.proxy.gameState.threezj[Nr - 8] == "真") {
@@ -825,8 +902,12 @@ module game {
                                 skilled = "真";
                             }
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = skilled;
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = this.proxy.gameState.threezj[Nr - 8];
                         }
                     }
                 }
@@ -835,17 +916,32 @@ module game {
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[5])) {
                 if (this.ybrskill5 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                    if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.gameState.onetouxi = true;
+                    } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.gameState.twotouxi = true;
+                    } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.gameState.threetouxi = true;
+                    }
                     this.ybrskill5--;
                 } else if (this.proxy.gameState.mhjnskill == 1 && this.proxy.gameState.lunci == 1) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                    this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                    this.proxy.gameState.onezhenjia = "你无法鉴定此宝物";
                 } else if (this.proxy.gameState.mhjnskill == 2 && this.proxy.gameState.lunci == 2) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                    this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                    this.proxy.gameState.twozhenjia = "你无法鉴定此宝物";
                 } else if (this.proxy.gameState.mhjnskill == 3 && this.proxy.gameState.lunci == 3) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                    this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                    this.proxy.gameState.threezhenjia = "你无法鉴定此宝物";
                 } else {
                     if (this.proxy.gameState.lunci == 1) {
                         if (this.proxy.gameState.onezgqskill == Nr) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = "你无法鉴定此宝物";
                         } else if (this.proxy.gameState.onelcfskill) {
                             let skilled: string;
                             if (this.proxy.gameState.onezj[Nr] == "真") {
@@ -854,12 +950,18 @@ module game {
                                 skilled = "真";
                             }
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = skilled;
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = this.proxy.gameState.onezj[Nr];
                         }
                     } else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twozgqskill == Nr - 4) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = "你无法鉴定此宝物";
                         } else if (this.proxy.gameState.twolcfskill) {
                             let skilled: string;
                             if (this.proxy.gameState.twozj[Nr - 4] == "真") {
@@ -868,12 +970,18 @@ module game {
                                 skilled = "真";
                             }
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = skilled;
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = this.proxy.gameState.twozj[Nr - 4];
                         }
                     } else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threezgqskill == Nr - 8) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = "你无法鉴定此宝物";
                         } else if (this.proxy.gameState.threelcfskill) {
                             let skilled: string;
                             if (this.proxy.gameState.threezj[Nr - 8] == "真") {
@@ -882,8 +990,12 @@ module game {
                                 skilled = "真";
                             }
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + skilled);
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = skilled;
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = this.proxy.gameState.threezj[Nr - 8];
                         }
                     }
                 }
@@ -892,26 +1004,46 @@ module game {
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[6])) {
                 if (this.ybrskill6 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                    if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.gameState.onetouxi = true;
+                    } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.gameState.twotouxi = true;
+                    } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.gameState.threetouxi = true;
+                    }
                     this.ybrskill6--;
                     this.chuanshunwei();
                 } else {
                     if (this.proxy.gameState.lunci == 1) {
                         if (this.proxy.gameState.onezgqskill == Nr) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = "你无法鉴定此宝物";
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                            this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.onezhenjia = this.proxy.gameState.onezj[Nr];
                         }
                     } else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twozgqskill == Nr - 4) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = "你无法鉴定此宝物";
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                            this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.twozhenjia = this.proxy.gameState.twozj[Nr - 4];
+
                         }
                     } else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threezgqskill == Nr - 8) {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = "你无法鉴定此宝物";
                         } else {
                             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                            this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                            this.proxy.gameState.threezhenjia = this.proxy.gameState.threezj[Nr - 8];
                         }
                     }
                     this.gameScreen.lcfskill.visible = true;
@@ -922,20 +1054,32 @@ module game {
                 if (this.proxy.gameState.lunci == 1) {
                     if (this.proxy.gameState.onezgqskill == Nr) {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.onezhenjia = "你无法鉴定此宝物";
                     } else {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.onezhenjia = this.proxy.gameState.onezj[Nr];
                     }
                 } else if (this.proxy.gameState.lunci == 2) {
                     if (this.proxy.gameState.twozgqskill == Nr - 4) {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.twozhenjia = "你无法鉴定此宝物";
                     } else {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.twozhenjia = this.proxy.gameState.twozj[Nr - 4];
                     }
                 } else if (this.proxy.gameState.lunci == 3) {
                     if (this.proxy.gameState.threezgqskill == Nr - 8) {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                        this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.threezhenjia = "你无法鉴定此宝物";
                     } else {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                        this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.threezhenjia = this.proxy.gameState.threezj[Nr - 8];
                     }
                 }
                 this.AnimVis();
@@ -944,15 +1088,28 @@ module game {
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[8])) {
                 if (this.ybrskill8 > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                    if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.gameState.onetouxi = true;
+                    } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.gameState.twotouxi = true;
+                    } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.gameState.threetouxi = true;
+                    }
                     this.ybrskill8--;
                     this.chuanshunwei();
                 } else {
                     if (this.proxy.gameState.lunci == 1) {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.onezj[Nr]);
+                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.onezhenjia = this.proxy.gameState.onezj[Nr];
                     } else if (this.proxy.gameState.lunci == 2) {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.twozj[Nr - 4]);
+                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.twozhenjia = this.proxy.gameState.twozj[Nr - 4];
                     } else if (this.proxy.gameState.lunci == 3) {
                         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[Nr] + "”" + " 是 " + this.proxy.gameState.threezj[Nr - 8]);
+                        this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[Nr];
+                        this.proxy.gameState.threezhenjia = this.proxy.gameState.threezj[Nr - 8];
                     }
                     this.gameScreen.zgqskill.visible = true;
                     this.gameScreen.zgqskillpass.visible = true;
@@ -1343,6 +1500,13 @@ module game {
             this.AnimVis();
             if (this.ybrskill2 > 0) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                if (this.proxy.gameState.lunci == 1) {
+                    this.proxy.gameState.onetouxi = true;
+                } else if (this.proxy.gameState.lunci == 2) {
+                    this.proxy.gameState.twotouxi = true;
+                } else if (this.proxy.gameState.lunci == 3) {
+                    this.proxy.gameState.threetouxi = true;
+                }
                 this.ybrskill2--;
                 this.chuanshunwei();
             } else {
@@ -1396,9 +1560,30 @@ module game {
             let skilled = this.proxy.gameState.role.findIndex(xx => xx && xx.actorNr == this.proxy.gameState.seats[Nr2].actorNr);
             if (1 <= skilled && skilled <= 5) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是好人");
+                if (this.proxy.gameState.lunci == 1) {
+                    this.proxy.gameState.onebaowu = Nr;
+                    this.proxy.gameState.onezhenjia = "好人"
+                } else if (this.proxy.gameState.lunci == 2) {
+                    this.proxy.gameState.twobaowu = Nr;
+                    this.proxy.gameState.twozhenjia = "好人"
+                } else if (this.proxy.gameState.lunci == 3) {
+                    this.proxy.gameState.threebaowu = Nr;
+                    this.proxy.gameState.threezhenjia = "好人"
+                }
             } else if (6 <= skilled && skilled <= 8) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是坏人");
+                if (this.proxy.gameState.lunci == 1) {
+                    this.proxy.gameState.onebaowu = Nr;
+                    this.proxy.gameState.onezhenjia = "坏人"
+                } else if (this.proxy.gameState.lunci == 2) {
+                    this.proxy.gameState.twobaowu = Nr;
+                    this.proxy.gameState.twozhenjia = "坏人"
+                } else if (this.proxy.gameState.lunci == 3) {
+                    this.proxy.gameState.threebaowu = Nr;
+                    this.proxy.gameState.threezhenjia = "坏人"
+                }
             }
+
             this.gameScreen.fangzhenskill1.visible = false;
             this.gameScreen.fangzhenskill2.visible = false;
             this.gameScreen.fangzhenskill3.visible = false;
@@ -1592,6 +1777,97 @@ module game {
             }
         }
 
+        public no1baowu1: number = 0;
+        public no1baowu2: number = 0;
+        public no1baowu3: number = 0;
+        public no1baowu4: number = 0;
+        public no2baowu1: number = 0;
+        public no2baowu2: number = 0;
+        public no2baowu3: number = 0;
+        public no2baowu4: number = 0;
+        public no3baowu1: number = 0;
+        public no3baowu2: number = 0;
+        public no3baowu3: number = 0;
+        public no3baowu4: number = 0;
+        public no4baowu1: number = 0;
+        public no4baowu2: number = 0;
+        public no4baowu3: number = 0;
+        public no4baowu4: number = 0;
+        public no5baowu1: number = 0;
+        public no5baowu2: number = 0;
+        public no5baowu3: number = 0;
+        public no5baowu4: number = 0;
+        public no6baowu1: number = 0;
+        public no6baowu2: number = 0;
+        public no6baowu3: number = 0;
+        public no6baowu4: number = 0;
+        public no7baowu1: number = 0;
+        public no7baowu2: number = 0;
+        public no7baowu3: number = 0;
+        public no7baowu4: number = 0;
+        public no8baowu1: number = 0;
+        public no8baowu2: number = 0;
+        public no8baowu3: number = 0;
+        public no8baowu4: number = 0;
+        public toupiaoxiangxi(arr: Array<any>) {
+            if (arr[1]) {
+                const no1 = +arr[1];
+                this.no1baowu4 = no1 % 100;
+                this.no1baowu3 = ((no1 - this.no1baowu4) / 100) % 100;
+                this.no1baowu2 = (((no1 - this.no1baowu4) / 100 - this.no1baowu3) / 100) % 100;
+                this.no1baowu1 = (no1 - this.no1baowu4 - (this.no1baowu3 * 100) - (this.no1baowu2 * 10000)) / 1000000;
+            }
+            if (arr[2]) {
+                const no2 = +arr[2];
+                this.no2baowu4 = no2 % 100;
+                this.no2baowu3 = ((no2 - this.no2baowu4) / 100) % 100;
+                this.no2baowu2 = (((no2 - this.no2baowu4) / 100 - this.no2baowu3) / 100) % 100;
+                this.no2baowu1 = (no2 - this.no2baowu4 - (this.no2baowu3 * 100) - (this.no2baowu2 * 10000)) / 1000000;
+            }
+            if (arr[3]) {
+                const no3 = +arr[3];
+                this.no3baowu4 = no3 % 100;
+                this.no3baowu3 = ((no3 - this.no3baowu4) / 100) % 100;
+                this.no3baowu2 = (((no3 - this.no3baowu4) / 100 - this.no3baowu3) / 100) % 100;
+                this.no3baowu1 = (no3 - this.no3baowu4 - (this.no3baowu3 * 100) - (this.no3baowu2 * 10000)) / 1000000;
+            }
+            if (arr[4]) {
+                const no4 = +arr[4];
+                this.no4baowu4 = no4 % 100;
+                this.no4baowu3 = ((no4 - this.no4baowu4) / 100) % 100;
+                this.no4baowu2 = (((no4 - this.no4baowu4) / 100 - this.no4baowu3) / 100) % 100;
+                this.no4baowu1 = (no4 - this.no4baowu4 - (this.no4baowu3 * 100) - (this.no4baowu2 * 10000)) / 1000000;
+            }
+            if (arr[5]) {
+                const no5 = +arr[5];
+                this.no5baowu4 = no5 % 100;
+                this.no5baowu3 = ((no5 - this.no5baowu4) / 100) % 100;
+                this.no5baowu2 = (((no5 - this.no5baowu4) / 100 - this.no5baowu3) / 100) % 100;
+                this.no5baowu1 = (no5 - this.no5baowu4 - (this.no5baowu3 * 100) - (this.no5baowu2 * 10000)) / 1000000;
+            }
+            if (arr[6]) {
+                const no6 = +arr[6];
+                this.no6baowu4 = no6 % 100;
+                this.no6baowu3 = ((no6 - this.no6baowu4) / 100) % 100;
+                this.no6baowu2 = (((no6 - this.no6baowu4) / 100 - this.no6baowu3) / 100) % 100;
+                this.no6baowu1 = (no6 - this.no6baowu4 - (this.no6baowu3 * 100) - (this.no6baowu2 * 10000)) / 1000000;
+            }
+            if (arr[7]) {
+                const no7 = +arr[7];
+                this.no7baowu4 = no7 % 100;
+                this.no7baowu3 = ((no7 - this.no7baowu4) / 100) % 100;
+                this.no7baowu2 = (((no7 - this.no7baowu4) / 100 - this.no7baowu3) / 100) % 100;
+                this.no7baowu1 = (no7 - this.no7baowu4 - (this.no7baowu3 * 100) - (this.no7baowu2 * 10000)) / 1000000;
+            }
+            if (arr[8]) {
+                const no8 = +arr[8];
+                this.no8baowu4 = no8 % 100;
+                this.no8baowu3 = ((no8 - this.no8baowu4) / 100) % 100;
+                this.no8baowu2 = (((no8 - this.no8baowu4) / 100 - this.no8baowu3) / 100) % 100;
+                this.no8baowu1 = (no8 - this.no8baowu4 - (this.no8baowu3 * 100) - (this.no8baowu2 * 10000)) / 1000000;
+            }
+        }
+
         public baowu1_sx: number;
         public baowu2_sx: number;
         public baowu3_sx: number;
@@ -1629,10 +1905,8 @@ module game {
                 this.proxy.gameState.toupiaojieguo1[3] = { baowu: this.proxy.gameState.baowulist[3], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.onezj[3] };
                 this.proxy.gameState.toupiaojieguo1 = _(this.proxy.gameState.toupiaojieguo1).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo1);
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo1[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo1[1].baowu + "  " + this.proxy.gameState.toupiaojieguo1[1].zhenjia);
-
-                //this.proxy.gameState.toupiao[1]%100
-
+                this.toupiaoxiangxi(this.proxy.gameState.toupiao);
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo1[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo1[1].baowu + "  " + this.proxy.gameState.toupiaojieguo1[1].zhenjia + "      " + this.proxy.gameState.baowulist[0] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[1] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[2] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[3] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
                 if (this.proxy.gameState.toupiaojieguo1[0].zhenjia == "真") {
                     this.proxy.gameState.defen++;
                 }
@@ -1650,7 +1924,8 @@ module game {
                 this.proxy.gameState.toupiaojieguo2[3] = { baowu: this.proxy.gameState.baowulist[7], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.twozj[3] };
                 this.proxy.gameState.toupiaojieguo2 = _(this.proxy.gameState.toupiaojieguo2).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo2);
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo2[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo2[1].baowu + "  " + this.proxy.gameState.toupiaojieguo2[1].zhenjia);
+                this.toupiaoxiangxi(this.proxy.gameState.toupiao2);
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo2[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo2[1].baowu + "  " + this.proxy.gameState.toupiaojieguo2[1].zhenjia + "      " + this.proxy.gameState.baowulist[4] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[5] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[6] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[7] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
                 if (this.proxy.gameState.toupiaojieguo2[0].zhenjia == "真") {
                     this.proxy.gameState.defen++;
                 }
@@ -1668,7 +1943,8 @@ module game {
                 this.proxy.gameState.toupiaojieguo3[3] = { baowu: this.proxy.gameState.baowulist[11], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.threezj[3] };
                 this.proxy.gameState.toupiaojieguo3 = _(this.proxy.gameState.toupiaojieguo3).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo3);
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo3[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo3[1].baowu + "  " + this.proxy.gameState.toupiaojieguo3[1].zhenjia);
+                this.toupiaoxiangxi(this.proxy.gameState.toupiao3);
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo3[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo3[1].baowu + "  " + this.proxy.gameState.toupiaojieguo3[1].zhenjia + "      " + this.proxy.gameState.baowulist[8] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[9] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[10] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[11] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
                 if (this.proxy.gameState.toupiaojieguo3[0].zhenjia == "真") {
                     this.proxy.gameState.defen++;
                 }
@@ -1694,7 +1970,6 @@ module game {
                     this.gameScreen.startno2.visible = true;
                 }
             }
-
         }
 
         public startno2() {
@@ -1845,10 +2120,18 @@ module game {
                 } else {
                     isshengli = "许愿阵营胜利";
                 }
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, isshengli + "  " + message1 + " " + message2 + " " + message3);
-                //this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "游戏结果");
+                this.zhaoren();
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, isshengli + "得分：" + this.proxy.gameState.defen + "    " + "许愿是" + this.xuyuanweizhi + "号位" + "  " + "方震是" + this.fangzhenweizhi + "号位" + "  " + "老朝奉是" + this.laochaofengweizhi + "号位" + "  " + message1 + " " + message2 + " " + message3);
             }
+        }
 
+        public xuyuanweizhi: number;
+        public fangzhenweizhi: number;
+        public laochaofengweizhi: number;
+        public zhaoren() {
+            this.xuyuanweizhi = this.proxy.gameState.seats.findIndex(seat => seat && this.proxy.gameState.role[1] && seat.actorNr == this.proxy.gameState.role[1].actorNr);
+            this.fangzhenweizhi = this.proxy.gameState.seats.findIndex(seat => seat && this.proxy.gameState.role[2] && seat.actorNr == this.proxy.gameState.role[2].actorNr);
+            this.laochaofengweizhi = this.proxy.gameState.seats.findIndex(seat => seat && this.proxy.gameState.role[6] && seat.actorNr == this.proxy.gameState.role[6].actorNr);
         }
     }
 }
