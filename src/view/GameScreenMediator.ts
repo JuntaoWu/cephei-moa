@@ -1719,6 +1719,11 @@ module game {
             this.gameScreen.toupiao41.visible = false;
             this.gameScreen.startno2.visible = false;
             this.gameScreen.onejieguo.visible = false;
+
+            this.gameScreen.isFirstRound = false;
+            this.gameScreen.isSecondRound = this.proxy.gameState.lunci == 1;
+            this.gameScreen.isThirdRound = this.proxy.gameState.lunci == 2;
+
             if (this.proxy.gameState.lunci == 1) {
                 this.proxy.gameState.lunci = 2;
                 this.proxy.gameState.shunwei_two_been[1] = this.proxy.gameState.shunwei_one_been[this.proxy.gameState.shunwei_one_been.length - 1];

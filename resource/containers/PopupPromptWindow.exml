@@ -2,7 +2,7 @@
 <e:Skin class="skins.PopupPromptWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
     <game:Shade id="overlay" />
     <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin">
-        <e:Label text="{message}" bold="true" size="45" textColor="0x020202" horizontalCenter="0" y="100" width="540"/>
+        <e:Label text="{message}" bold="true" size="45" textColor="0x020202" horizontalCenter="0" y="55" width="540"/>
         
         <e:Label visible="{isStart}" text="开始本轮鉴宝" bold="true" size="45" textColor="0x020202" horizontalCenter="0" y="100"/>
         <e:Button visible="{isStart}" id="closeButton" anchorOffsetY="0" anchorOffsetX="0" bottom="55" left="59">

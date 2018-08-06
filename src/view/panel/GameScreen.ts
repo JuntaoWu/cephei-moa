@@ -164,10 +164,6 @@ module game {
             this.fangzhenskill6.visible = false;
             this.fangzhenskill7.visible = false;
             this.fangzhenskill8.visible = false;
-            this.toupiao1.visible = false;
-            this.toupiao2.visible = false;
-            this.toupiao3.visible = false;
-            this.toupiao4.visible = false;
             this.toupiao11.visible = false;
             this.toupiao21.visible = false;
             this.toupiao31.visible = false;
