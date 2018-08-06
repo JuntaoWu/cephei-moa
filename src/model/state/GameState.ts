@@ -41,6 +41,23 @@ module game {
         public lunci:number=1;
         public defen:number=0;
 
-        //public initialized: boolean = false;
+        public zhenying:string="haha";
+        public juese:string="haha";
+        public jueselist:Array<any>=["许愿","方震","姬云浮","黄烟烟","木户加奈","老朝奉","药不然","郑国渠"];
+        public onebaowu:string="haha";
+        public onezhenjia:string="haha";
+        public onebaowu2:string="haha";
+        public onezhenjia2:string="haha";
+        public onetouxi:boolean=false;
+        public twobaowu:string="haha";
+        public twozhenjia:string="haha";
+        public twobaowu2:string="haha";
+        public twozhenjia2:string="haha";
+        public twotouxi:boolean=false;
+        public threebaowu:string="haha";
+        public threezhenjia:string="haha";
+        public threebaowu2:string="haha";
+        public threezhenjia2:string="haha";
+        public threetouxi:boolean=false;
     }
 }
