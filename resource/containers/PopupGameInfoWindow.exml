@@ -20,24 +20,51 @@
         </e:Group>
         <e:Group left="100" y="400">
             <e:Image source="round1"></e:Image>
-            <e:Group x="51" verticalCenter="0">
-                <e:Image source="t1" scaleX="0.6" scaleY="0.6"></e:Image>
-                <e:Image source="true" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+            <e:Group verticalCenter="0">
+                <e:Group visible="{firstRound.r1}" x="50" verticalCenter="0">
+                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{firstRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{firstRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                </e:Group>
+                <e:Group visible="{firstRound.r2}" x="230" verticalCenter="0">
+                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{firstRound.r2.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{firstRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                </e:Group>
             </e:Group>
+            <e:Label verticalCenter="0" x="50" visible="{firstRound.text}" text="{firstRound.text}"/>
         </e:Group>
         <e:Group left="100" y="510">
             <e:Image source="round2"></e:Image>
-            <e:Group x="51" verticalCenter="0">
-                <e:Image source="t2" scaleX="0.6" scaleY="0.6"></e:Image>
-                <e:Image source="true" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+            <e:Group verticalCenter="0">
+                <e:Group visible="{secondRound.r1}" x="50" verticalCenter="0">
+                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{secondRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{secondRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                </e:Group>
+                <e:Group visible="{secondRound.r2}" x="230" verticalCenter="0">
+                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{secondRound.r2.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{secondRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                </e:Group>
             </e:Group>
+            <e:Label verticalCenter="0" x="50" visible="{secondRound.text}" text="{secondRound.text}"/>
         </e:Group>
         <e:Group left="100" y="620">
             <e:Image source="round3"></e:Image>
-            <e:Group x="51" verticalCenter="0">
-                <e:Image source="t3" scaleX="0.6" scaleY="0.6"></e:Image>
-                <e:Image source="true" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+            <e:Group verticalCenter="0">
+                <e:Group visible="{thirdRound.r1}" x="50" verticalCenter="0">
+                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{thirdRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{thirdRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                </e:Group>
+                <e:Group visible="{thirdRound.r2}" x="230" verticalCenter="0">
+                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{thirdRound.r2.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Image source="{thirdRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                </e:Group>
             </e:Group>
+            <e:Label verticalCenter="0" x="50" bold="true" visible="{thirdRound.text}" text="{thirdRound.text}"/>
         </e:Group>
     </game:PopupWindowWrapper>
 </e:Skin>

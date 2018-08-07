@@ -76,7 +76,8 @@ module game {
             GameProxy.ONE_YBRSKILL,
             GameProxy.ONE_ZGQSKILL,
             GameProxy.TOUREN,
-            GameProxy.TOUREN_JIEGUO
+            GameProxy.TOUREN_JIEGUO,
+            GameCommand.JOIN_ROOM
             ];
         }
 
@@ -151,6 +152,10 @@ module game {
                 }
                 case GameProxy.TOUREN_JIEGUO: {
                     this.tourenjieguo(data);
+                    break;
+                }
+                case GameCommand.JOIN_ROOM: {
+                    this.initData();
                     break;
                 }
             }
@@ -1075,7 +1080,9 @@ module game {
                     result: results[i]
                 })
             }
-            this.sendNotification(SceneCommand.SHOW_APPRAISAL_POPUP, data);    
+            if (data.length) {
+                this.sendNotification(SceneCommand.SHOW_APPRAISAL_POPUP, data);
+            }
             this.AnimVis();        
         }
 
@@ -1870,7 +1877,8 @@ module game {
                 this.proxy.gameState.toupiaojieguo1 = _(this.proxy.gameState.toupiaojieguo1).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo1);
                 this.toupiaoxiangxi(this.proxy.gameState.toupiao);
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo1[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo1[1].baowu + "  " + this.proxy.gameState.toupiaojieguo1[1].zhenjia + "      " + this.proxy.gameState.baowulist[0] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[1] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[2] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[3] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo1[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo1[1].baowu + "  " + this.proxy.gameState.toupiaojieguo1[1].zhenjia + "      " + this.proxy.gameState.baowulist[0] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[1] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[2] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[3] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
+                this.sendNotification(SceneCommand.SHOW_RESULT_POPUP)
                 if (this.proxy.gameState.toupiaojieguo1[0].zhenjia == "真") {
                     this.proxy.gameState.defen++;
                 }
@@ -1889,7 +1897,8 @@ module game {
                 this.proxy.gameState.toupiaojieguo2 = _(this.proxy.gameState.toupiaojieguo2).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo2);
                 this.toupiaoxiangxi(this.proxy.gameState.toupiao2);
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo2[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo2[1].baowu + "  " + this.proxy.gameState.toupiaojieguo2[1].zhenjia + "      " + this.proxy.gameState.baowulist[4] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[5] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[6] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[7] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo2[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo2[1].baowu + "  " + this.proxy.gameState.toupiaojieguo2[1].zhenjia + "      " + this.proxy.gameState.baowulist[4] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[5] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[6] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[7] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
+                this.sendNotification(SceneCommand.SHOW_RESULT_POPUP)
                 if (this.proxy.gameState.toupiaojieguo2[0].zhenjia == "真") {
                     this.proxy.gameState.defen++;
                 }
@@ -1908,7 +1917,8 @@ module game {
                 this.proxy.gameState.toupiaojieguo3 = _(this.proxy.gameState.toupiaojieguo3).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo3);
                 this.toupiaoxiangxi(this.proxy.gameState.toupiao3);
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo3[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo3[1].baowu + "  " + this.proxy.gameState.toupiaojieguo3[1].zhenjia + "      " + this.proxy.gameState.baowulist[8] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[9] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[10] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[11] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo3[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo3[1].baowu + "  " + this.proxy.gameState.toupiaojieguo3[1].zhenjia + "      " + this.proxy.gameState.baowulist[8] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[9] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[10] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[11] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
+                this.sendNotification(SceneCommand.SHOW_RESULT_POPUP)
                 if (this.proxy.gameState.toupiaojieguo3[0].zhenjia == "真") {
                     this.proxy.gameState.defen++;
                 }
@@ -2062,6 +2072,7 @@ module game {
                     //找到老朝奉
                     message1 = "找到老朝奉";
                     this.proxy.gameState.defen++;
+                    this.proxy.gameState.findPeopleScore++;
                 } else {
                     message1 = "没找到老朝奉";
                 }
@@ -2071,6 +2082,7 @@ module game {
                 } else {
                     message2 = "没找到许愿";
                     this.proxy.gameState.defen += 2;
+                    this.proxy.gameState.findPeopleScore += 2;
                 }
                 if (this.proxy.gameState.role[2] && this.proxy.gameState.touren[7] == this.proxy.gameState.role[2]) {
                     //找到方震
@@ -2078,6 +2090,7 @@ module game {
                 } else {
                     message3 = "没找到方震";
                     this.proxy.gameState.defen++;
+                    this.proxy.gameState.findPeopleScore++;
                 }
                 if (this.proxy.gameState.defen < 6) {
                     isshengli = "许愿阵营失败";
@@ -2085,7 +2098,8 @@ module game {
                     isshengli = "许愿阵营胜利";
                 }
                 this.zhaoren();
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, isshengli + "得分：" + this.proxy.gameState.defen + "    " + "许愿是" + this.xuyuanweizhi + "号位" + "  " + "方震是" + this.fangzhenweizhi + "号位" + "  " + "老朝奉是" + this.laochaofengweizhi + "号位" + "  " + message1 + " " + message2 + " " + message3);
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, isshengli + "得分：" + this.proxy.gameState.defen + "    " + "许愿是" + this.xuyuanweizhi + "号位" + "  " + "方震是" + this.fangzhenweizhi + "号位" + "  " + "老朝奉是" + this.laochaofengweizhi + "号位" + "  " + message1 + " " + message2 + " " + message3);
+                this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
             }
         }
 

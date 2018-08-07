@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.ResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
     <e:Image source="start-background" left="0" right="0" bottom="0" top="0"/>
-    <e:Scroller id="contentScroller" horizontalCenter="0">
+    <e:Image id="borderBg" source="border_red" left="0" right="0" scale9Grid="90,160,540,960" y="-40"/>
+    <e:Scroller id="contentScroller" horizontalCenter="0" y="40">
         <e:viewport>
             <e:Group>
-                <e:Group  horizontalCenter="0" y="40">
+                <e:Group  horizontalCenter="0" y="40" scaleX="0.88" scaleY="0.88">
                     <e:Image source="jzj" />
                     <e:Image source="true2"  x="75"/>
-                    <e:Image source="share_team_xu"  x="180"/>
+                    <e:Image source="{campRes}"  x="180"/>
                     <e:Image source="teasure12"  x="180" y="47"/>
 
-                    <e:Image source="result2"  y="110" horizontalCenter="0"/>
+                    <e:Image source="{winResult}"  y="110" horizontalCenter="0"/>
 
-                    <e:Image source="lose"  y="280" horizontalCenter="0"/>
+                    <e:Image source="{winRes}"  y="280" horizontalCenter="0"/>
                 </e:Group>
                 <e:Group y="730">
-                    <e:Image source="round1" horizontalCenter="0"/>
+                    <e:Image source="round1" verticalCenter="0" x="0"/>
                 </e:Group>
                 <e:Group y="845">
-                    <e:Image source="round2" horizontalCenter="0"/>
+                    <e:Image source="round2" verticalCenter="0" x="0"/>
                 </e:Group>
                 <e:Group y="950">
-                    <e:Image source="round3" horizontalCenter="0"/>
+                    <e:Image source="round3" verticalCenter="0" x="0"/>
                 </e:Group>
                 <e:Group y="1050" horizontalCenter="0">
                     <e:Label text="鉴宝部分许愿方得分" textColor="0x050505"/>
-                    <e:Label text="4" textColor="0xa50606" x="315"/>
+                    <e:Label text="{findAntiqueScore}" textColor="0xa50606" x="315"/>
                 </e:Group>
                 <e:Group y="1150" horizontalCenter="0">
                     <e:Group scaleX="0.8" scaleY="0.8">
@@ -99,12 +100,12 @@
                 </e:Group>
                 <e:Group y="1900" horizontalCenter="0">
                     <e:Label text="鉴人部分许愿方得分" textColor="0x050505"/>
-                    <e:Label text="4" textColor="0xa50606" x="315"/>
+                    <e:Label text="{findPeopleScore}" textColor="0xa50606" x="315"/>
                 </e:Group>
                 
                 <e:Group y="1970" horizontalCenter="0">
                     <e:Label text="许愿方总分" textColor="0x050505" size="40"/>
-                    <e:Label text="4" textColor="0xa50606" x="220" verticalCenter="0"/>
+                    <e:Label text="{totalScore}" textColor="0xa50606" x="220" verticalCenter="0"/>
                 </e:Group>
                 <e:Group y="2000" horizontalCenter="0" height="150">
                 </e:Group>

@@ -10,7 +10,7 @@
     "roleDescription": "选择2个你要鉴定的宝物",
     "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
-    "skillDescription": "",
+    "skillDescription": "每轮可鉴定两个宝物",
     "skillRes": ""
   },
   "2": {

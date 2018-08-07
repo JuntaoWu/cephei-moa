@@ -40,6 +40,7 @@ module game {
         public threezgqskill: number = 100;
         public lunci:number=1;
         public defen:number=0;
+        public findPeopleScore:number=0;
 
         public zhenying:string="";
         public juese:string="";
