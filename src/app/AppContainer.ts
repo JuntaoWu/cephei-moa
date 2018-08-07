@@ -86,11 +86,20 @@ module game {
         }
 
         public aboutWindow: AboutWindow;
-        public showAboutWindow(): void {
+        public showAboutWindow(data: any): void {
             if (!this.aboutWindow) {
                 this.aboutWindow = new AboutWindow();
             }
             this.addChild(this.aboutWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public resultWindow: ResultWindow;
+        public showResultWindow(): void {
+            if (!this.resultWindow) {
+                this.resultWindow = new ResultWindow();
+            }
+            this.addChild(this.resultWindow);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 

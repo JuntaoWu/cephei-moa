@@ -23,54 +23,54 @@
             <e:Label text="点击对应颜色的座位\n入座或换座\n选好座位后等待房主开局" x="72.5" y="244.5" textColor="0x000000" size="45" fontFamily="SimHei"
                      textAlign="center" verticalAlign="middle"></e:Label>
         </e:Group>
-        <e:Group visible="{isChoosingRoleOrMasterClient}">
+        <e:Group visible="{isChoosingRoleOrMasterClient}" horizontalCenter="0">
             <e:Label text="录入身份" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Label text="选择对应图标，录入抽到的身份" y="40" textColor="0x000000" fontFamily="SimHei" textAlign="center" verticalAlign="middle"
                      horizontalCenter="0"></e:Label>
-            <e:Group y="60" horizontalCenter="0">
-                <e:Button enabled="{isChoosingRole}" id="btnjs1" height="210" width="150">
+            <e:Group y="75" horizontalCenter="0">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs1" height="210" width="150">
                     <e:Skin states="up,down">
                         <e:Image source="role1" verticalCenter="0" horizontalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                         <e:Label text="许愿" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" id="btnjs2" x="150" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs2" x="140" height="210" width="150">
                     <e:Skin>
                         <e:Image source="role2" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="方震" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" id="btnjs3" x="300" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs3" x="280" height="210" width="150">
                     <e:Skin>
                         <e:Image source="role3" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="姬云浮" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" id="btnjs4" x="450" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs4" x="420" height="210" width="150">
                     <e:Skin>
                         <e:Image source="role4-5" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="黄烟烟" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" id="btnjs5" y="220" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs5" y="210" height="210" width="150">
                     <e:Skin>
                         <e:Image source="role4-5" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="木户加奈" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" id="btnjs6" y="220" x="150" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs6" y="210" x="140" height="210" width="150">
                     <e:Skin>
                         <e:Image source="role6" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="老朝奉" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" id="btnjs7" y="220" x="300" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs7" y="210" x="280" height="210" width="150">
                     <e:Skin>
                         <e:Image source="role7" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="药不然" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" id="btnjs8" y="220" x="450" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs8" y="210" x="420" height="210" width="150">
                     <e:Skin>
                         <e:Image source="role8" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="郑国渠" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
