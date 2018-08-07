@@ -11,6 +11,9 @@ module game {
 
         public role: any;
         public userName: any;
+        public firstRound: any;
+        public secondRound: any;
+        public thirdRound: any;
 
         public createCompleteEvent(event: eui.UIEvent): void {
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);

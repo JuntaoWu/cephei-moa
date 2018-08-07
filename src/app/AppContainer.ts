@@ -115,12 +115,23 @@ module game {
         }
         
         public popupRoleWindow: PopupRoleWindow;
-        public showPopupRoleWindow(): void {
+        public showPopupRoleWindow(roleId): void {
             if (!this.popupRoleWindow) {
                 this.popupRoleWindow = new PopupRoleWindow();
             }
+            this.popupRoleWindow.setRole(roleId)
             this.addChild(this.popupRoleWindow);
             this.popupRoleWindow.show();
+        }
+        
+        public popupAppraisalWindow: PopupAppraisalWindow;
+        public showPopupAppraisalWindow(data: any): void {
+            if (!this.popupAppraisalWindow) {
+                this.popupAppraisalWindow = new PopupAppraisalWindow();
+            }
+            this.popupAppraisalWindow.setData(data);
+            this.addChild(this.popupAppraisalWindow);
+            this.popupAppraisalWindow.show();
         }
         
         public popupResultWindow: PopupVoteResultWindow;

@@ -70,6 +70,7 @@
 		"bin-debug/view/panel/GuideWinJudgeWindow.js",
 		"bin-debug/view/panel/JoinWindow.js",
 		"bin-debug/view/panel/NoticeWindow.js",
+		"bin-debug/view/panel/PopupAppraisalWindow.js",
 		"bin-debug/view/panel/PopupGameInfoWindow.js",
 		"bin-debug/view/panel/PopupHandleWindow.js",
 		"bin-debug/view/panel/PopupNumberKeyboard.js",

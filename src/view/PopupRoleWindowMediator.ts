@@ -10,17 +10,32 @@ module game {
         public constructor(viewComponent: any) {
             super(PopupRoleWindowMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
+            this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
             this.popupRoleWindow.confirmButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.confirmClick, this);
+            this.popupRoleWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
         }
 
         public initData(): void {
-            
+            this.popupRoleWindow.role = this.proxy.rolesMap.get(this.popupRoleWindow.roleId);
+            let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
+            if (!this.proxy.gameState.role[this.popupRoleWindow.roleId] && jsNo != -1) {
+                let roleName = this.proxy.rolesMap.get(jsNo.toString()).name;
+                this.popupRoleWindow.promptInfo = `你已经选择了${roleName},是否更换${this.popupRoleWindow.role.name}`;
+            }
         }
 
         private confirmClick(event: egret.TouchEvent) {
-            let proxy: GameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
+            let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
+            if (this.proxy.gameState.role[this.popupRoleWindow.roleId]) {
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "已经有人选择此身份，请重新选择")
+            } else {
+                if (jsNo != -1) {
+                    this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + jsNo));
+                }
+                this.sendNotification(GameCommand.CHOOSE_ROLE, this.popupRoleWindow.roleId);
+            }
             this.popupRoleWindow.close();
         }
         public get popupRoleWindow(): PopupRoleWindow {

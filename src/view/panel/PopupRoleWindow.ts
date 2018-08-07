@@ -16,9 +16,11 @@ module game {
             ApplicationFacade.getInstance().registerMediator(new PopupRoleWindowMediator(this));
         }
 
-        public role;
-        public setRole(role): void {
-            this.role = role;
+        public role: any;
+        public promptInfo: string;
+        public roleId;
+        public setRole(roleId): void {
+            this.roleId = roleId;
         }
 
         public partAdded(partName: string, instance: any): void {

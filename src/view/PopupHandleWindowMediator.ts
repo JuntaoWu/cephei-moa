@@ -10,6 +10,7 @@ module game {
         public constructor(viewComponent: any) {
             super(PopupHandleWindowMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
+            this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
             this.popupHandleWindow.confirmButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.confirmClick, this); 
             this.popupHandleWindow.btnCreateRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createRoomClick, this); 
@@ -20,7 +21,8 @@ module game {
         }
 
         public confirmClick() {
-            
+            this.proxy.leaveRoom();
+            this.sendNotification(SceneCommand.CHANGE, Scene.Start);
         }
 
         public createRoomClick(event: egret.TouchEvent) {

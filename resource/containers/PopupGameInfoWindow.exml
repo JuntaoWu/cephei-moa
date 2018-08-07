@@ -2,7 +2,7 @@
 <e:Skin class="skins.PopupGameInfoWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
     <game:Shade id="overlay" />
     <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="1000">
-        <e:Group left="70" y="61">
+        <e:Group left="100" y="60">
             <e:Label text="你" bold="true" textColor="0x000000" x="30"/>
             <e:Image source="{role.res}" y="40"></e:Image>
             <e:Group x="150" y="44">
@@ -11,28 +11,28 @@
                 <e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>
             </e:Group>
         </e:Group>
-        <e:Group left="70" y="235">
+        <e:Group left="100" y="235">
             <e:Image source="{role.skillRes}"></e:Image>
             <e:Group x="150" height="100%" verticalCenter="0">
                 <e:Label text="{role.skillDescription}" bold="true" textColor="0x000000" horizontalCenter="0" verticalCenter="0"/>
                 <!--<e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>-->
             </e:Group>
         </e:Group>
-        <e:Group left="70" y="400">
+        <e:Group left="100" y="400">
             <e:Image source="round1"></e:Image>
             <e:Group x="51" verticalCenter="0">
                 <e:Image source="t1" scaleX="0.6" scaleY="0.6"></e:Image>
                 <e:Image source="true" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
             </e:Group>
         </e:Group>
-        <e:Group left="70" y="510">
+        <e:Group left="100" y="510">
             <e:Image source="round2"></e:Image>
             <e:Group x="51" verticalCenter="0">
                 <e:Image source="t2" scaleX="0.6" scaleY="0.6"></e:Image>
                 <e:Image source="true" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
             </e:Group>
         </e:Group>
-        <e:Group left="70" y="620">
+        <e:Group left="100" y="620">
             <e:Image source="round3"></e:Image>
             <e:Group x="51" verticalCenter="0">
                 <e:Image source="t3" scaleX="0.6" scaleY="0.6"></e:Image>

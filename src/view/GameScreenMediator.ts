@@ -29,6 +29,9 @@ module game {
             super.initializeNotifier("ApplicationFacade");
 
             //this.gameScreen.btnSeat1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.findSeat2,this);
+            this.gameScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGuide, this);
+            this.gameScreen.btnQuit.addEventListener(egret.TouchEvent.TOUCH_TAP, this.quitClick, this);
+            this.gameScreen.btnGameInfo.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameInfo, this);
 
             console.log("GameScreen initData:");
             this.initData();
@@ -42,6 +45,18 @@ module game {
             this.gameScreen.isMasterClient = this.proxy.isMasterClient;
             this.gameScreen.isNormalClient = !this.proxy.isMasterClient;
             this.updateGameScreen(this.proxy.gameState);
+        }
+
+        private showGuide() {
+            this.sendNotification(SceneCommand.SHOW_GUIDE_WINDOW);
+        }
+        
+        private quitClick() {
+            this.sendNotification(SceneCommand.SHOW_HANDLE_POPUP, true);
+        }
+
+        private showGameInfo() {
+            this.sendNotification(SceneCommand.SHOW_GAMEINFO_POPUP);
         }
 
         public listNotificationInterests(): Array<any> {
@@ -351,26 +366,27 @@ module game {
         }
 
         public chooseRole(roleId: number) {
-            let existingRoleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.actorNr);
-            let role = this.proxy.rolesMap.get(roleId.toString());
-            if (this.proxy.gameState.role[roleId]) {
-                if (existingRoleId == roleId) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你已经选择了“${role.name}”`);
-                }
-                else {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "已经有人选了这个角色");
-                }
-            }
-            else {
-                if (existingRoleId == -1) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你选择了“${role.name}”`);
-                }
-                else {
-                    this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + existingRoleId));
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你更换为“${role.name}”`);
-                }
-                this.sendNotification(GameCommand.CHOOSE_ROLE, roleId);
-            }
+            // let existingRoleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.actorNr);
+            // let role = this.proxy.rolesMap.get(roleId.toString());
+            // if (this.proxy.gameState.role[roleId]) {
+            //     if (existingRoleId == roleId) {
+            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你已经选择了“${role.name}”`);
+            //     }
+            //     else {
+            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "已经有人选了这个角色");
+            //     }
+            // }
+            // else {
+            //     if (existingRoleId == -1) {
+            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你选择了“${role.name}”`);
+            //     }
+            //     else {
+            //         this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + existingRoleId));
+            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你更换为“${role.name}”`);
+            //     }
+            //     this.sendNotification(GameCommand.CHOOSE_ROLE, roleId);
+            // }
+            this.sendNotification(SceneCommand.SHOW_ROLE_POPUP, roleId);
         }
 
         public startGame() {
@@ -630,9 +646,9 @@ module game {
                         this.proxy.gameState.threebaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
                         this.proxy.gameState.threezhenjia2 = results[1];
                     }
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0] + "   " + "“" + this.proxy.gameState.baowulist[this.selectedAnims[1]] + "”" + " 是 " + results[1]);
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0] + "   " + "“" + this.proxy.gameState.baowulist[this.selectedAnims[1]] + "”" + " 是 " + results[1]);
                 }
-                this.AnimVis();
+                // this.AnimVis();
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[3])) {
@@ -679,9 +695,9 @@ module game {
                         this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                         this.proxy.gameState.threezhenjia = results[0];
                     }
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 }
-                this.AnimVis();
+                // this.AnimVis();
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[4])) {
@@ -741,9 +757,9 @@ module game {
                         this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                         this.proxy.gameState.threezhenjia = results[0];
                     }
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
-                this.AnimVis();
+                // this.AnimVis();
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[5])) {
@@ -803,9 +819,9 @@ module game {
                         this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                         this.proxy.gameState.threezhenjia = results[0];
                     }
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 }
-                this.AnimVis();
+                // this.AnimVis();
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[6])) {
@@ -853,9 +869,9 @@ module game {
                     }
                     this.gameScreen.lcfskill.visible = true;
                     this.gameScreen.lcfskillpass.visible = true;
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
-                this.AnimVis();
+                // this.AnimVis();
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[7])) {
                 if (this.proxy.gameState.lunci == 1) {
                     if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
@@ -889,8 +905,8 @@ module game {
                 }
                 this.gameScreen.ybrskill.visible = true;
                 this.gameScreen.ybrskillpass.visible = true;
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
-                this.AnimVis();
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                // this.AnimVis();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[8])) {
                 if (this.ybrskill8 > 0) {
@@ -923,9 +939,20 @@ module game {
                 }
                 this.gameScreen.zgqskill.visible = true;
                 this.gameScreen.zgqskillpass.visible = true;
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
-                this.AnimVis();
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                // this.AnimVis();
             }
+            
+            let data = [];
+            for (let i = 0; i < results.length; i++) {
+                data.push({
+                    source: this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.selectedAnims[i] - 1]).source,
+                    name: this.proxy.gameState.baowulist[this.selectedAnims[i] - 1] + "首",
+                    result: results[i]
+                })
+            }
+            this.sendNotification(SceneCommand.SHOW_APPRAISAL_POPUP, data);    
+            this.AnimVis();        
         }
 
         public chuanshunwei() {
