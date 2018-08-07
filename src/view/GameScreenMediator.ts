@@ -448,6 +448,7 @@ module game {
                 this.gameScreen.isMyTurn = true;
                 this.gameScreen.isOthersTurn = false;
                 this.gameScreen.isAuthing = true;
+                this.gameScreen.isSkilling = false;
             }
             else {
                 // 其他玩家正在鉴宝
@@ -457,6 +458,7 @@ module game {
                 this.gameScreen.isMyTurn = false;
                 this.gameScreen.isOthersTurn = true;
                 this.gameScreen.isAuthing = false;
+                this.gameScreen.isSkilling = false;
             }
         }
 
@@ -946,8 +948,8 @@ module game {
             let data = [];
             for (let i = 0; i < results.length; i++) {
                 data.push({
-                    source: this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.selectedAnims[i] - 1]).source,
-                    name: this.proxy.gameState.baowulist[this.selectedAnims[i] - 1] + "首",
+                    source: this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.selectedAnims[i]]).source,
+                    name: this.proxy.gameState.baowulist[this.selectedAnims[i]] + "首",
                     result: results[i]
                 })
             }

@@ -17,7 +17,7 @@
 	"game": [
 		"bin-debug/model/common/Constants.js",
 		"bin-debug/view/panel/BasePanel.js",
-		"bin-debug/view/PopupNumberKeyboardMediator.js",
+		"bin-debug/view/PopupRoleWindowMediator.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
@@ -50,8 +50,8 @@
 		"bin-debug/view/JoinWindowMediator.js",
 		"bin-debug/view/PopupGameInfoWindowMediator.js",
 		"bin-debug/view/PopupHandleWindowMediator.js",
+		"bin-debug/view/PopupNumberKeyboardMediator.js",
 		"bin-debug/ApplicationFacade.js",
-		"bin-debug/view/PopupRoleWindowMediator.js",
 		"bin-debug/view/PopupVoteResultWindowMediator.js",
 		"bin-debug/view/RankWindowMediator.js",
 		"bin-debug/view/ResultWindowMediator.js",

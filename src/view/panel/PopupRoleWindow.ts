@@ -16,10 +16,10 @@ module game {
             ApplicationFacade.getInstance().registerMediator(new PopupRoleWindowMediator(this));
         }
 
-        public role: any;
+        public role: Role;
         public promptInfo: string;
-        public roleId;
-        public setRole(roleId): void {
+        public roleId: number;
+        public setRole(roleId: number): void {
             this.roleId = roleId;
         }
 
