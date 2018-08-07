@@ -3,7 +3,7 @@
         xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
     <e:Image id="gameBackground" source="seat-background" x="0" y="0" width="640" height="1386" />
     <e:Group id="topNavigationBar">
-        <e:Button id="quitButton" anchorOffsetY="0" anchorOffsetX="0">
+        <e:Button id="btnQuit" anchorOffsetY="0" anchorOffsetX="0">
             <e:Skin states="up,down">
                 <e:Label text="{parent.isMasterClient}" textColor="0x000000"></e:Label>
                 <e:Image source="back_2" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
@@ -112,7 +112,7 @@
                 <e:Label text="{role.roleSubDescription}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="110"
                          verticalCenter="0" size="25" bold="true"></e:Label>
             </e:Group>
-            <e:Group horizontalCenter="0" width="434">
+            <e:Group horizontalCenter="0" width="434" height="560">
                 <e:Group y="150" visible="{isOthersTurn}">
                     <game:ActorUI id="processingActorUI"></game:ActorUI>
                     <e:Label text="{processingPlayer.color.color}" x="200" textColor="0x000000"></e:Label>
@@ -365,6 +365,12 @@
                 <e:Button id="zgqskill2" label="Button" x="339" y="97" width="200" height="200" scaleX="1" scaleY="1" />
                 <e:Button id="zgqskill3" label="Button" x="59" y="347" width="200" height="200" scaleX="1" scaleY="1" />
                 <e:Button id="zgqskill4" label="Button" x="339" y="347" width="200" height="200" scaleX="1" scaleY="1" />
+                
+                <e:Button id="btnGameInfo" horizontalCenter="0" bottom="0">
+                    <e:Skin states="up,down">
+                        <e:Image source="self_info"></e:Image>
+                    </e:Skin>
+                </e:Button>
             </e:Group>
         </e:Group>
     </e:Group>
@@ -451,7 +457,7 @@
         </e:Button>
     </e:Group>
     <e:Group id="navigationBar" width="640" y="1059" height="130">
-        <e:Button>
+        <e:Button id="btnGuide">
             <e:Skin>
                 <e:Image source="btn-help" />
             </e:Skin>

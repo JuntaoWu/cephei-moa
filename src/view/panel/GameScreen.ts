@@ -10,6 +10,9 @@ module game {
 
         public btnCreateRoom: eui.Button;
         public btnJoinRoom: eui.Button;
+        public btnGuide: eui.Button;
+        public btnQuit: eui.Button;
+        public btnGameInfo: eui.Button;
 
         //bindings:
         public roomName: string = "";

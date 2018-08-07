@@ -29,6 +29,9 @@ module game {
             super.initializeNotifier("ApplicationFacade");
 
             //this.gameScreen.btnSeat1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.findSeat2,this);
+            this.gameScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGuide, this);
+            this.gameScreen.btnQuit.addEventListener(egret.TouchEvent.TOUCH_TAP, this.quitClick, this);
+            this.gameScreen.btnGameInfo.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameInfo, this);
 
             console.log("GameScreen initData:");
             this.initData();
@@ -42,6 +45,18 @@ module game {
             this.gameScreen.isMasterClient = this.proxy.isMasterClient;
             this.gameScreen.isNormalClient = !this.proxy.isMasterClient;
             this.updateGameScreen(this.proxy.gameState);
+        }
+
+        private showGuide() {
+            this.sendNotification(SceneCommand.SHOW_GUIDE_WINDOW);
+        }
+        
+        private quitClick() {
+            this.sendNotification(SceneCommand.SHOW_HANDLE_POPUP, true);
+        }
+
+        private showGameInfo() {
+            this.sendNotification(SceneCommand.SHOW_GAMEINFO_POPUP);
         }
 
         public listNotificationInterests(): Array<any> {
@@ -399,70 +414,72 @@ module game {
         }
 
         public choosejs(jsNumber: string) {
-            let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
-            if (this.proxy.gameState.role[jsNumber]) {
-                if (jsNo.toString() == jsNumber) {
-                    if (jsNumber == "1") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“许愿”");
-                    } else if (jsNumber == "2") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“方震”");
-                    } else if (jsNumber == "3") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“姬云浮”");
-                    } else if (jsNumber == "4") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“黄烟烟”");
-                    } else if (jsNumber == "5") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“木户加奈”");
-                    } else if (jsNumber == "6") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“老朝奉”");
-                    } else if (jsNumber == "7") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“药不然”");
-                    } else if (jsNumber == "8") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“郑国渠”");
-                    }
-                } else {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "已经有人选了这个角色");
-                }
-            } else {
-                if (jsNo == -1) {
-                    if (jsNumber == "1") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“许愿”");
-                    } else if (jsNumber == "2") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“方震”");
-                    } else if (jsNumber == "3") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“姬云浮”");
-                    } else if (jsNumber == "4") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“黄烟烟”");
-                    } else if (jsNumber == "5") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“木户加奈”");
-                    } else if (jsNumber == "6") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“老朝奉”");
-                    } else if (jsNumber == "7") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“药不然”");
-                    } else if (jsNumber == "8") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“郑国渠”");
-                    }
-                } else {
-                    this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + jsNo));
-                    if (jsNumber == "1") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“许愿”");
-                    } else if (jsNumber == "2") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“方震”");
-                    } else if (jsNumber == "3") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“姬云浮”");
-                    } else if (jsNumber == "4") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“黄烟烟”");
-                    } else if (jsNumber == "5") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“木户加奈”");
-                    } else if (jsNumber == "6") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“老朝奉”");
-                    } else if (jsNumber == "7") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“药不然”");
-                    } else if (jsNumber == "8") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“郑国渠”");
-                    }
-                }
-                this.sendNotification(GameCommand.CHOOSE_ROLE, jsNumber);
-            }
+            console.log("选择角色id:", jsNumber);
+            this.sendNotification(SceneCommand.SHOW_ROLE_POPUP, jsNumber);
+            // let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
+            // if (this.proxy.gameState.role[jsNumber]) {
+            //     if (jsNo.toString() == jsNumber) {
+            //         if (jsNumber == "1") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“许愿”");
+            //         } else if (jsNumber == "2") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“方震”");
+            //         } else if (jsNumber == "3") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“姬云浮”");
+            //         } else if (jsNumber == "4") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“黄烟烟”");
+            //         } else if (jsNumber == "5") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“木户加奈”");
+            //         } else if (jsNumber == "6") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“老朝奉”");
+            //         } else if (jsNumber == "7") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“药不然”");
+            //         } else if (jsNumber == "8") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“郑国渠”");
+            //         }
+            //     } else {
+            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "已经有人选了这个角色");
+            //     }
+            // } else {
+            //     if (jsNo == -1) {
+            //         if (jsNumber == "1") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“许愿”");
+            //         } else if (jsNumber == "2") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“方震”");
+            //         } else if (jsNumber == "3") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“姬云浮”");
+            //         } else if (jsNumber == "4") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“黄烟烟”");
+            //         } else if (jsNumber == "5") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“木户加奈”");
+            //         } else if (jsNumber == "6") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“老朝奉”");
+            //         } else if (jsNumber == "7") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“药不然”");
+            //         } else if (jsNumber == "8") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“郑国渠”");
+            //         }
+            //     } else {
+            //         this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + jsNo));
+            //         if (jsNumber == "1") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“许愿”");
+            //         } else if (jsNumber == "2") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“方震”");
+            //         } else if (jsNumber == "3") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“姬云浮”");
+            //         } else if (jsNumber == "4") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“黄烟烟”");
+            //         } else if (jsNumber == "5") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“木户加奈”");
+            //         } else if (jsNumber == "6") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“老朝奉”");
+            //         } else if (jsNumber == "7") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“药不然”");
+            //         } else if (jsNumber == "8") {
+            //             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“郑国渠”");
+            //         }
+            //     }
+            //     this.sendNotification(GameCommand.CHOOSE_ROLE, jsNumber);
+            // }
         }
 
         public startgame() {
@@ -753,9 +770,9 @@ module game {
                         this.proxy.gameState.threebaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
                         this.proxy.gameState.threezhenjia2 = results[1];
                     }
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0] + "   " + "“" + this.proxy.gameState.baowulist[this.selectedAnims[1]] + "”" + " 是 " + results[1]);
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0] + "   " + "“" + this.proxy.gameState.baowulist[this.selectedAnims[1]] + "”" + " 是 " + results[1]);
                 }
-                this.AnimVis();
+                // this.AnimVis();
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[3])) {
@@ -802,9 +819,9 @@ module game {
                         this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                         this.proxy.gameState.threezhenjia = results[0];
                     }
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 }
-                this.AnimVis();
+                // this.AnimVis();
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[4])) {
@@ -864,9 +881,9 @@ module game {
                         this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                         this.proxy.gameState.threezhenjia = results[0];
                     }
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
-                this.AnimVis();
+                // this.AnimVis();
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[5])) {
@@ -926,9 +943,9 @@ module game {
                         this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                         this.proxy.gameState.threezhenjia = results[0];
                     }
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 }
-                this.AnimVis();
+                // this.AnimVis();
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[6])) {
@@ -976,9 +993,9 @@ module game {
                     }
                     this.gameScreen.lcfskill.visible = true;
                     this.gameScreen.lcfskillpass.visible = true;
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
+                    // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
-                this.AnimVis();
+                // this.AnimVis();
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[7])) {
                 if (this.proxy.gameState.lunci == 1) {
                     if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
@@ -1012,8 +1029,8 @@ module game {
                 }
                 this.gameScreen.ybrskill.visible = true;
                 this.gameScreen.ybrskillpass.visible = true;
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
-                this.AnimVis();
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                // this.AnimVis();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[8])) {
                 if (this.ybrskill8 > 0) {
@@ -1046,9 +1063,20 @@ module game {
                 }
                 this.gameScreen.zgqskill.visible = true;
                 this.gameScreen.zgqskillpass.visible = true;
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
-                this.AnimVis();
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
+                // this.AnimVis();
             }
+            
+            let data = [];
+            for (let i = 0; i < results.length; i++) {
+                data.push({
+                    source: this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.selectedAnims[i] - 1]).source,
+                    name: this.proxy.gameState.baowulist[this.selectedAnims[i] - 1] + "首",
+                    result: results[i]
+                })
+            }
+            this.sendNotification(SceneCommand.SHOW_APPRAISAL_POPUP, data);    
+            this.AnimVis();        
         }
 
         public chuanshunwei() {
