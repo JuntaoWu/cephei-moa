@@ -49,9 +49,13 @@ module game {
                     break;
                 }    
                 case GameCommand.CHOOSE_ROLE:{
-                    gameProxy.chooserole(data);
+                    gameProxy.chooseRole(data);
                     break;
-                }          
+                }
+                case GameCommand.START_GAME: {
+                    gameProxy.startGame();
+                    break;
+                }
             }
         }
     }

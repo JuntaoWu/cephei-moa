@@ -1,58 +1,122 @@
 {
-  "许愿": {
+  "1": {
+    "id": 1,
     "name": "许愿",
     "res": "role1",
+    "roleCheckCount": 2,
+    "authRes": "auth2",
+    "isAuth": true,
+    "isSkip": false,
+    "roleDescription": "选择2个你要鉴定的宝物",
+    "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
     "skillDescription": "每轮可鉴定两个宝物",
-    "skillRes": ""
+    "skillRes": "",
+    "hasActiveSkill": false
   },
-  "方震": {
+  "2": {
+    "id": 2,
     "name": "方震",
     "res": "role2",
+    "roleCheckCount": 1,
+    "authRes": "skip2",
+    "isAuth": false,
+    "isSkip": true,
+    "roleDescription": "不能鉴定宝物",
+    "roleSubDescription": "跳过鉴定",
     "camp": "许愿阵营",
     "skillDescription": "",
-    "skillRes": ""
+    "skillRes": "",
+    "hasActiveSkill": true
   },
-  "姬云浮": {
+  "3": {
+    "id": 3,
     "name": "姬云浮",
     "res": "role3",
+    "roleCheckCount": 1,
+    "authRes": "auth2",
+    "isAuth": true,
+    "isSkip": false,
+    "roleDescription": "选择1个你要鉴定的宝物",
+    "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
     "skillDescription": "",
-    "skillRes": ""
+    "skillRes": "",
+    "hasActiveSkill": false
   },
-  "黄烟烟": {
+  "4": {
+    "id": 4,
     "name": "黄烟烟",
     "res": "role4-5",
+    "roleCheckCount": 1,
+    "authRes": "auth2",
+    "isAuth": true,
+    "isSkip": false,
+    "roleDescription": "选择1个你要鉴定的宝物",
+    "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
     "skillDescription": "",
-    "skillRes": ""
+    "skillRes": "",
+    "hasActiveSkill": false
   },
-  "木户加奈": {
+  "5": {
+    "id": 5,
     "name": "木户加奈",
     "res": "role4-5",
+    "roleCheckCount": 1,
+    "authRes": "auth2",
+    "isAuth": true,
+    "isSkip": false,
+    "roleDescription": "选择1个你要鉴定的宝物",
+    "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
     "skillDescription": "",
-    "skillRes": ""
+    "skillRes": "",
+    "hasActiveSkill": false
   },
-  "老朝奉": {
+  "6": {
+    "id": 6,
     "name": "老朝奉",
     "res": "role6",
+    "roleCheckCount": 1,
+    "authRes": "auth2",
+    "isAuth": true,
+    "isSkip": false,
+    "roleDescription": "选择1个你要鉴定的宝物",
+    "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
     "skillDescription": "",
-    "skillRes": ""
+    "skillRes": "",
+    "hasActiveSkill": true
   },
-  "药不然": {
+  "7": {
+    "id": 7,
     "name": "药不然",
     "res": "role7",
+    "roleCheckCount": 1,
+    "authRes": "auth2",
+    "isAuth": true,
+    "isSkip": false,
+    "roleDescription": "选择1个你要鉴定的宝物",
+    "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
     "skillDescription": "",
-    "skillRes": ""
+    "skillRes": "",
+    "hasActiveSkill": true
   },
-  "郑国渠": {
+  "8": {
+    "id": 8,
     "name": "郑国渠",
     "res": "role8",
+    "roleCheckCount": 1,
+    "authRes": "auth2",
+    "isAuth": true,
+    "isSkip": false,
+    "roleDescription": "选择1个你要鉴定的宝物",
+    "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
     "skillDescription": "",
-    "skillRes": ""
+    "skillRes": "",
+    "hasActiveSkill": true
   }
 }

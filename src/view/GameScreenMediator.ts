@@ -45,23 +45,21 @@ module game {
         }
 
         public listNotificationInterests(): Array<any> {
-            return [GameProxy.PLAYER_UPDATE,
-            GameProxy.SEAT_UPDATE,
-            GameProxy.START_JS,
-            GameProxy.CHOOSE_JS_END,
-            GameProxy.START_GAME,
-            GameProxy.FIRST_ONE,
-            GameProxy.NEXT_NR,
-            GameProxy.ONE_GAME_END,
-            GameProxy.TONGZHI,
-            GameProxy.TOUPIAO_UI,
-            GameProxy.PIAO_SHU,
-            GameProxy.ZONG_PIAOSHU,
-            GameProxy.START_TWO,
-            GameProxy.ONE_YBRSKILL,
-            GameProxy.ONE_ZGQSKILL,
-            GameProxy.TOUREN,
-            GameProxy.TOUREN_JIEGUO
+            return [
+                GameProxy.PLAYER_UPDATE,
+                GameProxy.SEAT_UPDATE,
+                GameProxy.FIRST_ONE,
+                GameProxy.NEXT_NR,
+                GameProxy.ONE_GAME_END,
+                GameProxy.TONGZHI,
+                GameProxy.TOUPIAO_UI,
+                GameProxy.PIAO_SHU,
+                GameProxy.ZONG_PIAOSHU,
+                GameProxy.START_TWO,
+                GameProxy.ONE_YBRSKILL,
+                GameProxy.ONE_ZGQSKILL,
+                GameProxy.TOUREN,
+                GameProxy.TOUREN_JIEGUO
             ];
         }
 
@@ -77,18 +75,6 @@ module game {
                 }
                 case GameProxy.SEAT_UPDATE: {
                     this.touxiang(data);
-                    break;
-                }
-                case GameProxy.START_JS: {
-                    this.startjschoose();
-                    break;
-                }
-                case GameProxy.CHOOSE_JS_END: {
-                    this.choosejsend(data);
-                    break;
-                }
-                case GameProxy.START_GAME: {
-                    this.startgame2();
                     break;
                 }
                 case GameProxy.FIRST_ONE: {
@@ -219,34 +205,35 @@ module game {
             this.gameScreen.btnSeat7.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.findSeat2("7") }), this);
             this.gameScreen.btnSeat8.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.findSeat2("8") }), this);
 
-            this.gameScreen.startjs.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startjschoose2, this);
+            this.gameScreen.startjs.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startChooseRole, this);
 
-            this.gameScreen.btnjs1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.choosejs("1") }), this);
-            this.gameScreen.btnjs2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.choosejs("2") }), this);
-            this.gameScreen.btnjs3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.choosejs("3") }), this);
-            this.gameScreen.btnjs4.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.choosejs("4") }), this);
-            this.gameScreen.btnjs5.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.choosejs("5") }), this);
-            this.gameScreen.btnjs6.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.choosejs("6") }), this);
-            this.gameScreen.btnjs7.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.choosejs("7") }), this);
-            this.gameScreen.btnjs8.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.choosejs("8") }), this);
+            this.gameScreen.btnjs1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseRole(1) }), this);
+            this.gameScreen.btnjs2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseRole(2) }), this);
+            this.gameScreen.btnjs3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseRole(3) }), this);
+            this.gameScreen.btnjs4.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseRole(4) }), this);
+            this.gameScreen.btnjs5.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseRole(5) }), this);
+            this.gameScreen.btnjs6.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseRole(6) }), this);
+            this.gameScreen.btnjs7.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseRole(7) }), this);
+            this.gameScreen.btnjs8.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.chooseRole(8) }), this);
 
-            this.gameScreen.startgame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startgame, this);
+            this.gameScreen.startgame.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startGame, this);
 
-            this.gameScreen.Anim1.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(1, event) }), this);
-            this.gameScreen.Anim2.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(2, event) }), this);
-            this.gameScreen.Anim3.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(3, event) }), this);
-            this.gameScreen.Anim4.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(4, event) }), this);
-            this.gameScreen.Anim5.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(5, event) }), this);
-            this.gameScreen.Anim6.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(6, event) }), this);
-            this.gameScreen.Anim7.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(7, event) }), this);
-            this.gameScreen.Anim8.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(8, event) }), this);
-            this.gameScreen.Anim9.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(9, event) }), this);
-            this.gameScreen.Anim10.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(10, event) }), this);
-            this.gameScreen.Anim11.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(11, event) }), this);
-            this.gameScreen.Anim12.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(12, event) }), this);
+            this.gameScreen.Anim1.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(0, event) }), this);
+            this.gameScreen.Anim2.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(1, event) }), this);
+            this.gameScreen.Anim3.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(2, event) }), this);
+            this.gameScreen.Anim4.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(3, event) }), this);
+            this.gameScreen.Anim5.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(4, event) }), this);
+            this.gameScreen.Anim6.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(5, event) }), this);
+            this.gameScreen.Anim7.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(6, event) }), this);
+            this.gameScreen.Anim8.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(7, event) }), this);
+            this.gameScreen.Anim9.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(8, event) }), this);
+            this.gameScreen.Anim10.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(9, event) }), this);
+            this.gameScreen.Anim11.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(10, event) }), this);
+            this.gameScreen.Anim12.addEventListener(egret.TouchEvent.TOUCH_TAP, ((event: egret.TouchEvent) => { this.chooseAnimReal(11, event) }), this);
 
             this.gameScreen.btnAuth.addEventListener(egret.TouchEvent.TOUCH_TAP, this.chooseAnim, this);
             this.gameScreen.btnSkipAuth.addEventListener(egret.TouchEvent.TOUCH_TAP, this.skipAuth, this);
+            this.gameScreen.btnSkill.addEventListener(egret.TouchEvent.TOUCH_TAP, this.applySkill, this);
 
             this.gameScreen.shunwei1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.shunwei("1") }), this);
             this.gameScreen.shunwei2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.shunwei("2") }), this);
@@ -359,165 +346,38 @@ module game {
             });
         }
 
-        public startjschoose2() {
+        public startChooseRole() {
             this.proxy.startChooseRole();
         }
 
-        public startjschoose() {
-            this.gameScreen.btnjs1.visible = true;
-            this.gameScreen.btnjs2.visible = true;
-            this.gameScreen.btnjs3.visible = true;
-            this.gameScreen.btnjs4.visible = true;
-            this.gameScreen.btnjs5.visible = true;
-            this.gameScreen.btnjs6.visible = true;
-            this.gameScreen.btnjs7.visible = true;
-            this.gameScreen.btnjs8.visible = true;
-            this.gameScreen.startjs.visible = false;
-        }
-
-        public choosejsend(role: Array<any>) {
-            let i: number = 0;
-            role.forEach(element => {
-                if (element) {
-                    i++;
-                }
-            });
-
-            if (i == this.proxy.gameState.maxPlayers) {
-                this.gameScreen.btnjs1.visible = false;
-                this.gameScreen.btnjs2.visible = false;
-                this.gameScreen.btnjs3.visible = false;
-                this.gameScreen.btnjs4.visible = false;
-                this.gameScreen.btnjs5.visible = false;
-                this.gameScreen.btnjs6.visible = false;
-                this.gameScreen.btnjs7.visible = false;
-                this.gameScreen.btnjs8.visible = false;
-                if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
-                    this.gameScreen.startgame.visible = true;
-                }
-            }
-        }
-
-        public choosejs(jsNumber: string) {
-            let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
-            if (this.proxy.gameState.role[jsNumber]) {
-                if (jsNo.toString() == jsNumber) {
-                    if (jsNumber == "1") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“许愿”");
-                    } else if (jsNumber == "2") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“方震”");
-                    } else if (jsNumber == "3") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“姬云浮”");
-                    } else if (jsNumber == "4") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“黄烟烟”");
-                    } else if (jsNumber == "5") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“木户加奈”");
-                    } else if (jsNumber == "6") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“老朝奉”");
-                    } else if (jsNumber == "7") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“药不然”");
-                    } else if (jsNumber == "8") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你已经选择了“郑国渠”");
-                    }
-                } else {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "已经有人选了这个角色");
-                }
-            } else {
-                if (jsNo == -1) {
-                    if (jsNumber == "1") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“许愿”");
-                    } else if (jsNumber == "2") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“方震”");
-                    } else if (jsNumber == "3") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“姬云浮”");
-                    } else if (jsNumber == "4") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“黄烟烟”");
-                    } else if (jsNumber == "5") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“木户加奈”");
-                    } else if (jsNumber == "6") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“老朝奉”");
-                    } else if (jsNumber == "7") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“药不然”");
-                    } else if (jsNumber == "8") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你选择了“郑国渠”");
-                    }
-                } else {
-                    this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + jsNo));
-                    if (jsNumber == "1") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“许愿”");
-                    } else if (jsNumber == "2") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“方震”");
-                    } else if (jsNumber == "3") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“姬云浮”");
-                    } else if (jsNumber == "4") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“黄烟烟”");
-                    } else if (jsNumber == "5") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“木户加奈”");
-                    } else if (jsNumber == "6") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“老朝奉”");
-                    } else if (jsNumber == "7") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“药不然”");
-                    } else if (jsNumber == "8") {
-                        this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你更换为“郑国渠”");
-                    }
-                }
-                this.sendNotification(GameCommand.CHOOSE_ROLE, jsNumber);
-            }
-        }
-
-        public startgame() {
-            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.startgame);
-        }
-
-        public startgame2() {
-            let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
-            if (jsNo <= 5) {
-                this.proxy.gameState.zhenying = "许愿阵营";
-            } else {
-                this.proxy.gameState.zhenying = "老朝奉阵营";
-            }
-            this.proxy.gameState.juese = this.proxy.gameState.jueselist[jsNo - 1];
-            if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
-                this.gameScreen.startgame.visible = false;
-                this.baowusuiji(this.proxy.gameState.baowulist);
-                this.baowusuiji(this.proxy.gameState.onezj);
-                this.baowusuiji(this.proxy.gameState.twozj);
-                this.baowusuiji(this.proxy.gameState.threezj);
-                console.log(this.proxy.gameState.baowulist);
-                console.log(this.proxy.gameState.onezj);
-                console.log(this.proxy.gameState.twozj);
-                console.log(this.proxy.gameState.threezj);
-                this.proxy.gameState.hyyskill = _.random(1, 3);
-                this.proxy.gameState.mhjnskill = _.random(1, 3);
-                this.proxy.gameState.firstone = this.suijishu();
-                this.proxy.startgametongbu();
-            }
-
-        }
-
-        public baowusuiji(arr: Array<any>) {
-            arr.sort(() => {
-                return 0.5 - Math.random();
-            })
-        }
-
-        public suijishu() {
-            if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
-                let min = Math.ceil(1);
-                let max = Math.floor(8);
-                let firstone = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
-                if (!this.proxy.gameState.seats[firstone]) {
-                    return this.suijishu();
+        public chooseRole(roleId: number) {
+            let existingRoleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.actorNr);
+            let role = this.proxy.rolesMap.get(roleId.toString());
+            if (this.proxy.gameState.role[roleId]) {
+                if (existingRoleId == roleId) {
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你已经选择了“${role.name}”`);
                 }
                 else {
-                    return firstone;
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "已经有人选了这个角色");
                 }
             }
+            else {
+                if (existingRoleId == -1) {
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你选择了“${role.name}”`);
+                }
+                else {
+                    this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + existingRoleId));
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你更换为“${role.name}”`);
+                }
+                this.sendNotification(GameCommand.CHOOSE_ROLE, roleId);
+            }
+        }
+
+        public startGame() {
+            this.sendNotification(GameCommand.START_GAME);
         }
 
         public first_one(message: string) {
-
-
 
             animConfig.forEach(anim => {
                 const animName = this.proxy.gameState.baowulist[anim.index];
@@ -663,6 +523,22 @@ module game {
             if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
                 this.gameScreen.fangzhenskill.visible = true;
                 this.gameScreen.isAuthing = false;
+                this.gameScreen.isSkilling = true;
+            }
+        }
+
+        public applySkill(event: egret.TouchEvent) {
+            if (this.gameScreen.role.id == 2) {
+                this.fangzhenskill();
+            }
+            else if (this.gameScreen.role.id == 6) {
+                this.lcfskill();
+            }
+            else if (this.gameScreen.role.id == 7) {
+                this.ybrskill();
+            }
+            else if (this.gameScreen.role.id == 8) {
+                this.zgqskill();
             }
         }
 
@@ -670,6 +546,7 @@ module game {
 
             const results = [];
             this.gameScreen.isAuthing = false;
+            this.gameScreen.isSkilling = this.gameScreen.role.hasActiveSkill;
 
             //许愿技能
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {

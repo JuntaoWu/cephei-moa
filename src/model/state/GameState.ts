@@ -28,7 +28,7 @@ module game {
         public threezj: Array<any> = ["真", "真", "假", "假"];
         public hyyskill: number = 100;
         public mhjnskill: number = 100;
-        public firstone: number = 0;
+        public firstOne: number = 0;
         public onelcfskill: boolean = false;
         public twolcfskill: boolean = false;
         public threelcfskill: boolean = false;
