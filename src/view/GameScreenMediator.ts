@@ -254,6 +254,7 @@ module game {
             this.gameScreen.btnAuth.addEventListener(egret.TouchEvent.TOUCH_TAP, this.chooseAnim, this);
             this.gameScreen.btnSkipAuth.addEventListener(egret.TouchEvent.TOUCH_TAP, this.skipAuth, this);
             this.gameScreen.btnSkill.addEventListener(egret.TouchEvent.TOUCH_TAP, this.applySkill, this);
+            this.gameScreen.btnSkipSkill.addEventListener(egret.TouchEvent.TOUCH_TAP, this.skipSkill, this);
 
             this.gameScreen.shunwei1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.shunwei("1") }), this);
             this.gameScreen.shunwei2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.shunwei("2") }), this);
@@ -563,6 +564,21 @@ module game {
             else if (this.gameScreen.role.id == 8) {
                 this.zgqskill();
             }
+            this.gameScreen.isSkilling = false;
+            this.gameScreen.isChoosingSkillingTarget = true;
+        }
+
+        public skipSkill(event: egret.TouchEvent) {
+            if (this.gameScreen.role.id == 6) {
+                this.lcfskillpass();
+            }
+            else if (this.gameScreen.role.id == 7) {
+                this.ybrskillpass();
+            }
+            else if (this.gameScreen.role.id == 8) {
+                this.zgqskillpass();
+            }
+            this.gameScreen.isChoosingNext = true;
         }
 
         public chooseAnim(event: egret.TouchEvent) {
@@ -570,6 +586,7 @@ module game {
             const results = [];
             this.gameScreen.isAuthing = false;
             this.gameScreen.isSkilling = this.gameScreen.role.hasActiveSkill;
+            this.gameScreen.isChoosingNext = !this.gameScreen.role.hasActiveSkill;
 
             //许愿技能
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
@@ -965,6 +982,9 @@ module game {
         }
 
         public chuanshunwei() {
+            this.gameScreen.isSkilling = false;
+            this.gameScreen.isChoosingSkillingTarget = false;
+            this.gameScreen.isChoosingNext = true;
             this.gameScreen.shunwei1.visible = true;
             this.gameScreen.shunwei2.visible = true;
             this.gameScreen.shunwei3.visible = true;
@@ -1207,6 +1227,8 @@ module game {
 
         //老朝奉技能
         public lcfskill() {
+            
+            this.gameScreen.isChoosingNext = true;
             this.gameScreen.lcfskill.visible = false;
             this.gameScreen.lcfskillpass.visible = false;
             if (this.proxy.gameState.lunci == 1) {

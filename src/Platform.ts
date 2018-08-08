@@ -13,6 +13,8 @@ declare interface Platform {
 
     getVersion(): Promise<any>;
 
+    applyUpdate(version: string);
+
 }
 
 class DebugPlatform implements Platform {
@@ -28,6 +30,10 @@ class DebugPlatform implements Platform {
 
     public async getVersion() {
 
+    }
+    
+    applyUpdate() {
+        return true;
     }
 }
 
