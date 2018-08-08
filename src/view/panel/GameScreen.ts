@@ -74,7 +74,6 @@ module game {
         public btnAuth: eui.Button;
         public btnSkipAuth: eui.Button;
         public btnSkill: eui.Button;
-        public btnSkipSkill: eui.Button;
         public Anim1: eui.Button;
         public Anim2: eui.Button;
         public Anim3: eui.Button;
