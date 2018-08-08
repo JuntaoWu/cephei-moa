@@ -37,7 +37,7 @@
 		</e:viewport>
 	</e:Scroller>
 	<e:Group visible="{showWinRateSwitch}" y="210" width="600" horizontalCenter="0">
-		<e:ToggleButton left="0" width="140">
+		<e:ToggleButton id="totalRate" selected="true" left="0" width="140">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="total_rate_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -45,7 +45,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton x="155" width="140">
+		<e:ToggleButton id="gameRate6" x="155" width="140">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="game6_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -53,7 +53,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton x="310" width="140">
+		<e:ToggleButton id="gameRate7" x="310" width="140">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="game7_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -61,7 +61,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton right="0" width="140">
+		<e:ToggleButton id="gameRate8" right="0" width="140">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="game8_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -71,7 +71,7 @@
 		</e:ToggleButton>
 	</e:Group>
 	<e:Group visible="{showRoleSwitch}" y="210" width="600" horizontalCenter="0">
-		<e:ToggleButton left="0" width="190">
+		<e:ToggleButton id="roleTeamXu" selected="true" left="0" width="190">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="team_xu_4" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -79,7 +79,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton horizontalCenter="0" width="190">
+		<e:ToggleButton id="roleTeamLao" horizontalCenter="0" width="190">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="team_lao_4" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -87,7 +87,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton right="0" width="190">
+		<e:ToggleButton id="roleAuthRate" right="0" width="190">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="auth_rate_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -95,7 +95,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton left="0" width="190" y="60">
+		<e:ToggleButton id="roleAuthPlayer" left="0" width="190" y="60">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="auth_player_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -103,7 +103,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton horizontalCenter="0" width="190" y="60">
+		<e:ToggleButton id="roleXu" horizontalCenter="0" width="190" y="60">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="xu2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -111,7 +111,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton right="0" width="190" y="60">
+		<e:ToggleButton id="roleFang" right="0" width="190" y="60">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="fang2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -119,7 +119,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton left="0" width="190" y="120">
+		<e:ToggleButton id="roleHuang" left="0" width="190" y="120">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="huang2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -127,7 +127,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton horizontalCenter="0" width="190" y="120">
+		<e:ToggleButton id="roleMu" horizontalCenter="0" width="190" y="120">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="mu2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -135,7 +135,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton right="0" width="190" y="120">
+		<e:ToggleButton id="roleJi" right="0" width="190" y="120">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="ji2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -143,7 +143,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton left="0" width="190" y="180">
+		<e:ToggleButton id="roleLao" left="0" width="190" y="180">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="lao2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -151,7 +151,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton horizontalCenter="0" width="190" y="180">
+		<e:ToggleButton id="roleYao" horizontalCenter="0" width="190" y="180">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="yao2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -159,7 +159,7 @@
 				         top="0" bottom="0" />
 			</e:Skin>
 		</e:ToggleButton>
-		<e:ToggleButton right="0" width="190" y="180">
+		<e:ToggleButton id="roleZheng" right="0" width="190" y="180">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="zheng2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />
@@ -169,7 +169,7 @@
 		</e:ToggleButton>
 	</e:Group>
 	<e:Group visible="{showGameNumSwitch}" y="210" width="600" horizontalCenter="0">
-		<e:ToggleButton selected="true" horizontalCenter="0">
+		<e:ToggleButton id="totalPlay" selected="true" horizontalCenter="0">
 			<e:Skin states="up,upAndSelected">
 				<e:Image source="total_play_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
 				         bottom="0" />

@@ -28,7 +28,7 @@ module game {
         public threezj: Array<any> = ["真", "真", "假", "假"];
         public hyyskill: number = 100;
         public mhjnskill: number = 100;
-        public firstone: number = 0;
+        public firstOne: number = 0;
         public onelcfskill: boolean = false;
         public twolcfskill: boolean = false;
         public threelcfskill: boolean = false;
@@ -38,29 +38,28 @@ module game {
         public onezgqskill: number = 100;
         public twozgqskill: number = 100;
         public threezgqskill: number = 100;
-        public lunci: number = 1;
-        public defen: number = 0;
+        public lunci:number=1;
+        public defen:number=0;
+        public findPeopleScore:number=0;
 
-        public jueselist: Array<any> = ["许愿", "方震", "姬云浮", "黄烟烟", "木户加奈", "老朝奉", "药不然", "郑国渠"];
-
+        public zhenying:string="";
+        public juese:string="";
+        public jueselist:Array<any>=["许愿","方震","姬云浮","黄烟烟","木户加奈","老朝奉","药不然","郑国渠"];
+        public onebaowu:string="";
+        public onezhenjia:string="";
+        public onebaowu2:string="";
+        public onezhenjia2:string="";
+        public onetouxi:boolean=false;
+        public twobaowu:string="";
+        public twozhenjia:string="";
+        public twobaowu2:string="";
+        public twozhenjia2:string="";
+        public twotouxi:boolean=false;
+        public threebaowu:string="";
+        public threezhenjia:string="";
+        public threebaowu2:string="";
+        public threezhenjia2:string="";
+        public threetouxi:boolean=false;
         public playerInfor: any;
-
-        public zhenying: string = "haha";
-        public juese: string = "haha";
-        public onebaowu: string = "haha";
-        public onezhenjia: string = "haha";
-        public onebaowu2: string = "haha";
-        public onezhenjia2: string = "haha";
-        public onetouxi: boolean = false;
-        public twobaowu: string = "haha";
-        public twozhenjia: string = "haha";
-        public twobaowu2: string = "haha";
-        public twozhenjia2: string = "haha";
-        public twotouxi: boolean = false;
-        public threebaowu: string = "haha";
-        public threezhenjia: string = "haha";
-        public threebaowu2: string = "haha";
-        public threezhenjia2: string = "haha";
-        public threetouxi: boolean = false;
     }
 }

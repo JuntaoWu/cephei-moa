@@ -10,9 +10,13 @@ module game {
 
         public btnCreateRoom: eui.Button;
         public btnJoinRoom: eui.Button;
+        public btnGuide: eui.Button;
+        public btnQuit: eui.Button;
+        public btnGameInfo: eui.Button;
 
         //bindings:
         public roomName: string = "";
+        public role: Role;
         public isMasterClient: boolean = false;
         public isNormalClient: boolean = true;
         public currentPlayers: number = 0;
@@ -33,6 +37,8 @@ module game {
 
         public isMyTurn = false;
         public isOthersTurn = false;
+        public isAuthing = false;
+        public isSkilling = false;
 
         public isPhasePreparing: boolean = false;
         public isPhaseChoosingRole: boolean = false;
@@ -63,6 +69,9 @@ module game {
         public btnjs8: eui.Button;
         public startjs: eui.Button;
         public startgame: eui.Button;
+        public btnAuth: eui.Button;
+        public btnSkipAuth: eui.Button;
+        public btnSkill: eui.Button;
         public Anim1: eui.Button;
         public Anim2: eui.Button;
         public Anim3: eui.Button;
@@ -131,14 +140,6 @@ module game {
 
             this.skinName = "skins.GameScreen";
             this.addEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
-            this.btnjs1.visible = false;
-            this.btnjs2.visible = false;
-            this.btnjs3.visible = false;
-            this.btnjs4.visible = false;
-            this.btnjs5.visible = false;
-            this.btnjs6.visible = false;
-            this.btnjs7.visible = false;
-            this.btnjs8.visible = false;
             this.startjs.visible = false;
             this.startgame.visible = false;
             this.Anim1.visible = false;

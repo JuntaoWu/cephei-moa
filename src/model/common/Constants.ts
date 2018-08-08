@@ -21,4 +21,15 @@ module game {
         public static photonMasterServer: string = "";
     }
 
+    export const gameType = {
+        six: "六人局",
+        seven: "七人局",
+        eight: "八人局",
+    }
+
+    export const gameCamp = {
+        xuyuan: "许愿阵营",
+        laochaofen: "老朝奉阵营",
+    }
+
 }

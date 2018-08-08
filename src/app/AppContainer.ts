@@ -86,11 +86,20 @@ module game {
         }
 
         public aboutWindow: AboutWindow;
-        public showAboutWindow(): void {
+        public showAboutWindow(data: any): void {
             if (!this.aboutWindow) {
                 this.aboutWindow = new AboutWindow();
             }
             this.addChild(this.aboutWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
+        public resultWindow: ResultWindow;
+        public showResultWindow(): void {
+            if (!this.resultWindow) {
+                this.resultWindow = new ResultWindow();
+            }
+            this.addChild(this.resultWindow);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
@@ -115,18 +124,29 @@ module game {
         }
         
         public popupRoleWindow: PopupRoleWindow;
-        public showPopupRoleWindow(): void {
+        public showPopupRoleWindow(roleId): void {
             if (!this.popupRoleWindow) {
                 this.popupRoleWindow = new PopupRoleWindow();
             }
+            this.popupRoleWindow.setRole(roleId)
             this.addChild(this.popupRoleWindow);
             this.popupRoleWindow.show();
         }
         
-        public popupResultWindow: PopupResultWindow;
+        public popupAppraisalWindow: PopupAppraisalWindow;
+        public showPopupAppraisalWindow(data: any): void {
+            if (!this.popupAppraisalWindow) {
+                this.popupAppraisalWindow = new PopupAppraisalWindow();
+            }
+            this.popupAppraisalWindow.setData(data);
+            this.addChild(this.popupAppraisalWindow);
+            this.popupAppraisalWindow.show();
+        }
+        
+        public popupResultWindow: PopupVoteResultWindow;
         public showPopupResultWindow(): void {
             if (!this.popupResultWindow) {
-                this.popupResultWindow = new PopupResultWindow();
+                this.popupResultWindow = new PopupVoteResultWindow();
             }
             this.addChild(this.popupResultWindow);
             this.popupResultWindow.show();

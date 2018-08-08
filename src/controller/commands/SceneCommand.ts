@@ -26,11 +26,13 @@ module game {
         public static SHOW_SETTING_WINDOW: string = "show_setting_window";
 
         public static SHOW_ABOUT_WINDOW: string = "show_about_window";
+        public static SHOW_RESULT_WINDOW: string = "show_result_window";
 
         public static SHOW_HANDLE_POPUP: string = "show_handle_popup";
         public static SHOW_PROMPT_POPUP: string = "show_prompt_popup";
         public static SHOW_ROLE_POPUP: string = "show_role_popup";
         public static SHOW_RESULT_POPUP: string = "show_result_popup";
+        public static SHOW_APPRAISAL_POPUP: string = "show_appraisal_popup";
         public static SHOW_GAMEINFO_POPUP: string = "show_info_window";
         public static SHOW_NUMBER_KEYBOARD: string = "show_number_keyboard"
 
@@ -54,10 +56,12 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_SETTING_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_ABOUT_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_RESULT_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_HANDLE_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_PROMPT_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_ROLE_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_RESULT_POPUP, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_APPRAISAL_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GAMEINFO_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_NUMBER_KEYBOARD, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_VIDEO, SceneCommand);
@@ -108,7 +112,11 @@ module game {
                     break;
                 }
                 case SceneCommand.SHOW_ABOUT_WINDOW: {
-                    appMediator.main.showAboutWindow();
+                    appMediator.main.showAboutWindow(data);
+                    break;
+                }
+                case SceneCommand.SHOW_RESULT_WINDOW: {
+                    appMediator.main.showResultWindow();
                     break;
                 }
                 case SceneCommand.SHOW_HANDLE_POPUP: {
@@ -120,7 +128,11 @@ module game {
                     break;
                 }
                 case SceneCommand.SHOW_ROLE_POPUP: {
-                    appMediator.main.showPopupRoleWindow();
+                    appMediator.main.showPopupRoleWindow(data);
+                    break;
+                }
+                case SceneCommand.SHOW_APPRAISAL_POPUP: {
+                    appMediator.main.showPopupAppraisalWindow(data);
                     break;
                 }
                 case SceneCommand.SHOW_RESULT_POPUP: {

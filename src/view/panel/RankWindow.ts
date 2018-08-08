@@ -17,6 +17,26 @@ module game {
         public showRoleSwitch: boolean;
         public showGameNumSwitch: boolean;
 
+        public totalRate: eui.ToggleButton;
+        public gameRate6: eui.ToggleButton;
+        public gameRate7: eui.ToggleButton;
+        public gameRate8: eui.ToggleButton;
+
+        public roleTeamXu: eui.ToggleButton;
+        public roleTeamLao: eui.ToggleButton;
+        public roleAuthRate: eui.ToggleButton;
+        public roleAuthPlayer: eui.ToggleButton;
+        public roleXu: eui.ToggleButton;
+        public roleFang: eui.ToggleButton;
+        public roleHuang: eui.ToggleButton;
+        public roleMu: eui.ToggleButton;
+        public roleJi: eui.ToggleButton;
+        public roleLao: eui.ToggleButton;
+        public roleYao: eui.ToggleButton;
+        public roleZheng: eui.ToggleButton;
+
+        public totalPlay: eui.ToggleButton;
+
         public constructor() {
             super();
 

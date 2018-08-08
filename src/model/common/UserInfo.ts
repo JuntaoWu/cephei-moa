@@ -9,5 +9,7 @@ module game {
         public language?: string;
         public nickName?: string;
         public province?: string;
+
+        public gameRecords?: Array<any>;
     }
 }

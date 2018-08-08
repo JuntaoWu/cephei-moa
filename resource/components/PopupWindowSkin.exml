@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.PopupWindowSkin" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
-    <e:Image height="100%" source="small-dialog-background" horizontalCenter="0" scale9Grid="70,70,470,280"></e:Image>
-    <e:Button id="closeButton" anchorOffsetY="0" anchorOffsetX="0" bottom="55" left="59">
+    <e:Image height="100%" source="small-dialog-background" horizontalCenter="0" scale9Grid="70,70,470,280" scaleX="0.88"></e:Image>
+    <e:Button id="closeButton" anchorOffsetY="0" anchorOffsetX="0" bottom="55" scaleX="0.88" horizontalCenter="0" scaleY="0.88">
         <e:Skin states="up,down">
             <e:Image source="ok_2" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
         </e:Skin>

@@ -9,6 +9,20 @@ module game {
         public content: eui.Group;
         private navigationBar: eui.Group;
 
+        public avatarUrl: string;
+        public nickName: string;
+
+        public totalPlay: string;
+        public winPlay: number;
+        public failPlay: number;
+
+        public totalWinRate: string;
+        public gameWinRate6: string;
+        public gameWinRate7: string;
+        public gameWinRate8: string;
+        public campXuWinRate: string;
+        public campLaoWinRate: string;
+
         public constructor() {
             super();
 
