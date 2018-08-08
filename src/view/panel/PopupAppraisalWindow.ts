@@ -42,13 +42,13 @@ module game {
                     resultLabel: "",
                 }
                 if (data[1].result == "真") {
-                    this.result.resultRes = "true";
+                    this.result2.resultRes = "true";
                 } 
                 else if (data[1].result == "假") {
-                    this.result.resultRes = "false";
+                    this.result2.resultRes = "false";
                 }
                 else {
-                    this.result.resultLabel = data[1].result;
+                    this.result2.resultLabel = data[1].result;
                 }
             }
         }

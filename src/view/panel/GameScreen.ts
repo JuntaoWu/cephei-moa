@@ -134,6 +134,7 @@ module game {
         public Anim10: eui.Button;
         public Anim11: eui.Button;
         public Anim12: eui.Button;
+        public btnSkipSkill:eui.Button;
 
         public constructor() {
             super();

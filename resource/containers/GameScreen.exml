@@ -134,7 +134,7 @@
                 <e:Label text="{processingPlayer.name}" textColor="0x000000" y="32" x="200"></e:Label>
                 <e:Label text="正在鉴定宝物" textColor="0x000000" y="78" x="200"></e:Label>
             </e:Group>
-            <e:Group horizontalCenter="0" width="434">
+            <e:Group horizontalCenter="0" width="434" visible="{isAuthing}">
                 <e:Group visible="{isAuthing}">
                     <e:Group y="150" id="antiquesRound1" visible="{isFirstRound}">
                         <e:Group>
