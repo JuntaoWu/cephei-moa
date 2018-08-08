@@ -445,6 +445,7 @@ module game {
             let jsNo = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
             if (jsNo <= 5) {
                 this.proxy.gameState.zhenying = "许愿阵营";
+                //this.proxy.gameState.playerInfor[this.proxy.gameState.role[jsNo].id]="许愿阵营";
             } else {
                 this.proxy.gameState.zhenying = "老朝奉阵营";
             }
