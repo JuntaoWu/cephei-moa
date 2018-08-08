@@ -275,47 +275,75 @@
                         </e:Skin>
                     </e:Button>
                 </e:Group>
-                <e:Group visible="{isChoosingSkillingTarget}">
-                    <e:Button id="ybrskill1" label="Button" x="79.00000000000001" y="117" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="ybrskill2" label="Button" x="218.99999999999997" y="117" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1" />
-                    <e:Button id="ybrskill3" label="Button" x="359" y="117" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="ybrskill4" label="Button" x="499.00000000000006" y="117" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="ybrskill5" label="Button" x="79.00000000000001" y="367.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="ybrskill6" label="Button" x="218.99999999999997" y="367.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="ybrskill7" label="Button" x="359" y="367.00000000000006" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="ybrskill8" label="Button" x="499.00000000000006" y="367.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="fangzhenskill1" label="Button" x="79.00000000000001" y="117" anchorOffsetX="0"
-                              width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="fangzhenskill2" label="Button" x="218.99999999999997" y="117" anchorOffsetX="0"
-                              width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1"
-                              scaleY="1" />
-                    <e:Button id="fangzhenskill3" label="Button" x="359" y="117" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="fangzhenskill4" label="Button" x="499.00000000000006" y="117" anchorOffsetX="0"
-                              width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="fangzhenskill5" label="Button" x="79.00000000000001" y="367.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="fangzhenskill6" label="Button" x="218.99999999999997" y="367.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="fangzhenskill7" label="Button" x="359" y="367.00000000000006" anchorOffsetX="0"
-                              width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="fangzhenskill8" label="Button" x="499.00000000000006" y="367.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="zgqskill1" label="Button" x="59" y="97" width="200" height="200" scaleX="1" scaleY="1" />
-                    <e:Button id="zgqskill2" label="Button" x="339" y="97" width="200" height="200" scaleX="1"
-                              scaleY="1" />
-                    <e:Button id="zgqskill3" label="Button" x="59" y="347" width="200" height="200" scaleX="1"
-                              scaleY="1" />
-                    <e:Button id="zgqskill4" label="Button" x="339" y="347" width="200" height="200" scaleX="1"
-                              scaleY="1" />
+                <e:Group visible="{isChoosingSkillingTarget}" width="80%" height="80%" horizontalCenter="0"
+                         verticalCenter="0">
+                    <e:Group visible="{isYaoBuran}">
+                        <e:layout>
+                            <e:TileLayout requestedRowCount="2" requestedColumnCount="4" horizontalGap="20" verticalGap="40"></e:TileLayout>
+                        </e:layout>
+                        <game:ActorUI id="ybrskill1" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="ybrskill2" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="ybrskill3" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="ybrskill4" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="ybrskill5" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="ybrskill6" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="ybrskill7" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="ybrskill8" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                    </e:Group>
+                    <e:Group visible="{isFangZhen}">
+                        <e:layout>
+                            <e:TileLayout requestedRowCount="2" requestedColumnCount="4" horizontalGap="20" verticalGap="40"></e:TileLayout>
+                        </e:layout>
+                        <game:ActorUI id="fangzhenskill1" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="fangzhenskill2" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="fangzhenskill3" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="fangzhenskill4" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="fangzhenskill5" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="fangzhenskill6" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="fangzhenskill7" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                        <game:ActorUI id="fangzhenskill8" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
+                    </e:Group>
+                    <e:Group visible="{isZhengGuoqu}">
+                        <e:layout>
+                            <e:TileLayout requestedRowCount="2" requestedColumnCount="2" horizontalGap="20" verticalGap="40"></e:TileLayout>
+                        </e:layout>
+                        <e:Button id="zgqskill1">
+                            <e:Skin states="up,down">
+                                <e:Image name="antique-normal" source="bg2"></e:Image>
+                                <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
+                                <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
+                                         bold="true" x="175" size="28" />
+                            </e:Skin>
+                        </e:Button>
+                        <e:Button id="zgqskill2">
+                            <e:Skin states="up,down">
+                                <e:Image name="antique-normal" source="bg2"></e:Image>
+                                <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
+                                <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
+                                         bold="true" x="175" size="28" />
+                            </e:Skin>
+                        </e:Button>
+                        <e:Button id="zgqskill3">
+                            <e:Skin states="up,down">
+                                <e:Image name="antique-normal" source="bg2"></e:Image>
+                                <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
+                                <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
+                                         bold="true" x="175" size="28" />
+                            </e:Skin>
+                        </e:Button>
+                        <e:Button id="zgqskill4">
+                            <e:Skin states="up,down">
+                                <e:Image name="antique-normal" source="bg2"></e:Image>
+                                <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
+                                <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
+                                         bold="true" x="175" size="28" />
+                            </e:Skin>
+                        </e:Button>
+                    </e:Group>
                 </e:Group>
                 <e:Group visible="{isChoosingNext}">
                     <e:Button id="shunwei1" label="Button" x="69.00000000000001" y="107" anchorOffsetX="0" width="100"
@@ -544,8 +572,8 @@
                 <e:Group visible="{isMyTurn}">
                     <e:Group visible="{isAuthing}">
                         <e:Button id="btnAuth" width="100%" enabled="false" visible="{role.isAuth}">
-                            <e:Skin>
-                                <e:Image source="auth3" width="100%"></e:Image>
+                            <e:Skin states="up,down">
+                                <e:Image source="auth3" width="100%" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                             </e:Skin>
                         </e:Button>
                         <e:Button id="btnSkipAuth" width="100%" visible="{role.isSkip}">

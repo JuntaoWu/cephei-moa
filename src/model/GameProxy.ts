@@ -174,7 +174,7 @@ module game {
 						this.gameState.seats[8] = undefined;
 					} else {
 						const seatNumber = +message;
-						let actorModel = new ActorModel(sender);
+						let actorModel = new ActorModel(sender, seatNumber);
 						let color = this.seatsMap.get(seatNumber.toString());
 						actorModel.color = color;
 						this.gameState.seats[seatNumber] = actorModel;
