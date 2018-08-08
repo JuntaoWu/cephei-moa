@@ -6,8 +6,8 @@
         <e:Group horizontalCenter="0" top="65" bottom="200">
             <e:Label text="{role.name}" bold="true" horizontalCenter="0" textColor="0x000000"/>
             <e:Image horizontalCenter="0" y="48" source="{role.res}"></e:Image>
-            <e:Label text="{role.roleDescription}" bold="true" horizontalCenter="0" y="200" textColor="0x000000" size="22"/>
-            <e:Label text="{role.skill}" bold="true" horizontalCenter="0" y="240" textColor="0x000000" size="22"/>
+
+            <e:Label bold="true" horizontalCenter="0" y="240" lineSpacing="8" textColor="0x000000" size="22" width="420" textAlign="center" verticalAlign="middle" text="{role.skillDescription}"/>
             <e:Label text="{promptInfo}" bold="true" horizontalCenter="0" y="350" textColor="0x000000"/>
         </e:Group>
         <e:Button id="closeButton" anchorOffsetY="0" anchorOffsetX="0" bottom="55" left="90" scaleX="0.88" scaleY="0.88">

@@ -23,11 +23,24 @@ module game {
         public findAntiqueScore: number;
         public findPeopleScore: number;
         public totalScore: number;
+        public borderRes: string;
+
+        public round1: any;
+        public round2: any;
+        public round3: any;
+
+        public roleXu: any;
+        public roleLao: any;
+        public roleFang: any;
+
+        public voteGroup: eui.DataGroup;
+        public voteLao: any;
+        public voteYao: any;
 
         public createCompleteEvent(event: eui.UIEvent): void {
-            this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 10;
-            this.contentScroller.height = this.stage.stageHeight - this.navigationBar.height - 60;
-            this.borderBg.height = this.stage.stageHeight;
+            this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 50;
+            this.contentScroller.height = this.stage.stageHeight - this.navigationBar.height - 100;
+            this.borderBg.height = this.stage.stageHeight + 40;
 
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new ResultWindowMediator(this));

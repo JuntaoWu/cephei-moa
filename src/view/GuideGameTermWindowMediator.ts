@@ -14,10 +14,7 @@ module game {
         }
 
         private initData() {
-            let list = [];
-            for (let i = 0; i < 20; i++){
-                list.push(i);
-            }
+            let list = RES.getRes("game-term_json") as Array<any>;
             this.termWindow.termList.dataProvider = new eui.ArrayCollection(list);
             this.termWindow.termList.itemRenderer = TermItemRenderer;
         }

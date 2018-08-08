@@ -4,21 +4,25 @@
     <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="1000">
         <e:Group left="100" y="60">
             <e:Label text="你" bold="true" textColor="0x000000" x="30"/>
-            <e:Image source="{role.res}" y="40"></e:Image>
-            <e:Group x="150" y="44">
-                <e:Label text="{userName}" bold="true" textColor="0x000000" horizontalCenter="0"/>
+            <e:Group y="45">
+                <e:Image width="135" height="135" source="{avatarUrl}"></e:Image>
+                <e:Image source="head_bg"  width="135" height="135"/>
+                <e:Image source="orange" x="-20" y="-15" />
+            </e:Group>
+            <e:Group x="150" y="55">
+                <e:Label bold="true" textColor="0x000000" horizontalCenter="0" text="{nickName}"/>
                 <e:Label text="{role.camp}" bold="true" textColor="0x000000" y="40" horizontalCenter="0"/>
                 <e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>
             </e:Group>
         </e:Group>
-        <e:Group left="100" y="235">
-            <e:Image source="{role.skillRes}"></e:Image>
+        <e:Group left="100" y="255">
+            <e:Image source="{role.res}" verticalCenter="0"></e:Image>
             <e:Group x="150" height="100%" verticalCenter="0">
                 <e:Label text="{role.skillDescription}" bold="true" textColor="0x000000" horizontalCenter="0" verticalCenter="0"/>
                 <!--<e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>-->
             </e:Group>
         </e:Group>
-        <e:Group left="100" y="400">
+        <e:Group left="100" y="460">
             <e:Image source="round1"></e:Image>
             <e:Group verticalCenter="0">
                 <e:Group visible="{firstRound.r1}" x="50" verticalCenter="0">
@@ -32,9 +36,9 @@
                     <e:Image source="{firstRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
             </e:Group>
-            <e:Label verticalCenter="0" x="50" visible="{firstRound.text}" text="{firstRound.text}"/>
+            <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{firstRound.text}" text="{firstRound.text}"/>
         </e:Group>
-        <e:Group left="100" y="510">
+        <e:Group left="100" y="575">
             <e:Image source="round2"></e:Image>
             <e:Group verticalCenter="0">
                 <e:Group visible="{secondRound.r1}" x="50" verticalCenter="0">
@@ -48,9 +52,9 @@
                     <e:Image source="{secondRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
             </e:Group>
-            <e:Label verticalCenter="0" x="50" visible="{secondRound.text}" text="{secondRound.text}"/>
+            <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{secondRound.text}" text="{secondRound.text}"/>
         </e:Group>
-        <e:Group left="100" y="620">
+        <e:Group left="100" y="690">
             <e:Image source="round3"></e:Image>
             <e:Group verticalCenter="0">
                 <e:Group visible="{thirdRound.r1}" x="50" verticalCenter="0">
@@ -64,7 +68,7 @@
                     <e:Image source="{thirdRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
             </e:Group>
-            <e:Label verticalCenter="0" x="50" bold="true" visible="{thirdRound.text}" text="{thirdRound.text}"/>
+            <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{thirdRound.text}" text="{thirdRound.text}"/>
         </e:Group>
     </game:PopupWindowWrapper>
 </e:Skin>

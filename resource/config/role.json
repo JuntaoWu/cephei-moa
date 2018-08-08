@@ -25,7 +25,7 @@
     "roleDescription": "不能鉴定宝物",
     "roleSubDescription": "跳过鉴定",
     "camp": "许愿阵营",
-    "skillDescription": "",
+    "skillDescription": "不能鉴定宝物\n每轮可选择一名玩家，查验该玩家的阵营",
     "skillRes": "",
     "hasActiveSkill": true
   },
@@ -55,7 +55,7 @@
     "roleDescription": "选择1个你要鉴定的宝物",
     "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
-    "skillDescription": "",
+    "skillDescription": "鉴定1个宝物\n随机1回合无法鉴定宝物",
     "skillRes": "",
     "hasActiveSkill": false
   },
@@ -70,7 +70,7 @@
     "roleDescription": "选择1个你要鉴定的宝物",
     "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
-    "skillDescription": "",
+    "skillDescription": "鉴定1个宝物\n随机1回合无法鉴定宝物",
     "skillRes": "",
     "hasActiveSkill": false
   },
@@ -85,7 +85,7 @@
     "roleDescription": "选择1个你要鉴定的宝物",
     "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
-    "skillDescription": "",
+    "skillDescription": "鉴定1个宝物\n可将所有宝物的鉴定结果真假互换",
     "skillRes": "",
     "hasActiveSkill": true
   },
@@ -100,7 +100,7 @@
     "roleDescription": "选择1个你要鉴定的宝物",
     "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
-    "skillDescription": "",
+    "skillDescription": "鉴定1个宝物\n可选择偷袭1名玩家，轮到被偷袭玩家行动时，该玩家不能鉴定宝物，不能使用技能",
     "skillRes": "",
     "hasActiveSkill": true
   },

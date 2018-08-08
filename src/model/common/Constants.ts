@@ -32,4 +32,14 @@ module game {
         laochaofen: "老朝奉阵营",
     }
 
+    export enum RoleId {
+        XuYuan = 1,
+        FangZheng,
+        JiYunFu,
+        HuangYanYan,
+        MuHuJiaNai,
+        LaoChaoFen,
+        YaoBuRan,
+        ZhengGuoQu,
+    }
 }

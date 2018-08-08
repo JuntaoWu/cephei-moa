@@ -1,6 +1,33 @@
 [
   {
     "name": "盖宝",
-    "dec": "ss"
+    "description": "郑国渠把某个宝物封印，之后玩家无法鉴定"
+  },{
+    "name": "封人",
+    "description": "药不然偷袭某名玩家"
+  },{
+    "name": "被坑",
+    "description": "本轮被随机不能鉴定"
+  },{
+    "name": "首封",
+    "description": "药不然第一次发动技能"
+  },{
+    "name": "连封",
+    "description": "药不然前一轮封了某位玩家，这一轮又封了该玩家"
+  },{
+    "name": "验宝",
+    "description": "玩家验宝回合检验宝物的真假"
+  },{
+    "name": "验人",
+    "description": "方震选择一人知道其好坏身份"
+  },{
+    "name": "金水",
+    "description": "方震验的好人"
+  },{
+    "name": "指封",
+    "description": "坏人指挥药不然封一个人"
+  },{
+    "name": "认同伙",
+    "description": "叫郑国渠跳出来"
   }
 ]

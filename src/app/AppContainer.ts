@@ -133,6 +133,15 @@ module game {
             this.popupRoleWindow.show();
         }
         
+        public popupRoundWindow: PopupRoundWindow;
+        public showPopupRoundWindow(): void {
+            if (!this.popupRoundWindow) {
+                this.popupRoundWindow = new PopupRoundWindow();
+            }
+            this.addChild(this.popupRoundWindow);
+            this.popupRoundWindow.show();
+        }
+        
         public popupAppraisalWindow: PopupAppraisalWindow;
         public showPopupAppraisalWindow(data: any): void {
             if (!this.popupAppraisalWindow) {

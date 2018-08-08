@@ -19,7 +19,8 @@ module game {
         public async initData() {
             const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
             const userInfo = await accountProxy.loadUserInfo();
-            this.popupGameInfoWindow.userName = userInfo.nickName;
+            this.popupGameInfoWindow.nickName = userInfo.nickName;
+            this.popupGameInfoWindow.avatarUrl = userInfo.avatarUrl;
             let roleId = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
             this.popupGameInfoWindow.role = this.proxy.rolesMap.get(roleId.toString());
 
@@ -51,7 +52,7 @@ module game {
                     }
                 }
                 if (this.proxy.gameState.onebaowu2) {
-                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.onebaowu);
+                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.onebaowu2);
                     this.popupGameInfoWindow.firstRound.r2 = {
                         source: antiques.source,
                         resultRes: this.proxy.gameState.onezhenjia2 == "真" ? "true" : "false"
@@ -70,7 +71,7 @@ module game {
                     }
                 }
                 if (this.proxy.gameState.twobaowu2) {
-                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.twobaowu);
+                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.twobaowu2);
                     this.popupGameInfoWindow.secondRound.r2 = {
                         source: antiques.source,
                         resultRes: this.proxy.gameState.twozhenjia2 == "真" ? "true" : "false"
@@ -89,7 +90,7 @@ module game {
                     }
                 }
                 if (this.proxy.gameState.threebaowu2) {
-                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.threebaowu);
+                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.threebaowu2);
                     this.popupGameInfoWindow.thirdRound.r2 = {
                         source: antiques.source,
                         resultRes: this.proxy.gameState.threezhenjia2 == "真" ? "true" : "false"

@@ -33,6 +33,7 @@ module game {
         public static SHOW_ROLE_POPUP: string = "show_role_popup";
         public static SHOW_RESULT_POPUP: string = "show_result_popup";
         public static SHOW_APPRAISAL_POPUP: string = "show_appraisal_popup";
+        public static SHOW_ROUND_POPUP: string = "show_round_popup";
         public static SHOW_GAMEINFO_POPUP: string = "show_info_window";
         public static SHOW_NUMBER_KEYBOARD: string = "show_number_keyboard"
 
@@ -62,6 +63,7 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_ROLE_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_RESULT_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_APPRAISAL_POPUP, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_ROUND_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GAMEINFO_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_NUMBER_KEYBOARD, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_VIDEO, SceneCommand);
@@ -129,6 +131,10 @@ module game {
                 }
                 case SceneCommand.SHOW_ROLE_POPUP: {
                     appMediator.main.showPopupRoleWindow(data);
+                    break;
+                }
+                case SceneCommand.SHOW_ROUND_POPUP: {
+                    appMediator.main.showPopupRoundWindow();
                     break;
                 }
                 case SceneCommand.SHOW_APPRAISAL_POPUP: {
