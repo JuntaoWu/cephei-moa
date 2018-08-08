@@ -571,7 +571,7 @@
             <e:Group visible="{isPhaseGameInProgress}" width="100%">
                 <e:Group visible="{isMyTurn}">
                     <e:Group visible="{isAuthing}">
-                        <e:Button id="btnAuth" width="100%" enabled="false" visible="{role.isAuth}">
+                        <e:Button id="btnAuth" width="100%" visible="{role.isAuth}">
                             <e:Skin states="up,down">
                                 <e:Image source="auth3" width="100%" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                             </e:Skin>

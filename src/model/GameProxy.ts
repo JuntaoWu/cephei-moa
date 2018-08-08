@@ -25,6 +25,7 @@ module game {
 		public static NEXT_NR: string = "next_nr";
 		public static ONE_GAME_END: string = "one_game_end";
 		public static TONGZHI: string = "tongzhi";
+		public static BAOWU_TONGZHI: string = "baowu_tongzhi";
 		public static TOUPIAO_UI: string = "toupiao_ui";
 		public static ZONG_PIAOSHU: string = "zong_piaoshu";
 		public static INPUT_NUMBER: string = "input_number";
@@ -239,6 +240,10 @@ module game {
 				}
 				case CustomPhotonEvents.tongzhi: {
 					this.sendNotification(GameProxy.TONGZHI, message);
+					break;
+				}
+				case CustomPhotonEvents.baowutongzhi: {
+					this.sendNotification(GameProxy.BAOWU_TONGZHI, message);
 					break;
 				}
 				case CustomPhotonEvents.toupiaoui: {

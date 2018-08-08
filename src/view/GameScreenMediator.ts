@@ -67,6 +67,7 @@ module game {
                 GameProxy.NEXT_NR,
                 GameProxy.ONE_GAME_END,
                 GameProxy.TONGZHI,
+                GameProxy.BAOWU_TONGZHI,
                 GameProxy.TOUPIAO_UI,
                 GameProxy.PIAO_SHU,
                 GameProxy.ZONG_PIAOSHU,
@@ -107,6 +108,10 @@ module game {
                 }
                 case GameProxy.TONGZHI: {
                     this.tongzhi(data);
+                    break;
+                }
+                case GameProxy.BAOWU_TONGZHI: {
+                    this.baowu_tongzhi(data);
                     break;
                 }
                 case GameProxy.TOUPIAO_UI: {
@@ -308,7 +313,6 @@ module game {
             this.gameScreen.zgqskill2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("1") }), this);
             this.gameScreen.zgqskill3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("2") }), this);
             this.gameScreen.zgqskill4.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("3") }), this);
-
         }
 
         public findSeat2(seatNumber: string) {
@@ -398,6 +402,7 @@ module game {
         }
 
         public startGame() {
+            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
             this.sendNotification(GameCommand.START_GAME);
         }
 
@@ -498,10 +503,6 @@ module game {
 
             this.selectedAnims.push(number);
 
-            if (this.selectedAnims.length >= this.gameScreen.role.roleCheckCount) {
-                this.gameScreen.btnAuth.enabled = true;
-            }
-
             if (this.selectedAnims.length > this.gameScreen.role.roleCheckCount) {
                 let shiftAnim = this.selectedAnims.shift();
                 animConfig.forEach((anim, index) => {
@@ -542,11 +543,33 @@ module game {
         }
 
         public skipSkill(event: egret.TouchEvent) {
+            if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
+                if (this.ybrskill2 > 0) {
+                    this.ybrskill2--;
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                }
+            }
             console.log("skipSkill");
             this.chuanshunwei();
         }
 
+        public skipskill(event: egret.TouchEvent) {
+
+        }
+
         public chooseAnim(event: egret.TouchEvent) {
+
+            if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
+                if (this.selectedAnims.length < 2) {
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "请选择两个宝物进行鉴定");
+                    return;
+                }
+            } else {
+                if (this.selectedAnims.length < 1) {
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "请选择一个宝物进行鉴定");
+                    return;
+                }
+            }
 
             const results = [];
 
@@ -1251,6 +1274,10 @@ module game {
             this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, message);
         }
 
+        public baowu_tongzhi(message: string) {
+            this.sendNotification(SceneCommand.SHOW_ROUND_POPUP, message);
+        }
+
         public onegameend2() {
             this.gameScreen.onegameend.visible = false;
             if (this.proxy.gameState.lunci == 1) {
@@ -1627,10 +1654,10 @@ module game {
         public startno2() {
             this.gameScreen.startno2.visible = false;
             if (this.proxy.gameState.lunci == 1) {
-                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "第二轮开始");
+                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.starttwo);
             } else if (this.proxy.gameState.lunci == 2) {
-                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "第三轮开始");
+                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.starttwo);
             } else if (this.proxy.gameState.lunci == 3) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "投人环节");
@@ -1667,6 +1694,14 @@ module game {
             this.gameScreen.isVoteVisible = false;
             this.gameScreen.startno2.visible = false;
             this.proxy.gameState.lunci = 99;
+            this.gameScreen.shunwei1.visible = true;
+            this.gameScreen.shunwei2.visible = true;
+            this.gameScreen.shunwei3.visible = true;
+            this.gameScreen.shunwei4.visible = true;
+            this.gameScreen.shunwei5.visible = true;
+            this.gameScreen.shunwei6.visible = true;
+            this.gameScreen.shunwei7.visible = true;
+            this.gameScreen.shunwei8.visible = true;
             if (!this.proxy.gameState.seats[1]) {
                 this.gameScreen.shunwei1.visible = false;
             }
@@ -1777,6 +1812,9 @@ module game {
             this.xuyuanweizhi = this.proxy.gameState.seats.findIndex(seat => seat && this.proxy.gameState.role[1] && seat.actorNr == this.proxy.gameState.role[1].actorNr);
             this.fangzhenweizhi = this.proxy.gameState.seats.findIndex(seat => seat && this.proxy.gameState.role[2] && seat.actorNr == this.proxy.gameState.role[2].actorNr);
             this.laochaofengweizhi = this.proxy.gameState.seats.findIndex(seat => seat && this.proxy.gameState.role[6] && seat.actorNr == this.proxy.gameState.role[6].actorNr);
+            this.proxy.gameState.weizhi_xuyuan = this.xuyuanweizhi;
+            this.proxy.gameState.weizhi_fangzhen = this.fangzhenweizhi;
+            this.proxy.gameState.weizhi_laochaofeng = this.laochaofengweizhi;
         }
     }
 }
