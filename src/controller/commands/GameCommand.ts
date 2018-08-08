@@ -37,7 +37,7 @@ module game {
             const data = notification.getBody();
             switch (notification.getName()) {
                 case GameCommand.CREATE_ROOM: {
-                    gameProxy.createRoom();
+                    gameProxy.createRoom(data);
                     break;
                 }
                 case GameCommand.JOIN_ROOM: {

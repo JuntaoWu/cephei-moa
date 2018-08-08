@@ -181,11 +181,11 @@ module game {
 						this.gameState.seats[seatNumber] = actorModel;
 						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
 						this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
-					}
 
-					if (this.isMasterClient) {
-						console.log("CustomPhotonEvents.TakeSeat: setCustomProperty");
-						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+						// if (this.isMasterClient) {
+						// 	console.log("CustomPhotonEvents.TakeSeat: setCustomProperty");
+						// 	this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+						// }
 					}
 					break;
 				}
@@ -432,14 +432,14 @@ module game {
 			}
 		}
 
-		public createRoom() {
+		public createRoom(maxPlayers: number) {
 			this.isMasterClient = true;
 			this.roomName = this.generateRoomNumber();
 			if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized) {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
 				this.loadBalancingClient.start();
 			}
-
+			this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
 			this.createRoomWithDefaultOptions();
 		}
 

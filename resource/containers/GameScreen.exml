@@ -34,43 +34,50 @@
                         <e:Label text="许愿" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs2" x="140" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs2" x="140" height="210"
+                          width="150">
                     <e:Skin>
                         <e:Image source="role2" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="方震" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs3" x="280" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs3" x="280" height="210"
+                          width="150">
                     <e:Skin>
                         <e:Image source="role3" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="姬云浮" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs4" x="420" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs4" x="420" height="210"
+                          width="150">
                     <e:Skin>
                         <e:Image source="role4-5" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="黄烟烟" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs5" y="210" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs5" y="210" height="210"
+                          width="150">
                     <e:Skin>
                         <e:Image source="role4-5" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="木户加奈" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs6" y="210" x="140" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs6" y="210" x="140"
+                          height="210" width="150">
                     <e:Skin>
                         <e:Image source="role6" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="老朝奉" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs7" y="210" x="280" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs7" y="210" x="280"
+                          height="210" width="150">
                     <e:Skin>
                         <e:Image source="role7" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="药不然" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs8" y="210" x="420" height="210" width="150">
+                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs8" y="210" x="420"
+                          height="210" width="150">
                     <e:Skin>
                         <e:Image source="role8" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="郑国渠" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
@@ -98,43 +105,23 @@
             <e:Label visible="{isSecondRound}" text="第二轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Label visible="{isThirdRound}" text="第三轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Group visible="{isMyTurn}">
-                <e:Group visible="{isAuthing}" y="40" horizontalCenter="0">
-                    <e:Label text="你是" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
-                             bold="true"></e:Label>
-                    <e:Label text="{role.name}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="52"
-                             size="30" bold="true" width="125" textAlign="center"></e:Label>
-                    <e:Label text="{role.roleDescription}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="180"
-                             verticalCenter="0" size="25" bold="true"></e:Label>
+                <e:Group visible="{isAuthing}" horizontalCenter="0">
+                    <e:Group y="40">
+                        <e:Label text="你是" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
+                                 bold="true"></e:Label>
+                        <e:Label text="{role.name}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="52"
+                                 size="30" bold="true" width="125" textAlign="center"></e:Label>
+                        <e:Label text="{role.roleDescription}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="180"
+                                 verticalCenter="0" size="25" bold="true"></e:Label>
+                    </e:Group>
+                    <e:Group y="80">
+                        <e:Label text="点击" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
+                                 bold="true"></e:Label>
+                        <e:Image source="{role.authRes}" verticalCenter="0" x="55"></e:Image>
+                        <e:Label text="{role.roleSubDescription}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="110"
+                                 verticalCenter="0" size="25" bold="true"></e:Label>
+                    </e:Group>
                 </e:Group>
-                <e:Group visible="{isAuthing}" y="80" horizontalCenter="0">
-                    <e:Label text="点击" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
-                             bold="true"></e:Label>
-                    <e:Image source="{role.authRes}" verticalCenter="0" x="55"></e:Image>
-                    <e:Label text="{role.roleSubDescription}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="110"
-                             verticalCenter="0" size="25" bold="true"></e:Label>
-                </e:Group>
-                <e:Group visible="{isSkilling}" y="40">
-                    <e:Label text="点击技能图标发动技能"></e:Label>
-                    <e:Label text="点击" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
-                             bold="true"></e:Label>
-                    <e:Image source="skip2" verticalCenter="0" x="55"></e:Image>
-                    <e:Label text="跳过" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="110" verticalCenter="0" size="25"
-                             bold="true"></e:Label>
-                    <e:Button id="btnSkill" verticalCenter="0" y="300">
-                        <e:Skin states="up,down">
-                            <e:Image source="botton" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
-                        </e:Skin>
-                    </e:Button>
-                </e:Group>
-            </e:Group>
-            <e:Group y="150" visible="{isOthersTurn}">
-                <game:ActorUI id="processingActorUI"></game:ActorUI>
-                <e:Label text="{processingPlayer.color.color}" x="200" textColor="0x000000"></e:Label>
-                <e:Label text="玩家" textColor="0x000000" x="317"></e:Label>
-                <e:Label text="{processingPlayer.name}" textColor="0x000000" y="32" x="200"></e:Label>
-                <e:Label text="正在鉴定宝物" textColor="0x000000" y="78" x="200"></e:Label>
-            </e:Group>
-            <e:Group horizontalCenter="0" width="434" visible="{isAuthing}">
                 <e:Group visible="{isAuthing}">
                     <e:Group y="150" id="antiquesRound1" visible="{isFirstRound}">
                         <e:Group>
@@ -275,96 +262,128 @@
                         </e:Group>
                     </e:Group>
                 </e:Group>
-                <e:Group visible="{isVoteVisible}">
-                    <e:Group>
-                        <e:Button id="toupiao1">
-                            <e:Skin states="up,down">
-                                <e:Image name="antique-normal" source="bg2"></e:Image>
-                                <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
-                                <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
-                                         bold="true" x="175" size="28" />
-                            </e:Skin>
-                        </e:Button>
-                    </e:Group>
-                    <e:Group x="250">
-                        <e:Button id="toupiao2">
-                            <e:Skin states="up,down">
-                                <e:Image name="antique-normal" source="bg2"></e:Image>
-                                <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
-                                <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
-                                         bold="true" x="175" size="28" />
-                            </e:Skin>
-                        </e:Button>
-                    </e:Group>
-                    <e:Group y="200">
-                        <e:Button id="toupiao3">
-                            <e:Skin states="up,down">
-                                <e:Image name="antique-normal" source="bg2"></e:Image>
-                                <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
-                                <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
-                                         bold="true" x="175" size="28" />
-                            </e:Skin>
-                        </e:Button>
-                    </e:Group>
-                    <e:Group x="250" y="200">
-                        <e:Button id="toupiao4">
-                            <e:Skin states="up,down">
-                                <e:Image name="antique-normal" source="bg2"></e:Image>
-                                <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
-                                <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
-                                         bold="true" x="175" size="28" />
-                            </e:Skin>
-                        </e:Button>
-                    </e:Group>
+                <e:Group visible="{isSkilling}" y="40">
+                    <e:Label text="点击技能图标发动技能" textColor="0x000000"></e:Label>
+                    <e:Label text="点击" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
+                             bold="true"></e:Label>
+                    <e:Image source="skip2" verticalCenter="0" x="55"></e:Image>
+                    <e:Label text="跳过" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="110" verticalCenter="0" size="25"
+                             bold="true"></e:Label>
+                    <e:Button id="btnSkill" y="150">
+                        <e:Skin states="up,down">
+                            <e:Image source="botton" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                        </e:Skin>
+                    </e:Button>
                 </e:Group>
-                <e:Button id="shunwei1" label="Button" x="69.00000000000001" y="107" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="shunwei2" label="Button" x="208.99999999999997" y="107" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1" />
-                <e:Button id="shunwei3" label="Button" x="349" y="107" anchorOffsetX="0" width="100" anchorOffsetY="0"
-                          height="100" scaleX="1" scaleY="1" />
-                <e:Button id="shunwei4" label="Button" x="489.00000000000006" y="107" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="shunwei5" label="Button" x="69.00000000000001" y="357.00000000000006" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="shunwei6" label="Button" x="208.99999999999997" y="357.00000000000006" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="shunwei7" label="Button" x="349" y="357.00000000000006" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="shunwei8" label="Button" x="489.00000000000006" y="357.00000000000006" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill1" label="Button" x="79.00000000000001" y="117" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill2" label="Button" x="218.99999999999997" y="117" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill3" label="Button" x="359" y="117" anchorOffsetX="0" width="100" anchorOffsetY="0"
-                          height="100" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill4" label="Button" x="499.00000000000006" y="117" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill5" label="Button" x="79.00000000000001" y="367.00000000000006" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill6" label="Button" x="218.99999999999997" y="367.00000000000006" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill7" label="Button" x="359" y="367.00000000000006" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill8" label="Button" x="499.00000000000006" y="367.00000000000006" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill1" label="Button" x="79.00000000000001" y="117" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill2" label="Button" x="218.99999999999997" y="117" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill3" label="Button" x="359" y="117" anchorOffsetX="0" width="100"
-                          anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill4" label="Button" x="499.00000000000006" y="117" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill5" label="Button" x="79.00000000000001" y="367.00000000000006"
-                          anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill6" label="Button" x="218.99999999999997" y="367.00000000000006"
-                          anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill7" label="Button" x="359" y="367.00000000000006" anchorOffsetX="0"
-                          width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill8" label="Button" x="499.00000000000006" y="367.00000000000006"
-                          anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                <e:Group visible="{isChoosingSkillingTarget}">
+                    <e:Button id="ybrskill1" label="Button" x="79.00000000000001" y="117" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="ybrskill2" label="Button" x="218.99999999999997" y="117" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1" />
+                    <e:Button id="ybrskill3" label="Button" x="359" y="117" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="ybrskill4" label="Button" x="499.00000000000006" y="117" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="ybrskill5" label="Button" x="79.00000000000001" y="367.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="ybrskill6" label="Button" x="218.99999999999997" y="367.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="ybrskill7" label="Button" x="359" y="367.00000000000006" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="ybrskill8" label="Button" x="499.00000000000006" y="367.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="fangzhenskill1" label="Button" x="79.00000000000001" y="117" anchorOffsetX="0"
+                              width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="fangzhenskill2" label="Button" x="218.99999999999997" y="117" anchorOffsetX="0"
+                              width="100" anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1"
+                              scaleY="1" />
+                    <e:Button id="fangzhenskill3" label="Button" x="359" y="117" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="fangzhenskill4" label="Button" x="499.00000000000006" y="117" anchorOffsetX="0"
+                              width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="fangzhenskill5" label="Button" x="79.00000000000001" y="367.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="fangzhenskill6" label="Button" x="218.99999999999997" y="367.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="fangzhenskill7" label="Button" x="359" y="367.00000000000006" anchorOffsetX="0"
+                              width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="fangzhenskill8" label="Button" x="499.00000000000006" y="367.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="zgqskill1" label="Button" x="59" y="97" width="200" height="200" scaleX="1" scaleY="1" />
+                    <e:Button id="zgqskill2" label="Button" x="339" y="97" width="200" height="200" scaleX="1"
+                              scaleY="1" />
+                    <e:Button id="zgqskill3" label="Button" x="59" y="347" width="200" height="200" scaleX="1"
+                              scaleY="1" />
+                    <e:Button id="zgqskill4" label="Button" x="339" y="347" width="200" height="200" scaleX="1"
+                              scaleY="1" />
+                </e:Group>
+                <e:Group visible="{isChoosingNext}">
+                    <e:Button id="shunwei1" label="Button" x="69.00000000000001" y="107" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="shunwei2" label="Button" x="208.99999999999997" y="107" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1" />
+                    <e:Button id="shunwei3" label="Button" x="349" y="107" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="shunwei4" label="Button" x="489.00000000000006" y="107" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="shunwei5" label="Button" x="69.00000000000001" y="357.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="shunwei6" label="Button" x="208.99999999999997" y="357.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="shunwei7" label="Button" x="349" y="357.00000000000006" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="shunwei8" label="Button" x="489.00000000000006" y="357.00000000000006"
+                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                </e:Group>
+            </e:Group>
+            <e:Group y="150" visible="{isOthersTurn}">
+                <game:ActorUI id="processingActorUI"></game:ActorUI>
+                <e:Label text="{processingPlayer.color.color}" x="200" textColor="0x000000"></e:Label>
+                <e:Label text="玩家" textColor="0x000000" x="317"></e:Label>
+                <e:Label text="{processingPlayer.name}" textColor="0x000000" y="32" x="200"></e:Label>
+                <e:Label text="正在鉴定宝物" textColor="0x000000" y="78" x="200"></e:Label>
+            </e:Group>
+            <e:Group visible="{isVoteVisible}">
+                <e:Group>
+                    <e:Button id="toupiao1">
+                        <e:Skin states="up,down">
+                            <e:Image name="antique-normal" source="bg2"></e:Image>
+                            <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202" bold="true"
+                                     x="175" size="28" />
+                        </e:Skin>
+                    </e:Button>
+                </e:Group>
+                <e:Group x="250">
+                    <e:Button id="toupiao2">
+                        <e:Skin states="up,down">
+                            <e:Image name="antique-normal" source="bg2"></e:Image>
+                            <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202" bold="true"
+                                     x="175" size="28" />
+                        </e:Skin>
+                    </e:Button>
+                </e:Group>
+                <e:Group y="200">
+                    <e:Button id="toupiao3">
+                        <e:Skin states="up,down">
+                            <e:Image name="antique-normal" source="bg2"></e:Image>
+                            <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202" bold="true"
+                                     x="175" size="28" />
+                        </e:Skin>
+                    </e:Button>
+                </e:Group>
+                <e:Group x="250" y="200">
+                    <e:Button id="toupiao4">
+                        <e:Skin states="up,down">
+                            <e:Image name="antique-normal" source="bg2"></e:Image>
+                            <e:Image name="antique-content" source="t1" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202" bold="true"
+                                     x="175" size="28" />
+                        </e:Skin>
+                    </e:Button>
+                </e:Group>
                 <e:Label id="toupiao11" text="0" x="106" y="312" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
                          height="33.03" textColor="0x000000" textAlign="center" />
                 <e:Label id="toupiao21" text="0" x="403.79" y="308.97" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
@@ -378,17 +397,12 @@
                 <e:Label id="piaoshu" text="0/2" x="81.4" y="42.47" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
                          height="33.03" textColor="0x000000" textAlign="center" />
                 <e:Button id="qingkong" label="清空票数" x="269" y="30" width="100" height="50" />
-                <e:Button id="zgqskill1" label="Button" x="59" y="97" width="200" height="200" scaleX="1" scaleY="1" />
-                <e:Button id="zgqskill2" label="Button" x="339" y="97" width="200" height="200" scaleX="1" scaleY="1" />
-                <e:Button id="zgqskill3" label="Button" x="59" y="347" width="200" height="200" scaleX="1" scaleY="1" />
-                <e:Button id="zgqskill4" label="Button" x="339" y="347" width="200" height="200" scaleX="1" scaleY="1" />
-                
-                <e:Button id="btnGameInfo" horizontalCenter="0" bottom="0">
-                    <e:Skin states="up,down">
-                        <e:Image source="self_info"></e:Image>
-                    </e:Skin>
-                </e:Button>
             </e:Group>
+            <e:Button id="btnGameInfo" horizontalCenter="0" bottom="0">
+                <e:Skin states="up,down">
+                    <e:Image source="self_info"></e:Image>
+                </e:Skin>
+            </e:Button>
         </e:Group>
     </e:Group>
     <e:Group id="seatArea" anchorOffsetY="0" y="620" anchorOffsetX="0" width="590" x="25" height="400">
@@ -535,8 +549,8 @@
                             </e:Skin>
                         </e:Button>
                         <e:Button id="btnSkipAuth" width="100%" visible="{role.isSkip}">
-                            <e:Skin>
-                                <e:Image source="skip" width="100%"></e:Image>
+                            <e:Skin states="up,down">
+                                <e:Image source="skip" width="100%" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                             </e:Skin>
                         </e:Button>
                     </e:Group>
