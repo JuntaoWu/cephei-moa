@@ -181,10 +181,10 @@ module game {
 						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
 						this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 
-						// if (this.isMasterClient) {
-						// 	console.log("CustomPhotonEvents.TakeSeat: setCustomProperty");
-						// 	this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
-						// }
+						if (this.isMasterClient) {
+							console.log("CustomPhotonEvents.TakeSeat: setCustomProperty");
+							this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+						}
 					}
 					break;
 				}
