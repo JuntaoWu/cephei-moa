@@ -88,7 +88,6 @@ module game {
         public shunwei8: eui.Button;
         public onegameend: eui.Button;
         public onespeakend: eui.Button;
-        public fangzhenskill: eui.Button;
         public fangzhenskill1: eui.Button;
         public fangzhenskill2: eui.Button;
         public fangzhenskill3: eui.Button;
@@ -110,10 +109,6 @@ module game {
         public toupiaoqueren: eui.Button;
         public startno2: eui.Button;
         public onejieguo: eui.Label;
-        public lcfskill: eui.Button;
-        public lcfskillpass: eui.Button;
-        public ybrskill: eui.Button;
-        public ybrskillpass: eui.Button;
         public ybrskill1: eui.Button;
         public ybrskill2: eui.Button;
         public ybrskill3: eui.Button;
@@ -122,8 +117,6 @@ module game {
         public ybrskill6: eui.Button;
         public ybrskill7: eui.Button;
         public ybrskill8: eui.Button;
-        public zgqskill: eui.Button;
-        public zgqskillpass: eui.Button;
         public zgqskill1: eui.Button;
         public zgqskill2: eui.Button;
         public zgqskill3: eui.Button;
@@ -159,7 +152,6 @@ module game {
             this.shunwei8.visible = false;
             this.onegameend.visible = false;
             this.onespeakend.visible = false;
-            this.fangzhenskill.visible = false;
             this.fangzhenskill1.visible = false;
             this.fangzhenskill2.visible = false;
             this.fangzhenskill3.visible = false;
@@ -177,10 +169,6 @@ module game {
             this.toupiaoqueren.visible = false;
             this.startno2.visible = false;
             this.onejieguo.visible = false;
-            this.lcfskill.visible = false;
-            this.lcfskillpass.visible = false;
-            this.ybrskill.visible = false;
-            this.ybrskillpass.visible = false;
             this.ybrskill1.visible = false;
             this.ybrskill2.visible = false;
             this.ybrskill3.visible = false;
@@ -189,8 +177,6 @@ module game {
             this.ybrskill6.visible = false;
             this.ybrskill7.visible = false;
             this.ybrskill8.visible = false;
-            this.zgqskill.visible = false;
-            this.zgqskillpass.visible = false;
             this.zgqskill1.visible = false;
             this.zgqskill2.visible = false;
             this.zgqskill3.visible = false;

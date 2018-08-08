@@ -278,7 +278,6 @@ module game {
             this.gameScreen.toupiao3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.toupiao("3") }), this);
             this.gameScreen.toupiao4.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.toupiao("4") }), this);
 
-            this.gameScreen.fangzhenskill.addEventListener(egret.TouchEvent.TOUCH_TAP, this.fangzhenskill, this);
             this.gameScreen.fangzhenskill1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.fangzhenskilling("1") }), this);
             this.gameScreen.fangzhenskill2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.fangzhenskilling("2") }), this);
             this.gameScreen.fangzhenskill3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.fangzhenskilling("3") }), this);
@@ -291,10 +290,6 @@ module game {
             this.gameScreen.toupiaoqueren.addEventListener(egret.TouchEvent.TOUCH_TAP, this.toupiaoqueren, this);
 
             this.gameScreen.startno2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.startno2, this);
-            this.gameScreen.lcfskill.addEventListener(egret.TouchEvent.TOUCH_TAP, this.lcfskill, this);
-            this.gameScreen.lcfskillpass.addEventListener(egret.TouchEvent.TOUCH_TAP, this.lcfskillpass, this);
-            this.gameScreen.ybrskill.addEventListener(egret.TouchEvent.TOUCH_TAP, this.ybrskill, this);
-            this.gameScreen.ybrskillpass.addEventListener(egret.TouchEvent.TOUCH_TAP, this.ybrskillpass, this);
 
             this.gameScreen.ybrskill1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.ybrskilling("1") }), this);
             this.gameScreen.ybrskill2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.ybrskilling("2") }), this);
@@ -305,8 +300,6 @@ module game {
             this.gameScreen.ybrskill7.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.ybrskilling("7") }), this);
             this.gameScreen.ybrskill8.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.ybrskilling("8") }), this);
 
-            this.gameScreen.zgqskill.addEventListener(egret.TouchEvent.TOUCH_TAP, this.zgqskill, this);
-            this.gameScreen.zgqskillpass.addEventListener(egret.TouchEvent.TOUCH_TAP, this.zgqskillpass, this);
             this.gameScreen.zgqskill1.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("0") }), this);
             this.gameScreen.zgqskill2.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("1") }), this);
             this.gameScreen.zgqskill3.addEventListener(egret.TouchEvent.TOUCH_TAP, (() => { this.zgqskilling("2") }), this);
@@ -456,10 +449,7 @@ module game {
                     this.gameScreen.Anim12.enabled = false;
                 }
 
-                this.gameScreen.isMyTurn = true;
-                this.gameScreen.isOthersTurn = false;
-                this.gameScreen.isAuthing = true;
-                this.gameScreen.isSkilling = false;
+                this.setMyTurnState("isAuthing");
             }
             else {
                 // 其他玩家正在鉴宝
@@ -468,9 +458,16 @@ module game {
                 this.gameScreen.processingPlayer = actor;
                 this.gameScreen.isMyTurn = false;
                 this.gameScreen.isOthersTurn = true;
-                this.gameScreen.isAuthing = false;
-                this.gameScreen.isSkilling = false;
             }
+        }
+
+        private setMyTurnState(state) {
+            const stateList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext"];
+            this.gameScreen.isMyTurn = true;
+            this.gameScreen.isOthersTurn = false;
+            stateList.forEach(s => {
+                this.gameScreen[s] = state == s;
+            });
         }
 
         public ybrskill1: number = 0;
@@ -550,40 +547,31 @@ module game {
         public skipAuth(event: egret.TouchEvent) {
             // 方震跳过鉴宝
             if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
-                this.gameScreen.fangzhenskill.visible = true;
-                this.gameScreen.isAuthing = false;
-                this.gameScreen.isSkilling = true;
+                this.setMyTurnState("isSkilling");
             }
         }
 
         public applySkill(event: egret.TouchEvent) {
             if (this.gameScreen.role.id == 2) {
                 this.fangzhenskill();
+                this.setMyTurnState("isChoosingSkillingTarget");
             }
             else if (this.gameScreen.role.id == 6) {
                 this.lcfskill();
             }
             else if (this.gameScreen.role.id == 7) {
                 this.ybrskill();
+                this.setMyTurnState("isChoosingSkillingTarget");
             }
             else if (this.gameScreen.role.id == 8) {
                 this.zgqskill();
+                this.setMyTurnState("isChoosingSkillingTarget");
             }
-            this.gameScreen.isSkilling = false;
-            this.gameScreen.isChoosingSkillingTarget = true;
         }
 
         public skipSkill(event: egret.TouchEvent) {
-            if (this.gameScreen.role.id == 6) {
-                this.lcfskillpass();
-            }
-            else if (this.gameScreen.role.id == 7) {
-                this.ybrskillpass();
-            }
-            else if (this.gameScreen.role.id == 8) {
-                this.zgqskillpass();
-            }
-            this.gameScreen.isChoosingNext = true;
+            console.log("skipSkill");
+            this.chuanshunwei();
         }
 
         public skipskill(event:egret.TouchEvent){
@@ -593,9 +581,13 @@ module game {
         public chooseAnim(event: egret.TouchEvent) {
 
             const results = [];
-            this.gameScreen.isAuthing = false;
-            this.gameScreen.isSkilling = this.gameScreen.role.hasActiveSkill;
-            this.gameScreen.isChoosingNext = !this.gameScreen.role.hasActiveSkill;
+
+            if (this.gameScreen.role.hasActiveSkill) {
+                this.setMyTurnState("isSkilling");
+            }
+            else {
+                this.setMyTurnState("isChoosingNext");
+            }
 
             //许愿技能
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
@@ -900,8 +892,6 @@ module game {
                         this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                         this.proxy.gameState.threezhenjia = results[0];
                     }
-                    this.gameScreen.lcfskill.visible = true;
-                    this.gameScreen.lcfskillpass.visible = true;
                     // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
                 // this.AnimVis();
@@ -936,8 +926,6 @@ module game {
                     this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                     this.proxy.gameState.threezhenjia = results[0];
                 }
-                this.gameScreen.ybrskill.visible = true;
-                this.gameScreen.ybrskillpass.visible = true;
                 // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 // this.AnimVis();
             }
@@ -970,8 +958,6 @@ module game {
                     this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
                     this.proxy.gameState.threezhenjia = results[0];
                 }
-                this.gameScreen.zgqskill.visible = true;
-                this.gameScreen.zgqskillpass.visible = true;
                 // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 // this.AnimVis();
             }
@@ -991,9 +977,7 @@ module game {
         }
 
         public chuanshunwei() {
-            this.gameScreen.isSkilling = false;
-            this.gameScreen.isChoosingSkillingTarget = false;
-            this.gameScreen.isChoosingNext = true;
+            this.setMyTurnState("isChoosingNext");
             this.gameScreen.shunwei1.visible = true;
             this.gameScreen.shunwei2.visible = true;
             this.gameScreen.shunwei3.visible = true;
@@ -1201,6 +1185,8 @@ module game {
         }
 
         public shunwei(nextNr: string) {
+            this.setMyTurnState("");
+
             this.gameScreen.shunwei1.visible = false;
             this.gameScreen.shunwei2.visible = false;
             this.gameScreen.shunwei3.visible = false;
@@ -1236,10 +1222,6 @@ module game {
 
         //老朝奉技能
         public lcfskill() {
-            
-            this.gameScreen.isChoosingNext = true;
-            this.gameScreen.lcfskill.visible = false;
-            this.gameScreen.lcfskillpass.visible = false;
             if (this.proxy.gameState.lunci == 1) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.onelcftongbu);
             } else if (this.proxy.gameState.lunci == 2) {
@@ -1250,16 +1232,8 @@ module game {
             this.chuanshunwei();
         }
 
-        public lcfskillpass() {
-            this.gameScreen.lcfskill.visible = false;
-            this.gameScreen.lcfskillpass.visible = false;
-            this.chuanshunwei();
-        }
-
         //药不然技能
         public ybrskill() {
-            this.gameScreen.ybrskill.visible = false;
-            this.gameScreen.ybrskillpass.visible = false;
             this.gameScreen.ybrskill1.visible = true;
             this.gameScreen.ybrskill2.visible = true;
             this.gameScreen.ybrskill3.visible = true;
@@ -1294,12 +1268,6 @@ module game {
             }
         }
 
-        public ybrskillpass() {
-            this.gameScreen.ybrskill.visible = false;
-            this.gameScreen.ybrskillpass.visible = false;
-            this.chuanshunwei();
-        }
-
         public ybrskilling(message: string) {
             const Nr = +message;
             if (this.proxy.isActorLocal(this.proxy.gameState.seats[Nr])) {
@@ -1326,8 +1294,6 @@ module game {
 
         //郑国渠技能
         public zgqskill() {
-            this.gameScreen.zgqskill.visible = false;
-            this.gameScreen.zgqskillpass.visible = false;
             this.gameScreen.zgqskill1.visible = true;
             this.gameScreen.zgqskill2.visible = true;
             this.gameScreen.zgqskill3.visible = true;
@@ -1350,12 +1316,6 @@ module game {
             }
         }
 
-        public zgqskillpass() {
-            this.gameScreen.zgqskill.visible = false;
-            this.gameScreen.zgqskillpass.visible = false;
-            this.chuanshunwei();
-        }
-
         public zgqskilling(message: string) {
             this.gameScreen.zgqskill1.visible = false;
             this.gameScreen.zgqskill2.visible = false;
@@ -1373,7 +1333,6 @@ module game {
 
         //方震技能
         public fangzhenskill() {
-            this.gameScreen.fangzhenskill.visible = false;
             this.AnimVis();
             if (this.ybrskill2 > 0) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
@@ -1898,21 +1857,10 @@ module game {
         }
 
         public tourenui() {
+            this.setMyTurnState("isChoosingNext");
             this.gameScreen.isVoteVisible = false;
-            this.gameScreen.toupiao11.visible = false;
-            this.gameScreen.toupiao21.visible = false;
-            this.gameScreen.toupiao31.visible = false;
-            this.gameScreen.toupiao41.visible = false;
             this.gameScreen.startno2.visible = false;
             this.proxy.gameState.lunci = 99;
-            this.gameScreen.shunwei1.visible = true;
-            this.gameScreen.shunwei2.visible = true;
-            this.gameScreen.shunwei3.visible = true;
-            this.gameScreen.shunwei4.visible = true;
-            this.gameScreen.shunwei5.visible = true;
-            this.gameScreen.shunwei6.visible = true;
-            this.gameScreen.shunwei7.visible = true;
-            this.gameScreen.shunwei8.visible = true;
             if (!this.proxy.gameState.seats[1]) {
                 this.gameScreen.shunwei1.visible = false;
             }

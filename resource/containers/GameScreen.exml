@@ -571,23 +571,9 @@
                           height="90" scaleX="1" scaleY="1" />
                 <e:Button id="onespeakend" label="开始投票" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
                           height="90" scaleX="1" scaleY="1" />
-                <e:Button id="fangzhenskill" label="方震技能" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
                 <e:Button id="toupiaoqueren" label="确认投票" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
                           height="90" scaleX="1" scaleY="1" />
                 <e:Button id="startno2" label="开始第二轮" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="lcfskill" label="老朝奉技能" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="lcfskillpass" label="跳过技能" x="-281" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskill" label="药不然技能" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="ybrskillpass" label="跳过技能" x="-281" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="zgqskill" label="郑国渠技能" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="zgqskillpass" label="跳过技能" x="-281" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
                           height="90" scaleX="1" scaleY="1" />
             </e:Group>
         </e:Group>
