@@ -855,6 +855,7 @@ module game {
                         this.proxy.gameState.threetouxi = true;
                     }
                     this.ybrskill6--;
+                    this.setMyTurnState("isChoosingNext");
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
