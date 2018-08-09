@@ -499,7 +499,7 @@ module game {
         private selectedAnims = [];
 
         public chooseAnimReal(number: number, event: egret.TouchEvent) {
-            if (this.selectedAnims.find(anim => anim == number)) {
+            if (this.selectedAnims.findIndex(anim => anim == number) != -1) {
                 // you have choosed this anim already.
                 return;
             }
