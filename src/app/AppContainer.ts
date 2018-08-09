@@ -122,16 +122,6 @@ module game {
             this.addChild(this.popupPromptWindow);
             this.popupPromptWindow.show();
         }
-
-        public popupRoundWindow: PopupRoundWindow;
-        public showPopupRoundWindow(str: string): void {
-            if (!this.popupRoundWindow) {
-                this.popupRoundWindow = new PopupRoundWindow();
-            }
-            this.popupRoundWindow.setMessage(str);
-            this.addChild(this.popupRoundWindow);
-            this.popupRoundWindow.show();
-        }
         
         public popupRoleWindow: PopupRoleWindow;
         public showPopupRoleWindow(roleId): void {

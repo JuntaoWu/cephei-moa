@@ -34,7 +34,6 @@ module game {
         public static SHOW_ROLE_POPUP: string = "show_role_popup";
         public static SHOW_RESULT_POPUP: string = "show_result_popup";
         public static SHOW_APPRAISAL_POPUP: string = "show_appraisal_popup";
-        public static SHOW_ROUND_POPUP: string = "show_round_popup";
         public static SHOW_GAMEINFO_POPUP: string = "show_info_window";
         public static SHOW_NUMBER_KEYBOARD: string = "show_number_keyboard"
 
@@ -129,10 +128,6 @@ module game {
                 }
                 case SceneCommand.SHOW_PROMPT_POPUP: {
                     appMediator.main.showPopupPromptWindow(data);
-                    break;
-                }
-                case SceneCommand.SHOW_ROUND_POPUP: {
-                    appMediator.main.showPopupRoundWindow(data);
                     break;
                 }
                 case SceneCommand.SHOW_ROLE_POPUP: {
