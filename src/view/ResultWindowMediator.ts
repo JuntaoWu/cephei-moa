@@ -29,9 +29,9 @@ module game {
         }
 
         public initData(): void {
-            let roleId = this.proxy.gameState.role.findIndex(js => js && js.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
-            let role = this.proxy.rolesMap.get(roleId.toString());
-            if　(role.camp == gameCamp.xuyuan) {
+            let selfId = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
+            let selfCamp = this.proxy.rolesMap.get(selfId.toString()).camp;
+            if　(selfCamp == gameCamp.xuyuan) {
                 this.resultWindow.campRes = "share_team_xu";
                 if (this.proxy.gameState.defen < 6) {
                     this.resultWindow.winRes = "lose";
@@ -101,7 +101,7 @@ module game {
                     voterColor: seatLao.color.source,
                     voterUrl: seatLao.avatarUrl,
                     votedColor: votedLao.color.source,
-                    votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i.actorNr == votedLao.actorNr)).toString()).name,
+                    votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == votedLao.actorNr)).toString()).name,
                     votedUrl: votedLao.avatarUrl,
                 }
             }
@@ -114,7 +114,7 @@ module game {
                         voterColor: seatYao.color.source,
                         voterUrl: seatYao.avatarUrl,
                         votedColor: votedYao.color.source,
-                        votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i.actorNr == votedYao.actorNr)).toString()).name,
+                        votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == votedYao.actorNr)).toString()).name,
                         votedUrl: votedYao.avatarUrl,
                     }
                 }
@@ -126,16 +126,23 @@ module game {
                     let voterSeat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[index].actorNr);
                     campXuVotes.push({
                         voterColor: voterSeat.color.source,
-                        voterName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i.actorNr == voterSeat.actorNr)).toString()).name,
+                        voterName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == voterSeat.actorNr)).toString()).name,
                         voterUrl: voterSeat.avatarUrl,
                         votedColor: item.color.source,
-                        votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i.actorNr == item.actorNr)).toString()).name,
+                        votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == item.actorNr)).toString()).name,
                         votedUrl: item.avatarUrl,
                     })
                 }
             })
             this.resultWindow.voteGroup.dataProvider = new eui.ArrayCollection(campXuVotes);
             this.resultWindow.voteGroup.itemRenderer = VoteRenderer;
+
+            this.resultWindow.showFindPeople = true;
+            this.resultWindow.totalScoreGroup.y = 2200;
+            if (this.proxy.gameState.lunci == 3) {
+                this.resultWindow.showFindPeople = false;
+                this.resultWindow.totalScoreGroup.y = 1450;
+            }
         }
 
         public get resultWindow(): ResultWindow {

@@ -2,20 +2,24 @@
 <e:Skin class="skins.PopupAppraisalWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
     <game:Shade id="overlay" />
     <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="650">
-        <e:Group id="appraisalGroup" horizontalCenter="0" y="120">    
+        <e:Group id="appraisalGroup" horizontalCenter="0" y="120">   
             <e:Group horizontalCenter="0" width="500">
-                <e:Image source="{result.source}"></e:Image>
-                <e:Label text="{result.name}" verticalCenter="0" textColor="0x020202" x="148" bold="true"/>
-                <e:Label text="{result.resultLabel}" verticalCenter="0" x="220" textColor="0x020202" bold="true"/>
-                <e:Label visible="{result.resultRes}" text="鉴定结果为" verticalCenter="0" x="220" textColor="0x020202" bold="true"/>
-                <e:Image source="{result.resultRes}" verticalCenter="0" x="379"></e:Image>
+                <e:Group height="180" width="180" scaleX="0.88" scaleY="0.88">
+                    <e:Image horizontalCenter="0" verticalCenter="0" source="{result.source}"></e:Image>
+                </e:Group>
+                <e:Label text="{result.name}" verticalCenter="0" textColor="0x020202" x="170" bold="true"/>
+                <e:Label text="{result.resultLabel}" verticalCenter="0" size="28" x="170" textColor="0x020202" bold="true"/>
+                <e:Label visible="{result.resultRes}" text="鉴定结果为" size="24" verticalCenter="0" x="250" textColor="0x020202" bold="true"/>
+                <e:Image source="{result.resultRes}" verticalCenter="0" x="400" scaleX="0.7" scaleY="0.7"></e:Image>
             </e:Group>
             <e:Group visible="{result2}" horizontalCenter="0" width="500" y="180">
-                <e:Image source="{result2.source}"></e:Image>
-                <e:Label text="{result2.name}" verticalCenter="0" textColor="0x020202" x="148" bold="true"/>
-                <e:Label text="{result2.resultLabel}" verticalCenter="0" x="220" textColor="0x020202" bold="true"/>
-                <e:Label visible="{result2.resultRes}" text="鉴定结果为" verticalCenter="0" x="220" textColor="0x020202" bold="true"/>
-                <e:Image source="{result2.resultRes}" verticalCenter="0" x="379"></e:Image>
+                <e:Group height="180" width="180" scaleX="0.88" scaleY="0.88">
+                    <e:Image horizontalCenter="0" verticalCenter="0" source="{result2.source}"></e:Image>
+                </e:Group>
+                <e:Label text="{result2.name}" verticalCenter="0" textColor="0x020202" x="170" bold="true"/>
+                <e:Label text="{result2.resultLabel}" verticalCenter="0" size="28" x="170" textColor="0x020202" bold="true"/>
+                <e:Label visible="{result2.resultRes}" text="鉴定结果为" size="24" verticalCenter="0" x="250" textColor="0x020202" bold="true"/>
+                <e:Image source="{result2.resultRes}" verticalCenter="0" x="400" scaleX="0.7" scaleY="0.7"></e:Image>
             </e:Group>
         </e:Group>
     </game:PopupWindowWrapper>

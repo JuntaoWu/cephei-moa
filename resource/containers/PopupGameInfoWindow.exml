@@ -3,22 +3,34 @@
     <game:Shade id="overlay" />
     <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="1000">
         <e:Group left="100" y="60">
-            <e:Label text="你" bold="true" textColor="0x000000" x="30"/>
-            <e:Group y="45">
+            <e:Label text="你" bold="true" textColor="0x000000" x="30" size="28"/>
+            <e:Group y="45" scaleX="0.7" scaleY="0.7">
                 <e:Image width="135" height="135" source="{avatarUrl}"></e:Image>
                 <e:Image source="head_bg"  width="135" height="135"/>
-                <e:Image source="orange" x="-20" y="-15" />
+                <e:Image source="{selfColor}" x="-20" y="-15" />
             </e:Group>
-            <e:Group x="150" y="55">
-                <e:Label bold="true" textColor="0x000000" horizontalCenter="0" text="{nickName}"/>
-                <e:Label text="{role.camp}" bold="true" textColor="0x000000" y="40" horizontalCenter="0"/>
-                <e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>
+            <e:Group x="100" y="45">
+                <e:Label bold="true" textColor="0x000000" horizontalCenter="0" text="{nickName}" size="24"/>
+                <e:Label text="{role.camp}" bold="true" textColor="0x000000" y="35" horizontalCenter="0" size="24"/>
+                <e:Label text="{role.name}" bold="true" textColor="0x000000" y="70" horizontalCenter="0" size="24"/>
+            </e:Group>
+        </e:Group>
+        <e:Group visible="{teammate}" right="100" y="60">
+            <e:Label text="队友" bold="true" textColor="0x000000" size="28" right="20"/>
+            <e:Group y="45" scaleX="0.7" scaleY="0.7" right="0">
+                <e:Image width="135" height="135" source="{teammate.avatarUrl}"></e:Image>
+                <e:Image source="head_bg"  width="135" height="135"/>
+                <e:Image source="{teammate.color}" x="-20" y="-15" />
+            </e:Group>
+            <e:Group y="45" right="100">
+                <e:Label bold="true" textColor="0x000000" text="{teammate.nickName}" size="24" width="105" horizontalCenter="0" textAlign="center" height="50" verticalAlign="top"/>
+                <e:Label text="{teammate.name}" bold="true" textColor="0x000000" y="70" horizontalCenter="0" size="24" width="105" textAlign="center" verticalAlign="top"/>
             </e:Group>
         </e:Group>
         <e:Group left="100" y="255">
-            <e:Image source="{role.res}" verticalCenter="0"></e:Image>
-            <e:Group x="150" height="100%" verticalCenter="0">
-                <e:Label text="{role.skillDescription}" lineSpacing="10" bold="true" textColor="0x000000" horizontalCenter="0" verticalCenter="0" width="315"/>
+            <e:Image verticalCenter="0" scaleX="0.7" scaleY="0.7" source="role1"></e:Image>
+            <e:Group x="115" height="100%" verticalCenter="0">
+                <e:Label text="{role.skillDescription}" lineSpacing="10" bold="true" textColor="0x000000" horizontalCenter="0" verticalCenter="0" width="350" size="24" textAlign="center"/>
                 <!--<e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>-->
             </e:Group>
         </e:Group>
@@ -35,13 +47,17 @@
                     <e:Label text="{firstRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
                 </e:Group>
                 <e:Group visible="{firstRound.r1}" x="50" verticalCenter="0">
-                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
-                    <e:Image source="{firstRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{firstRound.r1.source}"></e:Image>
+                    </e:Group>
                     <e:Image source="{firstRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
                 <e:Group visible="{firstRound.r2}" x="230" verticalCenter="0">
-                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
-                    <e:Image source="{firstRound.r2.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{firstRound.r2.source}"></e:Image>
+                    </e:Group>
                     <e:Image source="{firstRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
             </e:Group>
@@ -60,13 +76,17 @@
                     <e:Label text="{secondRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
                 </e:Group>
                 <e:Group visible="{secondRound.r1}" x="50" verticalCenter="0">
-                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
-                    <e:Image source="{secondRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{secondRound.r1.source}"></e:Image>
+                    </e:Group>
                     <e:Image source="{secondRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
                 <e:Group visible="{secondRound.r2}" x="230" verticalCenter="0">
-                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
-                    <e:Image source="{secondRound.r2.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{secondRound.r2.source}"></e:Image>
+                    </e:Group>
                     <e:Image source="{secondRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
             </e:Group>
@@ -85,13 +105,17 @@
                     <e:Label text="{thirdRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
                 </e:Group>
                 <e:Group visible="{thirdRound.r1}" x="50" verticalCenter="0">
-                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
-                    <e:Image source="{thirdRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{thirdRound.r1.source}"></e:Image>
+                    </e:Group>
                     <e:Image source="{thirdRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
                 <e:Group visible="{thirdRound.r2}" x="230" verticalCenter="0">
-                    <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
-                    <e:Image source="{thirdRound.r2.source}" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{thirdRound.r2.source}"></e:Image>
+                    </e:Group>
                     <e:Image source="{thirdRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
             </e:Group>

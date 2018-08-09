@@ -40,7 +40,7 @@
     "roleDescription": "选择1个你要鉴定的宝物",
     "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
-    "skillDescription": "",
+    "skillDescription": "鉴定1个宝物\n鉴定时，不受『老朝奉』技能影响",
     "skillRes": "",
     "hasActiveSkill": false
   },
@@ -100,7 +100,7 @@
     "roleDescription": "选择1个你要鉴定的宝物",
     "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
-    "skillDescription": "鉴定1个宝物\n可选择偷袭1名玩家，轮到被偷袭玩家行动时，该玩家不能鉴定宝物，不能使用技能",
+    "skillDescription": "鉴定1个宝物\n可选择偷袭1名玩家，轮到被偷袭玩家\n行动时，该玩家不能鉴定宝物，不能使用技能",
     "skillRes": "",
     "hasActiveSkill": true
   },
@@ -115,7 +115,7 @@
     "roleDescription": "选择1个你要鉴定的宝物",
     "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
-    "skillDescription": "",
+    "skillDescription": "鉴定1个宝物\n可隐藏1件宝物的鉴定结果\n使其本轮内无法再被鉴定",
     "skillRes": "",
     "hasActiveSkill": true
   }

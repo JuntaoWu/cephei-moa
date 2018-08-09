@@ -1,26 +1,21 @@
 
 module game {
 
-    export class PopupGameInfoWindow extends game.BasePanel {
+    export class PopupVoteRecordWindow extends game.BasePanel {
 
         public constructor() {
             super();
-            this.skinName = "skins.PopupGameInfoWindow";
+            this.skinName = "skins.PopupVoteRecordWindow";
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
         }
 
-        public role: any;
-        public nickName: string;
-        public avatarUrl: string;
-        public selfColor: string;
-        public teammate: any;
-        public firstRound: any;
-        public secondRound: any;
-        public thirdRound: any;
+        public round1: any;
+        public round2: any;
+        public round3: any;
 
         public createCompleteEvent(event: eui.UIEvent): void {
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
-            ApplicationFacade.getInstance().registerMediator(new PopupGameInfoWindowMediator(this));
+            ApplicationFacade.getInstance().registerMediator(new PopupVoteRecordWindowMediator(this));
         }
 
         public partAdded(partName: string, instance: any): void {
