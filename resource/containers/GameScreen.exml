@@ -114,18 +114,24 @@
                         <e:Label text="{role.roleDescription}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="180"
                                  verticalCenter="0" size="25" bold="true"></e:Label>
                     </e:Group>
-                    <e:Group y="80">
+                    <e:Group y="80" horizontalCenter="0">
                         <e:Label text="点击" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
                                  bold="true"></e:Label>
                         <e:Image source="{role.authRes}" verticalCenter="0" x="55"></e:Image>
                         <e:Label text="{role.roleSubDescription}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="110"
                                  verticalCenter="0" size="25" bold="true"></e:Label>
+                        <e:Button>
+                            <e:Skin>
+                                <e:Label text="{hostComponent.maxPlayers}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="130"
+                                 verticalCenter="0" size="25" bold="true"></e:Label>
+                            </e:Skin>
+                        </e:Button>
                     </e:Group>
                 </e:Group>
-                <e:Group visible="{isAuthing}">
+                <e:Group visible="{isAuthing}" horizontalCenter="0">
                     <e:Group y="150" id="antiquesRound1" visible="{isFirstRound}">
                         <e:Group>
-                            <e:Button id="Anim1">
+                            <e:Button id="Anim1" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -136,7 +142,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group x="250">
-                            <e:Button id="Anim2">
+                            <e:Button id="Anim2" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -147,7 +153,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group y="200">
-                            <e:Button id="Anim3">
+                            <e:Button id="Anim3" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -158,7 +164,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group x="250" y="200">
-                            <e:Button id="Anim4">
+                            <e:Button id="Anim4" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -171,7 +177,7 @@
                     </e:Group>
                     <e:Group y="150" id="antiquesRound2" visible="{isSecondRound}">
                         <e:Group>
-                            <e:Button id="Anim5">
+                            <e:Button id="Anim5" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -182,7 +188,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group x="250">
-                            <e:Button id="Anim6">
+                            <e:Button id="Anim6" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -193,7 +199,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group y="200">
-                            <e:Button id="Anim7">
+                            <e:Button id="Anim7" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -204,7 +210,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group x="250" y="200">
-                            <e:Button id="Anim8">
+                            <e:Button id="Anim8" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -217,7 +223,7 @@
                     </e:Group>
                     <e:Group y="150" id="antiquesRound3" visible="{isThirdRound}">
                         <e:Group>
-                            <e:Button id="Anim9">
+                            <e:Button id="Anim9" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -228,7 +234,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group x="250">
-                            <e:Button id="Anim10">
+                            <e:Button id="Anim10" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -239,7 +245,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group y="200">
-                            <e:Button id="Anim11">
+                            <e:Button id="Anim11" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>
@@ -250,7 +256,7 @@
                             </e:Button>
                         </e:Group>
                         <e:Group x="250" y="200">
-                            <e:Button id="Anim12">
+                            <e:Button id="Anim12" enabled="{isNotFangZhen}">
                                 <e:Skin states="up,down">
                                     <e:Image name="antique-normal" source="bg2"></e:Image>
                                     <e:Image visible="false" name="antique-selected" source="bg3"></e:Image>

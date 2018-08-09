@@ -18,13 +18,22 @@
         <e:Group left="100" y="255">
             <e:Image source="{role.res}" verticalCenter="0"></e:Image>
             <e:Group x="150" height="100%" verticalCenter="0">
-                <e:Label text="{role.skillDescription}" bold="true" textColor="0x000000" horizontalCenter="0" verticalCenter="0"/>
+                <e:Label text="{role.skillDescription}" lineSpacing="10" bold="true" textColor="0x000000" horizontalCenter="0" verticalCenter="0" width="315"/>
                 <!--<e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>-->
             </e:Group>
         </e:Group>
         <e:Group left="100" y="460">
             <e:Image source="round1"></e:Image>
             <e:Group verticalCenter="0">
+                <e:Group visible="{firstRound.fang}" x="50" verticalCenter="0" scaleX="0.5" scaleY="0.5">
+                    <e:Group>
+                        <e:Image source="{firstRound.fang.actorUrl}"  width="135" height="135"/>
+                        <e:Image source="head_bg"  width="135" height="135"/>
+                        <e:Image source="{firstRound.fang.color}" x="-20" y="-15" />
+                        <e:Label text="{firstRound.fang.name}" textColor="0x000000" horizontalCenter="0" bottom="-40" size="40"/>
+                    </e:Group>
+                    <e:Label text="{firstRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
+                </e:Group>
                 <e:Group visible="{firstRound.r1}" x="50" verticalCenter="0">
                     <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
                     <e:Image source="{firstRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
@@ -41,6 +50,15 @@
         <e:Group left="100" y="575">
             <e:Image source="round2"></e:Image>
             <e:Group verticalCenter="0">
+                <e:Group visible="{secondRound.fang}" x="50" verticalCenter="0" scaleX="0.5" scaleY="0.5">
+                    <e:Group>
+                        <e:Image source="{secondRound.fang.actorUrl}"  width="135" height="135"/>
+                        <e:Image source="head_bg"  width="135" height="135"/>
+                        <e:Image source="{secondRound.fang.color}" x="-20" y="-15" />
+                        <e:Label text="{secondRound.fang.name}" textColor="0x000000" horizontalCenter="0" bottom="-40" size="40"/>
+                    </e:Group>
+                    <e:Label text="{secondRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
+                </e:Group>
                 <e:Group visible="{secondRound.r1}" x="50" verticalCenter="0">
                     <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
                     <e:Image source="{secondRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
@@ -57,6 +75,15 @@
         <e:Group left="100" y="690">
             <e:Image source="round3"></e:Image>
             <e:Group verticalCenter="0">
+                <e:Group visible="{thirdRound.fang}" x="50" verticalCenter="0" scaleX="0.5" scaleY="0.5">
+                    <e:Group>
+                        <e:Image source="{thirdRound.fang.actorUrl}"  width="135" height="135"/>
+                        <e:Image source="head_bg"  width="135" height="135"/>
+                        <e:Image source="{thirdRound.fang.color}" x="-20" y="-15" />
+                        <e:Label text="{thirdRound.fang.name}" textColor="0x000000" horizontalCenter="0" bottom="-40" size="40"/>
+                    </e:Group>
+                    <e:Label text="{thirdRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
+                </e:Group>
                 <e:Group visible="{thirdRound.r1}" x="50" verticalCenter="0">
                     <e:Image source="bg2" scaleX="0.6" scaleY="0.6"></e:Image>
                     <e:Image source="{thirdRound.r1.source}" scaleX="0.6" scaleY="0.6"></e:Image>
