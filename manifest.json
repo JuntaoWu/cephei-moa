@@ -53,7 +53,7 @@
 		"bin-debug/view/PopupHandleWindowMediator.js",
 		"bin-debug/view/PopupNumberKeyboardMediator.js",
 		"bin-debug/view/PopupRoleWindowMediator.js",
-		"bin-debug/view/panel/VoteRenderer.js",
+		"bin-debug/ApplicationFacade.js",
 		"bin-debug/view/PopupVoteResultWindowMediator.js",
 		"bin-debug/view/RankWindowMediator.js",
 		"bin-debug/view/ResultWindowMediator.js",
@@ -90,6 +90,6 @@
 		"bin-debug/view/panel/StartScreen.js",
 		"bin-debug/view/panel/TermItemRenderer.js",
 		"bin-debug/view/panel/UserInfoWindow.js",
-		"bin-debug/ApplicationFacade.js"
+		"bin-debug/view/panel/VoteRenderer.js"
 	]
 }

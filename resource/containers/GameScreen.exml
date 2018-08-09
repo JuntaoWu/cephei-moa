@@ -534,11 +534,14 @@
                             <e:Image width="100%" source="wait-2-master-confirm"></e:Image>
                         </e:Skin>
                     </e:Button>
-                    <e:Button enabled="false" width="100%" visible="{isChoosingRole}">
-                        <e:Skin>
-                            <e:Image width="100%" source="wait-3-set-identity"></e:Image>
-                        </e:Skin>
-                    </e:Button>
+                    <e:Group width="100%" visible="{isChoosingRole}">
+                        <e:Button width="100%" enabled="false">
+                            <e:Skin>
+                                <e:Image width="100%" source="wait-3-set-identity"></e:Image>
+                            </e:Skin>
+                        </e:Button>
+                        <e:Label text="xx/xx" right="30" verticalCenter="0"></e:Label>
+                    </e:Group>
                     <e:Button enabled="false" width="100%" visible="{isAllRolesReady}">
                         <e:Skin>
                             <e:Image width="100%" source="wait-2-master-confirm"></e:Image>

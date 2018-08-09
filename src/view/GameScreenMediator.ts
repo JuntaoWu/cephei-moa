@@ -1233,28 +1233,28 @@ module game {
             //const actor: ActorModel = this.proxy.gameState.seats[Nr];
             let skilled = this.proxy.gameState.role.findIndex(xx => xx && xx.actorNr == this.proxy.gameState.seats[Nr2].actorNr);
             if (1 <= skilled && skilled <= 5) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是好人");
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是许愿阵营");
                 if (this.proxy.gameState.lunci == 1) {
                     this.proxy.gameState.onebaowu = Nr;
-                    this.proxy.gameState.onezhenjia = "好人"
+                    this.proxy.gameState.onezhenjia = "许愿阵营"
                 } else if (this.proxy.gameState.lunci == 2) {
                     this.proxy.gameState.twobaowu = Nr;
-                    this.proxy.gameState.twozhenjia = "好人"
+                    this.proxy.gameState.twozhenjia = "许愿阵营"
                 } else if (this.proxy.gameState.lunci == 3) {
                     this.proxy.gameState.threebaowu = Nr;
-                    this.proxy.gameState.threezhenjia = "好人"
+                    this.proxy.gameState.threezhenjia = "许愿阵营"
                 }
             } else if (6 <= skilled && skilled <= 8) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是坏人");
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是老朝奉阵营");
                 if (this.proxy.gameState.lunci == 1) {
                     this.proxy.gameState.onebaowu = Nr;
-                    this.proxy.gameState.onezhenjia = "坏人"
+                    this.proxy.gameState.onezhenjia = "老朝奉阵营"
                 } else if (this.proxy.gameState.lunci == 2) {
                     this.proxy.gameState.twobaowu = Nr;
-                    this.proxy.gameState.twozhenjia = "坏人"
+                    this.proxy.gameState.twozhenjia = "老朝奉阵营"
                 } else if (this.proxy.gameState.lunci == 3) {
                     this.proxy.gameState.threebaowu = Nr;
-                    this.proxy.gameState.threezhenjia = "坏人"
+                    this.proxy.gameState.threezhenjia = "老朝奉阵营"
                 }
             }
 
