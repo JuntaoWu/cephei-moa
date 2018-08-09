@@ -33,9 +33,10 @@ module game {
             }
             else {
                 if (existingRoleId != -1) {
-                    this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + existingRoleId));
+                    this.sendNotification(GameCommand.CHOOSE_ROLE, { oldRoleId: existingRoleId, newRoleId: this.popupRoleWindow.roleId });
+                } else {
+                    this.sendNotification(GameCommand.CHOOSE_ROLE, { oldRoleId: null, newRoleId: this.popupRoleWindow.roleId });
                 }
-                this.sendNotification(GameCommand.CHOOSE_ROLE, this.popupRoleWindow.roleId);
             }
             this.popupRoleWindow.close();
         }

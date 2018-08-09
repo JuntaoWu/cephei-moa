@@ -76,7 +76,8 @@ module game {
                 GameProxy.ONE_ZGQSKILL,
                 GameProxy.TOUREN,
                 GameProxy.TOUREN_JIEGUO,
-                GameCommand.JOIN_ROOM
+                GameCommand.JOIN_ROOM,
+                GameProxy.START_TOUPIAO_BUTTON
             ];
         }
 
@@ -147,6 +148,10 @@ module game {
                 }
                 case GameCommand.JOIN_ROOM: {
                     this.initData();
+                    break;
+                }
+                case GameProxy.START_TOUPIAO_BUTTON: {
+                    this.start_toupiao_button();
                     break;
                 }
             }
@@ -402,7 +407,7 @@ module game {
         }
 
         public startGame() {
-            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
+
             this.sendNotification(GameCommand.START_GAME);
         }
 
@@ -678,7 +683,6 @@ module game {
                         this.proxy.gameState.threetouxi = true;
                     }
                     this.proxy.gameState.onetouxi = true;
-                    this.ybrskill3--;
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
@@ -966,7 +970,6 @@ module game {
             }
 
             // reset selectedAnims.length
-            this.gameScreen.btnAuth.enabled = false;
             this.selectedAnims.length = 0;
         }
 
@@ -981,11 +984,11 @@ module game {
             this.gameScreen.shunwei7.visible = true;
             this.gameScreen.shunwei8.visible = true;
 
-            for(var i = 1; i <= 8; ++i) {
+            for (var i = 1; i <= 8; ++i) {
                 let seat = this.proxy.gameState.seats[i];
                 if (seat) {
                     if (this.proxy.gameState.lunci == 1) {
-                        if(this.proxy.gameState.shunwei_one_been.some(element => element.actorNr == seat.actorNr)) {
+                        if (this.proxy.gameState.shunwei_one_been.some(element => element.actorNr == seat.actorNr)) {
                             this.gameScreen[`shunwei${seat.seatNumber}`].visible = false;
                         }
                     } else if (this.proxy.gameState.lunci == 2) {
@@ -1008,7 +1011,7 @@ module game {
             }
 
             this.proxy.gameState.seats.forEach((seat, index) => {
-                
+
             });
 
             if (!this.gameScreen.shunwei1.visible
@@ -1265,7 +1268,16 @@ module game {
         }
 
         public onegameend() {
-            if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
+            if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_one_been[this.proxy.gameState.shunwei_one_been.length - 1]) && this.proxy.gameState.lunci == 1) {
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。");
+                this.gameScreen.onegameend.visible = true;
+            }
+            if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_two_been[this.proxy.gameState.shunwei_two_been.length - 1]) && this.proxy.gameState.lunci == 2) {
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。");
+                this.gameScreen.onegameend.visible = true;
+            }
+            if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_three_been[this.proxy.gameState.shunwei_three_been.length - 1]) && this.proxy.gameState.lunci == 3) {
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。");
                 this.gameScreen.onegameend.visible = true;
             }
         }
@@ -1287,7 +1299,14 @@ module game {
             } else if (this.proxy.gameState.lunci == 3) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "第三轮结束，开始发言");
             }
-            this.gameScreen.onespeakend.visible = true;
+            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.starttoupiao);
+
+        }
+
+        public start_toupiao_button() {
+            if (this.proxy.isMasterClient) {
+                this.gameScreen.onespeakend.visible = true;
+            }
         }
 
         public onespeakend() {
@@ -1654,10 +1673,8 @@ module game {
         public startno2() {
             this.gameScreen.startno2.visible = false;
             if (this.proxy.gameState.lunci == 1) {
-                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.starttwo);
             } else if (this.proxy.gameState.lunci == 2) {
-                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.starttwo);
             } else if (this.proxy.gameState.lunci == 3) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "投人环节");
@@ -1680,10 +1697,12 @@ module game {
 
             if (this.proxy.gameState.lunci == 1) {
                 this.proxy.gameState.lunci = 2;
+                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
                 this.proxy.gameState.shunwei_two_been[1] = this.proxy.gameState.shunwei_one_been[this.proxy.gameState.shunwei_one_been.length - 1];
                 this.xingdong(this.proxy.gameState.seats.findIndex(seat => seat && seat.actorNr == this.proxy.gameState.shunwei_two_been[1].actorNr));
             } else if (this.proxy.gameState.lunci == 2) {
                 this.proxy.gameState.lunci = 3;
+                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
                 this.proxy.gameState.shunwei_three_been[1] = this.proxy.gameState.shunwei_two_been[this.proxy.gameState.shunwei_two_been.length - 1];
                 this.xingdong(this.proxy.gameState.seats.findIndex(seat => seat && seat.actorNr == this.proxy.gameState.shunwei_three_been[1].actorNr));
             }
