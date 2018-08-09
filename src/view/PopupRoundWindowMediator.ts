@@ -19,9 +19,9 @@ module game {
         public initData(): void {
             this.popupRoundWindow.roundText = `第${this.proxy.gameState.lunci}轮开始`;
             let top = this.proxy.gameState.lunci * 4;
-
+            
             for (let i = top - 4; i < top; i++) {
-                this.popupRoundWindow[`ant${i % 4}`] = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[i]).source;
+                this.popupRoundWindow[`ant${i % 4 + 1}`] = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[i]).source;
             }
         }
 
