@@ -227,6 +227,7 @@ module game {
 				case CustomPhotonEvents.FirstOneNr: {
 					this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState");
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+					this.sendNotification(GameProxy.BAOWU_TONGZHI);
 					this.sendNotification(GameProxy.FIRST_ONE, message);
 					break;
 				}
@@ -297,6 +298,7 @@ module game {
 				}
 				case CustomPhotonEvents.starttwo: {
 					this.sendNotification(GameProxy.START_TWO);
+					this.sendNotification(GameProxy.BAOWU_TONGZHI);
 					break;
 				}
 				case CustomPhotonEvents.onelcftongbu: {
@@ -473,6 +475,7 @@ module game {
 
 		public reset() {
 			this.roomName = undefined;
+			this.gameState = new GameState();
 		}
 
 		public joinSeat(seatNumber: string) {

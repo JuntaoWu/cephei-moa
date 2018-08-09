@@ -41,9 +41,7 @@ module game {
         public async initData() {
             this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
-            this.gameScreen.roomName = this.proxy.roomName;
-            this.gameScreen.isMasterClient = this.proxy.isMasterClient;
-            this.gameScreen.isNormalClient = !this.proxy.isMasterClient;
+
             this.updateGameScreen(this.proxy.gameState);
         }
 
@@ -85,9 +83,6 @@ module game {
             switch (notification.getName()) {
                 case GameProxy.PLAYER_UPDATE: {
                     this.updateGameScreen(data);
-                    if (this.proxy.gameState.phase == GamePhase.Preparing) {
-                        this.touxiang(data.seats);
-                    }
                     break;
                 }
                 case GameProxy.SEAT_UPDATE: {
@@ -153,6 +148,11 @@ module game {
         }
 
         public updateGameScreen(data: GameState) {
+
+            this.gameScreen.roomName = this.proxy.roomName;
+            this.gameScreen.isMasterClient = this.proxy.isMasterClient;
+            this.gameScreen.isNormalClient = !this.proxy.isMasterClient;
+
             this.gameScreen.currentPlayers = data.players;
             this.gameScreen.maxPlayers = data.maxPlayers;
 
@@ -192,6 +192,7 @@ module game {
                     this.gameScreen.isPhasePreparing = true;
                     this.gameScreen.isPhaseChoosingRole = false;
                     this.gameScreen.isPhaseGameInProgress = false;
+                    this.touxiang(data.seats);
                     break;
                 case GamePhase.ChoosingRole:
                     this.gameScreen.isInitial = false;
@@ -331,22 +332,19 @@ module game {
 
         public touxiang(seats: Array<ActorModel>) {
 
-            const seatConfig = {
-                "1": { controlName: "btnSeat1", defaultSource: "color-black" },
-                "2": { controlName: "btnSeat2", defaultSource: "color-blue" },
-                "3": { controlName: "btnSeat3", defaultSource: "color-green" },
-                "4": { controlName: "btnSeat4", defaultSource: "color-orange" },
-                "5": { controlName: "btnSeat5", defaultSource: "color-purple" },
-                "6": { controlName: "btnSeat6", defaultSource: "color-red" },
-                "7": { controlName: "btnSeat7", defaultSource: "color-white" },
-                "8": { controlName: "btnSeat8", defaultSource: "color-yellow" },
-            };
+            const seatConfig = [
+                { seatNumber: 1, controlName: "btnSeat1", defaultSource: "color-black" },
+                { seatNumber: 2, controlName: "btnSeat2", defaultSource: "color-blue" },
+                { seatNumber: 3, controlName: "btnSeat3", defaultSource: "color-green" },
+                { seatNumber: 4, controlName: "btnSeat4", defaultSource: "color-orange" },
+                { seatNumber: 5, controlName: "btnSeat5", defaultSource: "color-purple" },
+                { seatNumber: 6, controlName: "btnSeat6", defaultSource: "color-red" },
+                { seatNumber: 7, controlName: "btnSeat7", defaultSource: "color-white" },
+                { seatNumber: 8, controlName: "btnSeat8", defaultSource: "color-yellow" },
+            ];
 
-            seats.forEach((seat, index) => {
-                if (!seatConfig[index]) {
-                    return;
-                }
-                const config = seatConfig[index];
+            seatConfig.forEach((config, index) => {
+
                 const control = this.gameScreen[config.controlName];
                 let content = control.getChildByName("content") as eui.Image;
                 let nickName = control.getChildByName("nickName") as eui.Label;
@@ -354,12 +352,12 @@ module game {
                 let masterBg = control.getChildByName("masterBg") as eui.Image;
                 let selfMark = control.getChildByName("selfMark") as eui.Image;
 
-                if (seats[index]) {
-                    content.source = seats[index].avatarUrl || config.defaultSource;
-                    nickName.text = seats[index].name || "blank name";
-                    masterBg.visible = this.proxy.isActorMaster(seats[index]);
+                if (seats[config.seatNumber]) {
+                    content.source = seats[config.seatNumber].avatarUrl || config.defaultSource;
+                    nickName.text = seats[config.seatNumber].name || "blank name";
+                    masterBg.visible = this.proxy.isActorMaster(seats[config.seatNumber]);
                     normalBg.visible = !masterBg.visible;
-                    selfMark.visible = this.proxy.isActorLocal(seats[index]);
+                    selfMark.visible = this.proxy.isActorLocal(seats[config.seatNumber]);
                     content.visible = true;
                     nickName.visible = true;
                 }
@@ -402,7 +400,7 @@ module game {
         }
 
         public startGame() {
-            this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
+            //this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
             this.sendNotification(GameCommand.START_GAME);
         }
 
@@ -428,18 +426,18 @@ module game {
 
                 //方震技能
                 if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
-                    this.gameScreen.Anim1.enabled = false;
-                    this.gameScreen.Anim2.enabled = false;
-                    this.gameScreen.Anim3.enabled = false;
-                    this.gameScreen.Anim4.enabled = false;
-                    this.gameScreen.Anim5.enabled = false;
-                    this.gameScreen.Anim6.enabled = false;
-                    this.gameScreen.Anim7.enabled = false;
-                    this.gameScreen.Anim8.enabled = false;
-                    this.gameScreen.Anim9.enabled = false;
-                    this.gameScreen.Anim10.enabled = false;
-                    this.gameScreen.Anim11.enabled = false;
-                    this.gameScreen.Anim12.enabled = false;
+                    // this.gameScreen.Anim1.enabled = false;
+                    // this.gameScreen.Anim2.enabled = false;
+                    // this.gameScreen.Anim3.enabled = false;
+                    // this.gameScreen.Anim4.enabled = false;
+                    // this.gameScreen.Anim5.enabled = false;
+                    // this.gameScreen.Anim6.enabled = false;
+                    // this.gameScreen.Anim7.enabled = false;
+                    // this.gameScreen.Anim8.enabled = false;
+                    // this.gameScreen.Anim9.enabled = false;
+                    // this.gameScreen.Anim10.enabled = false;
+                    // this.gameScreen.Anim11.enabled = false;
+                    // this.gameScreen.Anim12.enabled = false;
                 }
 
                 this.setMyTurnState("isAuthing");
@@ -966,7 +964,7 @@ module game {
             }
 
             // reset selectedAnims.length
-            this.gameScreen.btnAuth.enabled = false;
+            // this.gameScreen.btnAuth.enabled = false;
             this.selectedAnims.length = 0;
         }
 
@@ -1654,10 +1652,10 @@ module game {
         public startno2() {
             this.gameScreen.startno2.visible = false;
             if (this.proxy.gameState.lunci == 1) {
-                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
+                // this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.starttwo);
             } else if (this.proxy.gameState.lunci == 2) {
-                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
+                // this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.baowutongzhi);
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.starttwo);
             } else if (this.proxy.gameState.lunci == 3) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "投人环节");

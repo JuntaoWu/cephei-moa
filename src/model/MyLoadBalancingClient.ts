@@ -180,7 +180,7 @@ module game {
             return currentDictionary[name] && currentDictionary[name].active;
         }
 
-        sendMessage(event: CustomPhotonEvents, message?: string) {
+        sendMessage(event: CustomPhotonEvents, message?: any) {
             try {
                 //todo: Use chat client to send messages to players not in the room.
                 //if (/\/invite:/.test(message)) {
