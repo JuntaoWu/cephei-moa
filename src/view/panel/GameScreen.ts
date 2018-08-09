@@ -49,6 +49,10 @@ module game {
         public isPhasePreparing: boolean = false;
         public isPhaseChoosingRole: boolean = false;
         public isPhaseGameInProgress: boolean = false;
+        public roleing: string;
+        public isLastPlayer: boolean = false;
+        public isVoteEnd: boolean = false;
+        public voteing: string;
 
         public processingPlayer: ActorModel = {
             avatarUrl: "",
@@ -133,7 +137,7 @@ module game {
         public Anim10: eui.Button;
         public Anim11: eui.Button;
         public Anim12: eui.Button;
-        public btnSkipSkill:eui.Button;
+        public btnSkipSkill: eui.Button;
 
         public constructor() {
             super();

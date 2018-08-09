@@ -369,6 +369,9 @@
                     <e:Button id="shunwei8" label="Button" x="489.00000000000006" y="357.00000000000006"
                               anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
                 </e:Group>
+                <e:Group visible="{isLastPlayer}" horizontalCenter="0" verticalCenter="0">
+                    <e:Label text="你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。" textColor="0x000000" width="300" ></e:Label>
+                </e:Group>
             </e:Group>
             <e:Group y="150" visible="{isOthersTurn}">
                 <game:ActorUI id="processingActorUI"></game:ActorUI>
@@ -431,6 +434,10 @@
                 <e:Label id="piaoshu" text="0/2" x="81.4" y="42.47" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
                          height="33.03" textColor="0x000000" textAlign="center" />
                 <e:Button id="qingkong" label="清空票数" x="269" y="30" width="100" height="50" />
+            </e:Group>
+            <e:Group visible="{isVoteEnd}" horizontalCenter="0" verticalCenter="0">
+                <e:Label text="等待其他玩家进行投票中..." textColor="0x000000" horizontalCenter="0" verticalCenter="-20"></e:Label>
+                <e:Label text="{voteing}" textColor="0x000000" horizontalCenter="0" verticalCenter="20"></e:Label>
             </e:Group>
             <e:Button id="btnGameInfo" horizontalCenter="0" bottom="0">
                 <e:Skin states="up,down">
@@ -546,7 +553,7 @@
                                 <e:Image width="100%" source="wait-3-set-identity"></e:Image>
                             </e:Skin>
                         </e:Button>
-                        <e:Label text="xx/xx" right="30" verticalCenter="0"></e:Label>
+                        <e:Label text="{roleing}" textColor="0x000000" right="30" verticalCenter="0"></e:Label>
                     </e:Group>
                     <e:Button enabled="false" width="100%" visible="{isAllRolesReady}">
                         <e:Skin>
@@ -565,11 +572,14 @@
                             <e:Image width="100%" source="enter-info"></e:Image>
                         </e:Skin>
                     </e:Button>
-                    <e:Button enabled="false" width="100%" visible="{isChoosingRole}">
-                        <e:Skin>
-                            <e:Image width="100%" source="wait-3-set-identity"></e:Image>
-                        </e:Skin>
-                    </e:Button>
+                    <e:Group width="100%" visible="{isChoosingRole}">
+                        <e:Button width="100%" enabled="false">
+                            <e:Skin>
+                                <e:Image width="100%" source="wait-3-set-identity"></e:Image>
+                            </e:Skin>
+                        </e:Button>
+                        <e:Label text="{roleing}" textColor="0x000000" right="30" verticalCenter="0"></e:Label>
+                    </e:Group>                    
                     <e:Button id="startgame" width="100%" visible="{isAllRolesReady}">
                         <e:Skin>
                             <e:Image width="100%" source="btn-start"></e:Image>
