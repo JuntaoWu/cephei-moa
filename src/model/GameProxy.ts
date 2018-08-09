@@ -25,6 +25,7 @@ module game {
 		public static NEXT_NR: string = "next_nr";
 		public static ONE_GAME_END: string = "one_game_end";
 		public static TONGZHI: string = "tongzhi";
+		public static BAOWU_TONGZHI: string = "baowu_tongzhi";
 		public static TOUPIAO_UI: string = "toupiao_ui";
 		public static ZONG_PIAOSHU: string = "zong_piaoshu";
 		public static INPUT_NUMBER: string = "input_number";
@@ -174,17 +175,17 @@ module game {
 						this.gameState.seats[8] = undefined;
 					} else {
 						const seatNumber = +message;
-						let actorModel = new ActorModel(sender);
+						let actorModel = new ActorModel(sender, seatNumber);
 						let color = this.seatsMap.get(seatNumber.toString());
 						actorModel.color = color;
 						this.gameState.seats[seatNumber] = actorModel;
 						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
 						this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
-					}
 
-					if (this.isMasterClient) {
-						console.log("CustomPhotonEvents.TakeSeat: setCustomProperty");
-						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+						if (this.isMasterClient) {
+							console.log("CustomPhotonEvents.TakeSeat: setCustomProperty");
+							this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+						}
 					}
 					break;
 				}
@@ -239,6 +240,10 @@ module game {
 				}
 				case CustomPhotonEvents.tongzhi: {
 					this.sendNotification(GameProxy.TONGZHI, message);
+					break;
+				}
+				case CustomPhotonEvents.baowutongzhi: {
+					this.sendNotification(GameProxy.BAOWU_TONGZHI, message);
 					break;
 				}
 				case CustomPhotonEvents.toupiaoui: {
@@ -427,14 +432,14 @@ module game {
 			}
 		}
 
-		public createRoom() {
+		public createRoom(maxPlayers: number) {
 			this.isMasterClient = true;
 			this.roomName = this.generateRoomNumber();
 			if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized) {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
 				this.loadBalancingClient.start();
 			}
-
+			this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
 			this.createRoomWithDefaultOptions();
 		}
 

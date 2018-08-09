@@ -15,6 +15,7 @@ module game {
         twogameend,
         threegameend,
         tongzhi,
+        baowutongzhi,
         toupiaoui,
         piaoshu,
         piaoshu2,

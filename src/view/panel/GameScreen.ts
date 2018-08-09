@@ -17,6 +17,9 @@ module game {
         //bindings:
         public roomName: string = "";
         public role: Role;
+        public isFangZhen: boolean = false;
+        public isYaoBuran: boolean = false;
+        public isZhengGuoqu: boolean = false;
         public isMasterClient: boolean = false;
         public isNormalClient: boolean = true;
         public currentPlayers: number = 0;
@@ -39,6 +42,8 @@ module game {
         public isOthersTurn = false;
         public isAuthing = false;
         public isSkilling = false;
+        public isChoosingSkillingTarget = false;
+        public isChoosingNext = false;
 
         public isPhasePreparing: boolean = false;
         public isPhaseChoosingRole: boolean = false;
@@ -86,7 +91,6 @@ module game {
         public shunwei8: eui.Button;
         public onegameend: eui.Button;
         public onespeakend: eui.Button;
-        public fangzhenskill: eui.Button;
         public fangzhenskill1: eui.Button;
         public fangzhenskill2: eui.Button;
         public fangzhenskill3: eui.Button;
@@ -108,11 +112,7 @@ module game {
         public toupiaoqueren: eui.Button;
         public startno2: eui.Button;
         public onejieguo: eui.Label;
-        public lcfskill: eui.Button;
-        public lcfskillpass: eui.Button;
-        public ybrskill: eui.Button;
-        public ybrskillpass: eui.Button;
-        public ybrskill1: eui.Button;
+        public ybrskill1: ActorUI;
         public ybrskill2: eui.Button;
         public ybrskill3: eui.Button;
         public ybrskill4: eui.Button;
@@ -120,8 +120,6 @@ module game {
         public ybrskill6: eui.Button;
         public ybrskill7: eui.Button;
         public ybrskill8: eui.Button;
-        public zgqskill: eui.Button;
-        public zgqskillpass: eui.Button;
         public zgqskill1: eui.Button;
         public zgqskill2: eui.Button;
         public zgqskill3: eui.Button;
@@ -134,6 +132,7 @@ module game {
         public Anim10: eui.Button;
         public Anim11: eui.Button;
         public Anim12: eui.Button;
+        public btnSkipSkill:eui.Button;
 
         public constructor() {
             super();
@@ -142,10 +141,6 @@ module game {
             this.addEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             this.startjs.visible = false;
             this.startgame.visible = false;
-            this.Anim1.visible = false;
-            this.Anim2.visible = false;
-            this.Anim3.visible = false;
-            this.Anim4.visible = false;
             this.shunwei1.visible = false;
             this.shunwei2.visible = false;
             this.shunwei3.visible = false;
@@ -156,15 +151,6 @@ module game {
             this.shunwei8.visible = false;
             this.onegameend.visible = false;
             this.onespeakend.visible = false;
-            this.fangzhenskill.visible = false;
-            this.fangzhenskill1.visible = false;
-            this.fangzhenskill2.visible = false;
-            this.fangzhenskill3.visible = false;
-            this.fangzhenskill4.visible = false;
-            this.fangzhenskill5.visible = false;
-            this.fangzhenskill6.visible = false;
-            this.fangzhenskill7.visible = false;
-            this.fangzhenskill8.visible = false;
             this.toupiao11.visible = false;
             this.toupiao21.visible = false;
             this.toupiao31.visible = false;
@@ -174,32 +160,6 @@ module game {
             this.toupiaoqueren.visible = false;
             this.startno2.visible = false;
             this.onejieguo.visible = false;
-            this.lcfskill.visible = false;
-            this.lcfskillpass.visible = false;
-            this.ybrskill.visible = false;
-            this.ybrskillpass.visible = false;
-            this.ybrskill1.visible = false;
-            this.ybrskill2.visible = false;
-            this.ybrskill3.visible = false;
-            this.ybrskill4.visible = false;
-            this.ybrskill5.visible = false;
-            this.ybrskill6.visible = false;
-            this.ybrskill7.visible = false;
-            this.ybrskill8.visible = false;
-            this.zgqskill.visible = false;
-            this.zgqskillpass.visible = false;
-            this.zgqskill1.visible = false;
-            this.zgqskill2.visible = false;
-            this.zgqskill3.visible = false;
-            this.zgqskill4.visible = false;
-            this.Anim5.visible = false;
-            this.Anim6.visible = false;
-            this.Anim7.visible = false;
-            this.Anim8.visible = false;
-            this.Anim9.visible = false;
-            this.Anim10.visible = false;
-            this.Anim11.visible = false;
-            this.Anim12.visible = false;
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {

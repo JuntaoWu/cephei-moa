@@ -61,5 +61,9 @@ module game {
         public threezhenjia2:string="";
         public threetouxi:boolean=false;
         public playerInfor: any;
+
+        public weizhi_xuyuan:number;
+        public weizhi_fangzhen:number;
+        public weizhi_laochaofeng:number;
     }
 }
