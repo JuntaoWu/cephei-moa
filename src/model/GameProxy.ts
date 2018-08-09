@@ -5,15 +5,17 @@ module game {
 	export class GameProxy extends puremvc.Proxy implements puremvc.IProxy {
 		public static NAME: string = "GameProxy";
 
+		private userInfo: UserInfo;
+
 		public constructor() {
 			super(GameProxy.NAME);
 		}
 
 		public async initialize() {
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
-			const userInfo = await accountProxy.loadUserInfo();
+			this.userInfo = await accountProxy.loadUserInfo();
 
-			this.loadBalancingClient.setCustomAuthentication(`openId=${userInfo.openId}`,
+			this.loadBalancingClient.setCustomAuthentication(`openId=${this.userInfo.openId}`,
 				Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom);
 			this.loadBalancingClient.start();
 		}
@@ -455,7 +457,9 @@ module game {
 			this.roomName = roomName;
 			if (this.loadBalancingClient.isInLobby()) {
 				console.log(`Begin joinRoom: ${roomName}`);
-				this.loadBalancingClient.joinRoom(roomName);
+				this.loadBalancingClient.joinRoom(roomName, {
+					joinToken: this.userInfo && this.userInfo.openId
+				});
 			}
 			else if (this.loadBalancingClient.isJoinedToRoom()) {
 				let existingRoom = this.loadBalancingClient.myRoom().name;

@@ -8,6 +8,9 @@ module game {
         private poweredLabel: eui.Label;
         private navigationBar: eui.Group;
 
+        public txtOpenId: eui.TextInput;
+        public btnChangeOpenId: eui.Button;
+
         public btnCreateRoom: eui.Button;
         public btnJoinRoom: eui.Button;
 
@@ -21,6 +24,8 @@ module game {
 
         public nickName: string = "nickName";
         public avatarUrl: string = "btn-share";
+        public isDebugPlatform: boolean = false;
+        public isWxPlatform: boolean = true;
 
         public constructor() {
             super();

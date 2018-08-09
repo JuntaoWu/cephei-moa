@@ -4,9 +4,16 @@ module game {
     export class StartScreenMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "StartScreenMediator";
 
+        private gameProxy: GameProxy;
+
         public constructor(viewComponent: any) {
             super(StartScreenMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
+
+            this.startScreen.txtOpenId.addEventListener(egret.TouchEvent.TOUCH_TAP, (event: egret.TouchEvent) => {
+                event.stopImmediatePropagation();
+            }, this);
+            this.startScreen.btnChangeOpenId.addEventListener(egret.TouchEvent.TOUCH_TAP, this.changeOpenIdClick, this);
 
             this.startScreen.btnCreateRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createRoomClick, this);
             this.startScreen.btnJoinRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.joinRoomClick, this);
@@ -23,13 +30,27 @@ module game {
 
         public async initData() {
             const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
-            const gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
+            this.gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
-            const userInfo = await accountProxy.loadUserInfo();
-            this.startScreen.nickName = userInfo.nickName;
-            this.startScreen.avatarUrl = userInfo.avatarUrl;
+            if (platform.name == "DebugPlatform") {
+                this.startScreen.isDebugPlatform = true;
+                this.startScreen.isWxPlatform = false;
+            }
+            else if (platform.name == "WxPlatform") {
+                const userInfo = await accountProxy.loadUserInfo();
+                this.startScreen.nickName = userInfo.nickName;
+                this.startScreen.avatarUrl = userInfo.avatarUrl;
+                this.startScreen.isDebugPlatform = false;
+                this.startScreen.isWxPlatform = true;
+                await this.gameProxy.initialize();
+            }
+        }
 
-            await gameProxy.initialize();
+        public async changeOpenIdClick(event: egret.TouchEvent) {
+            event.stopImmediatePropagation();
+            const openId = this.startScreen.txtOpenId.text;
+            CommonData.logon.openId = openId;
+            await this.gameProxy.initialize();
         }
 
         public createRoomClick(event: egret.TouchEvent) {
