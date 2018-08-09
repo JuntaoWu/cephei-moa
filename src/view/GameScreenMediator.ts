@@ -419,7 +419,8 @@ module game {
                 const animName = this.proxy.gameState.baowulist[anim.index];
                 const antiqueObject = this.proxy.antiquesMap.get(animName);
                 let control = this.gameScreen[anim.controlName] as eui.Button;
-                let image = control.getChildByName("antique-content") as eui.Image;
+                let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
                 image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
@@ -503,8 +504,9 @@ module game {
                 // you have choosed this anim already.
                 return;
             }
-            let bgNormal = event.currentTarget.getChildByName("antique-normal");
-            let bgSelected = event.currentTarget.getChildByName("antique-selected");
+            let antiqueGroup = event.currentTarget.getChildByName("antique-group") as eui.Group;
+            let bgNormal = antiqueGroup.getChildByName("antique-normal");
+            let bgSelected = antiqueGroup.getChildByName("antique-selected");
             bgNormal.visible = false;
             bgSelected.visible = true;
 
@@ -515,8 +517,9 @@ module game {
                 animConfig.forEach((anim, index) => {
                     if (anim.index == shiftAnim) {
                         let control: eui.Button = this.gameScreen[anim.controlName];
-                        let shiftControlBgNormal = control.getChildByName("antique-normal");
-                        let shiftControlBgSelected = control.getChildByName("antique-selected");
+                        let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                        let shiftControlBgNormal = antiqueGroup.getChildByName("antique-normal");
+                        let shiftControlBgSelected = antiqueGroup.getChildByName("antique-selected");
                         shiftControlBgNormal.visible = true;
                         shiftControlBgSelected.visible = false;
                     }
@@ -1152,7 +1155,8 @@ module game {
                 const animName = this.proxy.gameState.baowulist[(this.proxy.gameState.lunci - 1) * 4 + anim.index];
                 const antiqueObject = this.proxy.antiquesMap.get(animName);
                 let control = this.gameScreen[anim.controlName] as eui.Button;
-                let image = control.getChildByName("antique-content") as eui.Image;
+                let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
                 image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
@@ -1332,7 +1336,8 @@ module game {
                 const animName = this.proxy.gameState.baowulist[(this.proxy.gameState.lunci - 1) * 4 + anim.index];
                 const antiqueObject = this.proxy.antiquesMap.get(animName);
                 let control = this.gameScreen[anim.controlName] as eui.Button;
-                let image = control.getChildByName("antique-content") as eui.Image;
+                let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
                 image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
@@ -1663,10 +1668,12 @@ module game {
             if (this.proxy.gameState.lunci == 3) {
                 if (this.proxy.gameState.defen < 2) {
                     this.gameScreen.startno2.visible = false;
-                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "许愿阵营失败  得分:" + this.proxy.gameState.defen);
+                    // this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "许愿阵营失败  得分:" + this.proxy.gameState.defen);
+                    this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 } else if (this.proxy.gameState.defen == 6) {
                     this.gameScreen.startno2.visible = false;
-                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "许愿阵营胜利  得分:" + this.proxy.gameState.defen);
+                    // this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "许愿阵营胜利  得分:" + this.proxy.gameState.defen);
+                    this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 } else {
                     if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
                         this.gameScreen.startno2.visible = true;

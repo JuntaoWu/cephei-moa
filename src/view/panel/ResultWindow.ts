@@ -37,6 +37,9 @@ module game {
         public voteLao: any;
         public voteYao: any;
 
+        public showFindPeople: boolean;
+        public totalScoreGroup: eui.Group;
+
         public createCompleteEvent(event: eui.UIEvent): void {
             this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 50;
             this.contentScroller.height = this.stage.stageHeight - this.navigationBar.height - 100;
