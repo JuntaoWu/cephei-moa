@@ -75,7 +75,8 @@ module game {
                 GameProxy.TOUREN,
                 GameProxy.TOUREN_JIEGUO,
                 GameCommand.JOIN_ROOM,
-                GameProxy.START_TOUPIAO_BUTTON
+                GameProxy.START_TOUPIAO_BUTTON,
+                GameProxy.ROLEING
             ];
         }
 
@@ -147,6 +148,10 @@ module game {
                 }
                 case GameProxy.START_TOUPIAO_BUTTON: {
                     this.start_toupiao_button();
+                    break;
+                }
+                case GameProxy.ROLEING: {
+                    this.roleing(data);
                     break;
                 }
             }
@@ -398,6 +403,10 @@ module game {
             //     this.sendNotification(GameCommand.CHOOSE_ROLE, roleId);
             // }
             this.sendNotification(SceneCommand.SHOW_ROLE_POPUP, roleId);
+        }
+
+        public roleing(i: number) {
+            this.gameScreen.roleing = i + "/" + this.proxy.gameState.maxPlayers;
         }
 
         public startGame() {
@@ -1226,28 +1235,28 @@ module game {
             //const actor: ActorModel = this.proxy.gameState.seats[Nr];
             let skilled = this.proxy.gameState.role.findIndex(xx => xx && xx.actorNr == this.proxy.gameState.seats[Nr2].actorNr);
             if (1 <= skilled && skilled <= 5) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是好人");
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是许愿阵营");
                 if (this.proxy.gameState.lunci == 1) {
                     this.proxy.gameState.onebaowu = Nr;
-                    this.proxy.gameState.onezhenjia = "好人"
+                    this.proxy.gameState.onezhenjia = "许愿阵营"
                 } else if (this.proxy.gameState.lunci == 2) {
                     this.proxy.gameState.twobaowu = Nr;
-                    this.proxy.gameState.twozhenjia = "好人"
+                    this.proxy.gameState.twozhenjia = "许愿阵营"
                 } else if (this.proxy.gameState.lunci == 3) {
                     this.proxy.gameState.threebaowu = Nr;
-                    this.proxy.gameState.threezhenjia = "好人"
+                    this.proxy.gameState.threezhenjia = "许愿阵营"
                 }
             } else if (6 <= skilled && skilled <= 8) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是坏人");
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是老朝奉阵营");
                 if (this.proxy.gameState.lunci == 1) {
                     this.proxy.gameState.onebaowu = Nr;
-                    this.proxy.gameState.onezhenjia = "坏人"
+                    this.proxy.gameState.onezhenjia = "老朝奉阵营"
                 } else if (this.proxy.gameState.lunci == 2) {
                     this.proxy.gameState.twobaowu = Nr;
-                    this.proxy.gameState.twozhenjia = "坏人"
+                    this.proxy.gameState.twozhenjia = "老朝奉阵营"
                 } else if (this.proxy.gameState.lunci == 3) {
                     this.proxy.gameState.threebaowu = Nr;
-                    this.proxy.gameState.threezhenjia = "坏人"
+                    this.proxy.gameState.threezhenjia = "老朝奉阵营"
                 }
             }
 
@@ -1264,15 +1273,15 @@ module game {
 
         public onegameend() {
             if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_one_been[this.proxy.gameState.shunwei_one_been.length - 1]) && this.proxy.gameState.lunci == 1) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。");
+                this.gameScreen.isLastPlayer = true;
                 this.gameScreen.onegameend.visible = true;
             }
             if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_two_been[this.proxy.gameState.shunwei_two_been.length - 1]) && this.proxy.gameState.lunci == 2) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。");
+                this.gameScreen.isLastPlayer = true;
                 this.gameScreen.onegameend.visible = true;
             }
             if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_three_been[this.proxy.gameState.shunwei_three_been.length - 1]) && this.proxy.gameState.lunci == 3) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。");
+                this.gameScreen.isLastPlayer = true;
                 this.gameScreen.onegameend.visible = true;
             }
         }
@@ -1287,6 +1296,7 @@ module game {
 
         public onegameend2() {
             this.gameScreen.onegameend.visible = false;
+            this.gameScreen.isLastPlayer = false;
             if (this.proxy.gameState.lunci == 1) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "第一轮结束，开始发言");
             } else if (this.proxy.gameState.lunci == 2) {
@@ -1417,6 +1427,7 @@ module game {
         public toupiaoqueren() {
             this.sypiaoshu = this.muqianpiaoshu;
             this.gameScreen.isVoteVisible = false;
+            this.gameScreen.isVoteEnd = true;
             this.gameScreen.toupiao1.enabled = false;
             this.gameScreen.toupiao2.enabled = false;
             this.gameScreen.toupiao3.enabled = false;
@@ -1434,27 +1445,29 @@ module game {
         }
 
         public piaoshujisuan(toupiao: Array<any>) {
+
+            let i: number = 0;
+            if (this.proxy.gameState.lunci == 1) {
+                this.proxy.gameState.toupiao.forEach(element => {
+                    if (element) {
+                        i++;
+                    }
+                });
+            } else if (this.proxy.gameState.lunci == 2) {
+                this.proxy.gameState.toupiao2.forEach(element => {
+                    if (element) {
+                        i++;
+                    }
+                });
+            } else if (this.proxy.gameState.lunci == 3) {
+                this.proxy.gameState.toupiao3.forEach(element => {
+                    if (element) {
+                        i++;
+                    }
+                });
+            }
+            this.gameScreen.voteing = i + "/" + this.proxy.gameState.maxPlayers + "  已完成投票"
             if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
-                let i: number = 0;
-                if (this.proxy.gameState.lunci == 1) {
-                    this.proxy.gameState.toupiao.forEach(element => {
-                        if (element) {
-                            i++;
-                        }
-                    });
-                } else if (this.proxy.gameState.lunci == 2) {
-                    this.proxy.gameState.toupiao2.forEach(element => {
-                        if (element) {
-                            i++;
-                        }
-                    });
-                } else if (this.proxy.gameState.lunci == 3) {
-                    this.proxy.gameState.toupiao3.forEach(element => {
-                        if (element) {
-                            i++;
-                        }
-                    });
-                }
                 if (i == this.proxy.gameState.maxPlayers) {
                     if (this.proxy.gameState.lunci == 1) {
                         this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.toupiaoend);
@@ -1563,6 +1576,7 @@ module game {
         public baowu3_sx: number;
         public baowu4_sx: number;
         public toupiaoend(message: string) {
+            this.gameScreen.isVoteEnd = false;
             this.gameScreen.qingkong.visible = false;
             this.gameScreen.piaoshu.visible = false;
             this.gameScreen.toupiaoqueren.visible = false;

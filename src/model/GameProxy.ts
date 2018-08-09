@@ -42,6 +42,7 @@ module game {
 		public static TOUREN: string = "touren";
 		public static TOUREN_JIEGUO: string = "touren_jieguo";
 		public static START_TOUPIAO_BUTTON: string = "start_toupiao_button";
+		public static ROLEING: string = "roleing";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -163,7 +164,7 @@ module game {
 					const { oldSeatNumber, newSeatNumber } = message;
 
 					let oldIndex = this.gameState.seats.findIndex(seat => seat && seat.actorNr == sender.actorNr);
-					if(oldIndex != -1) {
+					if (oldIndex != -1) {
 						this.gameState.seats[oldIndex] = undefined;
 					}
 
@@ -199,6 +200,13 @@ module game {
 					}
 					this.gameState.role[newRoleId] = new ActorModel(sender);
 
+					let i: number = 0;
+					this.gameState.role.forEach(element => {
+						if (element) {
+							i++;
+						}
+					});
+					this.sendNotification(GameProxy.ROLEING, i);
 
 					// if (message == "destory1") {
 					// 	this.gameState.role[1] = undefined;
@@ -221,7 +229,7 @@ module game {
 					// 	this.gameState.role[jsNumber] = new ActorModel(sender);
 					// }
 
-					//this.sendNotification(GameProxy.CHOOSE_JS_END, this.gameState.role);
+					//this.sendNotification(GameProxy.CHOOSE_JS_END, this.gameState.role);					
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					break;
 				}
