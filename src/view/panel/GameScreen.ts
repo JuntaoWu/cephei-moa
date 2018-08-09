@@ -17,6 +17,7 @@ module game {
         //bindings:
         public roomName: string = "";
         public role: Role;
+        public isNotFangZhen: boolean = true;
         public isFangZhen: boolean = false;
         public isYaoBuran: boolean = false;
         public isZhengGuoqu: boolean = false;

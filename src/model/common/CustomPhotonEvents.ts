@@ -37,5 +37,6 @@ module game {
         lunci,
         touren,
         tourenjieguo,
+        starttoupiao,
     }
 }

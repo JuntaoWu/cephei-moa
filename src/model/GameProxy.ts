@@ -39,6 +39,7 @@ module game {
 		public static ONE_ZGQSKILL: string = "one_zgqskill";
 		public static TOUREN: string = "touren";
 		public static TOUREN_JIEGUO: string = "touren_jieguo";
+		public static START_TOUPIAO_BUTTON: string = "start_toupiao_button";
 
 		public roomName: string;
 		public isMasterClient: boolean;
@@ -153,7 +154,7 @@ module game {
 			this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState") || this.gameState;
 		}
 
-		private onMessage(event: CustomPhotonEvents, message: string, sender: Photon.LoadBalancing.Actor) {
+		private onMessage(event: CustomPhotonEvents, message: any, sender: Photon.LoadBalancing.Actor) {
 			switch (event) {
 				case CustomPhotonEvents.TakeSeat: {
 
@@ -199,26 +200,34 @@ module game {
 					break;
 				}
 				case CustomPhotonEvents.ChooseRole: {
-					if (message == "destory1") {
-						this.gameState.role[1] = undefined;
-					} else if (message == "destory2") {
-						this.gameState.role[2] = undefined;
-					} else if (message == "destory3") {
-						this.gameState.role[3] = undefined;
-					} else if (message == "destory4") {
-						this.gameState.role[4] = undefined;
-					} else if (message == "destory5") {
-						this.gameState.role[5] = undefined;
-					} else if (message == "destory6") {
-						this.gameState.role[6] = undefined;
-					} else if (message == "destory7") {
-						this.gameState.role[7] = undefined;
-					} else if (message == "destory8") {
-						this.gameState.role[8] = undefined;
-					} else {
-						const jsNumber = +message;
-						this.gameState.role[jsNumber] = new ActorModel(sender);
+					const { oldRoleId, newRoleId } = message;
+
+					if (oldRoleId) {
+						this.gameState.role[oldRoleId] = undefined;
 					}
+					this.gameState.role[newRoleId] = new ActorModel(sender);
+
+
+					// if (message == "destory1") {
+					// 	this.gameState.role[1] = undefined;
+					// } else if (message == "destory2") {
+					// 	this.gameState.role[2] = undefined;
+					// } else if (message == "destory3") {
+					// 	this.gameState.role[3] = undefined;
+					// } else if (message == "destory4") {
+					// 	this.gameState.role[4] = undefined;
+					// } else if (message == "destory5") {
+					// 	this.gameState.role[5] = undefined;
+					// } else if (message == "destory6") {
+					// 	this.gameState.role[6] = undefined;
+					// } else if (message == "destory7") {
+					// 	this.gameState.role[7] = undefined;
+					// } else if (message == "destory8") {
+					// 	this.gameState.role[8] = undefined;
+					// } else {
+					// 	const jsNumber = +message;
+					// 	this.gameState.role[jsNumber] = new ActorModel(sender);
+					// }
 
 					//this.sendNotification(GameProxy.CHOOSE_JS_END, this.gameState.role);
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
@@ -226,8 +235,8 @@ module game {
 				}
 				case CustomPhotonEvents.FirstOneNr: {
 					this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState");
+					this.sendNotification(SceneCommand.SHOW_ROUND_POPUP);
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
-					this.sendNotification(GameProxy.BAOWU_TONGZHI);
 					this.sendNotification(GameProxy.FIRST_ONE, message);
 					break;
 				}
@@ -298,7 +307,6 @@ module game {
 				}
 				case CustomPhotonEvents.starttwo: {
 					this.sendNotification(GameProxy.START_TWO);
-					this.sendNotification(GameProxy.BAOWU_TONGZHI);
 					break;
 				}
 				case CustomPhotonEvents.onelcftongbu: {
@@ -352,7 +360,6 @@ module game {
 				case CustomPhotonEvents.lunci: {
 					const Nr = +message;
 					this.gameState.lunci = Nr;
-					console.log(this.gameState.lunci);
 					break;
 				}
 				case CustomPhotonEvents.touren: {
@@ -382,6 +389,10 @@ module game {
 					console.log(this.gameState.touren);
 					break;
 				}
+				case CustomPhotonEvents.starttoupiao: {
+					this.sendNotification(GameProxy.START_TOUPIAO_BUTTON);
+					break;
+				}
 			}
 		}
 
@@ -409,6 +420,10 @@ module game {
 
 			//sync gameState
 			console.log("MasterClient startGame: setCustomProperty");
+			console.log(this.gameState.baowulist);
+			console.log(this.gameState.onezj);
+			console.log(this.gameState.twozj);
+			console.log(this.gameState.threezj);
 			this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.FirstOneNr, this.gameState.firstOne.toString());
 		}
@@ -482,8 +497,8 @@ module game {
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat, seatNumber);
 		}
 
-		public chooseRole(jsNumber: string) {
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.ChooseRole, jsNumber);
+		public chooseRole({oldRoleId, newRoleId}) {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.ChooseRole, { oldRoleId, newRoleId });
 		}
 
 		public startChooseRole() {
