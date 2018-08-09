@@ -327,12 +327,7 @@ module game {
 
             } else {
                 let seatNo = this.proxy.gameState.seats.findIndex(seat => seat && seat.actorNr == this.proxy.loadBalancingClient.myActor().actorNr);
-                if (seatNo == -1) {
-
-                } else {
-                    this.sendNotification(GameCommand.JOIN_SEAT, ("destory" + seatNo));
-                }
-                this.sendNotification(GameCommand.JOIN_SEAT, seatNumber);
+                this.sendNotification(GameCommand.JOIN_SEAT, { oldSeatNumber: seatNo, newSeatNumber: seatNumber });
             }
         }
 

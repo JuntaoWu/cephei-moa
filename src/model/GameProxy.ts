@@ -158,36 +158,26 @@ module game {
 			switch (event) {
 				case CustomPhotonEvents.TakeSeat: {
 
-					if (message == "destory1") {
-						this.gameState.seats[1] = undefined;
-					} else if (message == "destory2") {
-						this.gameState.seats[2] = undefined;
-					} else if (message == "destory3") {
-						this.gameState.seats[3] = undefined;
-					} else if (message == "destory4") {
-						this.gameState.seats[4] = undefined;
-					} else if (message == "destory5") {
-						this.gameState.seats[5] = undefined;
-					} else if (message == "destory6") {
-						this.gameState.seats[6] = undefined;
-					} else if (message == "destory7") {
-						this.gameState.seats[7] = undefined;
-					} else if (message == "destory8") {
-						this.gameState.seats[8] = undefined;
-					} else {
-						const seatNumber = +message;
-						let actorModel = new ActorModel(sender, seatNumber);
-						let color = this.seatsMap.get(seatNumber.toString());
-						actorModel.color = color;
-						this.gameState.seats[seatNumber] = actorModel;
-						this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
-						this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+					const { oldSeatNumber, newSeatNumber } = message;
 
-						if (this.isMasterClient) {
-							console.log("CustomPhotonEvents.TakeSeat: setCustomProperty");
-							this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
-						}
+					let oldIndex = this.gameState.seats.findIndex(seat => seat && seat.actorNr == sender.actorNr);
+					if(oldIndex != -1) {
+						this.gameState.seats[oldIndex] = undefined;
 					}
+
+					let actorModel = new ActorModel(sender, newSeatNumber);
+					let color = this.seatsMap.get(newSeatNumber.toString());
+					actorModel.color = color;
+					this.gameState.seats[newSeatNumber] = actorModel;
+
+					if (this.isMasterClient) {
+						console.log("CustomPhotonEvents.TakeSeat: setCustomProperty");
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+					}
+
+					this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
+					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+
 					break;
 				}
 				case CustomPhotonEvents.StartChoosingRole: {
@@ -493,8 +483,8 @@ module game {
 			this.gameState = new GameState();
 		}
 
-		public joinSeat(seatNumber: string) {
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat, seatNumber);
+		public joinSeat(data: any) {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.TakeSeat, data);
 		}
 
 		public chooseRole({oldRoleId, newRoleId}) {
