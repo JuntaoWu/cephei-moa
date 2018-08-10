@@ -180,7 +180,7 @@ module game {
 
 					this.sendNotification(GameProxy.SEAT_UPDATE, this.gameState.seats);
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
-
+					this.sendNotification(GameProxy.ROLEING, 0);
 					break;
 				}
 				case CustomPhotonEvents.StartChoosingRole: {
@@ -493,6 +493,7 @@ module game {
 		public reset() {
 			this.roomName = undefined;
 			this.gameState = new GameState();
+			console.log(JSON.stringify(this.gameState));
 		}
 
 		public joinSeat(data: any) {
