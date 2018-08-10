@@ -28,20 +28,6 @@ module game {
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
-
-        private _joinWindow: JoinWindow;
-        public get joinWindow(): JoinWindow {
-            if (!this._joinWindow) {
-                this._joinWindow = new JoinWindow();
-            }
-            return this._joinWindow;
-        }
-
-        public showJoinWindow(): void {
-            this.addChild(this.joinWindow);
-            this.joinWindow.show();
-        }
-
         public userInfoWindow: UserInfoWindow;
         public showUserInfoWindow(): void {
             if (!this.userInfoWindow) {
@@ -152,6 +138,15 @@ module game {
             this.popupAppraisalWindow.setData(data);
             this.addChild(this.popupAppraisalWindow);
             this.popupAppraisalWindow.show();
+        }
+        
+        public voteRecordWindow: PopupVoteRecordWindow;
+        public showVoteRecordWindow(): void {
+            if (!this.voteRecordWindow) {
+                this.voteRecordWindow = new PopupVoteRecordWindow();
+            }
+            this.addChild(this.voteRecordWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
         
         public popupResultWindow: PopupVoteResultWindow;

@@ -25,22 +25,38 @@ module game {
             this.popupNumberKeyboard.delete.addEventListener(egret.TouchEvent.TOUCH_TAP, this.deleteClick, this); 
         }
 
+        private num: string = "";
+
         public numberClick(n: number) {
-            this.sendNotification(GameProxy.INPUT_NUMBER, n);
+            if (this.num.length < 6) {
+                this.num += n;
+                this.sendNotification(GameProxy.INPUT_NUMBER, this.num);
+            }
+            if (!this.popupNumberKeyboard.confirm.visible) {
+                this.popupNumberKeyboard.confirm.visible = true;
+            }
         }
 
         public cancelClick(e: egret.TouchEvent) {
-            this.sendNotification(GameProxy.CANCEL_INPUT);
+            this.num = "";
+            this.sendNotification(GameProxy.INPUT_NUMBER, this.num);
+            this.popupNumberKeyboard.confirm.visible = false;
             this.popupNumberKeyboard.close();
         }
         
         public confirmClick(e: egret.TouchEvent) {
+            this.num = "";
             this.sendNotification(GameProxy.FINISH_INPUT);
+            this.popupNumberKeyboard.confirm.visible = false;
             this.popupNumberKeyboard.close();
         }
         
         public deleteClick(e: egret.TouchEvent) {
-            this.sendNotification(GameProxy.DELETE_NUMBER);
+            this.num = this.num.substr(0, this.num.length - 1);
+            if (!this.num) {
+                this.popupNumberKeyboard.confirm.visible = false;
+                this.sendNotification(GameProxy.INPUT_NUMBER, this.num);
+            }
         }
 
         public get popupNumberKeyboard(): PopupNumberKeyboard {

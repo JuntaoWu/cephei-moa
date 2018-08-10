@@ -59,7 +59,7 @@ module game {
         }
 
         public joinRoomClick(event: egret.TouchEvent) {
-            this.sendNotification(SceneCommand.SHOW_JOIN_WINDOW);
+            // this.sendNotification(SceneCommand.SHOW_JOIN_WINDOW);
             this.sendNotification(SceneCommand.SHOW_NUMBER_KEYBOARD);
         }
 
@@ -84,11 +84,21 @@ module game {
         }
 
         public listNotificationInterests(): Array<any> {
-            return [];
+            return [GameProxy.INPUT_NUMBER, GameProxy.FINISH_INPUT];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
             var data: any = notification.getBody();
+            switch (notification.getName()) {
+                case GameProxy.INPUT_NUMBER:
+                    this.startScreen.roomNum = data;
+                    break;
+                case GameProxy.FINISH_INPUT:
+                    const roomName = this.startScreen.roomNum;
+                    this.sendNotification(GameCommand.JOIN_ROOM, roomName);
+                    this.startScreen.roomNum = "";
+                    break;
+            }
         }
 
         public get startScreen(): StartScreen {

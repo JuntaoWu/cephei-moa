@@ -3,20 +3,20 @@ module game {
 
     export class PopupNumberKeyboard extends game.BasePanel {
 
-        public num1: eui.BitmapLabel;
-        public num2: eui.BitmapLabel;
-        public num3: eui.BitmapLabel;
-        public num4: eui.BitmapLabel;
-        public num5: eui.BitmapLabel;
-        public num6: eui.BitmapLabel;
-        public num7: eui.BitmapLabel;
-        public num8: eui.BitmapLabel;
-        public num9: eui.BitmapLabel;
-        public num0: eui.BitmapLabel;
+        public num1: eui.Button;
+        public num2: eui.Button;
+        public num3: eui.Button;
+        public num4: eui.Button;
+        public num5: eui.Button;
+        public num6: eui.Button;
+        public num7: eui.Button;
+        public num8: eui.Button;
+        public num9: eui.Button;
+        public num0: eui.Button;
         
         public cancel: eui.Image;
         public confirm: eui.Image;
-        public delete: eui.Image;
+        public delete: eui.Button;
 
         public constructor() {
             super();

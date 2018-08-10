@@ -135,7 +135,7 @@ module game {
                 }
             })
             this.resultWindow.voteGroup.dataProvider = new eui.ArrayCollection(campXuVotes);
-            this.resultWindow.voteGroup.itemRenderer = VoteRenderer;
+            this.resultWindow.voteGroup.itemRenderer = VotePeopleRenderer;
 
             this.resultWindow.showFindPeople = true;
             this.resultWindow.totalScoreGroup.y = 2200;

@@ -1,17 +1,22 @@
 
 module game {
 
-    export class PopupVoteRecordWindow extends game.BasePanel {
+    export class PopupVoteRecordWindow extends eui.Panel {
+
+        public backButton: eui.Button;
+
+        public orderGroup1: eui.DataGroup;
+        public orderGroup2: eui.DataGroup;
+        public orderGroup3: eui.DataGroup;
+        public roundGroup1: eui.DataGroup;
+        public roundGroup2: eui.DataGroup;
+        public roundGroup3: eui.DataGroup;
 
         public constructor() {
             super();
             this.skinName = "skins.PopupVoteRecordWindow";
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
         }
-
-        public round1: any;
-        public round2: any;
-        public round3: any;
 
         public createCompleteEvent(event: eui.UIEvent): void {
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
