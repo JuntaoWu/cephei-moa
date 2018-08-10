@@ -54,9 +54,9 @@ module game {
         public isVoteEnd: boolean = false;
         public voteing: string;
 
-        public processingPlayer: ActorModel = {
-            avatarUrl: "",
-            name: ""
+        public processingPlayer = {
+            name: "",
+            colorName: "",
         };
 
         public antiquesVote: eui.Group;
