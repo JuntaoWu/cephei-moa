@@ -37,29 +37,29 @@ class WxgamePlatform {
     }
 
     checkForUpdate() {
-      console.log("wx checkForUpdate.");
-      var updateManager = wx.getUpdateManager();
-      updateManager.onCheckForUpdate(function(res) {
-        console.log("hasUpdate: " + res.hasUpdate);
-        res.hasUpdate && fileutil.fs.remove("temp_text");
-        res.hasUpdate && fileutil.fs.remove("temp_image");
-      });
+        console.log("wx checkForUpdate.");
+        var updateManager = wx.getUpdateManager();
+        updateManager.onCheckForUpdate(function (res) {
+            console.log("hasUpdate: " + res.hasUpdate);
+            res.hasUpdate && fileutil.fs.remove("temp_text");
+            res.hasUpdate && fileutil.fs.remove("temp_image");
+        });
     }
 
     getVersion() {
-      return fileutil.fs.read("api-version.txt", "utf-8");
+        return fileutil.fs.read("api-version.txt", "utf-8");
     }
 
     applyUpdate(version) {
-      console.log("applyUpdate for cached resource.");
-      try {
-        fileutil.fs.remove("temp_text");
-        fileutil.fs.remove("temp_image");
-        fileutil.fs.write("api-version.txt", version);
-      }
-      catch(ex) {
-        console.error(ex.message);
-      }
+        console.log("applyUpdate for cached resource.");
+        try {
+            fileutil.fs.remove("temp_text");
+            fileutil.fs.remove("temp_image");
+            fileutil.fs.write("api-version.txt", version);
+        }
+        catch (ex) {
+            console.error(ex.message);
+        }
     }
 
     openDataContext = new WxgameOpenDataContext();
@@ -73,6 +73,27 @@ class WxgamePlatform {
             title: '转发标题'
         });
     }
+
+    onNetworkStatusChange(callback) {
+        wx.onNetworkStatusChange(function (res) {
+            this.showToast(`当前网络${res.isConnected ? '已连接' : '未连接'}`);
+            callback(res);
+        });
+    }
+
+    showToast(message) {
+        wx.showToast({
+            title: message,
+            icon: '',
+            image: '',
+            duration: 500,
+            mask: true,
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+        })
+    }
+
 }
 
 class WxgameOpenDataContext {

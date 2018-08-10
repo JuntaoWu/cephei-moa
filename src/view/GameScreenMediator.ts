@@ -242,7 +242,7 @@ module game {
                     this.gameScreen.isSecondRound = data.lunci == 2;
                     this.gameScreen.isThirdRound = data.lunci == 3;
 
-                    this.gameScreen.isMyTurn = data.seats.find(seat => seat.actorNr == this.proxy.actorNr).isMyTurn;
+                    this.gameScreen.isMyTurn = data.seats.find(seat => seat && seat.actorNr == this.proxy.actorNr).isMyTurn;
                     this.gameScreen.isOthersTurn = !this.gameScreen.isMyTurn;
                     break;
             }
@@ -434,8 +434,8 @@ module game {
                 let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
                 let bgNormal = antiqueGroup.getChildByName("antique-normal");
                 let bgSelected = antiqueGroup.getChildByName("antique-selected");
-                bgNormal.visible = false;
-                bgSelected.visible = true;
+                bgNormal.visible = true;
+                bgSelected.visible = false;
                 let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
                 image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;
@@ -483,7 +483,7 @@ module game {
 
         private setMyTurnState(state) {
             const stateList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext"];
-            this.proxy.gameState.seats.find(seat => seat.actorNr == this.proxy.actorNr).isMyTurn = true;
+            this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.actorNr).isMyTurn = true;
             this.gameScreen.isMyTurn = true;
             this.gameScreen.isOthersTurn = false;
             stateList.forEach(s => {
