@@ -486,29 +486,23 @@ module game {
             });
         }
 
-        public ybrskill1: number = 0;
-        public ybrskill2: number = 0;
-        public ybrskill3: number = 0;
-        public ybrskill4: number = 0;
-        public ybrskill5: number = 0;
-        public ybrskill6: number = 0;
-        public ybrskill8: number = 0;
         public ybrskilladd(message: number) {
             if (this.proxy.gameState.role[1] && this.proxy.gameState.seats[message].actorNr == this.proxy.gameState.role[1].actorNr) {
-                this.ybrskill1++;
+                this.proxy.gameState.ybrskill[1]++;
             } else if (this.proxy.gameState.role[2] && this.proxy.gameState.seats[message].actorNr == this.proxy.gameState.role[2].actorNr) {
-                this.ybrskill2++;
-                this.ybrskill1++;
+                this.proxy.gameState.ybrskill[2]++;
+                this.proxy.gameState.ybrskill[1]++;
             } else if (this.proxy.gameState.role[3] && this.proxy.gameState.seats[message].actorNr == this.proxy.gameState.role[3].actorNr) {
-                this.ybrskill3++;
+                this.proxy.gameState.ybrskill[3]++;
+                this.proxy.gameState.jyfskill = false;
             } else if (this.proxy.gameState.role[4] && this.proxy.gameState.seats[message].actorNr == this.proxy.gameState.role[4].actorNr) {
-                this.ybrskill4++;
+                this.proxy.gameState.ybrskill[4]++;
             } else if (this.proxy.gameState.role[5] && this.proxy.gameState.seats[message].actorNr == this.proxy.gameState.role[5].actorNr) {
-                this.ybrskill5++;
+                this.proxy.gameState.ybrskill[5]++;
             } else if (this.proxy.gameState.role[6] && this.proxy.gameState.seats[message].actorNr == this.proxy.gameState.role[6].actorNr) {
-                this.ybrskill6++;
+                this.proxy.gameState.ybrskill[6]++;
             } else if (this.proxy.gameState.role[8] && this.proxy.gameState.seats[message].actorNr == this.proxy.gameState.role[8].actorNr) {
-                this.ybrskill8++;
+                this.proxy.gameState.ybrskill[8]++;
             }
         }
 
@@ -569,8 +563,8 @@ module game {
 
         public skipSkill(event: egret.TouchEvent) {
             if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
-                if (this.ybrskill2 > 0) {
-                    this.ybrskill2--;
+                if (this.proxy.gameState.ybrskill[2] > 0) {
+                    this.proxy.gameState.ybrskill[2]--;
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                 }
             }
@@ -607,16 +601,16 @@ module game {
 
             //许愿技能
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
-                if (this.ybrskill1 > 0) {
+                if (this.proxy.gameState.ybrskill[1] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.onetouxi = true;
+                        this.proxy.gameState.playerInfor[1].onetouxi = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.twotouxi = true;
+                        this.proxy.gameState.playerInfor[1].twotouxi = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.threetouxi = true;
+                        this.proxy.gameState.playerInfor[1].threetouxi = true;
                     }
-                    this.ybrskill1--;
+                    this.proxy.gameState.ybrskill[1]--;
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
@@ -636,10 +630,10 @@ module game {
                             results[1] = "你无法鉴定此宝物";
                         }
 
-                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.onezhenjia = results[0];
-                        this.proxy.gameState.onebaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
-                        this.proxy.gameState.onezhenjia2 = results[1];
+                        this.proxy.gameState.playerInfor[1].onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[1].onezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[1].onebaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
+                        this.proxy.gameState.playerInfor[1].onezhenjia2 = results[1];
                     }
                     else if (this.proxy.gameState.lunci == 2) {
 
@@ -659,10 +653,10 @@ module game {
                             results[1] = "你无法鉴定此宝物";
                         }
 
-                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.twozhenjia = results[0];
-                        this.proxy.gameState.twobaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
-                        this.proxy.gameState.twozhenjia2 = results[1];
+                        this.proxy.gameState.playerInfor[1].twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[1].twozhenjia = results[0];
+                        this.proxy.gameState.playerInfor[1].twobaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
+                        this.proxy.gameState.playerInfor[1].twozhenjia2 = results[1];
                     }
                     else if (this.proxy.gameState.lunci == 3) {
 
@@ -682,10 +676,10 @@ module game {
                             results[1] = "你无法鉴定此宝物";
                         }
 
-                        this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.threezhenjia = results[0];
-                        this.proxy.gameState.threebaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
-                        this.proxy.gameState.threezhenjia2 = results[1];
+                        this.proxy.gameState.playerInfor[1].threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[1].threezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[1].threebaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
+                        this.proxy.gameState.playerInfor[1].threezhenjia2 = results[1];
                     }
                     // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0] + "   " + "“" + this.proxy.gameState.baowulist[this.selectedAnims[1]] + "”" + " 是 " + results[1]);
                 }
@@ -693,18 +687,27 @@ module game {
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[3])) {
-                if (this.ybrskill3 > 0) {
+                if (this.proxy.gameState.ybrskill[3] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.onetouxi = true;
+                        this.proxy.gameState.playerInfor[3].onetouxi = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.twotouxi = true;
+                        this.proxy.gameState.playerInfor[3].twotouxi = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.threetouxi = true;
+                        this.proxy.gameState.playerInfor[3].threetouxi = true;
                     }
-                    this.proxy.gameState.onetouxi = true;
-                }
-                else {
+                    this.proxy.gameState.playerInfor[3].onetouxi = true;
+                    this.proxy.gameState.ybrskill[3]--;
+                } else if (!this.proxy.gameState.jyfskill) {
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                    if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.gameState.playerInfor[3].onebaowu = "你无法鉴定此宝物";
+                    } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.gameState.playerInfor[3].twobaowu = "你无法鉴定此宝物";
+                    } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.gameState.playerInfor[3].threebaowu = "你无法鉴定此宝物";
+                    }
+                } else {
                     if (this.proxy.gameState.lunci == 1) {
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
                             results[0] = "你无法鉴定此宝物";
@@ -712,8 +715,8 @@ module game {
                         else {
                             results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
                         }
-                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.onezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[3].onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[3].onezhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0]) {
@@ -722,8 +725,8 @@ module game {
                         else {
                             results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
                         }
-                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.twozhenjia = results[0];
+                        this.proxy.gameState.playerInfor[3].twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[3].twozhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0]) {
@@ -732,8 +735,8 @@ module game {
                         else {
                             results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
                         }
-                        this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.threezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[3].threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[3].threezhenjia = results[0];
                     }
                     // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 }
@@ -742,16 +745,16 @@ module game {
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[4])) {
 
-                if (this.ybrskill4 > 0) {
+                if (this.proxy.gameState.ybrskill[4] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.onetouxi = true;
+                        this.proxy.gameState.playerInfor[4].onetouxi = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.twotouxi = true;
+                        this.proxy.gameState.playerInfor[4].twotouxi = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.threetouxi = true;
+                        this.proxy.gameState.playerInfor[4].threetouxi = true;
                     }
-                    this.ybrskill4--;
+                    this.proxy.gameState.ybrskill[4]--;
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
@@ -766,8 +769,8 @@ module game {
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[0] || this.proxy.gameState.hyyskill == 1) {
                             results[0] = "你无法鉴定此宝物";
                         }
-                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.onezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[4].onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[4].onezhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twolcfskill) {
@@ -780,8 +783,8 @@ module game {
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4 || this.proxy.gameState.hyyskill == 2) {
                             results[0] = "你无法鉴定此宝物";
                         }
-                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.twozhenjia = results[0];
+                        this.proxy.gameState.playerInfor[4].twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[4].twozhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threelcfskill) {
@@ -794,8 +797,8 @@ module game {
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8 || this.proxy.gameState.hyyskill == 3) {
                             results[0] = "你无法鉴定此宝物";
                         }
-                        this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.threezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[4].threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[4].threezhenjia = results[0];
                     }
                     // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
@@ -803,16 +806,16 @@ module game {
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[5])) {
-                if (this.ybrskill5 > 0) {
+                if (this.proxy.gameState.ybrskill[5] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.onetouxi = true;
+                        this.proxy.gameState.playerInfor[5].onetouxi = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.twotouxi = true;
+                        this.proxy.gameState.playerInfor[5].twotouxi = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.threetouxi = true;
+                        this.proxy.gameState.playerInfor[5].threetouxi = true;
                     }
-                    this.ybrskill5--;
+                    this.proxy.gameState.ybrskill[5]--;
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
@@ -827,8 +830,8 @@ module game {
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[0] || this.proxy.gameState.mhjnskill == 1) {
                             results[0] = "你无法鉴定此宝物";
                         }
-                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.onezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[5].onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[5].onezhenjia = results[0];
 
                     }
                     else if (this.proxy.gameState.lunci == 2) {
@@ -842,8 +845,8 @@ module game {
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4 || this.proxy.gameState.mhjnskill == 2) {
                             results[0] = "你无法鉴定此宝物";
                         }
-                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.twozhenjia = results[0];
+                        this.proxy.gameState.playerInfor[5].twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[5].twozhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threelcfskill) {
@@ -856,8 +859,8 @@ module game {
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8 || this.proxy.gameState.mhjnskill == 3) {
                             results[0] = "你无法鉴定此宝物";
                         }
-                        this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.threezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[5].threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[5].threezhenjia = results[0];
                     }
                     // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 }
@@ -865,17 +868,16 @@ module game {
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[6])) {
-                if (this.ybrskill6 > 0) {
+                if (this.proxy.gameState.ybrskill[6] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.onetouxi = true;
+                        this.proxy.gameState.playerInfor[6].onetouxi = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.twotouxi = true;
+                        this.proxy.gameState.playerInfor[6].twotouxi = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.threetouxi = true;
+                        this.proxy.gameState.playerInfor[6].threetouxi = true;
                     }
-                    this.ybrskill6--;
-                    this.setMyTurnState("isChoosingNext");
+                    this.proxy.gameState.ybrskill[6]--;
                     this.chuanshunwei();
                 }
                 else {
@@ -886,8 +888,8 @@ module game {
                         else {
                             results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
                         }
-                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.onezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[6].onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[6].onezhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0]) {
@@ -896,8 +898,8 @@ module game {
                         else {
                             results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
                         }
-                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.twozhenjia = results[0];
+                        this.proxy.gameState.playerInfor[6].twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[6].twozhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0]) {
@@ -906,8 +908,8 @@ module game {
                         else {
                             results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
                         }
-                        this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.threezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[6].threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[6].threezhenjia = results[0];
                     }
                     // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”");
                 }
@@ -920,8 +922,8 @@ module game {
                     else {
                         results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
                     }
-                    this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                    this.proxy.gameState.onezhenjia = results[0];
+                    this.proxy.gameState.playerInfor[7].onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                    this.proxy.gameState.playerInfor[7].onezhenjia = results[0];
                 }
                 else if (this.proxy.gameState.lunci == 2) {
                     if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4) {
@@ -930,8 +932,8 @@ module game {
                     else {
                         results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
                     }
-                    this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                    this.proxy.gameState.twozhenjia = results[0];
+                    this.proxy.gameState.playerInfor[7].twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                    this.proxy.gameState.playerInfor[7].twozhenjia = results[0];
                 }
                 else if (this.proxy.gameState.lunci == 3) {
                     if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8) {
@@ -940,40 +942,41 @@ module game {
                     else {
                         results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
                     }
-                    this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                    this.proxy.gameState.threezhenjia = results[0];
+                    this.proxy.gameState.playerInfor[7].threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                    this.proxy.gameState.playerInfor[7].threezhenjia = results[0];
                 }
                 // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 // this.AnimVis();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[8])) {
-                if (this.ybrskill8 > 0) {
+                if (this.proxy.gameState.ybrskill[8] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.onetouxi = true;
+                        this.proxy.gameState.playerInfor[8].onetouxi = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.twotouxi = true;
+                        this.proxy.gameState.playerInfor[8].twotouxi = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.threetouxi = true;
+                        this.proxy.gameState.playerInfor[8].threetouxi = true;
                     }
-                    this.ybrskill8--;
+                    this.proxy.gameState.ybrskill[8]--;
+                    this.chuanshunwei();
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
                         results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
-                        this.proxy.gameState.onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.onezhenjia = results[0];
+                        this.proxy.gameState.playerInfor[8].onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[8].onezhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 2) {
                         results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
-                        this.proxy.gameState.twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                        this.proxy.gameState.twozhenjia = results[0];
+                        this.proxy.gameState.playerInfor[8].twobaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.gameState.playerInfor[8].twozhenjia = results[0];
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
                     }
-                    this.proxy.gameState.threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
-                    this.proxy.gameState.threezhenjia = results[0];
+                    this.proxy.gameState.playerInfor[8].threebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                    this.proxy.gameState.playerInfor[8].threezhenjia = results[0];
                 }
                 // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "“" + this.proxy.gameState.baowulist[this.selectedAnims[0]] + "”" + " 是 " + results[0]);
                 // this.AnimVis();
@@ -1193,16 +1196,16 @@ module game {
 
         //方震技能
         public fangzhenskill() {
-            if (this.ybrskill2 > 0) {
+            if (this.proxy.gameState.ybrskill[2] > 0) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                 if (this.proxy.gameState.lunci == 1) {
-                    this.proxy.gameState.onetouxi = true;
+                    this.proxy.gameState.playerInfor[2].onetouxi = true;
                 } else if (this.proxy.gameState.lunci == 2) {
-                    this.proxy.gameState.twotouxi = true;
+                    this.proxy.gameState.playerInfor[2].twotouxi = true;
                 } else if (this.proxy.gameState.lunci == 3) {
-                    this.proxy.gameState.threetouxi = true;
+                    this.proxy.gameState.playerInfor[2].threetouxi = true;
                 }
-                this.ybrskill2--;
+                this.proxy.gameState.ybrskill[2]--;
                 this.chuanshunwei();
             } else {
                 this.gameScreen.fangzhenskill1.visible = true;
@@ -1256,26 +1259,26 @@ module game {
             if (1 <= skilled && skilled <= 5) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是许愿阵营");
                 if (this.proxy.gameState.lunci == 1) {
-                    this.proxy.gameState.onebaowu = Nr;
-                    this.proxy.gameState.onezhenjia = "许愿阵营"
+                    this.proxy.gameState.playerInfor[2].onebaowu = Nr;
+                    this.proxy.gameState.playerInfor[2].onezhenjia = "许愿阵营"
                 } else if (this.proxy.gameState.lunci == 2) {
-                    this.proxy.gameState.twobaowu = Nr;
-                    this.proxy.gameState.twozhenjia = "许愿阵营"
+                    this.proxy.gameState.playerInfor[2].twobaowu = Nr;
+                    this.proxy.gameState.playerInfor[2].twozhenjia = "许愿阵营"
                 } else if (this.proxy.gameState.lunci == 3) {
-                    this.proxy.gameState.threebaowu = Nr;
-                    this.proxy.gameState.threezhenjia = "许愿阵营"
+                    this.proxy.gameState.playerInfor[2].threebaowu = Nr;
+                    this.proxy.gameState.playerInfor[2].threezhenjia = "许愿阵营"
                 }
             } else if (6 <= skilled && skilled <= 8) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是老朝奉阵营");
                 if (this.proxy.gameState.lunci == 1) {
-                    this.proxy.gameState.onebaowu = Nr;
-                    this.proxy.gameState.onezhenjia = "老朝奉阵营"
+                    this.proxy.gameState.playerInfor[2].onebaowu = Nr;
+                    this.proxy.gameState.playerInfor[2].onezhenjia = "老朝奉阵营"
                 } else if (this.proxy.gameState.lunci == 2) {
-                    this.proxy.gameState.twobaowu = Nr;
-                    this.proxy.gameState.twozhenjia = "老朝奉阵营"
+                    this.proxy.gameState.playerInfor[2].twobaowu = Nr;
+                    this.proxy.gameState.playerInfor[2].twozhenjia = "老朝奉阵营"
                 } else if (this.proxy.gameState.lunci == 3) {
-                    this.proxy.gameState.threebaowu = Nr;
-                    this.proxy.gameState.threezhenjia = "老朝奉阵营"
+                    this.proxy.gameState.playerInfor[2].threebaowu = Nr;
+                    this.proxy.gameState.playerInfor[2].threezhenjia = "老朝奉阵营"
                 }
             }
 
@@ -1453,7 +1456,7 @@ module game {
             this.gameScreen.toupiao3.enabled = false;
             this.gameScreen.toupiao4.enabled = false;
             this.gameScreen.qingkong.enabled = false;
-            this.gameScreen.toupiaoqueren.enabled = false;
+            this.gameScreen.toupiaoqueren.visible = false;
             if (this.proxy.gameState.lunci == 1) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.piaoshu, "0" + this.baowu1 + "0" + this.baowu2 + "0" + this.baowu3 + "0" + this.baowu4);
             } else if (this.proxy.gameState.lunci == 2) {
@@ -1500,96 +1503,96 @@ module game {
             }
         }
 
-        public no1baowu1: number = 0;
-        public no1baowu2: number = 0;
-        public no1baowu3: number = 0;
-        public no1baowu4: number = 0;
-        public no2baowu1: number = 0;
-        public no2baowu2: number = 0;
-        public no2baowu3: number = 0;
-        public no2baowu4: number = 0;
-        public no3baowu1: number = 0;
-        public no3baowu2: number = 0;
-        public no3baowu3: number = 0;
-        public no3baowu4: number = 0;
-        public no4baowu1: number = 0;
-        public no4baowu2: number = 0;
-        public no4baowu3: number = 0;
-        public no4baowu4: number = 0;
-        public no5baowu1: number = 0;
-        public no5baowu2: number = 0;
-        public no5baowu3: number = 0;
-        public no5baowu4: number = 0;
-        public no6baowu1: number = 0;
-        public no6baowu2: number = 0;
-        public no6baowu3: number = 0;
-        public no6baowu4: number = 0;
-        public no7baowu1: number = 0;
-        public no7baowu2: number = 0;
-        public no7baowu3: number = 0;
-        public no7baowu4: number = 0;
-        public no8baowu1: number = 0;
-        public no8baowu2: number = 0;
-        public no8baowu3: number = 0;
-        public no8baowu4: number = 0;
-        public toupiaoxiangxi(arr: Array<any>) {
-            if (arr[1]) {
-                const no1 = +arr[1];
-                this.no1baowu4 = no1 % 100;
-                this.no1baowu3 = ((no1 - this.no1baowu4) / 100) % 100;
-                this.no1baowu2 = (((no1 - this.no1baowu4) / 100 - this.no1baowu3) / 100) % 100;
-                this.no1baowu1 = (no1 - this.no1baowu4 - (this.no1baowu3 * 100) - (this.no1baowu2 * 10000)) / 1000000;
-            }
-            if (arr[2]) {
-                const no2 = +arr[2];
-                this.no2baowu4 = no2 % 100;
-                this.no2baowu3 = ((no2 - this.no2baowu4) / 100) % 100;
-                this.no2baowu2 = (((no2 - this.no2baowu4) / 100 - this.no2baowu3) / 100) % 100;
-                this.no2baowu1 = (no2 - this.no2baowu4 - (this.no2baowu3 * 100) - (this.no2baowu2 * 10000)) / 1000000;
-            }
-            if (arr[3]) {
-                const no3 = +arr[3];
-                this.no3baowu4 = no3 % 100;
-                this.no3baowu3 = ((no3 - this.no3baowu4) / 100) % 100;
-                this.no3baowu2 = (((no3 - this.no3baowu4) / 100 - this.no3baowu3) / 100) % 100;
-                this.no3baowu1 = (no3 - this.no3baowu4 - (this.no3baowu3 * 100) - (this.no3baowu2 * 10000)) / 1000000;
-            }
-            if (arr[4]) {
-                const no4 = +arr[4];
-                this.no4baowu4 = no4 % 100;
-                this.no4baowu3 = ((no4 - this.no4baowu4) / 100) % 100;
-                this.no4baowu2 = (((no4 - this.no4baowu4) / 100 - this.no4baowu3) / 100) % 100;
-                this.no4baowu1 = (no4 - this.no4baowu4 - (this.no4baowu3 * 100) - (this.no4baowu2 * 10000)) / 1000000;
-            }
-            if (arr[5]) {
-                const no5 = +arr[5];
-                this.no5baowu4 = no5 % 100;
-                this.no5baowu3 = ((no5 - this.no5baowu4) / 100) % 100;
-                this.no5baowu2 = (((no5 - this.no5baowu4) / 100 - this.no5baowu3) / 100) % 100;
-                this.no5baowu1 = (no5 - this.no5baowu4 - (this.no5baowu3 * 100) - (this.no5baowu2 * 10000)) / 1000000;
-            }
-            if (arr[6]) {
-                const no6 = +arr[6];
-                this.no6baowu4 = no6 % 100;
-                this.no6baowu3 = ((no6 - this.no6baowu4) / 100) % 100;
-                this.no6baowu2 = (((no6 - this.no6baowu4) / 100 - this.no6baowu3) / 100) % 100;
-                this.no6baowu1 = (no6 - this.no6baowu4 - (this.no6baowu3 * 100) - (this.no6baowu2 * 10000)) / 1000000;
-            }
-            if (arr[7]) {
-                const no7 = +arr[7];
-                this.no7baowu4 = no7 % 100;
-                this.no7baowu3 = ((no7 - this.no7baowu4) / 100) % 100;
-                this.no7baowu2 = (((no7 - this.no7baowu4) / 100 - this.no7baowu3) / 100) % 100;
-                this.no7baowu1 = (no7 - this.no7baowu4 - (this.no7baowu3 * 100) - (this.no7baowu2 * 10000)) / 1000000;
-            }
-            if (arr[8]) {
-                const no8 = +arr[8];
-                this.no8baowu4 = no8 % 100;
-                this.no8baowu3 = ((no8 - this.no8baowu4) / 100) % 100;
-                this.no8baowu2 = (((no8 - this.no8baowu4) / 100 - this.no8baowu3) / 100) % 100;
-                this.no8baowu1 = (no8 - this.no8baowu4 - (this.no8baowu3 * 100) - (this.no8baowu2 * 10000)) / 1000000;
-            }
-        }
+        // public no1baowu1: number = 0;
+        // public no1baowu2: number = 0;
+        // public no1baowu3: number = 0;
+        // public no1baowu4: number = 0;
+        // public no2baowu1: number = 0;
+        // public no2baowu2: number = 0;
+        // public no2baowu3: number = 0;
+        // public no2baowu4: number = 0;
+        // public no3baowu1: number = 0;
+        // public no3baowu2: number = 0;
+        // public no3baowu3: number = 0;
+        // public no3baowu4: number = 0;
+        // public no4baowu1: number = 0;
+        // public no4baowu2: number = 0;
+        // public no4baowu3: number = 0;
+        // public no4baowu4: number = 0;
+        // public no5baowu1: number = 0;
+        // public no5baowu2: number = 0;
+        // public no5baowu3: number = 0;
+        // public no5baowu4: number = 0;
+        // public no6baowu1: number = 0;
+        // public no6baowu2: number = 0;
+        // public no6baowu3: number = 0;
+        // public no6baowu4: number = 0;
+        // public no7baowu1: number = 0;
+        // public no7baowu2: number = 0;
+        // public no7baowu3: number = 0;
+        // public no7baowu4: number = 0;
+        // public no8baowu1: number = 0;
+        // public no8baowu2: number = 0;
+        // public no8baowu3: number = 0;
+        // public no8baowu4: number = 0;
+        // public toupiaoxiangxi(arr: Array<any>) {
+        //     if (arr[1]) {
+        //         const no1 = +arr[1];
+        //         this.no1baowu4 = no1 % 100;
+        //         this.no1baowu3 = ((no1 - this.no1baowu4) / 100) % 100;
+        //         this.no1baowu2 = (((no1 - this.no1baowu4) / 100 - this.no1baowu3) / 100) % 100;
+        //         this.no1baowu1 = (no1 - this.no1baowu4 - (this.no1baowu3 * 100) - (this.no1baowu2 * 10000)) / 1000000;
+        //     }
+        //     if (arr[2]) {
+        //         const no2 = +arr[2];
+        //         this.no2baowu4 = no2 % 100;
+        //         this.no2baowu3 = ((no2 - this.no2baowu4) / 100) % 100;
+        //         this.no2baowu2 = (((no2 - this.no2baowu4) / 100 - this.no2baowu3) / 100) % 100;
+        //         this.no2baowu1 = (no2 - this.no2baowu4 - (this.no2baowu3 * 100) - (this.no2baowu2 * 10000)) / 1000000;
+        //     }
+        //     if (arr[3]) {
+        //         const no3 = +arr[3];
+        //         this.no3baowu4 = no3 % 100;
+        //         this.no3baowu3 = ((no3 - this.no3baowu4) / 100) % 100;
+        //         this.no3baowu2 = (((no3 - this.no3baowu4) / 100 - this.no3baowu3) / 100) % 100;
+        //         this.no3baowu1 = (no3 - this.no3baowu4 - (this.no3baowu3 * 100) - (this.no3baowu2 * 10000)) / 1000000;
+        //     }
+        //     if (arr[4]) {
+        //         const no4 = +arr[4];
+        //         this.no4baowu4 = no4 % 100;
+        //         this.no4baowu3 = ((no4 - this.no4baowu4) / 100) % 100;
+        //         this.no4baowu2 = (((no4 - this.no4baowu4) / 100 - this.no4baowu3) / 100) % 100;
+        //         this.no4baowu1 = (no4 - this.no4baowu4 - (this.no4baowu3 * 100) - (this.no4baowu2 * 10000)) / 1000000;
+        //     }
+        //     if (arr[5]) {
+        //         const no5 = +arr[5];
+        //         this.no5baowu4 = no5 % 100;
+        //         this.no5baowu3 = ((no5 - this.no5baowu4) / 100) % 100;
+        //         this.no5baowu2 = (((no5 - this.no5baowu4) / 100 - this.no5baowu3) / 100) % 100;
+        //         this.no5baowu1 = (no5 - this.no5baowu4 - (this.no5baowu3 * 100) - (this.no5baowu2 * 10000)) / 1000000;
+        //     }
+        //     if (arr[6]) {
+        //         const no6 = +arr[6];
+        //         this.no6baowu4 = no6 % 100;
+        //         this.no6baowu3 = ((no6 - this.no6baowu4) / 100) % 100;
+        //         this.no6baowu2 = (((no6 - this.no6baowu4) / 100 - this.no6baowu3) / 100) % 100;
+        //         this.no6baowu1 = (no6 - this.no6baowu4 - (this.no6baowu3 * 100) - (this.no6baowu2 * 10000)) / 1000000;
+        //     }
+        //     if (arr[7]) {
+        //         const no7 = +arr[7];
+        //         this.no7baowu4 = no7 % 100;
+        //         this.no7baowu3 = ((no7 - this.no7baowu4) / 100) % 100;
+        //         this.no7baowu2 = (((no7 - this.no7baowu4) / 100 - this.no7baowu3) / 100) % 100;
+        //         this.no7baowu1 = (no7 - this.no7baowu4 - (this.no7baowu3 * 100) - (this.no7baowu2 * 10000)) / 1000000;
+        //     }
+        //     if (arr[8]) {
+        //         const no8 = +arr[8];
+        //         this.no8baowu4 = no8 % 100;
+        //         this.no8baowu3 = ((no8 - this.no8baowu4) / 100) % 100;
+        //         this.no8baowu2 = (((no8 - this.no8baowu4) / 100 - this.no8baowu3) / 100) % 100;
+        //         this.no8baowu1 = (no8 - this.no8baowu4 - (this.no8baowu3 * 100) - (this.no8baowu2 * 10000)) / 1000000;
+        //     }
+        // }
 
         public baowu1_sx: number;
         public baowu2_sx: number;
@@ -1629,7 +1632,7 @@ module game {
                 this.proxy.gameState.toupiaojieguo1[3] = { baowu: this.proxy.gameState.baowulist[3], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.onezj[3] };
                 this.proxy.gameState.toupiaojieguo1 = _(this.proxy.gameState.toupiaojieguo1).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo1);
-                this.toupiaoxiangxi(this.proxy.gameState.toupiao);
+                //this.toupiaoxiangxi(this.proxy.gameState.toupiao);
                 // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo1[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo1[1].baowu + "  " + this.proxy.gameState.toupiaojieguo1[1].zhenjia + "      " + this.proxy.gameState.baowulist[0] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[1] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[2] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[3] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
                 this.sendNotification(SceneCommand.SHOW_RESULT_POPUP)
                 if (this.proxy.gameState.toupiaojieguo1[0].zhenjia == "真") {
@@ -1649,7 +1652,7 @@ module game {
                 this.proxy.gameState.toupiaojieguo2[3] = { baowu: this.proxy.gameState.baowulist[7], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.twozj[3] };
                 this.proxy.gameState.toupiaojieguo2 = _(this.proxy.gameState.toupiaojieguo2).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo2);
-                this.toupiaoxiangxi(this.proxy.gameState.toupiao2);
+                //this.toupiaoxiangxi(this.proxy.gameState.toupiao2);
                 // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo2[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo2[1].baowu + "  " + this.proxy.gameState.toupiaojieguo2[1].zhenjia + "      " + this.proxy.gameState.baowulist[4] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[5] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[6] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[7] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
                 this.sendNotification(SceneCommand.SHOW_RESULT_POPUP)
                 if (this.proxy.gameState.toupiaojieguo2[0].zhenjia == "真") {
@@ -1669,7 +1672,7 @@ module game {
                 this.proxy.gameState.toupiaojieguo3[3] = { baowu: this.proxy.gameState.baowulist[11], piaoshu: this.baowu4, sx: this.baowu4_sx, zhenjia: this.proxy.gameState.threezj[3] };
                 this.proxy.gameState.toupiaojieguo3 = _(this.proxy.gameState.toupiaojieguo3).orderBy(["piaoshu", "sx"], ["desc", "asc"]).value();
                 console.log(this.proxy.gameState.toupiaojieguo3);
-                this.toupiaoxiangxi(this.proxy.gameState.toupiao3);
+                //this.toupiaoxiangxi(this.proxy.gameState.toupiao3);
                 // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "第一名: " + this.proxy.gameState.toupiaojieguo3[0].baowu + "   第二名 :" + this.proxy.gameState.toupiaojieguo3[1].baowu + "  " + this.proxy.gameState.toupiaojieguo3[1].zhenjia + "      " + this.proxy.gameState.baowulist[8] + ":1号" + this.no1baowu1 + "票 2号：" + this.no2baowu1 + "票 3号：" + this.no3baowu1 + "票 4号：" + this.no4baowu1 + "票 5号：" + this.no5baowu1 + "票 6号：" + this.no6baowu1 + "票 7号：" + this.no7baowu1 + "票 8号：" + this.no8baowu1 + "      " + this.proxy.gameState.baowulist[9] + ":1号" + this.no1baowu2 + "票 2号：" + this.no2baowu2 + "票 3号：" + this.no3baowu2 + "票 4号：" + this.no4baowu2 + "票 5号：" + this.no5baowu2 + "票 6号：" + this.no6baowu2 + "票 7号：" + this.no7baowu2 + "票 8号：" + this.no8baowu2 + "      " + this.proxy.gameState.baowulist[10] + ":1号" + this.no1baowu3 + "票 2号：" + this.no2baowu3 + "票 3号：" + this.no3baowu3 + "票 4号：" + this.no4baowu3 + "票 5号：" + this.no5baowu3 + "票 6号：" + this.no6baowu3 + "票 7号：" + this.no7baowu3 + "票 8号：" + this.no8baowu3 + "      " + this.proxy.gameState.baowulist[11] + ":1号" + this.no1baowu4 + "票 2号：" + this.no2baowu4 + "票 3号：" + this.no3baowu4 + "票 4号：" + this.no4baowu4 + "票 5号：" + this.no5baowu4 + "票 6号：" + this.no6baowu4 + "票 7号：" + this.no7baowu4 + "票 8号：" + this.no8baowu4 + "票");
                 this.sendNotification(SceneCommand.SHOW_RESULT_POPUP)
                 if (this.proxy.gameState.toupiaojieguo3[0].zhenjia == "真") {

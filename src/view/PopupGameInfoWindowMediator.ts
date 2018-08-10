@@ -63,100 +63,101 @@ module game {
                 text: ""
             }
 
+            let i = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
             let isFangZhen = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r)) == RoleId.FangZheng;
             if (isFangZhen) {
-                if (this.proxy.gameState.onetouxi) {
+                if (this.proxy.gameState.playerInfor[2].onetouxi) {
                     this.popupGameInfoWindow.firstRound.text = "被药不然偷袭"
                 }
-                else if (this.proxy.gameState.onebaowu) {
-                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.onebaowu];
+                else if (this.proxy.gameState.playerInfor[2].onebaowu) {
+                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[2].onebaowu];
                     this.popupGameInfoWindow.firstRound.fang = {
                         actorUrl: seeSeat.avatarUrl,
                         color: seeSeat.color.source,
                         name: seeSeat.name,
-                        result: this.proxy.gameState.onezhenjia
+                        result: this.proxy.gameState.playerInfor[2].onezhenjia
                     }
                 }
-                if (this.proxy.gameState.twotouxi) {
+                if (this.proxy.gameState.playerInfor[2].twotouxi) {
                     this.popupGameInfoWindow.secondRound.text = "被药不然偷袭"
                 }
-                else if (this.proxy.gameState.twobaowu) {
-                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.twobaowu];
+                else if (this.proxy.gameState.playerInfor[2].twobaowu) {
+                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[2].twobaowu];
                     this.popupGameInfoWindow.firstRound.fang = {
                         actorUrl: seeSeat.avatarUrl,
                         color: seeSeat.color.source,
                         name: seeSeat.name,
-                        result: this.proxy.gameState.twozhenjia
+                        result: this.proxy.gameState.playerInfor[2].twozhenjia
                     }
                 }
-                if (this.proxy.gameState.threetouxi) {
+                if (this.proxy.gameState.playerInfor[2].threetouxi) {
                     this.popupGameInfoWindow.thirdRound.text = "被药不然偷袭"
                 }
-                else if (this.proxy.gameState.threebaowu) {
-                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.threebaowu];
+                else if (this.proxy.gameState.playerInfor[2].threebaowu) {
+                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[2].threebaowu];
                     this.popupGameInfoWindow.firstRound.fang = {
                         actorUrl: seeSeat.avatarUrl,
                         color: seeSeat.color.source,
                         name: seeSeat.name,
-                        result: this.proxy.gameState.threezhenjia
+                        result: this.proxy.gameState.playerInfor[2].threezhenjia
                     }
                 }
             }
             else {
-                if (this.proxy.gameState.onetouxi) {
+                if (this.proxy.gameState.playerInfor[i].onetouxi) {
                     this.popupGameInfoWindow.firstRound.text = "被药不然偷袭"
                 }
                 else {
-                    if (this.proxy.gameState.onebaowu) {
-                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.onebaowu);
+                    if (this.proxy.gameState.playerInfor[i].onebaowu) {
+                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].onebaowu);
                         this.popupGameInfoWindow.firstRound.r1 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.onezhenjia == "真" ? "true" : "false"
+                            resultRes: this.proxy.gameState.playerInfor[i].onezhenjia == "真" ? "true" : "false"
                         }
                     }
-                    if (this.proxy.gameState.onebaowu2) {
-                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.onebaowu2);
+                    if (this.proxy.gameState.playerInfor[i].onebaowu2) {
+                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].onebaowu2);
                         this.popupGameInfoWindow.firstRound.r2 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.onezhenjia2 == "真" ? "true" : "false"
+                            resultRes: this.proxy.gameState.playerInfor[i].onezhenjia2 == "真" ? "true" : "false"
                         }
                     }
                 }
-                if (this.proxy.gameState.twotouxi) {
+                if (this.proxy.gameState.playerInfor[i].twotouxi) {
                     this.popupGameInfoWindow.secondRound.text = "被药不然偷袭"
                 }
                 else {
-                    if (this.proxy.gameState.twobaowu) {
-                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.twobaowu);
+                    if (this.proxy.gameState.playerInfor[i].twobaowu) {
+                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].twobaowu);
                         this.popupGameInfoWindow.secondRound.r1 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.twozhenjia == "真" ? "true" : "false"
+                            resultRes: this.proxy.gameState.playerInfor[i].twozhenjia == "真" ? "true" : "false"
                         }
                     }
-                    if (this.proxy.gameState.twobaowu2) {
-                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.twobaowu2);
+                    if (this.proxy.gameState.playerInfor[i].twobaowu2) {
+                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].twobaowu2);
                         this.popupGameInfoWindow.secondRound.r2 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.twozhenjia2 == "真" ? "true" : "false"
+                            resultRes: this.proxy.gameState.playerInfor[i].twozhenjia2 == "真" ? "true" : "false"
                         }
                     }
                 }
-                if (this.proxy.gameState.threetouxi) {
+                if (this.proxy.gameState.playerInfor[i].threetouxi) {
                     this.popupGameInfoWindow.thirdRound.text = "被药不然偷袭"
                 }
                 else {
-                    if (this.proxy.gameState.threebaowu) {
-                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.threebaowu);
+                    if (this.proxy.gameState.playerInfor[i].threebaowu) {
+                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].threebaowu);
                         this.popupGameInfoWindow.thirdRound.r1 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.threezhenjia == "真" ? "true" : "false"
+                            resultRes: this.proxy.gameState.playerInfor[i].threezhenjia == "真" ? "true" : "false"
                         }
                     }
-                    if (this.proxy.gameState.threebaowu2) {
-                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.threebaowu2);
+                    if (this.proxy.gameState.playerInfor[i].threebaowu2) {
+                        let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].threebaowu2);
                         this.popupGameInfoWindow.thirdRound.r2 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.threezhenjia2 == "真" ? "true" : "false"
+                            resultRes: this.proxy.gameState.playerInfor[i].threezhenjia2 == "真" ? "true" : "false"
                         }
                     }
                 }

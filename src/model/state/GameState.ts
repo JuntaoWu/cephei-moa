@@ -2,6 +2,12 @@
 module game {
     export class GameState {
 
+        constructor() {
+            for (let i = 1; i < 9; i++) {
+                this.playerInfor[i] = new PlayerInfo();
+            }
+        }
+
         public roomName: string = undefined;
         public players: number = 0;
         public maxPlayers: number = 2;
@@ -38,32 +44,17 @@ module game {
         public onezgqskill: number = 100;
         public twozgqskill: number = 100;
         public threezgqskill: number = 100;
-        public lunci:number=1;
-        public defen:number=0;
-        public findPeopleScore:number=0;
+        public lunci: number = 1;
+        public defen: number = 0;
+        public findPeopleScore: number = 0;
+        public jueselist: Array<any> = ["许愿", "方震", "姬云浮", "黄烟烟", "木户加奈", "老朝奉", "药不然", "郑国渠"];
+        public ybrskill: Array<any> = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        public jyfskill: boolean = true;
 
-        public zhenying:string="";
-        public juese:string="";
-        public jueselist:Array<any>=["许愿","方震","姬云浮","黄烟烟","木户加奈","老朝奉","药不然","郑国渠"];
-        public onebaowu:string="";
-        public onezhenjia:string="";
-        public onebaowu2:string="";
-        public onezhenjia2:string="";
-        public onetouxi:boolean=false;
-        public twobaowu:string="";
-        public twozhenjia:string="";
-        public twobaowu2:string="";
-        public twozhenjia2:string="";
-        public twotouxi:boolean=false;
-        public threebaowu:string="";
-        public threezhenjia:string="";
-        public threebaowu2:string="";
-        public threezhenjia2:string="";
-        public threetouxi:boolean=false;
-        public playerInfor: any;
+        public playerInfor: Array<PlayerInfo> = [];
 
-        public weizhi_xuyuan:number;
-        public weizhi_fangzhen:number;
-        public weizhi_laochaofeng:number;
+        public weizhi_xuyuan: number;
+        public weizhi_fangzhen: number;
+        public weizhi_laochaofeng: number;
     }
 }

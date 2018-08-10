@@ -123,7 +123,7 @@
                         <e:Button>
                             <e:Skin>
                                 <e:Label text="{hostComponent.maxPlayers}" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="130"
-                                 verticalCenter="0" size="25" bold="true"></e:Label>
+                                         verticalCenter="0" size="25" bold="true"></e:Label>
                             </e:Skin>
                         </e:Button>
                     </e:Group>
@@ -136,7 +136,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -149,7 +149,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -162,7 +162,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -175,7 +175,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -190,7 +190,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -203,7 +203,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -216,7 +216,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -229,7 +229,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -244,7 +244,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -257,7 +257,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -270,7 +270,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -283,7 +283,7 @@
                                     <e:Group name="antique-group" height="180" width="180">
                                         <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                         <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                        <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                     </e:Group>
                                     <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                              bold="true" x="185" size="28" />
@@ -342,7 +342,7 @@
                                 <e:Group name="antique-group" height="180" width="180">
                                     <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                     <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                    <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                    <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                 </e:Group>
                                 <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                          bold="true" x="185" size="28" />
@@ -353,7 +353,7 @@
                                 <e:Group name="antique-group" height="180" width="180">
                                     <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                     <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                    <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                    <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                 </e:Group>
                                 <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                          bold="true" x="185" size="28" />
@@ -364,7 +364,7 @@
                                 <e:Group name="antique-group" height="180" width="180">
                                     <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                     <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                    <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                    <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                 </e:Group>
                                 <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                          bold="true" x="185" size="28" />
@@ -375,7 +375,7 @@
                                 <e:Group name="antique-group" height="180" width="180">
                                     <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
                                     <e:Image horizontalCenter="0" verticalCenter="0" visible="false" name="antique-selected" source="bg3"></e:Image>
-                                    <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                    <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                                 </e:Group>
                                 <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
                                          bold="true" x="185" size="28" />
@@ -384,28 +384,68 @@
                     </e:Group>
                 </e:Group>
                 <e:Group visible="{isChoosingNext}">
-                    <e:Button id="shunwei1" label="Button" x="69.00000000000001" y="107" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="shunwei2" label="Button" x="208.99999999999997" y="107" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1" />
-                    <e:Button id="shunwei3" label="Button" x="349" y="107" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="shunwei4" label="Button" x="489.00000000000006" y="107" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="shunwei5" label="Button" x="69.00000000000001" y="357.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="shunwei6" label="Button" x="208.99999999999997" y="357.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="shunwei7" label="Button" x="349" y="357.00000000000006" anchorOffsetX="0" width="100"
-                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
-                    <e:Button id="shunwei8" label="Button" x="489.00000000000006" y="357.00000000000006"
-                              anchorOffsetX="0" width="100" anchorOffsetY="0" height="100" scaleX="1" scaleY="1" />
+                    <e:Button id="shunwei1" label="Button" x="100" y="100" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
+                        <e:Skin>
+                            <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                            <e:Image source="red" x="-20" y="-15" scaleX="0.8" scaleY="0.8" />
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="shunwei2" label="Button" x="200" y="100" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" skinName="skins.ButtonSkin" scaleX="1" scaleY="1">
+                        <e:Skin>
+                            <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                            <e:Image source="orange" x="-20" y="-15" scaleX="0.8" scaleY="0.8" />
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="shunwei3" label="Button" x="300" y="100" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
+                        <e:Skin>
+                            <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                            <e:Image source="yellow" x="-20" y="-15" scaleX="0.8" scaleY="0.8" />
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="shunwei4" label="Button" x="400" y="100" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
+                        <e:Skin>
+                            <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                            <e:Image source="green" x="-20" y="-15" scaleX="0.8" scaleY="0.8" />
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="shunwei5" label="Button" x="100" y="350" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
+                        <e:Skin>
+                            <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                            <e:Image source="blue" x="-20" y="-15" scaleX="0.8" scaleY="0.8" />
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="shunwei6" label="Button" x="200" y="350" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
+                        <e:Skin>
+                            <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                            <e:Image source="purple" x="-20" y="-15" scaleX="0.8" scaleY="0.8" />
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="shunwei7" label="Button" x="300" y="350" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
+                        <e:Skin>
+                            <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                            <e:Image source="white" x="-20" y="-15" scaleX="0.8" scaleY="0.8" />
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="shunwei8" label="Button" x="400" y="350" anchorOffsetX="0" width="100"
+                              anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
+                        <e:Skin>
+                            <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                            <e:Image source="black" x="-20" y="-15" scaleX="0.8" scaleY="0.8" />
+                        </e:Skin>
+                    </e:Button>
                 </e:Group>
                 <e:Group visible="{isLastPlayer}" horizontalCenter="0" verticalCenter="0">
-                    <e:Label text="你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。" textColor="0x000000" width="300" ></e:Label>
+                    <e:Label text="你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。" textColor="0x000000" width="300"></e:Label>
                 </e:Group>
             </e:Group>
-            <e:Group y="150" visible="{isOthersTurn}">
+            <e:Group x="50" y="150" visible="{isOthersTurn}">
                 <game:ActorUI id="processingActorUI"></game:ActorUI>
                 <e:Label text="{processingPlayer.colorName}" x="200" textColor="0x000000"></e:Label>
                 <e:Label text="玩家" textColor="0x000000" x="317"></e:Label>
@@ -418,10 +458,10 @@
                         <e:Skin states="up,down">
                             <e:Group name="antique-group" height="180" width="180">
                                 <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
-                                <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                             </e:Group>
-                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
-                                     bold="true" x="185" size="28" />
+                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202" bold="true"
+                                     x="185" size="28" />
                         </e:Skin>
                     </e:Button>
                 </e:Group>
@@ -430,10 +470,10 @@
                         <e:Skin states="up,down">
                             <e:Group name="antique-group" height="180" width="180">
                                 <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
-                                <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                             </e:Group>
-                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
-                                     bold="true" x="185" size="28" />
+                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202" bold="true"
+                                     x="185" size="28" />
                         </e:Skin>
                     </e:Button>
                 </e:Group>
@@ -442,10 +482,10 @@
                         <e:Skin states="up,down">
                             <e:Group name="antique-group" height="180" width="180">
                                 <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
-                                <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                             </e:Group>
-                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
-                                     bold="true" x="185" size="28" />
+                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202" bold="true"
+                                     x="185" size="28" />
                         </e:Skin>
                     </e:Button>
                 </e:Group>
@@ -454,10 +494,10 @@
                         <e:Skin states="up,down">
                             <e:Group name="antique-group" height="180" width="180">
                                 <e:Image horizontalCenter="0" verticalCenter="0" name="antique-normal" source="bg2"></e:Image>
-                                <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1"  scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Image horizontalCenter="0" verticalCenter="0" name="antique-content" source="t1" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                             </e:Group>
-                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202"
-                                     bold="true" x="185" size="28" />
+                            <e:Label name="antique-label" text="" verticalCenter="0" textColor="0x020202" bold="true"
+                                     x="185" size="28" />
                         </e:Skin>
                     </e:Button>
                 </e:Group>
@@ -469,8 +509,8 @@
                          textColor="0x000000" textAlign="center" />
                 <e:Label id="toupiao41" text="0" right="0" y="350" anchorOffsetX="0" anchorOffsetY="0"
                          textColor="0x000000" textAlign="center" />
-                <e:Label id="onejieguo" text="第一轮投票" x="234" y="38" anchorOffsetX="0"
-                         anchorOffsetY="0" height="53" textColor="0x000000" textAlign="center" />
+                <e:Label id="onejieguo" text="第一轮投票" x="234" y="38" anchorOffsetX="0" anchorOffsetY="0" height="53"
+                         textColor="0x000000" textAlign="center" />
                 <e:Label id="piaoshu" text="0/2" right="0" y="-50" anchorOffsetX="0" width="95.21" anchorOffsetY="0"
                          textColor="0x000000" textAlign="center" />
                 <e:Button id="qingkong" label="清空票数" horizontalCenter="0" y="-50" width="100" height="50" />
@@ -494,7 +534,8 @@
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image source="red" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
-                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
+                         bottom="-40" />
             </e:Skin>
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat2" x="155" width="130" height="130">
@@ -504,7 +545,8 @@
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image source="orange" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
-                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
+                         bottom="-40" />
             </e:Skin>
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat3" x="310" width="130" height="130">
@@ -514,7 +556,8 @@
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image source="yellow" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
-                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
+                         bottom="-40" />
             </e:Skin>
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat4" x="465" width="130" height="130">
@@ -524,7 +567,8 @@
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image source="green" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
-                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
+                         bottom="-40" />
             </e:Skin>
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat5" y="190" width="130" height="130">
@@ -534,7 +578,8 @@
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image source="blue" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
-                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
+                         bottom="-40" />
             </e:Skin>
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat6" y="190" x="158" width="130" height="130">
@@ -544,7 +589,8 @@
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image source="purple" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
-                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
+                         bottom="-40" />
             </e:Skin>
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat7" y="190" x="317" width="130" height="130">
@@ -554,7 +600,8 @@
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image source="white" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
-                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
+                         bottom="-40" />
             </e:Skin>
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat8" y="190" x="470" width="130" height="130">
@@ -564,7 +611,8 @@
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image source="black" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
-                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+                <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
+                         bottom="-40" />
             </e:Skin>
         </e:Button>
     </e:Group>
@@ -619,7 +667,7 @@
                             </e:Skin>
                         </e:Button>
                         <e:Label text="{roleing}" textColor="0x000000" right="30" verticalCenter="0"></e:Label>
-                    </e:Group>                    
+                    </e:Group>
                     <e:Button id="startgame" width="100%" visible="{isAllRolesReady}">
                         <e:Skin>
                             <e:Image width="100%" source="btn-start"></e:Image>
@@ -632,7 +680,7 @@
                     <e:Group visible="{isAuthing}" width="100%">
                         <e:Button id="btnAuth" width="100%" visible="{role.isAuth}">
                             <e:Skin states="up,down">
-                                <e:Image source="auth3" width="100%" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                                <e:Image source="auth3" width="100%" height="131" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                             </e:Skin>
                         </e:Button>
                         <e:Button id="btnSkipAuth" width="100%" visible="{role.isSkip}">
@@ -654,15 +702,26 @@
                         <e:Image source="wait-4-others-process"></e:Image>
                     </e:Skin>
                 </e:Button>
-                
-                <e:Button id="onegameend" label="开始发言" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="onespeakend" label="开始投票" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="toupiaoqueren" label="确认投票" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
-                <e:Button id="startno2" label="开始第二轮" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
-                          height="90" scaleX="1" scaleY="1" />
+                <e:Button id="onegameend" width="100%">
+                    <e:Skin>
+                        <e:Image source="auth_png"></e:Image>
+                    </e:Skin>
+                </e:Button>
+                <e:Button id="onespeakend" width="100%">
+                    <e:Skin>
+                        <e:Image source="talk_over"></e:Image>
+                    </e:Skin>
+                </e:Button>
+                <e:Button id="toupiaoqueren" width="100%">
+                    <e:Skin>
+                        <e:Image source="vote_over"></e:Image>
+                    </e:Skin>
+                </e:Button>
+                <e:Button id="startno2" width="100%">
+                    <e:Skin>
+                        <e:Image source="auth_png"></e:Image>
+                    </e:Skin>
+                </e:Button>
             </e:Group>
         </e:Group>
     </e:Group>
