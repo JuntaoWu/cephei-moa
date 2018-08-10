@@ -24,11 +24,11 @@ module game {
             this.startScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.guideClick, this);
             this.startScreen.btnSetting.addEventListener(egret.TouchEvent.TOUCH_TAP, this.settingClick, this);
 
-            console.log("StartScreen initData:");
             this.initData();
         }
 
         public async initData() {
+            console.log("StartScreen initData:");
             const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
             this.gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 

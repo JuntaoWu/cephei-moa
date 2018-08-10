@@ -15,6 +15,13 @@ declare interface Platform {
 
     applyUpdate(version: string);
 
+    onNetworkStatusChange(callback: Function);
+
+    showToast(message: string);
+
+    setStorage(key, data);
+
+    getStorage(key);
 }
 
 class DebugPlatform implements Platform {
@@ -31,9 +38,25 @@ class DebugPlatform implements Platform {
     public async getVersion() {
 
     }
-    
+
     applyUpdate() {
         return true;
+    }
+
+    onNetworkStatusChange(callback: Function) {
+        return true;
+    }
+
+    showToast(message: string) {
+        console.log(message);
+    }
+
+    setStorage(key, data) {
+        sessionStorage.setItem(key, JSON.stringify(data));
+    }
+
+    getStorage(key) {
+        return JSON.parse(sessionStorage.getItem(key));
     }
 }
 

@@ -16,7 +16,9 @@ module game {
          */
         public enterStartScreen(): void {
             // SoundPool.playBGM("generic-music_mp3");
-            
+            const gameScreen = this.getChildByName("gameScreen");
+            gameScreen && this.removeChild(this.gameScreen);
+
             this.addChild(this.startScreen);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }

@@ -22,25 +22,23 @@ module game {
 
         private proxy: GameProxy;
 
-
-
         public constructor(viewComponent: any) {
             super(GameScreenMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
 
+            this.gameScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             //this.gameScreen.btnSeat1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.findSeat2,this);
             this.gameScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGuide, this);
             this.gameScreen.btnQuit.addEventListener(egret.TouchEvent.TOUCH_TAP, this.quitClick, this);
             this.gameScreen.btnGameInfo.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameInfo, this);
 
-            console.log("GameScreen initData:");
             this.initData();
             this.findSeat();
         }
 
         public async initData() {
+            console.log("GameScreen initData");
             this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
-
 
             this.updateGameScreen(this.proxy.gameState);
         }
@@ -187,7 +185,6 @@ module game {
                     this.gameScreen[`ybrskill${seat.seatNumber}`].update(seat);
                     this.gameScreen[`fangzhenskill${seat.seatNumber}`].update(seat);
                 });
-
             }
 
             switch (data.phase) {
@@ -204,6 +201,9 @@ module game {
                     this.gameScreen.isPhaseChoosingRole = false;
                     this.gameScreen.isPhaseGameInProgress = false;
                     this.touxiang(data.seats);
+
+                    this.gameScreen.isMyTurn = false;
+                    this.gameScreen.isOthersTurn = false;
                     break;
                 case GamePhase.ChoosingRole:
                     this.gameScreen.isInitial = false;
@@ -217,6 +217,9 @@ module game {
                     this.gameScreen.isPhasePreparing = false;
                     this.gameScreen.isPhaseChoosingRole = true;
                     this.gameScreen.isPhaseGameInProgress = false;
+
+                    this.gameScreen.isMyTurn = false;
+                    this.gameScreen.isOthersTurn = false;
                     break;
                 case GamePhase.GameInProgress:
                     this.gameScreen.isInitial = false;
@@ -233,6 +236,9 @@ module game {
                     this.gameScreen.isFirstRound = data.lunci == 1;
                     this.gameScreen.isSecondRound = data.lunci == 2;
                     this.gameScreen.isThirdRound = data.lunci == 3;
+
+                    this.gameScreen.isMyTurn = data.seats.find(seat => seat.actorNr == this.proxy.actorNr).isMyTurn;
+                    this.gameScreen.isOthersTurn = !this.gameScreen.isMyTurn;
                     break;
             }
         }
@@ -419,7 +425,12 @@ module game {
                 const animName = this.proxy.gameState.baowulist[anim.index];
                 const antiqueObject = this.proxy.antiquesMap.get(animName);
                 let control = this.gameScreen[anim.controlName] as eui.Button;
+
                 let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                let bgNormal = antiqueGroup.getChildByName("antique-normal");
+                let bgSelected = antiqueGroup.getChildByName("antique-selected");
+                bgNormal.visible = false;
+                bgSelected.visible = true;
                 let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
                 image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;
@@ -467,6 +478,7 @@ module game {
 
         private setMyTurnState(state) {
             const stateList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext"];
+            this.proxy.gameState.seats.find(seat => seat.actorNr == this.proxy.actorNr).isMyTurn = true;
             this.gameScreen.isMyTurn = true;
             this.gameScreen.isOthersTurn = false;
             stateList.forEach(s => {

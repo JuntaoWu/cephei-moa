@@ -9,6 +9,17 @@ module game {
 
 		public constructor() {
 			super(GameProxy.NAME);
+
+			platform.onNetworkStatusChange((res) => {
+				if(!res) {
+					return;
+				}
+				if(res.isConnected) {
+					if(this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected) {
+						this.loadBalancingClient.start();
+					}
+				}
+			});
 		}
 
 		public async initialize() {
@@ -46,7 +57,19 @@ module game {
 
 		public roomName: string;
 		public isMasterClient: boolean;
-		public actorNr: number;
+		
+		private _actorNr : number;
+		public get actorNr() : number {
+			return this._actorNr;
+		}
+		public set actorNr(v : number) {
+			this._actorNr = v;
+			platform.setStorage("currentRoom", {
+				roomName: this.roomName,
+				actorNr: this.actorNr
+			});
+		}
+
 		public gameState: GameState = new GameState();
 
 		public isActorMaster(actorModel: ActorModel): boolean {
@@ -134,7 +157,6 @@ module game {
 				if (this.gameState.phase == GamePhase.Preparing) {
 					console.log("GamePhase.Preparing: setCustomProperty");
 					this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
-					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 				}
 
 			}
@@ -460,13 +482,26 @@ module game {
 			this.createRoomWithDefaultOptions();
 		}
 
+		private getCurrentJoinToken(roomName: string) {
+			if(this.actorNr && this.actorNr != -1) {
+				return this.actorNr.toString();
+			}
+			else {
+				const currentRoom = platform.getStorage("currentRoom");
+				if(currentRoom && currentRoom.roomName == roomName) {
+					return currentRoom.actorNr;
+				}
+			}
+			return -1;
+		}
+
 		public joinRoom(roomName: string) {
 			this.isMasterClient = false;
 			this.roomName = roomName;
 			if (this.loadBalancingClient.isInLobby()) {
 				console.log(`Begin joinRoom: ${roomName}`);
 				this.loadBalancingClient.joinRoom(roomName, {
-					joinToken: this.userInfo && this.userInfo.openId
+					joinToken: this.getCurrentJoinToken(roomName)
 				});
 			}
 			else if (this.loadBalancingClient.isJoinedToRoom()) {
@@ -492,6 +527,7 @@ module game {
 
 		public reset() {
 			this.roomName = undefined;
+			this.actorNr = -1;
 			this.gameState = new GameState();
 		}
 

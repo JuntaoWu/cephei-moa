@@ -48,6 +48,10 @@ module game {
 
         onError(errorCode: number, errorMsg: string) {
             this.output("Error " + errorCode + ": " + errorMsg);
+
+            if(errorCode == 1003) {
+                this.start();
+            }
         }
 
         onEvent(event: CustomPhotonEvents, message: any, actorNr: number) {
@@ -157,7 +161,7 @@ module game {
 
         onActorSuspend(actor: Photon.LoadBalancing.Actor) {
             this.output("Actor " + (actor.name || actor.actorNr) + " suspended", actor.getCustomProperty("color"));
-
+            platform.showToast(`玩家${actor.getCustomProperty("nickName")}已挂起`);
             let data = this.myActor().getCustomProperty("data");
 
             this.toggleActorState(actor.name, data && data.Avatar, false);
@@ -193,7 +197,7 @@ module game {
                 this.raiseEvent(event, message,{
                     receivers: Photon.LoadBalancing.Constants.ReceiverGroup.All
                 });
-                this.output('me[' + (this.myActor().name || this.myActor().actorNr) + ']: ' + message, this.myActor().getCustomProperty("color"));
+                this.output('me[' + (this.myActor().name || this.myActor().actorNr) + ']: ' + JSON.stringify(message), this.myActor().getCustomProperty("color"));
             }
             catch (err) {
                 this.output("error: " + err.message);
@@ -213,6 +217,7 @@ module game {
         output(str: string, color?: string) {
             var escaped = str.replace(/&/, "&amp;").replace(/</, "&lt;").
                 replace(/>/, "&gt;").replace(/"/, "&quot;");
+            console.log(str);
         }
     }
 }

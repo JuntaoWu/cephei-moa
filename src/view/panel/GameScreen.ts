@@ -142,6 +142,7 @@ module game {
         public constructor() {
             super();
 
+            this.name = "gameScreen";
             this.skinName = "skins.GameScreen";
             this.addEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             this.startjs.visible = false;
