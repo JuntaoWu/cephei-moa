@@ -1444,7 +1444,7 @@ module game {
             this.gameScreen.toupiao3.enabled = false;
             this.gameScreen.toupiao4.enabled = false;
             this.gameScreen.qingkong.enabled = false;
-            this.gameScreen.toupiaoqueren.enabled = false;
+            this.gameScreen.toupiaoqueren.visible = false;
             if (this.proxy.gameState.lunci == 1) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.piaoshu, "0" + this.baowu1 + "0" + this.baowu2 + "0" + this.baowu3 + "0" + this.baowu4);
             } else if (this.proxy.gameState.lunci == 2) {
