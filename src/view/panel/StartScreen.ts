@@ -26,6 +26,7 @@ module game {
         public avatarUrl: string = "btn-share";
         public isDebugPlatform: boolean = false;
         public isWxPlatform: boolean = true;
+        public roomNum: string = "";
 
         public constructor() {
             super();

@@ -1,43 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.PopupVoteResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
     <game:Shade id="overlay" />
-    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="650">
-        <e:Group id="voteGroup" horizontalCenter="0" bottom="170">
+    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="750">
+        <e:Group horizontalCenter="0" y="60">
             <e:Label text="投票结果" textColor="0x020202" bold="true" horizontalCenter="0" size="20"/>
-            <e:Group horizontalCenter="0" y="60">   
-                <e:Image source="{round}" verticalCenter="0"></e:Image>
-                <e:Group verticalCenter="0">
-                    <e:Group x="50"  verticalCenter="0" height="180" width="180" scaleX="0.6" scaleY="0.6">
-                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
-                        <e:Image source="{ant1.isReal}" scaleX="0.6" scaleY="0.6" y="-50" horizontalCenter="0"></e:Image>
-                        <e:Image source="{ant1.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
-                        <!--<e:Label y="100" bold="true" textColor="0x000000" text="{ant1.voteDetail}" width="100"/>-->
-                    </e:Group>
-                    <e:Group x="150" verticalCenter="0" height="180" width="180" scaleX="0.6" scaleY="0.6">
-                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>
-                        <e:Image source="{ant2.isReal}" scaleX="0.6" scaleY="0.6" y="-50" horizontalCenter="0"></e:Image>
-                        <e:Image source="{ant2.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
-                        <!--<e:Label y="100" bold="true" textColor="0x000000" text="{ant2.voteDetail}" width="100"/>-->
-                    </e:Group>
-                    <e:Group x="250" verticalCenter="0" height="180" width="180" scaleX="0.6" scaleY="0.6">
-                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>
-                        <e:Image source="{ant3.isReal}" scaleX="0.6" scaleY="0.6" y="-50" horizontalCenter="0"></e:Image>
-                        <e:Image source="{ant3.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
-                        <!--<e:Label y="100" bold="true" textColor="0x000000" text="{ant3.voteDetail}" width="100"/>-->
-                    </e:Group>
-                    <e:Group x="350" verticalCenter="0" height="180" width="180" scaleX="0.6" scaleY="0.6">
-                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>
-                        <e:Image source="{ant4.isReal}" scaleX="0.6" scaleY="0.6" y="-50" horizontalCenter="0"></e:Image>
-                        <e:Image source="{ant4.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
-                        <!--<e:Label y="100" bold="true" textColor="0x000000" text="{ant4.voteDetail}" width="100"/>-->
-                    </e:Group>
-                </e:Group>
+            <e:Group horizontalCenter="0" y="35">   
+                <e:Image verticalCenter="0" source="{round}"></e:Image>
+                <e:DataGroup id="voteGroup" verticalCenter="0" x="50">
+                    <e:layout>
+                        <e:TileLayout requestedRowCount="2" verticalGap="30" horizontalGap="30" />
+                    </e:layout> 
+                </e:DataGroup>
             </e:Group>
-            <e:Group y="350" horizontalCenter="0">
-                <e:Label text="得票第1和第2的宝物会被保护起来" textColor="0x020202" bold="true" horizontalCenter="0" size="20"/>
-                <e:Label text="公布得票第2的宝物" textColor="0x020202" bold="true" horizontalCenter="0" y="25" size="20"/>
-                <e:Label text="若出现平票，则生肖顺序靠前的兽首得票更高" textColor="0x020202" bold="true" horizontalCenter="0" size="20" y="50"/>
-            </e:Group>
+        </e:Group>
+        <e:Group bottom="160" horizontalCenter="0">
+            <e:Label text="得票第1和第2的宝物会被保护起来" textColor="0x020202" bold="true" horizontalCenter="0" size="20"/>
+            <e:Label text="公布得票第2的宝物" textColor="0x020202" bold="true" horizontalCenter="0" y="25" size="20"/>
+            <e:Label text="若出现平票，则生肖顺序靠前的兽首得票更高" textColor="0x020202" bold="true" horizontalCenter="0" size="20" y="50"/>
         </e:Group>
     </game:PopupWindowWrapper>
 </e:Skin>

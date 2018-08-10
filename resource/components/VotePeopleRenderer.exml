@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.VoteRenderer" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="skins.VotePeopleRenderer" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
     <e:Group scaleX="0.7" scaleY="0.7" height="210">
         <e:Group y="20" x="20">
             <e:Image source="{this.data.voterUrl}"  width="135" height="135"/>

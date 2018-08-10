@@ -1,11 +1,11 @@
 
 module game {
 
-    export class VoteRenderer extends eui.ItemRenderer {
+    export class VotePeopleRenderer extends eui.ItemRenderer {
 
         public constructor() {
             super();
-            this.skinName = "skins.VoteRenderer";
+            this.skinName = "skins.VotePeopleRenderer";
         }
         
         protected createChildren(): void {

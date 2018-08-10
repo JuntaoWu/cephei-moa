@@ -37,6 +37,7 @@ module game {
         public static SHOW_GAMEINFO_POPUP: string = "show_info_window";
         public static SHOW_NUMBER_KEYBOARD: string = "show_number_keyboard"
 
+        public static SHOW_VOTERECORD_WINDOW: string = "show_voterecord_window"
         public static SHOW_GUIDE_VIDEO: string = "show_guide_video";
         public static SHOW_GUIDE_PROCESS: string = "show_guide_process";
         public static SHOW_GUIDE_ROLE: string = "show_guide_role";
@@ -72,6 +73,7 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_ROLE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_WINJUDGE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_TERM, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_VOTERECORD_WINDOW, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -88,10 +90,6 @@ module game {
                     else if (data == Scene.Game) {
                         appMediator.main.enterGameScreen();
                     }
-                    break;
-                }
-                case SceneCommand.SHOW_JOIN_WINDOW: {
-                    appMediator.main.showJoinWindow();
                     break;
                 }
                 case SceneCommand.SHOW_USERINFO_WINDOW: {
@@ -116,6 +114,10 @@ module game {
                 }
                 case SceneCommand.SHOW_ABOUT_WINDOW: {
                     appMediator.main.showAboutWindow(data);
+                    break;
+                }
+                case SceneCommand.SHOW_VOTERECORD_WINDOW: {
+                    appMediator.main.showVoteRecordWindow();
                     break;
                 }
                 case SceneCommand.SHOW_RESULT_WINDOW: {

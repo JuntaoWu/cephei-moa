@@ -32,6 +32,7 @@ module game {
             this.gameScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGuide, this);
             this.gameScreen.btnQuit.addEventListener(egret.TouchEvent.TOUCH_TAP, this.quitClick, this);
             this.gameScreen.btnGameInfo.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameInfo, this);
+            this.gameScreen.btnGameRecord.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameRecord, this);
 
             console.log("GameScreen initData:");
             this.initData();
@@ -55,6 +56,10 @@ module game {
 
         private showGameInfo() {
             this.sendNotification(SceneCommand.SHOW_GAMEINFO_POPUP);
+        }
+
+        private showGameRecord() {
+            this.sendNotification(SceneCommand.SHOW_VOTERECORD_WINDOW);
         }
 
         public listNotificationInterests(): Array<any> {

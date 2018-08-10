@@ -13,6 +13,7 @@ module game {
         public btnGuide: eui.Button;
         public btnQuit: eui.Button;
         public btnGameInfo: eui.Button;
+        public btnGameRecord: eui.Button;
 
         //bindings:
         public roomName: string = "";
