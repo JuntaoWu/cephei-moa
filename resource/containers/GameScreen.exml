@@ -407,7 +407,7 @@
             </e:Group>
             <e:Group y="150" visible="{isOthersTurn}">
                 <game:ActorUI id="processingActorUI"></game:ActorUI>
-                <e:Label text="{processingPlayer.color.color}" x="200" textColor="0x000000"></e:Label>
+                <e:Label text="{processingPlayer.colorName}" x="200" textColor="0x000000"></e:Label>
                 <e:Label text="玩家" textColor="0x000000" x="317"></e:Label>
                 <e:Label text="{processingPlayer.name}" textColor="0x000000" y="32" x="200"></e:Label>
                 <e:Label text="正在鉴定宝物" textColor="0x000000" y="78" x="200"></e:Label>
@@ -628,8 +628,8 @@
                 </e:Group>
             </e:Group>
             <e:Group visible="{isPhaseGameInProgress}" width="100%">
-                <e:Group visible="{isMyTurn}">
-                    <e:Group visible="{isAuthing}">
+                <e:Group visible="{isMyTurn}" width="100%">
+                    <e:Group visible="{isAuthing}" width="100%">
                         <e:Button id="btnAuth" width="100%" visible="{role.isAuth}">
                             <e:Skin states="up,down">
                                 <e:Image source="auth3" width="100%" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
@@ -641,7 +641,7 @@
                             </e:Skin>
                         </e:Button>
                     </e:Group>
-                    <e:Group visible="{isSkilling}">
+                    <e:Group visible="{isSkilling}" width="100%">
                         <e:Button id="btnSkipSkill" width="100%">
                             <e:Skin>
                                 <e:Image source="skip" width="100%"></e:Image>
@@ -654,6 +654,7 @@
                         <e:Image source="wait-4-others-process"></e:Image>
                     </e:Skin>
                 </e:Button>
+                
                 <e:Button id="onegameend" label="开始发言" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"
                           height="90" scaleX="1" scaleY="1" />
                 <e:Button id="onespeakend" label="开始投票" x="0" y="0" anchorOffsetX="0" width="250" anchorOffsetY="0"

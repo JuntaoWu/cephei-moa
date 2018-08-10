@@ -455,8 +455,11 @@ module game {
             else {
                 // 其他玩家正在鉴宝
                 let actor = this.proxy.gameState.seats[message];
-                this.gameScreen.processingActorUI.update(actor);
-                this.gameScreen.processingPlayer = actor;
+                this.gameScreen.processingActorUI.update({ ...actor });
+                this.gameScreen.processingPlayer = {
+                    colorName: actor.color.color,
+                    name: actor.name,
+                }
                 this.gameScreen.isMyTurn = false;
                 this.gameScreen.isOthersTurn = true;
             }
