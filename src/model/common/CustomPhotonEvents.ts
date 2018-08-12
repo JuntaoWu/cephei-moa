@@ -38,5 +38,6 @@ module game {
         touren,
         tourenjieguo,
         starttoupiao,
+        UpdateCurrentTurn,
     }
 }

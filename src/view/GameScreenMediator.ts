@@ -204,7 +204,6 @@ module game {
                     this.gameScreen.isPhasePreparing = true;
                     this.gameScreen.isPhaseChoosingRole = false;
                     this.gameScreen.isPhaseGameInProgress = false;
-                    this.touxiang(data.seats);
 
                     this.gameScreen.isMyTurn = false;
                     this.gameScreen.isOthersTurn = false;
@@ -244,6 +243,8 @@ module game {
                     this.setMyTurnState(data.seats);
                     break;
             }
+
+            this.touxiang(data.seats);
         }
 
         public get gameScreen(): GameScreen {
@@ -447,11 +448,8 @@ module game {
 
         public xingdong(message: number) {
             if (this.proxy.isActorLocal(this.proxy.gameState.seats[message])) {
+                console.log("syncMyTurnState isAuthing");
                 this.syncMyTurnState("isAuthing");
-            }
-            else {
-                // 其他玩家正在鉴宝
-                this.syncMyTurnState("");
             }
         }
 
@@ -462,7 +460,7 @@ module game {
         private setMyTurnState(seats: ActorModel[]) {
             const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext"];
             seats.forEach(seat => {
-                if (seat.action) {
+                if (seat && seat.action) {
                     if (seat.actorNr == this.proxy.actorNr) {
                         this.gameScreen.isMyTurn = true;
                         this.gameScreen.isOthersTurn = false;

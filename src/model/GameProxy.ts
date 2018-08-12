@@ -419,6 +419,24 @@ module game {
 					this.sendNotification(GameProxy.START_TOUPIAO_BUTTON);
 					break;
 				}
+				case CustomPhotonEvents.UpdateCurrentTurn: {
+					this.gameState.seats.forEach(seat => {
+						if (!seat) {
+							return;
+						}
+						if (seat.actorNr == sender.actorNr) {
+							seat.action = message;
+						}
+						else {
+							seat.action = "";
+						}
+					});
+
+					if (this.isMasterClient) {
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
+					}
+					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+				}
 			}
 		}
 
@@ -551,10 +569,7 @@ module game {
 		}
 
 		public updateMyState(action: string) {
-			let mySeat = this.gameState.seats.find(seat => seat && seat.actorNr == this.actorNr);
-			mySeat.action = action;
-			this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
-			this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.UpdateCurrentTurn, action);
 		}
 	}
 }
