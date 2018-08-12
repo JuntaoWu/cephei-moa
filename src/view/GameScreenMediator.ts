@@ -699,16 +699,16 @@ module game {
                     } else if (this.proxy.gameState.lunci == 3) {
                         this.proxy.gameState.playerInfor[3].threetouxi = true;
                     }
-                    this.proxy.gameState.playerInfor[3].onetouxi = true;
+                    this.proxy.gameState.jyfskill = false;
                     this.proxy.gameState.ybrskill[3]--;
                 } else if (!this.proxy.gameState.jyfskill) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.playerInfor[3].onebaowu = "你无法鉴定此宝物";
+                        this.proxy.gameState.playerInfor[3].onezhenjia = "你无法鉴定此宝物";
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.playerInfor[3].twobaowu = "你无法鉴定此宝物";
+                        this.proxy.gameState.playerInfor[3].twozhenjia = "你无法鉴定此宝物";
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.playerInfor[3].threebaowu = "你无法鉴定此宝物";
+                        this.proxy.gameState.playerInfor[3].threezhenjia = "你无法鉴定此宝物";
                     }
                 } else {
                     if (this.proxy.gameState.lunci == 1) {
