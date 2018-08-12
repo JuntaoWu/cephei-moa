@@ -427,7 +427,7 @@ module game {
 						if (seat.actorNr == sender.actorNr) {
 							seat.action = message;
 						}
-						else {
+						else if(seat.action != "isChoosingNext") {
 							seat.action = "";
 						}
 					});
