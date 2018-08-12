@@ -29,7 +29,7 @@ class DebugPlatform implements Platform {
     public name: string = "DebugPlatform";
 
     public async getUserInfo() {
-        return { nickName: "username" };
+        return { nickName: game.CommonData.logon && game.CommonData.logon.openId || "username" };
     }
     public async login() {
         return { code: "debug" };

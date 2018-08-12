@@ -4,6 +4,7 @@ module game {
     export class StartScreenMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "StartScreenMediator";
 
+        private accountProxy: AccountProxy;
         private gameProxy: GameProxy;
 
         public constructor(viewComponent: any) {
@@ -29,7 +30,7 @@ module game {
 
         public async initData() {
             console.log("StartScreen initData:");
-            const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
+            this.accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
             this.gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
             if (platform.name == "DebugPlatform") {
@@ -37,7 +38,7 @@ module game {
                 this.startScreen.isWxPlatform = false;
             }
             else if (platform.name == "WxPlatform") {
-                const userInfo = await accountProxy.loadUserInfo();
+                const userInfo = await this.accountProxy.loadUserInfo();
                 this.startScreen.nickName = userInfo.nickName;
                 this.startScreen.avatarUrl = userInfo.avatarUrl;
                 this.startScreen.isDebugPlatform = false;
@@ -50,6 +51,8 @@ module game {
             event.stopImmediatePropagation();
             const openId = this.startScreen.txtOpenId.text;
             CommonData.logon.openId = openId;
+            const userInfo = await this.accountProxy.loadUserInfo();
+            this.startScreen.nickName = userInfo.nickName;
             await this.gameProxy.initialize();
         }
 

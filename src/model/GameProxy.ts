@@ -11,11 +11,11 @@ module game {
 			super(GameProxy.NAME);
 
 			platform.onNetworkStatusChange((res) => {
-				if(!res) {
+				if (!res) {
 					return;
 				}
-				if(res.isConnected) {
-					if(this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected) {
+				if (res.isConnected) {
+					if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected) {
 						this.loadBalancingClient.start();
 					}
 				}
@@ -55,12 +55,13 @@ module game {
 
 		public roomName: string;
 		public isMasterClient: boolean;
-		
-		private _actorNr : number;
-		public get actorNr() : number {
+		public isCreating: boolean;
+
+		private _actorNr: number;
+		public get actorNr(): number {
 			return this._actorNr;
 		}
-		public set actorNr(v : number) {
+		public set actorNr(v: number) {
 			this._actorNr = v;
 			platform.setStorage("currentRoom", {
 				roomName: this.roomName,
@@ -133,7 +134,7 @@ module game {
 			switch (state) {
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
 					if (this.roomName) {
-						if (this.isMasterClient) {
+						if (this.isMasterClient && this.isCreating) {
 							this.createRoomWithDefaultOptions();
 						}
 						else {
@@ -147,7 +148,7 @@ module game {
 		private onUpdateRoomInfo() {
 			const myRoom = this.loadBalancingClient.myRoom();
 			const myRoomActors = this.loadBalancingClient.myRoomActors();
-			const myRoomActorCount = this.loadBalancingClient.myRoomActorCount();
+			const myRoomActorCount = this.loadBalancingClient.myRoomActorsArray().filter(actor => !actor.suspended).length;
 
 			this.gameState.players = myRoomActorCount;
 
@@ -251,6 +252,11 @@ module game {
 
 					//this.sendNotification(GameProxy.CHOOSE_JS_END, this.gameState.role);					
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+
+					if (this.isMasterClient) {
+						console.log("CustomPhotonEvents.ChooseRole: setCustomProperty");
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+					}
 					break;
 				}
 				case CustomPhotonEvents.FirstOneNr: {
@@ -466,6 +472,7 @@ module game {
 					uniqueUserId: true,
 					propsListedInLobby: []
 				});
+				this.isCreating = false;
 			}
 		}
 
@@ -477,16 +484,17 @@ module game {
 				this.loadBalancingClient.start();
 			}
 			this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
+			this.isCreating = true;
 			this.createRoomWithDefaultOptions();
 		}
 
 		private getCurrentJoinToken(roomName: string) {
-			if(this.actorNr && this.actorNr != -1) {
+			if (this.actorNr && this.actorNr != -1) {
 				return this.actorNr.toString();
 			}
 			else {
 				const currentRoom = platform.getStorage("currentRoom");
-				if(currentRoom && currentRoom.roomName == roomName) {
+				if (currentRoom && currentRoom.roomName == roomName) {
 					return currentRoom.actorNr;
 				}
 			}
@@ -540,6 +548,13 @@ module game {
 
 		public startChooseRole() {
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.StartChoosingRole);
+		}
+
+		public updateMyState(action: string) {
+			let mySeat = this.gameState.seats.find(seat => seat && seat.actorNr == this.actorNr);
+			mySeat.action = action;
+			this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
+			this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 		}
 	}
 }

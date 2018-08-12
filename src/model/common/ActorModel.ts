@@ -10,6 +10,7 @@ module game {
         public isMaster?: boolean;
         public color?: { color?: string, source?: string };
         public isMyTurn?: boolean;
+        public action?: string;
 
         public constructor(actor: Photon.LoadBalancing.Actor, seatNumber?: number) {
 

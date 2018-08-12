@@ -33,7 +33,6 @@ module game {
             this.gameScreen.btnGameInfo.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameInfo, this);
             this.gameScreen.btnGameRecord.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameRecord, this);
 
-            this.initData();
             this.findSeat();
         }
 
@@ -242,8 +241,7 @@ module game {
                     this.gameScreen.isSecondRound = data.lunci == 2;
                     this.gameScreen.isThirdRound = data.lunci == 3;
 
-                    this.gameScreen.isMyTurn = data.seats.find(seat => seat && seat.actorNr == this.proxy.actorNr).isMyTurn;
-                    this.gameScreen.isOthersTurn = !this.gameScreen.isMyTurn;
+                    this.setMyTurnState(data.seats);
                     break;
             }
         }
@@ -449,46 +447,46 @@ module game {
 
         public xingdong(message: number) {
             if (this.proxy.isActorLocal(this.proxy.gameState.seats[message])) {
-
-                //方震技能
-                if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
-                    // this.gameScreen.Anim1.enabled = false;
-                    // this.gameScreen.Anim2.enabled = false;
-                    // this.gameScreen.Anim3.enabled = false;
-                    // this.gameScreen.Anim4.enabled = false;
-                    // this.gameScreen.Anim5.enabled = false;
-                    // this.gameScreen.Anim6.enabled = false;
-                    // this.gameScreen.Anim7.enabled = false;
-                    // this.gameScreen.Anim8.enabled = false;
-                    // this.gameScreen.Anim9.enabled = false;
-                    // this.gameScreen.Anim10.enabled = false;
-                    // this.gameScreen.Anim11.enabled = false;
-                    // this.gameScreen.Anim12.enabled = false;
-                }
-
-                this.setMyTurnState("isAuthing");
+                this.syncMyTurnState("isAuthing");
             }
             else {
                 // 其他玩家正在鉴宝
-                let actor = this.proxy.gameState.seats[message];
-                this.gameScreen.processingActorUI.update({ ...actor });
-                this.gameScreen.processingPlayer = {
-                    colorName: actor.color.color,
-                    name: actor.name,
-                }
-                this.gameScreen.isMyTurn = false;
-                this.gameScreen.isOthersTurn = true;
+                this.syncMyTurnState("");
             }
         }
 
-        private setMyTurnState(state) {
-            const stateList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext"];
-            this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.actorNr).isMyTurn = true;
-            this.gameScreen.isMyTurn = true;
-            this.gameScreen.isOthersTurn = false;
-            stateList.forEach(s => {
-                this.gameScreen[s] = state == s;
+        private syncMyTurnState(action) {
+            this.proxy.updateMyState(action);
+        }
+
+        private setMyTurnState(seats: ActorModel[]) {
+            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext"];
+            seats.forEach(seat => {
+                if (seat.action) {
+                    if (seat.actorNr == this.proxy.actorNr) {
+                        this.gameScreen.isMyTurn = true;
+                        this.gameScreen.isOthersTurn = false;
+                        actionList.forEach(s => {
+                            this.gameScreen[s] = seat.action == s;
+                        });
+                    }
+                    else {
+                        this.gameScreen.isMyTurn = false;
+                        this.gameScreen.isOthersTurn = true;
+                        actionList.forEach(s => {
+                            this.gameScreen[s] = false;
+                        });
+                        this.gameScreen.processingActorUI.update({ ...seat });
+                        this.gameScreen.processingPlayer = {
+                            colorName: seat.color.color,
+                            name: seat.name,
+                        };
+                    }
+                }
             });
+
+
+
         }
 
         public ybrskilladd(message: number) {
@@ -544,25 +542,25 @@ module game {
         public skipAuth(event: egret.TouchEvent) {
             // 方震跳过鉴宝
             if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
-                this.setMyTurnState("isSkilling");
+                this.syncMyTurnState("isSkilling");
             }
         }
 
         public applySkill(event: egret.TouchEvent) {
             if (this.gameScreen.role.id == 2) {
                 this.fangzhenskill();
-                this.setMyTurnState("isChoosingSkillingTarget");
+                this.syncMyTurnState("isChoosingSkillingTarget");
             }
             else if (this.gameScreen.role.id == 6) {
                 this.lcfskill();
             }
             else if (this.gameScreen.role.id == 7) {
                 this.ybrskill();
-                this.setMyTurnState("isChoosingSkillingTarget");
+                this.syncMyTurnState("isChoosingSkillingTarget");
             }
             else if (this.gameScreen.role.id == 8) {
                 this.zgqskill();
-                this.setMyTurnState("isChoosingSkillingTarget");
+                this.syncMyTurnState("isChoosingSkillingTarget");
             }
         }
 
@@ -598,10 +596,10 @@ module game {
             const results = [];
 
             if (this.gameScreen.role.hasActiveSkill) {
-                this.setMyTurnState("isSkilling");
+                this.syncMyTurnState("isSkilling");
             }
             else {
-                this.setMyTurnState("isChoosingNext");
+                this.syncMyTurnState("isChoosingNext");
             }
 
             //许愿技能
@@ -1004,7 +1002,7 @@ module game {
         }
 
         public chuanshunwei() {
-            this.setMyTurnState("isChoosingNext");
+            this.syncMyTurnState("isChoosingNext");
             this.gameScreen.shunwei1.visible = true;
             this.gameScreen.shunwei2.visible = true;
             this.gameScreen.shunwei3.visible = true;
@@ -1058,7 +1056,7 @@ module game {
         }
 
         public shunwei(nextNr: string) {
-            this.setMyTurnState("");
+            this.syncMyTurnState("");
 
             this.gameScreen.shunwei1.visible = false;
             this.gameScreen.shunwei2.visible = false;
@@ -1748,7 +1746,7 @@ module game {
         }
 
         public tourenui() {
-            this.setMyTurnState("isChoosingNext");
+            this.syncMyTurnState("isChoosingNext");
             this.gameScreen.isVoteVisible = false;
             this.gameScreen.startno2.visible = false;
             this.proxy.gameState.lunci = 99;
