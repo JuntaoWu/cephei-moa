@@ -3,8 +3,8 @@ module game {
 
     export class Constants {
 
-        public static ServiceEndpoint: string = "http://localhost:3000/";
-        //public static ServiceEndpoint: string = "https://cephei-moa.herokuapp.com/";
+        //public static ServiceEndpoint: string = "http://localhost:3000/";
+        public static ServiceEndpoint: string = "https://cephei-moa.herokuapp.com/";
         public static get Endpoint(): string {
             return platform.name == "DebugPlatform" ? "" : "https://cephei-moa.herokuapp.com/miniGame/";
         };
