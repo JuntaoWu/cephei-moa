@@ -11,6 +11,10 @@ module game {
             super();
             this.skinName = "skins.GuideVideoWindow";
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
+
+            platform.playVideo();
+
+            if(1 == 1) {return;}
         
             this.video1 = new egret.Video();
             this.video2 = new egret.Video();
