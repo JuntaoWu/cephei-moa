@@ -478,7 +478,7 @@ module game {
             const actionSeats = seats.filter(seat => seat && seat.action);
 
             this.gameScreen.isMyTurn = mySeat.action && mySeat.action != "isSpeaking";
-            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0;
+            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0 && !this.gameScreen.isWaitOthersTouRen;
             actionList.forEach(s => {
                 this.gameScreen[s] = mySeat.action == s;
             });
@@ -672,10 +672,10 @@ module game {
                             results[1] = this.proxy.gameState.threezj[this.selectedAnims[1] - 8];
                         }
 
-                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[0] - 8) {
+                        if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8) {
                             results[0] = "你无法鉴定此宝物";
                         }
-                        if (this.proxy.gameState.onezgqskill == this.selectedAnims[1] - 8) {
+                        if (this.proxy.gameState.threezgqskill == this.selectedAnims[1] - 8) {
                             results[1] = "你无法鉴定此宝物";
                         }
 
@@ -1005,8 +1005,6 @@ module game {
             this.syncMyTurnState("isChoosingNext");
             if (this.proxy.gameState.lunci != 99) {
                 this.gameScreen.isChoosingNextText = true;
-            } else {
-                this.gameScreen.isChoosingNextText = false;
             }
             this.gameScreen.shunwei1.visible = true;
             this.gameScreen.shunwei2.visible = true;
@@ -1068,6 +1066,8 @@ module game {
             this.gameScreen.shunwei8.visible = false;
             if (this.proxy.gameState.lunci == 99) {
                 this.gameScreen.onejieguo.visible = false;
+                this.gameScreen.isOthersTurn = false;
+                this.gameScreen.isWaitOthersTouRen = true;
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tourenjieguo, nextNr);
             } else {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.nextNr, nextNr);
@@ -1764,6 +1764,7 @@ module game {
         public tourenui() {
             // note this UI need all of us show isChoosingNext buttons.
             this.syncMyTurnState("isChoosingNext", Receiver.All);
+            this.gameScreen.isChoosingNextText = true;
             this.gameScreen.isWaitTouRen = false;
             this.gameScreen.isVoteVisible = false;
             this.gameScreen.startno2.visible = false;
@@ -1805,13 +1806,13 @@ module game {
                 || this.proxy.isActorLocal(this.proxy.gameState.role[3])
                 || this.proxy.isActorLocal(this.proxy.gameState.role[4])
                 || this.proxy.isActorLocal(this.proxy.gameState.role[5])) {
-                this.gameScreen.onejieguo.text = "找出老朝奉";
+                this.gameScreen.touren_note.text = "找出老朝奉";
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[6])) {
-                this.gameScreen.onejieguo.text = "找出许愿";
+                this.gameScreen.touren_note.text = "找出许愿";
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[7])) {
-                this.gameScreen.onejieguo.text = "找出方震";
+                this.gameScreen.touren_note.text = "找出方震";
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[8])) {
-                this.gameScreen.onejieguo.text = "装作在选人的样子";
+                this.gameScreen.touren_note.text = "装作在选人的样子";
             }
         }
 

@@ -19,8 +19,6 @@
 		"bin-debug/view/panel/BasePanel.js",
 		"bin-debug/view/PopupVoteRecordWindowMediator.js",
 		"bin-debug/LoadingUI.js",
-		"bin-debug/view/RankWindowMediator.js",
-		"bin-debug/view/PopupVoteResultWindowMediator.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
@@ -60,9 +58,6 @@
 		"bin-debug/ApplicationFacade.js",
 		"bin-debug/view/PopupVoteResultWindowMediator.js",
 		"bin-debug/view/RankWindowMediator.js",
-		"bin-debug/view/PopupVoteRecordWindowMediator.js",
-		"bin-debug/view/panel/VotePeopleRenderer.js",
-		"bin-debug/LoadingUI.js",
 		"bin-debug/view/ResultWindowMediator.js",
 		"bin-debug/view/SettingWindowMediator.js",
 		"bin-debug/view/StartScreenMediator.js",
@@ -99,6 +94,6 @@
 		"bin-debug/view/panel/UserInfoWindow.js",
 		"bin-debug/view/panel/VoteAntiquesRenderer.js",
 		"bin-debug/view/panel/VoteNumRenderer.js",
-		"bin-debug/ApplicationFacade.js"
+		"bin-debug/view/panel/VotePeopleRenderer.js"
 	]
 }

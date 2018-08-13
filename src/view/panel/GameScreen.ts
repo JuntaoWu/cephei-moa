@@ -58,6 +58,7 @@ module game {
         public isWaitNextTurn: boolean = false;
         public isWaitTouRen: boolean = false;
         public isChoosingNextText: boolean = false;
+        public isWaitOthersTouRen: boolean = false;
 
         public processingPlayer = {
             name: "",
@@ -143,6 +144,7 @@ module game {
         public Anim11: eui.Button;
         public Anim12: eui.Button;
         public btnSkipSkill: eui.Button;
+        public touren_note: eui.Label;
 
         public constructor() {
             super();
