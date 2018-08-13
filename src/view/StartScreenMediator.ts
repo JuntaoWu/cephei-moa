@@ -34,10 +34,12 @@ module game {
             this.gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
             if (platform.name == "DebugPlatform") {
+                console.log("DebugPlatform");
                 this.startScreen.isDebugPlatform = true;
                 this.startScreen.isWxPlatform = false;
             }
-            else if (platform.name == "WxPlatform") {
+            else if (platform.name == "wxgame") {
+                console.log("wxgame");
                 const userInfo = await this.accountProxy.loadUserInfo();
                 this.startScreen.nickName = userInfo.nickName;
                 this.startScreen.avatarUrl = userInfo.avatarUrl;

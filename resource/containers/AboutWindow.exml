@@ -2,4 +2,5 @@
 <e:Skin class="skins.AboutWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
         xmlns:game="game.*">
 	<e:Image height="{imgHeight}" width="640" source="about" />
+        <e:Label text="0.2.1" textColor="0x000000" horizontalCenter="0" y="600"></e:Label>
 </e:Skin>

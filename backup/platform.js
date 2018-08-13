@@ -94,6 +94,17 @@ class WxgamePlatform {
         })
     }
 
+    setStorage(key, value) {
+        wx.setStorage({
+            key: key,
+            data: value,
+        })
+    }
+
+    getStorage(key) {
+        return wx.getStorageSync(key);
+    }
+
 }
 
 class WxgameOpenDataContext {
