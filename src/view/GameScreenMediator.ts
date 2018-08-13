@@ -535,19 +535,19 @@ module game {
 
         public applySkill(event: egret.TouchEvent) {
             if (this.gameScreen.role.id == 2) {
-                this.fangzhenskill();
                 this.syncMyTurnState("isChoosingSkillingTarget");
+                this.fangzhenskill();
             }
             else if (this.gameScreen.role.id == 6) {
                 this.lcfskill();
             }
             else if (this.gameScreen.role.id == 7) {
-                this.ybrskill();
                 this.syncMyTurnState("isChoosingSkillingTarget");
+                this.ybrskill();
             }
             else if (this.gameScreen.role.id == 8) {
-                this.zgqskill();
                 this.syncMyTurnState("isChoosingSkillingTarget");
+                this.zgqskill();
             }
         }
 
@@ -1416,7 +1416,6 @@ module game {
             } else if (this.proxy.gameState.lunci == 3) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.piaoshu3, "0" + this.baowu1 + "0" + this.baowu2 + "0" + this.baowu3 + "0" + this.baowu4);
             }
-
         }
 
         public piaoshujisuan(toupiao: Array<any>) {
