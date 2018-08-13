@@ -223,6 +223,12 @@ module game {
 
                     this.gameScreen.isMyTurn = false;
                     this.gameScreen.isOthersTurn = false;
+                    if (this.proxy.gameState.maxPlayers == 6) {
+                        this.gameScreen.btnjs3.enabled = false;
+                        this.gameScreen.btnjs8.enabled = false;
+                    } else if (this.proxy.gameState.maxPlayers == 7) {
+                        this.gameScreen.btnjs3.enabled = false;
+                    }
                     break;
                 case GamePhase.GameInProgress:
                     this.gameScreen.isInitial = false;
@@ -1001,6 +1007,11 @@ module game {
 
         public chuanshunwei() {
             this.syncMyTurnState("isChoosingNext");
+            if (this.proxy.gameState.lunci != 99) {
+                this.gameScreen.isChoosingNextText = true;
+            } else {
+                this.gameScreen.isChoosingNextText = false;
+            }
             this.gameScreen.shunwei1.visible = true;
             this.gameScreen.shunwei2.visible = true;
             this.gameScreen.shunwei3.visible = true;
@@ -1043,7 +1054,8 @@ module game {
                 && !this.gameScreen.shunwei7.visible
                 && !this.gameScreen.shunwei8.visible
             ) {
-                this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.onegameend);
+                //this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.onegameend);
+                this.onegameend();
             }
         }
 
@@ -1289,18 +1301,25 @@ module game {
         }
 
         public onegameend() {
-            if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_one_been[this.proxy.gameState.shunwei_one_been.length - 1]) && this.proxy.gameState.lunci == 1) {
-                this.gameScreen.isLastPlayer = true;
-                this.gameScreen.onegameend.visible = true;
-            }
-            if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_two_been[this.proxy.gameState.shunwei_two_been.length - 1]) && this.proxy.gameState.lunci == 2) {
-                this.gameScreen.isLastPlayer = true;
-                this.gameScreen.onegameend.visible = true;
-            }
-            if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_three_been[this.proxy.gameState.shunwei_three_been.length - 1]) && this.proxy.gameState.lunci == 3) {
-                this.gameScreen.isLastPlayer = true;
-                this.gameScreen.onegameend.visible = true;
-            }
+            this.gameScreen.isChoosingNextText = false;
+            this.gameScreen.isLastPlayer = true;
+            this.gameScreen.isChoosingNext = false;
+            this.gameScreen.onegameend.visible = true;
+            // if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_one_been[this.proxy.gameState.shunwei_one_been.length - 1]) && this.proxy.gameState.lunci == 1) {
+            //     this.gameScreen.isLastPlayer = true;
+            //     this.gameScreen.isChoosingNext = false;
+            //     this.gameScreen.onegameend.visible = true;
+            // }
+            // if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_two_been[this.proxy.gameState.shunwei_two_been.length - 1]) && this.proxy.gameState.lunci == 2) {
+            //     this.gameScreen.isLastPlayer = true;
+            //     this.gameScreen.isChoosingNext = false;
+            //     this.gameScreen.onegameend.visible = true;
+            // }
+            // if (this.proxy.isActorLocal(this.proxy.gameState.shunwei_three_been[this.proxy.gameState.shunwei_three_been.length - 1]) && this.proxy.gameState.lunci == 3) {
+            //     this.gameScreen.isLastPlayer = true;
+            //     this.gameScreen.isChoosingNext = false;
+            //     this.gameScreen.onegameend.visible = true;
+            // }
         }
 
         public tongzhi(message: string) {
@@ -1326,6 +1345,8 @@ module game {
         }
 
         public start_toupiao_button() {
+            this.gameScreen.isSpeaking = true;
+            this.gameScreen.isOthersTurn = false;
             if (this.proxy.isMasterClient) {
                 this.gameScreen.onespeakend.visible = true;
             }
@@ -1338,6 +1359,7 @@ module game {
         }
 
         public toupiaoui() {
+            this.gameScreen.isSpeaking = false;
             const animConfig = [
                 { controlName: "toupiao1", index: 0 },
                 { controlName: "toupiao2", index: 1 },
@@ -1688,11 +1710,13 @@ module game {
                     // this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "许愿阵营胜利  得分:" + this.proxy.gameState.defen);
                     this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 } else {
+                    this.gameScreen.isWaitTouRen = true;
                     if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
                         this.gameScreen.startno2.visible = true;
                     }
                 }
             } else {
+                this.gameScreen.isWaitNextTurn = true;
                 if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
                     this.gameScreen.startno2.visible = true;
                 }
@@ -1712,6 +1736,7 @@ module game {
         }
 
         public starttwo() {
+            this.gameScreen.isWaitNextTurn = false;
             this.gameScreen.isVoteVisible = false;
             this.gameScreen.toupiao11.visible = false;
             this.gameScreen.toupiao21.visible = false;
@@ -1739,6 +1764,7 @@ module game {
 
         public tourenui() {
             this.syncMyTurnState("isChoosingNext");
+            this.gameScreen.isWaitTouRen = false;
             this.gameScreen.isVoteVisible = false;
             this.gameScreen.startno2.visible = false;
             this.proxy.gameState.lunci = 99;
