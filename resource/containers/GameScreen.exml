@@ -523,6 +523,9 @@
                 <e:Label text="等待其他玩家进行投票中..." textColor="0x000000" horizontalCenter="0" verticalCenter="-20"></e:Label>
                 <e:Label text="{voteing}" textColor="0x000000" horizontalCenter="0" verticalCenter="20"></e:Label>
             </e:Group>
+            <e:Group visible="{isSpeaking}" horizontalCenter="0" verticalCenter="0">
+                <e:Label text="正在发言阶段..." textColor="0x000000" width="300" ></e:Label>
+            </e:Group>
             <e:Button id="btnGameInfo" horizontalCenter="-70" bottom="0">
                 <e:Skin states="up,down">
                     <e:Image source="self_info"></e:Image>
@@ -632,7 +635,7 @@
             </e:Skin>
         </e:Button>
         <e:Group anchorOffsetX="0" right="0" width="520" y="0">
-            <e:Group visible="!{isPhaseGameInProgress}" width="100%">
+            <e:Group width="100%">
                 <e:Group visible="{isNormalClient}" width="100%">
                     <e:Button enabled="false" width="100%" visible="{isWaiting}">
                         <e:Skin>

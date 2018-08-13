@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background,btn-guide,rank1,rank2,rank3,rank_bg,sep,btn-back,auth_rate_2,fang1,fang2,game6_1,game6_2,game7_1,game7_2,game8_1,game8_2,auth_player_1,auth_player_2,auth_rate_1,huang2,ji1,ji2,jushu1,jushu2,lao1,lao2,mu1,mu2,huang1,xu1,xu2,yao1,yao2,zheng1,zheng2,team_lao_3,team_lao_4,team_xu_3,team_xu_4,win_rate_1,win_rate_2,total_rate_2,total_play_1,total_play_2,total_rate_1,setting2,about,close,back_2,room8,score2,team_lao_2,team_xu_2,win_rate,room6,room7,meihua,btn-create-small,btn-join-small,wait-1-players-enough,wait-2-master-confirm,wait-3-set-identity,wait-4-others-process,wait-5-vote,wait-6-others-vote,enter-info,vote_over,auth3,auth4,cancel,cancel2,enter_info,ok,ok_2,ok2,ok3,ok4,skip,skip2,btn-start,talk_over,black_2,white_2,round2,round3,round1,t12,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,false,true,self_info,game-box-border,auth2,bg3,bg2,role1,role7,role8,role3,role4-5,role6,btn-role,btn-role2,number-keyboard-bg,input_cancel,input_ok,input_room,input_vote,num_del,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,manual1,manual2,manual3,manual4,manual5,video3,video1,video2,seat_json,antiques_json,game-term_json,jzj,lose,result1,result2,result3,result4,true2,victory,false2,share2,share_team_lao,share_team_xu,teasure12,vote1,border_red,seats_json,botton,role_json,border_black,border_black_png,talk_over_png,auth_png,talking_png,vote_over_png,btn-game-bar,search,number_png,number_fnt,hide,botton_png,share2_png,hide_png,number2_fnt,number2_png,border_black2_png,border_red_png,false2_png,jzj_png,lose_png,result1_png,result2_png,result3_png,result4_png,share_team_lao_png,share_team_xu_png,teasure12_png,true2_png,victory_png,vote1_png,auth2_png,talk_over2_png,talking2_png,vote_over2_png,btn-game-bar_png,search_png,antiques2_json,game-term2_json,role2_json,seats2_json",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,start-background,btn-share,btn-board,btn-create,btn-join,userinfo-background,btn-rank,btn-settings,avatar-background,btn-confirm,btn-help,btn-input-identity,color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow,game-init-background,master-avatar-background,seat-background,self-mark,waiting-for-all-ready,waiting-for-master-start,small-dialog-background,btn-guide,rank1,rank2,rank3,rank_bg,sep,btn-back,auth_rate_2,fang1,fang2,game6_1,game6_2,game7_1,game7_2,game8_1,game8_2,auth_player_1,auth_player_2,auth_rate_1,huang2,ji1,ji2,jushu1,jushu2,lao1,lao2,mu1,mu2,huang1,xu1,xu2,yao1,yao2,zheng1,zheng2,team_lao_3,team_lao_4,team_xu_3,team_xu_4,win_rate_1,win_rate_2,total_rate_2,total_play_1,total_play_2,total_rate_1,setting2,about,close,back_2,room8,score2,team_lao_2,team_xu_2,win_rate,room6,room7,meihua,btn-create-small,btn-join-small,wait-1-players-enough,wait-2-master-confirm,wait-3-set-identity,wait-4-others-process,wait-5-vote,wait-6-others-vote,enter-info,vote_over,auth3,auth4,cancel,cancel2,enter_info,ok,ok_2,ok2,ok3,ok4,skip,skip2,btn-start,talk_over,black_2,white_2,round2,round3,round1,t12,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,false,true,self_info,game-box-border,auth2,bg3,bg2,role1,role7,role8,role3,role4-5,role6,btn-role,btn-role2,number-keyboard-bg,input_cancel,input_ok,input_room,input_vote,num_del,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,manual1,manual2,manual3,manual4,manual5,video3,video1,video2,seat_json,antiques_json,game-term_json,jzj,lose,result1,result2,result3,result4,true2,victory,false2,share2,share_team_lao,share_team_xu,teasure12,vote1,border_red,seats_json,botton,role_json,border_black,border_black_png,talk_over_png,auth_png,talking_png,vote_over_png,btn-game-bar,search,number_png,number_fnt,hide,botton_png,share2_png,hide_png,number2_fnt,number2_png,border_black2_png,border_red_png,false2_png,jzj_png,lose_png,result1_png,result2_png,result3_png,result4_png,share_team_lao_png,share_team_xu_png,teasure12_png,true2_png,victory_png,vote1_png,auth2_png,talk_over2_png,talking2_png,vote_over2_png,btn-game-bar_png,search_png,antiques2_json,game-term2_json,role2_json,seats2_json,fangzhen_tex_png,fangzhen_ske_json,fangzhen_tex_json",
 			"name": "preload"
 		},
 		{
@@ -1132,154 +1132,169 @@
 			"name": "hide"
 		},
 		{
-			"name": "botton_png",
+			"url": "assets/Button/botton.png",
 			"type": "image",
-			"url": "assets/Button/botton.png"
+			"name": "botton_png"
 		},
 		{
-			"name": "share2_png",
+			"url": "assets/Button/share2.png",
 			"type": "image",
-			"url": "assets/Button/share2.png"
+			"name": "share2_png"
 		},
 		{
-			"name": "hide_png",
+			"url": "assets/game/hide.png",
 			"type": "image",
-			"url": "assets/game/hide.png"
+			"name": "hide_png"
 		},
 		{
-			"name": "number2_fnt",
+			"url": "assets/game/number.fnt",
 			"type": "font",
-			"url": "assets/game/number.fnt"
+			"name": "number2_fnt"
 		},
 		{
-			"name": "number2_png",
+			"url": "assets/game/number.png",
 			"type": "image",
-			"url": "assets/game/number.png"
+			"name": "number2_png"
 		},
 		{
-			"name": "border_black2_png",
+			"url": "assets/result/border_black.png",
 			"type": "image",
-			"url": "assets/result/border_black.png"
+			"name": "border_black2_png"
 		},
 		{
-			"name": "border_red_png",
+			"url": "assets/result/border_red.png",
 			"type": "image",
-			"url": "assets/result/border_red.png"
+			"name": "border_red_png"
 		},
 		{
-			"name": "false2_png",
+			"url": "assets/result/false2.png",
 			"type": "image",
-			"url": "assets/result/false2.png"
+			"name": "false2_png"
 		},
 		{
-			"name": "jzj_png",
+			"url": "assets/result/jzj.png",
 			"type": "image",
-			"url": "assets/result/jzj.png"
+			"name": "jzj_png"
 		},
 		{
-			"name": "lose_png",
+			"url": "assets/result/lose.png",
 			"type": "image",
-			"url": "assets/result/lose.png"
+			"name": "lose_png"
 		},
 		{
-			"name": "result1_png",
+			"url": "assets/result/result1.png",
 			"type": "image",
-			"url": "assets/result/result1.png"
+			"name": "result1_png"
 		},
 		{
-			"name": "result2_png",
+			"url": "assets/result/result2.png",
 			"type": "image",
-			"url": "assets/result/result2.png"
+			"name": "result2_png"
 		},
 		{
-			"name": "result3_png",
+			"url": "assets/result/result3.png",
 			"type": "image",
-			"url": "assets/result/result3.png"
+			"name": "result3_png"
 		},
 		{
-			"name": "result4_png",
+			"url": "assets/result/result4.png",
 			"type": "image",
-			"url": "assets/result/result4.png"
+			"name": "result4_png"
 		},
 		{
-			"name": "share_team_lao_png",
+			"url": "assets/result/share_team_lao.png",
 			"type": "image",
-			"url": "assets/result/share_team_lao.png"
+			"name": "share_team_lao_png"
 		},
 		{
-			"name": "share_team_xu_png",
+			"url": "assets/result/share_team_xu.png",
 			"type": "image",
-			"url": "assets/result/share_team_xu.png"
+			"name": "share_team_xu_png"
 		},
 		{
-			"name": "teasure12_png",
+			"url": "assets/result/teasure12.png",
 			"type": "image",
-			"url": "assets/result/teasure12.png"
+			"name": "teasure12_png"
 		},
 		{
-			"name": "true2_png",
+			"url": "assets/result/true2.png",
 			"type": "image",
-			"url": "assets/result/true2.png"
+			"name": "true2_png"
 		},
 		{
-			"name": "victory_png",
+			"url": "assets/result/victory.png",
 			"type": "image",
-			"url": "assets/result/victory.png"
+			"name": "victory_png"
 		},
 		{
-			"name": "vote1_png",
+			"url": "assets/result/vote1.png",
 			"type": "image",
-			"url": "assets/result/vote1.png"
+			"name": "vote1_png"
 		},
 		{
-			"name": "auth2_png",
+			"url": "assets/seat/auth.png",
 			"type": "image",
-			"url": "assets/seat/auth.png"
+			"name": "auth2_png"
 		},
 		{
-			"name": "talk_over2_png",
+			"url": "assets/seat/talk_over.png",
 			"type": "image",
-			"url": "assets/seat/talk_over.png"
+			"name": "talk_over2_png"
 		},
 		{
-			"name": "talking2_png",
+			"url": "assets/seat/talking.png",
 			"type": "image",
-			"url": "assets/seat/talking.png"
+			"name": "talking2_png"
 		},
 		{
-			"name": "vote_over2_png",
+			"url": "assets/seat/vote_over.png",
 			"type": "image",
-			"url": "assets/seat/vote_over.png"
+			"name": "vote_over2_png"
 		},
 		{
-			"name": "btn-game-bar_png",
+			"url": "assets/start/btn-game-bar.png",
 			"type": "image",
-			"url": "assets/start/btn-game-bar.png"
+			"name": "btn-game-bar_png"
 		},
 		{
-			"name": "search_png",
+			"url": "assets/start/search.png",
 			"type": "image",
-			"url": "assets/start/search.png"
+			"name": "search_png"
 		},
 		{
-			"name": "antiques2_json",
+			"url": "config/antiques.json",
 			"type": "json",
-			"url": "config/antiques.json"
+			"name": "antiques2_json"
 		},
 		{
-			"name": "game-term2_json",
+			"url": "config/game-term.json",
 			"type": "json",
-			"url": "config/game-term.json"
+			"name": "game-term2_json"
 		},
 		{
-			"name": "role2_json",
+			"url": "config/role.json",
 			"type": "json",
-			"url": "config/role.json"
+			"name": "role2_json"
 		},
 		{
-			"name": "seats2_json",
+			"url": "config/seats.json",
 			"type": "json",
-			"url": "config/seats.json"
+			"name": "seats2_json"
+		},
+		{
+			"url": "assets/dragonBones/fangzhen_tex.png",
+			"type": "image",
+			"name": "fangzhen_tex_png"
+		},
+		{
+			"url": "assets/dragonBones/fangzhen_ske.json",
+			"type": "json",
+			"name": "fangzhen_ske_json"
+		},
+		{
+			"url": "assets/dragonBones/fangzhen_tex.json",
+			"type": "json",
+			"name": "fangzhen_tex_json"
 		}
 	]
 }
