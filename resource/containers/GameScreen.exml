@@ -533,8 +533,8 @@
                 <e:Label visible="{isMasterClient}" text="点击按钮开始下一轮" textColor="0x000000"></e:Label>
             </e:Group>
             <e:Group visible="{isWaitTouRen}" horizontalCenter="0" verticalCenter="0">
-                <e:Label visible="{isNormalClient}" text="等待房主确定开始投人环节" textColor="0x000000"></e:Label>
-                <e:Label visible="{isMasterClient}" text="点击按钮开始投人" textColor="0x000000"></e:Label>
+                <e:Label visible="{isNormalClient}" text="等待房主确定开始鉴人环节" textColor="0x000000"></e:Label>
+                <e:Label visible="{isMasterClient}" text="点击按钮开始鉴人环节" textColor="0x000000"></e:Label>
             </e:Group>
             <e:Group visible="{isWaitOthersTouRen}" horizontalCenter="0" verticalCenter="0">
                 <e:Label text="等待其他玩家投票" textColor="0x000000"></e:Label>
