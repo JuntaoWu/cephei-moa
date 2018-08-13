@@ -69,6 +69,7 @@ module game {
                     voteResult.forEach((item, index) => {
                         if (item.baowu == this.proxy.gameState.baowulist[n + j]) {
                             let obj = {
+                                antBg: index < 2 ? "bg3" : "bg2",
                                 antRes: this.proxy.antiquesMap.get(item.baowu).source,
                                 isReal: item.zhenjia == "真" ? "true" : "false"
                             }

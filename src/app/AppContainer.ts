@@ -64,6 +64,15 @@ module game {
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
+        public barWindow: BarWindow;
+        public showBarWindow(): void {
+            if (!this.barWindow) {
+                this.barWindow = new BarWindow();
+            }
+            this.addChild(this.barWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
         public settingWindow: SettingWindow;
         public showSettingWindow(): void {
             if (!this.settingWindow) {

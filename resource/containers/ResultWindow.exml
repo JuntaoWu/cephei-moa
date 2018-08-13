@@ -15,29 +15,29 @@
 
                     <e:Image source="{winResult}"  y="110" horizontalCenter="0"/>
 
-                    <e:Image source="{winRes}"  y="260" horizontalCenter="0"/>
                     <e:Image source="meihua"  y="200" horizontalCenter="0"/>
+                    <e:Image source="{winRes}"  y="260" horizontalCenter="0"/>
                 </e:Group>
                 <e:Group y="730" left="5">
                     <e:Image source="round1" verticalCenter="0" x="0"/>
                     <e:Group verticalCenter="0" x="50">
                         <e:Group verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round1.ant1.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round1.ant1.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round1.ant1.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="130" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round1.ant2.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round1.ant2.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round1.ant2.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="260" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round1.ant3.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round1.ant3.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round1.ant3.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="390" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round1.ant4.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round1.ant4.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round1.ant4.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
@@ -47,22 +47,22 @@
                     <e:Image source="round2" verticalCenter="0" x="0"/>
                     <e:Group verticalCenter="0" x="50">
                         <e:Group verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round2.ant1.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round2.ant1.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round2.ant1.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="130" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round2.ant2.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round2.ant2.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round2.ant2.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="260" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round2.ant3.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round2.ant3.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round2.ant3.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="390" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round2.ant4.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round2.ant4.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round2.ant4.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
@@ -72,22 +72,22 @@
                     <e:Image source="round3" verticalCenter="0" x="0"/>
                     <e:Group verticalCenter="0" x="50">
                         <e:Group verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round3.ant1.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round3.ant1.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round3.ant1.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="130" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round3.ant2.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round3.ant2.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round3.ant2.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="260" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round3.ant3.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round3.ant3.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round3.ant3.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>
                         <e:Group x="390" verticalCenter="0" scaleX="0.6" scaleY="0.6" height="180" width="180">
-                            <e:Image source="bg2" verticalCenter="0" horizontalCenter="0"></e:Image>
+                            <e:Image source="{round3.ant4.antBg}" verticalCenter="0" horizontalCenter="0"></e:Image>
                             <e:Image source="{round3.ant4.antRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
                             <e:Image source="{round3.ant4.isReal}" scaleX="0.7" scaleY="0.7" x="105" y="100"></e:Image>
                         </e:Group>

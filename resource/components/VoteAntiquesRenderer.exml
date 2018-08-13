@@ -8,7 +8,7 @@
         </e:Group>
         <e:DataGroup id="voteDetail" y="200" horizontalCenter="0" scaleX="0.7" scaleY="0.7">
             <e:layout>
-                <e:TileLayout horizontalAlign="center" verticalAlign="contentJustify" orientation="columns" requestedColumnCount="4" verticalGap="6" horizontalGap="6" />
+                <e:TileLayout horizontalAlign="center" verticalAlign="contentJustify" orientation="columns" requestedColumnCount="4" verticalGap="2" horizontalGap="6" />
             </e:layout>
         </e:DataGroup>
     </e:Group>
