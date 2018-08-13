@@ -15,7 +15,8 @@
 
                     <e:Image source="{winResult}"  y="110" horizontalCenter="0"/>
 
-                    <e:Image source="{winRes}"  y="280" horizontalCenter="0"/>
+                    <e:Image source="{winRes}"  y="260" horizontalCenter="0"/>
+                    <e:Image source="meihua"  y="200" horizontalCenter="0"/>
                 </e:Group>
                 <e:Group y="730" left="5">
                     <e:Image source="round1" verticalCenter="0" x="0"/>

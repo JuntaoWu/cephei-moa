@@ -4,7 +4,8 @@ module game {
     export class PopupVoteRecordWindow extends eui.Panel {
 
         public backButton: eui.Button;
-
+        private navigationBar: eui.Group;
+        
         public orderGroup1: eui.DataGroup;
         public orderGroup2: eui.DataGroup;
         public orderGroup3: eui.DataGroup;
@@ -19,6 +20,8 @@ module game {
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
+            this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 10;
+          
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new PopupVoteRecordWindowMediator(this));
         }
