@@ -424,10 +424,11 @@ module game {
 						if (!seat) {
 							return;
 						}
-						if (seat.actorNr == sender.actorNr) {
-							seat.action = message;
+
+						if (seat.actorNr == sender.actorNr || message.receiver == Receiver.All) {
+							seat.action = message.action;
 						}
-						else if (seat.action != "isChoosingNext") {
+						else if (message.action) {
 							seat.action = "";
 						}
 					});
@@ -568,8 +569,8 @@ module game {
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.StartChoosingRole);
 		}
 
-		public updateMyState(action: string) {
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.UpdateCurrentTurn, action);
+		public updateMyState(action: string, receiver: Receiver) {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.UpdateCurrentTurn, { action: action, receiver: receiver });
 		}
 	}
 }

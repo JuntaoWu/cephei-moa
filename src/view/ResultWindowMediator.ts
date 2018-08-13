@@ -19,7 +19,7 @@ module game {
         }
 
         private shareClick() {
-
+            
         }
 
         private confirmClick() {
@@ -62,15 +62,20 @@ module game {
             this.resultWindow.findAntiqueScore = this.resultWindow.totalScore - this.resultWindow.findPeopleScore;
             //三轮游戏投票结果
             [1 ,2, 3].forEach(i => {
-                let voteResult = this.proxy.gameState[`toupiaojieguo${i}`] as Array<any>;
                 this.resultWindow[`round${i}`] = {ant1: null, ant2: null, ant3: null, ant4: null};
-                voteResult.forEach((item, index) => {
-                    let obj = {
-                        antRes: this.proxy.antiquesMap.get(item.baowu).source,
-                        isReal: item.zhenjia == "真" ? "true" : "false"
-                    }
-                    this.resultWindow[`round${i}`][`ant${index + 1}`] = obj;
-                })  
+                let n = i * 4 - 4, voteData = [];
+                let voteResult = this.proxy.gameState[`toupiaojieguo${i}`] as Array<any>;
+                for (let j = 0; j < 4; j++) {
+                    voteResult.forEach((item, index) => {
+                        if (item.baowu == this.proxy.gameState.baowulist[n + j]) {
+                            let obj = {
+                                antRes: this.proxy.antiquesMap.get(item.baowu).source,
+                                isReal: item.zhenjia == "真" ? "true" : "false"
+                            }
+                            this.resultWindow[`round${i}`][`ant${index + 1}`] = obj;
+                        }
+                    })
+                }
             });
             //许愿
             if (this.proxy.gameState.role[RoleId.XuYuan]) {

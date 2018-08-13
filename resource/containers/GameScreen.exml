@@ -454,9 +454,6 @@
                 <e:Label text="{processingPlayer.name}" textColor="0x000000" y="32" x="200"></e:Label>
                 <e:Label text="正在鉴定宝物" textColor="0x000000" y="78" x="200"></e:Label>
             </e:Group>
-            <e:Group visible="{isSpeaking}" horizontalCenter="0" verticalCenter="0">
-                <e:Label text="发言中..." textColor="0x000000"></e:Label>
-            </e:Group>
             <e:Group horizontalCenter="0" y="100" visible="{isVoteVisible}">
                 <e:Label text="点击对应宝物录入投票数" y="-60" bold="true" horizontalCenter="0" size="24" textColor="0x000000" />
                 <e:Group y="-30" horizontalCenter="0">
@@ -527,6 +524,9 @@
             <e:Group visible="{isVoteEnd}" horizontalCenter="0" verticalCenter="0">
                 <e:Label text="等待其他玩家进行投票中..." textColor="0x000000" horizontalCenter="0" verticalCenter="-20"></e:Label>
                 <e:Label text="{voteing}" textColor="0x000000" horizontalCenter="0" verticalCenter="20"></e:Label>
+            </e:Group>
+            <e:Group visible="{isSpeaking}" horizontalCenter="0" verticalCenter="0">
+                <e:Label text="正在发言中..." textColor="0x000000" width="300" ></e:Label>
             </e:Group>
             <e:Group visible="{isWaitNextTurn}" horizontalCenter="0" verticalCenter="0">
                 <e:Label text="等待房主确定开始下一轮" textColor="0x000000"></e:Label>
@@ -643,7 +643,7 @@
             </e:Skin>
         </e:Button>
         <e:Group anchorOffsetX="0" right="0" width="520" y="0">
-            <e:Group visible="!{isPhaseGameInProgress}" width="100%">
+            <e:Group width="100%">
                 <e:Group visible="{isNormalClient}" width="100%">
                     <e:Button enabled="false" width="100%" visible="{isWaiting}">
                         <e:Skin>

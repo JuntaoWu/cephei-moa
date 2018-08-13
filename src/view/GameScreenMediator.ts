@@ -451,6 +451,11 @@ module game {
         public first_one(message: string) {
             this.setAnims();
 
+            const dragonBone = DragonBones.createDragonBone("fangzhen", "fangzhen");
+            dragonBone.animation.play("newAnimation", 0);
+
+            this.gameScreen.btnSkill.addChild(dragonBone);
+
             const firstoneNr = +message;
             this.proxy.gameState.shunwei_one_been[1] = this.proxy.gameState.seats[firstoneNr];
             this.xingdong(firstoneNr);
@@ -463,38 +468,29 @@ module game {
             }
         }
 
-        private syncMyTurnState(action) {
-            this.proxy.updateMyState(action);
+        private syncMyTurnState(action, receiver: Receiver = Receiver.Self) {
+            this.proxy.updateMyState(action, receiver);
         }
 
         private setMyTurnState(seats: ActorModel[]) {
-            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext"];
-            seats.forEach(seat => {
-                if (seat && seat.action) {
-                    if (seat.actorNr == this.proxy.actorNr) {
-                        this.gameScreen.isMyTurn = true;
-                        this.gameScreen.isOthersTurn = false;
-                        actionList.forEach(s => {
-                            this.gameScreen[s] = seat.action == s;
-                        });
-                    }
-                    else {
-                        this.gameScreen.isMyTurn = false;
-                        this.gameScreen.isOthersTurn = true;
-                        actionList.forEach(s => {
-                            this.gameScreen[s] = false;
-                        });
-                        this.gameScreen.processingActorUI.update({ ...seat });
-                        this.gameScreen.processingPlayer = {
-                            colorName: seat.color.color,
-                            name: seat.name,
-                        };
-                    }
-                }
+            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext", "isSpeaking"];
+            const mySeat = seats.find(seat => seat && seat.actorNr == this.proxy.actorNr);
+            const actionSeats = seats.filter(seat => seat && seat.action);
+
+            this.gameScreen.isMyTurn = mySeat.action && mySeat.action != "isSpeaking";
+            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0;
+            actionList.forEach(s => {
+                this.gameScreen[s] = mySeat.action == s;
             });
 
-
-
+            if (actionSeats.length == 1 && this.gameScreen.isOthersTurn) {
+                const seat = actionSeats[0];
+                this.gameScreen.processingActorUI.update({ ...seat });
+                this.gameScreen.processingPlayer = {
+                    colorName: seat.color.color,
+                    name: seat.name,
+                };
+            }
         }
 
         public ybrskilladd(message: number) {
@@ -1060,7 +1056,7 @@ module game {
         }
 
         public shunwei(nextNr: string) {
-            this.syncMyTurnState("");
+            this.syncMyTurnState("", Receiver.Self);
 
             this.gameScreen.shunwei1.visible = false;
             this.gameScreen.shunwei2.visible = false;
@@ -1331,6 +1327,8 @@ module game {
         }
 
         public onegameend2() {
+            this.syncMyTurnState("isSpeaking", Receiver.All);
+
             this.gameScreen.onegameend.visible = false;
             this.gameScreen.isLastPlayer = false;
             if (this.proxy.gameState.lunci == 1) {
@@ -1382,6 +1380,7 @@ module game {
 
             this.gameScreen.isMyTurn = false;
             this.gameScreen.isOthersTurn = false;
+            this.gameScreen.isSpeaking = false;
             this.gameScreen.isVoteVisible = true;
 
             this.gameScreen.qingkong.enabled = true;
@@ -1763,7 +1762,8 @@ module game {
         }
 
         public tourenui() {
-            this.syncMyTurnState("isChoosingNext");
+            // note this UI need all of us show isChoosingNext buttons.
+            this.syncMyTurnState("isChoosingNext", Receiver.All);
             this.gameScreen.isWaitTouRen = false;
             this.gameScreen.isVoteVisible = false;
             this.gameScreen.startno2.visible = false;
@@ -1827,7 +1827,9 @@ module game {
                 }
             });
 
+            console.log("check tourenjieguo");
             if (i == this.proxy.gameState.maxPlayers) {
+                console.log("check tourenjieguo finished.");
                 let lcfpiao: number = 0;
                 if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[1] == this.proxy.gameState.role[6]) {
                     lcfpiao++;
