@@ -36,7 +36,6 @@ module game {
 		public static CHOOSE_JS_END: string = "choose_js_end";
 		public static FIRST_ONE: string = "first_one";
 		public static NEXT_NR: string = "next_nr";
-		public static ONE_GAME_END: string = "one_game_end";
 		public static TONGZHI: string = "tongzhi";
 		public static BAOWU_TONGZHI: string = "baowu_tongzhi";
 		public static TOUPIAO_UI: string = "toupiao_ui";
@@ -229,30 +228,7 @@ module game {
 							i++;
 						}
 					});
-					this.sendNotification(GameProxy.ROLEING, i);
-
-					// if (message == "destory1") {
-					// 	this.gameState.role[1] = undefined;
-					// } else if (message == "destory2") {
-					// 	this.gameState.role[2] = undefined;
-					// } else if (message == "destory3") {
-					// 	this.gameState.role[3] = undefined;
-					// } else if (message == "destory4") {
-					// 	this.gameState.role[4] = undefined;
-					// } else if (message == "destory5") {
-					// 	this.gameState.role[5] = undefined;
-					// } else if (message == "destory6") {
-					// 	this.gameState.role[6] = undefined;
-					// } else if (message == "destory7") {
-					// 	this.gameState.role[7] = undefined;
-					// } else if (message == "destory8") {
-					// 	this.gameState.role[8] = undefined;
-					// } else {
-					// 	const jsNumber = +message;
-					// 	this.gameState.role[jsNumber] = new ActorModel(sender);
-					// }
-
-					//this.sendNotification(GameProxy.CHOOSE_JS_END, this.gameState.role);					
+					this.sendNotification(GameProxy.ROLEING, i);				
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 
 					if (this.isMasterClient) {
@@ -270,10 +246,6 @@ module game {
 				}
 				case CustomPhotonEvents.nextNr: {
 					this.sendNotification(GameProxy.NEXT_NR, message);
-					break;
-				}
-				case CustomPhotonEvents.onegameend: {
-					this.sendNotification(GameProxy.ONE_GAME_END);
 					break;
 				}
 				case CustomPhotonEvents.tongzhi: {

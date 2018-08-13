@@ -11,7 +11,6 @@ module game {
         StartGame,
         FirstOneNr,
         nextNr,
-        onegameend,
         twogameend,
         threegameend,
         tongzhi,

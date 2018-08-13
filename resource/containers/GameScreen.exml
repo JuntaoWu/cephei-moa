@@ -529,10 +529,11 @@
                 <e:Label text="正在发言中..." textColor="0x000000" width="300" ></e:Label>
             </e:Group>
             <e:Group visible="{isWaitNextTurn}" horizontalCenter="0" verticalCenter="0">
-                <e:Label text="等待房主确定开始下一轮" textColor="0x000000"></e:Label>
+                <e:Label visible="{isNormalClient}" text="等待房主确定开始下一轮" textColor="0x000000"></e:Label>
+                <e:Label visible="{isMasterClient}" text="等待房主确定开始下一轮" textColor="0x000000"></e:Label>
             </e:Group>
             <e:Group visible="{isWaitTouRen}" horizontalCenter="0" verticalCenter="0">
-                <e:Label text="等待房主确定开始投人环节" textColor="0x000000"></e:Label>
+                <e:Label text="等待房主确定开始鉴人环节" textColor="0x000000"></e:Label>
             </e:Group>
             <e:Group visible="{isWaitOthersTouRen}" horizontalCenter="0" verticalCenter="0">
                 <e:Label text="等待其他玩家投票" textColor="0x000000"></e:Label>
