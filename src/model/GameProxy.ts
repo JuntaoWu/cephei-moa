@@ -142,6 +142,12 @@ module game {
 							this.joinRoom(this.roomName);
 						}
 					}
+					else {
+						const currentRoom = platform.getStorage("currentRoom");
+						if(currentRoom && currentRoom.roomName) {
+							this.joinRoom(currentRoom.roomName);
+						}
+					}
 					break;
 			}
 		}
