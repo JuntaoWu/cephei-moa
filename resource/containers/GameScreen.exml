@@ -293,13 +293,13 @@
                     </e:Group>
                 </e:Group>
                 <e:Group horizontalCenter="0" visible="{isSkilling}" y="40">
-                    <e:Label text="点击技能图标发动技能" textColor="0x000000"></e:Label>
+                    <e:Label text="点击技能图标发动技能，或者点击跳过按钮不使用技能" width="500" textColor="0x000000" horizontalCenter="0"></e:Label>
                     <e:Label text="点击" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" verticalCenter="0" x="0" size="25"
                              bold="true"></e:Label>
                     <e:Image source="skip2" verticalCenter="0" x="55"></e:Image>
                     <e:Label text="跳过" textColor="0x000000" fontFamily="SimHei" verticalAlign="middle" x="110" verticalCenter="0" size="25"
                              bold="true"></e:Label>
-                    <e:Button id="btnSkill" y="150">
+                    <e:Button id="btnSkill" y="100">
                         <e:Skin states="up,down">
                             <e:Image source="botton" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
                         </e:Skin>
@@ -307,7 +307,8 @@
                 </e:Group>
                 <e:Group visible="{isChoosingSkillingTarget}" width="80%" height="80%" horizontalCenter="0"
                          verticalCenter="0">
-                    <e:Group visible="{isYaoBuran}">
+                    <e:Label text="选择技能发动目标" textColor="0x000000" horizontalCenter="0"></e:Label>
+                    <e:Group visible="{isYaoBuran}" y="50" horizontalCenter="0">
                         <e:layout>
                             <e:TileLayout requestedRowCount="2" requestedColumnCount="4" horizontalGap="20" verticalGap="40"></e:TileLayout>
                         </e:layout>
@@ -320,7 +321,7 @@
                         <game:ActorUI id="ybrskill7" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
                         <game:ActorUI id="ybrskill8" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
                     </e:Group>
-                    <e:Group visible="{isFangZhen}">
+                    <e:Group visible="{isFangZhen}" y="50" horizontalCenter="0">
                         <e:layout>
                             <e:TileLayout requestedRowCount="2" requestedColumnCount="4" horizontalGap="20" verticalGap="40"></e:TileLayout>
                         </e:layout>
@@ -333,7 +334,7 @@
                         <game:ActorUI id="fangzhenskill7" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
                         <game:ActorUI id="fangzhenskill8" enabled="true" scaleX="0.8" scaleY="0.8"></game:ActorUI>
                     </e:Group>
-                    <e:Group visible="{isZhengGuoqu}">
+                    <e:Group visible="{isZhengGuoqu}" y="50" horizontalCenter="0">
                         <e:layout>
                             <e:TileLayout requestedRowCount="2" requestedColumnCount="2" horizontalGap="20" verticalGap="40"></e:TileLayout>
                         </e:layout>
@@ -383,7 +384,8 @@
                         </e:Button>
                     </e:Group>
                 </e:Group>
-                <e:Group visible="{isChoosingNext}">
+                <e:Group visible="{isChoosingNext}" horizontalCenter="0">
+                    <e:Label visible="{isChoosingNextText}" text="选择下一位行动的玩家" textColor="0x000000" horizontalCenter="0" y="30"></e:Label>
                     <e:Button id="shunwei1" label="Button" x="100" y="100" anchorOffsetX="0" width="100"
                               anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
                         <e:Skin>
@@ -442,20 +444,23 @@
                     </e:Button>
                 </e:Group>
                 <e:Group visible="{isLastPlayer}" horizontalCenter="0" verticalCenter="0">
-                    <e:Label text="你是最后一名行动的玩家，点击“开始发言”按钮，进入发言阶段。" textColor="0x000000" width="300"></e:Label>
+                    <e:Label text="你是最后一名行动的玩家，点击下方按钮，进入发言阶段。" textColor="0x000000" width="300"></e:Label>
                 </e:Group>
             </e:Group>
-            <e:Group x="50" y="150" visible="{isOthersTurn}">
+            <e:Group x="50" y="200" visible="{isOthersTurn}">
                 <game:ActorUI id="processingActorUI"></game:ActorUI>
                 <e:Label text="{processingPlayer.colorName}" x="200" textColor="0x000000"></e:Label>
                 <e:Label text="玩家" textColor="0x000000" x="317"></e:Label>
                 <e:Label text="{processingPlayer.name}" textColor="0x000000" y="32" x="200"></e:Label>
                 <e:Label text="正在鉴定宝物" textColor="0x000000" y="78" x="200"></e:Label>
             </e:Group>
+            <e:Group visible="{isSpeaking}" horizontalCenter="0" verticalCenter="0">
+                <e:Label text="发言中..." textColor="0x000000"></e:Label>
+            </e:Group>
             <e:Group horizontalCenter="0" y="100" visible="{isVoteVisible}">
-                <e:Label text="点击对应宝物录入投票数" y="-60" bold="true" horizontalCenter="0" size="24" textColor="0x000000"/>
+                <e:Label text="点击对应宝物录入投票数" y="-60" bold="true" horizontalCenter="0" size="24" textColor="0x000000" />
                 <e:Group y="-30" horizontalCenter="0">
-                    <e:Label text="剩余票数" bold="true" size="24" right="90" textColor="0x000000"/>
+                    <e:Label text="剩余票数" bold="true" size="24" right="90" textColor="0x000000" />
                     <e:Label id="piaoshu" text="0/2" right="0" size="24" anchorOffsetX="0" width="90" anchorOffsetY="0"
                              textColor="0x000000" textAlign="center" />
                 </e:Group>
@@ -515,8 +520,8 @@
                          textColor="0x000000" textAlign="center" />
                 <e:Label id="toupiao41" text="0" right="10" y="320" anchorOffsetX="0" anchorOffsetY="0"
                          textColor="0x000000" textAlign="center" />
-                <e:Label id="onejieguo" text="第一轮投票" x="234" y="38" anchorOffsetX="0"
-                         anchorOffsetY="0" height="53" textColor="0x000000" textAlign="center" />
+                <e:Label id="onejieguo" text="第一轮投票" x="234" y="38" anchorOffsetX="0" anchorOffsetY="0" height="53"
+                         textColor="0x000000" textAlign="center" />
                 <e:Button id="qingkong" label="清空票数" right="0" y="-50" width="100" height="50" />
             </e:Group>
             <e:Group visible="{isVoteEnd}" horizontalCenter="0" verticalCenter="0">
@@ -524,7 +529,13 @@
                 <e:Label text="{voteing}" textColor="0x000000" horizontalCenter="0" verticalCenter="20"></e:Label>
             </e:Group>
             <e:Group visible="{isSpeaking}" horizontalCenter="0" verticalCenter="0">
-                <e:Label text="正在发言阶段..." textColor="0x000000" width="300" ></e:Label>
+                <e:Label text="正在发言中..." textColor="0x000000" width="300" ></e:Label>
+            </e:Group>
+            <e:Group visible="{isWaitNextTurn}" horizontalCenter="0" verticalCenter="0">
+                <e:Label text="等待房主确定开始下一轮" textColor="0x000000"></e:Label>
+            </e:Group>
+            <e:Group visible="{isWaitTouRen}" horizontalCenter="0" verticalCenter="0">
+                <e:Label text="等待房主确定开始投人环节" textColor="0x000000"></e:Label>
             </e:Group>
             <e:Button id="btnGameInfo" horizontalCenter="-70" bottom="0">
                 <e:Skin states="up,down">
@@ -692,7 +703,7 @@
                     <e:Group visible="{isAuthing}" width="100%">
                         <e:Button id="btnAuth" width="100%" visible="{role.isAuth}">
                             <e:Skin states="up,down">
-                                <e:Image source="auth3" width="100%" height="131" alpha.down="0.5" ></e:Image>
+                                <e:Image source="auth3" width="100%" height="131" alpha.down="0.5"></e:Image>
                             </e:Skin>
                         </e:Button>
                         <e:Button id="btnSkipAuth" width="100%" visible="{role.isSkip}">

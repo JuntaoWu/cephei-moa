@@ -55,6 +55,10 @@ module game {
         public isLastPlayer: boolean = false;
         public isVoteEnd: boolean = false;
         public voteing: string;
+        public isSpeaking: boolean = false;
+        public isWaitNextTurn: boolean = false;
+        public isWaitTouRen: boolean = false;
+        public isChoosingNextText: boolean = false;
 
         public processingPlayer = {
             name: "",
