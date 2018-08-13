@@ -473,15 +473,16 @@ module game {
         }
 
         private setMyTurnState(seats: ActorModel[]) {
-            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext", "isSpeaking"];
+            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext", "isSpeaking", "isVotingPerson"];
             const mySeat = seats.find(seat => seat && seat.actorNr == this.proxy.actorNr);
             const actionSeats = seats.filter(seat => seat && seat.action);
 
             this.gameScreen.isMyTurn = mySeat.action && mySeat.action != "isSpeaking";
-            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0;
+            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0 && !actionSeats.find(seat => seat.action == "isVotingPerson");
             actionList.forEach(s => {
                 this.gameScreen[s] = mySeat.action == s;
             });
+            this.gameScreen.isChoosingNextOrVotingPerson = this.gameScreen.isChoosingNext || this.gameScreen.isVotingPerson;
 
             if (actionSeats.length == 1 && this.gameScreen.isOthersTurn) {
                 const seat = actionSeats[0];
@@ -1002,10 +1003,12 @@ module game {
         }
 
         public chuanshunwei() {
-            this.syncMyTurnState("isChoosingNext");
+
             if (this.proxy.gameState.lunci != 99) {
+                this.syncMyTurnState("isChoosingNext");
                 this.gameScreen.isChoosingNextText = true;
             } else {
+                this.syncMyTurnState("isVotingPerson");
                 this.gameScreen.isChoosingNextText = false;
             }
             this.gameScreen.shunwei1.visible = true;
@@ -1345,13 +1348,9 @@ module game {
         public start_toupiao_button() {
             this.gameScreen.isSpeaking = true;
             this.gameScreen.isOthersTurn = false;
-            if (this.proxy.isMasterClient) {
-                this.gameScreen.onespeakend.visible = true;
-            }
         }
 
         public onespeakend() {
-            this.gameScreen.onespeakend.visible = false;
             this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tongzhi, "开始录入票数");
             this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.toupiaoui);
         }

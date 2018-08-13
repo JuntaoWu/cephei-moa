@@ -384,7 +384,7 @@
                         </e:Button>
                     </e:Group>
                 </e:Group>
-                <e:Group visible="{isChoosingNext}" horizontalCenter="0">
+                <e:Group visible="{isChoosingNextOrVotingPerson}" horizontalCenter="0">
                     <e:Label visible="{isChoosingNextText}" text="选择下一位行动的玩家" textColor="0x000000" horizontalCenter="0" y="30"></e:Label>
                     <e:Button id="shunwei1" label="Button" x="100" y="100" anchorOffsetX="0" width="100"
                               anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
@@ -526,13 +526,15 @@
                 <e:Label text="{voteing}" textColor="0x000000" horizontalCenter="0" verticalCenter="20"></e:Label>
             </e:Group>
             <e:Group visible="{isSpeaking}" horizontalCenter="0" verticalCenter="0">
-                <e:Label text="正在发言中..." textColor="0x000000" width="300" ></e:Label>
+                <e:Label text="正在发言中..." textColor="0x000000" width="300"></e:Label>
             </e:Group>
             <e:Group visible="{isWaitNextTurn}" horizontalCenter="0" verticalCenter="0">
-                <e:Label text="等待房主确定开始下一轮" textColor="0x000000"></e:Label>
+                <e:Label visible="{isNormalClient}" text="等待房主确定开始下一轮" textColor="0x000000"></e:Label>
+                <e:Label visible="{isMasterClient}" text="点击按钮开始下一轮" textColor="0x000000"></e:Label>
             </e:Group>
             <e:Group visible="{isWaitTouRen}" horizontalCenter="0" verticalCenter="0">
-                <e:Label text="等待房主确定开始投人环节" textColor="0x000000"></e:Label>
+                <e:Label visible="{isNormalClient}" text="等待房主确定开始投人环节" textColor="0x000000"></e:Label>
+                <e:Label visible="{isMasterClient}" text="点击按钮开始投人" textColor="0x000000"></e:Label>
             </e:Group>
             <e:Button id="btnGameInfo" horizontalCenter="-70" bottom="0">
                 <e:Skin states="up,down">
@@ -722,14 +724,21 @@
                         <e:Image source="wait-4-others-process"></e:Image>
                     </e:Skin>
                 </e:Button>
+                <e:Group visible="{isSpeaking}">
+                    <e:Button visible="{isMasterClient}" id="onespeakend" width="100%">
+                        <e:Skin>
+                            <e:Image source="talk_over"></e:Image>
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button enabled="false" visible="{isNormalClient}" width="100%">
+                        <e:Skin>
+                            <e:Image source="talking"></e:Image>
+                        </e:Skin>
+                    </e:Button>
+                </e:Group>
                 <e:Button id="onegameend" width="100%">
                     <e:Skin>
                         <e:Image source="auth_png"></e:Image>
-                    </e:Skin>
-                </e:Button>
-                <e:Button id="onespeakend" width="100%">
-                    <e:Skin>
-                        <e:Image source="talk_over"></e:Image>
                     </e:Skin>
                 </e:Button>
                 <e:Button id="toupiaoqueren" width="100%">

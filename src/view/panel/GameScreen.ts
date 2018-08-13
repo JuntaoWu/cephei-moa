@@ -46,6 +46,8 @@ module game {
         public isSkilling = false;
         public isChoosingSkillingTarget = false;
         public isChoosingNext = false;
+        public isVotingPerson = false;
+        public isChoosingNextOrVotingPerson: boolean = false;
         public isSpeaking: boolean = false;
 
         public isPhasePreparing: boolean = false;
