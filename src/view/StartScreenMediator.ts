@@ -77,7 +77,7 @@ module game {
         }
 
         private guideClick(event: egret.TouchEvent) {
-            this.sendNotification(SceneCommand.SHOW_GUIDE_WINDOW);
+            this.sendNotification(SceneCommand.SHOW_BAR_WINDOW);
         }
 
         private settingClick(event: egret.TouchEvent) {

@@ -8,23 +8,23 @@
             <e:Label text="第一轮" bold="true" textColor="0x000000" size="26" verticalCenter="0"/>
             <e:DataGroup id="orderGroup1" scaleX="0.6" scaleY="0.6" verticalCenter="0" x="100" width="790">
                 <e:layout>
-                    <e:TileLayout orientation="columns" horizontalGap="6" />
+                    <e:TileLayout orientation="columns" requestedColumnCount="8" horizontalGap="6" />
                 </e:layout> 
             </e:DataGroup>
         </e:Group>
         <e:Group y="100">
             <e:Label text="第二轮" bold="true" textColor="0x000000" size="26" verticalCenter="0"/>
-            <e:DataGroup id="orderGroup2" scaleX="0.6" scaleY="0.6" verticalCenter="0" x="100">
+            <e:DataGroup id="orderGroup2" scaleX="0.6" scaleY="0.6" verticalCenter="0" x="100" width="790">
                 <e:layout>
-                    <e:TileLayout orientation="columns" horizontalGap="6" />
+                    <e:TileLayout orientation="columns" requestedColumnCount="8" horizontalGap="6" />
                 </e:layout> 
             </e:DataGroup>
         </e:Group>
         <e:Group y="160">
             <e:Label text="第三轮" bold="true" textColor="0x000000" size="26" verticalCenter="0"/>
-            <e:DataGroup id="orderGroup3" scaleX="0.6" scaleY="0.6" verticalCenter="0" x="100">
+            <e:DataGroup id="orderGroup3" scaleX="0.6" scaleY="0.6" verticalCenter="0" x="100" width="790">
                 <e:layout>
-                    <e:TileLayout orientation="columns" horizontalGap="6" />
+                    <e:TileLayout orientation="columns" requestedColumnCount="8" horizontalGap="6" />
                 </e:layout> 
             </e:DataGroup>
         </e:Group>
@@ -39,7 +39,7 @@
                 </e:layout> 
             </e:DataGroup>
         </e:Group>
-        <e:Group y="230">
+        <e:Group y="250">
             <e:Image source="round2" verticalCenter="0"></e:Image>
             <e:DataGroup id="roundGroup2" verticalCenter="0" x="50" width="520">  
                 <e:layout>
@@ -47,7 +47,7 @@
                 </e:layout>
             </e:DataGroup>
         </e:Group>
-        <e:Group y="420">
+        <e:Group y="460">
             <e:Image source="round3" verticalCenter="0"></e:Image>
             <e:DataGroup id="roundGroup3" verticalCenter="0" x="50" width="520">  
                 <e:layout>

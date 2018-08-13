@@ -64,6 +64,7 @@ module game {
             }
 
             let i = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
+            let isYaoburan = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r)) == RoleId.YaoBuRan;
             let isFangZhen = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r)) == RoleId.FangZheng;
             if (isFangZhen) {
                 if (this.proxy.gameState.playerInfor[2].onetouxi) {
@@ -122,6 +123,13 @@ module game {
                             resultRes: this.proxy.gameState.playerInfor[i].onezhenjia2 == "真" ? "true" : "false"
                         }
                     }
+                    // if (isYaoburan && this.proxy.gameState.oneybrskill) {
+                    //     let seat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.oneybrskill);
+                    //     let role = this.proxy.rolesMap.get(seat.actorNr.toString());
+                    //     this.popupGameInfoWindow.firstRound.r2 = {
+                    //         resultRes: `你偷袭了${role.name}`
+                    //     }
+                    // }
                 }
                 if (this.proxy.gameState.playerInfor[i].twotouxi) {
                     this.popupGameInfoWindow.secondRound.text = "被药不然偷袭"
@@ -141,6 +149,13 @@ module game {
                             resultRes: this.proxy.gameState.playerInfor[i].twozhenjia2 == "真" ? "true" : "false"
                         }
                     }
+                    // if (isYaoburan && this.proxy.gameState.twoybrskill) {
+                    //     let seat = this.proxy.gameState.seats[this.proxy.gameState.twoybrskill];
+                    //     let role = this.proxy.rolesMap.get(seat.actorNr.toString());
+                    //     this.popupGameInfoWindow.firstRound.r2 = {
+                    //         resultRes: `你偷袭了${role.name}`
+                    //     }
+                    // }
                 }
                 if (this.proxy.gameState.playerInfor[i].threetouxi) {
                     this.popupGameInfoWindow.thirdRound.text = "被药不然偷袭"
@@ -160,6 +175,13 @@ module game {
                             resultRes: this.proxy.gameState.playerInfor[i].threezhenjia2 == "真" ? "true" : "false"
                         }
                     }
+                    // if (isYaoburan && this.proxy.gameState.threeybrskill) {
+                    //     let seat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.threeybrskill);
+                    //     let role = this.proxy.rolesMap.get(seat.actorNr.toString());
+                    //     this.popupGameInfoWindow.firstRound.r2 = {
+                    //         resultRes: `你偷袭了${role.name}`
+                    //     }
+                    // }
                 }
             }
         }

@@ -24,6 +24,7 @@ module game {
         public static SHOW_RANK_WINDOW: string = "show_rank_window";
         public static SHOW_GUIDE_WINDOW: string = "show_guide_window";
         public static SHOW_SETTING_WINDOW: string = "show_setting_window";
+        public static SHOW_BAR_WINDOW: string = "show_setting_window";
 
         public static SHOW_ABOUT_WINDOW: string = "show_about_window";
         public static SHOW_RESULT_WINDOW: string = "show_result_window";
@@ -58,6 +59,7 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_SETTING_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_ABOUT_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_BAR_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_RESULT_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_HANDLE_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_PROMPT_POPUP, SceneCommand);
@@ -106,6 +108,10 @@ module game {
                 }
                 case SceneCommand.SHOW_GUIDE_WINDOW: {
                     appMediator.main.showGuideWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_BAR_WINDOW: {
+                    appMediator.main.showBarWindow();
                     break;
                 }
                 case SceneCommand.SHOW_SETTING_WINDOW: {
