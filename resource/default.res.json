@@ -1280,6 +1280,21 @@
 			"url": "assets/dragonBones/fangzhen_tex.json",
 			"type": "json",
 			"name": "fangzhen_tex_json"
+		},
+		{
+			"name": "fangzhen_ske2_json",
+			"type": "json",
+			"url": "assets/dragonBones/fangzhen_ske.json"
+		},
+		{
+			"name": "fangzhen_tex2_json",
+			"type": "json",
+			"url": "assets/dragonBones/fangzhen_tex.json"
+		},
+		{
+			"name": "fangzhen_tex2_png",
+			"type": "image",
+			"url": "assets/dragonBones/fangzhen_tex.png"
 		}
 	]
 }
