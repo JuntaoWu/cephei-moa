@@ -248,6 +248,7 @@ module game {
 
                     this.setMyTurnState(data.seats);
                     this.setAnims();
+                    this.setChoosingNextOrVotingPersonUI();
                     break;
             }
 
@@ -353,6 +354,7 @@ module game {
             }
         }
 
+        //updated by updateGameScreen
         public touxiang(seats: Array<ActorModel>) {
 
             const seatConfig = [
@@ -399,26 +401,6 @@ module game {
         }
 
         public chooseRole(roleId: number) {
-            // let existingRoleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.actorNr);
-            // let role = this.proxy.rolesMap.get(roleId.toString());
-            // if (this.proxy.gameState.role[roleId]) {
-            //     if (existingRoleId == roleId) {
-            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你已经选择了“${role.name}”`);
-            //     }
-            //     else {
-            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "已经有人选了这个角色");
-            //     }
-            // }
-            // else {
-            //     if (existingRoleId == -1) {
-            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你选择了“${role.name}”`);
-            //     }
-            //     else {
-            //         this.sendNotification(GameCommand.CHOOSE_ROLE, ("destory" + existingRoleId));
-            //         this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, `你更换为“${role.name}”`);
-            //     }
-            //     this.sendNotification(GameCommand.CHOOSE_ROLE, roleId);
-            // }
             this.sendNotification(SceneCommand.SHOW_ROLE_POPUP, roleId);
         }
 
@@ -430,6 +412,7 @@ module game {
             this.sendNotification(GameCommand.START_GAME);
         }
 
+        // updated by updateGameScreen
         public setAnims() {
             animConfig.forEach(anim => {
                 const animName = this.proxy.gameState.baowulist[anim.index];
@@ -483,6 +466,11 @@ module game {
                 this.gameScreen[s] = mySeat.action == s;
             });
             this.gameScreen.isChoosingNextOrVotingPerson = this.gameScreen.isChoosingNext || this.gameScreen.isVotingPerson;
+
+            if (this.gameScreen.isChoosingNextOrVotingPerson) {
+                //todo: update visible seats.
+
+            }
 
             if (actionSeats.length == 1 && this.gameScreen.isOthersTurn) {
                 const seat = actionSeats[0];
@@ -1002,15 +990,7 @@ module game {
             this.selectedAnims.length = 0;
         }
 
-        public chuanshunwei() {
-
-            if (this.proxy.gameState.lunci != 99) {
-                this.syncMyTurnState("isChoosingNext");
-                this.gameScreen.isChoosingNextText = true;
-            } else {
-                this.syncMyTurnState("isVotingPerson");
-                this.gameScreen.isChoosingNextText = false;
-            }
+        private setChoosingNextOrVotingPersonUI() {
             this.gameScreen.shunwei1.visible = true;
             this.gameScreen.shunwei2.visible = true;
             this.gameScreen.shunwei3.visible = true;
@@ -1043,6 +1023,19 @@ module game {
                     this.gameScreen[`shunwei${i}`] && (this.gameScreen[`shunwei${i}`].visible = false);
                 }
             }
+        }
+
+        public chuanshunwei() {
+
+            if (this.proxy.gameState.lunci != 99) {
+                this.syncMyTurnState("isChoosingNext");
+                this.gameScreen.isChoosingNextText = true;
+            } else {
+                this.syncMyTurnState("isVotingPerson");
+                this.gameScreen.isChoosingNextText = false;
+            }
+
+            this.setChoosingNextOrVotingPersonUI();
 
             if (!this.gameScreen.shunwei1.visible
                 && !this.gameScreen.shunwei2.visible
@@ -1061,14 +1054,6 @@ module game {
         public shunwei(nextNr: string) {
             this.syncMyTurnState("", Receiver.Self);
 
-            this.gameScreen.shunwei1.visible = false;
-            this.gameScreen.shunwei2.visible = false;
-            this.gameScreen.shunwei3.visible = false;
-            this.gameScreen.shunwei4.visible = false;
-            this.gameScreen.shunwei5.visible = false;
-            this.gameScreen.shunwei6.visible = false;
-            this.gameScreen.shunwei7.visible = false;
-            this.gameScreen.shunwei8.visible = false;
             if (this.proxy.gameState.lunci == 99) {
                 this.gameScreen.onejieguo.visible = false;
                 this.gameScreen.isOthersTurn = false;
@@ -1763,45 +1748,15 @@ module game {
         }
 
         public tourenui() {
-            // note this UI need all of us show isChoosingNext buttons.
-            this.syncMyTurnState("isChoosingNext", Receiver.All);
             this.gameScreen.isChoosingNextText = true;
             this.gameScreen.isWaitTouRen = false;
             this.gameScreen.isVoteVisible = false;
             this.gameScreen.startno2.visible = false;
             this.proxy.gameState.lunci = 99;
-            this.gameScreen.shunwei1.visible = true;
-            this.gameScreen.shunwei2.visible = true;
-            this.gameScreen.shunwei3.visible = true;
-            this.gameScreen.shunwei4.visible = true;
-            this.gameScreen.shunwei5.visible = true;
-            this.gameScreen.shunwei6.visible = true;
-            this.gameScreen.shunwei7.visible = true;
-            this.gameScreen.shunwei8.visible = true;
-            if (!this.proxy.gameState.seats[1]) {
-                this.gameScreen.shunwei1.visible = false;
-            }
-            if (!this.proxy.gameState.seats[2]) {
-                this.gameScreen.shunwei2.visible = false;
-            }
-            if (!this.proxy.gameState.seats[3]) {
-                this.gameScreen.shunwei3.visible = false;
-            }
-            if (!this.proxy.gameState.seats[4]) {
-                this.gameScreen.shunwei4.visible = false;
-            }
-            if (!this.proxy.gameState.seats[5]) {
-                this.gameScreen.shunwei5.visible = false;
-            }
-            if (!this.proxy.gameState.seats[6]) {
-                this.gameScreen.shunwei6.visible = false;
-            }
-            if (!this.proxy.gameState.seats[7]) {
-                this.gameScreen.shunwei7.visible = false;
-            }
-            if (!this.proxy.gameState.seats[8]) {
-                this.gameScreen.shunwei8.visible = false;
-            }
+
+            // note this UI need all of us show isChoosingNext buttons.
+            this.syncMyTurnState("isVotingPerson", Receiver.All);
+
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])
                 || this.proxy.isActorLocal(this.proxy.gameState.role[2])
                 || this.proxy.isActorLocal(this.proxy.gameState.role[3])
