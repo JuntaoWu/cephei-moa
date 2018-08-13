@@ -556,6 +556,24 @@ module game {
                 if (this.proxy.gameState.ybrskill[2] > 0) {
                     this.proxy.gameState.ybrskill[2]--;
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                } else {
+                    if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.gameState.playerInfor[2].skipskill1 = true;
+                    } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.gameState.playerInfor[2].skipskill2 = true;
+                    } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.gameState.playerInfor[2].skipskill3 = true;
+                    }
+                }
+            }
+            let no = this.proxy.gameState.role.findIndex(no => no.actorNr == this.proxy.actorNr);
+            if (no == 6 || no == 7 || no == 8) {
+                if (this.proxy.gameState.lunci == 1) {
+                    this.proxy.gameState.playerInfor[no].skipskill1 = true;
+                } else if (this.proxy.gameState.lunci == 2) {
+                    this.proxy.gameState.playerInfor[no].skipskill2 = true;
+                } else if (this.proxy.gameState.lunci == 3) {
+                    this.proxy.gameState.playerInfor[no].skipskill3 = true;
                 }
             }
             console.log("skipSkill");
