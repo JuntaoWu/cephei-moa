@@ -55,8 +55,8 @@ module game {
             this.num = this.num.substr(0, this.num.length - 1);
             if (!this.num) {
                 this.popupNumberKeyboard.confirm.visible = false;
-                this.sendNotification(GameProxy.INPUT_NUMBER, this.num);
             }
+            this.sendNotification(GameProxy.INPUT_NUMBER, this.num);
         }
 
         public get popupNumberKeyboard(): PopupNumberKeyboard {

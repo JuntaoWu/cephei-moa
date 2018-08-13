@@ -9,9 +9,21 @@
 	<e:Scroller id="contentScroller" scrollPolicyH="off" horizontalCenter="0" anchorOffsetY="0" y="80">
 		<e:viewport>
 			<e:Group horizontalCenter="0">
-				<e:Image source="video1" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
-				<e:Image source="video2" y="290" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
-				<e:Image source="video3" y="580" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
+				<e:Button id="btnVideo1" horizontalCenter="0">
+					<e:Skin states="up,down">
+						<e:Image source="video1" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
+					</e:Skin>
+				</e:Button>
+				<e:Button id="btnVideo2" y="290" horizontalCenter="0">
+					<e:Skin states="up,down">
+						<e:Image source="video2" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
+					</e:Skin>
+				</e:Button>
+				<e:Button id="btnVideo3" y="580" horizontalCenter="0">
+					<e:Skin states="up,down">
+						<e:Image source="video3" scaleX="0.88" scaleY="0.88" horizontalCenter="0"></e:Image>
+					</e:Skin>
+				</e:Button>	
 			</e:Group>
 		</e:viewport>
 	</e:Scroller>
