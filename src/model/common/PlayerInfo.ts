@@ -19,5 +19,8 @@ module game {
         public threebaowu2: string = "";
         public threezhenjia2: string = "";
         public threetouxi: boolean = false;
+        public skipskill1:boolean=false;
+        public skipskill2:boolean=false;
+        public skipskill3:boolean=false;
     }
 }
