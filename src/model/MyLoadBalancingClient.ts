@@ -85,6 +85,10 @@ module game {
         }
         onOperationResponse(errorCode, errorMsg, code, content) {
             super.onOperationResponse(errorCode, errorMsg, code, content);  // important to call, to keep state up to date
+            if(errorCode) {
+                console.error(errorMsg);
+                platform.showToast(errorMsg);
+            }
             switch (code) {
                 case Photon.LoadBalancing.Constants.OperationCode.Authenticate:
                     console.log(content);

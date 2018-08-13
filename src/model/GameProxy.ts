@@ -54,7 +54,9 @@ module game {
 		public static ROLEING: string = "roleing";
 
 		public roomName: string;
-		public isMasterClient: boolean;
+		public get isMasterClient(): boolean {
+			return this.loadBalancingClient && this.loadBalancingClient.myActor().actorNr == this.loadBalancingClient.myRoomMasterActorNr();
+		}
 		public isCreating: boolean;
 
 		private _actorNr: number;
@@ -496,7 +498,6 @@ module game {
 		}
 
 		public createRoom(maxPlayers: number) {
-			this.isMasterClient = true;
 			this.roomName = this.generateRoomNumber();
 			if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized) {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
@@ -517,11 +518,10 @@ module game {
 					return currentRoom.actorNr;
 				}
 			}
-			return -1;
+			return "";
 		}
 
 		public joinRoom(roomName: string) {
-			this.isMasterClient = false;
 			this.roomName = roomName;
 			if (this.loadBalancingClient.isInLobby()) {
 				console.log(`Begin joinRoom: ${roomName}`);

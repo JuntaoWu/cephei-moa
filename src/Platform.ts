@@ -22,6 +22,8 @@ declare interface Platform {
     setStorage(key, data);
 
     getStorage(key);
+
+    playVideo();
 }
 
 class DebugPlatform implements Platform {
@@ -57,6 +59,10 @@ class DebugPlatform implements Platform {
 
     getStorage(key) {
         return JSON.parse(sessionStorage.getItem(key));
+    }
+
+    playVideo() {
+
     }
 }
 
