@@ -1335,7 +1335,7 @@ module game {
         }
 
         public start_toupiao_button() {
-            this.gameScreen.isSpeaking = true;
+            //this.gameScreen.isSpeaking = true;
             this.gameScreen.isOthersTurn = false;
         }
 
