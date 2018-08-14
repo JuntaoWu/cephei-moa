@@ -33,6 +33,8 @@ module game {
         public isAllRolesReady: boolean = false;
         public canChooseSeat: boolean = true;
         public isChoosingRole: boolean = false;
+        public isChoosingRoleandEight: boolean = false;
+        public isChoosingRoleandSeven: boolean = false;
         public isChoosingRoleOrMasterClient: boolean = false;
         public isAllRolesReadyAndNormalClient: boolean = false;
         public isFirstRound = false;

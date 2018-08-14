@@ -41,7 +41,7 @@
                         <e:Label text="方震" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs3" x="280" height="210"
+                <e:Button enabled="{isChoosingRoleandEight}" scaleX="0.88" scaleY="0.88" id="btnjs3" x="280" height="210"
                           width="150">
                     <e:Skin>
                         <e:Image source="role3" verticalCenter="0" horizontalCenter="0"></e:Image>
@@ -76,7 +76,7 @@
                         <e:Label text="药不然" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRole}" scaleX="0.88" scaleY="0.88" id="btnjs8" y="210" x="420"
+                <e:Button enabled="{isChoosingRoleandSeven}" scaleX="0.88" scaleY="0.88" id="btnjs8" y="210" x="420"
                           height="210" width="150">
                     <e:Skin>
                         <e:Image source="role8" verticalCenter="0" horizontalCenter="0"></e:Image>
