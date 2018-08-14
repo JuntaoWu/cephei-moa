@@ -724,34 +724,34 @@
                 </e:Group>
                 <e:Button visible="{isOthersTurn}" width="100%">
                     <e:Skin>
-                        <e:Image source="wait-4-others-process"></e:Image>
+                        <e:Image source="wait-4-others-process" width="100%"></e:Image>
                     </e:Skin>
                 </e:Button>
-                <e:Group visible="{isSpeaking}">
+                <e:Group visible="{isSpeaking}" width="100%">
                     <e:Button visible="{isMasterClient}" id="onespeakend" width="100%">
                         <e:Skin>
-                            <e:Image source="talk_over"></e:Image>
+                            <e:Image source="talk_over" width="100%"></e:Image>
                         </e:Skin>
                     </e:Button>
                     <e:Button enabled="false" visible="{isNormalClient}" width="100%">
                         <e:Skin>
-                            <e:Image source="talking"></e:Image>
+                            <e:Image source="talking" width="100%"></e:Image>
                         </e:Skin>
                     </e:Button>
                 </e:Group>
                 <e:Button id="onegameend" width="100%">
                     <e:Skin>
-                        <e:Image source="auth_png"></e:Image>
+                        <e:Image source="auth_png" width="100%"></e:Image>
                     </e:Skin>
                 </e:Button>
                 <e:Button id="toupiaoqueren" width="100%">
                     <e:Skin>
-                        <e:Image source="vote_over"></e:Image>
+                        <e:Image source="vote_over" width="100%"></e:Image>
                     </e:Skin>
                 </e:Button>
                 <e:Button id="startno2" width="100%">
                     <e:Skin>
-                        <e:Image source="auth_png"></e:Image>
+                        <e:Image source="auth_png" width="100%"></e:Image>
                     </e:Skin>
                 </e:Button>
             </e:Group>
