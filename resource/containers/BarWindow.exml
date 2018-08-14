@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.BarWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
+        xmlns:game="game.*">
+	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
+	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="200">
+		<e:Group horizontalCenter="0" y="30">
+			<e:Label text="桌游吧" bold="true" textColor="0x020202" verticalCenter="0"/>
+			<e:Image source="club_location"  x="90" scaleX="0.65" scaleY="0.65"/>
+		</e:Group>
+		<e:Group y="90" width="600" horizontalCenter="0">
+			<!-- 下拉框 -->
+			<e:Group id="provinceGroup" left="0" anchorOffsetY="0">
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0" />
+				<e:Label text="{province}" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
+			</e:Group>
+			<e:Group id="cityGroup" horizontalCenter="0">
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0" />
+				<e:Label text="{city}" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
+			</e:Group>
+			<e:Group id="districtGroup" right="0">
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0" />
+				<e:Label text="{district}" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
+			</e:Group>
+		</e:Group>
+	</e:Group>
+	<e:Scroller id="contentScroller" scrollPolicyH="off" width="600" horizontalCenter="0" anchorOffsetY="0" height="790" y="210">
+		<e:viewport>
+			<e:List id="listClub" width="600">
+				<e:layout>
+					<e:VerticalLayout gap="30" />
+				</e:layout>
+			</e:List>
+		</e:viewport>
+	</e:Scroller>
+	<e:Group visible="{showListProvince}" left="20" anchorOffsetY="0" y="157" width="180">
+		<e:List id="listProvince" anchorOffsetX="0" anchorOffsetY="0" width="180">
+			<e:layout>
+				<e:VerticalLayout gap="0" />
+			</e:layout>
+		</e:List>
+	</e:Group>
+	<e:Group visible="{showListCity}" horizontalCenter="0" y="157" width="180">
+		<e:List id="listCity" anchorOffsetX="0" anchorOffsetY="0" width="180">
+			<e:layout>
+				<e:VerticalLayout gap="0" />
+			</e:layout>
+		</e:List>
+	</e:Group>
+	<e:Group visible="{showListDistrict}" right="20" y="157" width="180">
+		<e:List id="listDistrict" anchorOffsetX="0" anchorOffsetY="0" width="180">
+			<e:layout>
+				<e:VerticalLayout gap="0" />
+			</e:layout>
+		</e:List>
+	</e:Group>
+    <e:Group id="navigationBar" y="1011" width="640" height="135">
+		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
+			<e:Skin states="up,down">
+				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+			</e:Skin>
+		</e:Button>
+	</e:Group>
+</e:Skin>

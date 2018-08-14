@@ -23,7 +23,7 @@ declare interface Platform {
 
     getStorage(key);
 
-    playVideo();
+    playVideo(src: string);
 }
 
 class DebugPlatform implements Platform {

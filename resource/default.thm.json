@@ -17,6 +17,8 @@
 	"autoGenerateExmlsList": true,
 	"exmls": [
 		"resource/components/ActorUI.exml",
+		"resource/components/CityItemRenderer.exml",
+		"resource/components/ClubListItemRenderer.exml",
 		"resource/components/GameRoundSkin.exml",
 		"resource/components/PopupWindowSkin.exml",
 		"resource/components/RankListItemRenderer.exml",
@@ -28,6 +30,7 @@
 		"resource/components/VoteNumRenderer.exml",
 		"resource/components/VotePeopleRenderer.exml",
 		"resource/containers/AboutWindow.exml",
+		"resource/containers/BarWindow.exml",
 		"resource/containers/GameRoleList.exml",
 		"resource/containers/GameScreen.exml",
 		"resource/containers/GuideGameProcessWindow.exml",

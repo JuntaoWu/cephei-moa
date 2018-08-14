@@ -12,34 +12,61 @@ module game {
             this.skinName = "skins.GuideVideoWindow";
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
-            platform.playVideo();
-
-            if(1 == 1) {return;}
+            this.btnVideo1.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                let video = platform.playVideo("http://media.w3.org/2010/05/sintel/trailer.mp4");
+                video.poster = "resource/assets/guide/video1.png";
+                video.x = 15;
+                video.y = 80;
+                video.play();
+                video.onEnded(() => {
+                    video.destroy();
+                })
+            }, this);
+            this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                let video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video2.mp4`);
+                video.poster = "resource/assets/guide/video2.png";
+                video.x = 15;
+                video.y = 80;
+                video.play();
+                video.onEnded(() => {
+                    video.destroy();
+                })
+            }, this);
+            this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                let video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video3.mp4`);
+                video.poster = "resource/assets/guide/video3.png";
+                video.x = 15;
+                video.y = 80;
+                video.play();
+                video.onEnded(() => {
+                    video.destroy();
+                })
+            }, this);
         
-            this.video1 = new egret.Video();
-            this.video2 = new egret.Video();
-            this.video3 = new egret.Video();
-           this.video1.load("http://media.w3.org/2010/05/sintel/trailer.mp4");
-            this.video2.load("http://media.w3.org/2010/05/sintel/trailer.mp4");
-            this.video3.load("http://media.w3.org/2010/05/sintel/trailer.mp4");
-            //监听视频加载完成
-            this.video1.once(egret.Event.COMPLETE, () => {
-                this.btnVideo1.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                    this.video1.play();
-                }, this);
-            }, this);
-            this.video2.once(egret.Event.COMPLETE, () => {
-                this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                    this.video2.play();
-                }, this);
-            }, this);
-            this.video3.once(egret.Event.COMPLETE, () => {
-                this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                    this.video3.play();
-                }, this);
-            }, this);
-            //监听视频加载失败
-            this.video1.once(egret.IOErrorEvent.IO_ERROR, this.onLoadErr, this);
+            // this.video1 = new egret.Video();
+            // this.video2 = new egret.Video();
+            // this.video3 = new egret.Video();
+            // this.video1.load("http://media.w3.org/2010/05/sintel/trailer.mp4");
+            // this.video2.load("http://media.w3.org/2010/05/sintel/trailer.mp4");
+            // this.video3.load("http://media.w3.org/2010/05/sintel/trailer.mp4");
+            // //监听视频加载完成
+            // this.video1.once(egret.Event.COMPLETE, () => {
+            //     this.btnVideo1.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+            //         this.video1.play();
+            //     }, this);
+            // }, this);
+            // this.video2.once(egret.Event.COMPLETE, () => {
+            //     this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+            //         this.video2.play();
+            //     }, this);
+            // }, this);
+            // this.video3.once(egret.Event.COMPLETE, () => {
+            //     this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+            //         this.video3.play();
+            //     }, this);
+            // }, this);
+            // //监听视频加载失败
+            // this.video1.once(egret.IOErrorEvent.IO_ERROR, this.onLoadErr, this);
             
         }
         
