@@ -35,7 +35,7 @@
             <e:Image source="round1" verticalCenter="0"></e:Image>
             <e:DataGroup id="roundGroup1" verticalCenter="0" x="50" width="520"> 
                 <e:layout>
-                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="20" />
+                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="15" />
                 </e:layout> 
             </e:DataGroup>
         </e:Group>
@@ -43,7 +43,7 @@
             <e:Image source="round2" verticalCenter="0"></e:Image>
             <e:DataGroup id="roundGroup2" verticalCenter="0" x="50" width="520">  
                 <e:layout>
-                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="20" />
+                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="15" />
                 </e:layout>
             </e:DataGroup>
         </e:Group>
@@ -51,7 +51,7 @@
             <e:Image source="round3" verticalCenter="0"></e:Image>
             <e:DataGroup id="roundGroup3" verticalCenter="0" x="50" width="520">  
                 <e:layout>
-                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="20" />
+                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="15" />
                 </e:layout>
             </e:DataGroup>  
         </e:Group>
