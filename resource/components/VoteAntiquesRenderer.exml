@@ -6,9 +6,9 @@
             <e:Image horizontalCenter="0" verticalCenter="0" source="{this.data.antRes}"></e:Image>
             <e:Image scaleX="0.6" scaleY="0.6" bottom="10" right="10" source="{this.data.isReal}"></e:Image>
         </e:Group>
-        <e:DataGroup id="voteDetail" y="200" horizontalCenter="0" scaleX="0.7" scaleY="0.7">
+        <e:DataGroup id="voteDetail" y="200" horizontalCenter="0" scaleX="0.6" scaleY="0.6">
             <e:layout>
-                <e:TileLayout horizontalAlign="center" verticalAlign="contentJustify" orientation="columns" requestedColumnCount="4" verticalGap="2" horizontalGap="6" />
+                <e:TileLayout horizontalAlign="center" verticalAlign="contentJustify" orientation="rows" requestedColumnCount="4" verticalGap="2" horizontalGap="6" />
             </e:layout>
         </e:DataGroup>
     </e:Group>

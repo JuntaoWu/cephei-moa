@@ -546,7 +546,7 @@
             </e:Button>
             <e:Button id="btnGameRecord" horizontalCenter="70" bottom="0">
                 <e:Skin states="up,down">
-                    <e:Image source="self_info"></e:Image>
+                    <e:Image source="game-record"></e:Image>
                 </e:Skin>
             </e:Button>
         </e:Group>
@@ -554,9 +554,9 @@
     <e:Group id="seatArea" anchorOffsetY="0" y="620" anchorOffsetX="0" width="590" x="25" height="400">
         <e:Button enabled="{canChooseSeat}" id="btnSeat1" anchorOffsetX="0" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="red" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -565,9 +565,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat2" x="155" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="orange" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -576,9 +576,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat3" x="310" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="yellow" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -587,9 +587,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat4" x="465" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="green" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -598,9 +598,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat5" y="190" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="blue" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -609,9 +609,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat6" y="190" x="158" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="purple" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -620,9 +620,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat7" y="190" x="317" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="white" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -631,9 +631,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat8" y="190" x="470" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%"/>
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="black" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
