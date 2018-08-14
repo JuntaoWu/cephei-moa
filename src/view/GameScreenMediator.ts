@@ -1404,6 +1404,12 @@ module game {
         }
 
         public qingkong() {
+            [1, 2, 3, 4].forEach(num => {
+                let control = this.gameScreen[`toupiao${num}`] as eui.Button;
+                let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                let antiBg = antiqueGroup.getChildByName("antique-normal") as eui.Image;
+                antiBg.source = "bg2";
+            });
             this.baowu1 = 0;
             this.baowu2 = 0;
             this.baowu3 = 0;
@@ -1426,6 +1432,10 @@ module game {
             if (this.muqianpiaoshu <= 0) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你的票数不足");
             } else {
+                let control = this.gameScreen[`toupiao${baowuNr}`] as eui.Button;
+                let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                let antiBg = antiqueGroup.getChildByName("antique-normal") as eui.Image;
+                antiBg.source = "bg3";
                 if (baowuNr == "1") {
                     this.baowu1++;
                     this.muqianpiaoshu--;

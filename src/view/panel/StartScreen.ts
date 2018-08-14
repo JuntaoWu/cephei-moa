@@ -38,7 +38,7 @@ module game {
         public createCompleteEvent(event: eui.UIEvent): void {
             this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 10;
             // this.poweredLabel.y = this.stage.stageHeight - this.poweredLabel.height - 30;
-            this.contentScroller.height = this.stage.stageHeight - this.navigationBar.height - this.headGroup.height - 15;
+            this.contentScroller.height = this.stage.stageHeight - this.navigationBar.height - this.headGroup.height - 40;
 
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new StartScreenMediator(this));
