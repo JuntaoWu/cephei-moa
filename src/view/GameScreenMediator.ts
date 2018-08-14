@@ -815,10 +815,10 @@ module game {
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threelcfskill) {
-                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0]] == "真" ? "假" : "真";
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8] == "真" ? "假" : "真";
                         }
                         else {
-                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0]];
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
                         }
 
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8 || this.proxy.gameState.hyyskill == 3) {
@@ -875,10 +875,10 @@ module game {
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threelcfskill) {
-                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0]] == "真" ? "假" : "真";
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8] == "真" ? "假" : "真";
                         }
                         else {
-                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0]];
+                            results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
                         }
 
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8 || this.proxy.gameState.mhjnskill == 3) {
