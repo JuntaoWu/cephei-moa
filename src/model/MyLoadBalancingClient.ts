@@ -11,11 +11,21 @@ module game {
 
     export class MyLoadBalancingClient extends Photon.LoadBalancing.LoadBalancingClient {
 
+        private retried: number = 0;
+        private maxRetriedCount: number = 3;
+
         public setupId: number = 0;
 
         logger = new Exitgames.Common.Logger("Info:");
 
         private USERCOLORS = ["#FF0000", "#00AA00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"];
+
+        public get autoRejoin(): boolean {
+            return platform.getStorage("autoRejoin") as boolean;
+        }
+        public set autoRejoin(value: boolean) {
+            platform.setStorage("autoRejoin", value);
+        }
 
         constructor() {
             super(photonWss ? Photon.ConnectionProtocol.Wss : Photon.ConnectionProtocol.Ws, photonAppId, photonAppVersion);
@@ -47,10 +57,43 @@ module game {
         }
 
         onError(errorCode: number, errorMsg: string) {
+
+            platform.hideLoading();
+
             this.output("Error " + errorCode + ": " + errorMsg);
 
-            if(errorCode == 1003) {
-                this.start();
+            if (errorCode == 1003) {
+                if (++this.retried < this.maxRetriedCount) {
+                    this.start();
+                }
+                else {
+                    platform.showModal("服务器连接被重置,自动加入房间可能失败").then(res => {
+                        if (res && res.confirm) {
+                            this.retried = 0;
+                            this.autoRejoin = false;
+                            this.start();
+                        }
+                        else if (res && res.cancel) {
+                            this.autoRejoin = false;
+                        }
+                    });
+                }
+            }
+            else if (errorCode == 1004) {
+                if (++this.retried < this.maxRetriedCount) {
+                    this.start();
+                }
+                else {
+                    platform.showModal("服务器连接超时,请检查网络或尝试重连").then(res => {
+                        if (res && res.confirm) {
+                            this.retried = 0;
+                            this.start();
+                        }
+                        else if (res && res.cancel) {
+                            this.autoRejoin = false;
+                        }
+                    });
+                }
             }
         }
 
@@ -85,9 +128,26 @@ module game {
         }
         onOperationResponse(errorCode, errorMsg, code, content) {
             super.onOperationResponse(errorCode, errorMsg, code, content);  // important to call, to keep state up to date
-            if(errorCode) {
+            if (errorCode) {
                 console.error(errorMsg);
-                platform.showToast(errorMsg);
+                switch (errorCode) {
+                    case 32746:
+                        platform.showToast("用户重复加入");
+                        break;
+                    case 32748:
+                        platform.showToast("房间已关闭");
+                        break;
+                    case 32758:
+                        platform.showToast("该房间不存在");
+                        break;
+                    case 32765:
+                        platform.showToast("房间已满");
+                        break;
+                    default:
+                        platform.showToast(`Code: ${errorCode}`);
+                        break;
+                }
+
             }
             switch (code) {
                 case Photon.LoadBalancing.Constants.OperationCode.Authenticate:
@@ -198,7 +258,7 @@ module game {
                 //    });
                 //}
                 //default:
-                this.raiseEvent(event, message,{
+                this.raiseEvent(event, message, {
                     receivers: Photon.LoadBalancing.Constants.ReceiverGroup.All
                 });
                 this.output('me[' + (this.myActor().name || this.myActor().actorNr) + ']: ' + JSON.stringify(message), this.myActor().getCustomProperty("color"));

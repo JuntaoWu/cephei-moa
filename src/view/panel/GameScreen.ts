@@ -38,7 +38,6 @@ module game {
         public isFirstRound = false;
         public isSecondRound = false;
         public isThirdRound = false;
-        public isVoteVisible: boolean = false;
 
         public isMyTurn = false;
         public isOthersTurn = false;
@@ -166,13 +165,6 @@ module game {
             this.shunwei8.visible = false;
             this.onegameend.visible = false;
             this.onespeakend.visible = false;
-            this.toupiao11.visible = false;
-            this.toupiao21.visible = false;
-            this.toupiao31.visible = false;
-            this.toupiao41.visible = false;
-            this.qingkong.visible = false;
-            this.piaoshu.visible = false;
-            this.toupiaoqueren.visible = false;
             this.startno2.visible = false;
             this.onejieguo.visible = false;
         }

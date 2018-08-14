@@ -454,7 +454,7 @@
                 <e:Label text="{processingPlayer.name}" textColor="0x000000" y="32" x="200"></e:Label>
                 <e:Label text="正在鉴定宝物" textColor="0x000000" y="78" x="200"></e:Label>
             </e:Group>
-            <e:Group horizontalCenter="0" y="100" visible="{isVoteVisible}">
+            <e:Group horizontalCenter="0" y="100" visible="{isVoting}">
                 <e:Label text="点击对应宝物录入投票数" y="-60" bold="true" horizontalCenter="0" size="24" textColor="0x000000" />
                 <e:Group y="-30" horizontalCenter="0">
                     <e:Label text="剩余票数" bold="true" size="24" right="90" textColor="0x000000" />
@@ -744,7 +744,7 @@
                         <e:Image source="auth_png"></e:Image>
                     </e:Skin>
                 </e:Button>
-                <e:Button id="toupiaoqueren" width="100%">
+                <e:Button visible="{isVoting}" id="toupiaoqueren" width="100%">
                     <e:Skin>
                         <e:Image source="vote_over"></e:Image>
                     </e:Skin>

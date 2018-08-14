@@ -21,6 +21,7 @@ module game {
         public static NAME: string = "GameScreenMediator";
 
         private proxy: GameProxy;
+        private skillAnimAdded: boolean = false;
 
         public constructor(viewComponent: any) {
             super(GameScreenMediator.NAME, viewComponent);
@@ -184,6 +185,19 @@ module game {
                     this.gameScreen[`ybrskill${seat.seatNumber}`].update(seat);
                     this.gameScreen[`fangzhenskill${seat.seatNumber}`].update(seat);
                 });
+
+                if (!this.skillAnimAdded) {
+                    
+                    const dragonBone = DragonBones.createDragonBone("skills", myRole.skillRes);
+                    dragonBone.animation.play(myRole.skillRes, 0);
+                    dragonBone.animation.animationConfig.timeScale = 0.5;
+                    dragonBone.x = 250;
+                    dragonBone.y = 120;
+                    dragonBone.scaleX = 0.5;
+                    dragonBone.scaleY = 0.5;
+                    this.gameScreen.btnSkill.addChild(dragonBone);
+                    this.skillAnimAdded = true;
+                }
             }
 
             switch (data.phase) {
@@ -373,7 +387,7 @@ module game {
                 let selfMark = control.getChildByName("selfMark") as eui.Image;
 
                 if (seats[config.seatNumber]) {
-                    content.source = seats[config.seatNumber].avatarUrl || config.defaultSource;
+                    content.source = platform.name == "DebugPlatform" ? config.defaultSource : (seats[config.seatNumber].avatarUrl || config.defaultSource);
                     nickName.text = seats[config.seatNumber].name || "blank name";
                     masterBg.visible = this.proxy.isActorMaster(seats[config.seatNumber]);
                     normalBg.visible = !masterBg.visible;
@@ -429,11 +443,6 @@ module game {
         public first_one(message: string) {
             this.setAnims();
 
-            const dragonBone = DragonBones.createDragonBone("fangzhen", "fangzhen");
-            dragonBone.animation.play("newAnimation", 0);
-
-            this.gameScreen.btnSkill.addChild(dragonBone);
-
             const firstoneNr = +message;
             this.proxy.gameState.shunwei_one_been[1] = this.proxy.gameState.seats[firstoneNr];
             this.xingdong(firstoneNr);
@@ -451,14 +460,14 @@ module game {
         }
 
         private setMyTurnState(seats: ActorModel[]) {
-            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext", "isSpeaking", "isVotingPerson"];
+            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext", "isSpeaking", "isVoting", "isVotingPerson"];
             const mySeat = seats.find(seat => seat && seat.actorNr == this.proxy.actorNr);
             const actionSeats = seats.filter(seat => seat && seat.action);
 
-            this.gameScreen.isMyTurn = mySeat.action && mySeat.action != "isSpeaking";
-            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0 && !actionSeats.find(seat => seat.action == "isVotingPerson");
+            this.gameScreen.isMyTurn = mySeat && mySeat.action && mySeat.action != "isSpeaking";
+            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0 && !actionSeats.find(seat => seat && seat.action == "isVotingPerson");
             actionList.forEach(s => {
-                this.gameScreen[s] = mySeat.action == s;
+                this.gameScreen[s] = mySeat && mySeat.action == s;
             });
             this.gameScreen.isChoosingNextOrVotingPerson = this.gameScreen.isChoosingNext || this.gameScreen.isVotingPerson;
 
@@ -566,7 +575,7 @@ module game {
                     }
                 }
             }
-            let no = this.proxy.gameState.role.findIndex(no => no.actorNr == this.proxy.actorNr);
+            let no = this.proxy.gameState.role.findIndex(no => no && no.actorNr == this.proxy.actorNr);
             if (no == 6 || no == 7 || no == 8) {
                 if (this.proxy.gameState.lunci == 1) {
                     this.proxy.gameState.playerInfor[no].skipskill1 = true;
@@ -1317,7 +1326,6 @@ module game {
         }
 
         public toupiaoui() {
-            this.gameScreen.isSpeaking = false;
             const animConfig = [
                 { controlName: "toupiao1", index: 0 },
                 { controlName: "toupiao2", index: 1 },
@@ -1335,12 +1343,7 @@ module game {
                 label.text = antiqueObject.name;
                 control.enabled = true;
             });
-            this.gameScreen.isMyTurn = false;
-            this.gameScreen.isOthersTurn = false;
-            this.gameScreen.isSpeaking = false;
-            this.gameScreen.isVoteVisible = true;
-            this.gameScreen.qingkong.enabled = true;
-            this.gameScreen.toupiaoqueren.enabled = true;
+            this.syncMyTurnState("isVoting", Receiver.All);
             if (this.proxy.gameState.lunci == 1) {
                 this.zongpiaoshu = 2;
                 this.sypiaoshu = 2;
@@ -1354,10 +1357,6 @@ module game {
                 this.sypiaoshu += 2;
                 this.muqianpiaoshu += 2;
             }
-            this.gameScreen.toupiao11.visible = true;
-            this.gameScreen.toupiao21.visible = true;
-            this.gameScreen.toupiao31.visible = true;
-            this.gameScreen.toupiao41.visible = true;
             this.gameScreen.toupiao11.text = "0";
             this.gameScreen.toupiao21.text = "0";
             this.gameScreen.toupiao31.text = "0";
@@ -1366,9 +1365,6 @@ module game {
             this.baowu2 = 0;
             this.baowu3 = 0;
             this.baowu4 = 0;
-            this.gameScreen.qingkong.visible = true;
-            this.gameScreen.piaoshu.visible = true;
-            this.gameScreen.toupiaoqueren.visible = true;
             this.gameScreen.piaoshu.text = this.muqianpiaoshu + "/" + this.zongpiaoshu;
         }
 
@@ -1419,7 +1415,7 @@ module game {
 
         public toupiaoqueren() {
             this.sypiaoshu = this.muqianpiaoshu;
-            this.gameScreen.isVoteVisible = false;
+            this.syncMyTurnState("");
             this.gameScreen.isVoteEnd = true;
             this.gameScreen.toupiao1.enabled = false;
             this.gameScreen.toupiao2.enabled = false;
@@ -1590,7 +1586,6 @@ module game {
 
         public starttwo() {
             this.gameScreen.isWaitNextTurn = false;
-            this.gameScreen.isVoteVisible = false;
             this.gameScreen.toupiao11.visible = false;
             this.gameScreen.toupiao21.visible = false;
             this.gameScreen.toupiao31.visible = false;
@@ -1618,7 +1613,6 @@ module game {
         public tourenui() {
             this.gameScreen.isChoosingNextText = true;
             this.gameScreen.isWaitTouRen = false;
-            this.gameScreen.isVoteVisible = false;
             this.gameScreen.startno2.visible = false;
             this.proxy.gameState.lunci = 99;
 
