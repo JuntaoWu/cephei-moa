@@ -22,6 +22,7 @@ module game {
 
         private proxy: GameProxy;
         private skillAnimAdded: boolean = false;
+        private myRole: Role;
 
         public constructor(viewComponent: any) {
             super(GameScreenMediator.NAME, viewComponent);
@@ -174,12 +175,12 @@ module game {
             if (isAllRolesReady) {
                 //set current player's role
                 let roleIndex = data.role.findIndex(r => this.proxy.isActorLocal(r));
-                let myRole = this.proxy.rolesMap.get(roleIndex.toString());
-                this.gameScreen.role = myRole;
-                this.gameScreen.isNotFangZhen = myRole.name != "方震"
-                this.gameScreen.isFangZhen = myRole.name == "方震";
-                this.gameScreen.isYaoBuran = myRole.name == "药不然";
-                this.gameScreen.isZhengGuoqu = myRole.name == "郑国渠";
+                this.myRole = this.proxy.rolesMap.get(roleIndex.toString());
+                this.gameScreen.role = this.myRole;
+                this.gameScreen.isNotFangZhen = this.myRole.name != "方震"
+                this.gameScreen.isFangZhen = this.myRole.name == "方震";
+                this.gameScreen.isYaoBuran = this.myRole.name == "药不然";
+                this.gameScreen.isZhengGuoqu = this.myRole.name == "郑国渠";
 
                 allValidSeats.forEach((seat) => {
                     this.gameScreen[`ybrskill${seat.seatNumber}`].update(seat);
@@ -187,9 +188,9 @@ module game {
                 });
 
                 if (!this.skillAnimAdded) {
-                    
-                    const dragonBone = DragonBones.createDragonBone("skills", myRole.skillRes);
-                    dragonBone.animation.play(myRole.skillRes, 0);
+
+                    const dragonBone = DragonBones.createDragonBone("skills", this.myRole.skillRes);
+                    dragonBone.animation.play(this.myRole.skillRes, 0);
                     dragonBone.animation.animationConfig.timeScale = 0.5;
                     dragonBone.x = 250;
                     dragonBone.y = 120;
@@ -206,7 +207,7 @@ module game {
                     this.gameScreen.isWaiting = isWaiting;
                     this.gameScreen.isAllReady = isAllReady;
                     this.gameScreen.isAllRolesReady = false;
-                    //this.gameScreen.canChooseSeat = !isAllReady;
+                    this.gameScreen.canChooseSeat = true;
                     this.gameScreen.isChoosingRole = false;
                     this.gameScreen.isChoosingRoleandSeven = false;
                     this.gameScreen.isChoosingRoleandEight = false;
@@ -283,14 +284,25 @@ module game {
                     this.gameScreen.isSecondRound = data.lunci == 2;
                     this.gameScreen.isThirdRound = data.lunci == 3;
 
+                    const mySeat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.actorNr);
                     this.setMyTurnState(data.seats);
-                    this.setAnims();
-                    this.setChoosingNextOrVotingPersonUI();
+                    const currentAction = mySeat.action;
+                    if (currentAction != this.previousAction) {
+                        this.previousAction = currentAction;
+                        this.setAnims();
+                        this.setChoosingNextOrVotingPersonUI();
+                        this.setToupiaoUI();
+                        this.tourenjieguo(this.proxy.gameState.touren);
+                    }
+
+                    this.gameScreen.isWaitNextTurnOrWaitTouRen = this.gameScreen.isWaitNextTurn || this.gameScreen.isWaitTouRen;
                     break;
             }
 
             this.touxiang(data.seats);
         }
+
+        private previousAction: string;
 
         public get gameScreen(): GameScreen {
             return <GameScreen><any>(this.viewComponent);
@@ -479,21 +491,21 @@ module game {
         public xingdong(message: number) {
             if (this.proxy.isActorLocal(this.proxy.gameState.seats[message])) {
                 console.log("syncMyTurnState isAuthing");
-                this.syncMyTurnState("isAuthing");
+                this.syncMyTurnState("isAuthing", true);
             }
         }
 
-        private syncMyTurnState(action, receiver: Receiver = Receiver.Self) {
-            this.proxy.updateMyState(action, receiver);
+        private syncMyTurnState(action, updateOthers: boolean = false, receiver: Receiver = Receiver.Self) {
+            this.proxy.updateMyState(action, updateOthers, receiver);
         }
 
         private setMyTurnState(seats: ActorModel[]) {
-            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext", "isSpeaking", "isVoting", "isVotingPerson"];
+            const actionList = ["isAuthing", "isSkilling", "isChoosingSkillingTarget", "isChoosingNext", "isSpeaking", "isVoting", "isVoteEnd", "isWaitNextTurn", "isWaitTouRen", "isVotingPerson", "isWaitOthersTouRen"];
             const mySeat = seats.find(seat => seat && seat.actorNr == this.proxy.actorNr);
             const actionSeats = seats.filter(seat => seat && seat.action);
 
             this.gameScreen.isMyTurn = mySeat && mySeat.action && mySeat.action != "isSpeaking";
-            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0 && !actionSeats.find(seat => seat && seat.action == "isVotingPerson");
+            this.gameScreen.isOthersTurn = !mySeat.action && actionSeats.length > 0 && actionSeats.some(seat => seat && (/isAuthing|isSkilling|isChoosingSkillingTarget|isChoosingNext/.test(seat.action)));
             actionList.forEach(s => {
                 this.gameScreen[s] = mySeat && mySeat.action == s;
             });
@@ -566,24 +578,24 @@ module game {
 
         public skipAuth(event: egret.TouchEvent) {
             if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
-                this.syncMyTurnState("isSkilling");
+                this.syncMyTurnState("isSkilling", true);
             }
         }
 
         public applySkill(event: egret.TouchEvent) {
             if (this.gameScreen.role.id == 2) {
-                this.syncMyTurnState("isChoosingSkillingTarget");
+                this.syncMyTurnState("isChoosingSkillingTarget", true);
                 this.fangzhenskill();
             }
             else if (this.gameScreen.role.id == 6) {
                 this.lcfskill();
             }
             else if (this.gameScreen.role.id == 7) {
-                this.syncMyTurnState("isChoosingSkillingTarget");
+                this.syncMyTurnState("isChoosingSkillingTarget", true);
                 this.ybrskill();
             }
             else if (this.gameScreen.role.id == 8) {
-                this.syncMyTurnState("isChoosingSkillingTarget");
+                this.syncMyTurnState("isChoosingSkillingTarget", true);
                 this.zgqskill();
             }
         }
@@ -634,10 +646,7 @@ module game {
             const results = [];
 
             if (this.gameScreen.role.hasActiveSkill) {
-                this.syncMyTurnState("isSkilling");
-            }
-            else {
-                this.syncMyTurnState("isChoosingNext");
+                this.syncMyTurnState("isSkilling", true);
             }
 
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
@@ -1062,11 +1071,8 @@ module game {
         public chuanshunwei() {
 
             if (this.proxy.gameState.lunci != 99) {
-                this.syncMyTurnState("isChoosingNext");
+                this.syncMyTurnState("isChoosingNext", true);
                 this.gameScreen.isChoosingNextText = true;
-            } else {
-                this.syncMyTurnState("isVotingPerson");
-                this.gameScreen.isChoosingNextText = false;
             }
 
             this.setChoosingNextOrVotingPersonUI();
@@ -1085,12 +1091,10 @@ module game {
         }
 
         public shunwei(nextNr: string) {
-            this.syncMyTurnState("", Receiver.Self);
+            this.syncMyTurnState("", false, Receiver.Self);
 
             if (this.proxy.gameState.lunci == 99) {
-                this.gameScreen.onejieguo.visible = false;
-                this.gameScreen.isOthersTurn = false;
-                this.gameScreen.isWaitOthersTouRen = true;
+                this.syncMyTurnState("isWaitOthersTouRen");
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tourenjieguo, nextNr);
             } else {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.nextNr, nextNr);
@@ -1329,7 +1333,7 @@ module game {
         }
 
         public onegameend2() {
-            this.syncMyTurnState("isSpeaking", Receiver.All);
+            this.syncMyTurnState("isSpeaking", false, Receiver.All);
             this.gameScreen.onegameend.visible = false;
             this.gameScreen.isLastPlayer = false;
             if (this.proxy.gameState.lunci == 1) {
@@ -1353,7 +1357,12 @@ module game {
             this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.toupiaoui);
         }
 
-        public toupiaoui() {
+        public setToupiaoUI() {
+
+            if(this.proxy.gameState.lunci == 99) {
+                return;
+            }
+
             const animConfig = [
                 { controlName: "toupiao1", index: 0 },
                 { controlName: "toupiao2", index: 1 },
@@ -1371,19 +1380,13 @@ module game {
                 label.text = antiqueObject.name;
                 control.enabled = true;
             });
-            this.syncMyTurnState("isVoting", Receiver.All);
+
             if (this.proxy.gameState.lunci == 1) {
-                this.zongpiaoshu = 2;
                 this.sypiaoshu = 2;
                 this.muqianpiaoshu = 2;
-            } else if (this.proxy.gameState.lunci == 2) {
-                this.zongpiaoshu = 4;
-                this.sypiaoshu += 2;
-                this.muqianpiaoshu += 2;
-            } else if (this.proxy.gameState.lunci == 3) {
-                this.zongpiaoshu = 6;
-                this.sypiaoshu += 2;
-                this.muqianpiaoshu += 2;
+            }
+            else if (this.proxy.gameState.lunci == 2 || this.proxy.gameState.lunci == 3) {
+                this.muqianpiaoshu = this.sypiaoshu = this.proxy.getSyPiaoshu() + 2;
             }
             this.gameScreen.toupiao11.text = "0";
             this.gameScreen.toupiao21.text = "0";
@@ -1393,7 +1396,11 @@ module game {
             this.baowu2 = 0;
             this.baowu3 = 0;
             this.baowu4 = 0;
-            this.gameScreen.piaoshu.text = this.muqianpiaoshu + "/" + this.zongpiaoshu;
+            this.gameScreen.piaoshu.text = this.muqianpiaoshu + "/" + this.sypiaoshu;
+        }
+
+        public toupiaoui() {
+            this.syncMyTurnState("isVoting", false, Receiver.All);
         }
 
         public qingkong() {
@@ -1406,7 +1413,7 @@ module game {
             this.gameScreen.toupiao31.text = "0";
             this.gameScreen.toupiao41.text = "0";
             this.muqianpiaoshu = this.sypiaoshu;
-            this.gameScreen.piaoshu.text = this.muqianpiaoshu + "/" + this.zongpiaoshu;
+            this.gameScreen.piaoshu.text = this.muqianpiaoshu + "/" + this.sypiaoshu;
         }
 
         public baowu1: number = 0;
@@ -1415,7 +1422,6 @@ module game {
         public baowu4: number = 0;
         public sypiaoshu: number = 0;
         public muqianpiaoshu: number = 0;
-        public zongpiaoshu: number = 0;
         public toupiao(baowuNr: string) {
             if (this.muqianpiaoshu <= 0) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你的票数不足");
@@ -1437,20 +1443,15 @@ module game {
                     this.muqianpiaoshu--;
                     this.gameScreen.toupiao41.text = this.baowu4.toString();
                 }
-                this.gameScreen.piaoshu.text = this.muqianpiaoshu + "/" + this.zongpiaoshu;
+                this.gameScreen.piaoshu.text = this.muqianpiaoshu + "/" + this.sypiaoshu;
             }
         }
 
         public toupiaoqueren() {
             this.sypiaoshu = this.muqianpiaoshu;
-            this.syncMyTurnState("");
-            this.gameScreen.isVoteEnd = true;
-            this.gameScreen.toupiao1.enabled = false;
-            this.gameScreen.toupiao2.enabled = false;
-            this.gameScreen.toupiao3.enabled = false;
-            this.gameScreen.toupiao4.enabled = false;
-            this.gameScreen.qingkong.enabled = false;
-            this.gameScreen.toupiaoqueren.visible = false;
+            const myRole = this.gameScreen.role;
+            this.proxy.setSypiaoshu(this.sypiaoshu);
+            this.syncMyTurnState("isVoteEnd");
             if (this.proxy.gameState.lunci == 1) {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.piaoshu, "0" + this.baowu1 + "0" + this.baowu2 + "0" + this.baowu3 + "0" + this.baowu4);
             } else if (this.proxy.gameState.lunci == 2) {
@@ -1501,18 +1502,6 @@ module game {
         public baowu3_sx: number;
         public baowu4_sx: number;
         public toupiaoend(message: string) {
-            this.gameScreen.isVoteEnd = false;
-            this.gameScreen.qingkong.visible = false;
-            this.gameScreen.piaoshu.visible = false;
-            this.gameScreen.toupiaoqueren.visible = false;
-            this.gameScreen.onejieguo.visible = true;
-            if (this.proxy.gameState.lunci == 2) {
-                this.gameScreen.startno2.label = "开始第三轮";
-                this.gameScreen.onejieguo.text = "第二轮结果";
-            } else if (this.proxy.gameState.lunci == 3) {
-                this.gameScreen.startno2.label = "开始鉴人环节";
-                this.gameScreen.onejieguo.text = "第三轮结果";
-            }
             const zongpiaoshu = +message;
             this.baowu4 = zongpiaoshu % 100;
             this.baowu3 = ((zongpiaoshu - this.baowu4) / 100) % 100;
@@ -1583,20 +1572,19 @@ module game {
                 if (this.proxy.gameState.defen < 2) {
                     this.gameScreen.startno2.visible = false;
                     this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
-                } else if (this.proxy.gameState.defen == 6) {
+                }
+                else if (this.proxy.gameState.defen == 6) {
                     this.gameScreen.startno2.visible = false;
                     this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
-                } else {
-                    this.gameScreen.isWaitTouRen = true;
-                    if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
-                        this.gameScreen.startno2.visible = true;
-                    }
                 }
-            } else {
-                this.gameScreen.isWaitNextTurn = true;
-                if (this.proxy.loadBalancingClient.myRoomMasterActorNr() == this.proxy.loadBalancingClient.myActor().actorNr) {
+                else if (this.proxy.isMasterClient) {
+                    this.syncMyTurnState("isWaitTouRen", false, Receiver.All);
                     this.gameScreen.startno2.visible = true;
                 }
+            }
+            else if (this.proxy.isMasterClient) {
+                this.syncMyTurnState("isWaitNextTurn", false, Receiver.All);
+                this.gameScreen.startno2.visible = true;
             }
         }
 
@@ -1613,14 +1601,6 @@ module game {
         }
 
         public starttwo() {
-            this.gameScreen.isWaitNextTurn = false;
-            this.gameScreen.toupiao11.visible = false;
-            this.gameScreen.toupiao21.visible = false;
-            this.gameScreen.toupiao31.visible = false;
-            this.gameScreen.toupiao41.visible = false;
-            this.gameScreen.startno2.visible = false;
-            this.gameScreen.onejieguo.visible = false;
-
             this.gameScreen.isFirstRound = false;
             this.gameScreen.isSecondRound = this.proxy.gameState.lunci == 1;
             this.gameScreen.isThirdRound = this.proxy.gameState.lunci == 2;
@@ -1645,7 +1625,7 @@ module game {
             this.proxy.gameState.lunci = 99;
 
             // note this UI need all of us show isChoosingNext buttons.
-            this.syncMyTurnState("isVotingPerson", Receiver.All);
+            this.syncMyTurnState("isVotingPerson", false, Receiver.All);
 
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])
                 || this.proxy.isActorLocal(this.proxy.gameState.role[2])
@@ -1663,6 +1643,9 @@ module game {
         }
 
         public tourenjieguo(touren: Array<any>) {
+            if(!touren) {
+                return;
+            }
             let message1: string;
             let message2: string;
             let message3: string;

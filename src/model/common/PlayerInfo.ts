@@ -22,5 +22,7 @@ module game {
         public skipskill1:boolean=false;
         public skipskill2:boolean=false;
         public skipskill3:boolean=false;
+
+        public sypiaoshu: number = 0;
     }
 }
