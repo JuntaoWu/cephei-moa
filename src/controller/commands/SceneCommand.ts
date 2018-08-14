@@ -24,7 +24,7 @@ module game {
         public static SHOW_RANK_WINDOW: string = "show_rank_window";
         public static SHOW_GUIDE_WINDOW: string = "show_guide_window";
         public static SHOW_SETTING_WINDOW: string = "show_setting_window";
-        public static SHOW_BAR_WINDOW: string = "show_setting_window";
+        public static SHOW_BAR_WINDOW: string = "show_bar_window";
 
         public static SHOW_ABOUT_WINDOW: string = "show_about_window";
         public static SHOW_RESULT_WINDOW: string = "show_result_window";

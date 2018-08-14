@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.PopupVoteResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
     <game:Shade id="overlay" />
-    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="750">
+    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="780">
         <e:Group horizontalCenter="0" y="60">
             <e:Label text="投票结果" textColor="0x020202" bold="true" horizontalCenter="0" size="20"/>
             <e:Group horizontalCenter="0" y="35">   

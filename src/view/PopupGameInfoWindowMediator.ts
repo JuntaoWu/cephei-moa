@@ -64,57 +64,117 @@ module game {
             }
 
             let i = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
-            let isYaoburan = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r)) == RoleId.YaoBuRan;
-            let isFangZhen = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r)) == RoleId.FangZheng;
-            if (isFangZhen) {
-                if (this.proxy.gameState.playerInfor[2].onetouxi) {
-                    this.popupGameInfoWindow.firstRound.text = "被药不然偷袭"
+            if (i == RoleId.FangZheng) {
+                if (this.proxy.gameState.playerInfor[i].onetouxi) {
+                    this.popupGameInfoWindow.firstRound.text = GameInfo.attacked
                 }
-                else if (this.proxy.gameState.playerInfor[2].onebaowu) {
-                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[2].onebaowu];
+                else if (this.proxy.gameState.playerInfor[i].onebaowu) {
+                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[i].onebaowu];
                     this.popupGameInfoWindow.firstRound.fang = {
                         actorUrl: seeSeat.avatarUrl,
                         color: seeSeat.color.source,
                         name: seeSeat.name,
-                        result: this.proxy.gameState.playerInfor[2].onezhenjia
+                        result: this.proxy.gameState.playerInfor[i].onezhenjia
                     }
                 }
-                if (this.proxy.gameState.playerInfor[2].twotouxi) {
-                    this.popupGameInfoWindow.secondRound.text = "被药不然偷袭"
+                else if (this.proxy.gameState.playerInfor[i].skipskill1) {
+                    this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
                 }
-                else if (this.proxy.gameState.playerInfor[2].twobaowu) {
-                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[2].twobaowu];
-                    this.popupGameInfoWindow.firstRound.fang = {
+                if (this.proxy.gameState.playerInfor[i].twotouxi) {
+                    this.popupGameInfoWindow.secondRound.text = GameInfo.attacked
+                }
+                else if (this.proxy.gameState.playerInfor[i].twobaowu) {
+                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[i].twobaowu];
+                    this.popupGameInfoWindow.secondRound.fang = {
                         actorUrl: seeSeat.avatarUrl,
                         color: seeSeat.color.source,
                         name: seeSeat.name,
-                        result: this.proxy.gameState.playerInfor[2].twozhenjia
+                        result: this.proxy.gameState.playerInfor[i].twozhenjia
                     }
                 }
-                if (this.proxy.gameState.playerInfor[2].threetouxi) {
-                    this.popupGameInfoWindow.thirdRound.text = "被药不然偷袭"
+                else if (this.proxy.gameState.playerInfor[i].skipskill2) {
+                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
                 }
-                else if (this.proxy.gameState.playerInfor[2].threebaowu) {
-                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[2].threebaowu];
-                    this.popupGameInfoWindow.firstRound.fang = {
+                if (this.proxy.gameState.playerInfor[i].threetouxi) {
+                    this.popupGameInfoWindow.thirdRound.text = GameInfo.attacked
+                }
+                else if (this.proxy.gameState.playerInfor[i].threebaowu) {
+                    let seeSeat = this.proxy.gameState.seats[this.proxy.gameState.playerInfor[i].threebaowu];
+                    this.popupGameInfoWindow.thirdRound.fang = {
                         actorUrl: seeSeat.avatarUrl,
                         color: seeSeat.color.source,
                         name: seeSeat.name,
-                        result: this.proxy.gameState.playerInfor[2].threezhenjia
+                        result: this.proxy.gameState.playerInfor[i].threezhenjia
                     }
+                }
+                else if (this.proxy.gameState.playerInfor[i].skipskill3) {
+                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
+                }
+            }
+            else if (i == RoleId.YaoBuRan) {
+                if (this.proxy.gameState.playerInfor[i].onebaowu) {
+                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].onebaowu);
+                    this.popupGameInfoWindow.firstRound.r1 = {
+                        source: antiques.source,
+                        resultRes: this.proxy.gameState.playerInfor[i].onezhenjia == "真" ? "true" : "false"
+                    }
+                }
+                if (this.proxy.gameState.oneybrskill) {
+                    let roleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.gameState.seats[this.proxy.gameState.oneybrskill].actorNr);
+                    let roleName = this.proxy.rolesMap.get(roleId.toString()).name;
+                    this.popupGameInfoWindow.firstRound.skillText =`${GameInfo.attack}${roleName}`;
+                }
+                else if (this.proxy.gameState.playerInfor[i].skipskill1) {
+                    this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
+                }
+
+                if (this.proxy.gameState.playerInfor[i].twobaowu) {
+                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].twobaowu);
+                    this.popupGameInfoWindow.secondRound.r1 = {
+                        source: antiques.source,
+                        resultRes: this.proxy.gameState.playerInfor[i].twozhenjia == "真" ? "true" : "false"
+                    }
+                }
+                if (this.proxy.gameState.twoybrskill) {
+                    let roleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.gameState.seats[this.proxy.gameState.twoybrskill].actorNr);
+                    let roleName = this.proxy.rolesMap.get(roleId.toString()).name;
+                    this.popupGameInfoWindow.secondRound.skillText =`${GameInfo.attack}${roleName}`;
+                }
+                else if (this.proxy.gameState.playerInfor[i].skipskill2) {
+                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
+                }
+
+                if (this.proxy.gameState.playerInfor[i].threebaowu) {
+                    let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].threebaowu);
+                    this.popupGameInfoWindow.thirdRound.r1 = {
+                        source: antiques.source,
+                        resultRes: this.proxy.gameState.playerInfor[i].threezhenjia == "真" ? "true" : "false"
+                    }
+                }
+                if (this.proxy.gameState.threeybrskill) {
+                    let roleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.gameState.seats[this.proxy.gameState.threeybrskill].actorNr);
+                    let roleName = this.proxy.rolesMap.get(roleId.toString()).name;
+                    this.popupGameInfoWindow.thirdRound.skillText =`${GameInfo.attack}${roleName}`;
+                }
+                else if (this.proxy.gameState.playerInfor[i].skipskill3) {
+                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
                 }
             }
             else {
                 if (this.proxy.gameState.playerInfor[i].onetouxi) {
-                    this.popupGameInfoWindow.firstRound.text = "被药不然偷袭"
+                    this.popupGameInfoWindow.firstRound.text = GameInfo.attacked
                 }
                 else {
                     if (this.proxy.gameState.playerInfor[i].onebaowu) {
                         let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].onebaowu);
                         this.popupGameInfoWindow.firstRound.r1 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.playerInfor[i].onezhenjia == "真" ? "true" : "false"
+                            resultRes: "",
+                            resultLabel: ""
                         }
+                        this.proxy.gameState.playerInfor[i].onezhenjia == GameInfo.cannotJudge 
+                         ? this.popupGameInfoWindow.firstRound.r1.resultLabel = GameInfo.cannotJudge
+                         : this.popupGameInfoWindow.firstRound.r1.resultRes = (this.proxy.gameState.playerInfor[i].onezhenjia == "真" ? "true" : "false");
                     }
                     if (this.proxy.gameState.playerInfor[i].onebaowu2) {
                         let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].onebaowu2);
@@ -123,24 +183,24 @@ module game {
                             resultRes: this.proxy.gameState.playerInfor[i].onezhenjia2 == "真" ? "true" : "false"
                         }
                     }
-                    // if (isYaoburan && this.proxy.gameState.oneybrskill) {
-                    //     let seat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.oneybrskill);
-                    //     let role = this.proxy.rolesMap.get(seat.actorNr.toString());
-                    //     this.popupGameInfoWindow.firstRound.r2 = {
-                    //         resultRes: `你偷袭了${role.name}`
-                    //     }
-                    // }
+                    if (this.proxy.gameState.playerInfor[i].skipskill1) {
+                        this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
+                    }
                 }
                 if (this.proxy.gameState.playerInfor[i].twotouxi) {
-                    this.popupGameInfoWindow.secondRound.text = "被药不然偷袭"
+                    this.popupGameInfoWindow.secondRound.text = GameInfo.attacked
                 }
                 else {
                     if (this.proxy.gameState.playerInfor[i].twobaowu) {
                         let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].twobaowu);
                         this.popupGameInfoWindow.secondRound.r1 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.playerInfor[i].twozhenjia == "真" ? "true" : "false"
+                            resultRes: "",
+                            resultLabel: ""
                         }
+                        this.proxy.gameState.playerInfor[i].twozhenjia == GameInfo.cannotJudge 
+                         ? this.popupGameInfoWindow.secondRound.r1.resultLabel = GameInfo.cannotJudge
+                         : this.popupGameInfoWindow.secondRound.r1.resultRes = (this.proxy.gameState.playerInfor[i].twozhenjia == "真" ? "true" : "false");
                     }
                     if (this.proxy.gameState.playerInfor[i].twobaowu2) {
                         let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].twobaowu2);
@@ -149,24 +209,24 @@ module game {
                             resultRes: this.proxy.gameState.playerInfor[i].twozhenjia2 == "真" ? "true" : "false"
                         }
                     }
-                    // if (isYaoburan && this.proxy.gameState.twoybrskill) {
-                    //     let seat = this.proxy.gameState.seats[this.proxy.gameState.twoybrskill];
-                    //     let role = this.proxy.rolesMap.get(seat.actorNr.toString());
-                    //     this.popupGameInfoWindow.firstRound.r2 = {
-                    //         resultRes: `你偷袭了${role.name}`
-                    //     }
-                    // }
+                    if (this.proxy.gameState.playerInfor[i].skipskill2) {
+                        this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
+                    }
                 }
                 if (this.proxy.gameState.playerInfor[i].threetouxi) {
-                    this.popupGameInfoWindow.thirdRound.text = "被药不然偷袭"
+                    this.popupGameInfoWindow.thirdRound.text = GameInfo.attacked
                 }
                 else {
                     if (this.proxy.gameState.playerInfor[i].threebaowu) {
                         let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].threebaowu);
                         this.popupGameInfoWindow.thirdRound.r1 = {
                             source: antiques.source,
-                            resultRes: this.proxy.gameState.playerInfor[i].threezhenjia == "真" ? "true" : "false"
+                            resultRes: "",
+                            resultLabel: ""
                         }
+                        this.proxy.gameState.playerInfor[i].threezhenjia == GameInfo.cannotJudge 
+                         ? this.popupGameInfoWindow.thirdRound.r1.resultLabel = GameInfo.cannotJudge
+                         : this.popupGameInfoWindow.thirdRound.r1.resultRes = (this.proxy.gameState.playerInfor[i].threezhenjia == "真" ? "true" : "false");
                     }
                     if (this.proxy.gameState.playerInfor[i].threebaowu2) {
                         let antiques = this.proxy.antiquesMap.get(this.proxy.gameState.playerInfor[i].threebaowu2);
@@ -175,13 +235,9 @@ module game {
                             resultRes: this.proxy.gameState.playerInfor[i].threezhenjia2 == "真" ? "true" : "false"
                         }
                     }
-                    // if (isYaoburan && this.proxy.gameState.threeybrskill) {
-                    //     let seat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.threeybrskill);
-                    //     let role = this.proxy.rolesMap.get(seat.actorNr.toString());
-                    //     this.popupGameInfoWindow.firstRound.r2 = {
-                    //         resultRes: `你偷袭了${role.name}`
-                    //     }
-                    // }
+                    if (this.proxy.gameState.playerInfor[i].skipskill3) {
+                        this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
+                    }
                 }
             }
         }
