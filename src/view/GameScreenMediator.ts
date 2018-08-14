@@ -192,8 +192,10 @@ module game {
                     this.gameScreen.isWaiting = isWaiting;
                     this.gameScreen.isAllReady = isAllReady;
                     this.gameScreen.isAllRolesReady = false;
-                    this.gameScreen.canChooseSeat = !isAllReady;
+                    //this.gameScreen.canChooseSeat = !isAllReady;
                     this.gameScreen.isChoosingRole = false;
+                    this.gameScreen.isChoosingRoleandSeven = false;
+                    this.gameScreen.isChoosingRoleandEight = false;
                     this.gameScreen.isChoosingRoleOrMasterClient = false;
                     this.gameScreen.isAllRolesReadyAndNormalClient = false;
                     this.gameScreen.isPhasePreparing = true;
@@ -210,6 +212,30 @@ module game {
                     this.gameScreen.isAllRolesReady = isAllRolesReady;
                     this.gameScreen.canChooseSeat = false;
                     this.gameScreen.isChoosingRole = !isAllRolesReady;
+                    this.gameScreen.isChoosingRoleandSeven = !isAllRolesReady && (this.proxy.gameState.maxPlayers == 7 || this.proxy.gameState.maxPlayers == 8);
+                    this.gameScreen.isChoosingRoleandEight = !isAllRolesReady && this.proxy.gameState.maxPlayers == 8;
+                    if (!this.gameScreen.isChoosingRoleandSeven) {
+                        var colorMatrix = [
+                            0.3, 0.6, 0, 0, 0,
+                            0.3, 0.6, 0, 0, 0,
+                            0.3, 0.6, 0, 0, 0,
+                            0, 0, 0, 1, 0
+                        ];
+
+                        var colorFlilter = new egret.ColorMatrixFilter(colorMatrix);
+                        this.gameScreen.btnjs3.filters = [colorFlilter];
+                    }
+                    if (!this.gameScreen.isChoosingRoleandEight) {
+                        var colorMatrix = [
+                            0.3, 0.6, 0, 0, 0,
+                            0.3, 0.6, 0, 0, 0,
+                            0.3, 0.6, 0, 0, 0,
+                            0, 0, 0, 1, 0
+                        ];
+
+                        var colorFlilter = new egret.ColorMatrixFilter(colorMatrix);
+                        this.gameScreen.btnjs8.filters = [colorFlilter];
+                    }
                     this.gameScreen.isChoosingRoleOrMasterClient = !isAllRolesReady || this.gameScreen.isMasterClient;
                     this.gameScreen.isAllRolesReadyAndNormalClient = isAllRolesReady && this.gameScreen.isNormalClient;
                     this.gameScreen.isPhasePreparing = false;
@@ -232,6 +258,8 @@ module game {
                     this.gameScreen.isAllRolesReady = false;
                     this.gameScreen.canChooseSeat = false;
                     this.gameScreen.isChoosingRole = false;
+                    this.gameScreen.isChoosingRoleandSeven = false;
+                    this.gameScreen.isChoosingRoleandEight = false;
                     this.gameScreen.isChoosingRoleOrMasterClient = false;
                     this.gameScreen.isAllRolesReadyAndNormalClient = false;
                     this.gameScreen.isPhasePreparing = false;
@@ -566,7 +594,7 @@ module game {
                     }
                 }
             }
-            let no = this.proxy.gameState.role.findIndex(no => no.actorNr == this.proxy.actorNr);
+            let no = this.proxy.gameState.role.findIndex(no => no && no.actorNr == this.proxy.actorNr);
             if (no == 6 || no == 7 || no == 8) {
                 if (this.proxy.gameState.lunci == 1) {
                     this.proxy.gameState.playerInfor[no].skipskill1 = true;
