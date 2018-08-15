@@ -75,7 +75,7 @@ class WxgamePlatform {
     }
 
     onNetworkStatusChange(callback) {
-        wx.onNetworkStatusChange(function (res) {
+        wx.onNetworkStatusChange((res) => {
             this.showToast(`当前网络${res.isConnected ? '已连接' : '未连接'}`);
             callback(res);
         });
@@ -84,9 +84,7 @@ class WxgamePlatform {
     showToast(message) {
         wx.showToast({
             title: message,
-            icon: '',
-            image: '',
-            duration: 500,
+            duration: 1500,
             mask: true,
             success: function (res) { },
             fail: function (res) { },
@@ -95,14 +93,45 @@ class WxgamePlatform {
     }
 
     setStorage(key, value) {
-        wx.setStorage({
-            key: key,
-            data: value,
-        })
+      wx.setStorage({
+        key: key,
+        data: value,
+      })
     }
 
     getStorage(key) {
-        return wx.getStorageSync(key);
+      return wx.getStorageSync(key);
+    }
+
+    showModal(message) {
+      return new Promise((resolve, reject) => {
+        wx.showModal({
+          title: '提示',
+          content: message,
+          showCancel: true,
+          cancelText: '取消',
+          confirmText: '确定',
+          success: function(res) {
+            resolve(res);
+          },
+          fail: function(res) {},
+          complete: function(res) {},
+        })
+      });
+    }
+
+    showLoading(message) {
+      wx.showLoading({
+        title: message || '加载中',
+        mask: true,
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    }
+
+    hideLoading() {
+      wx.hideLoading();
     }
 
 }
