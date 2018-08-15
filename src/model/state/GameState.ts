@@ -3,14 +3,12 @@ module game {
     export class GameState {
 
         constructor() {
-            for (let i = 1; i < 9; i++) {
-                this.playerInfor[i] = new PlayerInfo();
-            }
+
         }
 
         public roomName: string = undefined;
         public players: number = 0;
-        public maxPlayers: number = 2;
+        public maxPlayers: number = 3;
 
         public phase: GamePhase = GamePhase.Preparing;
 
