@@ -8,14 +8,14 @@ module game {
 
         public roomName: string = undefined;
         public players: number = 0;
-        public maxPlayers: number = 3;
+        public maxPlayers: number = 2;
 
         public phase: GamePhase = GamePhase.Preparing;
 
         public seats: Array<ActorModel> = [];
 
         public role: Array<ActorModel> = [];
-        public touren: Array<any> = [];
+        public touren: Array<ActorModel> = [];
         public shunwei_one_been: Array<ActorModel> = [];
         public shunwei_two_been: Array<ActorModel> = [];
         public shunwei_three_been: Array<ActorModel> = [];
@@ -44,6 +44,7 @@ module game {
         public threezgqskill: number = 100;
         public lunci: number = 1;
         public defen: number = 0;
+        public lcfpiao:number=0;
         public findPeopleScore: number = 0;
         public jueselist: Array<any> = ["许愿", "方震", "姬云浮", "黄烟烟", "木户加奈", "老朝奉", "药不然", "郑国渠"];
         public ybrskill: Array<any> = [0, 0, 0, 0, 0, 0, 0, 0, 0];
