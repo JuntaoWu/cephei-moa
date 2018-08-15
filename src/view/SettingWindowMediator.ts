@@ -18,7 +18,7 @@ module game {
         }
 
         private shareButtonClick(event: egret.TouchEvent) {
-            
+            platform.shareAppMessage();
         }
 
         private aboutButtonClick(event: egret.TouchEvent) {

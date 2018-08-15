@@ -19,7 +19,7 @@ module game {
         }
 
         private shareClick() {
-            
+            platform.shareAppMessage();
         }
 
         private confirmClick() {
