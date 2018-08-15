@@ -11,6 +11,7 @@ module game {
         public color?: { color?: string, source?: string };
         public isMyTurn?: boolean;
         public action?: string;
+        public suspended?: boolean;
 
         public constructor(actor: Photon.LoadBalancing.Actor, seatNumber?: number) {
 

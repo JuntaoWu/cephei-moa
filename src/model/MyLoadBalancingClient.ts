@@ -12,7 +12,7 @@ module game {
     export class MyLoadBalancingClient extends Photon.LoadBalancing.LoadBalancingClient {
 
         private retried: number = 0;
-        private maxRetriedCount: number = 3;
+        private maxRetriedCount: number = 1;
 
         public setupId: number = 0;
 
@@ -67,7 +67,7 @@ module game {
                     this.start();
                 }
                 else {
-                    platform.showModal("服务器连接被重置,自动加入房间可能失败").then(res => {
+                    platform.showModal("服务器连接已重置,自动加入历史房间可能失败", "重试").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
                             this.autoRejoin = false;
@@ -84,7 +84,7 @@ module game {
                     this.start();
                 }
                 else {
-                    platform.showModal("服务器连接超时,请检查网络或尝试重连").then(res => {
+                    platform.showModal("服务器连接超时,请检查网络或尝试重连", "重试").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
                             this.start();
@@ -132,13 +132,14 @@ module game {
                 console.error(errorMsg);
                 switch (errorCode) {
                     case 32746:
-                        platform.showToast("用户重复加入");
+                        platform.showToast("不能重复加入");
                         break;
                     case 32748:
                         platform.showToast("房间已关闭");
+                        this.autoRejoin = false;
                         break;
                     case 32758:
-                        platform.showToast("该房间不存在");
+                        platform.showToast("房间不存在");
                         break;
                     case 32765:
                         platform.showToast("房间已满");

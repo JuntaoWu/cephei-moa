@@ -25,7 +25,7 @@ declare interface Platform {
 
     playVideo(src: string);
 
-    showModal(message: string): Promise<any>;
+    showModal(message: string, confirmText?: string, cancelText?: string): Promise<any>;
 
     showLoading(message?: string);
 
@@ -71,7 +71,7 @@ class DebugPlatform implements Platform {
 
     }
 
-    public async showModal(message: string): Promise<any> {
+    public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
         return { confirm: false, cancel: true };
     }
 

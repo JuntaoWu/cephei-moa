@@ -168,6 +168,10 @@ module game {
 
 			this.gameState.players = myRoomActorCount;
 
+			this.gameState.seats.filter(seat => seat).forEach(seat => {
+				seat.suspended = myRoomActors[seat.actorNr].suspended;
+			});
+
 			if (this.isMasterClient) {
 				if (this.gameState.phase == GamePhase.Preparing) {
 					console.log("GamePhase.Preparing: setCustomProperty");
@@ -593,6 +597,20 @@ module game {
 
 		public getSyPiaoshu() {
 			return this.loadBalancingClient.myActor().getCustomProperty("syPiaoshu");
+		}
+
+		public updatePlayerInfo(key, value) {
+			let playerInfo: PlayerInfo = this.getPlayerInfo() || new PlayerInfo();
+			playerInfo[key] = value;
+			this.setPlayerInfo(playerInfo);
+		}
+
+		public setPlayerInfo(playerInfo: PlayerInfo) {
+			this.loadBalancingClient.myActor().setCustomProperty("playerInfo", playerInfo);
+		}
+
+		public getPlayerInfo(): PlayerInfo {
+			return this.loadBalancingClient.myActor().getCustomProperty("playerInfo");
 		}
 	}
 }
