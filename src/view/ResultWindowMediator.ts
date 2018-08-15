@@ -61,23 +61,34 @@ module game {
             this.resultWindow.findPeopleScore = this.proxy.gameState.findPeopleScore;
             this.resultWindow.findAntiqueScore = this.resultWindow.totalScore - this.resultWindow.findPeopleScore;
             //三轮游戏投票结果
+            let voteNumList = ["", "toupiao", "toupiao2", "toupiao3"];
             [1 ,2, 3].forEach(i => {
-                this.resultWindow[`round${i}`] = {ant1: null, ant2: null, ant3: null, ant4: null};
                 let n = i * 4 - 4, voteData = [];
                 let voteResult = this.proxy.gameState[`toupiaojieguo${i}`] as Array<any>;
                 for (let j = 0; j < 4; j++) {
                     voteResult.forEach((item, index) => {
                         if (item.baowu == this.proxy.gameState.baowulist[n + j]) {
                             let obj = {
-                                antBg: index < 2 ? "bg3" : "bg2",
+                                bg: index < 2 ? "bg3" : "bg2",
                                 antRes: this.proxy.antiquesMap.get(item.baowu).source,
-                                isReal: item.zhenjia == "真" ? "true" : "false"
+                                isReal: item.zhenjia == "真" ? "true" : "false",
+                                voteDetail: [],
                             }
-                            this.resultWindow[`round${i}`][`ant${index + 1}`] = obj;
+                            this.proxy.gameState[voteNumList[i]].forEach((v, k) => {
+                                if (v && +v.toString().substr(j * 2, 2)) {
+                                    obj.voteDetail.push({ 
+                                        voterColor: this.proxy.gameState.seats[k].color.source,
+                                        voteNum: + v.toString().substr(j * 2, 2)
+                                    });
+                                }
+                            })
+                            voteData.push(obj);
                         }
-                    })
+                    }) 
                 }
-            });
+                this.resultWindow[`roundGroup${i}`].dataProvider = new eui.ArrayCollection(voteData);
+                this.resultWindow[`roundGroup${i}`].itemRenderer = VoteAntiquesRenderer;
+            }); 
             //许愿
             if (this.proxy.gameState.role[RoleId.XuYuan]) {
                 let seatXu = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.XuYuan].actorNr);

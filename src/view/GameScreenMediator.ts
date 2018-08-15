@@ -1313,8 +1313,6 @@ module game {
                 antiBg.source = "bg2";
                 let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
                 image.source = antiqueObject.source;
-                let antiBg = antiqueGroup.getChildByName("antique-normal") as eui.Image;
-                antiBg.source = "bg2";
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
                 control.enabled = true;

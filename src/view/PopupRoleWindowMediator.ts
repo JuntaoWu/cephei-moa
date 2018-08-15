@@ -18,6 +18,7 @@ module game {
         }
 
         public initData(): void {
+            this.popupRoleWindow.promptInfo = "";
             this.popupRoleWindow.role = this.proxy.rolesMap.get(this.popupRoleWindow.roleId.toString());
             let existingRoleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.actorNr);
             if (!this.proxy.gameState.role[this.popupRoleWindow.roleId] && existingRoleId != -1) {

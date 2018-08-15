@@ -68,63 +68,47 @@ module game {
             if (!playerInfor) {
                 return;
             }
-            if (i == RoleId.FangZheng) {
-                if (playerInfor.touxi1) {
-                    this.proxy.getPlayerInfo
-                    this.popupGameInfoWindow.firstRound.text = GameInfo.attacked;
-                }
-                else if (playerInfor.onebaowu) {
-                    let seeSeat = this.proxy.gameState.seats[playerInfor.onebaowu];
-                    this.popupGameInfoWindow.firstRound.fang = {
-                        actorUrl: seeSeat.avatarUrl,
-                        color: seeSeat.color.source,
-                        name: seeSeat.name,
-                        result: playerInfor.onezhenjia
+            if (playerInfor.touxi1) {
+                this.popupGameInfoWindow.firstRound.text = GameInfo.attacked
+            }
+            else {
+                if (playerInfor.onebaowu) {
+                    if (i == RoleId.FangZheng) {
+                        let seeSeat = this.proxy.gameState.seats[playerInfor.onebaowu];
+                        this.popupGameInfoWindow.firstRound.fang = {
+                            actorUrl: seeSeat.avatarUrl,
+                            color: seeSeat.color.source,
+                            name: seeSeat.name,
+                            result: playerInfor.onezhenjia
+                        }
+                    } 
+                    else {
+                        let antiques = this.proxy.antiquesMap.get(playerInfor.onebaowu);
+                        this.popupGameInfoWindow.firstRound.r1 = {
+                            source: antiques.source,
+                            resultRes: "",
+                            resultLabel: ""
+                        }
+                        playerInfor.onezhenjia == GameInfo.cannotJudge
+                        ? this.popupGameInfoWindow.firstRound.r1.resultLabel = GameInfo.cannotJudge
+                        : this.popupGameInfoWindow.firstRound.r1.resultRes = (playerInfor.onezhenjia == "真" ? "true" : "false");
                     }
                 }
-                else if (playerInfor.skipskill1) {
+                if (playerInfor.onebaowu2) { //许愿鉴第二个宝
+                    let antiques = this.proxy.antiquesMap.get(playerInfor.onebaowu2);
+                    this.popupGameInfoWindow.firstRound.r2 = {
+                        source: antiques.source,
+                        resultRes: "",
+                        resultLabel: ""
+                    }
+                    playerInfor.onezhenjia2 == GameInfo.cannotJudge
+                    ? this.popupGameInfoWindow.firstRound.r2.resultLabel = GameInfo.cannotJudge
+                    : this.popupGameInfoWindow.firstRound.r2.resultRes = (playerInfor.onezhenjia2 == "真" ? "true" : "false");
+                }
+                else if (playerInfor.skipskill1) { //跳过技能
                     this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
                 }
-                if (playerInfor.touxi2) {
-                    this.popupGameInfoWindow.secondRound.text = GameInfo.attacked
-                }
-                else if (playerInfor.twobaowu) {
-                    let seeSeat = this.proxy.gameState.seats[playerInfor.twobaowu];
-                    this.popupGameInfoWindow.secondRound.fang = {
-                        actorUrl: seeSeat.avatarUrl,
-                        color: seeSeat.color.source,
-                        name: seeSeat.name,
-                        result: playerInfor.twozhenjia
-                    }
-                }
-                else if (playerInfor.skipskill2) {
-                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
-                }
-                if (playerInfor.touxi3) {
-                    this.popupGameInfoWindow.thirdRound.text = GameInfo.attacked
-                }
-                else if (playerInfor.threebaowu) {
-                    let seeSeat = this.proxy.gameState.seats[playerInfor.threebaowu];
-                    this.popupGameInfoWindow.thirdRound.fang = {
-                        actorUrl: seeSeat.avatarUrl,
-                        color: seeSeat.color.source,
-                        name: seeSeat.name,
-                        result: playerInfor.threezhenjia
-                    }
-                }
-                else if (playerInfor.skipskill3) {
-                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
-                }
-            }
-            else if (i == RoleId.YaoBuRan) {
-                if (playerInfor.onebaowu) {
-                    let antiques = this.proxy.antiquesMap.get(playerInfor.onebaowu);
-                    this.popupGameInfoWindow.firstRound.r1 = {
-                        source: antiques.source,
-                        resultRes: playerInfor.onezhenjia == "真" ? "true" : "false"
-                    }
-                }
-                if (this.proxy.gameState.oneybrskill) {
+                else if (i == RoleId.YaoBuRan && this.proxy.gameState.oneybrskill) { //药不然技能
                     let seat = this.proxy.gameState.seats[this.proxy.gameState.oneybrskill];
                     this.popupGameInfoWindow.firstRound.skillText = GameInfo.attack;
                     this.popupGameInfoWindow.firstRound.yaoSkill = {
@@ -133,82 +117,33 @@ module game {
                         name: seat.name,
                     };
                 }
-                else if (playerInfor.skipskill1) {
-                    this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
-                }
-
-                if (playerInfor.twobaowu) {
-                    let antiques = this.proxy.antiquesMap.get(playerInfor.twobaowu);
-                    this.popupGameInfoWindow.secondRound.r1 = {
-                        source: antiques.source,
-                        resultRes: playerInfor.twozhenjia == "真" ? "true" : "false"
-                    }
-                }
-                if (this.proxy.gameState.twoybrskill) {
-                    let seat = this.proxy.gameState.seats[this.proxy.gameState.twoybrskill];
-                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.attack;
-                    this.popupGameInfoWindow.secondRound.yaoSkill = {
-                        color: seat.color.source,
-                        url: seat.avatarUrl,
-                        name: seat.name,
+                else if (i == RoleId.ZhengGuoQu && this.proxy.gameState.onezgqskill < 100) { //郑国渠技能
+                    let antique = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.proxy.gameState.onezgqskill]);
+                    this.popupGameInfoWindow.firstRound.skillText = GameInfo.hide;
+                    this.popupGameInfoWindow.firstRound.zhengSkill = {
+                        source: antique.source,
                     };
                 }
-                else if (playerInfor.skipskill2) {
-                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
-                }
-
-                if (playerInfor.threebaowu) {
-                    let antiques = this.proxy.antiquesMap.get(playerInfor.threebaowu);
-                    this.popupGameInfoWindow.thirdRound.r1 = {
-                        source: antiques.source,
-                        resultRes: playerInfor.threezhenjia == "真" ? "true" : "false"
-                    }
-                }
-                if (this.proxy.gameState.threeybrskill) {
-                    let seat = this.proxy.gameState.seats[this.proxy.gameState.threeybrskill];
-                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.attack;
-                    this.popupGameInfoWindow.thirdRound.yaoSkill = {
-                        color: seat.color.source,
-                        url: seat.avatarUrl,
-                        name: seat.name,
-                    };
-                }
-                else if (playerInfor.skipskill3) {
-                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
+                else if (i == RoleId.LaoChaoFen && this.proxy.gameState.onelcfskill) { //老朝奉技能
+                    this.popupGameInfoWindow.firstRound.skillText = GameInfo.reverse;
                 }
             }
+
+            if (playerInfor.touxi2) {
+                this.popupGameInfoWindow.secondRound.text = GameInfo.attacked
+            }
             else {
-                if (playerInfor.touxi1) {
-                    this.popupGameInfoWindow.firstRound.text = GameInfo.attacked
-                }
-                else {
-                    if (playerInfor.onebaowu) {
-                        let antiques = this.proxy.antiquesMap.get(playerInfor.onebaowu);
-                        this.popupGameInfoWindow.firstRound.r1 = {
-                            source: antiques.source,
-                            resultRes: "",
-                            resultLabel: ""
+                if (playerInfor.twobaowu) {
+                    if (i == RoleId.FangZheng) {
+                        let seeSeat = this.proxy.gameState.seats[playerInfor.twobaowu];
+                        this.popupGameInfoWindow.secondRound.fang = {
+                            actorUrl: seeSeat.avatarUrl,
+                            color: seeSeat.color.source,
+                            name: seeSeat.name,
+                            result: playerInfor.twozhenjia
                         }
-                        playerInfor.onezhenjia == GameInfo.cannotJudge
-                            ? this.popupGameInfoWindow.firstRound.r1.resultLabel = GameInfo.cannotJudge
-                            : this.popupGameInfoWindow.firstRound.r1.resultRes = (playerInfor.onezhenjia == "真" ? "true" : "false");
-                    }
-                    if (playerInfor.onebaowu2) {
-                        let antiques = this.proxy.antiquesMap.get(playerInfor.onebaowu2);
-                        this.popupGameInfoWindow.firstRound.r2 = {
-                            source: antiques.source,
-                            resultRes: playerInfor.onezhenjia2 == "真" ? "true" : "false"
-                        }
-                    }
-                    if (playerInfor.skipskill1) {
-                        this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
-                    }
-                }
-                if (playerInfor.touxi2) {
-                    this.popupGameInfoWindow.secondRound.text = GameInfo.attacked
-                }
-                else {
-                    if (playerInfor.twobaowu) {
+                    } 
+                    else {
                         let antiques = this.proxy.antiquesMap.get(playerInfor.twobaowu);
                         this.popupGameInfoWindow.secondRound.r1 = {
                             source: antiques.source,
@@ -219,22 +154,57 @@ module game {
                             ? this.popupGameInfoWindow.secondRound.r1.resultLabel = GameInfo.cannotJudge
                             : this.popupGameInfoWindow.secondRound.r1.resultRes = (playerInfor.twozhenjia == "真" ? "true" : "false");
                     }
-                    if (playerInfor.twobaowu2) {
-                        let antiques = this.proxy.antiquesMap.get(playerInfor.twobaowu2);
-                        this.popupGameInfoWindow.secondRound.r2 = {
-                            source: antiques.source,
-                            resultRes: playerInfor.twozhenjia2 == "真" ? "true" : "false"
+                }
+                if (playerInfor.twobaowu2) {
+                    let antiques = this.proxy.antiquesMap.get(playerInfor.twobaowu2);
+                    this.popupGameInfoWindow.secondRound.r2 = {
+                        source: antiques.source,
+                        resultRes: "",
+                        resultLabel: ""
+                    }
+                    playerInfor.twozhenjia2 == GameInfo.cannotJudge
+                    ? this.popupGameInfoWindow.secondRound.r2.resultLabel = GameInfo.cannotJudge
+                    : this.popupGameInfoWindow.secondRound.r2.resultRes = (playerInfor.twozhenjia2 == "真" ? "true" : "false");
+                }
+                else if (playerInfor.skipskill2) { //跳过技能
+                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
+                }
+                else if (i == RoleId.YaoBuRan && this.proxy.gameState.twoybrskill) { //药不然技能
+                    let seat = this.proxy.gameState.seats[this.proxy.gameState.twoybrskill];
+                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.attack;
+                    this.popupGameInfoWindow.secondRound.yaoSkill = {
+                        color: seat.color.source,
+                        url: seat.avatarUrl,
+                        name: seat.name,
+                    };
+                }
+                else if (i == RoleId.ZhengGuoQu && this.proxy.gameState.twozgqskill < 100) { //郑国渠技能
+                    let antique = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.proxy.gameState.twozgqskill]);
+                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.hide;
+                    this.popupGameInfoWindow.secondRound.zhengSkill = {
+                        source: antique.source,
+                    };
+                }
+                else if (i == RoleId.LaoChaoFen && this.proxy.gameState.twolcfskill) { //老朝奉技能
+                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.reverse;
+                }
+            }
+
+            if (playerInfor.touxi3) {
+                this.popupGameInfoWindow.thirdRound.text = GameInfo.attacked
+            }
+            else {
+                if (playerInfor.threebaowu) {
+                    if (i == RoleId.FangZheng) {
+                        let seeSeat = this.proxy.gameState.seats[playerInfor.threebaowu];
+                        this.popupGameInfoWindow.thirdRound.fang = {
+                            actorUrl: seeSeat.avatarUrl,
+                            color: seeSeat.color.source,
+                            name: seeSeat.name,
+                            result: playerInfor.threezhenjia
                         }
-                    }
-                    if (playerInfor.skipskill2) {
-                        this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
-                    }
-                }
-                if (playerInfor.touxi3) {
-                    this.popupGameInfoWindow.thirdRound.text = GameInfo.attacked
-                }
-                else {
-                    if (playerInfor.threebaowu) {
+                    } 
+                    else {
                         let antiques = this.proxy.antiquesMap.get(playerInfor.threebaowu);
                         this.popupGameInfoWindow.thirdRound.r1 = {
                             source: antiques.source,
@@ -245,16 +215,39 @@ module game {
                             ? this.popupGameInfoWindow.thirdRound.r1.resultLabel = GameInfo.cannotJudge
                             : this.popupGameInfoWindow.thirdRound.r1.resultRes = (playerInfor.threezhenjia == "真" ? "true" : "false");
                     }
-                    if (playerInfor.threebaowu2) {
-                        let antiques = this.proxy.antiquesMap.get(playerInfor.threebaowu2);
-                        this.popupGameInfoWindow.thirdRound.r2 = {
-                            source: antiques.source,
-                            resultRes: playerInfor.threezhenjia2 == "真" ? "true" : "false"
-                        }
+                }
+                if (playerInfor.threebaowu2) {
+                    let antiques = this.proxy.antiquesMap.get(playerInfor.threebaowu2);
+                    this.popupGameInfoWindow.thirdRound.r2 = {
+                        source: antiques.source,
+                        resultRes: "",
+                        resultLabel: ""
                     }
-                    if (playerInfor.skipskill3) {
-                        this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
-                    }
+                    playerInfor.threezhenjia2 == GameInfo.cannotJudge
+                    ? this.popupGameInfoWindow.thirdRound.r2.resultLabel = GameInfo.cannotJudge
+                    : this.popupGameInfoWindow.thirdRound.r2.resultRes = (playerInfor.threezhenjia2 == "真" ? "true" : "false");
+                }
+                else if (playerInfor.skipskill3) { //跳过技能
+                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
+                }
+                else if (i == RoleId.YaoBuRan && this.proxy.gameState.threeybrskill) { //药不然技能
+                    let seat = this.proxy.gameState.seats[this.proxy.gameState.threeybrskill];
+                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.attack;
+                    this.popupGameInfoWindow.thirdRound.yaoSkill = {
+                        color: seat.color.source,
+                        url: seat.avatarUrl,
+                        name: seat.name,
+                    };
+                }
+                else if (i == RoleId.ZhengGuoQu && this.proxy.gameState.threezgqskill < 100) { //郑国渠技能
+                    let antique = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.proxy.gameState.threezgqskill]);
+                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.hide;
+                    this.popupGameInfoWindow.thirdRound.zhengSkill = {
+                        source: antique.source,
+                    };
+                }
+                else if (i == RoleId.LaoChaoFen && this.proxy.gameState.threelcfskill) { //老朝奉技能
+                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.reverse;
                 }
             }
         }
