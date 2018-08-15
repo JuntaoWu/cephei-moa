@@ -29,14 +29,22 @@ module game {
 
         public async initData() {
             this.rankList = [];
-            for (let i = 1; i < 21; i++) {
-                this.rankList.push({
-                    key: i,
-                    name: "name"+i,
-                    score: i,
-                    totalGame: i,
-                })
-            }
+            // for (let i = 1; i < 21; i++) {
+            //     this.rankList.push({
+            //         key: i,
+            //         name: "name"+i,
+            //         score: i,
+            //         totalGame: i,
+            //     })
+            // }
+            this.rankList = RES.getRes("rank_json") as Array<any>;
+            this.rankList.sort((a, b) => {
+                return a.score > b.score ? -1 : 1;
+            })
+            this.rankList.forEach((item, index) => {
+                item.key = index + 1;
+                item.score = `${item.score}局`
+            })
             this.rankWindow.rankList.dataProvider = new eui.ArrayCollection(this.rankList);
             this.rankWindow.rankList.itemRenderer = RankListItemRenderer;
         }
@@ -77,22 +85,22 @@ module game {
         }
 
         private winRateButtonClick(event: egret.TouchEvent) {
-            this.rankWindow.showGameNumSwitch = this.rankWindow.showRoleSwitch = false;
-            this.rankWindow.showWinRateSwitch = !this.rankWindow.showWinRateSwitch;
+            // this.rankWindow.showGameNumSwitch = this.rankWindow.showRoleSwitch = false;
+            // this.rankWindow.showWinRateSwitch = !this.rankWindow.showWinRateSwitch;
             this.rankWindow.winRateButton.selected = true;
             this.rankWindow.roleButton.selected = this.rankWindow.gameNumButton.selected = false;
         }
 
         private roleButtonClick(event: egret.TouchEvent) {
-            this.rankWindow.showGameNumSwitch = this.rankWindow.showWinRateSwitch = false;
-            this.rankWindow.showRoleSwitch = !this.rankWindow.showRoleSwitch;
+            // this.rankWindow.showGameNumSwitch = this.rankWindow.showWinRateSwitch = false;
+            // this.rankWindow.showRoleSwitch = !this.rankWindow.showRoleSwitch;
             this.rankWindow.roleButton.selected = true;
             this.rankWindow.winRateButton.selected = this.rankWindow.gameNumButton.selected = false;
         }
 
         private gameNumButtonClick(event: egret.TouchEvent) {
-            this.rankWindow.showWinRateSwitch = this.rankWindow.showRoleSwitch = false;
-            this.rankWindow.showGameNumSwitch = !this.rankWindow.showGameNumSwitch;
+            // this.rankWindow.showWinRateSwitch = this.rankWindow.showRoleSwitch = false;
+            // this.rankWindow.showGameNumSwitch = !this.rankWindow.showGameNumSwitch;
             this.rankWindow.gameNumButton.selected = true;
             this.rankWindow.roleButton.selected = this.rankWindow.winRateButton.selected = false;
         }

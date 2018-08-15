@@ -62,7 +62,9 @@ module game {
                 r2: null,
                 text: ""
             }
-
+            this.popupGameInfoWindow.firstRound = {};
+            this.popupGameInfoWindow.secondRound = {};
+            this.popupGameInfoWindow.thirdRound = {};
             let playerInfor = this.proxy.getPlayerInfo();
             let i = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
             if (!playerInfor) {
@@ -179,7 +181,7 @@ module game {
                     };
                 }
                 else if (i == RoleId.ZhengGuoQu && this.proxy.gameState.twozgqskill < 100) { //郑国渠技能
-                    let antique = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.proxy.gameState.twozgqskill]);
+                    let antique = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.proxy.gameState.twozgqskill + 4]);
                     this.popupGameInfoWindow.secondRound.skillText = GameInfo.hide;
                     this.popupGameInfoWindow.secondRound.zhengSkill = {
                         source: antique.source,
@@ -240,7 +242,7 @@ module game {
                     };
                 }
                 else if (i == RoleId.ZhengGuoQu && this.proxy.gameState.threezgqskill < 100) { //郑国渠技能
-                    let antique = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.proxy.gameState.threezgqskill]);
+                    let antique = this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[this.proxy.gameState.threezgqskill + 8]);
                     this.popupGameInfoWindow.thirdRound.skillText = GameInfo.hide;
                     this.popupGameInfoWindow.thirdRound.zhengSkill = {
                         source: antique.source,

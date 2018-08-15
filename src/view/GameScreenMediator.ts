@@ -1220,7 +1220,8 @@ module game {
             const Nr2 = +Nr;
             let skilled = this.proxy.gameState.role.findIndex(xx => xx && xx.actorNr == this.proxy.gameState.seats[Nr2].actorNr);
             if (1 <= skilled && skilled <= 5) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是许愿阵营");
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是许愿阵营");
+                this.sendNotification(SceneCommand.SHOW_FANG_POPUP, Nr);
                 if (this.proxy.gameState.lunci == 1) {
                     this.proxy.updatePlayerInfo("onebaowu", Nr);
                     this.proxy.updatePlayerInfo("onezhenjia", "许愿阵营");
@@ -1232,7 +1233,8 @@ module game {
                     this.proxy.updatePlayerInfo("threezhenjia", "许愿阵营");
                 }
             } else if (6 <= skilled && skilled <= 8) {
-                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是老朝奉阵营");
+                // this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, Nr + "号位是老朝奉阵营");
+                this.sendNotification(SceneCommand.SHOW_FANG_POPUP, Nr);
                 if (this.proxy.gameState.lunci == 1) {
                     this.proxy.updatePlayerInfo("onebaowu", Nr);
                     this.proxy.updatePlayerInfo("onezhenjia", "老朝奉阵营");

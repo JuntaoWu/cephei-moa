@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.RankListItemRenderer" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-    <e:Group width="630" bottom="25">
+    <e:Group width="600" bottom="25">
         <e:Image visible="{rankRes}" source="{rankRes}"  verticalCenter="0" width="110" height="110"/>
         <e:Group visible="{isNotTopThree}">
             <e:Image source="rank_bg"  verticalCenter="0" width="110" height="110"/>
             <e:Label text="{data.key}"  verticalCenter="0" horizontalCenter="0" size="45" textColor="0x020202"/>
         </e:Group>
-        <e:Image source="btn-share"  x="120" width="110" height="110" verticalCenter="0"/>
-        <e:Label text="{data.name}"  verticalCenter="0" size="45" x="250" textColor="0x020202"/>
-        <e:Label text="{data.score}"  verticalCenter="0" size="45" right="0" textColor="0x020202"/>
+        <e:Image source="{data.url}"  x="120" width="110" height="110" verticalCenter="0"/>
+        <e:Label text="{data.name}"  verticalCenter="0" width="250" x="250" textColor="0x020202"/>
+        <e:Label text="{data.score}"  verticalCenter="0" right="0" textColor="0x020202"/>
     </e:Group>
     <e:Image source="sep"  bottom="0" horizontalCenter="0"/>
 </e:Skin>

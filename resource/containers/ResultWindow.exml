@@ -118,7 +118,7 @@
                     <e:Label text="鉴人部分许愿方得分" textColor="0x050505"/>
                     <e:Label text="{findPeopleScore}" textColor="0xa50606" x="315"/>
                 </e:Group>
-                <e:Group id="totalScoreGroup" y="2260" horizontalCenter="0">
+                <e:Group id="totalScoreGroup" y="2320" horizontalCenter="0">
                     <e:Label text="许愿方总分" textColor="0x050505" size="32"/>
                     <e:Label text="{totalScore}" textColor="0xa50606" x="220" y="1"/>
                     <e:Label y="150" horizontalCenter="0" />

@@ -41,16 +41,27 @@ module game {
 
             this.userInfoWindow.nickName = userInfo.nickName;
             this.userInfoWindow.avatarUrl = userInfo.avatarUrl;
-            this.userInfoWindow.totalPlay = `共${totalPlay}局`;
-            this.userInfoWindow.winPlay = winPlay;
-            this.userInfoWindow.failPlay = totalPlay - winPlay;
+            // this.userInfoWindow.totalPlay = `共${totalPlay}局`;
+            // this.userInfoWindow.winPlay = winPlay;
+            // this.userInfoWindow.failPlay = totalPlay - winPlay;
 
-            this.userInfoWindow.totalWinRate = `${Math.round((winPlay / (totalPlay || 1)) * 100)}%`;
-            this.userInfoWindow.gameWinRate6 = `${Math.round((winPlay6 / (play6 || 1)) * 100)}%`;
-            this.userInfoWindow.gameWinRate7 = `${Math.round((winPlay7 / (play7 || 1)) * 100)}%`;
-            this.userInfoWindow.gameWinRate8 = `${Math.round((winPlay8 / (play8 || 1)) * 100)}%`;
-            this.userInfoWindow.campXuWinRate = `${Math.round((campXuWin / (campXu || 1)) * 100)}%`;
-            this.userInfoWindow.campLaoWinRate = `${Math.round((campLaoWin / (campLao || 1)) * 100)}%`;
+            // this.userInfoWindow.totalWinRate = `${Math.round((winPlay / (totalPlay || 1)) * 100)}%`;
+            // this.userInfoWindow.gameWinRate6 = `${Math.round((winPlay6 / (play6 || 1)) * 100)}%`;
+            // this.userInfoWindow.gameWinRate7 = `${Math.round((winPlay7 / (play7 || 1)) * 100)}%`;
+            // this.userInfoWindow.gameWinRate8 = `${Math.round((winPlay8 / (play8 || 1)) * 100)}%`;
+            // this.userInfoWindow.campXuWinRate = `${Math.round((campXuWin / (campXu || 1)) * 100)}%`;
+            // this.userInfoWindow.campLaoWinRate = `${Math.round((campLaoWin / (campLao || 1)) * 100)}%`;
+            
+            this.userInfoWindow.totalPlay = `共99局`;
+            this.userInfoWindow.winPlay = 99;
+            this.userInfoWindow.failPlay = 0;
+
+            this.userInfoWindow.totalWinRate = `100%`;
+            this.userInfoWindow.gameWinRate6 = `100%`;
+            this.userInfoWindow.gameWinRate7 = `100%`;
+            this.userInfoWindow.gameWinRate8 = `100%`;
+            this.userInfoWindow.campXuWinRate = `100%`;
+            this.userInfoWindow.campLaoWinRate = `100%`;
         }
 
         private backButtonClick(event: egret.TouchEvent) {

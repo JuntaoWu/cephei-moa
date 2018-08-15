@@ -31,6 +31,7 @@ module game {
 
         public static SHOW_HANDLE_POPUP: string = "show_handle_popup";
         public static SHOW_PROMPT_POPUP: string = "show_prompt_popup";
+        public static SHOW_FANG_POPUP: string = "show_fang_popup";
         public static SHOW_ROUND_POPUP:string="show_round_popup";
         public static SHOW_ROLE_POPUP: string = "show_role_popup";
         public static SHOW_RESULT_POPUP: string = "show_result_popup";
@@ -63,6 +64,7 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_RESULT_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_HANDLE_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_PROMPT_POPUP, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_FANG_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_ROUND_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_ROLE_POPUP, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_RESULT_POPUP, SceneCommand);
@@ -136,6 +138,10 @@ module game {
                 }
                 case SceneCommand.SHOW_PROMPT_POPUP: {
                     appMediator.main.showPopupPromptWindow(data);
+                    break;
+                }
+                case SceneCommand.SHOW_FANG_POPUP: {
+                    appMediator.main.showPopupFangWindow(data);
                     break;
                 }
                 case SceneCommand.SHOW_ROLE_POPUP: {

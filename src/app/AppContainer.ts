@@ -120,6 +120,16 @@ module game {
             this.popupPromptWindow.show();
         }
         
+        public popupFangWindow: PopupFangWindow;
+        public showPopupFangWindow(str: number): void {
+            if (!this.popupFangWindow) {
+                this.popupFangWindow = new PopupFangWindow();
+            }
+            this.popupFangWindow.setSeat(str);
+            this.addChild(this.popupFangWindow);
+            this.popupFangWindow.show();
+        }
+        
         public popupRoleWindow: PopupRoleWindow;
         public showPopupRoleWindow(roleId): void {
             if (!this.popupRoleWindow) {
