@@ -94,6 +94,22 @@ module game {
                     });
                 }
             }
+            else {
+                if (++this.retried < this.maxRetriedCount) {
+                    this.start();
+                }
+                else {
+                    platform.showModal("服务器连接失败,请检查网络或尝试重连", "重试").then(res => {
+                        if (res && res.confirm) {
+                            this.retried = 0;
+                            this.start();
+                        }
+                        else if (res && res.cancel) {
+                            this.autoRejoin = false;
+                        }
+                    });
+                }
+            }
         }
 
         onEvent(event: CustomPhotonEvents, message: any, actorNr: number) {
