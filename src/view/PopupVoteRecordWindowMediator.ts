@@ -11,7 +11,7 @@ module game {
             super(PopupVoteRecordWindowMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
             this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
-            
+
             this.popupVoteRecordWindow.backButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backButtonClick, this);
             this.popupVoteRecordWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
@@ -25,7 +25,14 @@ module game {
             let orderList = ["", "shunwei_one_been", "shunwei_two_been", "shunwei_three_been"];
             let voteNumList = ["", "toupiao", "toupiao2", "toupiao3"];
 
-            [1 ,2, 3].forEach(i => {
+            [1, 2, 3].forEach(i => {
+                this.popupVoteRecordWindow[`orderGroup${i}`].dataProvider = new eui.ArrayCollection([]);
+                this.popupVoteRecordWindow[`orderGroup${i}`].itemRenderer = VoteNumRenderer;
+                this.popupVoteRecordWindow[`roundGroup${i}`].dataProvider = new eui.ArrayCollection([]);
+                this.popupVoteRecordWindow[`roundGroup${i}`].itemRenderer = VoteAntiquesRenderer;
+            });
+
+            [1, 2, 3].forEach(i => {
                 if (i > this.proxy.gameState.lunci) {
                     return;
                 }
@@ -52,7 +59,7 @@ module game {
                             }
                             this.proxy.gameState[voteNumList[i]].forEach((v, k) => {
                                 if (v && +v.toString().substr(j * 2, 2)) {
-                                    obj.voteDetail.push({ 
+                                    obj.voteDetail.push({
                                         voterColor: this.proxy.gameState.seats[k].color.source,
                                         voteNum: + v.toString().substr(j * 2, 2)
                                     });
@@ -60,11 +67,11 @@ module game {
                             })
                             voteData.push(obj);
                         }
-                    }) 
+                    })
                 }
                 this.popupVoteRecordWindow[`roundGroup${i}`].dataProvider = new eui.ArrayCollection(voteData);
                 this.popupVoteRecordWindow[`roundGroup${i}`].itemRenderer = VoteAntiquesRenderer;
-            }); 
+            });
         }
 
         public get popupVoteRecordWindow(): PopupVoteRecordWindow {

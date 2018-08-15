@@ -189,6 +189,10 @@ module game {
 
                 if (!this.skillAnimAdded) {
 
+                    let oldDragonBone = this.gameScreen.btnSkill.getChildByName("dragonBone") as dragonBones.EgretArmatureDisplay;
+                    if (oldDragonBone) {
+                        this.gameScreen.btnSkill.removeChild(oldDragonBone);
+                    }
                     const dragonBone = DragonBones.createDragonBone("skills", this.myRole.skillRes);
                     dragonBone.animation.play(this.myRole.skillRes, 0);
                     dragonBone.animation.animationConfig.timeScale = 0.5;
@@ -229,12 +233,10 @@ module game {
                     this.gameScreen.isChoosingRole = !isAllRolesReady;
                     this.gameScreen.isChoosingRoleandSeven = !isAllRolesReady && (this.proxy.gameState.maxPlayers == 7 || this.proxy.gameState.maxPlayers == 8);
                     this.gameScreen.isChoosingRoleandEight = !isAllRolesReady && this.proxy.gameState.maxPlayers == 8;
-                    if (this.proxy.gameState.maxPlayers != 7 && this.proxy.gameState.maxPlayers != 8) {
-                        this.gameScreen.btnjs8.filters = [ColorFilter.grey];
-                    }
-                    if (this.proxy.gameState.maxPlayers != 8) {
-                        this.gameScreen.btnjs3.filters = [ColorFilter.grey];
-                    }
+
+                    this.gameScreen.btnjs3.filters = this.proxy.gameState.maxPlayers != 8 ? [ColorFilter.grey] : [];
+                    this.gameScreen.btnjs8.filters = this.proxy.gameState.maxPlayers == 6 ? [ColorFilter.grey] : [];
+
                     this.gameScreen.isChoosingRoleOrMasterClient = !isAllRolesReady || this.gameScreen.isMasterClient;
                     this.gameScreen.isAllRolesReadyAndNormalClient = isAllRolesReady && this.gameScreen.isNormalClient;
                     this.gameScreen.isPhasePreparing = false;
@@ -434,6 +436,7 @@ module game {
         }
 
         public startChooseRole() {
+            this.skillAnimAdded = false;
             this.proxy.startChooseRole();
         }
 
@@ -1309,6 +1312,10 @@ module game {
                 const antiqueObject = this.proxy.antiquesMap.get(animName);
                 let control = this.gameScreen[anim.controlName] as eui.Button;
                 let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                let bgNormal = antiqueGroup.getChildByName("antique-normal");
+                let bgSelected = antiqueGroup.getChildByName("antique-selected");
+                bgNormal.visible = true;
+                bgSelected.visible = false;
                 let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
                 image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;
