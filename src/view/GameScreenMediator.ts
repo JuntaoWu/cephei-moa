@@ -449,7 +449,7 @@ module game {
         }
 
         public startGame() {
-            this.sendNotification(GameCommand.START_GAME);
+            this.sendNotification(GameCommand.START_GAME);            
         }
 
         // updated by updateGameScreen
@@ -469,6 +469,7 @@ module game {
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
             });
+            this.gameScreen.touren_note.text = "选择下一位行动的玩家";
         }
 
         public first_one(message: string) {
