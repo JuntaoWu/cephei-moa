@@ -15,9 +15,9 @@
 		"libs/modules/photon/photon.js"
 	],
 	"game": [
-		"bin-debug/model/common/Constants.js",
 		"bin-debug/view/panel/BasePanel.js",
 		"bin-debug/view/PopupVoteRecordWindowMediator.js",
+		"bin-debug/AssetAdapter.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
@@ -36,7 +36,7 @@
 		"bin-debug/model/MyLoadBalancingClient.js",
 		"bin-debug/model/common/ActorModel.js",
 		"bin-debug/model/common/CommonData.js",
-		"bin-debug/AccountAdapter.js",
+		"bin-debug/model/common/Constants.js",
 		"bin-debug/model/common/CustomPhotonEvents.js",
 		"bin-debug/model/common/PlayerInfo.js",
 		"bin-debug/model/common/Receiver.js",
@@ -67,7 +67,7 @@
 		"bin-debug/view/panel/AboutWindow.js",
 		"bin-debug/view/panel/ActorUI.js",
 		"bin-debug/view/panel/BarWindow.js",
-		"bin-debug/AssetAdapter.js",
+		"bin-debug/AccountAdapter.js",
 		"bin-debug/view/panel/CityItemRenderer.js",
 		"bin-debug/view/panel/ClubListItemRenderer.js",
 		"bin-debug/view/panel/GameScreen.js",

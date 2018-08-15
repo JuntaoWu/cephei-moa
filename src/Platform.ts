@@ -68,7 +68,7 @@ class DebugPlatform implements Platform {
     }
 
     playVideo() {
-
+        return {};
     }
 
     public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {

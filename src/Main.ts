@@ -78,7 +78,7 @@ class Main extends eui.UILayer {
                 platform.applyUpdate(checkVersionResult.version);
             }
 
-            await RES.loadConfig("default.res.json", `${game.Constants.Endpoint}resource/`);
+            await RES.loadConfig("default.res.json", `${game.Constants.ResourceEndpoint}resource/`);
             await this.loadTheme();
 
             await RES.loadGroup("loading", 1);

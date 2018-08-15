@@ -23,7 +23,7 @@ module game {
                 })
             }, this);
             this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                let video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video2.mp4`);
+                let video = platform.playVideo(`${game.Constants.ResourceEndpoint}resource/assets/guide/video2.mp4`);
                 video.poster = "resource/assets/guide/video2.png";
                 video.x = 15;
                 video.y = 80;
@@ -33,7 +33,7 @@ module game {
                 })
             }, this);
             this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                let video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video3.mp4`);
+                let video = platform.playVideo(`${game.Constants.ResourceEndpoint}resource/assets/guide/video3.mp4`);
                 video.poster = "resource/assets/guide/video3.png";
                 video.x = 15;
                 video.y = 80;

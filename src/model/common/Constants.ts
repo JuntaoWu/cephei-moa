@@ -3,20 +3,34 @@ module game {
 
     export class Constants {
 
-        //public static ServiceEndpoint: string = "http://localhost:3000/";
-        public static ServiceEndpoint: string = "https://cephei-moa.herokuapp.com/";
-        public static get Endpoint(): string {
-            return platform.name == "DebugPlatform" ? "" : "https://cephei-moa.herokuapp.com/miniGame/";
+        private static _photonConfig: Map<string, string>;
+        public static get photonConfig(): Map<string, string> {
+            if (!Constants._photonConfig) {
+                Constants._photonConfig = new Map<string, string>(Object.entries(RES.getRes("photon_json")));
+            }
+            return Constants._photonConfig;
+        }
+
+        public static get ResourceEndpoint(): string {
+            return platform.name == "DebugPlatform" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
         };
-        //public static Endpoint: string = "";
+
+        public static get photonMasterServer(): string {
+            return platform.name == "DebugPlatform" ? this.photonConfig.get("localMasterServer") : this.photonConfig.get("photonMasterServer");
+        }
+
+        public static get photonNameServer(): string {
+            return this.photonConfig.get("photonNameServer");
+        }
+
+        public static get photonRegion(): string {
+            return this.photonConfig.get("photonRegion");
+        }
 
         public static Endpoints = {
-            //photonMasterServer: "127.0.0.1:9090",
-            //photonAsyncService: "http://127.0.0.1:44301/api",
-            //photonNotificationService: "http://127.0.0.1:44302",
-            photonMasterServer: "192.168.2.202:9090",
-            // photonAsyncService: "http://192.168.2.202:44301/api",
-            // photonNotificationService: "http://192.168.2.202:44302",
+            service: "https://cephei-moa.herokuapp.com/",
+            localResource: "",
+            remoteResource: "https://cephei-moa.herokuapp.com/miniGame/"
         }
     }
 

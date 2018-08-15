@@ -2,10 +2,8 @@
 module game {
 
     const photonWss = false;
-    const photonAppId = "d5a0e7bb-7a5a-4adb-a2a5-4b60951e58f9";
+    const photonAppId = "f0e09630-c30e-4d9d-8d60-64d91ebf642b";
     const photonAppVersion = "1.0";
-    const photonMasterServer = Constants.Endpoints.photonMasterServer;
-    const photonFbAppId = "";
 
     const connectOnStart = true;
 
@@ -30,8 +28,6 @@ module game {
         constructor() {
             super(photonWss ? Photon.ConnectionProtocol.Wss : Photon.ConnectionProtocol.Ws, photonAppId, photonAppVersion);
 
-            this.output(this.logger.format("Init", photonMasterServer || this.getNameServerAddress(), photonAppVersion));
-            this.logger.info("Init", photonMasterServer || this.getNameServerAddress(), photonAppVersion);
             this.setLogLevel(Exitgames.Common.Logger.Level.DEBUG);
         }
 
@@ -44,14 +40,17 @@ module game {
         public receiveMessageSubject = (event, message, sender) => { };
 
         start() {
-            // connect if no fb auth required 
             if (connectOnStart) {
-                if (photonMasterServer) {
-                    this.setMasterServerAddress(photonMasterServer);
+                this.output(this.logger.format("Init", Constants.photonMasterServer || this.getNameServerAddress(), photonAppVersion));
+                this.logger.info("Init", Constants.photonMasterServer || this.getNameServerAddress(), photonAppVersion);
+
+                if (Constants.photonMasterServer) {
+                    this.setMasterServerAddress(Constants.photonMasterServer);
                     this.connect();
                 }
                 else {
-                    this.connectToRegionMaster("US");
+                    this.setNameServerAddress(Constants.photonNameServer);
+                    this.connectToRegionMaster(Constants.photonRegion);
                 }
             }
         }

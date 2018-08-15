@@ -8,7 +8,7 @@ class AccountAdapter {
                 console.log(`Login app server begin, code: ${wxRes.code}`);
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${game.Constants.ServiceEndpoint}users/login?code=${wxRes.code}`, egret.HttpMethod.POST);
+                request.open(`${game.Constants.Endpoints.service}users/login?code=${wxRes.code}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 request.send();
                 request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
@@ -40,7 +40,7 @@ class AccountAdapter {
             console.log(`Check version begin, current version is: ${version}`);
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${game.Constants.ServiceEndpoint}version/check?version=${version}`, egret.HttpMethod.GET);
+            request.open(`${game.Constants.Endpoints.service}version/check?version=${version}`, egret.HttpMethod.GET);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send();
             request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
