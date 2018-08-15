@@ -1374,6 +1374,8 @@ module game {
                 const antiqueObject = this.proxy.antiquesMap.get(animName);
                 let control = this.gameScreen[anim.controlName] as eui.Button;
                 let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
+                let antiBg = antiqueGroup.getChildByName("antique-normal") as eui.Image;
+                antiBg.source = "bg2";
                 let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
                 image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;

@@ -3,6 +3,7 @@ module game {
 
     export class GuideVideoWindow extends eui.Panel {
 
+        private video: any;
         private video1: egret.Video;
         private video2: egret.Video;
         private video3: egret.Video;
@@ -13,36 +14,42 @@ module game {
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
             this.btnVideo1.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                let video = platform.playVideo("http://media.w3.org/2010/05/sintel/trailer.mp4");
-                video.poster = "resource/assets/guide/video1.png";
-                video.x = 15;
-                video.y = 80;
-                video.play();
-                video.onEnded(() => {
-                    video.destroy();
+                this.video && this.video.destroy();
+                this.video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video1.mp4`);
+                this.video.poster = "resource/assets/guide/video1.png";
+                this.video.x = 15;
+                this.video.y = 50;
+                this.video.requestFullScreen().then(() => this.video.play());
+                this.video.onEnded(() => {
+                    this.video.destroy();
                 })
             }, this);
             this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                let video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video2.mp4`);
-                video.poster = "resource/assets/guide/video2.png";
-                video.x = 15;
-                video.y = 80;
-                video.play();
-                video.onEnded(() => {
-                    video.destroy();
+                this.video && this.video.destroy();
+                this.video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video2.mp4`);
+                // this.video.poster = "resource/assets/guide/video2.png";
+                this.video.x = 15;
+                this.video.y = 50;
+                this.video.requestFullScreen().then(() => this.video.play());
+                this.video.onEnded(() => {
+                    this.video.destroy();
                 })
             }, this);
             this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                let video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video3.mp4`);
-                video.poster = "resource/assets/guide/video3.png";
-                video.x = 15;
-                video.y = 80;
-                video.play();
-                video.onEnded(() => {
-                    video.destroy();
+                this.video && this.video.destroy();
+                this.video = platform.playVideo(`${game.Constants.Endpoint}resource/assets/guide/video3.mp4`);
+                this.video.poster = "resource/assets/guide/video3.png";
+                this.video.x = 15;
+                this.video.y = 50;
+                this.video.requestFullScreen().then(() => this.video.play());
+                this.video.onEnded(() => {
+                    this.video.destroy();
                 })
             }, this);
-        
+            this.addEventListener(eui.UIEvent.CLOSING, () => {
+                this.video && this.video.destroy();
+            }, this);
+            
             // this.video1 = new egret.Video();
             // this.video2 = new egret.Video();
             // this.video3 = new egret.Video();
