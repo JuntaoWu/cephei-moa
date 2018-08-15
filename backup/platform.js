@@ -47,7 +47,7 @@ class WxgamePlatform {
     }
 
     getVersion() {
-        return fileutil.fs.read("api-version.txt", "utf-8");
+        return wx.getStorageSync("apiVersion");
     }
 
     applyUpdate(version) {
@@ -55,7 +55,10 @@ class WxgamePlatform {
         try {
             fileutil.fs.remove("temp_text");
             fileutil.fs.remove("temp_image");
-            fileutil.fs.write("api-version.txt", version);
+            wx.setStorage({
+              key: 'apiVersion',
+              data: version,
+            });
         }
         catch (ex) {
             console.error(ex.message);
@@ -103,14 +106,14 @@ class WxgamePlatform {
       return wx.getStorageSync(key);
     }
 
-    showModal(message) {
+    showModal(message, confirmText, cancelText) {
       return new Promise((resolve, reject) => {
         wx.showModal({
           title: '提示',
           content: message,
           showCancel: true,
-          cancelText: '取消',
-          confirmText: '确定',
+          cancelText: cancelText || '取消',
+          confirmText: confirmText || '确定',
           success: function(res) {
             resolve(res);
           },
@@ -135,11 +138,9 @@ class WxgamePlatform {
     }
 
     playVideo(src) {
-      return wx.createVideo({
-        src: src,
-        width: 350,
-      });
+      return wx.createVideo({src: src});
     }
+
 }
 
 class WxgameOpenDataContext {

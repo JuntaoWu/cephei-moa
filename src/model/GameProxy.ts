@@ -13,11 +13,14 @@ module game {
 			const self = this;
 
 			platform.onNetworkStatusChange((res) => {
+				console.log(res);
 				if (!res) {
 					return;
 				}
 				if (res.isConnected) {
-					if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected) {
+					if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected
+						|| self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
+						self.loadBalancingClient.autoRejoin = true;
 						self.loadBalancingClient.start();
 					}
 				}
@@ -140,6 +143,11 @@ module game {
 		}
 
 		private onStateChange() {
+			if (!this.loadBalancingClient.isConnectedToGame()) {
+				console.log("Disconnected: skip onStateChange");
+				return;
+			}
+
 			const state = this.loadBalancingClient.state;
 			switch (state) {
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
@@ -162,14 +170,19 @@ module game {
 		}
 
 		private onUpdateRoomInfo() {
+			if (!this.loadBalancingClient.isConnectedToGame()) {
+				console.log("Disconnected: skip onUpdateRoomInfo");
+				return;
+			}
+
 			const myRoom = this.loadBalancingClient.myRoom();
 			const myRoomActors = this.loadBalancingClient.myRoomActors();
-			const myRoomActorCount = this.loadBalancingClient.myRoomActorsArray().filter(actor => !actor.suspended).length;
+			const myRoomActorCount = this.loadBalancingClient.myRoomActorsArray().filter(actor => actor && !actor.suspended).length;
 
 			this.gameState.players = myRoomActorCount;
 
 			this.gameState.seats.filter(seat => seat).forEach(seat => {
-				seat.suspended = myRoomActors[seat.actorNr].suspended;
+				seat.suspended = !myRoomActors[seat.actorNr] || myRoomActors[seat.actorNr].suspended;
 			});
 
 			if (this.isMasterClient) {
@@ -204,6 +217,11 @@ module game {
 		}
 
 		private onMessage(event: CustomPhotonEvents, message: any, sender: Photon.LoadBalancing.Actor) {
+			if (!this.loadBalancingClient.isConnectedToGame()) {
+				console.log("Disconnected: skip onMessage");
+				return;
+			}
+
 			switch (event) {
 				case CustomPhotonEvents.TakeSeat: {
 
@@ -510,6 +528,9 @@ module game {
 		}
 
 		public createRoom(maxPlayers: number) {
+
+			platform.showLoading();
+
 			this.roomName = this.generateRoomNumber();
 			if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized
 				|| this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
@@ -562,6 +583,11 @@ module game {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
 				this.loadBalancingClient.start();
 			}
+		}
+
+		public suspendRoom() {
+			this.reset();
+			this.loadBalancingClient.leaveRoom();
 		}
 
 		public leaveRoom() {

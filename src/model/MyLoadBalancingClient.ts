@@ -49,7 +49,7 @@ module game {
                     this.connect();
                 }
                 else {
-                    this.setNameServerAddress(Constants.photonNameServer);
+                    Constants.photonNameServer && this.setNameServerAddress(Constants.photonNameServer);
                     this.connectToRegionMaster(Constants.photonRegion);
                 }
             }

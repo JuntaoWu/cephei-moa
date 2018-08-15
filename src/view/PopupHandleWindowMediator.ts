@@ -23,7 +23,7 @@ module game {
         }
 
         public confirmClick() {
-            this.proxy.leaveRoom();
+            this.proxy.suspendRoom();
             this.sendNotification(SceneCommand.CHANGE, Scene.Start);
         }
 
