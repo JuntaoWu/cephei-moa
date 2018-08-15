@@ -26,9 +26,6 @@ module game {
             let voteNumList = ["", "toupiao", "toupiao2", "toupiao3"];
 
             [1 ,2, 3].forEach(i => {
-                if (i > this.proxy.gameState.lunci) {
-                    return;
-                }
                 //三轮游戏投票顺序
                 let voteOrder = [];
                 this.proxy.gameState[orderList[i]].forEach((item, index) => {
@@ -42,14 +39,16 @@ module game {
                 let n = i * 4 - 4, voteData = [];
                 let voteResult = this.proxy.gameState[`toupiaojieguo${i}`] as Array<any>;
                 for (let j = 0; j < 4; j++) {
+                    let obj = {
+                        bg: "",
+                        antRes: this.proxy.antiquesMap.get(this.proxy.gameState.baowulist[n + j]).source,
+                        isReal: "",
+                        voteDetail: [],
+                    };
                     voteResult.forEach((item, index) => {
                         if (item.baowu == this.proxy.gameState.baowulist[n + j]) {
-                            let obj = {
-                                bg: index < 2 ? "bg3" : "bg2",
-                                antRes: this.proxy.antiquesMap.get(item.baowu).source,
-                                isReal: index > 1 ? null : (!index ? "hide" : (item.zhenjia == "真" ? "true" : "false")),
-                                voteDetail: [],
-                            }
+                            obj.bg = index < 2 ? "bg3" : "bg2",
+                            obj.isReal = index > 1 ? null : (!index ? "hide" : (item.zhenjia == "真" ? "true" : "false")),
                             this.proxy.gameState[voteNumList[i]].forEach((v, k) => {
                                 if (v && +v.toString().substr(j * 2, 2)) {
                                     obj.voteDetail.push({ 
@@ -58,9 +57,11 @@ module game {
                                     });
                                 }
                             })
-                            voteData.push(obj);
                         }
-                    }) 
+                    })
+                    if (this.proxy.gameState.lunci <= i) {
+                        voteData.push(obj);
+                    }
                 }
                 this.popupVoteRecordWindow[`roundGroup${i}`].dataProvider = new eui.ArrayCollection(voteData);
                 this.popupVoteRecordWindow[`roundGroup${i}`].itemRenderer = VoteAntiquesRenderer;
