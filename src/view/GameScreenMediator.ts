@@ -230,26 +230,10 @@ module game {
                     this.gameScreen.isChoosingRoleandSeven = !isAllRolesReady && (this.proxy.gameState.maxPlayers == 7 || this.proxy.gameState.maxPlayers == 8);
                     this.gameScreen.isChoosingRoleandEight = !isAllRolesReady && this.proxy.gameState.maxPlayers == 8;
                     if (!this.gameScreen.isChoosingRoleandSeven) {
-                        var colorMatrix = [
-                            0.3, 0.6, 0, 0, 0,
-                            0.3, 0.6, 0, 0, 0,
-                            0.3, 0.6, 0, 0, 0,
-                            0, 0, 0, 1, 0
-                        ];
-
-                        var colorFlilter = new egret.ColorMatrixFilter(colorMatrix);
-                        this.gameScreen.btnjs3.filters = [colorFlilter];
+                        this.gameScreen.btnjs3.filters = [ColorFilter.grey];
                     }
                     if (!this.gameScreen.isChoosingRoleandEight) {
-                        var colorMatrix = [
-                            0.3, 0.6, 0, 0, 0,
-                            0.3, 0.6, 0, 0, 0,
-                            0.3, 0.6, 0, 0, 0,
-                            0, 0, 0, 1, 0
-                        ];
-
-                        var colorFlilter = new egret.ColorMatrixFilter(colorMatrix);
-                        this.gameScreen.btnjs8.filters = [colorFlilter];
+                        this.gameScreen.btnjs8.filters = [ColorFilter.grey];
                     }
                     this.gameScreen.isChoosingRoleOrMasterClient = !isAllRolesReady || this.gameScreen.isMasterClient;
                     this.gameScreen.isAllRolesReadyAndNormalClient = isAllRolesReady && this.gameScreen.isNormalClient;
@@ -419,7 +403,7 @@ module game {
 
             seatConfig.forEach((config, index) => {
 
-                const control = this.gameScreen[config.controlName];
+                const control = this.gameScreen[config.controlName] as eui.Group;
                 let content = control.getChildByName("content") as eui.Image;
                 let nickName = control.getChildByName("nickName") as eui.Label;
                 let normalBg = control.getChildByName("normalBg") as eui.Image;
@@ -434,6 +418,8 @@ module game {
                     selfMark.visible = this.proxy.isActorLocal(seats[config.seatNumber]);
                     content.visible = true;
                     nickName.visible = true;
+
+                    control.filters = seats[config.seatNumber].suspended ? [ColorFilter.grey] : [];
                 }
                 else {
                     normalBg.visible = true;
@@ -441,6 +427,8 @@ module game {
                     selfMark.visible = false;
                     content.visible = false;
                     nickName.visible = false;
+
+                    control.filters = [];
                 }
             });
         }
@@ -601,30 +589,18 @@ module game {
         }
 
         public skipSkill(event: egret.TouchEvent) {
-            if (this.proxy.isActorLocal(this.proxy.gameState.role[2])) {
-                if (this.proxy.gameState.ybrskill[2] > 0) {
-                    this.proxy.gameState.ybrskill[2]--;
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
-                } else {
-                    if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.playerInfor[2].skipskill1 = true;
-                    } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.playerInfor[2].skipskill2 = true;
-                    } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.playerInfor[2].skipskill3 = true;
-                    }
-                }
+            let roleId = this.myRole.id;
+            if (roleId == 6 || roleId == 7 || roleId == 8
+                || (this.proxy.isActorLocal(this.proxy.gameState.role[2]) && this.proxy.gameState.ybrskill[2] <= 0)) {
+                // set playerInfo for history.
+                this.proxy.updatePlayerInfo(`skipskill${this.proxy.gameState.lunci}`, true);
             }
-            let no = this.proxy.gameState.role.findIndex(no => no && no.actorNr == this.proxy.actorNr);
-            if (no == 6 || no == 7 || no == 8) {
-                if (this.proxy.gameState.lunci == 1) {
-                    this.proxy.gameState.playerInfor[no].skipskill1 = true;
-                } else if (this.proxy.gameState.lunci == 2) {
-                    this.proxy.gameState.playerInfor[no].skipskill2 = true;
-                } else if (this.proxy.gameState.lunci == 3) {
-                    this.proxy.gameState.playerInfor[no].skipskill3 = true;
-                }
+
+            if (this.proxy.isActorLocal(this.proxy.gameState.role[2]) && this.proxy.gameState.ybrskill[2] > 0) {
+                this.proxy.gameState.ybrskill[2]--;
+                this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
             }
+
             console.log("skipSkill");
             this.chuanshunwei();
         }
@@ -652,13 +628,7 @@ module game {
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
                 if (this.proxy.gameState.ybrskill[1] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
-                    if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.playerInfor[1].onetouxi = true;
-                    } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.playerInfor[1].twotouxi = true;
-                    } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.playerInfor[1].threetouxi = true;
-                    }
+                    this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
                     this.proxy.gameState.ybrskill[1]--;
                 }
                 else {
@@ -678,8 +648,7 @@ module game {
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[1]) {
                             results[1] = "你无法鉴定此宝物";
                         }
-
-                        this.proxy.gameState.playerInfor[1].onebaowu = this.proxy.gameState.baowulist[this.selectedAnims[0]];
+                        this.proxy.updatePlayerInfo(`onebaowu`, this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.gameState.playerInfor[1].onezhenjia = results[0];
                         this.proxy.gameState.playerInfor[1].onebaowu2 = this.proxy.gameState.baowulist[this.selectedAnims[1]];
                         this.proxy.gameState.playerInfor[1].onezhenjia2 = results[1];
@@ -737,11 +706,11 @@ module game {
                 if (this.proxy.gameState.ybrskill[3] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.playerInfor[3].onetouxi = true;
+                        this.proxy.gameState.playerInfor[3].touxi1 = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.playerInfor[3].twotouxi = true;
+                        this.proxy.gameState.playerInfor[3].touxi2 = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.playerInfor[3].threetouxi = true;
+                        this.proxy.gameState.playerInfor[3].touxi3 = true;
                     }
                     this.proxy.gameState.jyfskill = false;
                     this.proxy.gameState.ybrskill[3]--;
@@ -793,11 +762,11 @@ module game {
                 if (this.proxy.gameState.ybrskill[4] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.playerInfor[4].onetouxi = true;
+                        this.proxy.gameState.playerInfor[4].touxi1 = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.playerInfor[4].twotouxi = true;
+                        this.proxy.gameState.playerInfor[4].touxi2 = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.playerInfor[4].threetouxi = true;
+                        this.proxy.gameState.playerInfor[4].touxi3 = true;
                     }
                     this.proxy.gameState.ybrskill[4]--;
                 }
@@ -852,11 +821,11 @@ module game {
                 if (this.proxy.gameState.ybrskill[5] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.playerInfor[5].onetouxi = true;
+                        this.proxy.gameState.playerInfor[5].touxi1 = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.playerInfor[5].twotouxi = true;
+                        this.proxy.gameState.playerInfor[5].touxi2 = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.playerInfor[5].threetouxi = true;
+                        this.proxy.gameState.playerInfor[5].touxi3 = true;
                     }
                     this.proxy.gameState.ybrskill[5]--;
                 }
@@ -912,11 +881,11 @@ module game {
                 if (this.proxy.gameState.ybrskill[6] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.playerInfor[6].onetouxi = true;
+                        this.proxy.gameState.playerInfor[6].touxi1 = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.playerInfor[6].twotouxi = true;
+                        this.proxy.gameState.playerInfor[6].touxi2 = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.playerInfor[6].threetouxi = true;
+                        this.proxy.gameState.playerInfor[6].touxi3 = true;
                     }
                     this.proxy.gameState.ybrskill[6]--;
                     this.chuanshunwei();
@@ -989,11 +958,11 @@ module game {
                 if (this.proxy.gameState.ybrskill[8] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     if (this.proxy.gameState.lunci == 1) {
-                        this.proxy.gameState.playerInfor[8].onetouxi = true;
+                        this.proxy.gameState.playerInfor[8].touxi1 = true;
                     } else if (this.proxy.gameState.lunci == 2) {
-                        this.proxy.gameState.playerInfor[8].twotouxi = true;
+                        this.proxy.gameState.playerInfor[8].touxi2 = true;
                     } else if (this.proxy.gameState.lunci == 3) {
-                        this.proxy.gameState.playerInfor[8].threetouxi = true;
+                        this.proxy.gameState.playerInfor[8].touxi3 = true;
                     }
                     this.proxy.gameState.ybrskill[8]--;
                     this.chuanshunwei();
@@ -1225,11 +1194,11 @@ module game {
             if (this.proxy.gameState.ybrskill[2] > 0) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                 if (this.proxy.gameState.lunci == 1) {
-                    this.proxy.gameState.playerInfor[2].onetouxi = true;
+                    this.proxy.gameState.playerInfor[2].touxi1 = true;
                 } else if (this.proxy.gameState.lunci == 2) {
-                    this.proxy.gameState.playerInfor[2].twotouxi = true;
+                    this.proxy.gameState.playerInfor[2].touxi2 = true;
                 } else if (this.proxy.gameState.lunci == 3) {
-                    this.proxy.gameState.playerInfor[2].threetouxi = true;
+                    this.proxy.gameState.playerInfor[2].touxi3 = true;
                 }
                 this.proxy.gameState.ybrskill[2]--;
                 this.chuanshunwei();
@@ -1359,7 +1328,7 @@ module game {
 
         public setToupiaoUI() {
 
-            if(this.proxy.gameState.lunci == 99) {
+            if (this.proxy.gameState.lunci == 99) {
                 return;
             }
 
@@ -1655,7 +1624,7 @@ module game {
         }
 
         public tourenjieguo(touren: Array<any>) {
-            if(!touren) {
+            if (!touren) {
                 return;
             }
             let message1: string;

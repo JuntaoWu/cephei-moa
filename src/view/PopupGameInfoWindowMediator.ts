@@ -65,7 +65,7 @@ module game {
 
             let i = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
             if (i == RoleId.FangZheng) {
-                if (this.proxy.gameState.playerInfor[i].onetouxi) {
+                if (this.proxy.gameState.playerInfor[i].touxi1) {
                     this.popupGameInfoWindow.firstRound.text = GameInfo.attacked
                 }
                 else if (this.proxy.gameState.playerInfor[i].onebaowu) {
@@ -80,7 +80,7 @@ module game {
                 else if (this.proxy.gameState.playerInfor[i].skipskill1) {
                     this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
                 }
-                if (this.proxy.gameState.playerInfor[i].twotouxi) {
+                if (this.proxy.gameState.playerInfor[i].touxi2) {
                     this.popupGameInfoWindow.secondRound.text = GameInfo.attacked
                 }
                 else if (this.proxy.gameState.playerInfor[i].twobaowu) {
@@ -95,7 +95,7 @@ module game {
                 else if (this.proxy.gameState.playerInfor[i].skipskill2) {
                     this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
                 }
-                if (this.proxy.gameState.playerInfor[i].threetouxi) {
+                if (this.proxy.gameState.playerInfor[i].touxi3) {
                     this.popupGameInfoWindow.thirdRound.text = GameInfo.attacked
                 }
                 else if (this.proxy.gameState.playerInfor[i].threebaowu) {
@@ -173,7 +173,7 @@ module game {
                 }
             }
             else {
-                if (this.proxy.gameState.playerInfor[i].onetouxi) {
+                if (this.proxy.gameState.playerInfor[i].touxi1) {
                     this.popupGameInfoWindow.firstRound.text = GameInfo.attacked
                 }
                 else {
@@ -199,7 +199,7 @@ module game {
                         this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
                     }
                 }
-                if (this.proxy.gameState.playerInfor[i].twotouxi) {
+                if (this.proxy.gameState.playerInfor[i].touxi2) {
                     this.popupGameInfoWindow.secondRound.text = GameInfo.attacked
                 }
                 else {
@@ -225,7 +225,7 @@ module game {
                         this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
                     }
                 }
-                if (this.proxy.gameState.playerInfor[i].threetouxi) {
+                if (this.proxy.gameState.playerInfor[i].touxi3) {
                     this.popupGameInfoWindow.thirdRound.text = GameInfo.attacked
                 }
                 else {
