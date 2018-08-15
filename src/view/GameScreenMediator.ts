@@ -292,7 +292,7 @@ module game {
                         this.setAnims();
                         this.setChoosingNextOrVotingPersonUI();
                         this.setToupiaoUI();
-                        this.tourenjieguo(this.proxy.gameState.touren);
+                        this.tourenjieguo2(this.proxy.gameState.touren);
                     }
 
                     this.gameScreen.isWaitNextTurnOrWaitTouRen = this.gameScreen.isWaitNextTurn || this.gameScreen.isWaitTouRen;
@@ -1359,7 +1359,7 @@ module game {
 
         public setToupiaoUI() {
 
-            if(this.proxy.gameState.lunci == 99) {
+            if (this.proxy.gameState.lunci == 99) {
                 return;
             }
 
@@ -1653,7 +1653,7 @@ module game {
         }
 
         public tourenjieguo(touren: Array<any>) {
-            if(!touren) {
+            if (!touren) {
                 return;
             }
             let message1: string;
@@ -1671,37 +1671,36 @@ module game {
             if (i == this.proxy.gameState.maxPlayers) {
                 this.gameScreen.isWaitOthersTouRen = false;
                 console.log("check tourenjieguo finished.");
-                let lcfpiao: number = 0;
-                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[1] == this.proxy.gameState.role[6]) {
-                    lcfpiao++;
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[1] && this.proxy.gameState.touren[1].actorNr == this.proxy.gameState.role[6].actorNr) {
+                    this.proxy.gameState.lcfpiao++;
                 }
-                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[2] == this.proxy.gameState.role[6]) {
-                    lcfpiao++;
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[2] && this.proxy.gameState.touren[2].actorNr == this.proxy.gameState.role[6].actorNr) {
+                    this.proxy.gameState.lcfpiao++;
                 }
-                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[3] == this.proxy.gameState.role[6]) {
-                    lcfpiao++;
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[3] && this.proxy.gameState.touren[3].actorNr == this.proxy.gameState.role[6].actorNr) {
+                    this.proxy.gameState.lcfpiao++;
                 }
-                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[4] == this.proxy.gameState.role[6]) {
-                    lcfpiao++;
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[4] && this.proxy.gameState.touren[4].actorNr == this.proxy.gameState.role[6].actorNr) {
+                    this.proxy.gameState.lcfpiao++;
                 }
-                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[5] == this.proxy.gameState.role[6]) {
-                    lcfpiao++;
+                if (this.proxy.gameState.role[6] && this.proxy.gameState.touren[5] && this.proxy.gameState.touren[5].actorNr == this.proxy.gameState.role[6].actorNr) {
+                    this.proxy.gameState.lcfpiao++;
                 }
-                if (lcfpiao >= 3) {
+                if (this.proxy.gameState.lcfpiao >= 3) {
                     message1 = "找到老朝奉";
                     this.proxy.gameState.defen++;
                     this.proxy.gameState.findPeopleScore++;
                 } else {
                     message1 = "没找到老朝奉";
                 }
-                if (this.proxy.gameState.role[1] && this.proxy.gameState.touren[6] == this.proxy.gameState.role[1]) {
+                if (this.proxy.gameState.role[1] && this.proxy.gameState.touren[6] && this.proxy.gameState.touren[6].actorNr == this.proxy.gameState.role[1].actorNr) {
                     message2 = "找到许愿";
                 } else {
                     message2 = "没找到许愿";
                     this.proxy.gameState.defen += 2;
                     this.proxy.gameState.findPeopleScore += 2;
                 }
-                if (this.proxy.gameState.role[2] && this.proxy.gameState.touren[7] == this.proxy.gameState.role[2]) {
+                if (this.proxy.gameState.role[2] && this.proxy.gameState.touren[7] && this.proxy.gameState.touren[7].actorNr == this.proxy.gameState.role[2].actorNr) {
                     message3 = "找到方震";
                 } else {
                     message3 = "没找到方震";
@@ -1714,6 +1713,26 @@ module game {
                     isshengli = "许愿阵营胜利";
                 }
                 this.zhaoren();
+                console.log(this.proxy.gameState.lcfpiao);
+                console.log(message1);
+                console.log(message2);
+                console.log(message3);
+
+                this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
+            }
+        }
+
+        public tourenjieguo2(touren: Array<any>) {
+            if (!touren) {
+                return;
+            }
+            let i: number = 0;
+            touren.forEach(element => {
+                if (element) {
+                    i++;
+                }
+            });
+            if (i == this.proxy.gameState.maxPlayers) {
                 this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
             }
         }
