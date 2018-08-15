@@ -86,6 +86,8 @@ class Main extends eui.UILayer {
             this.stage.addChild(this.loadingView);
 
             await RES.loadGroup("preload", 0, this.loadingView);
+
+            RES.loadGroup("lazyload", 0);
         }
         catch (e) {
             console.error(e);
