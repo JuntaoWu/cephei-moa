@@ -468,8 +468,7 @@ module game {
                 image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
-            });
-            this.gameScreen.touren_note.text = "选择下一位行动的玩家";
+            });            
         }
 
         public first_one(message: string) {
@@ -1040,6 +1039,7 @@ module game {
 
             if (this.proxy.gameState.lunci == 99) {
                 this.syncMyTurnState("isWaitOthersTouRen");
+                this.gameScreen.touren_note.text = "选择下一位行动的玩家";
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.tourenjieguo, nextNr);
             } else {
                 this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.nextNr, nextNr);
