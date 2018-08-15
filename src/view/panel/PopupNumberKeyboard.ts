@@ -18,6 +18,9 @@ module game {
         public confirm: eui.Image;
         public delete: eui.Button;
 
+        public roomName: string = "";
+        public showText: boolean = true;
+
         public constructor() {
             super();
             this.skinName = "skins.PopupNumberKeyboard";

@@ -25,38 +25,32 @@ module game {
             this.popupNumberKeyboard.delete.addEventListener(egret.TouchEvent.TOUCH_TAP, this.deleteClick, this); 
         }
 
-        private num: string = "";
-
         public numberClick(n: number) {
-            if (this.num.length < 6) {
-                this.num += n;
-                this.sendNotification(GameProxy.INPUT_NUMBER, this.num);
+            if (this.popupNumberKeyboard.roomName.length < 6) {
+                this.popupNumberKeyboard.roomName += n;
+                this.sendNotification(GameProxy.INPUT_NUMBER, this.popupNumberKeyboard.roomName);
             }
-            if (!this.popupNumberKeyboard.confirm.visible) {
-                this.popupNumberKeyboard.confirm.visible = true;
-            }
+            this.popupNumberKeyboard.showText = !this.popupNumberKeyboard.roomName;
         }
 
         public cancelClick(e: egret.TouchEvent) {
-            this.num = "";
-            this.sendNotification(GameProxy.INPUT_NUMBER, this.num);
-            this.popupNumberKeyboard.confirm.visible = false;
+            this.popupNumberKeyboard.roomName = "";
+            this.sendNotification(GameProxy.INPUT_NUMBER, this.popupNumberKeyboard.roomName);
+            this.popupNumberKeyboard.showText = true;
             this.popupNumberKeyboard.close();
         }
         
         public confirmClick(e: egret.TouchEvent) {
-            this.num = "";
+            this.popupNumberKeyboard.roomName = "";
             this.sendNotification(GameProxy.FINISH_INPUT);
-            this.popupNumberKeyboard.confirm.visible = false;
+            this.popupNumberKeyboard.showText = true;
             this.popupNumberKeyboard.close();
         }
         
         public deleteClick(e: egret.TouchEvent) {
-            this.num = this.num.substr(0, this.num.length - 1);
-            if (!this.num) {
-                this.popupNumberKeyboard.confirm.visible = false;
-            }
-            this.sendNotification(GameProxy.INPUT_NUMBER, this.num);
+            this.popupNumberKeyboard.roomName = this.popupNumberKeyboard.roomName.substr(0, this.popupNumberKeyboard.roomName.length - 1);
+            this.popupNumberKeyboard.showText = !this.popupNumberKeyboard.roomName;
+            this.sendNotification(GameProxy.INPUT_NUMBER, this.popupNumberKeyboard.roomName);
         }
 
         public get popupNumberKeyboard(): PopupNumberKeyboard {

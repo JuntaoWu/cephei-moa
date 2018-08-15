@@ -3,9 +3,10 @@
     <game:Shade id="overlay" />
     <e:Group id="container" width="640" horizontalCenter="0" bottom="0">
         <e:Image source="number-keyboard-bg" horizontalCenter="0"></e:Image>
-        <e:Image source="input_room" horizontalCenter="0" y="30"></e:Image>
+        <e:Image visible="{showText}" source="input_room" horizontalCenter="0" y="30"></e:Image>
+        <e:BitmapLabel visible="{roomName}" text="{roomName}" horizontalCenter="0" y="25" font="number_fnt" scaleX="2" scaleY="2"/>
         <e:Image id="cancel" source="input_cancel" x="60" y="30" scaleX="1.5" scaleY="1.5"></e:Image>      
-        <e:Image id="confirm" visible="false" source="input_ok" y="30" right="60" scaleX="1.5" scaleY="1.5"></e:Image>
+        <e:Image id="confirm" visible="{roomName}" source="input_ok" y="30" right="60" scaleX="1.5" scaleY="1.5"></e:Image>
 
         <e:Button id="num1" y="90">
             <e:Skin states="up,down">

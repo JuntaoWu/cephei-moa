@@ -134,6 +134,12 @@ class WxgamePlatform {
       wx.hideLoading();
     }
 
+    playVideo(src) {
+      return wx.createVideo({
+        src: src,
+        width: 350,
+      });
+    }
 }
 
 class WxgameOpenDataContext {

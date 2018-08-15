@@ -125,9 +125,13 @@ module game {
                     }
                 }
                 if (this.proxy.gameState.oneybrskill) {
-                    let roleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.gameState.seats[this.proxy.gameState.oneybrskill].actorNr);
-                    let roleName = this.proxy.rolesMap.get(roleId.toString()).name;
-                    this.popupGameInfoWindow.firstRound.skillText = `${GameInfo.attack}${roleName}`;
+                    let seat = this.proxy.gameState.seats[this.proxy.gameState.oneybrskill];
+                    this.popupGameInfoWindow.firstRound.skillText = GameInfo.attack;
+                    this.popupGameInfoWindow.firstRound.yaoSkill = {
+                        color: seat.color.source,
+                        url: seat.avatarUrl,
+                        name: seat.name,
+                    };
                 }
                 else if (playerInfor.skipskill1) {
                     this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
@@ -141,9 +145,13 @@ module game {
                     }
                 }
                 if (this.proxy.gameState.twoybrskill) {
-                    let roleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.gameState.seats[this.proxy.gameState.twoybrskill].actorNr);
-                    let roleName = this.proxy.rolesMap.get(roleId.toString()).name;
-                    this.popupGameInfoWindow.secondRound.skillText = `${GameInfo.attack}${roleName}`;
+                    let seat = this.proxy.gameState.seats[this.proxy.gameState.twoybrskill];
+                    this.popupGameInfoWindow.secondRound.skillText = GameInfo.attack;
+                    this.popupGameInfoWindow.secondRound.yaoSkill = {
+                        color: seat.color.source,
+                        url: seat.avatarUrl,
+                        name: seat.name,
+                    };
                 }
                 else if (playerInfor.skipskill2) {
                     this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
@@ -157,9 +165,13 @@ module game {
                     }
                 }
                 if (this.proxy.gameState.threeybrskill) {
-                    let roleId = this.proxy.gameState.role.findIndex(r => r && r.actorNr == this.proxy.gameState.seats[this.proxy.gameState.threeybrskill].actorNr);
-                    let roleName = this.proxy.rolesMap.get(roleId.toString()).name;
-                    this.popupGameInfoWindow.thirdRound.skillText = `${GameInfo.attack}${roleName}`;
+                    let seat = this.proxy.gameState.seats[this.proxy.gameState.threeybrskill];
+                    this.popupGameInfoWindow.thirdRound.skillText = GameInfo.attack;
+                    this.popupGameInfoWindow.thirdRound.yaoSkill = {
+                        color: seat.color.source,
+                        url: seat.avatarUrl,
+                        name: seat.name,
+                    };
                 }
                 else if (playerInfor.skipskill3) {
                     this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
