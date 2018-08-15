@@ -710,10 +710,13 @@ module game {
                 } else if (!this.proxy.gameState.jyfskill) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
                     if (this.proxy.gameState.lunci == 1) {
+                        this.proxy.updatePlayerInfo("onebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("onezhenjia", "你无法鉴定此宝物");
                     } else if (this.proxy.gameState.lunci == 2) {
+                        this.proxy.updatePlayerInfo("twobaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("twozhenjia", "你无法鉴定此宝物");
                     } else if (this.proxy.gameState.lunci == 3) {
+                        this.proxy.updatePlayerInfo("threebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("threezhenjia", "你无法鉴定此宝物");
                     }
                 } else {
