@@ -644,10 +644,10 @@ module game {
                         }
 
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[1]) {
-                            results[1] = "你无法鉴定此宝物";
+                            results[1] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("onebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("onezhenjia", results[0]);
@@ -666,10 +666,10 @@ module game {
                         }
 
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[1] - 4) {
-                            results[1] = "你无法鉴定此宝物";
+                            results[1] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("twobaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("twozhenjia", results[0]);
@@ -688,10 +688,10 @@ module game {
                         }
 
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[1] - 8) {
-                            results[1] = "你无法鉴定此宝物";
+                            results[1] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("threebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("threezhenjia", results[0]);
@@ -708,21 +708,21 @@ module game {
                     this.proxy.gameState.jyfskill = false;
                     this.proxy.gameState.ybrskill[3]--;
                 } else if (!this.proxy.gameState.jyfskill) {
-                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你无法鉴定此宝物");
+                    this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "无法鉴定");
                     if (this.proxy.gameState.lunci == 1) {
                         this.proxy.updatePlayerInfo("onebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
-                        this.proxy.updatePlayerInfo("onezhenjia", "你无法鉴定此宝物");
+                        this.proxy.updatePlayerInfo("onezhenjia", "无法鉴定");
                     } else if (this.proxy.gameState.lunci == 2) {
                         this.proxy.updatePlayerInfo("twobaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
-                        this.proxy.updatePlayerInfo("twozhenjia", "你无法鉴定此宝物");
+                        this.proxy.updatePlayerInfo("twozhenjia", "无法鉴定");
                     } else if (this.proxy.gameState.lunci == 3) {
                         this.proxy.updatePlayerInfo("threebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
-                        this.proxy.updatePlayerInfo("threezhenjia", "你无法鉴定此宝物");
+                        this.proxy.updatePlayerInfo("threezhenjia", "无法鉴定");
                     }
                 } else {
                     if (this.proxy.gameState.lunci == 1) {
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         else {
                             results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
@@ -732,7 +732,7 @@ module game {
                     }
                     else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         else {
                             results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
@@ -742,7 +742,7 @@ module game {
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         else {
                             results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
@@ -771,7 +771,7 @@ module game {
                         }
 
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[0] || this.proxy.gameState.hyyskill == 1) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("onebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("onezhenjia", results[0]);
@@ -785,7 +785,7 @@ module game {
                         }
 
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4 || this.proxy.gameState.hyyskill == 2) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("twobaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("twozhenjia", results[0]);
@@ -799,7 +799,7 @@ module game {
                         }
 
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8 || this.proxy.gameState.hyyskill == 3) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("threebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("threezhenjia", results[0]);
@@ -824,7 +824,7 @@ module game {
                         }
 
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[0] || this.proxy.gameState.mhjnskill == 1) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("onebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("onezhenjia", results[0]);
@@ -839,7 +839,7 @@ module game {
                         }
 
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4 || this.proxy.gameState.mhjnskill == 2) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("twobaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("twozhenjia", results[0]);
@@ -853,7 +853,7 @@ module game {
                         }
 
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8 || this.proxy.gameState.mhjnskill == 3) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         this.proxy.updatePlayerInfo("threebaowu", this.proxy.gameState.baowulist[this.selectedAnims[0]]);
                         this.proxy.updatePlayerInfo("threezhenjia", results[0]);
@@ -871,7 +871,7 @@ module game {
                 else {
                     if (this.proxy.gameState.lunci == 1) {
                         if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         else {
                             results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
@@ -881,7 +881,7 @@ module game {
                     }
                     else if (this.proxy.gameState.lunci == 2) {
                         if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         else {
                             results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
@@ -891,7 +891,7 @@ module game {
                     }
                     else if (this.proxy.gameState.lunci == 3) {
                         if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8) {
-                            results[0] = "你无法鉴定此宝物";
+                            results[0] = "无法鉴定";
                         }
                         else {
                             results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
@@ -903,7 +903,7 @@ module game {
             } else if (this.proxy.isActorLocal(this.proxy.gameState.role[7])) {
                 if (this.proxy.gameState.lunci == 1) {
                     if (this.proxy.gameState.onezgqskill == this.selectedAnims[0]) {
-                        results[0] = "你无法鉴定此宝物";
+                        results[0] = "无法鉴定";
                     }
                     else {
                         results[0] = this.proxy.gameState.onezj[this.selectedAnims[0]];
@@ -913,7 +913,7 @@ module game {
                 }
                 else if (this.proxy.gameState.lunci == 2) {
                     if (this.proxy.gameState.twozgqskill == this.selectedAnims[0] - 4) {
-                        results[0] = "你无法鉴定此宝物";
+                        results[0] = "无法鉴定";
                     }
                     else {
                         results[0] = this.proxy.gameState.twozj[this.selectedAnims[0] - 4];
@@ -923,7 +923,7 @@ module game {
                 }
                 else if (this.proxy.gameState.lunci == 3) {
                     if (this.proxy.gameState.threezgqskill == this.selectedAnims[0] - 8) {
-                        results[0] = "你无法鉴定此宝物";
+                        results[0] = "无法鉴定";
                     }
                     else {
                         results[0] = this.proxy.gameState.threezj[this.selectedAnims[0] - 8];
@@ -1310,9 +1310,7 @@ module game {
                 let control = this.gameScreen[anim.controlName] as eui.Button;
                 let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
                 let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
-                image.source = antiqueObject.source;
-                let antiBg = antiqueGroup.getChildByName("antique-normal") as eui.Image;
-                antiBg.source = "bg2";
+                image.source = antiqueObject.source;                
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
                 control.enabled = true;

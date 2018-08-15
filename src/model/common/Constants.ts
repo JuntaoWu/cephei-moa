@@ -60,6 +60,6 @@ module game {
         attacked: "被药不然偷袭",
         attack: "你偷袭了",
         skipSkill: "你跳过了技能",
-        cannotJudge: "你无法鉴定此宝物",
+        cannotJudge: "无法鉴定",
     }
 }
