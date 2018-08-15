@@ -40,7 +40,6 @@ module game {
         public isFirstRound = false;
         public isSecondRound = false;
         public isThirdRound = false;
-        public isVoteVisible: boolean = false;
 
         public isMyTurn = false;
         public isOthersTurn = false;
@@ -63,6 +62,7 @@ module game {
         public isWaitTouRen: boolean = false;
         public isChoosingNextText: boolean = false;
         public isWaitOthersTouRen: boolean = false;
+        public isWaitNextTurnOrWaitTouRen: boolean = false;
 
         public processingPlayer = {
             name: "",
@@ -126,7 +126,6 @@ module game {
         public piaoshu: eui.Label;
         public toupiaoqueren: eui.Button;
         public startno2: eui.Button;
-        public onejieguo: eui.Label;
         public ybrskill1: ActorUI;
         public ybrskill2: eui.Button;
         public ybrskill3: eui.Button;
@@ -168,15 +167,6 @@ module game {
             this.shunwei8.visible = false;
             this.onegameend.visible = false;
             this.onespeakend.visible = false;
-            this.toupiao11.visible = false;
-            this.toupiao21.visible = false;
-            this.toupiao31.visible = false;
-            this.toupiao41.visible = false;
-            this.qingkong.visible = false;
-            this.piaoshu.visible = false;
-            this.toupiaoqueren.visible = false;
-            this.startno2.visible = false;
-            this.onejieguo.visible = false;
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {

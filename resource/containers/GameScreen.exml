@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.GameScreen" width="640" height="1386" xmlns:e="http://ns.egret.com/eui"
         xmlns:w="http://ns.egret.com/wing" xmlns:game="game.*">
-    <e:Image id="gameBackground" source="seat-background" x="0" y="0" width="640" height="1386" />
+    <e:Image id="gameBackground" source="start-background" x="0" y="0" width="640" height="1386" />
     <e:Group id="topNavigationBar">
         <e:Button id="btnQuit" anchorOffsetY="0" anchorOffsetX="0">
             <e:Skin states="up,down">
@@ -17,6 +17,7 @@
         </e:Group>
     </e:Group>
     <e:Group id="contentArea" y="50" width="600" horizontalCenter="0" height="540">
+        <e:Image source="meihua" verticalCenter="0" horizontalCenter="0"></e:Image>
         <e:Image source="game-box-border" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
         <e:Group visible="{isPhasePreparing}" width="600" horizontalCenter="0" height="540">
             <e:Label text="选座" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
@@ -41,8 +42,8 @@
                         <e:Label text="方震" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
                     </e:Skin>
                 </e:Button>
-                <e:Button enabled="{isChoosingRoleandEight}" scaleX="0.88" scaleY="0.88" id="btnjs3" x="280" height="210"
-                          width="150">
+                <e:Button enabled="{isChoosingRoleandEight}" scaleX="0.88" scaleY="0.88" id="btnjs3" x="280"
+                          height="210" width="150">
                     <e:Skin>
                         <e:Image source="role3" verticalCenter="0" horizontalCenter="0"></e:Image>
                         <e:Label text="姬云浮" textColor="0x020202" bold="true" size="22" horizontalCenter="0" bottom="0" />
@@ -385,8 +386,14 @@
                     </e:Group>
                 </e:Group>
                 <e:Group visible="{isChoosingNextOrVotingPerson}" horizontalCenter="0">
+<<<<<<< HEAD
                     <e:Label id="touren_note" visible="{isChoosingNextText}" text="选择下一位行动的玩家" textColor="0x000000" horizontalCenter="0" y="30"></e:Label>
                     <e:Button id="shunwei1" label="Button" x="0" y="100" anchorOffsetX="0" width="100"
+=======
+                    <e:Label id="touren_note" visible="{isChoosingNextText}" text="选择下一位行动的玩家" textColor="0x000000" horizontalCenter="0"
+                             y="30"></e:Label>
+                    <e:Button id="shunwei1" label="Button" x="100" y="100" anchorOffsetX="0" width="100"
+>>>>>>> 67e4b0c9cb1a8cb0bf7032b15c7e80d00f9cf1ab
                               anchorOffsetY="0" height="100" scaleX="1" scaleY="1">
                         <e:Skin>
                             <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -454,9 +461,9 @@
                 <e:Label text="{processingPlayer.name}" textColor="0x000000" y="32" x="200"></e:Label>
                 <e:Label text="正在鉴定宝物" textColor="0x000000" y="78" x="200"></e:Label>
             </e:Group>
-            <e:Group horizontalCenter="0" y="100" visible="{isVoteVisible}">
+            <e:Group horizontalCenter="0" y="100" visible="{isVoting}">
                 <e:Label text="点击对应宝物录入投票数" y="-60" bold="true" horizontalCenter="0" size="24" textColor="0x000000" />
-                <e:Group y="-30" horizontalCenter="0">
+                <e:Group y="-15" horizontalCenter="0">
                     <e:Label text="剩余票数" bold="true" size="24" right="90" textColor="0x000000" />
                     <e:Label id="piaoshu" text="0/2" right="0" size="24" anchorOffsetX="0" width="90" anchorOffsetY="0"
                              textColor="0x000000" textAlign="center" />
@@ -473,7 +480,7 @@
                         </e:Skin>
                     </e:Button>
                 </e:Group>
-                <e:Group x="250">
+                <e:Group x="280">
                     <e:Button id="toupiao2">
                         <e:Skin states="up,down">
                             <e:Group name="antique-group" height="180" width="180">
@@ -497,7 +504,7 @@
                         </e:Skin>
                     </e:Button>
                 </e:Group>
-                <e:Group x="250" y="200">
+                <e:Group x="280" y="200">
                     <e:Button id="toupiao4">
                         <e:Skin states="up,down">
                             <e:Group name="antique-group" height="180" width="180">
@@ -517,9 +524,6 @@
                          textColor="0x000000" textAlign="center" />
                 <e:Label id="toupiao41" text="0" right="10" y="320" anchorOffsetX="0" anchorOffsetY="0"
                          textColor="0x000000" textAlign="center" />
-                <e:Label id="onejieguo" text="第一轮投票" x="234" y="38" anchorOffsetX="0" anchorOffsetY="0" height="53"
-                         textColor="0x000000" textAlign="center" />
-                <e:Button id="qingkong" label="清空票数" right="0" y="-50" width="100" height="50" />
             </e:Group>
             <e:Group visible="{isVoteEnd}" horizontalCenter="0" verticalCenter="0">
                 <e:Label text="等待其他玩家进行投票中..." textColor="0x000000" horizontalCenter="0" verticalCenter="-20"></e:Label>
@@ -546,7 +550,7 @@
             </e:Button>
             <e:Button id="btnGameRecord" horizontalCenter="70" bottom="0">
                 <e:Skin states="up,down">
-                    <e:Image source="self_info"></e:Image>
+                    <e:Image source="game-record"></e:Image>
                 </e:Skin>
             </e:Button>
         </e:Group>
@@ -554,9 +558,9 @@
     <e:Group id="seatArea" anchorOffsetY="0" y="620" anchorOffsetX="0" width="590" x="25" height="400">
         <e:Button enabled="{canChooseSeat}" id="btnSeat1" anchorOffsetX="0" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="red" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -565,9 +569,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat2" x="155" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="orange" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -576,9 +580,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat3" x="310" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="yellow" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -587,9 +591,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat4" x="465" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="green" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -598,9 +602,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat5" y="190" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="blue" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -609,9 +613,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat6" y="190" x="158" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="purple" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -620,9 +624,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat7" y="190" x="317" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="white" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -631,9 +635,9 @@
         </e:Button>
         <e:Button enabled="{canChooseSeat}" id="btnSeat8" y="190" x="470" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
-                <e:Image name="normalBg" source="head_bg" />
-                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="black" x="-20" y="-15" />
                 <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
@@ -724,36 +728,45 @@
                 </e:Group>
                 <e:Button visible="{isOthersTurn}" width="100%">
                     <e:Skin>
-                        <e:Image source="wait-4-others-process"></e:Image>
+                        <e:Image source="wait-4-others-process" width="100%"></e:Image>
                     </e:Skin>
                 </e:Button>
-                <e:Group visible="{isSpeaking}">
+                <e:Group visible="{isSpeaking}" width="100%">
                     <e:Button visible="{isMasterClient}" id="onespeakend" width="100%">
                         <e:Skin>
-                            <e:Image source="talk_over"></e:Image>
+                            <e:Image source="talk_over" width="100%"></e:Image>
                         </e:Skin>
                     </e:Button>
                     <e:Button enabled="false" visible="{isNormalClient}" width="100%">
                         <e:Skin>
-                            <e:Image source="talking"></e:Image>
+                            <e:Image source="talking" width="100%"></e:Image>
                         </e:Skin>
                     </e:Button>
                 </e:Group>
                 <e:Button id="onegameend" width="100%">
                     <e:Skin>
-                        <e:Image source="auth_png"></e:Image>
+                        <e:Image source="auth_png" width="100%"></e:Image>
                     </e:Skin>
                 </e:Button>
-                <e:Button id="toupiaoqueren" width="100%">
-                    <e:Skin>
-                        <e:Image source="vote_over"></e:Image>
-                    </e:Skin>
-                </e:Button>
-                <e:Button id="startno2" width="100%">
-                    <e:Skin>
-                        <e:Image source="auth_png"></e:Image>
-                    </e:Skin>
-                </e:Button>
+                <e:Group visible="{isVoting}" width="100%">
+                    <e:Button id="qingkong" width="49%" left="0">
+                        <e:Skin>
+                            <e:Image source="vote-clear" width="100%"></e:Image>
+                        </e:Skin>
+                    </e:Button>
+                    <e:Button id="toupiaoqueren" width="49%" right="0">
+                        <e:Skin>
+                            <e:Image source="vote_over" width="100%"></e:Image>
+                        </e:Skin>
+                    </e:Button>
+                </e:Group>
+                <e:Group visible="{isWaitNextTurnOrWaitTouRen}">
+                    <e:Button visible="{isMasterClient}" id="startno2" width="100%">
+                        <e:Skin>
+                            <e:Image source="auth_png" width="100%"></e:Image>
+                        </e:Skin>
+                    </e:Button>
+                </e:Group>
             </e:Group>
         </e:Group>
     </e:Group>

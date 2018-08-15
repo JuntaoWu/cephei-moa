@@ -52,6 +52,7 @@
                         <e:Image horizontalCenter="0" verticalCenter="0" source="{firstRound.r1.source}"></e:Image>
                     </e:Group>
                     <e:Image source="{firstRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{firstRound.r1.resultLabel}" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
                 </e:Group>
                 <e:Group visible="{firstRound.r2}" x="230" verticalCenter="0">
                     <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
@@ -60,6 +61,7 @@
                     </e:Group>
                     <e:Image source="{firstRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
+                <e:Label text="{firstRound.skillText}" textColor="0x000000" verticalCenter="0" x="220" bold="true"/>
             </e:Group>
             <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{firstRound.text}" text="{firstRound.text}"/>
         </e:Group>
@@ -81,6 +83,7 @@
                         <e:Image horizontalCenter="0" verticalCenter="0" source="{secondRound.r1.source}"></e:Image>
                     </e:Group>
                     <e:Image source="{secondRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{secondRound.r1.resultLabel}" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
                 </e:Group>
                 <e:Group visible="{secondRound.r2}" x="230" verticalCenter="0">
                     <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
@@ -89,6 +92,7 @@
                     </e:Group>
                     <e:Image source="{secondRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
+                <e:Label text="{secondRound.skillText}" textColor="0x000000" verticalCenter="0" x="220" bold="true"/>
             </e:Group>
             <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{secondRound.text}" text="{secondRound.text}"/>
         </e:Group>
@@ -110,6 +114,7 @@
                         <e:Image horizontalCenter="0" verticalCenter="0" source="{thirdRound.r1.source}"></e:Image>
                     </e:Group>
                     <e:Image source="{thirdRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{thirdRound.r1.resultLabel}" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
                 </e:Group>
                 <e:Group visible="{thirdRound.r2}" x="230" verticalCenter="0">
                     <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
@@ -118,6 +123,7 @@
                     </e:Group>
                     <e:Image source="{thirdRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
                 </e:Group>
+                <e:Label text="{thirdRound.skillText}" textColor="0x000000" verticalCenter="0" x="220" bold="true"/>
             </e:Group>
             <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{thirdRound.text}" text="{thirdRound.text}"/>
         </e:Group>

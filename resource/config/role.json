@@ -11,7 +11,7 @@
     "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
     "skillDescription": "每轮可鉴定两个宝物",
-    "skillRes": "",
+    "skillRes": "xu",
     "hasActiveSkill": false
   },
   "2": {
@@ -26,7 +26,7 @@
     "roleSubDescription": "跳过鉴定",
     "camp": "许愿阵营",
     "skillDescription": "不能鉴定宝物\n每轮可选择一名玩家，查验该玩家的阵营",
-    "skillRes": "",
+    "skillRes": "fang",
     "hasActiveSkill": true
   },
   "3": {
@@ -41,7 +41,7 @@
     "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
     "skillDescription": "鉴定1个宝物\n鉴定时，不受『老朝奉』技能影响",
-    "skillRes": "",
+    "skillRes": "ji",
     "hasActiveSkill": false
   },
   "4": {
@@ -56,7 +56,7 @@
     "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
     "skillDescription": "鉴定1个宝物\n随机1回合无法鉴定宝物",
-    "skillRes": "",
+    "skillRes": "huang",
     "hasActiveSkill": false
   },
   "5": {
@@ -71,7 +71,7 @@
     "roleSubDescription": "开始鉴定",
     "camp": "许愿阵营",
     "skillDescription": "鉴定1个宝物\n随机1回合无法鉴定宝物",
-    "skillRes": "",
+    "skillRes": "huang",
     "hasActiveSkill": false
   },
   "6": {
@@ -86,7 +86,7 @@
     "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
     "skillDescription": "鉴定1个宝物\n可将所有宝物的鉴定结果真假互换",
-    "skillRes": "",
+    "skillRes": "lao",
     "hasActiveSkill": true
   },
   "7": {
@@ -101,7 +101,7 @@
     "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
     "skillDescription": "鉴定1个宝物\n可选择偷袭1名玩家，轮到被偷袭玩家\n行动时，该玩家不能鉴定宝物，不能使用技能",
-    "skillRes": "",
+    "skillRes": "yao",
     "hasActiveSkill": true
   },
   "8": {
@@ -116,7 +116,7 @@
     "roleSubDescription": "开始鉴定",
     "camp": "老朝奉阵营",
     "skillDescription": "鉴定1个宝物\n可隐藏1件宝物的鉴定结果\n使其本轮内无法再被鉴定",
-    "skillRes": "",
+    "skillRes": "zheng",
     "hasActiveSkill": true
   }
 }

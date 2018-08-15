@@ -10,13 +10,15 @@ module game {
 		public constructor() {
 			super(GameProxy.NAME);
 
+			const self = this;
+
 			platform.onNetworkStatusChange((res) => {
 				if (!res) {
 					return;
 				}
 				if (res.isConnected) {
-					if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected) {
-						this.loadBalancingClient.start();
+					if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected) {
+						self.loadBalancingClient.start();
 					}
 				}
 			});
@@ -68,6 +70,13 @@ module game {
 				roomName: this.roomName,
 				actorNr: this.actorNr
 			});
+		}
+
+		public get currentRoom(): any {
+			return platform.getStorage("currentRoom");
+		}
+		public set currentRoom(value: any) {
+			platform.setStorage("currentRoom", value);
 		}
 
 		public gameState: GameState = new GameState();
@@ -134,7 +143,7 @@ module game {
 			const state = this.loadBalancingClient.state;
 			switch (state) {
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
-					if (this.roomName) {
+					if (this.roomName) {  // UI triggered goes here.
 						if (this.isMasterClient && this.isCreating) {
 							this.createRoomWithDefaultOptions();
 						}
@@ -142,9 +151,9 @@ module game {
 							this.joinRoom(this.roomName);
 						}
 					}
-					else {
-						const currentRoom = platform.getStorage("currentRoom");
-						if(currentRoom && currentRoom.roomName) {
+					else if (this.loadBalancingClient.autoRejoin) {  // Auto rejoin goes here.
+						const currentRoom = this.currentRoom;
+						if (currentRoom && currentRoom.roomName) {
 							this.joinRoom(currentRoom.roomName);
 						}
 					}
@@ -173,6 +182,11 @@ module game {
 		}
 
 		private async onJoinRoom() {
+
+			platform.hideLoading();
+
+			this.loadBalancingClient.autoRejoin = true;
+
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			const userInfo = await accountProxy.loadUserInfo();
 			this.actorNr = this.loadBalancingClient.myActor().actorNr;
@@ -234,7 +248,7 @@ module game {
 							i++;
 						}
 					});
-					this.sendNotification(GameProxy.ROLEING, i);				
+					this.sendNotification(GameProxy.ROLEING, i);
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 
 					if (this.isMasterClient) {
@@ -270,18 +284,30 @@ module game {
 					let seatNo = this.gameState.seats.findIndex(seat => seat && seat.actorNr == sender.actorNr);
 					this.gameState.toupiao[seatNo] = message;
 					this.sendNotification(GameProxy.PIAO_SHU, this.gameState.toupiao);
+					if (this.isMasterClient) {
+						console.log("CustomPhotonEvents.piaoshu: setCustomProperty");
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+					}
 					break;
 				}
 				case CustomPhotonEvents.piaoshu2: {
 					let seatNo = this.gameState.seats.findIndex(seat => seat && seat.actorNr == sender.actorNr);
 					this.gameState.toupiao2[seatNo] = message;
 					this.sendNotification(GameProxy.PIAO_SHU, this.gameState.toupiao2);
+					if (this.isMasterClient) {
+						console.log("CustomPhotonEvents.piaoshu2: setCustomProperty");
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+					}
 					break;
 				}
 				case CustomPhotonEvents.piaoshu3: {
 					let seatNo = this.gameState.seats.findIndex(seat => seat && seat.actorNr == sender.actorNr);
 					this.gameState.toupiao3[seatNo] = message;
 					this.sendNotification(GameProxy.PIAO_SHU, this.gameState.toupiao3);
+					if (this.isMasterClient) {
+						console.log("CustomPhotonEvents.piaoshu3: setCustomProperty");
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+					}
 					break;
 				}
 				case CustomPhotonEvents.toupiaoend: {
@@ -393,6 +419,10 @@ module game {
 					}
 					this.sendNotification(GameProxy.TOUREN_JIEGUO, this.gameState.touren);
 					console.log(this.gameState.touren);
+					if (this.isMasterClient) {
+						console.log("CustomPhotonEvents.tourenjieguo: setCustomProperty");
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+					}
 					break;
 				}
 				case CustomPhotonEvents.starttoupiao: {
@@ -408,7 +438,7 @@ module game {
 						if (seat.actorNr == sender.actorNr || message.receiver == Receiver.All) {
 							seat.action = message.action;
 						}
-						else if (message.action) {
+						else if (message.updateOthers) {
 							seat.action = "";
 						}
 					});
@@ -477,7 +507,8 @@ module game {
 
 		public createRoom(maxPlayers: number) {
 			this.roomName = this.generateRoomNumber();
-			if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized) {
+			if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized
+				|| this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
 				this.loadBalancingClient.start();
 			}
@@ -486,9 +517,12 @@ module game {
 			this.createRoomWithDefaultOptions();
 		}
 
-		private getCurrentJoinToken(roomName: string) {
+		private getCurrentJoinToken(roomName: string): any {
 			if (this.actorNr && this.actorNr != -1) {
-				return this.actorNr.toString();
+				return this.actorNr;
+			}
+			else if (this.loadBalancingClient.myActor().getJoinToken()) {
+				return this.loadBalancingClient.myActor().getJoinToken();
 			}
 			else {
 				const currentRoom = platform.getStorage("currentRoom");
@@ -500,6 +534,9 @@ module game {
 		}
 
 		public joinRoom(roomName: string) {
+
+			platform.showLoading();
+
 			this.roomName = roomName;
 			if (this.loadBalancingClient.isInLobby()) {
 				console.log(`Begin joinRoom: ${roomName}`);
@@ -530,9 +567,8 @@ module game {
 
 		public reset() {
 			this.roomName = undefined;
-			this.actorNr = -1;
+			this.loadBalancingClient.autoRejoin = false;
 			this.gameState = new GameState();
-			console.log(JSON.stringify(this.gameState));
 		}
 
 		public joinSeat(data: any) {
@@ -547,8 +583,16 @@ module game {
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.StartChoosingRole);
 		}
 
-		public updateMyState(action: string, receiver: Receiver) {
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.UpdateCurrentTurn, { action: action, receiver: receiver });
+		public updateMyState(action: string, updateOthers: boolean = false, receiver: Receiver) {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.UpdateCurrentTurn, { action: action, receiver: receiver, updateOthers: updateOthers });
+		}
+
+		public setSypiaoshu(syPiaoshu: number) {
+			this.loadBalancingClient.myActor().setCustomProperty("syPiaoshu", syPiaoshu);
+		}
+
+		public getSyPiaoshu() {
+			return this.loadBalancingClient.myActor().getCustomProperty("syPiaoshu");
 		}
 	}
 }

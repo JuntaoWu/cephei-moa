@@ -24,6 +24,12 @@ declare interface Platform {
     getStorage(key);
 
     playVideo(src: string);
+
+    showModal(message: string): Promise<any>;
+
+    showLoading(message?: string);
+
+    hideLoading();
 }
 
 class DebugPlatform implements Platform {
@@ -63,6 +69,18 @@ class DebugPlatform implements Platform {
 
     playVideo() {
 
+    }
+
+    public async showModal(message: string): Promise<any> {
+        return { confirm: false, cancel: true };
+    }
+
+    public showLoading() {
+        return true;
+    }
+
+    public hideLoading() {
+        return true;
     }
 }
 
