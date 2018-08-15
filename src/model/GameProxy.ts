@@ -143,10 +143,6 @@ module game {
 		}
 
 		private onStateChange() {
-			if (!this.loadBalancingClient.isConnectedToGame()) {
-				console.log("Disconnected: skip onStateChange");
-				return;
-			}
 
 			const state = this.loadBalancingClient.state;
 			switch (state) {
@@ -170,10 +166,6 @@ module game {
 		}
 
 		private onUpdateRoomInfo() {
-			if (!this.loadBalancingClient.isConnectedToGame()) {
-				console.log("Disconnected: skip onUpdateRoomInfo");
-				return;
-			}
 
 			const myRoom = this.loadBalancingClient.myRoom();
 			const myRoomActors = this.loadBalancingClient.myRoomActors();

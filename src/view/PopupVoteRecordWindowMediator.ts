@@ -11,7 +11,7 @@ module game {
             super(PopupVoteRecordWindowMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
             this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
-            
+
             this.popupVoteRecordWindow.backButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backButtonClick, this);
             this.popupVoteRecordWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
@@ -25,7 +25,17 @@ module game {
             let orderList = ["", "shunwei_one_been", "shunwei_two_been", "shunwei_three_been"];
             let voteNumList = ["", "toupiao", "toupiao2", "toupiao3"];
 
-            [1 ,2, 3].forEach(i => {
+            [1, 2, 3].forEach(i => {
+                this.popupVoteRecordWindow[`orderGroup${i}`].dataProvider = new eui.ArrayCollection([]);
+                this.popupVoteRecordWindow[`orderGroup${i}`].itemRenderer = VoteNumRenderer;
+                this.popupVoteRecordWindow[`roundGroup${i}`].dataProvider = new eui.ArrayCollection([]);
+                this.popupVoteRecordWindow[`roundGroup${i}`].itemRenderer = VoteAntiquesRenderer;
+            });
+
+            [1, 2, 3].forEach(i => {
+                if (i > this.proxy.gameState.lunci) {
+                    return;
+                }
                 //三轮游戏投票顺序
                 let voteOrder = [];
                 this.proxy.gameState[orderList[i]].forEach((item, index) => {
@@ -48,24 +58,24 @@ module game {
                     voteResult.forEach((item, index) => {
                         if (item.baowu == this.proxy.gameState.baowulist[n + j]) {
                             obj.bg = index < 2 ? "bg3" : "bg2",
-                            obj.isReal = index > 1 ? null : (!index ? "hide" : (item.zhenjia == "真" ? "true" : "false")),
-                            this.proxy.gameState[voteNumList[i]].forEach((v, k) => {
-                                if (v && +v.toString().substr(j * 2, 2)) {
-                                    obj.voteDetail.push({ 
-                                        voterColor: this.proxy.gameState.seats[k].color.source,
-                                        voteNum: + v.toString().substr(j * 2, 2)
-                                    });
-                                }
-                            })
+                                obj.isReal = index > 1 ? null : (!index ? "hide" : (item.zhenjia == "真" ? "true" : "false")),
+                                this.proxy.gameState[voteNumList[i]].forEach((v, k) => {
+                                    if (v && +v.toString().substr(j * 2, 2)) {
+                                        obj.voteDetail.push({
+                                            voterColor: this.proxy.gameState.seats[k].color.source,
+                                            voteNum: + v.toString().substr(j * 2, 2)
+                                        });
+                                    }
+                                })
                         }
                     })
-                    if (this.proxy.gameState.lunci <= i) {
+                    if (this.proxy.gameState.lunci >= i) {
                         voteData.push(obj);
                     }
                 }
                 this.popupVoteRecordWindow[`roundGroup${i}`].dataProvider = new eui.ArrayCollection(voteData);
                 this.popupVoteRecordWindow[`roundGroup${i}`].itemRenderer = VoteAntiquesRenderer;
-            }); 
+            });
         }
 
         public get popupVoteRecordWindow(): PopupVoteRecordWindow {
