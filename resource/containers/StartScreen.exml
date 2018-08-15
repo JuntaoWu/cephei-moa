@@ -71,7 +71,7 @@
     <e:Button id="btnSetting" right="20" verticalCenter="0">
         <e:Skin>
             <e:Image source="btn-settings"></e:Image>
-            <e:Label text="设置" y="70" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
+            <e:Label text="关于" y="70" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
         </e:Skin>
     </e:Button>
 </e:Group>

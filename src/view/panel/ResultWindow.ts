@@ -28,6 +28,9 @@ module game {
         public round1: any;
         public round2: any;
         public round3: any;
+        public roundGroup1: eui.DataGroup;
+        public roundGroup2: eui.DataGroup;
+        public roundGroup3: eui.DataGroup;
 
         public roleXu: any;
         public roleLao: any;

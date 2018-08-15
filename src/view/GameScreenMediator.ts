@@ -1310,7 +1310,7 @@ module game {
                 let control = this.gameScreen[anim.controlName] as eui.Button;
                 let antiqueGroup = control.getChildByName("antique-group") as eui.Group;
                 let image = antiqueGroup.getChildByName("antique-content") as eui.Image;
-                image.source = antiqueObject.source;                
+                image.source = antiqueObject.source;
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
                 control.enabled = true;

@@ -59,6 +59,8 @@ module game {
     export const GameInfo = {
         attacked: "被药不然偷袭",
         attack: "你偷袭了",
+        hide: "你隐藏了",
+        reverse: "你调换了真假信息",
         skipSkill: "你跳过了技能",
         cannotJudge: "无法鉴定",
     }

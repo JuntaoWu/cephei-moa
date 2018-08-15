@@ -3,7 +3,7 @@
         xmlns:game="game.*">
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
 	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="100">
-		<e:Label text="设置" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
+		<e:Label text="关于" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
 	</e:Group>
 	<e:Group >
 		<e:Image width="640" source="setting2" />
