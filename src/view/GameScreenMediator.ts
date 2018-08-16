@@ -276,7 +276,7 @@ module game {
                     this.gameScreen.isPhaseGameInProgress = true;
                     this.gameScreen.isFirstRound = data.lunci == 1;
                     this.gameScreen.isSecondRound = data.lunci == 2;
-                    this.gameScreen.isThirdRound = data.lunci == 3;                    
+                    this.gameScreen.isThirdRound = data.lunci == 3;
 
                     const mySeat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.actorNr);
                     this.setMyTurnState(data.seats);
@@ -1056,15 +1056,15 @@ module game {
         }
 
         public shunwei2(nextNr: string) {
-            if (this.proxy.gameState.lunci == 1) {
+            if (this.proxy.gameState.lunci == 1 && !this.proxy.gameState.shunwei_one_been.some(ss => ss && ss == this.proxy.gameState.seats[nextNr])) {
                 this.proxy.gameState.shunwei_one_been.push(this.proxy.gameState.seats[nextNr]);
                 const Nr = +nextNr;
                 this.xingdong(Nr);
-            } else if (this.proxy.gameState.lunci == 2) {
+            } else if (this.proxy.gameState.lunci == 2 && !this.proxy.gameState.shunwei_two_been.some(ss => ss && ss == this.proxy.gameState.seats[nextNr])) {
                 this.proxy.gameState.shunwei_two_been.push(this.proxy.gameState.seats[nextNr]);
                 const Nr = +nextNr;
                 this.xingdong(Nr);
-            } else if (this.proxy.gameState.lunci == 3) {
+            } else if (this.proxy.gameState.lunci == 3 && !this.proxy.gameState.shunwei_three_been.some(ss => ss && ss == this.proxy.gameState.seats[nextNr])) {
                 this.proxy.gameState.shunwei_three_been.push(this.proxy.gameState.seats[nextNr]);
                 const Nr = +nextNr;
                 this.xingdong(Nr);
