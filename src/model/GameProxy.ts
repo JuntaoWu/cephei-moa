@@ -56,6 +56,7 @@ module game {
 		public static TOUREN_JIEGUO: string = "touren_jieguo";
 		public static START_TOUPIAO_BUTTON: string = "start_toupiao_button";
 		public static ROLEING: string = "roleing";
+		public static AUTH_EDN: string = "auth_end";
 
 		public roomName: string;
 		public get isMasterClient(): boolean {

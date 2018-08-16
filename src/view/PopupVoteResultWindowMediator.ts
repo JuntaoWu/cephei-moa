@@ -14,6 +14,12 @@ module game {
 
             this.popupVoteResultWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.initData();
+            
+            this.popupVoteResultWindow.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {
+                if (this.proxy.gameState.lunci == 3) {
+                    this.sendNotification(GameProxy.AUTH_EDN);
+                }
+            }, this);
         }
 
         public initData(): void {
