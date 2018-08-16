@@ -89,6 +89,11 @@ module game {
                 this.resultWindow[`roundGroup${i}`].dataProvider = new eui.ArrayCollection(voteData);
                 this.resultWindow[`roundGroup${i}`].itemRenderer = VoteAntiquesRenderer;
             }); 
+            this.resultWindow.roleXu = null;
+            this.resultWindow.roleFang = null;
+            this.resultWindow.roleLao = null;
+            this.resultWindow.voteLao = null;
+            this.resultWindow.voteYao = null;
             //许愿
             if (this.proxy.gameState.role[RoleId.XuYuan]) {
                 let seatXu = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.XuYuan].actorNr);
@@ -160,6 +165,8 @@ module game {
                 this.resultWindow.showFindPeople = false;
                 this.resultWindow.totalScoreGroup.y = 1510;
             }
+
+            console.log("轮次", this.proxy.gameState.lunci)
         }
 
         public get resultWindow(): ResultWindow {

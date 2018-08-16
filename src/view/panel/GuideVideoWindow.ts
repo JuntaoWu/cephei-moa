@@ -46,7 +46,7 @@ module game {
                     this.video.destroy();
                 })
             }, this);
-            this.addEventListener(eui.UIEvent.CLOSING, () => {
+            this.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {
                 this.video && this.video.destroy();
             }, this);
             
