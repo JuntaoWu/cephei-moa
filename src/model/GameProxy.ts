@@ -174,9 +174,17 @@ module game {
 
 			this.gameState.players = myRoomActorCount;
 
-			this.gameState.seats.filter(seat => seat).forEach(seat => {
-				seat.suspended = !myRoomActors[seat.actorNr] || myRoomActors[seat.actorNr].suspended;
-			});
+			for (var i = 0; i < this.gameState.seats.length; ++i) {
+				const seat = this.gameState.seats[i];
+				if (seat) {
+					if (!myRoomActors[seat.actorNr]) {
+						this.gameState.seats[i] = undefined;
+					}
+					else {
+						seat.suspended = myRoomActors[seat.actorNr].suspended;
+					}
+				}
+			}
 
 			if (this.isMasterClient) {
 				if (this.gameState.phase == GamePhase.Preparing) {
@@ -488,7 +496,7 @@ module game {
 					break;
 				}
 				case CustomPhotonEvents.DestroyRoom: {
-					this.destroyRoom();
+					this.leaveRoom();
 					this.sendNotification(SceneCommand.CHANGE, Scene.Start);
 					break;
 				}
@@ -611,20 +619,23 @@ module game {
 		}
 
 		public suspendRoom() {
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.DestroyRoom);
+			if (this.gameState.phase != GamePhase.Preparing) {
+				this.loadBalancingClient.sendMessage(CustomPhotonEvents.DestroyRoom);
+			}
+			else {
+				this.leaveRoom();
+				this.sendNotification(SceneCommand.CHANGE, Scene.Start);
+			}
 		}
 
 		public leaveRoom() {
-			this.loadBalancingClient.sendMessage(CustomPhotonEvents.DestroyRoom);
-		}
-
-		public destroyRoom() {
 			this.reset();
 			this.loadBalancingClient.leaveRoom();
 		}
 
 		public reset() {
 			this.roomName = undefined;
+			this.actorNr = -1;
 			this.loadBalancingClient.autoRejoin = false;
 			this.gameState = new GameState();
 			this.resetPlayerInfo();

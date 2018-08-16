@@ -24,7 +24,6 @@ module game {
 
         public confirmClick() {
             this.proxy.suspendRoom();
-            this.sendNotification(SceneCommand.CHANGE, Scene.Start);
         }
 
         public createRoomClick(event: egret.TouchEvent) {
