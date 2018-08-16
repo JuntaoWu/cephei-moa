@@ -16,17 +16,20 @@ module game {
             this.initData();
             
             this.popupVoteResultWindow.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {
-                if (this.proxy.gameState.lunci == 3) {
+                if (this.lunci == 3) {
                     this.sendNotification(GameProxy.AUTH_EDN);
                 }
             }, this);
         }
 
+        private lunci: number;
+
         public initData(): void {
             let voteNumList = ["", "toupiao", "toupiao2", "toupiao3"];
             let n = this.proxy.gameState.lunci * 4 - 4,
                 voteNum = this.proxy.gameState[voteNumList[this.proxy.gameState.lunci]];
-
+            this.lunci = this.proxy.gameState.lunci;
+            
             this.popupVoteResultWindow.round = `round${this.proxy.gameState.lunci}`;
             let voteResult = this.proxy.gameState[`toupiaojieguo${this.proxy.gameState.lunci}`] as Array<any>;
             let voteData = [];
