@@ -41,7 +41,8 @@ module game {
         public async initData() {
             console.log("GameScreen initData");
             this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
-
+            this.skillAnimAdded = false;
+            this.gameScreen.isLastPlayer = false;
             this.updateGameScreen(this.proxy.gameState);
         }
 
@@ -194,6 +195,7 @@ module game {
                         this.gameScreen.btnSkill.removeChild(oldDragonBone);
                     }
                     const dragonBone = DragonBones.createDragonBone("skills", this.myRole.skillRes);
+                    dragonBone.name = "dragonBone";
                     dragonBone.animation.play(this.myRole.skillRes, 0);
                     dragonBone.animation.animationConfig.timeScale = 0.5;
                     dragonBone.x = 250;
@@ -268,7 +270,7 @@ module game {
                     this.gameScreen.isPhaseGameInProgress = true;
                     this.gameScreen.isFirstRound = data.lunci == 1;
                     this.gameScreen.isSecondRound = data.lunci == 2;
-                    this.gameScreen.isThirdRound = data.lunci == 3;
+                    this.gameScreen.isThirdRound = data.lunci == 3;                    
 
                     const mySeat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.actorNr);
                     this.setMyTurnState(data.seats);
@@ -449,7 +451,7 @@ module game {
         }
 
         public startGame() {
-            this.sendNotification(GameCommand.START_GAME);            
+            this.sendNotification(GameCommand.START_GAME);
         }
 
         // updated by updateGameScreen
@@ -469,7 +471,6 @@ module game {
                 let label = control.getChildByName("antique-label") as eui.Label;
                 label.text = antiqueObject.name;
             });
-            this.gameScreen.touren_note.text = "选择下一位行动的玩家";
         }
 
         public first_one(message: string) {
@@ -1018,6 +1019,7 @@ module game {
             if (this.proxy.gameState.lunci != 99) {
                 this.syncMyTurnState("isChoosingNext", true);
                 this.gameScreen.isChoosingNextText = true;
+                this.gameScreen.touren_note.text = "选择下一位行动的玩家";
             }
 
             this.setChoosingNextOrVotingPersonUI();

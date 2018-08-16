@@ -742,7 +742,7 @@
                         </e:Skin>
                     </e:Button>
                 </e:Group>
-                <e:Button id="onegameend" width="100%">
+                <e:Button visible="{isLastPlayer}" id="onegameend" width="100%">
                     <e:Skin>
                         <e:Image source="auth_png" width="100%"></e:Image>
                     </e:Skin>
