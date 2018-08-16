@@ -464,6 +464,32 @@ module game {
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
 					}
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+					break;
+				}
+				case CustomPhotonEvents.UpdateCurrentActor: {
+					this.gameState.seats.forEach(seat => {
+						if (!seat) {
+							return;
+						}
+
+						if (seat.actorNr == message.actorNr) {
+							seat.action = message.action;
+						}
+						else if (message.updateOthers) {
+							seat.action = "";
+						}
+					});
+
+					if (this.isMasterClient) {
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
+					}
+					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+					break;
+				}
+				case CustomPhotonEvents.DestroyRoom: {
+					this.destroyRoom();
+					this.sendNotification(SceneCommand.CHANGE, Scene.Start);
+					break;
 				}
 			}
 		}
@@ -584,11 +610,14 @@ module game {
 		}
 
 		public suspendRoom() {
-			this.reset();
-			this.loadBalancingClient.leaveRoom();
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.DestroyRoom);
 		}
 
 		public leaveRoom() {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.DestroyRoom);
+		}
+
+		public destroyRoom() {
 			this.reset();
 			this.loadBalancingClient.leaveRoom();
 		}
@@ -614,6 +643,10 @@ module game {
 
 		public updateMyState(action: string, updateOthers: boolean = false, receiver: Receiver) {
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.UpdateCurrentTurn, { action: action, receiver: receiver, updateOthers: updateOthers });
+		}
+
+		public updateActorState(actorNr: number, action: string, updateOthers: boolean = false) {
+			this.loadBalancingClient.sendMessage(CustomPhotonEvents.UpdateCurrentActor, { actorNr: actorNr, action: action, updateOthers: updateOthers });
 		}
 
 		public setSypiaoshu(syPiaoshu: number) {

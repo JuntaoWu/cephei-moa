@@ -28,9 +28,9 @@ module game {
         }
 
         public static Endpoints = {
-            service: "https://cephei-moa.herokuapp.com/",
+            service: "http://gdjzj.hzsdgames.com:8083/",
             localResource: "",
-            remoteResource: "https://cephei-moa.herokuapp.com/miniGame/"
+            remoteResource: "http://gdjzj.hzsdgames.com:8083/miniGame/"
         }
     }
 

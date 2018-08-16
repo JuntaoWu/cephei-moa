@@ -186,6 +186,7 @@ module game {
                 allValidSeats.forEach((seat) => {
                     this.gameScreen[`ybrskill${seat.seatNumber}`].update(seat);
                     this.gameScreen[`fangzhenskill${seat.seatNumber}`].update(seat);
+                    this.gameScreen[`shunwei${seat.seatNumber}`].update(seat);
                 });
 
                 if (!this.skillAnimAdded) {
@@ -482,9 +483,10 @@ module game {
         }
 
         public xingdong(message: number) {
-            if (this.proxy.isActorLocal(this.proxy.gameState.seats[message])) {
-                console.log("syncMyTurnState isAuthing");
-                this.syncMyTurnState("isAuthing", true);
+
+            if(this.proxy.isMasterClient) {
+                const actorModel = this.proxy.gameState.seats[message] as ActorModel;
+                this.proxy.updateActorState(actorModel.actorNr, "isAuthing", true);
             }
         }
 

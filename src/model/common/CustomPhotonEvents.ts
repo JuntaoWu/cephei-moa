@@ -38,5 +38,7 @@ module game {
         tourenjieguo,
         starttoupiao,
         UpdateCurrentTurn,
+        UpdateCurrentActor,
+        DestroyRoom,
     }
 }
