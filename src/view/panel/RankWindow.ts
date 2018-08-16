@@ -45,7 +45,8 @@ module game {
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
-            console.log(this.navigationBar)
+            this.headGroup.height = 100;
+            this.contentScroller.y = 100;
             this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 10;
             this.contentScroller.height = this.stage.stageHeight - this.headGroup.height - this.navigationBar.height - 20;
 

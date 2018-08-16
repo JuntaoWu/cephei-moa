@@ -597,6 +597,7 @@ module game {
 			this.roomName = undefined;
 			this.loadBalancingClient.autoRejoin = false;
 			this.gameState = new GameState();
+			this.resetPlayerInfo();
 		}
 
 		public joinSeat(data: any) {
@@ -631,6 +632,10 @@ module game {
 
 		public setPlayerInfo(playerInfo: PlayerInfo) {
 			this.loadBalancingClient.myActor().setCustomProperty("playerInfo", playerInfo);
+		}
+
+		public resetPlayerInfo() {
+			this.loadBalancingClient.myActor().setCustomProperty("playerInfo", new PlayerInfo());
 		}
 
 		public getPlayerInfo(): PlayerInfo {

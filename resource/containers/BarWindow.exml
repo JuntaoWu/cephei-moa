@@ -11,15 +11,15 @@
 			<!-- 下拉框 -->
 			<e:Group id="provinceGroup" left="5" anchorOffsetY="0" verticalCenter="0">
 				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0" />
-				<e:Label text="{province}" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
+				<e:Label text="{province}" size="24" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
 			</e:Group>
 			<e:Group id="cityGroup" horizontalCenter="0" verticalCenter="0">
 				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0" />
-				<e:Label text="{city}" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
+				<e:Label text="{city}" size="24" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
 			</e:Group>
 			<e:Group id="districtGroup" right="5" verticalCenter="0">
 				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0" />
-				<e:Label text="{district}" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
+				<e:Label text="{district}" size="24" textColor="0x000000" width="150" verticalCenter="0" textAlign="center" verticalAlign="middle"/>
 			</e:Group>
 		</e:Group>
 	</e:Group>
@@ -33,25 +33,37 @@
 		</e:viewport>
 	</e:Scroller>
 	<e:Group visible="{showListProvince}" left="20" anchorOffsetY="0" y="150" width="180">
-		<e:List id="listProvince" anchorOffsetX="0" anchorOffsetY="0" width="180">
-			<e:layout>
-				<e:VerticalLayout gap="0" />
-			</e:layout>
-		</e:List>
+		<e:Scroller scrollPolicyH="off" maxHeight="350" width="180" horizontalCenter="0" anchorOffsetY="0">
+			<e:viewport>
+				<e:List id="listProvince" anchorOffsetX="0" anchorOffsetY="0" width="180">
+					<e:layout>
+						<e:VerticalLayout gap="0" />
+					</e:layout>
+				</e:List>
+			</e:viewport>
+		</e:Scroller>
 	</e:Group>
 	<e:Group visible="{showListCity}" horizontalCenter="0" y="150" width="180">
-		<e:List id="listCity" anchorOffsetX="0" anchorOffsetY="0" width="180">
-			<e:layout>
-				<e:VerticalLayout gap="0" />
-			</e:layout>
-		</e:List>
+		<e:Scroller scrollPolicyH="off" maxHeight="350" width="180" horizontalCenter="0" anchorOffsetY="0">
+			<e:viewport>
+				<e:List id="listCity" anchorOffsetX="0" anchorOffsetY="0" width="180">
+					<e:layout>
+						<e:VerticalLayout gap="0" />
+					</e:layout>
+				</e:List>
+			</e:viewport>
+		</e:Scroller>
 	</e:Group>
 	<e:Group visible="{showListDistrict}" right="20" y="150" width="180">
-		<e:List id="listDistrict" anchorOffsetX="0" anchorOffsetY="0" width="180">
-			<e:layout>
-				<e:VerticalLayout gap="0" />
-			</e:layout>
-		</e:List>
+		<e:Scroller scrollPolicyH="off" maxHeight="350" width="180" horizontalCenter="0" anchorOffsetY="0">
+			<e:viewport>
+				<e:List id="listDistrict" anchorOffsetX="0" anchorOffsetY="0" width="180">
+					<e:layout>
+						<e:VerticalLayout gap="0" />
+					</e:layout>
+				</e:List>
+			</e:viewport>
+		</e:Scroller>
 	</e:Group>
     <e:Group id="navigationBar" y="1011" width="640" height="135">
 		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
