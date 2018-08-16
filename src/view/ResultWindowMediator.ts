@@ -31,7 +31,7 @@ module game {
         public initData(): void {
             let selfId = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
             let selfCamp = this.proxy.rolesMap.get(selfId.toString()).camp;
-            if　(selfCamp == gameCamp.xuyuan) {
+            if (selfCamp == gameCamp.xuyuan) {
                 this.resultWindow.campRes = "share_team_xu";
                 if (this.proxy.gameState.defen < 6) {
                     this.resultWindow.winRes = "lose";
@@ -62,7 +62,7 @@ module game {
             this.resultWindow.findAntiqueScore = this.resultWindow.totalScore - this.resultWindow.findPeopleScore;
             //三轮游戏投票结果
             let voteNumList = ["", "toupiao", "toupiao2", "toupiao3"];
-            [1 ,2, 3].forEach(i => {
+            [1, 2, 3].forEach(i => {
                 let n = i * 4 - 4, voteData = [];
                 let voteResult = this.proxy.gameState[`toupiaojieguo${i}`] as Array<any>;
                 for (let j = 0; j < 4; j++) {
@@ -76,7 +76,7 @@ module game {
                             }
                             this.proxy.gameState[voteNumList[i]].forEach((v, k) => {
                                 if (v && +v.toString().substr(j * 2, 2)) {
-                                    obj.voteDetail.push({ 
+                                    obj.voteDetail.push({
                                         voterColor: this.proxy.gameState.seats[k].color.source,
                                         voteNum: + v.toString().substr(j * 2, 2)
                                     });
@@ -84,11 +84,20 @@ module game {
                             })
                             voteData.push(obj);
                         }
-                    }) 
+                    })
                 }
                 this.resultWindow[`roundGroup${i}`].dataProvider = new eui.ArrayCollection(voteData);
                 this.resultWindow[`roundGroup${i}`].itemRenderer = VoteAntiquesRenderer;
-            }); 
+            });
+
+
+            this.resultWindow.showFindPeople = true;
+            this.resultWindow.totalScoreGroup.y = 2320;
+            if (this.proxy.gameState.lunci == 3) {
+                this.resultWindow.showFindPeople = false;
+                this.resultWindow.totalScoreGroup.y = 1510;
+            }
+
             this.resultWindow.roleXu = null;
             this.resultWindow.roleFang = null;
             this.resultWindow.roleLao = null;
@@ -119,16 +128,20 @@ module game {
                 }
                 //老朝奉投人
                 let votedLao = this.proxy.gameState.touren[RoleId.LaoChaoFen];
-                this.resultWindow.voteLao = {
-                    voterColor: seatLao.color.source,
-                    voterUrl: seatLao.avatarUrl,
-                    votedColor: votedLao.color.source,
-                    votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == votedLao.actorNr)).toString()).name,
-                    votedUrl: votedLao.avatarUrl,
+                if (seatLao && votedLao) {
+                    this.resultWindow.voteLao = {
+                        voterColor: seatLao.color.source,
+                        voterUrl: seatLao.avatarUrl,
+                        votedColor: votedLao.color.source,
+                        votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == votedLao.actorNr)).toString()).name,
+                        votedUrl: votedLao.avatarUrl,
+                    }
                 }
+
             }
             //药不然投人
             if (this.proxy.gameState.role[RoleId.YaoBuRan]) {
+
                 let seatYao = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.YaoBuRan].actorNr);
                 let votedYao = this.proxy.gameState.touren[RoleId.YaoBuRan];
                 if (seatYao && votedYao) {
@@ -141,32 +154,30 @@ module game {
                     }
                 }
             }
-            //许愿阵营投人结果
-            let campXuVotes = [];
-            this.proxy.gameState.touren.forEach((item, index) => {
-                if (index < 6 && item) {
-                    let voterSeat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[index].actorNr);
-                    campXuVotes.push({
-                        voterColor: voterSeat.color.source,
-                        voterName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == voterSeat.actorNr)).toString()).name,
-                        voterUrl: voterSeat.avatarUrl,
-                        votedColor: item.color.source,
-                        votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == item.actorNr)).toString()).name,
-                        votedUrl: item.avatarUrl,
-                    })
-                }
-            })
-            this.resultWindow.voteGroup.dataProvider = new eui.ArrayCollection(campXuVotes);
-            this.resultWindow.voteGroup.itemRenderer = VotePeopleRenderer;
 
-            this.resultWindow.showFindPeople = true;
-            this.resultWindow.totalScoreGroup.y = 2320;
-            if (this.proxy.gameState.lunci == 3) {
-                this.resultWindow.showFindPeople = false;
-                this.resultWindow.totalScoreGroup.y = 1510;
+            try {
+                //许愿阵营投人结果
+                console.log("轮次", this.proxy.gameState.lunci);
+                let campXuVotes = [];
+                this.proxy.gameState.touren.forEach((item, index) => {
+                    if (index < 6 && item) {
+                        let voterSeat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[index].actorNr);
+                        campXuVotes.push({
+                            voterColor: voterSeat.color.source,
+                            voterName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == voterSeat.actorNr)).toString()).name,
+                            voterUrl: voterSeat.avatarUrl,
+                            votedColor: item.color.source,
+                            votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == item.actorNr)).toString()).name,
+                            votedUrl: item.avatarUrl,
+                        })
+                    }
+                })
+                this.resultWindow.voteGroup.dataProvider = new eui.ArrayCollection(campXuVotes);
+                this.resultWindow.voteGroup.itemRenderer = VotePeopleRenderer;
+            } catch (error) {
+                console.error(error);
             }
 
-            console.log("轮次", this.proxy.gameState.lunci)
         }
 
         public get resultWindow(): ResultWindow {

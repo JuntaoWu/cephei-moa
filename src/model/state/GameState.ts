@@ -8,7 +8,7 @@ module game {
 
         public roomName: string = undefined;
         public players: number = 0;
-        public maxPlayers: number = 3;
+        public maxPlayers: number = 8;
 
         public phase: GamePhase = GamePhase.Preparing;
 
