@@ -30,7 +30,7 @@ module game {
 
             Constants.photonNameServer && this.setNameServerAddress(Constants.photonNameServer);
 
-            this.setLogLevel(Exitgames.Common.Logger.Level.DEBUG);
+            this.setLogLevel(Exitgames.Common.Logger.Level.ERROR);
         }
 
         /**
