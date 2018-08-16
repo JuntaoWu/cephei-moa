@@ -48,23 +48,30 @@ module game {
                 fang: null, //方震
                 r1: null,
                 r2: null,
-                text: ""
+                text: "",
+                skillText: "",
+                yaoSkill: null,
+                zhengSkill: null,
             }
             this.popupGameInfoWindow.secondRound = {
                 fang: null, //方震
                 r1: null,
                 r2: null,
-                text: ""
+                text: "",
+                skillText: "",
+                yaoSkill: null,
+                zhengSkill: null,
             }
             this.popupGameInfoWindow.thirdRound = {
                 fang: null, //方震
                 r1: null,
                 r2: null,
-                text: ""
+                text: "",
+                skillText: "",
+                yaoSkill: null,
+                zhengSkill: null,
+
             }
-            this.popupGameInfoWindow.firstRound = {};
-            this.popupGameInfoWindow.secondRound = {};
-            this.popupGameInfoWindow.thirdRound = {};
             let playerInfor = this.proxy.getPlayerInfo();
             let i = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
             if (!playerInfor) {

@@ -30,6 +30,8 @@ declare interface Platform {
     showLoading(message?: string);
 
     hideLoading();
+
+    shareAppMessage();
 }
 
 class DebugPlatform implements Platform {
@@ -81,6 +83,10 @@ class DebugPlatform implements Platform {
 
     public hideLoading() {
         return true;
+    }
+
+    public shareAppMessage() {
+
     }
 }
 

@@ -16,9 +16,9 @@
         <e:Label text="{this.data.attr}" textColor="0x000000" x="35" verticalCenter="0" width="310" size="24"/>
     </e:Group>
     <e:Group y="250" horizontalCenter="10" scaleX="0.88" scaleY="0.88">
-        <e:Image source="club_game1_1"/>
-        <e:Image source="club_game2_1" x="140"/>
-        <e:Image source="club_game3_1" x="280"/>
-        <e:Image source="club_game4_1" x="420"/>
+        <e:Image source="{data.game_1}"/>
+        <e:Image source="{data.game_2}" x="140"/>
+        <e:Image source="{data.game_3}" x="280"/>
+        <e:Image source="{data.game_4}" x="420"/>
     </e:Group>
  </e:Skin>

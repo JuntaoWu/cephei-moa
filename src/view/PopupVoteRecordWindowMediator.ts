@@ -69,7 +69,7 @@ module game {
                                 })
                         }
                     })
-                    if (this.proxy.gameState.lunci <= i) {
+                    if (this.proxy.gameState.lunci >= i) {
                         voteData.push(obj);
                     }
                 }

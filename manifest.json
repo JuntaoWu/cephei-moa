@@ -35,6 +35,7 @@
 		"bin-debug/model/GameProxy.js",
 		"bin-debug/model/MyLoadBalancingClient.js",
 		"bin-debug/model/common/ActorModel.js",
+		"bin-debug/model/common/Club.js",
 		"bin-debug/model/common/CommonData.js",
 		"bin-debug/model/common/Constants.js",
 		"bin-debug/model/common/CustomPhotonEvents.js",

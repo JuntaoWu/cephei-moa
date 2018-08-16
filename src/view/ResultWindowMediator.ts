@@ -19,7 +19,7 @@ module game {
         }
 
         private shareClick() {
-            
+            platform.shareAppMessage();
         }
 
         private confirmClick() {
@@ -155,10 +155,10 @@ module game {
             this.resultWindow.voteGroup.itemRenderer = VotePeopleRenderer;
 
             this.resultWindow.showFindPeople = true;
-            this.resultWindow.totalScoreGroup.y = 2200;
+            this.resultWindow.totalScoreGroup.y = 2320;
             if (this.proxy.gameState.lunci == 3) {
                 this.resultWindow.showFindPeople = false;
-                this.resultWindow.totalScoreGroup.y = 1450;
+                this.resultWindow.totalScoreGroup.y = 1510;
             }
         }
 

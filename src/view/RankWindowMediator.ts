@@ -47,6 +47,9 @@ module game {
             })
             this.rankWindow.rankList.dataProvider = new eui.ArrayCollection(this.rankList);
             this.rankWindow.rankList.itemRenderer = RankListItemRenderer;
+            this.rankWindow.winRateButton.visible = false;
+            this.rankWindow.roleButton.visible = false;
+            this.rankWindow.gameNumButton.visible = false;
         }
 
         private rankList: Array<any>;
