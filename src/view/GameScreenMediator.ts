@@ -79,7 +79,8 @@ module game {
                 GameProxy.TOUREN_JIEGUO,
                 GameCommand.JOIN_ROOM,
                 GameProxy.START_TOUPIAO_BUTTON,
-                GameProxy.ROLEING
+                GameProxy.ROLEING,
+                GameProxy.AUTH_EDN
             ];
         }
 
@@ -151,6 +152,10 @@ module game {
                 }
                 case GameProxy.ROLEING: {
                     this.roleing(data);
+                    break;
+                }
+                case GameProxy.AUTH_EDN: {
+                    this.isWaitTouRen();
                     break;
                 }
             }
@@ -1527,22 +1532,23 @@ module game {
                 }
             }
 
-            if (this.proxy.gameState.lunci == 3) {
-                if (this.proxy.gameState.defen < 2) {
-                    this.gameScreen.startno2.visible = false;
-                    this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
-                }
-                else if (this.proxy.gameState.defen == 6) {
-                    this.gameScreen.startno2.visible = false;
-                    this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
-                }
-                else if (this.proxy.isMasterClient) {
-                    this.syncMyTurnState("isWaitTouRen", false, Receiver.All);
-                    this.gameScreen.startno2.visible = true;
-                }
+            if (this.proxy.gameState.lunci != 3 && this.proxy.isMasterClient) {
+                this.syncMyTurnState("isWaitNextTurn", false, Receiver.All);
+                this.gameScreen.startno2.visible = true;
+            }
+        }
+
+        public isWaitTouRen() {
+            if (this.proxy.gameState.defen < 2) {
+                this.gameScreen.startno2.visible = false;
+                this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
+            }
+            else if (this.proxy.gameState.defen == 6) {
+                this.gameScreen.startno2.visible = false;
+                this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
             }
             else if (this.proxy.isMasterClient) {
-                this.syncMyTurnState("isWaitNextTurn", false, Receiver.All);
+                this.syncMyTurnState("isWaitTouRen", false, Receiver.All);
                 this.gameScreen.startno2.visible = true;
             }
         }
