@@ -1017,6 +1017,7 @@ module game {
             if (this.proxy.gameState.lunci != 99) {
                 this.syncMyTurnState("isChoosingNext", true);
                 this.gameScreen.isChoosingNextText = true;
+                this.gameScreen.touren_note.text = "选择下一位行动的玩家";
             }
 
             this.setChoosingNextOrVotingPersonUI();
