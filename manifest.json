@@ -16,7 +16,7 @@
 	],
 	"game": [
 		"bin-debug/view/panel/BasePanel.js",
-		"bin-debug/ApplicationFacade.js",
+		"bin-debug/view/panel/VotePeopleRenderer.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
@@ -59,7 +59,7 @@
 		"bin-debug/view/PopupNumberKeyboardMediator.js",
 		"bin-debug/view/PopupRoleWindowMediator.js",
 		"bin-debug/view/PopupRoundWindowMediator.js",
-		"bin-debug/view/panel/VotePeopleRenderer.js",
+		"bin-debug/view/PopupVoteRecordWindowMediator.js",
 		"bin-debug/view/PopupVoteResultWindowMediator.js",
 		"bin-debug/view/RankWindowMediator.js",
 		"bin-debug/view/ResultWindowMediator.js",
@@ -102,6 +102,6 @@
 		"bin-debug/view/panel/UserInfoWindow.js",
 		"bin-debug/view/panel/VoteAntiquesRenderer.js",
 		"bin-debug/view/panel/VoteNumRenderer.js",
-		"bin-debug/view/PopupVoteRecordWindowMediator.js"
+		"bin-debug/ApplicationFacade.js"
 	]
 }
