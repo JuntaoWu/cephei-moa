@@ -28,6 +28,8 @@ module game {
         constructor() {
             super(photonWss ? Photon.ConnectionProtocol.Wss : Photon.ConnectionProtocol.Ws, photonAppId, photonAppVersion);
 
+            Constants.photonNameServer && this.setNameServerAddress(Constants.photonNameServer);
+
             this.setLogLevel(Exitgames.Common.Logger.Level.DEBUG);
         }
 
@@ -49,7 +51,6 @@ module game {
                     this.connect();
                 }
                 else {
-                    Constants.photonNameServer && this.setNameServerAddress(Constants.photonNameServer);
                     this.connectToRegionMaster(Constants.photonRegion);
                 }
             }
@@ -224,8 +225,8 @@ module game {
                 this.myRoom().setCustomProperty("setupId", this.setupId);
             }
 
-            this.updateRoomInfo();
             this.onJoinRoomSubject();
+            this.updateRoomInfo();
         }
 
         onActorJoin(actor: Photon.LoadBalancing.Actor) {

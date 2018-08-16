@@ -169,7 +169,7 @@ module game {
 
 			const myRoom = this.loadBalancingClient.myRoom();
 			const myRoomActors = this.loadBalancingClient.myRoomActors();
-			const myRoomActorCount = this.loadBalancingClient.myRoomActorsArray().filter(actor => actor && !actor.suspended).length;
+			const myRoomActorCount = _(myRoomActors).toArray().value().filter((actor: ActorModel) => actor && !actor.suspended).length;
 
 			this.gameState.players = myRoomActorCount;
 
@@ -192,20 +192,23 @@ module game {
 
 		private async onJoinRoom() {
 
+			console.log("onJoinRoom hideLoading");
+
 			platform.hideLoading();
 
 			this.loadBalancingClient.autoRejoin = true;
 
-			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
-			const userInfo = await accountProxy.loadUserInfo();
 			this.actorNr = this.loadBalancingClient.myActor().actorNr;
-
-			this.loadBalancingClient.myActor().setCustomProperty("avatarUrl", userInfo.avatarUrl);
-			this.loadBalancingClient.myActor().setCustomProperty("nickName", userInfo.nickName);
 
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 
 			this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState") || this.gameState;
+
+			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
+			const userInfo = await accountProxy.loadUserInfo();
+
+			this.loadBalancingClient.myActor().setCustomProperty("avatarUrl", userInfo.avatarUrl);
+			this.loadBalancingClient.myActor().setCustomProperty("nickName", userInfo.nickName);
 		}
 
 		private onMessage(event: CustomPhotonEvents, message: any, sender: Photon.LoadBalancing.Actor) {
@@ -546,8 +549,10 @@ module game {
 				if (currentRoom && currentRoom.roomName == roomName) {
 					return currentRoom.actorNr;
 				}
+				else {
+					return this.userInfo.openId.substr(5);
+				}
 			}
-			return "";
 		}
 
 		public joinRoom(roomName: string) {
