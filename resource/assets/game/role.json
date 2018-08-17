@@ -1,0 +1,8 @@
+{"file":"role.png","frames":{
+"role1":{"x":0,"y":0,"w":148,"h":151,"offX":0,"offY":0,"sourceW":148,"sourceH":151},
+"role2":{"x":0,"y":153,"w":147,"h":147,"offX":1,"offY":1,"sourceW":149,"sourceH":149},
+"role3":{"x":227,"y":302,"w":103,"h":152,"offX":0,"offY":0,"sourceW":103,"sourceH":152},
+"role4-5":{"x":0,"y":302,"w":114,"h":158,"offX":0,"offY":0,"sourceW":114,"sourceH":158},
+"role6":{"x":267,"y":153,"w":125,"h":108,"offX":0,"offY":0,"sourceW":125,"sourceH":108},
+"role7":{"x":116,"y":302,"w":109,"h":147,"offX":0,"offY":0,"sourceW":109,"sourceH":147},
+"role8":{"x":149,"y":153,"w":116,"h":127,"offX":0,"offY":0,"sourceW":116,"sourceH":127}}}
