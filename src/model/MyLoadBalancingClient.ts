@@ -1,7 +1,7 @@
 
 module game {
 
-    const photonWss = false;
+    const photonWss = true;
     const photonAppId = "f0e09630-c30e-4d9d-8d60-64d91ebf642b";
     const photonAppVersion = "1.0";
 
