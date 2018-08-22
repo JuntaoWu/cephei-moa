@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,description_json,start-background,btn-confirm,game-init-background,seat-background,small-dialog-background,btn-back,setting2,about,close,meihua,auth4,cancel,ok,ok3,black_2,white_2,game-box-border,number-keyboard-bg,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,antiques_json,game-term_json,lose,victory,share2,border_red,seats_json,botton,role_json,border_black,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,club_box,club_results,assistant-bg,game-bg,photon_json,rank_json,clubs_json,rank-switch_json,antiques2_json,role2_json,club-icon_json,club-icon2_json,result_json,result2_json,start_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,video_json,guide_json,rank-icon_json",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,description_json,start-background,btn-confirm,game-init-background,seat-background,small-dialog-background,btn-back,setting2,about,close,meihua,auth4,cancel,ok,ok3,black_2,white_2,game-box-border,number-keyboard-bg,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,antiques_json,game-term_json,lose,victory,share2,border_red,seats_json,botton,role_json,border_black,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,club_box,club_results,assistant-bg,game-bg,photon_json,rank_json,clubs_json,rank-switch_json,antiques2_json,role2_json,club-icon_json,club-icon2_json,result_json,result2_json,start_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,video_json,guide_json,rank-icon_json,title-more,btn-view,qrcode,img_up,img_down,three-kingdoms-bg",
 			"name": "preload"
 		},
 		{
@@ -479,34 +479,64 @@
 			"subkeys": "auth2,bg2,bg3,false,game-record,hide,round1,round2,round3,self_info,true"
 		},
 		{
-			"name": "wait-status_json",
-			"type": "sheet",
 			"url": "assets/game/wait-status.json",
-			"subkeys": "wait-1-players-enough,wait-2-master-confirm,wait-3-set-identity,wait-4-others-process,wait-5-vote,wait-6-others-vote,talking"
+			"type": "sheet",
+			"name": "wait-status_json",
+			"subkeys": "talking,wait-1-players-enough,wait-2-master-confirm,wait-3-set-identity,wait-4-others-process,wait-5-vote,wait-6-others-vote"
 		},
 		{
-			"name": "game-botton_json",
-			"type": "sheet",
 			"url": "assets/game/game-botton.json",
-			"subkeys": "auth3,talk_over,skip,btn-start,enter-info,auth_png,skip2,vote_over,vote-clear"
+			"type": "sheet",
+			"name": "game-botton_json",
+			"subkeys": "auth3,auth_png,btn-start,enter-info,skip,skip2,talk_over,vote-clear,vote_over"
 		},
 		{
-			"name": "video_json",
-			"type": "sheet",
 			"url": "assets/guide/video.json",
+			"type": "sheet",
+			"name": "video_json",
 			"subkeys": "video1,video2,video3"
 		},
 		{
-			"name": "guide_json",
-			"type": "sheet",
 			"url": "assets/guide/guide.json",
-			"subkeys": "manual3,manual4,manual5,manual1,manual2"
+			"type": "sheet",
+			"name": "guide_json",
+			"subkeys": "manual1,manual2,manual3,manual4,manual5"
 		},
 		{
-			"name": "rank-icon_json",
-			"type": "sheet",
 			"url": "assets/ItemRenderer/rank/rank-icon.json",
-			"subkeys": "rank3,rank1,rank2,sep"
+			"type": "sheet",
+			"name": "rank-icon_json",
+			"subkeys": "rank1,rank2,rank3,sep"
+		},
+		{
+			"url": "assets/start/title-more.png",
+			"type": "image",
+			"name": "title-more"
+		},
+		{
+			"url": "assets/start/btn-view.png",
+			"type": "image",
+			"name": "btn-view"
+		},
+		{
+			"url": "assets/start/qrcode.png",
+			"type": "image",
+			"name": "qrcode"
+		},
+		{
+			"url": "assets/start/img_up.png",
+			"type": "image",
+			"name": "img_up"
+		},
+		{
+			"url": "assets/start/img_down.png",
+			"type": "image",
+			"name": "img_down"
+		},
+		{
+			"url": "assets/background/three-kingdoms-bg.png",
+			"type": "image",
+			"name": "three-kingdoms-bg"
 		}
 	]
 }

@@ -686,5 +686,20 @@ module game {
 		public getPlayerInfo(): PlayerInfo {
 			return this.loadBalancingClient.myActor().getCustomProperty("playerInfo");
 		}
+
+		public updateUserGameRecords(): void {
+			this.userInfo.gameRecords = this.userInfo.gameRecords || [];
+			let roleId = this.gameState.role.findIndex(r => this.isActorLocal(r)),
+				selfCamp = this.rolesMap.get(roleId.toString()).camp;
+			let	isWin = selfCamp == gameCamp.xuyuan 
+					  ? ( this.gameState.defen < 6 ? false : true )
+					  : ( this.gameState.defen < 6 ? true : false );
+			this.userInfo.gameRecords.push({
+				roleId: roleId,
+				gameType: this.gameState.maxPlayers,
+				isWin: isWin,
+				time: new Date().toJSON().substr(0, 10),
+			});
+		}
 	}
 }

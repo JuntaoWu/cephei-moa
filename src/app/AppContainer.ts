@@ -92,6 +92,15 @@ module game {
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
+        public threeKingdomsWindow: ThreeKingdomsWindow;
+        public showThreeKingdomsWindow(): void {
+            if (!this.threeKingdomsWindow) {
+                this.threeKingdomsWindow = new ThreeKingdomsWindow();
+            }
+            this.addChild(this.threeKingdomsWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
         public resultWindow: ResultWindow;
         public showResultWindow(): void {
             if (!this.resultWindow) {
