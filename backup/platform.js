@@ -73,7 +73,8 @@ class WxgamePlatform {
 
     shareAppMessage() {
         wx.shareAppMessage({
-            title: '转发标题'
+            title: '古董局中局',
+            imageUrl: 'http://gdjzj.hzsdgames.com:8083/miniGame/resource/assets/shared/share.png',
         });
     }
 

@@ -31,6 +31,7 @@ module game {
             service: "https://gdjzj.hzsdgames.com:8084/",
             localResource: "",
             remoteResource: "https://gdjzj.hzsdgames.com:8084/miniGame/"
+            // remoteResource: ""
         }
     }
 
