@@ -5,7 +5,7 @@ module game {
 	export class GameProxy extends puremvc.Proxy implements puremvc.IProxy {
 		public static NAME: string = "GameProxy";
 
-		private userInfo: UserInfo;
+		public userInfo: UserInfo;
 
 		public constructor() {
 			super(GameProxy.NAME);
@@ -500,7 +500,33 @@ module game {
 					this.sendNotification(SceneCommand.CHANGE, Scene.Start);
 					break;
 				}
+				case CustomPhotonEvents.userinfo: {
+					this.updateuserinfo();
+					break;
+				}
 			}
+		}
+
+		public updateuserinfo() {
+			let gameresult: string;
+			if (this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6) {
+				gameresult = this.gameState.defen < 6 ? "失败" : "胜利";
+			} else {
+				gameresult = this.gameState.defen < 6 ? "胜利" : "失败";
+			}
+
+			if (!this.userInfo.gameRecords) {
+				this.userInfo.gameRecords = [];
+			}
+			this.userInfo.gameRecords.push({
+				role: this.gameState.jueselist[this.gameState.role.findIndex(role => role && this.isActorLocal(role)) - 1],
+				camp: this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6 ? "许愿阵营" : "老朝奉阵营",
+				gameType: this.gameState.maxPlayers,
+				isWin: gameresult,
+			})
+			console.log(this.gameState.jueselist[this.gameState.role.findIndex(role => role && this.isActorLocal(role)) - 1]);
+			console.log(this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6 ? "许愿阵营" : "老朝奉阵营");
+			console.log(gameresult);
 		}
 
 		private randomShuffle(array: any[]) {
