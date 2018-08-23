@@ -32,6 +32,8 @@ declare interface Platform {
     hideLoading();
 
     shareAppMessage();
+
+    showPreImage(data: Array<string>);
 }
 
 class DebugPlatform implements Platform {
@@ -71,6 +73,9 @@ class DebugPlatform implements Platform {
 
     playVideo() {
         return {};
+    }
+    
+    showPreImage(data) {
     }
 
     public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
