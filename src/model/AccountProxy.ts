@@ -74,6 +74,7 @@ module game {
          * 
          */
         public saveUserGameRecords(record) {
+
             if (CommonData.logon && CommonData.logon.openId) {
                 console.log(`saveUserGameRecords via app server begin, openId: ${CommonData.logon.openId}.`);
 
@@ -82,7 +83,10 @@ module game {
                 request.open(`${game.Constants.Endpoints.service}records/create/?openId=${CommonData.logon.openId}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
 
-                request.send(JSON.stringify(record));
+                request.send(JSON.stringify({
+                    ...record,
+                    openId: CommonData.logon.openId
+                }));
 
                 request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
                     console.log(`saveUserGameRecords via app server end.`);
@@ -91,6 +95,10 @@ module game {
                     let res = JSON.parse(req.response);
                     if (res.error) {
                         console.error(res.message);
+                    }
+                    else {
+                        console.log("update current userInfo object");
+                        this.userInfo.gameRecords = res.data as MyStats;
                     }
                 }, this);
             }
