@@ -501,11 +501,11 @@ module game {
 					break;
 				}
 				case CustomPhotonEvents.userinfo: {
-					this.updateuserinfo();
+					this.updateUserGameRecords();
 					break;
 				}
 			}
-		}		
+		}
 
 		public startGame() {
 			this.randomShuffle(this.gameState.baowulist);
@@ -685,6 +685,12 @@ module game {
 			return this.loadBalancingClient.myActor().getCustomProperty("playerInfo");
 		}
 
+		private randomShuffle(array: any[]) {
+			array.sort(() => {
+				return 0.5 - Math.random();
+			});
+		}
+
 		public updateUserGameRecords(): void {
 
 			let roleId = this.gameState.role.findIndex(r => this.isActorLocal(r)),
@@ -695,7 +701,7 @@ module game {
 
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			accountProxy.saveUserGameRecords({
-				came: selfCamp,
+				camp: roleId < 6 ? 1 : 2,
 				roleId: roleId,
 				gameType: this.gameState.maxPlayers,
 				isWin: isWin,

@@ -17,28 +17,18 @@ module game {
             const gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
             const userInfo = await accountProxy.loadUserInfo();
-            userInfo.gameRecords = userInfo.gameRecords || [];
-            // userInfo.gameRecords = []
-            // for (let i = 0; i < 20; i++) {
-            //     userInfo.gameRecords.push({
-            //         role: "",
-            //         camp: Math.random() > 0.5 ? gameCamp.xuyuan : gameCamp.laochaofen,
-            //         gameType:  Math.random() > 0.7 ? gameType.six : ( Math.random() > 0.3 ? gameType.seven : gameType.eight),
-            //         isWin: Math.random() > 0.5 ? true : false,
-            //     })
-            // }
-            let totalPlay = userInfo.gameRecords.length;
-            let winPlay = userInfo.gameRecords.filter(i => i.isWin).length;
-            let play6 = userInfo.gameRecords.filter(i => i.gameType == 6).length;
-            let winPlay6 = userInfo.gameRecords.filter(i => i.gameType == 6 && i.isWin).length;
-            let play7 = userInfo.gameRecords.filter(i => i.gameType == 7).length;
-            let winPlay7 = userInfo.gameRecords.filter(i => i.gameType == 7 && i.isWin).length;
-            let play8 = userInfo.gameRecords.filter(i => i.gameType == 8).length;
-            let winPlay8 = userInfo.gameRecords.filter(i => i.gameType == 8 && i.isWin).length;
-            let campXu = userInfo.gameRecords.filter(i => i.camp == 1).length;
-            let campXuWin = userInfo.gameRecords.filter(i => i.camp == 1 && i.isWin).length;
-            let campLao = userInfo.gameRecords.filter(i => i.camp == 2).length;
-            let campLaoWin = userInfo.gameRecords.filter(i => i.camp == 2 && i.isWin).length;
+            let totalPlay = userInfo.gameRecords.countTotal;
+            let winPlay = userInfo.gameRecords.countWin;
+            let play6 = userInfo.gameRecords.count6Total;
+            let winPlay6 = userInfo.gameRecords.count6Win;
+            let play7 = userInfo.gameRecords.count7Total;
+            let winPlay7 = userInfo.gameRecords.count7Win;
+            let play8 = userInfo.gameRecords.count8Total;
+            let winPlay8 = userInfo.gameRecords.count8Win;
+            let campXu = userInfo.gameRecords.countXuyuanTotal;
+            let campXuWin = userInfo.gameRecords.countXuYuanWin;
+            let campLao = userInfo.gameRecords.countLaoChaofengTotal;
+            let campLaoWin = userInfo.gameRecords.countLaoChaofengWin;
 
             this.userInfoWindow.nickName = userInfo.nickName;
             this.userInfoWindow.avatarUrl = userInfo.avatarUrl;
