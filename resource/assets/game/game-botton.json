@@ -1,0 +1,10 @@
+{"file":"game-botton.png","frames":{
+"auth3":{"x":0,"y":665,"w":514,"h":98,"offX":0,"offY":0,"sourceW":514,"sourceH":98},
+"talk_over":{"x":0,"y":532,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"skip":{"x":0,"y":399,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"btn-start":{"x":0,"y":266,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"enter-info":{"x":0,"y":133,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"auth_png":{"x":0,"y":0,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"skip2":{"x":516,"y":665,"w":52,"h":25,"offX":0,"offY":0,"sourceW":52,"sourceH":25},
+"vote_over":{"x":292,"y":765,"w":285,"h":131,"offX":0,"offY":0,"sourceW":285,"sourceH":131},
+"vote-clear":{"x":0,"y":765,"w":290,"h":131,"offX":0,"offY":0,"sourceW":290,"sourceH":131}}}

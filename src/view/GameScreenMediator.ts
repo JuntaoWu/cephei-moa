@@ -1546,10 +1546,16 @@ module game {
             if (this.proxy.gameState.defen < 2) {
                 this.gameScreen.startno2.visible = false;
                 this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
+                if (this.proxy.isMasterClient){
+                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.userinfo);
+                }
             }
             else if (this.proxy.gameState.defen == 6) {
                 this.gameScreen.startno2.visible = false;
                 this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
+                if (this.proxy.isMasterClient){
+                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.userinfo);
+                }
             }
             else if (this.proxy.isMasterClient) {
                 this.syncMyTurnState("isWaitTouRen", false, Receiver.All);
@@ -1678,8 +1684,11 @@ module game {
                 console.log(message3);
 
                 this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
+                if (this.proxy.isMasterClient){
+                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.userinfo);
+                }
             }
-        }
+        }        
 
         public tourenjieguo2(touren: Array<any>) {
             if (!touren) {

@@ -3,7 +3,7 @@
     <e:Group width="600" bottom="25">
         <e:Image visible="{rankRes}" source="{rankRes}"  verticalCenter="0" width="110" height="110"/>
         <e:Group visible="{isNotTopThree}">
-            <e:Image source="rank_bg"  verticalCenter="0" width="110" height="110"/>
+            <e:Image source="bg2"  verticalCenter="0" width="110" height="110"/>
             <e:Label text="{data.key}"  verticalCenter="0" horizontalCenter="0" size="45" textColor="0x020202"/>
         </e:Group>
         <e:Image source="{data.url}"  x="120" width="110" height="110" verticalCenter="0"/>

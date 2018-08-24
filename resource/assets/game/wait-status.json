@@ -1,0 +1,8 @@
+{"file":"wait-status.png","frames":{
+"wait-1-players-enough":{"x":0,"y":798,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"wait-2-master-confirm":{"x":0,"y":665,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"wait-3-set-identity":{"x":0,"y":532,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"wait-4-others-process":{"x":0,"y":399,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"wait-5-vote":{"x":0,"y":266,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"wait-6-others-vote":{"x":0,"y":133,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"talking":{"x":0,"y":0,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131}}}

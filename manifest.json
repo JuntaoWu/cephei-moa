@@ -99,6 +99,7 @@
 		"bin-debug/view/panel/Shade.js",
 		"bin-debug/view/panel/StartScreen.js",
 		"bin-debug/view/panel/TermItemRenderer.js",
+		"bin-debug/view/panel/ThreeKingdomsWindow.js",
 		"bin-debug/view/panel/UserInfoWindow.js",
 		"bin-debug/view/panel/VoteAntiquesRenderer.js",
 		"bin-debug/view/panel/VoteNumRenderer.js",

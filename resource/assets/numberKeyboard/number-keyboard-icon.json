@@ -1,0 +1,5 @@
+{"file":"number-keyboard-icon.png","frames":{
+"num_del":{"x":0,"y":0,"w":235,"h":104,"offX":0,"offY":0,"sourceW":235,"sourceH":104},
+"input_cancel":{"x":75,"y":141,"w":73,"h":26,"offX":0,"offY":0,"sourceW":73,"sourceH":26},
+"input_ok":{"x":0,"y":141,"w":73,"h":27,"offX":0,"offY":0,"sourceW":73,"sourceH":27},
+"input_room":{"x":0,"y":106,"w":192,"h":33,"offX":0,"offY":0,"sourceW":192,"sourceH":33}}}

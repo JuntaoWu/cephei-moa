@@ -1,0 +1,12 @@
+{"file":"game-icon.png","frames":{
+"self_info":{"x":0,"y":302,"w":88,"h":78,"offX":0,"offY":0,"sourceW":88,"sourceH":78},
+"true":{"x":152,"y":267,"w":107,"h":107,"offX":0,"offY":0,"sourceW":107,"sourceH":107},
+"bg2":{"x":0,"y":0,"w":164,"h":156,"offX":0,"offY":0,"sourceW":164,"sourceH":156},
+"bg3":{"x":0,"y":158,"w":150,"h":142,"offX":7,"offY":7,"sourceW":164,"sourceH":156},
+"false":{"x":166,"y":0,"w":107,"h":107,"offX":0,"offY":0,"sourceW":107,"sourceH":107},
+"game-record":{"x":90,"y":376,"w":93,"h":71,"offX":0,"offY":0,"sourceW":93,"sourceH":71},
+"hide":{"x":152,"y":158,"w":107,"h":107,"offX":0,"offY":0,"sourceW":107,"sourceH":107},
+"round1":{"x":34,"y":382,"w":32,"h":97,"offX":0,"offY":0,"sourceW":32,"sourceH":97},
+"round2":{"x":0,"y":382,"w":32,"h":97,"offX":0,"offY":0,"sourceW":32,"sourceH":97},
+"round3":{"x":185,"y":376,"w":32,"h":97,"offX":0,"offY":0,"sourceW":32,"sourceH":97},
+"auth2":{"x":90,"y":302,"w":48,"h":38,"offX":0,"offY":0,"sourceW":48,"sourceH":38}}}

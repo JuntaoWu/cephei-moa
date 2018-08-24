@@ -18,6 +18,7 @@ module game {
 
             this.startScreen.btnCreateRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createRoomClick, this);
             this.startScreen.btnJoinRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.joinRoomClick, this);
+            this.startScreen.btnViewMore.addEventListener(egret.TouchEvent.TOUCH_TAP, this.viewMoreClick, this);
 
             this.startScreen.headGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showMyInfo, this);
             this.startScreen.btnNotice.addEventListener(egret.TouchEvent.TOUCH_TAP, this.noticeClick, this);
@@ -66,6 +67,10 @@ module game {
         public joinRoomClick(event: egret.TouchEvent) {
             // this.sendNotification(SceneCommand.SHOW_JOIN_WINDOW);
             this.sendNotification(SceneCommand.SHOW_NUMBER_KEYBOARD);
+        }
+
+        public viewMoreClick(event: egret.TouchEvent) {
+            this.sendNotification(SceneCommand.SHOW_THREEKINGDOMS_WINDOW);
         }
 
         private noticeClick(event: egret.TouchEvent) {

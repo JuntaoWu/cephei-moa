@@ -505,35 +505,7 @@ module game {
 					break;
 				}
 			}
-		}
-
-		public updateuserinfo() {
-			let gameresult: string;
-			if (this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6) {
-				gameresult = this.gameState.defen < 6 ? "失败" : "胜利";
-			} else {
-				gameresult = this.gameState.defen < 6 ? "胜利" : "失败";
-			}
-
-			if (!this.userInfo.gameRecords) {
-				this.userInfo.gameRecords = [];
-			}
-			this.userInfo.gameRecords.push({
-				role: this.gameState.jueselist[this.gameState.role.findIndex(role => role && this.isActorLocal(role)) - 1],
-				camp: this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6 ? "许愿阵营" : "老朝奉阵营",
-				gameType: this.gameState.maxPlayers,
-				isWin: gameresult,
-			})
-			console.log(this.gameState.jueselist[this.gameState.role.findIndex(role => role && this.isActorLocal(role)) - 1]);
-			console.log(this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6 ? "许愿阵营" : "老朝奉阵营");
-			console.log(gameresult);
-		}
-
-		private randomShuffle(array: any[]) {
-			array.sort(() => {
-				return 0.5 - Math.random();
-			});
-		}
+		}		
 
 		public startGame() {
 			this.randomShuffle(this.gameState.baowulist);
@@ -593,7 +565,7 @@ module game {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
 				this.loadBalancingClient.start();
 			}
-			this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
+			//this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
 			this.isCreating = true;
 			this.createRoomWithDefaultOptions();
 		}
@@ -711,6 +683,46 @@ module game {
 
 		public getPlayerInfo(): PlayerInfo {
 			return this.loadBalancingClient.myActor().getCustomProperty("playerInfo");
+		}
+
+		// public updateUserGameRecords(): void {
+		// 	this.userInfo.gameRecords = this.userInfo.gameRecords || [];
+		// 	let roleId = this.gameState.role.findIndex(r => this.isActorLocal(r)),
+		// 		selfCamp = this.rolesMap.get(roleId.toString()).camp;
+		// 	let	isWin = selfCamp == gameCamp.xuyuan 
+		// 			  ? ( this.gameState.defen < 6 ? false : true )
+		// 			  : ( this.gameState.defen < 6 ? true : false );
+		// 	this.userInfo.gameRecords.push({
+		// 		roleId: roleId,
+		// 		gameType: this.gameState.maxPlayers,
+		// 		isWin: isWin,
+		// 		time: new Date().toJSON().substr(0, 10),
+		// 	});
+		// }
+
+		public updateuserinfo() {
+			this.userInfo.gameRecords = this.userInfo.gameRecords || [];
+			let gameresult: boolean;
+			if (this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6) {
+				gameresult = this.gameState.defen < 6 ? false : true;
+			} else {
+				gameresult = this.gameState.defen < 6 ? true : false;
+			}
+			this.userInfo.gameRecords.push({
+				role: this.gameState.jueselist[this.gameState.role.findIndex(role => role && this.isActorLocal(role)) - 1],
+				camp: this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6 ? 1 : 2,
+				gameType: this.gameState.maxPlayers,
+				isWin: gameresult,
+			})
+			console.log(this.gameState.jueselist[this.gameState.role.findIndex(role => role && this.isActorLocal(role)) - 1]);
+			console.log(this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6 ? 1 : 2);
+			console.log(gameresult);
+		}
+
+		private randomShuffle(array: any[]) {
+			array.sort(() => {
+				return 0.5 - Math.random();
+			});
 		}
 	}
 }
