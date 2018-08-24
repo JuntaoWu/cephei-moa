@@ -40,5 +40,6 @@ module game {
         UpdateCurrentTurn,
         UpdateCurrentActor,
         DestroyRoom,
+        userinfo,
     }
 }
