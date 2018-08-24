@@ -40,9 +40,9 @@ module game {
                             request.responseType = egret.HttpResponseType.TEXT;
                             request.open(`${game.Constants.Endpoints.service}records/?openId=${CommonData.logon.openId}`, egret.HttpMethod.POST);
                             request.setRequestHeader("Content-Type", "application/json");
-                            request.send({
+                            request.send(JSON.stringify({
                                 userInfo: user
-                            });
+                            }));
                             request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
                                 console.log(`load users/info via app server end.`);
 

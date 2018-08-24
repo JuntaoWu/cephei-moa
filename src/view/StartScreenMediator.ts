@@ -93,6 +93,9 @@ module game {
         }
 
         private showMyInfo(): void {
+            if (!CommonData.logon.openId) {
+                return;
+            }
             this.sendNotification(SceneCommand.SHOW_USERINFO_WINDOW);
         }
 
