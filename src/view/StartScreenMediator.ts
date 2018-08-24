@@ -70,7 +70,10 @@ module game {
         }
 
         public viewMoreClick(event: egret.TouchEvent) {
-            this.sendNotification(SceneCommand.SHOW_THREEKINGDOMS_WINDOW);
+            let imgList = [
+                "https://gdjzj.hzsdgames.com:8084/miniGame/resource/assets/start/qrcode-tk2048.jpg"
+            ]
+            platform.showPreImage(imgList);
         }
 
         private noticeClick(event: egret.TouchEvent) {

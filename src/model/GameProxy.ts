@@ -685,43 +685,21 @@ module game {
 			return this.loadBalancingClient.myActor().getCustomProperty("playerInfo");
 		}
 
-		// public updateUserGameRecords(): void {
-		// 	this.userInfo.gameRecords = this.userInfo.gameRecords || [];
-		// 	let roleId = this.gameState.role.findIndex(r => this.isActorLocal(r)),
-		// 		selfCamp = this.rolesMap.get(roleId.toString()).camp;
-		// 	let	isWin = selfCamp == gameCamp.xuyuan 
-		// 			  ? ( this.gameState.defen < 6 ? false : true )
-		// 			  : ( this.gameState.defen < 6 ? true : false );
-		// 	this.userInfo.gameRecords.push({
-		// 		roleId: roleId,
-		// 		gameType: this.gameState.maxPlayers,
-		// 		isWin: isWin,
-		// 		time: new Date().toJSON().substr(0, 10),
-		// 	});
-		// }
+		public updateUserGameRecords(): void {
 
-		public updateuserinfo() {
-			this.userInfo.gameRecords = this.userInfo.gameRecords || [];
-			let gameresult: boolean;
-			if (this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6) {
-				gameresult = this.gameState.defen < 6 ? false : true;
-			} else {
-				gameresult = this.gameState.defen < 6 ? true : false;
-			}
-			this.userInfo.gameRecords.push({
-				role: this.gameState.jueselist[this.gameState.role.findIndex(role => role && this.isActorLocal(role)) - 1],
-				camp: this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6 ? 1 : 2,
+			let roleId = this.gameState.role.findIndex(r => this.isActorLocal(r)),
+				selfCamp = this.rolesMap.get(roleId.toString()).camp;
+			let isWin = selfCamp == gameCamp.xuyuan
+				? (this.gameState.defen < 6 ? false : true)
+				: (this.gameState.defen < 6 ? true : false);
+
+			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
+			accountProxy.saveUserGameRecords({
+				came: selfCamp,
+				roleId: roleId,
 				gameType: this.gameState.maxPlayers,
-				isWin: gameresult,
-			})
-			console.log(this.gameState.jueselist[this.gameState.role.findIndex(role => role && this.isActorLocal(role)) - 1]);
-			console.log(this.gameState.role.findIndex(role => role && this.isActorLocal(role)) < 6 ? 1 : 2);
-			console.log(gameresult);
-		}
-
-		private randomShuffle(array: any[]) {
-			array.sort(() => {
-				return 0.5 - Math.random();
+				isWin: isWin,
+				roomName: this.roomName,
 			});
 		}
 	}

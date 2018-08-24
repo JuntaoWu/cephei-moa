@@ -56,8 +56,8 @@ class WxgamePlatform {
             fileutil.fs.remove("temp_text");
             fileutil.fs.remove("temp_image");
             wx.setStorage({
-              key: 'apiVersion',
-              data: version,
+                key: 'apiVersion',
+                data: version,
             });
         }
         catch (ex) {
@@ -73,7 +73,8 @@ class WxgamePlatform {
 
     shareAppMessage() {
         wx.shareAppMessage({
-            title: '转发标题'
+            title: '古董局中局',
+            imageUrl: 'http://gdjzj.hzsdgames.com:8083/miniGame/resource/assets/shared/share.png',
         });
     }
 
@@ -96,51 +97,58 @@ class WxgamePlatform {
     }
 
     setStorage(key, value) {
-      wx.setStorage({
-        key: key,
-        data: value,
-      })
+        wx.setStorage({
+            key: key,
+            data: value,
+        })
     }
 
     getStorage(key) {
-      return wx.getStorageSync(key);
+        return wx.getStorageSync(key);
     }
 
     showModal(message, confirmText, cancelText) {
-      return new Promise((resolve, reject) => {
-        wx.showModal({
-          title: '提示',
-          content: message,
-          showCancel: true,
-          cancelText: cancelText || '取消',
-          confirmText: confirmText || '确定',
-          success: function(res) {
-            resolve(res);
-          },
-          fail: function(res) {},
-          complete: function(res) {},
-        })
-      });
+        return new Promise((resolve, reject) => {
+            wx.showModal({
+                title: '提示',
+                content: message,
+                showCancel: true,
+                cancelText: cancelText || '取消',
+                confirmText: confirmText || '确定',
+                success: function (res) {
+                    resolve(res);
+                },
+                fail: function (res) { },
+                complete: function (res) { },
+            })
+        });
     }
 
     showLoading(message) {
-      wx.showLoading({
-        title: message || '加载中',
-        mask: true,
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
+        wx.showLoading({
+            title: message || '加载中',
+            mask: true,
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+        })
     }
 
     hideLoading() {
-      wx.hideLoading();
+        wx.hideLoading();
     }
 
     playVideo(src) {
-      return wx.createVideo({src: src});
+        return wx.createVideo({ src: src });
     }
 
+    showPreImage(imgList) {
+        wx.previewImage({
+            urls: imgList.map(m => {
+                return `${m}?v=${this.getVersion()}`;
+            }),
+        });
+    }
 }
 
 class WxgameOpenDataContext {
