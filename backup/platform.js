@@ -140,10 +140,12 @@ class WxgamePlatform {
     playVideo(src) {
       return wx.createVideo({src: src});
     }
-	
+
     showPreImage(imgList) {
       wx.previewImage({
-        urls: imgList,
+        urls: imgList.map(m => {
+          return `${m}?v=${this.getVersion()}`
+        }),
       })
     }
 }
