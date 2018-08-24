@@ -56,6 +56,7 @@
 		"resource/containers/ResultWindow.exml",
 		"resource/containers/SettingWindow.exml",
 		"resource/containers/StartScreen.exml",
+		"resource/containers/ThreeKingdomsWindow.exml",
 		"resource/containers/UserInfoWindow.exml",
 		"resource/eui_skins/ButtonSkin.exml",
 		"resource/eui_skins/CheckBoxSkin.exml",
