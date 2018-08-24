@@ -10,6 +10,6 @@ module game {
         public nickName?: string;
         public province?: string;
 
-        public gameRecords?: Array<any>;
+        public gameRecords?: MyStats;
     }
 }
