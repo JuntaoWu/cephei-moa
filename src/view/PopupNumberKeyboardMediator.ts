@@ -34,6 +34,7 @@ module game {
         }
 
         public cancelClick(e: egret.TouchEvent) {
+            platform.hideAllBannerAds();
             this.popupNumberKeyboard.roomName = "";
             this.sendNotification(GameProxy.INPUT_NUMBER, this.popupNumberKeyboard.roomName);
             this.popupNumberKeyboard.showText = true;

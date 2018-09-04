@@ -32,5 +32,10 @@ module game {
         public partAdded(partName: string, instance: any): void {
             super.partAdded(partName, instance);
         }
+
+        public onCloseButtonClick(event: egret.TouchEvent) {
+            super.onCloseButtonClick(event);
+            platform.hideAllBannerAds();
+        }
     }
 }

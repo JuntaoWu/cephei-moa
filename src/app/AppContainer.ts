@@ -15,6 +15,9 @@ module game {
          * 进入开始页面
          */
         public enterStartScreen(): void {
+
+            platform.hideAllBannerAds();
+
             // SoundPool.playBGM("generic-music_mp3");
             // const gameScreen = this.getChildByName("gameScreen");
             // gameScreen && this.removeChild(this.gameScreen);
@@ -25,6 +28,8 @@ module game {
         }
 
         public enterGameScreen(): void {
+            platform.hideAllBannerAds();
+
             this.addChild(this.gameScreen);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
@@ -103,6 +108,7 @@ module game {
 
         public popupHandleWindow: PopupHandleWindow;
         public showPopupHandleWindow(b: boolean): void {
+
             if (!this.popupHandleWindow) {
                 this.popupHandleWindow = new PopupHandleWindow();
             }

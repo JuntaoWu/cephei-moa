@@ -27,10 +27,21 @@ module game {
             return this.photonConfig.get("photonRegion");
         }
 
-        public static Endpoints = {
-            service: "http://gdjzj.hzsdgames.com:8090/",
-            localResource: "",
-            remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/"
+        public static get Endpoints() {
+            if (platform.env == "dev") {
+                return {
+                    service: "http://gdjzj.hzsdgames.com:8090/",
+                    localResource: "",
+                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/"
+                };
+            }
+            if (platform.env == "prod") {
+                return {
+                    service: "https://gdjzj.hzsdgames.com:8084/",
+                    localResource: "",
+                    remoteResource: "https://gdjzj.hzsdgames.com:8084/miniGame/"
+                };
+            }
         }
     }
 

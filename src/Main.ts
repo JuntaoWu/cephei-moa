@@ -88,6 +88,12 @@ class Main extends eui.UILayer {
             await RES.loadGroup("preload", 0, this.loadingView);
 
             RES.loadGroup("lazyload", 0);
+
+            platform.createBannerAd("top", "adunit-4616af6cd0c20ef1", {
+                left: 0,
+                top: 0,
+                width: 360,
+            });
         }
         catch (e) {
             console.error(e);

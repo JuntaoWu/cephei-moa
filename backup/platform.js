@@ -6,7 +6,9 @@ import * as fileutil from 'library/file-util';
 
 class WxgamePlatform {
 
-    name = 'wxgame'
+    env = 'dev';
+    name = 'wxgame';
+    appVersion = '0.2.24';
 
     login() {
         return new Promise((resolve, reject) => {
@@ -97,10 +99,7 @@ class WxgamePlatform {
     }
 
     setStorage(key, value) {
-        wx.setStorage({
-            key: key,
-            data: value,
-        })
+        wx.setStorageSync(key, value);
     }
 
     getStorage(key) {
@@ -148,6 +147,29 @@ class WxgamePlatform {
                 return `${m}?v=${this.getVersion()}`;
             }),
         });
+    }
+
+    createBannerAd(name, adUnitId, style) {
+        let systemInfo = wx.getSystemInfoSync();
+        if (systemInfo.SDKVersion >= "2.0.4") {
+            this[`banner-${name}`] = wx.createBannerAd({
+                adUnitId: adUnitId,
+                style: style
+            });
+        }
+    }
+
+    showBannerAd(name) {
+        this[`banner-${name}`] && this[`banner-${name}`].show();
+    }
+
+    hideBannerAd(name) {
+        this[`banner-${name}`] && this[`banner-${name}`].hide();
+    }
+
+    hideAllBannerAds() {
+        this.hideBannerAd("top");
+        this.hideBannerAd("bottom");
     }
 }
 
