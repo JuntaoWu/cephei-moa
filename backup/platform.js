@@ -154,10 +154,7 @@ class WxgamePlatform {
         if (systemInfo.SDKVersion >= "2.0.4") {
             this[`banner-${name}`] = wx.createBannerAd({
                 adUnitId: adUnitId,
-                style: {
-                  ...style,
-                  width: systemInfo.screenWidth
-                }
+                style: style
             });
         }
     }
