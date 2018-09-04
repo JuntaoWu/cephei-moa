@@ -5,7 +5,7 @@ module game {
 	export class GameProxy extends puremvc.Proxy implements puremvc.IProxy {
 		public static NAME: string = "GameProxy";
 
-		private userInfo: UserInfo;
+		public userInfo: UserInfo;
 
 		public constructor() {
 			super(GameProxy.NAME);
@@ -500,13 +500,11 @@ module game {
 					this.sendNotification(SceneCommand.CHANGE, Scene.Start);
 					break;
 				}
+				case CustomPhotonEvents.userinfo: {
+					this.updateUserGameRecords();
+					break;
+				}
 			}
-		}
-
-		private randomShuffle(array: any[]) {
-			array.sort(() => {
-				return 0.5 - Math.random();
-			});
 		}
 
 		public startGame() {
@@ -567,7 +565,7 @@ module game {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
 				this.loadBalancingClient.start();
 			}
-			this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
+			//this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
 			this.isCreating = true;
 			this.createRoomWithDefaultOptions();
 		}
@@ -687,6 +685,12 @@ module game {
 			return this.loadBalancingClient.myActor().getCustomProperty("playerInfo");
 		}
 
+		private randomShuffle(array: any[]) {
+			array.sort(() => {
+				return 0.5 - Math.random();
+			});
+		}
+
 		public updateUserGameRecords(): void {
 
 			let roleId = this.gameState.role.findIndex(r => this.isActorLocal(r)),
@@ -697,7 +701,7 @@ module game {
 
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			accountProxy.saveUserGameRecords({
-				came: selfCamp,
+				camp: roleId < 6 ? 1 : 2,
 				roleId: roleId,
 				gameType: this.gameState.maxPlayers,
 				isWin: isWin,

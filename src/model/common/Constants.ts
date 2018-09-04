@@ -28,10 +28,9 @@ module game {
         }
 
         public static Endpoints = {
-            service: "https://gdjzj.hzsdgames.com:8084/",
+            service: "http://gdjzj.hzsdgames.com:8090/",
             localResource: "",
-            remoteResource: "https://gdjzj.hzsdgames.com:8084/miniGame/"
-            // remoteResource: ""
+            remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/"
         }
     }
 
