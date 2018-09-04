@@ -2,10 +2,13 @@
 module game {
 
     export class AboutWindow extends eui.Panel {
+
+        public appVersion: string = "";
+
         public constructor() {
             super();
-
             this.skinName = "skins.AboutWindow";
+            this.appVersion = platform.appVersion;
             this.addEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.close, this);
         }

@@ -1,13 +1,16 @@
 
 module game {
 
-    const photonWss = false;
     const photonAppId = "f0e09630-c30e-4d9d-8d60-64d91ebf642b";
     const photonAppVersion = "1.0";
 
     const connectOnStart = true;
 
     export class MyLoadBalancingClient extends Photon.LoadBalancing.LoadBalancingClient {
+
+        private static get photonWss() {
+            return platform.env == "prod" || platform.name == "wxgame";
+        }
 
         private retried: number = 0;
         private maxRetriedCount: number = 1;
@@ -26,7 +29,7 @@ module game {
         }
 
         constructor() {
-            super(photonWss ? Photon.ConnectionProtocol.Wss : Photon.ConnectionProtocol.Ws, photonAppId, photonAppVersion);
+            super(MyLoadBalancingClient.photonWss ? Photon.ConnectionProtocol.Wss : Photon.ConnectionProtocol.Ws, photonAppId, photonAppVersion);
 
             Constants.photonNameServer && this.setNameServerAddress(Constants.photonNameServer);
 
@@ -58,6 +61,7 @@ module game {
 
         onError(errorCode: number, errorMsg: string) {
 
+            platform.hideAllBannerAds();
             platform.hideLoading();
 
             this.output("Error " + errorCode + ": " + errorMsg);

@@ -5,7 +5,10 @@
  * 由于不同平台的接口形式各有不同，白鹭推荐开发者将所有接口封装为基于 Promise 的异步形式
  */
 declare interface Platform {
+
+    env: string;
     name: string;
+    appVersion: string;
 
     getUserInfo(): Promise<any>;
 
@@ -34,11 +37,27 @@ declare interface Platform {
     shareAppMessage();
 
     showPreImage(data: Array<string>);
+
+    createBannerAd(name: string, adUnitId: string, style: any);
+
+    showBannerAd(name: string);
+
+    hideAllBannerAds();
 }
 
 class DebugPlatform implements Platform {
 
-    public name: string = "DebugPlatform";
+    public get env(): string {
+        return "dev";
+    }
+
+    public get name(): string {
+        return "DebugPlatform";
+    }
+
+    public get appVersion(): string {
+        return "0.2.24";
+    }
 
     public async getUserInfo() {
         return { nickName: game.CommonData.logon && game.CommonData.logon.openId || "username" };
@@ -51,31 +70,31 @@ class DebugPlatform implements Platform {
 
     }
 
-    applyUpdate() {
+    public applyUpdate() {
         return true;
     }
 
-    onNetworkStatusChange(callback: Function) {
+    public onNetworkStatusChange(callback: Function) {
         return true;
     }
 
-    showToast(message: string) {
+    public showToast(message: string) {
         console.log(message);
     }
 
-    setStorage(key, data) {
+    public setStorage(key, data) {
         sessionStorage.setItem(key, JSON.stringify(data));
     }
 
-    getStorage(key) {
+    public getStorage(key) {
         return JSON.parse(sessionStorage.getItem(key));
     }
 
-    playVideo() {
+    public playVideo() {
         return {};
     }
-    
-    showPreImage(data) {
+
+    public showPreImage(data) {
     }
 
     public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
@@ -92,6 +111,18 @@ class DebugPlatform implements Platform {
 
     public shareAppMessage() {
 
+    }
+
+    public createBannerAd(name: string, adUnitId: string, style: any) {
+
+    }
+
+    public showBannerAd(name: string = "bottom") {
+
+    }
+
+    public hideAllBannerAds() {
+        
     }
 }
 

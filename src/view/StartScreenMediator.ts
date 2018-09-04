@@ -60,11 +60,13 @@ module game {
         }
 
         public createRoomClick(event: egret.TouchEvent) {
+            platform.showBannerAd("top");
             // this.sendNotification(GameCommand.CREATE_ROOM);
             this.sendNotification(SceneCommand.SHOW_HANDLE_POPUP);
         }
 
         public joinRoomClick(event: egret.TouchEvent) {
+            platform.showBannerAd("top");
             // this.sendNotification(SceneCommand.SHOW_JOIN_WINDOW);
             this.sendNotification(SceneCommand.SHOW_NUMBER_KEYBOARD);
         }
