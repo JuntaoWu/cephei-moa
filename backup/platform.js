@@ -143,11 +143,11 @@ class WxgamePlatform {
     }
 
     showPreImage(imgList) {
-        wx.previewImage({
-            urls: imgList.map(m => {
-                return `${m}?v=${this.getVersion()}`;
-            }),
-        });
+      wx.previewImage({
+        urls: imgList.map(m => {
+          return `${m}?v=${this.getVersion()}`
+        }),
+      })
     }
 }
 
