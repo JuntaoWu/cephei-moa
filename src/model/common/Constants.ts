@@ -12,7 +12,7 @@ module game {
         }
 
         public static get ResourceEndpoint(): string {
-            return platform.name == "DebugPlatform" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
+            return platform.name != "wxgame" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
         };
 
         public static get photonMasterServer(): string {
@@ -30,9 +30,9 @@ module game {
         public static get Endpoints() {
             if (platform.env == "dev") {
                 return {
-                    service: "http://gdjzj.hzsdgames.com:8090/",
+                    service: "http://192.168.2.117:4040/",
                     localResource: "",
-                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/"
+                    remoteResource: "http://192.168.2.117:4040/miniGame/"
                 };
             }
             if (platform.env == "prod") {
@@ -40,6 +40,13 @@ module game {
                     service: "https://gdjzj.hzsdgames.com:8084/",
                     localResource: "",
                     remoteResource: "https://gdjzj.hzsdgames.com:8084/miniGame/"
+                };
+            }
+            if (platform.env == "test") {
+                return {
+                    service: "http://gdjzj.hzsdgames.com:8090/",
+                    localResource: "",
+                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/"
                 };
             }
         }

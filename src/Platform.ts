@@ -60,7 +60,7 @@ class DebugPlatform implements Platform {
     }
 
     public async getUserInfo() {
-        return { nickName: game.CommonData.logon && game.CommonData.logon.openId || "username" };
+        return { nickName: game.CommonData.logon && game.CommonData.logon.wxgameOpenId || "username" };
     }
     public async login() {
         return { code: "debug" };
@@ -122,12 +122,27 @@ class DebugPlatform implements Platform {
     }
 
     public hideAllBannerAds() {
-        
+
+    }
+}
+
+class NativePlatform extends DebugPlatform implements Platform {
+    public get env(): string {
+        return "dev";
+    }
+
+    public get name(): string {
+        return "native";
+    }
+
+    public get appVersion(): string {
+        return "0.2.24";
     }
 }
 
 if (!window.platform) {
-    window.platform = new DebugPlatform();
+    // window.platform = new DebugPlatform();
+    window.platform = new NativePlatform();
 }
 
 declare let platform: Platform;

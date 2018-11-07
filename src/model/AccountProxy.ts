@@ -22,7 +22,7 @@ module game {
         public loadUserInfo(): Promise<UserInfo> {
 
             return new Promise((resolve, reject) => {
-                if (this.userInfo && this.userInfo.openId) {
+                if (this.userInfo && this.userInfo.unionId) {
                     resolve(this.userInfo);
                 }
                 else {
@@ -32,13 +32,13 @@ module game {
                         this.userInfo = user;
                         console.log(`platform.getUserInfo end.`);
 
-                        if (CommonData.logon && CommonData.logon.openId) {
-                            console.log(`load users/info via app server begin, openId: ${CommonData.logon.openId}.`);
-                            this.userInfo.openId = CommonData.logon.openId;
+                        if (CommonData.logon && CommonData.logon.wxgameOpenId) {
+                            console.log(`load users/info via app server begin, openId: ${CommonData.logon.wxgameOpenId}.`);
+                            this.userInfo.wxgameOpenId = CommonData.logon.wxgameOpenId;
 
                             var request = new egret.HttpRequest();
                             request.responseType = egret.HttpResponseType.TEXT;
-                            request.open(`${game.Constants.Endpoints.service}records/?openId=${CommonData.logon.openId}`, egret.HttpMethod.POST);
+                            request.open(`${game.Constants.Endpoints.service}records/?openId=${CommonData.logon.wxgameOpenId}`, egret.HttpMethod.POST);
                             request.setRequestHeader("Content-Type", "application/json");
                             request.send(JSON.stringify({
                                 userInfo: user
@@ -75,17 +75,17 @@ module game {
          */
         public saveUserGameRecords(record) {
 
-            if (CommonData.logon && CommonData.logon.openId) {
-                console.log(`saveUserGameRecords via app server begin, openId: ${CommonData.logon.openId}.`);
+            if (CommonData.logon && CommonData.logon.wxgameOpenId) {
+                console.log(`saveUserGameRecords via app server begin, openId: ${CommonData.logon.wxgameOpenId}.`);
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${game.Constants.Endpoints.service}records/create/?openId=${CommonData.logon.openId}`, egret.HttpMethod.POST);
+                request.open(`${game.Constants.Endpoints.service}records/create/?openId=${CommonData.logon.wxgameOpenId}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send(JSON.stringify({
                     ...record,
-                    openId: CommonData.logon.openId
+                    openId: CommonData.logon.wxgameOpenId
                 }));
 
                 request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {

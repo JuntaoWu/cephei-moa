@@ -31,7 +31,7 @@ module game {
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			this.userInfo = await accountProxy.loadUserInfo();
 
-			this.loadBalancingClient.setCustomAuthentication(`openId=${this.userInfo.openId}`,
+			this.loadBalancingClient.setCustomAuthentication(`openId=${this.userInfo.wxgameOpenId}`,
 				Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom);
 			this.loadBalancingClient.start();
 		}
@@ -583,7 +583,7 @@ module game {
 					return currentRoom.actorNr;
 				}
 				else {
-					return this.userInfo.openId.substr(5);
+					return this.userInfo.wxgameOpenId.substr(5);
 				}
 			}
 		}
