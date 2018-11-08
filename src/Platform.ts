@@ -10,7 +10,9 @@ declare interface Platform {
     name: string;
     appVersion: string;
 
-    getUserInfo(): Promise<any>;
+    getUserInfo(): Promise<game.UserInfo>;
+
+    authorizeUserInfo(): Promise<game.UserInfo>;
 
     login(): Promise<any>;
 
@@ -62,6 +64,11 @@ class DebugPlatform implements Platform {
     public async getUserInfo() {
         return { nickName: game.CommonData.logon && game.CommonData.logon.wxgameOpenId || "username" };
     }
+
+    public async authorizeUserInfo() {
+        return { nickName: game.CommonData.logon && game.CommonData.logon.wxgameOpenId || "username" };
+    }
+
     public async login() {
         return { code: "debug" };
     }

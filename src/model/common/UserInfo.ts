@@ -4,6 +4,7 @@ module game {
         public wxgameOpenId?: string;
         public nativeOpenId?: string;
         public unionId?: string;
+        public session_key?: string;
 
         public avatarUrl?: string;
         public city?: string;
