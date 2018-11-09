@@ -57,7 +57,7 @@ module game {
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${game.Constants.Endpoints.service}authorize-wxgame/?openId=${CommonData.logon.wxgameOpenId}`, egret.HttpMethod.POST);
+                request.open(`${game.Constants.Endpoints.service}users/authorize-wxgame/?wxgameOpenId=${CommonData.logon.wxgameOpenId}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
                 request.send(JSON.stringify(this.userInfo));
 
@@ -74,6 +74,14 @@ module game {
                         //todo: Invalid code
 
                         //this.userInfo.gameRecords = res.data as MyStats;
+
+                        const data = res.data as UserInfo;
+
+                        this.userInfo.unionId = data.unionId;
+                        this.userInfo.nativeOpenId = data.nativeOpenId;
+                        this.userInfo.wxgameOpenId = data.wxgameOpenId;
+
+                        platform.setStorage("token", data.token);
 
                         resolve(this.userInfo);
                     }, this);

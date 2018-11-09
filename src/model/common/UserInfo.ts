@@ -18,5 +18,7 @@ module game {
 
         public encryptedData?: string;
         public iv?: string;
+
+        public token?: string;  // jwt-token here
     }
 }
