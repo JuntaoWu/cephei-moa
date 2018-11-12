@@ -7,17 +7,13 @@ module game {
 
         public userInfo: UserInfo;
 
-        /**
-         * 获取用户信息完毕
-         */
-        public static LOAD_USER_INFO_COMPLETED: string = "userinfo_loaded";
-
         public constructor() {
             super(AccountProxy.NAME);
         }
 
 		/**
 		 * 获取用户信息
+         * loadUserInfo
 		 */
         public async loadUserInfo(): Promise<UserInfo> {
             console.log(`platform.getUserInfo begin.`);
@@ -50,6 +46,9 @@ module game {
             return this.authorizeUserInfoViaAppServer(this.userInfo);
         }
 
+        /**
+         * authorizeUserInfoViaAppServer
+         */
         public async authorizeUserInfoViaAppServer(user: UserInfo) {
             if (CommonData.logon && CommonData.logon.wxgameOpenId) {
                 console.log(`load users/info via app server begin, openId: ${CommonData.logon.wxgameOpenId}.`);
@@ -69,11 +68,8 @@ module game {
                         let res = JSON.parse(req.response);
                         if (res.error) {
                             console.error(res.message);
-                            reject(res.message);
+                            return reject(res.message);
                         }
-                        //todo: Invalid code
-
-                        //this.userInfo.gameRecords = res.data as MyStats;
 
                         const data = res.data as UserInfo;
 
@@ -83,7 +79,7 @@ module game {
 
                         platform.setStorage("token", data.token);
 
-                        resolve(this.userInfo);
+                        return resolve(this.userInfo);
                     }, this);
                 });
             }
@@ -96,7 +92,48 @@ module game {
         }
 
         /**
-         * 
+         * loadUserGameRecords
+         */
+        public async loadUserGameRecords(): Promise<UserInfo> {
+
+            if (CommonData.logon && CommonData.logon.unionId) {
+                console.log(`loadUserGameRecords via app server begin, unionId: ${CommonData.logon.unionId}.`);
+
+                var request = new egret.HttpRequest();
+                request.responseType = egret.HttpResponseType.TEXT;
+                request.open(`${game.Constants.Endpoints.service}records/?unionId=${CommonData.logon.unionId}`, egret.HttpMethod.POST);
+                request.setRequestHeader("Content-Type", "application/json");
+
+                request.send(JSON.stringify({
+                    unionId: CommonData.logon.unionId
+                }));
+
+                return new Promise((resolve, reject) => {
+                    request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
+                        console.log(`loadUserGameRecords via app server end.`);
+
+                        let req = <egret.HttpRequest>(event.currentTarget);
+                        let res = JSON.parse(req.response);
+                        if (res.error) {
+                            console.error(res.message);
+                            return reject(res.message);
+                        }
+                        else {
+                            console.log("update current userInfo object");
+                            this.userInfo.gameRecords = res.data as MyStats;
+                            return resolve(this.userInfo);
+                        }
+                    }, this);
+                });
+            }
+            else {
+                console.log(`We don't have unionId now, skip.`);
+                return this.userInfo;
+            }
+        }
+
+        /**
+         * saveUserGameRecords
          */
         public saveUserGameRecords(record) {
 

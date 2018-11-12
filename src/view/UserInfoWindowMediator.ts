@@ -16,7 +16,7 @@ module game {
             const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
             const gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
-            const userInfo = await accountProxy.loadUserInfo();
+            const userInfo = await accountProxy.loadUserGameRecords();
             let totalPlay = userInfo.gameRecords.countTotal;
             let winPlay = userInfo.gameRecords.countWin;
             let play6 = userInfo.gameRecords.count6Total;

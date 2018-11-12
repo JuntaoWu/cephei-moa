@@ -65,8 +65,8 @@ module game {
 
         public async changeOpenIdClick(event: egret.TouchEvent) {
             event.stopImmediatePropagation();
-            const openId = this.startScreen.txtOpenId.text;
-            CommonData.logon.wxgameOpenId = openId;
+            const unionId = this.startScreen.txtOpenId.text;
+            CommonData.logon.unionId = unionId;
             const userInfo = await this.accountProxy.loadUserInfo();
             this.startScreen.nickName = userInfo.nickName;
             await this.gameProxy.initialize();
@@ -113,7 +113,7 @@ module game {
         }
 
         private showMyInfo(): void {
-            if (!CommonData.logon.wxgameOpenId) {
+            if (!CommonData.logon.unionId) {
                 return;
             }
             this.sendNotification(SceneCommand.SHOW_USERINFO_WINDOW);

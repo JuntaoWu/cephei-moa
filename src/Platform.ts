@@ -62,11 +62,11 @@ class DebugPlatform implements Platform {
     }
 
     public async getUserInfo() {
-        return { nickName: game.CommonData.logon && game.CommonData.logon.wxgameOpenId || "username" };
+        return { nickName: game.CommonData.logon && game.CommonData.logon.unionId || "username" };
     }
 
     public async authorizeUserInfo() {
-        return { nickName: game.CommonData.logon && game.CommonData.logon.wxgameOpenId || "username" };
+        return { nickName: game.CommonData.logon && game.CommonData.logon.unionId || "username" };
     }
 
     public async login() {
