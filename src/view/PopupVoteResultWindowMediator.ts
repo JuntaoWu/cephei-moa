@@ -13,7 +13,7 @@ module game {
             this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
             this.popupVoteResultWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            this.initData();
+            // this.initData();
             
             this.popupVoteResultWindow.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {
                 if (this.lunci == 3) {

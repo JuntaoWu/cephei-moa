@@ -14,7 +14,7 @@ module game {
 
             this.popupRoleWindow.confirmButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.confirmClick, this);
             this.popupRoleWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            this.initData();
+            // this.initData();
         }
 
         public initData(): void {

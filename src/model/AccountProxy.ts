@@ -43,7 +43,11 @@ module game {
 
             console.log(`platform.getUserInfo end.`);
             this.userInfo = { ...userInfo, session_key: CommonData.logon.session_key };
-            return this.authorizeUserInfoViaAppServer(this.userInfo);
+
+            await this.authorizeUserInfoViaAppServer(this.userInfo);
+            CommonData.logon.unionId = this.userInfo.unionId;
+
+            return this.userInfo;
         }
 
         /**
@@ -167,6 +171,32 @@ module game {
             else {
                 console.log(`We don't have openId now, skip.`);
             }
+        }
+
+        public async loadRank(orderType: OrderType = OrderType.winRate, mode: number = 0, role: number = 0, minimumCount: number = 10): Promise<Rank[]> {
+            var request = new egret.HttpRequest();
+            request.responseType = egret.HttpResponseType.TEXT;
+            request.open(`${game.Constants.Endpoints.service}ranks/?orderType=${orderType}&mode=${mode}&role=${role}&minimumCount=${minimumCount}`, egret.HttpMethod.POST);
+            request.setRequestHeader("Content-Type", "application/json");
+
+            request.send();
+
+            return new Promise<Rank[]>((resolve, reject) => {
+                request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
+                    console.log(`loadRanks via app server end.`);
+
+                    let req = <egret.HttpRequest>(event.currentTarget);
+                    let res = JSON.parse(req.response);
+                    if (res.error) {
+                        console.error(res.message);
+                        return reject(res.message);
+                    }
+                    else {
+                        console.log("resolve current ranks");
+                        return resolve(res.data as Rank[]);
+                    }
+                }, this);
+            });
         }
 
     }

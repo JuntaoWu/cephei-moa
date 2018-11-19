@@ -9,7 +9,6 @@ module game {
             super.initializeNotifier("ApplicationFacade");
             this.userInfoWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.userInfoWindow.backButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backButtonClick, this);
-            this.initData();
         }
 
         public async initData() {

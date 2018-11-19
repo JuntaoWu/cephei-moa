@@ -30,9 +30,9 @@ module game {
         public static get Endpoints() {
             if (platform.env == "dev") {
                 return {
-                    service: "http://192.168.2.117:4040/",
+                    service: "http://gdjzj.hzsdgames.com:8090/",
                     localResource: "",
-                    remoteResource: "http://192.168.2.117:4040/miniGame/",
+                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/",
                     ws: "ws://192.168.2.202:9090",
                     wss: "wss://192.168.2.202:9090",
                 };
