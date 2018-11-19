@@ -4,28 +4,27 @@
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
 	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="200">
 		<e:Label text="排行" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
-		<e:ToggleButton id="winRateButton" selected="true" y="100" left="30">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="win_rate_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="win_rate_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleButton" y="100" horizontalCenter="0">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="btn-role2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0" bottom="0" />
-				<e:Image source="btn-role" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0"
-				         bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="gameNumButton" y="100" right="30">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="jushu2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0" bottom="0" />
-				<e:Image source="jushu1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" top="0"
-				         bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
+		
+		
+		<e:Group y="75" width="620" horizontalCenter="0" height="80">
+			<!-- 下拉框 -->
+			<e:Group id="rateTimeFilter" left="0" anchorOffsetY="0" verticalCenter="0" width="140">
+				<e:Image source="club_box_1" left="0" right="0" anchorOffsetX="0" anchorOffsetY="0" />
+				<e:Label text="{rateTime}" size="24" textColor="0x000000" verticalCenter="0" textAlign="center" verticalAlign="middle" left="0" right="30"/>
+			</e:Group>
+			<e:Group id="gameTypeFilter" verticalCenter="0" width="140" x="160">
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="0" right="0"/>
+				<e:Label text="{gameType}" size="24" textColor="0x000000" verticalCenter="0" textAlign="center" verticalAlign="middle" left="0" right="30"/>
+			</e:Group>
+			<e:Group id="roleFilter" verticalCenter="0" x="320" width="140">
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="0" right="0"/>
+				<e:Label text="{role}" size="24" textColor="0x000000" verticalCenter="0" textAlign="center" verticalAlign="middle" left="0" right="30"/>
+			</e:Group>
+			<e:Group id="otherFilter" right="0" verticalCenter="0" width="140">
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="0" right="0"/>
+				<e:Label text="{other}" size="24" textColor="0x000000" verticalCenter="0" textAlign="center" verticalAlign="middle" left="0" right="30"/>
+			</e:Group>
+		</e:Group>
 	</e:Group>
 	<e:Scroller id="contentScroller" scrollPolicyH="off" width="600" horizontalCenter="0" anchorOffsetY="0" height="790" y="210">
 		<e:viewport>
@@ -36,147 +35,49 @@
 			</e:List>
 		</e:viewport>
 	</e:Scroller>
-	<e:Group visible="{showWinRateSwitch}" y="210" width="600" horizontalCenter="0">
-		<e:ToggleButton id="totalRate" selected="true" left="0" width="140">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="total_rate_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="total_rate_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="gameRate6" x="155" width="140">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="game6_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="game6_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="gameRate7" x="310" width="140">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="game7_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="game7_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="gameRate8" right="0" width="140">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="game8_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="game8_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
+	<e:Group left="10" anchorOffsetY="0" y="150">
+		<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
+			<e:viewport>
+				<e:List id="rateTimeList" anchorOffsetX="0" anchorOffsetY="0" width="140">
+					<e:layout>
+						<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
+					</e:layout>
+				</e:List>
+			</e:viewport>
+		</e:Scroller>
 	</e:Group>
-	<e:Group visible="{showRoleSwitch}" y="210" width="600" horizontalCenter="0">
-		<e:ToggleButton id="roleTeamXu" selected="true" left="0" width="190">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="team_xu_4" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="team_xu_3" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleTeamLao" horizontalCenter="0" width="190">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="team_lao_4" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="team_lao_3" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleAuthRate" right="0" width="190">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="auth_rate_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="auth_rate_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleAuthPlayer" left="0" width="190" y="60">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="auth_player_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="auth_player_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleXu" horizontalCenter="0" width="190" y="60">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="xu2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="xu1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleFang" right="0" width="190" y="60">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="fang2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="fang1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleHuang" left="0" width="190" y="120">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="huang2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="huang1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleMu" horizontalCenter="0" width="190" y="120">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="mu2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="mu1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleJi" right="0" width="190" y="120">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="ji2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="ji1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleLao" left="0" width="190" y="180">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="lao2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="lao1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleYao" horizontalCenter="0" width="190" y="180">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="yao2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="yao1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
-		<e:ToggleButton id="roleZheng" right="0" width="190" y="180">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="zheng2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="zheng1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
+	<e:Group y="150" x="170">
+		<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
+			<e:viewport>
+				<e:List id="gameTypeList" anchorOffsetX="0" anchorOffsetY="0" width="140">
+					<e:layout>
+						<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
+					</e:layout>
+				</e:List>
+			</e:viewport>
+		</e:Scroller>
 	</e:Group>
-	<e:Group visible="{showGameNumSwitch}" y="210" width="600" horizontalCenter="0">
-		<e:ToggleButton id="totalPlay" selected="true" horizontalCenter="0">
-			<e:Skin states="up,upAndSelected">
-				<e:Image source="total_play_2" includeIn="up" anchorOffsetX="0" anchorOffsetY="0" left="12" right="0" top="0"
-				         bottom="0" />
-				<e:Image source="total_play_1" includeIn="upAndSelected" anchorOffsetX="0" anchorOffsetY="0" left="8" right="0"
-				         top="0" bottom="0" />
-			</e:Skin>
-		</e:ToggleButton>
+	<e:Group y="150" x="330">
+		<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
+			<e:viewport>
+				<e:List id="roleList" anchorOffsetX="0" anchorOffsetY="0" width="140">
+					<e:layout>
+						<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
+					</e:layout>
+				</e:List>
+			</e:viewport>
+		</e:Scroller>
+	</e:Group>
+	<e:Group y="150" right="10">
+		<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
+			<e:viewport>
+				<e:List id="otherList" anchorOffsetX="0" anchorOffsetY="0" width="140">
+					<e:layout>
+						<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
+					</e:layout>
+				</e:List>
+			</e:viewport>
+		</e:Scroller>
 	</e:Group>
     <e:Group id="navigationBar" y="1011" width="640" height="135">
 		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
