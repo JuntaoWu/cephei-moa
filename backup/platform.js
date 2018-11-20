@@ -32,7 +32,8 @@ class WxgamePlatform {
           var province = userInfo.province
           var city = userInfo.city
           var country = userInfo.country
-          resolve({ ...res,
+          resolve({
+            ...res,
             ...userInfo
           });
         },
@@ -65,7 +66,10 @@ class WxgamePlatform {
       button.onTap((res) => {
         if (res.userInfo) {
           button.destroy();
-          resolve(res);
+          resolve({
+            ...res,
+            ...res.userInfo
+          });
         } else {
           console.error(res);
           reject(res);
