@@ -18,7 +18,7 @@ module game {
         public async loadUserInfo(): Promise<UserInfo> {
             console.log(`platform.getUserInfo begin.`);
 
-            if (this.userInfo && this.userInfo.unionId) {
+            if (this.userInfo && this.userInfo.userId) {
                 return this.userInfo;
             }
 
@@ -45,7 +45,9 @@ module game {
             this.userInfo = { ...userInfo, session_key: CommonData.logon.session_key };
 
             await this.authorizeUserInfoViaAppServer(this.userInfo);
+            CommonData.logon.userId = this.userInfo.userId;
             CommonData.logon.unionId = this.userInfo.unionId;
+            CommonData.logon.token = this.userInfo.token;
 
             return this.userInfo;
         }
@@ -77,9 +79,11 @@ module game {
 
                         const data = res.data as UserInfo;
 
+                        this.userInfo.userId = data.userId;
                         this.userInfo.unionId = data.unionId;
                         this.userInfo.nativeOpenId = data.nativeOpenId;
                         this.userInfo.wxgameOpenId = data.wxgameOpenId;
+                        this.userInfo.token = data.token;
 
                         platform.setStorage("token", data.token);
 
@@ -105,7 +109,7 @@ module game {
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${game.Constants.Endpoints.service}records/?unionId=${CommonData.logon.unionId}`, egret.HttpMethod.POST);
+                request.open(`${game.Constants.Endpoints.service}records/?token=${CommonData.logon.token}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send(JSON.stringify({
