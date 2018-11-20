@@ -565,7 +565,7 @@ module game {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
 				this.loadBalancingClient.start();
 			}
-			//this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
+			this.gameState.maxPlayers = maxPlayers || this.gameState.maxPlayers;
 			this.isCreating = true;
 			this.createRoomWithDefaultOptions();
 		}
@@ -701,6 +701,7 @@ module game {
 
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			accountProxy.saveUserGameRecords({
+				userId: CommonData.logon.userId,
 				camp: roleId < 6 ? 1 : 2,
 				roleId: roleId,
 				gameType: this.gameState.maxPlayers,
