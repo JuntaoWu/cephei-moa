@@ -12,11 +12,11 @@ module game {
         }
 
         public static get ResourceEndpoint(): string {
-            return platform.env == "dev" || platform.name != "wxgame" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
+            return platform.env == "local" || platform.env == "dev" || platform.name != "wxgame" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
         };
 
         public static get photonMasterServer(): string {
-            return platform.env == "dev" ? this.photonConfig.get("localMasterServer") : this.photonConfig.get("photonMasterServer");
+            return platform.env == "local" || platform.env == "dev" ? this.photonConfig.get("localMasterServer") : this.photonConfig.get("photonMasterServer");
         }
 
         public static get photonNameServer(): string {
@@ -28,6 +28,15 @@ module game {
         }
 
         public static get Endpoints() {
+            if (platform.env == "local") {
+                return {
+                    service: "http://localhost:4040/",
+                    localResource: "",
+                    remoteResource: "http://localhost:4040/miniGame/",
+                    ws: "ws://192.168.2.117:9090",
+                    wss: "wss://192.168.2.117:9090",
+                };
+            }
             if (platform.env == "dev") {
                 return {
                     service: "http://gdjzj.hzsdgames.com:8090/",
