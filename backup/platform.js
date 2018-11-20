@@ -349,6 +349,18 @@ class WxgamePlatform {
       console.error("rewardedVideoAd never created.");
     }
   }
+  
+  navigateToMiniProgram() {
+    return new Promise((resolve, reject) => {
+      wx.navigateToMiniProgram({
+        appId: 'wx20dd58f2f181fba7',
+        envVersion: 'trial',
+        success(res) {
+          console.log("跳转成功");
+        }
+      })
+    })
+  }
 }
 
 class WxgameOpenDataContext {

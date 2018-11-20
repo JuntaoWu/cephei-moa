@@ -45,6 +45,8 @@ declare interface Platform {
     showBannerAd(name: string);
 
     hideAllBannerAds();
+
+    navigateToMiniProgram();
 }
 
 class DebugPlatform implements Platform {
@@ -129,6 +131,10 @@ class DebugPlatform implements Platform {
     }
 
     public hideAllBannerAds() {
+
+    }
+
+    public navigateToMiniProgram() {
 
     }
 }

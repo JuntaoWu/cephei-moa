@@ -15,8 +15,10 @@ module game {
             this.resultWindow.shareButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.shareClick, this);
             this.resultWindow.confirmButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.confirmClick, this);
             this.resultWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            // this.initData();
+            this.initData();
         }
+
+        private isInit: boolean = false;
 
         private shareClick() {
             platform.shareAppMessage();
@@ -29,6 +31,12 @@ module game {
         }
 
         public initData(): void {
+            if (this.isInit) return;
+            this.isInit = true;
+            egret.setTimeout(() => {
+                this.isInit = false;
+            }, this, 300);
+
             let selfId = this.proxy.gameState.role.findIndex(r => this.proxy.isActorLocal(r));
             let selfCamp = this.proxy.rolesMap.get(selfId.toString()).camp;
             if (selfCamp == gameCamp.xuyuan) {
@@ -177,7 +185,6 @@ module game {
             } catch (error) {
                 console.error(error);
             }
-
         }
 
         public get resultWindow(): ResultWindow {

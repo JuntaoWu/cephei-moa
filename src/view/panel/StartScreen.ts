@@ -15,6 +15,7 @@ module game {
         public btnCreateRoom: eui.Button;
         public btnJoinRoom: eui.Button;
         public btnViewMore: eui.Button;
+        public btnTanbao: eui.Button;
 
         public headGroup: eui.Group;
         public contentScroller: eui.Scroller;

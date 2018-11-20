@@ -15,8 +15,8 @@ module game {
         public async initData() {
             let filterList = [
                 [ 
-                    { key: OrderType.countTotal, name: "场次榜" } 
-                    , { key: OrderType.winRate, name: "胜率榜" }
+                    { key: OrderType.winRate, name: "胜率榜" }
+                    , { key: OrderType.countTotal, name: "场次榜" } 
                 ], 
                 [
                     { key: 0, name: "全部人数" }
@@ -28,15 +28,17 @@ module game {
                     { key: 0, name: "全部角色" }
                     , { key: 1, name: "许愿" }
                     , { key: 2, name: "方震" }
-                    , { key: 3, name: "黄烟烟" }
-                    , { key: 4, name: "木户加奈" }
-                    , { key: 5, name: "姬云浮" }
+                    , { key: 3, name: "姬云浮" }
+                    , { key: 4, name: "黄烟烟" }
+                    , { key: 5, name: "木户加奈" }
                     , { key: 6, name: "老朝奉" }
                     , { key: 7, name: "药不然" }
                     , { key: 8, name: "郑国渠" }
                 ],
                 [
-                    { key: 10, name: "10场以上" }
+                    { key: 0, name: "全部场次" }
+                    , { key: 10, name: "10场以上" }
+                    , { key: 30, name: "30场以上" }
                     , { key: 50, name: "50场以上" }
                     , { key: 100, name: "100场以上" }
                 ]
@@ -54,6 +56,10 @@ module game {
                 this.rankWindow[v] = filterList[i][0].name;
                 this.filterKeyList[i] = filterList[i][0].key;
             })
+            this.rankWindow.rateTime = filterList[0][1].name;
+            this.filterKeyList[0] = filterList[0][1].key;
+            this.rankWindow.other = filterList[3][1].name;
+            this.filterKeyList[3] = filterList[3][1].key;
             this.setRankList();
         }
 
@@ -98,7 +104,7 @@ module game {
                 });
                 this.rankWindow.rankList.dataProvider = new eui.ArrayCollection(this.rankList);
                 this.rankWindow.rankList.itemRenderer = RankListItemRenderer;
-            }) 
+            })
         }
 
         public listNotificationInterests(): Array<any> {

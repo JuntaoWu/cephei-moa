@@ -2,31 +2,31 @@
 <e:Skin class="skins.RankWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
         xmlns:game="game.*">
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
-	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="200">
+	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="180">
 		<e:Label text="排行" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
 		
 		
 		<e:Group y="75" width="620" horizontalCenter="0" height="80">
 			<!-- 下拉框 -->
 			<e:Group id="rateTimeFilter" left="0" anchorOffsetY="0" verticalCenter="0" width="140">
-				<e:Image source="club_box_1" left="0" right="0" anchorOffsetX="0" anchorOffsetY="0" />
+				<e:Image source="club_box_1" left="1" right="1" anchorOffsetX="0" anchorOffsetY="0" />
 				<e:Label text="{rateTime}" size="24" textColor="0x000000" verticalCenter="0" textAlign="center" verticalAlign="middle" left="0" right="30"/>
 			</e:Group>
 			<e:Group id="gameTypeFilter" verticalCenter="0" width="140" x="160">
-				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="0" right="0"/>
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="1" right="1"/>
 				<e:Label text="{gameType}" size="24" textColor="0x000000" verticalCenter="0" textAlign="center" verticalAlign="middle" left="0" right="30"/>
 			</e:Group>
 			<e:Group id="roleFilter" verticalCenter="0" x="320" width="140">
-				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="0" right="0"/>
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="1" right="1"/>
 				<e:Label text="{role}" size="24" textColor="0x000000" verticalCenter="0" textAlign="center" verticalAlign="middle" left="0" right="30"/>
 			</e:Group>
 			<e:Group id="otherFilter" right="0" verticalCenter="0" width="140">
-				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="0" right="0"/>
+				<e:Image source="club_box_1" anchorOffsetX="0" anchorOffsetY="0"  left="1" right="1"/>
 				<e:Label text="{other}" size="24" textColor="0x000000" verticalCenter="0" textAlign="center" verticalAlign="middle" left="0" right="30"/>
 			</e:Group>
 		</e:Group>
 	</e:Group>
-	<e:Scroller id="contentScroller" scrollPolicyH="off" width="600" horizontalCenter="0" anchorOffsetY="0" height="790" y="210">
+	<e:Scroller id="contentScroller" scrollPolicyH="off" width="600" horizontalCenter="0" anchorOffsetY="0" height="790" y="180">
 		<e:viewport>
 			<e:List id="rankList">
 				<e:layout>
