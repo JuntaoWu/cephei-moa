@@ -12,11 +12,11 @@ module game {
         }
 
         public static get ResourceEndpoint(): string {
-            return platform.name == "DebugPlatform" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
+            return platform.env == "dev" || platform.name != "wxgame" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
         };
 
         public static get photonMasterServer(): string {
-            return platform.name == "DebugPlatform" ? this.photonConfig.get("localMasterServer") : this.photonConfig.get("photonMasterServer");
+            return platform.env == "dev" ? this.photonConfig.get("localMasterServer") : this.photonConfig.get("photonMasterServer");
         }
 
         public static get photonNameServer(): string {
@@ -32,14 +32,27 @@ module game {
                 return {
                     service: "http://gdjzj.hzsdgames.com:8090/",
                     localResource: "",
-                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/"
+                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/",
+                    ws: "ws://192.168.2.202:9090",
+                    wss: "wss://192.168.2.202:9090",
                 };
             }
             if (platform.env == "prod") {
                 return {
                     service: "https://gdjzj.hzsdgames.com:8084/",
                     localResource: "",
-                    remoteResource: "https://gdjzj.hzsdgames.com:8084/miniGame/"
+                    remoteResource: "https://gdjzj.hzsdgames.com:8084/miniGame/",
+                    ws: "ws://photon.hzsdgames.com:19090",
+                    wss: "wss://photon.hzsdgames.com:19090",
+                };
+            }
+            if (platform.env == "test") {
+                return {
+                    service: "http://gdjzj.hzsdgames.com:8090/",
+                    localResource: "",
+                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/",
+                    ws: "ws://photon.hzsdgames.com:19090",
+                    wss: "wss://photon.hzsdgames.com:19090",
                 };
             }
         }

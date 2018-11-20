@@ -14,7 +14,7 @@ module game {
 
             this.popupVoteRecordWindow.backButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backButtonClick, this);
             this.popupVoteRecordWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            this.initData();
+            // this.initData();
         }
 
         private backButtonClick(event: egret.TouchEvent) {

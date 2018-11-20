@@ -13,7 +13,7 @@ module game {
             this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
             this.popupGameInfoWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            this.initData();
+            // this.initData();
         }
 
         public async initData() {

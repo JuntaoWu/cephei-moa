@@ -9,14 +9,13 @@ module game {
             super.initializeNotifier("ApplicationFacade");
             this.userInfoWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
             this.userInfoWindow.backButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backButtonClick, this);
-            this.initData();
         }
 
         public async initData() {
             const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
             const gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
-            const userInfo = await accountProxy.loadUserInfo();
+            const userInfo = await accountProxy.loadUserGameRecords();
             let totalPlay = userInfo.gameRecords.countTotal;
             let winPlay = userInfo.gameRecords.countWin;
             let play6 = userInfo.gameRecords.count6Total;

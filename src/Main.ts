@@ -65,7 +65,9 @@ class Main extends eui.UILayer {
     private async runGame() {
         await this.loadResource();
 
-        await AccountAdapter.login();
+        if(platform.name != "native") {
+            await AccountAdapter.login();
+        }
 
         this.createGameScene();
     }
@@ -89,11 +91,7 @@ class Main extends eui.UILayer {
 
             RES.loadGroup("lazyload", 0);
 
-            platform.createBannerAd("top", "adunit-4616af6cd0c20ef1", {
-                left: 0,
-                top: 0,
-                width: 360,
-            });
+            platform.createBannerAd("top", "adunit-4616af6cd0c20ef1", "top");
         }
         catch (e) {
             console.error(e);

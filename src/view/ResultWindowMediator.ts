@@ -15,7 +15,7 @@ module game {
             this.resultWindow.shareButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.shareClick, this);
             this.resultWindow.confirmButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.confirmClick, this);
             this.resultWindow.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
-            this.initData();
+            // this.initData();
         }
 
         private shareClick() {

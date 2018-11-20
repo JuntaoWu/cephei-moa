@@ -1,6 +1,6 @@
 {
-  "engineVersion": "5.2.5",
-  "compilerVersion": "5.2.5",
+  "engineVersion": "5.2.12",
+  "compilerVersion": "5.2.12",
   "template": {},
   "target": {
     "current": "wxgame"
@@ -54,5 +54,11 @@
       "name": "photon",
       "path": "../3rdparty-libs/photon"
     }
-  ]
+  ],
+  "targets": {
+    "android": {
+      "appname": "moa-client",
+      "packagename": "com.toolbar.childar"
+    }
+  }
 }

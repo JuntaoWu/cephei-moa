@@ -8,7 +8,7 @@ class WxgamePlatform {
 
     env = 'dev';
     name = 'wxgame';
-    appVersion = '0.2.24';
+    appVersion = '0.2.25';
 
     login() {
         return new Promise((resolve, reject) => {
@@ -16,8 +16,8 @@ class WxgamePlatform {
                 success: (res) => {
                     resolve(res)
                 }
-            })
-        })
+            });
+        });
     }
 
     getUserInfo() {
@@ -33,9 +33,12 @@ class WxgamePlatform {
                     var city = userInfo.city
                     var country = userInfo.country
                     resolve(userInfo);
+                },
+                fail: function (res) {
+                    reject(res);
                 }
-            })
-        })
+            });
+        });
     }
 
     checkForUpdate() {
@@ -49,19 +52,21 @@ class WxgamePlatform {
     }
 
     getVersion() {
-        return wx.getStorageSync("apiVersion");
+        return this.getStorage("apiVersion");
     }
 
     applyUpdate(version) {
         console.log("applyUpdate for cached resource.");
         try {
-            fileutil.fs.remove("temp_text");
-            fileutil.fs.remove("temp_image");
-            wx.setStorage({
-                key: 'apiVersion',
-                data: version,
-            });
-        }
+            fileutil.fs.existsSync("http") && (console.log("remove http folder"), fileutil.fs.remove("http"));
+            fileutil.fs.existsSync("https") && (console.log("remove https folder"), fileutil.fs.remove("https"));
+            fileutil.fs.existsSync("temp_text") && (console.log("remove temp_text folder"), fileutil.fs.remove("temp_text"));
+            fileutil.fs.existsSync("temp_image") && (console.log("remove temp_image folder"), fileutil.fs.remove("temp_image"));
+
+            wx.removeStorageSync("devapiVersion");
+            wx.removeStorageSync("prodapiVersion");
+            this.setStorage("apiVersion", version);
+        } 
         catch (ex) {
             console.error(ex.message);
         }
@@ -73,11 +78,31 @@ class WxgamePlatform {
         return this.openDataContext;
     }
 
-    shareAppMessage() {
+    shareAppMessage(message, query, callback) {
         wx.shareAppMessage({
             title: '古董局中局',
             imageUrl: 'http://gdjzj.hzsdgames.com:8083/miniGame/resource/assets/shared/share.png',
+            query: query,
+            success: (res) => {
+                console.log("shareAppMessage successfully.", res);
+                callback && callback(res);
+            }
         });
+    }
+
+    showShareMenu() {
+        wx.showShareMenu({
+            withShareTicket: true,
+            success: function (res) {
+                wx.onShareAppMessage(function () {
+                    return {
+                        imageUrl: 'http://gdjzj.hzsdgames.com:8083/miniGame/resource/assets/shared/share.png',
+                    };
+                });
+            },
+            fail: function (res) { },
+            complete: function (res) { },
+        })
     }
 
     onNetworkStatusChange(callback) {
@@ -99,11 +124,32 @@ class WxgamePlatform {
     }
 
     setStorage(key, value) {
-        wx.setStorageSync(key, value);
+        wx.setStorageSync(`${this.env}${key}`, value);
     }
 
     getStorage(key) {
-        return wx.getStorageSync(key);
+        return wx.getStorageSync(`${this.env}${key}`);
+    }
+
+    setStorageAsync(key, value) {
+        wx.setStorage({
+            key: `${this.env}${key}`,
+            data: value,
+        });
+    }
+
+    getStorageAsync(key) {
+        return new Promise((resolve, reject) => {
+            wx.getStorage({
+                key: `${this.env}${key}`,
+                success: function (res) {
+                    resolve(res);
+                },
+                fail: function (res) {
+                    reject(res);
+                }
+            });
+        });
     }
 
     showModal(message, confirmText, cancelText) {
@@ -138,7 +184,9 @@ class WxgamePlatform {
     }
 
     playVideo(src) {
-        return wx.createVideo({ src: src });
+        return wx.createVideo({
+            src: src
+        });
     }
 
     showPreImage(imgList) {
@@ -149,27 +197,145 @@ class WxgamePlatform {
         });
     }
 
+    getLaunchInfo() {
+        return wx.getLaunchOptionsSync();
+    }
+
+    authorizeUserInfo(callback) {
+        let button = wx.createUserInfoButton({
+            type: 'text',
+            text: '授权登录',
+            style: {
+                left: 100,
+                top: 420,
+                width: 200,
+                height: 40,
+                lineHeight: 40,
+                backgroundColor: '#0084ff',
+                color: '#ffffff',
+                textAlign: 'center',
+                fontSize: 16,
+                borderRadius: 4
+            }
+        });
+
+        button.onTap((res) => {
+            if (res.userInfo) {
+                button.destroy();
+                callback(res.userInfo);
+            } 
+            else {
+                console.error(res);
+            }
+        });
+    }
+
     createBannerAd(name, adUnitId, style) {
+        this[`banner-${name}-config`] = {
+            name: name,
+            adUnitId: adUnitId,
+            style: style
+        };
+        this.createBannerAdWithConfig(this[`banner-${name}-config`]);
+    }
+
+    createBannerAdWithConfig(config, show) {
+        let {
+            name,
+            adUnitId,
+            style
+        } = config;
         let systemInfo = wx.getSystemInfoSync();
         if (systemInfo.SDKVersion >= "2.0.4") {
+            let top = 0;
+            let realWidth = wx.getSystemInfoSync().windowWidth * 0.8;
+
             this[`banner-${name}`] = wx.createBannerAd({
                 adUnitId: adUnitId,
-                style: style
+                style: {
+                    top: 0,
+                    left: 0,
+                    width: realWidth
+                }
+            });
+            this[`banner-${name}`] && this[`banner-${name}`].onResize(e => {
+
+                let windowWidth = wx.getSystemInfoSync().windowWidth;
+                let width = e.width;
+                this[`banner-${name}`].style.left = (windowWidth - width) / 2;
+
+                if (style == "bottom") {
+                    let windowHeight = wx.getSystemInfoSync().windowHeight;
+                    let height = e.height;
+                    this[`banner-${name}`].style.top = windowHeight - height;
+                }
+            });
+
+            show && this[`banner-${name}`].onLoad(() => {
+                this[`banner-${name}`] && !this[`banner-${name}`]._destroyed && this[`banner-${name}`].show();
             });
         }
     }
 
     showBannerAd(name) {
-        this[`banner-${name}`] && this[`banner-${name}`].show();
+        if (this[`banner-${name}`] && !this[`banner-${name}`]._destroyed) {
+            this[`banner-${name}`].show();
+        }
+        else {
+            this.createBannerAdWithConfig(this[`banner-${name}-config`], true);
+        }
     }
 
     hideBannerAd(name) {
-        this[`banner-${name}`] && this[`banner-${name}`].hide();
+        if (this[`banner-${name}`]) {
+            this[`banner-${name}`].hide();
+            this[`banner-${name}`].destroy();
+            this[`banner-${name}`].offResize();
+            this[`banner-${name}`].offLoad();
+        }
     }
 
     hideAllBannerAds() {
         this.hideBannerAd("top");
         this.hideBannerAd("bottom");
+    }
+
+    createRewardedVideoAd(name, adUnitId, callback) {
+        this[`video-${name}`] = wx.createRewardedVideoAd({
+            adUnitId: adUnitId
+        });
+
+        this[`video-${name}`].load().then(() => {
+            console.log("createRewardedVideoAd load.");
+        }).catch((error) => {
+            console.error("createRewardedVideoAd error", error);
+            this[`video-${name}`].offLoad();
+        });
+
+        this[`video-${name}`].onClose(res => {
+            // 用户点击了【关闭广告】按钮
+            // 小于 2.1.0 的基础库版本，res 是一个 undefined
+            if (res && res.isEnded || res === undefined) {
+                // 正常播放结束，可以下发游戏奖励
+                callback && callback(name);
+            } 
+            else {
+                // 播放中途退出，不下发游戏奖励
+            }
+        });
+    }
+
+    showVideoAd(name) {
+        if (this[`video-${name}`]) {
+            this[`video-${name}`].show().catch(err => {
+                console.error(err && err.message);
+                this[`video-${name}`].load()
+                    .then(() => this[`video-${name}`].show());
+            });
+        }
+        else {
+            console.error("rewardedVideoAd never created.");
+        }
     }
 }
 
