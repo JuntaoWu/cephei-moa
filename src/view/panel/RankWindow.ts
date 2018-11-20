@@ -13,29 +13,20 @@ module game {
         private contentScroller: eui.Scroller;
         private navigationBar: eui.Group;
 
-        public showWinRateSwitch: boolean;
-        public showRoleSwitch: boolean;
-        public showGameNumSwitch: boolean;
+        public rateTimeFilter: eui.Group;
+        public gameTypeFilter: eui.Group;
+        public roleFilter: eui.Group;
+        public otherFilter: eui.Group;
+        
+        public rateTimeList: eui.List;
+        public gameTypeList: eui.List;
+        public roleList: eui.List;
+        public otherList: eui.List;
 
-        public totalRate: eui.ToggleButton;
-        public gameRate6: eui.ToggleButton;
-        public gameRate7: eui.ToggleButton;
-        public gameRate8: eui.ToggleButton;
-
-        public roleTeamXu: eui.ToggleButton;
-        public roleTeamLao: eui.ToggleButton;
-        public roleAuthRate: eui.ToggleButton;
-        public roleAuthPlayer: eui.ToggleButton;
-        public roleXu: eui.ToggleButton;
-        public roleFang: eui.ToggleButton;
-        public roleHuang: eui.ToggleButton;
-        public roleMu: eui.ToggleButton;
-        public roleJi: eui.ToggleButton;
-        public roleLao: eui.ToggleButton;
-        public roleYao: eui.ToggleButton;
-        public roleZheng: eui.ToggleButton;
-
-        public totalPlay: eui.ToggleButton;
+        public rateTime: string;
+        public gameType: string;
+        public role: string;
+        public other: string;
 
         public constructor() {
             super();
@@ -45,8 +36,6 @@ module game {
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {
-            this.headGroup.height = 100;
-            this.contentScroller.y = 100;
             this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 10;
             this.contentScroller.height = this.stage.stageHeight - this.headGroup.height - this.navigationBar.height - 20;
 

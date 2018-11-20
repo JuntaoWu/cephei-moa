@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,description_json,start-background,btn-confirm,game-init-background,seat-background,small-dialog-background,btn-back,setting2,about,close,meihua,auth4,cancel,ok,ok3,black_2,white_2,game-box-border,number-keyboard-bg,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,antiques_json,game-term_json,lose,victory,share2,border_red,seats_json,botton,role_json,border_black,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,club_box,club_results,assistant-bg,game-bg,photon_json,rank_json,clubs_json,rank-switch_json,antiques2_json,role2_json,club-icon_json,club-icon2_json,result_json,result2_json,start_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,video_json,guide_json,rank-icon_json,title-more,btn-view,three-kingdoms-bg",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,description_json,start-background,btn-confirm,game-init-background,seat-background,small-dialog-background,btn-back,setting2,about,close,meihua,auth4,cancel,ok,ok3,black_2,white_2,game-box-border,number-keyboard-bg,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,antiques_json,game-term_json,lose,victory,share2,border_red,seats_json,botton,role_json,border_black,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,club_box,club_results,assistant-bg,game-bg,photon_json,clubs_json,rank-switch_json,antiques2_json,role2_json,club-icon_json,club-icon2_json,result_json,result2_json,start_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,video_json,guide_json,rank-icon_json,title-more,btn-view,three-kingdoms-bg",
 			"name": "preload"
 		},
 		{
@@ -389,11 +389,6 @@
 			"type": "sheet",
 			"name": "tu_json",
 			"subkeys": "url(1),url(10),url(11),url(12),url(13),url(14),url(15),url(16),url(17),url(18),url(19),url(2),url(20),url(3),url(4),url(5),url(6),url(7),url(8),url(9)"
-		},
-		{
-			"url": "config/rank.json",
-			"type": "json",
-			"name": "rank_json"
 		},
 		{
 			"url": "config/clubs.json",
