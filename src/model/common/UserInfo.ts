@@ -1,6 +1,7 @@
 
 module game {
     export class UserInfo {
+        public userId?: string;
         public wxgameOpenId?: string;
         public nativeOpenId?: string;
         public unionId?: string;

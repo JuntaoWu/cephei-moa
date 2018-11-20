@@ -31,7 +31,7 @@ module game {
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			this.userInfo = await accountProxy.loadUserInfo();
 
-			this.loadBalancingClient.setCustomAuthentication(`unionId=${this.userInfo.unionId}`,
+			this.loadBalancingClient.setCustomAuthentication(`userId=${this.userInfo.userId}`,
 				Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom);
 			this.loadBalancingClient.start();
 		}
