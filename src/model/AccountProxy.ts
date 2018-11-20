@@ -49,6 +49,7 @@ module game {
             CommonData.logon.unionId = this.userInfo.unionId;
             CommonData.logon.token = this.userInfo.token;
 
+            console.log("userInfo after authorizeUserInfoViaAppServer", this.userInfo);
             return this.userInfo;
         }
 

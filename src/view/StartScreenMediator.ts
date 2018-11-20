@@ -48,6 +48,7 @@ module game {
             else if (platform.name == "wxgame") {
                 console.log("wxgame");
                 const userInfo = await this.accountProxy.loadUserInfo();
+                console.log("loadUserInfo completed.", userInfo);
                 this.startScreen.nickName = userInfo.nickName;
                 this.startScreen.avatarUrl = userInfo.avatarUrl;
                 this.startScreen.isDebugPlatform = false;
