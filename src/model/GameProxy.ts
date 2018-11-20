@@ -701,6 +701,7 @@ module game {
 
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			accountProxy.saveUserGameRecords({
+				userId: CommonData.logon.userId,
 				camp: roleId < 6 ? 1 : 2,
 				roleId: roleId,
 				gameType: this.gameState.maxPlayers,
