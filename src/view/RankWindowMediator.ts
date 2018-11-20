@@ -15,30 +15,30 @@ module game {
         public async initData() {
             let filterList = [
                 [ 
-                    { key: "0", name: "胜率榜" }
-                    , { key: "1", name: "场次榜" } 
+                    { key: OrderType.countTotal, name: "场次榜" } 
+                    , { key: OrderType.winRate, name: "胜率榜" }
                 ], 
                 [
-                    { key: "0", name: "全部人数" }
-                    , { key: "6", name: "六人局" }
-                    , { key: "7", name: "七人局" }
-                    , { key: "8", name: "八人局" }
+                    { key: 0, name: "全部人数" }
+                    , { key: 6, name: "六人局" }
+                    , { key: 7, name: "七人局" }
+                    , { key: 8, name: "八人局" }
                 ],
                 [
-                    { key: "0", name: "全部角色" }
-                    , { key: "1", name: "许愿" }
-                    , { key: "2", name: "方震" }
-                    , { key: "3", name: "黄烟烟" }
-                    , { key: "4", name: "木户加奈" }
-                    , { key: "5", name: "姬云浮" }
-                    , { key: "6", name: "老朝奉" }
-                    , { key: "7", name: "药不然" }
-                    , { key: "8", name: "郑国渠" }
+                    { key: 0, name: "全部角色" }
+                    , { key: 1, name: "许愿" }
+                    , { key: 2, name: "方震" }
+                    , { key: 3, name: "黄烟烟" }
+                    , { key: 4, name: "木户加奈" }
+                    , { key: 5, name: "姬云浮" }
+                    , { key: 6, name: "老朝奉" }
+                    , { key: 7, name: "药不然" }
+                    , { key: 8, name: "郑国渠" }
                 ],
                 [
-                    { key: "0", name: "10场以上" }
-                    , { key: "1", name: "50场以上" }
-                    , { key: "2", name: "100场以上" }
+                    { key: 10, name: "10场以上" }
+                    , { key: 50, name: "50场以上" }
+                    , { key: 100, name: "100场以上" }
                 ]
             ]
             this.filterKeyList = [];
@@ -57,10 +57,8 @@ module game {
             this.setRankList();
         }
 
-        private rankList: Array<any>;
-
         private nameList: Array<string>;
-        private filterKeyList: Array<string>;
+        private filterKeyList: Array<any>;
 
         private rankListSort(key: string) {
             console.log(key)
@@ -80,39 +78,27 @@ module game {
             let selectedItem = this.rankWindow[`${this.nameList[index]}List`].selectedItem;
             if (this.filterKeyList[index] != selectedItem.key) {
                 this.filterKeyList[index] = selectedItem.key;
-                this.rankWindow[`${this.nameList[index]}List`].visible = false;
                 this.rankWindow[this.nameList[index]] = selectedItem.name;
                 this.setRankList();
             }
+            this.rankWindow[`${this.nameList[index]}List`].visible = false;
         }
 
+        private rankList: Array<Rank>;
         private setRankList() {
             this.rankList = [];
-            this.getRank().then(res => {
-                console.log(res)
-                // this.rankList = res;
+            const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
+            accountProxy.loadRank(this.filterKeyList[0], this.filterKeyList[1], this.filterKeyList[2], this.filterKeyList[3]).then(res => {
+                this.rankList = res.map((v, i) => {
+                    return {
+                        OrderType: this.filterKeyList[0],
+                        key: i + 1,
+                        ...v
+                    }
+                });
+                this.rankWindow.rankList.dataProvider = new eui.ArrayCollection(this.rankList);
+                this.rankWindow.rankList.itemRenderer = RankListItemRenderer;
             }) 
-        }
-
-        private getRank() {
-            return new Promise((resolve, reject) => {
-                var request = new egret.HttpRequest();
-                request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${game.Constants.Endpoints.service}rank/`, egret.HttpMethod.POST);
-                request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.send();
-                request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
-                    let req = <egret.HttpRequest>(event.currentTarget);
-                    let res = JSON.parse(req.response);
-                    if (res.error) {
-                        console.error(res.message);
-                        reject(res.message);
-                    }
-                    else {
-                        resolve();
-                    }
-                }, this);
-            })
         }
 
         public listNotificationInterests(): Array<any> {
