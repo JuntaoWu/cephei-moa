@@ -228,12 +228,15 @@ class WxgamePlatform {
       src: src
     });
   }
-
-  showPreImage(imgList) {
+  
+  showPreImage(imgList, currentIndex) {
+    var urls = imgList.map(m => {
+      return `${m}?v=${this.getVersion()}`;
+    })
+    var current = currentIndex ? urls[currentIndex] : urls[0];
     wx.previewImage({
-      urls: imgList.map(m => {
-        return `${m}?v=${this.getVersion()}`;
-      }),
+      current: current,
+      urls: urls,
     });
   }
 
