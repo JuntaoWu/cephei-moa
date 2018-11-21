@@ -5,6 +5,7 @@ import * as path from 'path';
 import { UglifyPlugin, CompilePlugin, ManifestPlugin, ExmlPlugin, EmitResConfigFilePlugin, TextureMergerPlugin } from 'built-in';
 import { BricksPlugin } from './bricks/bricks';
 import { CustomPlugin } from './myplugin';
+import { AndroidPlugin } from './android/android';
 import * as defaultConfig from './config';
 
 const config: ResourceManagerConfig = {
@@ -23,6 +24,7 @@ const config: ResourceManagerConfig = {
                     sources: ["main.js"],
                     target: "main.min.js"
                 }]),
+                new AndroidPlugin(),
                 new ManifestPlugin({ output: 'manifest.json' })
             ]
         }

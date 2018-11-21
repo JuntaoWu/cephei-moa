@@ -3,7 +3,7 @@
   "compilerVersion": "5.2.12",
   "template": {},
   "target": {
-    "current": "wxgame"
+    "current": "android"
   },
   "eui": {
     "exmlRoot": [

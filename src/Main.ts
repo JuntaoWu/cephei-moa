@@ -81,8 +81,8 @@ class Main extends eui.UILayer {
                 this.loadingView.btnLogin.visible = true;
                 this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
                     egret.ExternalInterface.call("sendWxLoginToNative", "native");
-                    this.loadingView.btnLogin.enabled = false;
                     egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
+                        this.loadingView.btnLogin.enabled = false;
                         await AccountAdapter.login({ code: code });
                         this.createGameScene();
                     });
