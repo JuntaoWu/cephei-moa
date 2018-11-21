@@ -46,6 +46,8 @@ module game {
         public static SHOW_GUIDE_WINJUDGE: string = "show_guide_winjudge";
         public static SHOW_GUIDE_TERM: string = "show_guide_term";
 
+        public static SHOW_MORE_GAME: string = "show_more_game";
+
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
         }
@@ -78,6 +80,7 @@ module game {
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_WINJUDGE, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_TERM, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_VOTERECORD_WINDOW, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_MORE_GAME, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -187,6 +190,10 @@ module game {
                 }
                 case SceneCommand.SHOW_GUIDE_TERM: {
                     appMediator.main.showGuideGameTermWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_MORE_GAME: {
+                    appMediator.main.showMoreWindow();
                     break;
                 }
             }

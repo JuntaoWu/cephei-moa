@@ -41,6 +41,7 @@
 		"resource/containers/GuideWinJudgeWindow.exml",
 		"resource/containers/JoinWindow.exml",
 		"resource/containers/LoadingUI.exml",
+		"resource/containers/MoreGameWindow.exml",
 		"resource/containers/NoticeWindow.exml",
 		"resource/containers/PopupAppraisalWindow.exml",
 		"resource/containers/PopupFangWindow.exml",

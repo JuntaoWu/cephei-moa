@@ -46,7 +46,7 @@ declare interface Platform {
 
     shareAppMessage();
 
-    showPreImage(data: Array<string>);
+    showPreImage(data: Array<string>, index);
 
     createBannerAd(name: string, adUnitId: string, style: any);
 
@@ -127,7 +127,7 @@ class DebugPlatform implements Platform {
         return {};
     }
 
-    public showPreImage(data) {
+    public showPreImage(data, index) {
     }
 
     public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {

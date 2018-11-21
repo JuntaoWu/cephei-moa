@@ -246,5 +246,15 @@ module game {
             this.addChild(this.popupNumberKeyboard);
             this.popupNumberKeyboard.show();
         }
+        
+        public moreWindow: MoreGameWindow;
+        public showMoreWindow(): void {
+            if (!this.moreWindow) {
+                this.moreWindow = new MoreGameWindow();
+            }
+            this.addChild(this.moreWindow);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
     }
 }

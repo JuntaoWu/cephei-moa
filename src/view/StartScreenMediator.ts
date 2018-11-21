@@ -97,10 +97,7 @@ module game {
         }
 
         public viewMoreClick(event: egret.TouchEvent) {
-            let imgList = [
-                "https://gdjzj.hzsdgames.com:8084/miniGame/resource/assets/start/qrcode-tk2048.jpg"
-            ]
-            platform.showPreImage(imgList);
+            this.sendNotification(SceneCommand.SHOW_MORE_GAME);
         }
 
         private noticeClick(event: egret.TouchEvent) {
