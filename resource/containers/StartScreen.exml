@@ -10,13 +10,12 @@
         </e:Group>
         <e:Group verticalCenter="0" horizontalCenter="0" visible="{isWxPlatform}">
             <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="75" height="120"></e:Image>
-            <e:Label text="{nickName}" bold="true" size="70" textColor="0x050505" verticalCenter="0" x="240"  width="390"/>
+            <e:Label text="{nickName}" bold="true" size="70" textColor="0x050505" verticalCenter="0" x="240" width="390" />
         </e:Group>
         <e:Group verticalCenter="0" horizontalCenter="0" visible="{isNativePlatform}">
             <e:Image visible="{avatarUrl}" source="{avatarUrl}" width="120" verticalCenter="0" x="75" height="120"></e:Image>
             <e:Label visible="{nickName}" text="{nickName}" bold="true" size="70" textColor="0x050505"
                      verticalCenter="0" x="240" />
-            <e:Button id="btnWxLogin" label="微信登录" verticalCenter="0" horizontalCenter="0"></e:Button>
         </e:Group>
         <e:Image source="navigation-bar" width="100%" bottom="-15" />
     </e:Group>

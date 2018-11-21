@@ -58,18 +58,37 @@ class Main extends eui.UILayer {
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
         this.runGame().catch(e => {
+            console.error(e);
             this.loadingView.showInformation(e);
         });
     }
 
     private async runGame() {
         await this.loadResource();
+        this.loadingView.groupLoading.visible = false;
 
-        if(platform.name != "native") {
+        if (platform.name != "native") {
             await AccountAdapter.login();
+            await AccountAdapter.loadUserInfo();
+            this.createGameScene();
         }
-
-        this.createGameScene();
+        else {
+            let token = await platform.getSecurityStorageAsync("token");
+            if (token) {
+                await AccountAdapter.login({ token: token });
+            }
+            else {
+                this.loadingView.btnLogin.visible = true;
+                this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+                    egret.ExternalInterface.call("sendWxLoginToNative", "native");
+                    this.loadingView.btnLogin.enabled = false;
+                    egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
+                        await AccountAdapter.login({ code: code });
+                        this.createGameScene();
+                    });
+                }, this);
+            }
+        }
     }
 
     private async loadResource() {

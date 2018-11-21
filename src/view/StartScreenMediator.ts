@@ -26,11 +26,6 @@ module game {
             this.startScreen.btnRank.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankClick, this);
             this.startScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.guideClick, this);
             this.startScreen.btnSetting.addEventListener(egret.TouchEvent.TOUCH_TAP, this.settingClick, this);
-            this.startScreen.btnWxLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, this.wxLoginClick, this);
-
-            egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
-                await AccountAdapter.login(code);
-            });
 
             this.initData();
         }
@@ -48,20 +43,31 @@ module game {
             }
             else if (platform.name == "wxgame") {
                 console.log("wxgame");
-                const userInfo = await this.accountProxy.loadUserInfo();
+
+                const userInfo = await AccountAdapter.loadUserInfo();
                 console.log("loadUserInfo completed.", userInfo);
                 this.startScreen.nickName = userInfo.nickName;
                 this.startScreen.avatarUrl = userInfo.avatarUrl;
+
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = true;
                 this.startScreen.isNativePlatform = false;
+
                 await this.gameProxy.initialize();
             }
             else if (platform.name == "native") {
                 console.log("native");
+
+                const userInfo = await AccountAdapter.loadUserInfo();
+                console.log("loadUserInfo completed.", userInfo);
+                this.startScreen.nickName = userInfo.nickName;
+                this.startScreen.avatarUrl = userInfo.avatarUrl;
+
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = false;
                 this.startScreen.isNativePlatform = true;
+
+                await this.gameProxy.initialize();
             }
         }
 
@@ -69,14 +75,9 @@ module game {
             event.stopImmediatePropagation();
             const unionId = this.startScreen.txtOpenId.text;
             CommonData.logon.unionId = unionId;
-            const userInfo = await this.accountProxy.loadUserInfo();
+            const userInfo = await AccountAdapter.loadUserInfo();
             this.startScreen.nickName = userInfo.nickName;
             await this.gameProxy.initialize();
-        }
-
-        public async wxLoginClick(event: egret.TouchEvent) {
-            event.stopImmediatePropagation();
-            egret.ExternalInterface.call("sendWxLoginToNative", "native");
         }
 
         public createRoomClick(event: egret.TouchEvent) {
