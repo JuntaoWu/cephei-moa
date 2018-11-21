@@ -10,7 +10,6 @@ module game {
 
         public txtOpenId: eui.TextInput;
         public btnChangeOpenId: eui.Button;
-        public btnWxLogin: eui.Button;
 
         public btnCreateRoom: eui.Button;
         public btnJoinRoom: eui.Button;
@@ -25,7 +24,7 @@ module game {
         public btnGuide: eui.Button;
         public btnSetting: eui.Button;
 
-        public nickName: string = "nickName";
+        public nickName: string = "";
         public avatarUrl: string = "btn-share";
         public isDebugPlatform: boolean = false;
         public isWxPlatform: boolean = true;

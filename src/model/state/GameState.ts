@@ -8,7 +8,7 @@ module game {
 
         public roomName: string = undefined;
         public players: number = 0;
-        public maxPlayers: number = platform.env == "dev" ? 3 : 8;
+        public maxPlayers: number = (platform.env == "local" || platform.env == "dev") ? 3 : 8;
 
         public phase: GamePhase = GamePhase.Preparing;
 
@@ -44,7 +44,7 @@ module game {
         public threezgqskill: number = 100;
         public lunci: number = 1;
         public defen: number = 0;
-        public lcfpiao:number=0;
+        public lcfpiao: number = 0;
         public findPeopleScore: number = 0;
         public jueselist: Array<any> = ["许愿", "方震", "姬云浮", "黄烟烟", "木户加奈", "老朝奉", "药不然", "郑国渠"];
         public ybrskill: Array<any> = [0, 0, 0, 0, 0, 0, 0, 0, 0];

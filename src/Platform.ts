@@ -28,6 +28,14 @@ declare interface Platform {
 
     getStorage(key);
 
+    setStorageAsync(key, data);
+
+    getStorageAsync(key);
+
+    setSecurityStorageAsync(key, data);
+
+    getSecurityStorageAsync(key);
+
     playVideo(src: string);
 
     showModal(message: string, confirmText?: string, cancelText?: string): Promise<any>;
@@ -99,6 +107,22 @@ class DebugPlatform implements Platform {
         return JSON.parse(sessionStorage.getItem(key));
     }
 
+    public async setStorageAsync(key, data) {
+        sessionStorage.setItem(key, JSON.stringify(data));
+    }
+
+    public async getStorageAsync(key) {
+        return JSON.parse(sessionStorage.getItem(key));
+    }
+
+    public async setSecurityStorageAsync(key, data) {
+        sessionStorage.setItem(key, JSON.stringify(data));
+    }
+
+    public async getSecurityStorageAsync(key) {
+        return JSON.parse(sessionStorage.getItem(key));
+    }
+
     public playVideo() {
         return {};
     }
@@ -140,6 +164,9 @@ class DebugPlatform implements Platform {
 }
 
 class NativePlatform extends DebugPlatform implements Platform {
+
+    private hasGetSecurityStorageAsyncCallback: boolean = false;
+
     public get env(): string {
         return "dev";
     }
@@ -149,8 +176,45 @@ class NativePlatform extends DebugPlatform implements Platform {
     }
 
     public get appVersion(): string {
-        return "0.2.24";
+        return "0.3.1";
     }
+
+    public setStorage(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    public getStorage(key) {
+        return JSON.parse(localStorage.getItem(key));
+    }
+
+    public async setStorageAsync(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    public async getStorageAsync(key) {
+        return JSON.parse(localStorage.getItem(key));
+    }
+
+    public async setSecurityStorageAsync(key, data) {
+        let item = {
+            key: key,
+            value: data,
+        };
+        egret.ExternalInterface.call("setSecurityStorageAsync", JSON.stringify(item));
+    }
+
+    public async getSecurityStorageAsync(key) {
+        egret.ExternalInterface.call("getSecurityStorageAsync", key);
+        return new Promise((resolve, reject) => {
+            if (!this.hasGetSecurityStorageAsyncCallback) {
+                this.hasGetSecurityStorageAsyncCallback = true;
+                egret.ExternalInterface.addCallback("getSecurityStorageAsyncCallback", (value) => {
+                    return resolve(value);
+                });
+            }
+        });
+    }
+
 }
 
 if (!window.platform) {

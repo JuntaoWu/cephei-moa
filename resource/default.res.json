@@ -5,7 +5,7 @@
 			"name": "preload"
 		},
 		{
-			"keys": "loading-background,progress-bg,progress",
+			"keys": "loading-background,progress-bg,progress,btn-wxlogin",
 			"name": "loading"
 		},
 		{
@@ -532,6 +532,11 @@
 			"url": "assets/start/more-item2.png",
 			"type": "image",
 			"name": "more-item2"
+		},
+		{
+			"url": "assets/Button/btn-wxlogin.png",
+			"type": "image",
+			"name": "btn-wxlogin"
 		}
 	]
 }

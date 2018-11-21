@@ -28,8 +28,7 @@ module game {
 		}
 
 		public async initialize() {
-			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
-			this.userInfo = await accountProxy.loadUserInfo();
+			this.userInfo = await AccountAdapter.loadUserInfo();
 
 			this.loadBalancingClient.setCustomAuthentication(`userId=${this.userInfo.userId}`,
 				Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom);
@@ -214,7 +213,7 @@ module game {
 			this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState") || this.gameState;
 
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
-			const userInfo = await accountProxy.loadUserInfo();
+			const userInfo = await AccountAdapter.loadUserInfo();
 
 			this.loadBalancingClient.myActor().setCustomProperty("avatarUrl", userInfo.avatarUrl);
 			this.loadBalancingClient.myActor().setCustomProperty("nickName", userInfo.nickName);
@@ -699,8 +698,7 @@ module game {
 				? (this.gameState.defen < 6 ? false : true)
 				: (this.gameState.defen < 6 ? true : false);
 
-			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
-			accountProxy.saveUserGameRecords({
+			AccountAdapter.saveUserGameRecords({
 				userId: CommonData.logon.userId,
 				camp: roleId < 6 ? 1 : 2,
 				roleId: roleId,
