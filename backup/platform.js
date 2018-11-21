@@ -8,7 +8,7 @@ class WxgamePlatform {
 
   env = 'dev';
   name = 'wxgame';
-  appVersion = '0.3.0';
+  appVersion = '0.3.1';
 
   login() {
     return new Promise((resolve, reject) => {
@@ -45,15 +45,17 @@ class WxgamePlatform {
   }
 
   authorizeUserInfo() {
+    let systemInfo = wx.getSystemInfoSync();
     let button = wx.createUserInfoButton({
-      type: 'text',
-      text: '授权登录',
+      type: 'image',
+      text: '微信登录',
+      image: 'http://gdjzj.hzsdgames.com:8090/miniGame/resource/assets/Button/btn-wxlogin.png',
       style: {
-        left: 100,
-        top: 420,
-        width: 200,
-        height: 40,
-        lineHeight: 40,
+        left: (systemInfo.windowWidth - 300) / 2,
+        top: (systemInfo.windowHeight - 100),
+        width: 300,
+        height: 60,
+        lineHeight: 60,
         backgroundColor: '#0084ff',
         color: '#ffffff',
         textAlign: 'center',
