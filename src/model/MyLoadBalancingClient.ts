@@ -13,7 +13,7 @@ module game {
         }
 
         private retried: number = 0;
-        private maxRetriedCount: number = 1;
+        private maxRetriedCount: number = 3;
 
         public setupId: number = 0;
 
@@ -66,12 +66,16 @@ module game {
 
             this.output("Error " + errorCode + ": " + errorMsg);
 
+            if (!platform.isConnected) {
+                return;
+            }
+
             if (errorCode == 1003) {
                 if (++this.retried < this.maxRetriedCount) {
                     this.start();
                 }
                 else {
-                    platform.showModal("服务器连接已重置,自动加入历史房间可能失败", "重试").then(res => {
+                    platform.showModal("服务器连接已重置,请检查网络或尝试重连", "重试").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
                             this.autoRejoin = false;

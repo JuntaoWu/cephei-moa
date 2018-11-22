@@ -9,6 +9,7 @@ declare interface Platform {
     env: string;
     name: string;
     appVersion: string;
+    isConnected: boolean;
 
     getUserInfo(): Promise<game.UserInfo>;
 
@@ -21,6 +22,12 @@ declare interface Platform {
     applyUpdate(version: string);
 
     onNetworkStatusChange(callback: Function);
+
+    onResume: Function;
+
+    registerOnResume(callback: Function);
+
+    resume();
 
     showToast(message: string);
 
@@ -71,6 +78,8 @@ class DebugPlatform implements Platform {
         return "0.2.24";
     }
 
+    public isConnected: boolean = true;
+
     public async getUserInfo() {
         return { nickName: game.CommonData.logon && game.CommonData.logon.unionId || "username" };
     }
@@ -92,6 +101,16 @@ class DebugPlatform implements Platform {
     }
 
     public onNetworkStatusChange(callback: Function) {
+
+    }
+
+    public onResume: Function;
+
+    public registerOnResume(callback: Function) {
+
+    }
+
+    public resume() {
 
     }
 
@@ -218,14 +237,27 @@ class NativePlatform extends DebugPlatform implements Platform {
 
     public onNetworkStatusChange(callback: Function) {
         egret.ExternalInterface.addCallback("sendNetworkStatusChangeToJS", (statusCode) => {
+            this.isConnected = (statusCode && statusCode != "0");
             callback && callback({
-                isConnected: statusCode
+                isConnected: this.isConnected
             });
         });
     }
 
+    public onResume: Function;
+
+    public registerOnResume(callback: Function) {
+        this.onResume = callback;
+    }
+
+    public resume() {
+        this.onResume && this.onResume({
+            isConnected: this.isConnected
+        });
+    }
+
     public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
-        egret.ExternalInterface.call("sendShowModalToNative", JSON.stringify({message, confirmText, cancelText}));
+        egret.ExternalInterface.call("sendShowModalToNative", JSON.stringify({ message, confirmText, cancelText }));
         return new Promise((resolve, reject) => {
             if (!this.hasSendShowModalCallback) {
                 this.hasSendShowModalCallback = true;

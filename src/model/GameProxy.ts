@@ -24,6 +24,20 @@ module game {
 					self.loadBalancingClient.start();
 				}
 			});
+
+			platform.registerOnResume((res) => {
+				console.log("registered onResume");
+				if (!res || !res.isConnected) {
+					return;
+				}
+
+				// network is connected now.
+				if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected
+					|| self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
+					self.loadBalancingClient.autoRejoin = true;
+					self.loadBalancingClient.start();
+				}
+			});
 		}
 
 		public async initialize() {
@@ -146,7 +160,7 @@ module game {
 			const state = this.loadBalancingClient.state;
 			switch (state) {
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
-					platform.showToast("已进入大厅");
+					platform.showToast("连接服务器成功");
 					if (this.roomName) {  // UI triggered goes here.
 						if (this.isMasterClient && this.isCreating) {
 							this.createRoomWithDefaultOptions();

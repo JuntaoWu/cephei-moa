@@ -49,6 +49,8 @@ class Main extends eui.UILayer {
 
         egret.lifecycle.onResume = () => {
             egret.ticker.resume();
+            console.log("egret onResume");
+            platform.resume();
         }
 
         //inject the custom material parser
