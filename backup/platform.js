@@ -8,7 +8,7 @@ class WxgamePlatform {
 
   env = 'dev';
   name = 'wxgame';
-  appVersion = '0.3.1';
+  appVersion = '0.3.2';
 
   login() {
     return new Promise((resolve, reject) => {
@@ -154,6 +154,20 @@ class WxgamePlatform {
     });
   }
 
+  onResume(res) {
+    // default resumeHandler
+  }
+
+  registerOnResume(callback) {
+    this.onResume = callback;
+  }
+
+  resume() {
+    this.onResume && this.onResume({
+      isConnected: this.isConnected
+    });
+  }
+
   showToast(message) {
     wx.showToast({
       title: message,
@@ -199,8 +213,8 @@ class WxgamePlatform {
       wx.showModal({
         title: '提示',
         content: message,
-        showCancel: true,
-        cancelText: cancelText || '取消',
+        showCancel: !!cancelText,
+        cancelText: cancelText,
         confirmText: confirmText || '确定',
         success: function(res) {
           resolve(res);
@@ -230,15 +244,12 @@ class WxgamePlatform {
       src: src
     });
   }
-  
-  showPreImage(imgList, currentIndex) {
-    var urls = imgList.map(m => {
-      return `${m}?v=${this.getVersion()}`;
-    })
-    var current = currentIndex ? urls[currentIndex] : urls[0];
+
+  showPreImage(imgList) {
     wx.previewImage({
-      current: current,
-      urls: urls,
+      urls: imgList.map(m => {
+        return `${m}?v=${this.getVersion()}`;
+      }),
     });
   }
 
