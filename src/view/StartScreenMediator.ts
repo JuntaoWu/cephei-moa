@@ -117,7 +117,7 @@ module game {
         }
 
         private showMyInfo(): void {
-            if (!CommonData.logon.unionId) {
+            if (!CommonData.logon.userId) {
                 return;
             }
             this.sendNotification(SceneCommand.SHOW_USERINFO_WINDOW);

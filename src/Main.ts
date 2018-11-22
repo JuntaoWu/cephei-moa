@@ -73,21 +73,21 @@ class Main extends eui.UILayer {
             this.createGameScene();
         }
         else {
-            let token = await platform.getSecurityStorageAsync("token");
-            if (token) {
-                await AccountAdapter.login({ token: token });
-            }
-            else {
-                this.loadingView.btnLogin.visible = true;
-                this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
-                    egret.ExternalInterface.call("sendWxLoginToNative", "native");
-                    egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
-                        this.loadingView.btnLogin.enabled = false;
-                        await AccountAdapter.login({ code: code });
-                        this.createGameScene();
-                    });
-                }, this);
-            }
+            this.loadingView.btnAnonymousLogin.visible = true;
+            this.loadingView.btnLogin.visible = true;
+            this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+                egret.ExternalInterface.call("sendWxLoginToNative", "native");
+                egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
+                    this.loadingView.btnLogin.enabled = false;
+                    await AccountAdapter.login({ code: code });
+                    this.createGameScene();
+                });
+            }, this);
+            this.loadingView.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+                let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
+                await AccountAdapter.login({ token: anonymousToken });
+                this.createGameScene();
+            }, this);
         }
     }
 

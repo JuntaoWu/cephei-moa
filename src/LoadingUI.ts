@@ -37,6 +37,7 @@ class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
     private loadingLabel: egret.DisplayObject;
 
     public groupLoading: eui.Group;
+    public btnAnonymousLogin: eui.Button;
     public btnLogin: eui.Button;
 
     public constructor() {
@@ -52,6 +53,7 @@ class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
         this.progressBar.y = this.stage.stageHeight - 30;
         this.loadingLabel.y = this.stage.stageHeight - 60;
         this.btnLogin.y = this.stage.stageHeight - this.btnLogin.height;
+        this.btnAnonymousLogin.y = this.stage.stageHeight - this.btnLogin.height - this.btnAnonymousLogin.height - 20;
     }
 
     public onProgress(current: number, total: number): void {

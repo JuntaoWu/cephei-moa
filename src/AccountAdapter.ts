@@ -50,7 +50,7 @@ class AccountAdapter {
 
         const request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
-        request.open(`${game.Constants.Endpoints.service}users/${option ? "login-native" : "login-wxgame"}?code=${wxRes.code}&token=${wxRes.token}`, egret.HttpMethod.POST);
+        request.open(`${game.Constants.Endpoints.service}users/${platform.name == "native" ? "login-native" : "login-wxgame"}?code=${wxRes.code}&token=${wxRes.token}`, egret.HttpMethod.POST);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.send();
 
@@ -82,7 +82,7 @@ class AccountAdapter {
         else if (game.CommonData.logon && game.CommonData.logon.userId) {
             this.userInfo = game.CommonData.logon;
             if (platform.name == "native") {
-                platform.setSecurityStorageAsync("token", this.userInfo.token);
+                platform.setSecurityStorageAsync(this.userInfo.anonymous ? "anonymoustoken" : "token", this.userInfo.token);
             }
             return this.userInfo;
         }
@@ -158,7 +158,7 @@ class AccountAdapter {
             });
         }
         else {
-            console.log(`We don't have openId now, skip.`);
+            console.log(`We don't have wxgameOpenId now, skip.`);
             return this.userInfo;
         }
         // request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onGetIOError, this);
@@ -170,17 +170,15 @@ class AccountAdapter {
      */
     public static async loadUserGameRecords(): Promise<game.UserInfo> {
 
-        if (game.CommonData.logon && game.CommonData.logon.unionId) {
-            console.log(`loadUserGameRecords via app server begin, unionId: ${game.CommonData.logon.unionId}.`);
+        if (game.CommonData.logon && game.CommonData.logon.userId) {
+            console.log(`loadUserGameRecords via app server begin, userId: ${game.CommonData.logon.userId}.`);
 
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
             request.open(`${game.Constants.Endpoints.service}records/?token=${game.CommonData.logon.token}`, egret.HttpMethod.POST);
             request.setRequestHeader("Content-Type", "application/json");
 
-            request.send(JSON.stringify({
-                unionId: game.CommonData.logon.unionId
-            }));
+            request.send();
 
             return new Promise((resolve, reject) => {
                 request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
@@ -211,8 +209,8 @@ class AccountAdapter {
      */
     public static saveUserGameRecords(record) {
 
-        if (game.CommonData.logon && game.CommonData.logon.unionId) {
-            console.log(`saveUserGameRecords via app server begin, unionId: ${game.CommonData.logon.unionId}.`);
+        if (game.CommonData.logon && game.CommonData.logon.userId) {
+            console.log(`saveUserGameRecords via app server begin, userId: ${game.CommonData.logon.userId}.`);
 
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;

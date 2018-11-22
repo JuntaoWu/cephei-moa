@@ -582,7 +582,7 @@ module game {
 					return currentRoom.actorNr;
 				}
 				else {
-					return this.userInfo.unionId.substr(5);
+					return this.userInfo.unionId && this.userInfo.unionId.substr(5);
 				}
 			}
 		}

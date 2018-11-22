@@ -80,7 +80,7 @@ class DebugPlatform implements Platform {
     }
 
     public async login() {
-        return { code: "debug" };
+        return { code: "anonymous", token: "" };
     }
 
     public async getVersion() {

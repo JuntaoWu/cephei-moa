@@ -21,5 +21,6 @@ module game {
         public iv?: string;
 
         public token?: string;  // jwt-token here
+        public anonymous?: boolean;
     }
 }
