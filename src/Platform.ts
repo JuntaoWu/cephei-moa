@@ -92,7 +92,7 @@ class DebugPlatform implements Platform {
     }
 
     public onNetworkStatusChange(callback: Function) {
-        return true;
+
     }
 
     public showToast(message: string) {
@@ -166,6 +166,7 @@ class DebugPlatform implements Platform {
 class NativePlatform extends DebugPlatform implements Platform {
 
     private hasGetSecurityStorageAsyncCallback: boolean = false;
+    private hasSendShowModalCallback: boolean = false;
 
     public get env(): string {
         return "dev";
@@ -203,7 +204,7 @@ class NativePlatform extends DebugPlatform implements Platform {
         egret.ExternalInterface.call("setSecurityStorageAsync", JSON.stringify(item));
     }
 
-    public async getSecurityStorageAsync(key) {
+    public async getSecurityStorageAsync(key): Promise<any> {
         egret.ExternalInterface.call("getSecurityStorageAsync", key);
         return new Promise((resolve, reject) => {
             if (!this.hasGetSecurityStorageAsyncCallback) {
@@ -213,6 +214,33 @@ class NativePlatform extends DebugPlatform implements Platform {
                 });
             }
         });
+    }
+
+    public onNetworkStatusChange(callback: Function) {
+        egret.ExternalInterface.addCallback("sendNetworkStatusChangeToJS", (statusCode) => {
+            callback && callback({
+                isConnected: statusCode
+            });
+        });
+    }
+
+    public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
+        egret.ExternalInterface.call("sendShowModalToNative", JSON.stringify({message, confirmText, cancelText}));
+        return new Promise((resolve, reject) => {
+            if (!this.hasSendShowModalCallback) {
+                this.hasSendShowModalCallback = true;
+                egret.ExternalInterface.addCallback("sendShowModalResultToJS", (value) => {
+                    return resolve({
+                        confirm: value == "confirm",
+                        cancel: value == "cancel",
+                    });
+                });
+            }
+        });
+    }
+
+    public showToast(message: string) {
+        egret.ExternalInterface.call("sendShowToastToNative", message);
     }
 
 }
