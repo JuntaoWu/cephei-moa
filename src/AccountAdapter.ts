@@ -40,7 +40,7 @@ class AccountAdapter {
 
     public static async login(option?: { token?: string, code?: string }): Promise<any> {
         let wxRes = option;
-        if (!option) {
+        if (!option || (!option.code && !option.token)) {
             wxRes = await platform.login();
         }
 
@@ -50,7 +50,7 @@ class AccountAdapter {
 
         const request = new egret.HttpRequest();
         request.responseType = egret.HttpResponseType.TEXT;
-        request.open(`${game.Constants.Endpoints.service}users/${platform.name == "native" ? "login-native" : "login-wxgame"}?code=${wxRes.code}&token=${wxRes.token}`, egret.HttpMethod.POST);
+        request.open(`${game.Constants.Endpoints.service}users/${platform.name == "native" ? "login-native" : "login-wxgame"}?code=${wxRes.code || ""}&token=${wxRes.token || ""}`, egret.HttpMethod.POST);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.send();
 
