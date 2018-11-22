@@ -12,7 +12,7 @@ module game {
             return platform.env == "prod";
         }
 
-        private retried: number = 0;
+        public retried: number = 0;
         private maxRetriedCount: number = 3;
 
         public setupId: number = 0;
@@ -250,7 +250,7 @@ module game {
 
         onActorSuspend(actor: Photon.LoadBalancing.Actor) {
             this.output("Actor " + (actor.name || actor.actorNr) + " suspended", actor.getCustomProperty("color"));
-            platform.showToast(`玩家${actor.getCustomProperty("nickName")}已挂起`);
+            platform.showToast(`${actor.getCustomProperty("nickName")}已挂起`);
             let data = this.myActor().getCustomProperty("data");
 
             this.toggleActorState(actor.name, data && data.Avatar, false);

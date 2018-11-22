@@ -160,6 +160,7 @@ module game {
 			const state = this.loadBalancingClient.state;
 			switch (state) {
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
+					this.loadBalancingClient.retried = 0;  // consider change reset retried times elsewhere.
 					platform.showToast("连接服务器成功");
 					if (this.roomName) {  // UI triggered goes here.
 						if (this.isMasterClient && this.isCreating) {
