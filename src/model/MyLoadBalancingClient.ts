@@ -168,11 +168,13 @@ module game {
                     case 32765:
                         platform.showToast("房间已满");
                         break;
+                    case 32752:
+                        platform.showToast("无法加入房间");
+                        break;
                     default:
                         platform.showToast(`Code: ${errorCode}`);
                         break;
                 }
-
             }
             switch (code) {
                 case Photon.LoadBalancing.Constants.OperationCode.Authenticate:
