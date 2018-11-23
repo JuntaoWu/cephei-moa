@@ -1547,14 +1547,14 @@ module game {
                 this.gameScreen.startno2.visible = false;
                 this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 if (this.proxy.isMasterClient){
-                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.userinfo);
+                    this.proxy.updateUserGameRecords();
                 }
             }
             else if (this.proxy.gameState.defen == 6) {
                 this.gameScreen.startno2.visible = false;
                 this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 if (this.proxy.isMasterClient){
-                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.userinfo);
+                    this.proxy.updateUserGameRecords();
                 }
             }
             else if (this.proxy.isMasterClient) {
@@ -1685,7 +1685,7 @@ module game {
 
                 this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 if (this.proxy.isMasterClient){
-                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.userinfo);
+                    this.proxy.updateUserGameRecords();
                 }
             }
         }        

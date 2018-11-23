@@ -13,10 +13,15 @@ module game {
         public action?: string;
         public suspended?: boolean;
 
+        public userId?: number;
+
         public constructor(actor: Photon.LoadBalancing.Actor, seatNumber?: number) {
 
             if (actor) {
                 this.actorNr = actor.actorNr;
+
+                this.userId = actor.getCustomProperty("userId");
+
                 this.name = actor.getCustomProperty("nickName");
 
                 this.avatarUrl = actor.getCustomProperty("avatarUrl");

@@ -230,8 +230,11 @@ module game {
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			const userInfo = await AccountAdapter.loadUserInfo();
 
-			this.loadBalancingClient.myActor().setCustomProperty("avatarUrl", userInfo.avatarUrl);
-			this.loadBalancingClient.myActor().setCustomProperty("nickName", userInfo.nickName);
+			this.loadBalancingClient.myActor().setCustomProperties({
+				userId: userInfo.userId,
+				avatarUrl: userInfo.avatarUrl,
+				nickName: userInfo.nickName,
+			});
 		}
 
 		private onMessage(event: CustomPhotonEvents, message: any, sender: Photon.LoadBalancing.Actor) {
@@ -514,10 +517,6 @@ module game {
 					this.sendNotification(SceneCommand.CHANGE, Scene.Start);
 					break;
 				}
-				case CustomPhotonEvents.userinfo: {
-					this.updateUserGameRecords();
-					break;
-				}
 			}
 		}
 
@@ -705,22 +704,30 @@ module game {
 			});
 		}
 
-		public updateUserGameRecords(): void {
+		public async updateUserGameRecords(): Promise<void> {
 
-			let roleId = this.gameState.role.findIndex(r => this.isActorLocal(r)),
-				selfCamp = this.rolesMap.get(roleId.toString()).camp;
-			let isWin = selfCamp == gameCamp.xuyuan
-				? (this.gameState.defen < 6 ? false : true)
-				: (this.gameState.defen < 6 ? true : false);
+			const masterRoleId = this.gameState.role.findIndex(r => this.isActorLocal(r));
+			const masterCamp = this.rolesMap.get(masterRoleId.toString()).camp;
+			const isMasterWin = (masterCamp == gameCamp.xuyuan)
+				? (this.gameState.defen >= 6)
+				: (this.gameState.defen < 6);
 
-			AccountAdapter.saveUserGameRecords({
-				userId: CommonData.logon.userId,
-				camp: roleId < 6 ? 1 : 2,
-				roleId: roleId,
-				gameType: this.gameState.maxPlayers,
-				isWin: isWin,
-				roomName: this.roomName,
-			});
+			let records = this.gameState.role.map((role, index) => {
+				if (!role) {
+					return;
+				}
+				let result = {
+					userId: role.userId,
+					camp: index < 6 ? 1 : 2,
+					roleId: index,
+					gameType: this.gameState.maxPlayers,
+					isWin: this.rolesMap.get(index.toString()).camp == masterCamp ? isMasterWin : !isMasterWin,
+					roomName: this.roomName
+				};
+				return result;
+			}).filter(record => record);
+
+			await AccountAdapter.saveUserGameRecords(records);
 		}
 	}
 }

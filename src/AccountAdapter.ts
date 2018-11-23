@@ -207,7 +207,7 @@ class AccountAdapter {
     /**
      * saveUserGameRecords
      */
-    public static saveUserGameRecords(record) {
+    public static saveUserGameRecords(records) {
 
         if (game.CommonData.logon && game.CommonData.logon.userId) {
             console.log(`saveUserGameRecords via app server begin, userId: ${game.CommonData.logon.userId}.`);
@@ -217,7 +217,7 @@ class AccountAdapter {
             request.open(`${game.Constants.Endpoints.service}records/create/?token=${game.CommonData.logon.token}`, egret.HttpMethod.POST);
             request.setRequestHeader("Content-Type", "application/json");
 
-            request.send(JSON.stringify(record));
+            request.send(JSON.stringify(records));
 
             request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
                 console.log(`saveUserGameRecords via app server end.`);
@@ -228,8 +228,7 @@ class AccountAdapter {
                     console.error(res.message);
                 }
                 else {
-                    console.log("update current userInfo object");
-                    this.userInfo.gameRecords = res.data as game.MyStats;
+                    
                 }
             }, this);
         }
