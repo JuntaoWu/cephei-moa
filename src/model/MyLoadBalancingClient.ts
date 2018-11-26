@@ -43,6 +43,7 @@ module game {
         public updateRoomInfoSubject = () => { };
         public onJoinRoomSubject = () => { };
         public receiveMessageSubject = (event, message, sender) => { };
+        public onOperationResponseSubject = (errorCode) => {};
 
         start() {
             if (connectOnStart) {
@@ -64,6 +65,8 @@ module game {
             platform.hideAllBannerAds();
             platform.hideLoading();
 
+            console.log("retried count:", this.retried);
+
             this.output("Error " + errorCode + ": " + errorMsg);
 
             if (!platform.isConnected) {
@@ -75,7 +78,7 @@ module game {
                     this.start();
                 }
                 else {
-                    platform.showModal("服务器连接已重置,请检查网络或尝试重连", "重试").then(res => {
+                    platform.showModal("服务器连接已重置,请检查网络或尝试重连", "重试", "取消").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
                             this.autoRejoin = false;
@@ -92,7 +95,7 @@ module game {
                     this.start();
                 }
                 else {
-                    platform.showModal("服务器连接超时,请检查网络或尝试重连", "重试").then(res => {
+                    platform.showModal("服务器连接超时,请检查网络或尝试重连", "重试", "取消").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
                             this.start();
@@ -108,7 +111,7 @@ module game {
                     this.start();
                 }
                 else {
-                    platform.showModal("服务器连接失败,请检查网络或尝试重连", "重试").then(res => {
+                    platform.showModal("服务器连接失败,请检查网络或尝试重连", "重试", "取消").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
                             this.start();
@@ -157,24 +160,29 @@ module game {
                 switch (errorCode) {
                     case 32746:
                         platform.showToast("不能重复加入");
+                        this.autoRejoin = false;
                         break;
                     case 32748:
                         platform.showToast("房间已关闭");
                         this.autoRejoin = false;
                         break;
                     case 32758:
+                        this.autoRejoin = false;
                         platform.showToast("房间不存在");
                         break;
                     case 32765:
+                        this.autoRejoin = false;
                         platform.showToast("房间已满");
                         break;
                     case 32752:
-                        platform.showToast("无法加入房间");
+                        this.autoRejoin = false;
+                        platform.showToast("无法加入该房间");
                         break;
                     default:
                         platform.showToast(`Code: ${errorCode}`);
                         break;
                 }
+                this.onOperationResponseSubject && this.onOperationResponseSubject(errorCode);
             }
             switch (code) {
                 case Photon.LoadBalancing.Constants.OperationCode.Authenticate:

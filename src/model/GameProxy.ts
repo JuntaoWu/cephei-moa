@@ -15,12 +15,15 @@ module game {
 			platform.onNetworkStatusChange((res) => {
 				console.log(res);
 				if (!res || !res.isConnected) {
+					console.log("onResume: not connected");
 					return;
 				}
+				console.log(self.loadBalancingClient.state);
+				console.log("reset retried", self.loadBalancingClient.retried);
+				self.loadBalancingClient.retried = 0;
 				// network is connected now.
 				if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected
 					|| self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
-					self.loadBalancingClient.retried = 0;
 					self.loadBalancingClient.autoRejoin = true;
 					self.loadBalancingClient.start();
 				}
@@ -29,13 +32,15 @@ module game {
 			platform.registerOnResume((res) => {
 				console.log("registered onResume");
 				if (!res || !res.isConnected) {
+					console.log("onResume: not connected");
 					return;
 				}
-
+				console.log(self.loadBalancingClient.state);
+				console.log("reset retried", self.loadBalancingClient.retried);
+				self.loadBalancingClient.retried = 0;
 				// network is connected now.
 				if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected
 					|| self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
-					self.loadBalancingClient.retried = 0;
 					self.loadBalancingClient.autoRejoin = true;
 					self.loadBalancingClient.start();
 				}
@@ -153,8 +158,18 @@ module game {
 				this._loadBalancingClient.receiveMessageSubject = (event, message, sender) => {
 					this.onMessage(event, message, sender);
 				}
+
+				this._loadBalancingClient.onOperationResponseSubject = (errorCode) => {
+					this.onOperationResponse(errorCode);
+				}
 			}
 			return this._loadBalancingClient;
+		}
+
+		private onOperationResponse(errorCode: number) {
+			if (errorCode) {
+				this.reset();
+			}
 		}
 
 		private onStateChange() {
@@ -163,7 +178,9 @@ module game {
 			switch (state) {
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
 					platform.showToast("连接服务器成功");
+
 					if (this.roomName) {  // UI triggered goes here.
+						this.loadBalancingClient.retried = 0;
 						if (this.isMasterClient && this.isCreating) {
 							this.createRoomWithDefaultOptions();
 						}
