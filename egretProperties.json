@@ -3,7 +3,7 @@
   "compilerVersion": "5.2.12",
   "template": {},
   "target": {
-    "current": "wxgame"
+    "current": "web"
   },
   "eui": {
     "exmlRoot": [
@@ -59,6 +59,11 @@
     "android": {
       "appname": "moa-client",
       "packagename": "com.toolbar.childar"
+    },
+    "ios": {
+      "appname": "moa-client",
+      "packagename": "com.toolbar.childar",
+      "hybrid": true
     }
   }
 }

@@ -16,6 +16,7 @@
 	],
 	"game": [
 		"bin-debug/view/panel/BasePanel.js",
+		"bin-debug/view/PopupRoundWindowMediator.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
@@ -39,7 +40,9 @@
 		"bin-debug/model/common/Constants.js",
 		"bin-debug/model/common/CustomPhotonEvents.js",
 		"bin-debug/model/common/MyStats.js",
+		"bin-debug/model/common/OrderType.js",
 		"bin-debug/model/common/PlayerInfo.js",
+		"bin-debug/model/common/Rank.js",
 		"bin-debug/model/common/Receiver.js",
 		"bin-debug/model/common/Role.js",
 		"bin-debug/model/common/Scene.js",
@@ -58,11 +61,7 @@
 		"bin-debug/view/PopupHandleWindowMediator.js",
 		"bin-debug/view/PopupNumberKeyboardMediator.js",
 		"bin-debug/view/PopupRoleWindowMediator.js",
-<<<<<<< HEAD
 		"bin-debug/ApplicationFacade.js",
-=======
-		"bin-debug/view/panel/VotePeopleRenderer.js",
->>>>>>> c34d925a14b136129ef3dc942400e1e4a278cbdb
 		"bin-debug/view/PopupVoteRecordWindowMediator.js",
 		"bin-debug/view/PopupVoteResultWindowMediator.js",
 		"bin-debug/view/RankWindowMediator.js",
@@ -83,6 +82,7 @@
 		"bin-debug/view/panel/GuideVideoWindow.js",
 		"bin-debug/view/panel/GuideWindow.js",
 		"bin-debug/view/panel/GuideWinJudgeWindow.js",
+		"bin-debug/view/panel/MoreGameWindow.js",
 		"bin-debug/view/panel/NoticeWindow.js",
 		"bin-debug/view/panel/PopupAppraisalWindow.js",
 		"bin-debug/view/panel/PopupFangWindow.js",
@@ -106,10 +106,6 @@
 		"bin-debug/view/panel/UserInfoWindow.js",
 		"bin-debug/view/panel/VoteAntiquesRenderer.js",
 		"bin-debug/view/panel/VoteNumRenderer.js",
-<<<<<<< HEAD
 		"bin-debug/view/panel/VotePeopleRenderer.js"
-=======
-		"bin-debug/view/PopupRoundWindowMediator.js"
->>>>>>> c34d925a14b136129ef3dc942400e1e4a278cbdb
 	]
 }
