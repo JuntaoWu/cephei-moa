@@ -69,9 +69,14 @@ class Main extends eui.UILayer {
         await this.loadResource();
         this.loadingView.groupLoading.visible = false;
 
-        if (platform.name != "native") {
+        if (platform.name == "wxgame") {
             await AccountAdapter.login();
             await AccountAdapter.loadUserInfo();
+            this.createGameScene();
+        }
+        else if (platform.name == "DebugPlatform") {
+            let anonymousToken = platform.getStorage("anonymoustoken");
+            await AccountAdapter.login({ token: anonymousToken });
             this.createGameScene();
         }
         else {

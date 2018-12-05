@@ -11,11 +11,6 @@ module game {
             super(StartScreenMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
 
-            this.startScreen.txtOpenId.addEventListener(egret.TouchEvent.TOUCH_TAP, (event: egret.TouchEvent) => {
-                event.stopImmediatePropagation();
-            }, this);
-            this.startScreen.btnChangeOpenId.addEventListener(egret.TouchEvent.TOUCH_TAP, this.changeOpenIdClick, this);
-
             this.startScreen.btnCreateRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createRoomClick, this);
             this.startScreen.btnJoinRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.joinRoomClick, this);
             this.startScreen.btnTanbao.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameTanbaoClick, this);
@@ -35,6 +30,13 @@ module game {
             this.accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
             this.gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
+            const userInfo = await AccountAdapter.loadUserInfo();
+            console.log("loadUserInfo completed.", userInfo);
+            this.startScreen.nickName = userInfo.nickName;
+            this.startScreen.avatarUrl = userInfo.avatarUrl;
+
+            await this.gameProxy.initialize();
+
             if (platform.name == "DebugPlatform") {
                 console.log("DebugPlatform");
                 this.startScreen.isDebugPlatform = true;
@@ -43,42 +45,26 @@ module game {
             }
             else if (platform.name == "wxgame") {
                 console.log("wxgame");
-
-                const userInfo = await AccountAdapter.loadUserInfo();
-                console.log("loadUserInfo completed.", userInfo);
-                this.startScreen.nickName = userInfo.nickName;
-                this.startScreen.avatarUrl = userInfo.avatarUrl;
-
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = true;
                 this.startScreen.isNativePlatform = false;
-
-                await this.gameProxy.initialize();
             }
             else if (platform.name == "native") {
                 console.log("native");
-
-                const userInfo = await AccountAdapter.loadUserInfo();
-                console.log("loadUserInfo completed.", userInfo);
-                this.startScreen.nickName = userInfo.nickName;
-                this.startScreen.avatarUrl = userInfo.avatarUrl;
-
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = false;
                 this.startScreen.isNativePlatform = true;
-
-                await this.gameProxy.initialize();
             }
         }
 
-        public async changeOpenIdClick(event: egret.TouchEvent) {
-            event.stopImmediatePropagation();
-            const unionId = this.startScreen.txtOpenId.text;
-            CommonData.logon.unionId = unionId;
-            const userInfo = await AccountAdapter.loadUserInfo();
-            this.startScreen.nickName = userInfo.nickName;
-            await this.gameProxy.initialize();
-        }
+        // public async changeOpenIdClick(event: egret.TouchEvent) {
+        //     event.stopImmediatePropagation();
+        //     const unionId = this.startScreen.txtOpenId.text;
+        //     CommonData.logon.unionId = unionId;
+        //     const userInfo = await AccountAdapter.loadUserInfo();
+        //     this.startScreen.nickName = userInfo.nickName;
+        //     await this.gameProxy.initialize();
+        // }
 
         public createRoomClick(event: egret.TouchEvent) {
             platform.showBannerAd("top");

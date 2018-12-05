@@ -4,18 +4,9 @@
     <e:Image id="startBackground" left="0" right="0" bottom="-2" top="2" source="start-background" />
     <e:Group id="headGroup" height="220" width="640">
         <e:Image source="userinfo-background" width="640" verticalCenter="0"></e:Image>
-        <e:Group horizontalCenter="0" verticalCenter="0" visible="{isDebugPlatform}">
-            <e:TextInput id="txtOpenId" text="" left="0" verticalCenter="0" />
-            <e:Button id="btnChangeOpenId" label="更换测试Id" y="0" x="325" />
-        </e:Group>
-        <e:Group verticalCenter="0" horizontalCenter="0" visible="{isWxPlatform}">
-            <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="75" height="120"></e:Image>
-            <e:Label text="{nickName}" bold="true" size="70" textColor="0x050505" verticalCenter="0" x="240" width="390" />
-        </e:Group>
-        <e:Group verticalCenter="0" horizontalCenter="0" visible="{isNativePlatform}">
-            <e:Image visible="{avatarUrl}" source="{avatarUrl}" width="120" verticalCenter="0" x="75" height="120"></e:Image>
-            <e:Label visible="{nickName}" text="{nickName}" bold="true" size="70" textColor="0x050505"
-                     verticalCenter="0" x="240" />
+        <e:Group verticalCenter="0" horizontalCenter="0">
+            <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="43" height="120"></e:Image>
+            <e:Label text="{nickName}" bold="true" textColor="0x050505" verticalCenter="0" x="194" width="390" size="45" />
         </e:Group>
         <e:Image source="navigation-bar" width="100%" bottom="-15" />
     </e:Group>

@@ -119,27 +119,27 @@ class DebugPlatform implements Platform {
     }
 
     public setStorage(key, data) {
-        sessionStorage.setItem(key, JSON.stringify(data));
+        localStorage.setItem(key, JSON.stringify(data));
     }
 
     public getStorage(key) {
-        return JSON.parse(sessionStorage.getItem(key));
+        return JSON.parse(localStorage.getItem(key));
     }
 
     public async setStorageAsync(key, data) {
-        sessionStorage.setItem(key, JSON.stringify(data));
+        localStorage.setItem(key, JSON.stringify(data));
     }
 
     public async getStorageAsync(key) {
-        return JSON.parse(sessionStorage.getItem(key));
+        return JSON.parse(localStorage.getItem(key));
     }
 
     public async setSecurityStorageAsync(key, data) {
-        sessionStorage.setItem(key, JSON.stringify(data));
+        localStorage.setItem(key, JSON.stringify(data));
     }
 
     public async getSecurityStorageAsync(key) {
-        return JSON.parse(sessionStorage.getItem(key));
+        return JSON.parse(localStorage.getItem(key));
     }
 
     public playVideo() {
@@ -278,8 +278,8 @@ class NativePlatform extends DebugPlatform implements Platform {
 }
 
 if (!window.platform) {
-    // window.platform = new DebugPlatform();
-    window.platform = new NativePlatform();
+    window.platform = new DebugPlatform();
+    //window.platform = new NativePlatform();
 }
 
 declare let platform: Platform;

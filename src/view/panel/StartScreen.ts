@@ -8,9 +8,6 @@ module game {
         private poweredLabel: eui.Label;
         private navigationBar: eui.Group;
 
-        public txtOpenId: eui.TextInput;
-        public btnChangeOpenId: eui.Button;
-
         public btnCreateRoom: eui.Button;
         public btnJoinRoom: eui.Button;
         public btnViewMore: eui.Button;

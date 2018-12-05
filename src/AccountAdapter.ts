@@ -84,6 +84,9 @@ class AccountAdapter {
             if (platform.name == "native") {
                 platform.setSecurityStorageAsync(this.userInfo.anonymous ? "anonymoustoken" : "token", this.userInfo.token);
             }
+            else if (platform.name == "DebugPlatform") {
+                platform.setStorage(this.userInfo.anonymous ? "anonymoustoken" : "token", this.userInfo.token);
+            }
             return this.userInfo;
         }
 
@@ -228,7 +231,7 @@ class AccountAdapter {
                     console.error(res.message);
                 }
                 else {
-                    
+
                 }
             }, this);
         }
