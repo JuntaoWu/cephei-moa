@@ -67,7 +67,7 @@ declare interface Platform {
 class DebugPlatform implements Platform {
 
     public get env(): string {
-        return "dev";
+        return "test";
     }
 
     public get name(): string {
@@ -188,7 +188,7 @@ class NativePlatform extends DebugPlatform implements Platform {
     private hasSendShowModalCallback: boolean = false;
 
     public get env(): string {
-        return "dev";
+        return "test";
     }
 
     public get name(): string {

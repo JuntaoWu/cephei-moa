@@ -34,16 +34,16 @@ module game {
                     localResource: "",
                     remoteResource: "http://localhost:4040/miniGame/",
                     ws: "ws://192.168.2.117:9090",
-                    wss: "wss://192.168.2.117:9090",
+                    wss: "wss://192.168.2.117:19090",
                 };
             }
             if (platform.env == "dev") {
                 return {
-                    service: "http://gdjzj.hzsdgames.com:8090/",
+                    service: "http://gdjzj.hzsdgames.com:8096/",
                     localResource: "",
-                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/",
+                    remoteResource: "http://gdjzj.hzsdgames.com:8096/miniGame/",
                     ws: "ws://192.168.2.202:9090",
-                    wss: "wss://192.168.2.202:9090",
+                    wss: "wss://192.168.2.202:19090",
                 };
             }
             if (platform.env == "prod") {
@@ -51,17 +51,17 @@ module game {
                     service: "https://gdjzj.hzsdgames.com:8084/",
                     localResource: "",
                     remoteResource: "https://gdjzj.hzsdgames.com:8084/miniGame/",
-                    ws: "ws://photon.hzsdgames.com:19090",
+                    ws: "ws://photon.hzsdgames.com:9090",
                     wss: "wss://photon.hzsdgames.com:19090",
                 };
             }
             if (platform.env == "test") {
                 return {
-                    service: "http://gdjzj.hzsdgames.com:8090/",
+                    service: "http://gdjzj.hzsdgames.com:8096/",
                     localResource: "",
-                    remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/",
-                    ws: "ws://photon.hzsdgames.com:19090",
-                    wss: "wss://photon.hzsdgames.com:19090",
+                    remoteResource: "http://gdjzj.hzsdgames.com:8096/miniGame/",
+                    ws: "ws://photon.hzsdgames.com:9092",
+                    wss: "wss://photon.hzsdgames.com:19092",
                 };
             }
         }
