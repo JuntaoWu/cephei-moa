@@ -9,7 +9,7 @@ module game {
     export class MyLoadBalancingClient extends Photon.LoadBalancing.LoadBalancingClient {
 
         private static get photonWss() {
-            return platform.env == "prod";
+            return platform.env == "prod" || platform.env == "test";
         }
 
         public retried: number = 0;
