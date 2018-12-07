@@ -178,7 +178,7 @@ class DebugPlatform implements Platform {
     }
 
     public navigateToMiniProgram() {
-
+        location.href = "https://gdjzj.hzsdgames.com:8095";
     }
 }
 
@@ -275,11 +275,27 @@ class NativePlatform extends DebugPlatform implements Platform {
         egret.ExternalInterface.call("sendShowToastToNative", message);
     }
 
+    public navigateToMiniProgram() {
+
+        // location.href = ("https://gdjzj.hzsdgames.com:8095");
+        // location.href = "http://tool.egret-labs.org/Weiduan/game/index.html";
+
+        egret.ExternalInterface.call("sendNavigateToMiniProgramToNative", "http://tool.egret-labs.org/Weiduan/game/index.html");
+
+        // let iframe = document.createElement("iframe");
+        // iframe.style.position = "absolute";
+        // iframe.style.top = iframe.style.left = "0px";
+        // iframe.width = `${screen.availWidth}px`;
+        // iframe.height = `${screen.availHeight}px`;
+        // document.body.appendChild(iframe);
+        // iframe.src = "http://tool.egret-labs.org/Weiduan/game/index.html"
+    }
+
 }
 
 if (!window.platform) {
-    window.platform = new DebugPlatform();
-    //window.platform = new NativePlatform();
+    //window.platform = new DebugPlatform();
+    window.platform = new NativePlatform();
 }
 
 declare let platform: Platform;
