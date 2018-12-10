@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SceneSummaryWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*">
+    <e:Image source="background" height="100%"/>
+    <e:Group width="720">
+        <e:Image width="720" source="head-bg"/>
+        <e:Button id="btnBack" verticalCenter="0" x="35">
+            <e:Skin>
+                <e:Image source="btn-back-other"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Group horizontalCenter="0" verticalCenter="0">
+            <e:Image source="title-bg"></e:Image>
+            <e:Image source="title-scene" horizontalCenter="0" verticalCenter="0"></e:Image>
+        </e:Group>
+    </e:Group>
+    <e:Group y="200" horizontalCenter="0">
+        <e:Group horizontalCenter="0">
+            <e:Button id="btnSceneBg" horizontalCenter="0">
+                <e:Skin>
+                    <e:Image source="btn-scene-bg"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button id="btnScenePerson" y="250" horizontalCenter="0">
+                <e:Skin>
+                    <e:Image source="btn-scene-person"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button id="btnSceneProps" y="500" horizontalCenter="0">
+                <e:Skin>
+                    <e:Image source="btn-scene-props"></e:Image>
+                </e:Skin>
+            </e:Button>
+        </e:Group>
+        <e:Group horizontalCenter="0" y="780" maxWidth="720">
+            <e:Image source="text1" verticalCenter="0"></e:Image>
+            <e:Label text="{collectedText}" x="390" size="50" bold="true" textColor="0x836134" fontFamily="SimSun" verticalCenter="0"/>
+        </e:Group>
+        <e:Group horizontalCenter="0" y="880" maxWidth="720">
+            <e:Image source="text2" verticalCenter="0"></e:Image>
+            <e:Label text="{finishText}" x="320" size="50" verticalCenter="0" bold="true" textColor="0x560000" fontFamily="SimSun"/>
+        </e:Group>
+    </e:Group>
+</e:Skin>

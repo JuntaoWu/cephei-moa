@@ -79,7 +79,12 @@ module game {
         }
 
         public gameTanbaoClick(event: egret.TouchEvent) {
-            platform.navigateToMiniProgram();
+            if (platform.name == "wxgame") {
+                platform.navigateToMiniProgram();
+            }
+            else {
+                this.sendNotification(SceneCommand.NAVIGATE_TO_CHILD_GAME);
+            }
         }
 
         public viewMoreClick(event: egret.TouchEvent) {

@@ -53,6 +53,10 @@
     {
       "name": "photon",
       "path": "../3rdparty-libs/photon"
+    },
+    {
+      "name": "antiques-play-lib",
+      "path": "../antiques-play-lib"
     }
   ],
   "targets": {

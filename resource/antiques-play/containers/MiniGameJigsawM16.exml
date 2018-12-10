@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MiniGameJigsawM16" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*" xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="m16-bg"/>
+    <e:Group width="640" height="470" y="15" horizontalCenter="0">
+        <e:Group id="jigsawImgGroup1">
+            <e:Image name="jigsawImg" source="m16_1" rotation="0" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image visible="false" name="border" source="m16_choose"  width="319" height="235"/>
+            <e:Image visible="false" name="jigsawMove" source="m16_move" verticalCenter="0" left="40"/>
+            <e:Image visible="false" name="jigsawTrans" source="m16_trans" verticalCenter="0" right="40"/>
+        </e:Group>
+        <e:Group id="jigsawImgGroup2" x="320">
+            <e:Image name="jigsawImg" source="m16_2" rotation="180" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image visible="false" name="border" source="m16_choose"  width="319" height="235"/>
+            <e:Image visible="false" name="jigsawMove" source="m16_move" verticalCenter="0" left="40"/>
+            <e:Image visible="false" name="jigsawTrans" source="m16_trans" verticalCenter="0" right="40"/>
+        </e:Group>
+        <e:Group id="jigsawImgGroup3" y="235">
+            <e:Image name="jigsawImg" source="m16_3" rotation="180" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image visible="false" name="border" source="m16_choose"  width="319" height="235"/>
+            <e:Image visible="false" name="jigsawMove" source="m16_move" verticalCenter="0" left="40"/>
+            <e:Image visible="false" name="jigsawTrans" source="m16_trans" verticalCenter="0" right="40"/>
+        </e:Group>
+        <e:Group id="jigsawImgGroup4" x="320" y="235">
+            <e:Image name="jigsawImg" source="m16_4" rotation="180" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image visible="false" name="border" source="m16_choose"  width="319" height="235"/>
+            <e:Image visible="false" name="jigsawMove" source="m16_move" verticalCenter="0" left="40"/>
+            <e:Image visible="false" name="jigsawTrans" source="m16_trans" verticalCenter="0" right="40"/>
+        </e:Group>
+    </e:Group>
+</e:Skin>

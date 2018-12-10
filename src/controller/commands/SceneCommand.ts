@@ -16,6 +16,8 @@ module game {
          */
         public static CHANGE: string = "scene_change";
 
+        public static NAVIGATE_TO_CHILD_GAME: string = "navigate_to_child_game";
+
         public static SHOW_JOIN_WINDOW: string = "show_join_window";
 
         public static SHOW_USERINFO_WINDOW: string = "show_user_window";
@@ -55,6 +57,7 @@ module game {
         initializeNotifier(key: string) {
             super.initializeNotifier(key);
             this.facade().registerCommand(SceneCommand.CHANGE, SceneCommand);
+            this.facade().registerCommand(SceneCommand.NAVIGATE_TO_CHILD_GAME, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_JOIN_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_USERINFO_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_NOTICE_WINDOW, SceneCommand);
@@ -97,6 +100,10 @@ module game {
                     else if (data == Scene.Game) {
                         appMediator.main.enterGameScreen();
                     }
+                    break;
+                }
+                case SceneCommand.NAVIGATE_TO_CHILD_GAME: {
+                    appMediator.main.enterChildGame();
                     break;
                 }
                 case SceneCommand.SHOW_USERINFO_WINDOW: {

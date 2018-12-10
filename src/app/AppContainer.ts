@@ -27,6 +27,17 @@ module game {
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
+        private myChildGame: childGame.Main;
+        public enterChildGame() {
+            this.removeChildren();
+
+            if (!this.myChildGame) {
+                this.myChildGame = new childGame.Main();
+            }
+            this.addChild(this.myChildGame);
+            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
         public enterGameScreen(): void {
             platform.hideAllBannerAds();
 
@@ -42,7 +53,7 @@ module game {
             this.addChild(this.userInfoWindow);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
-        
+
         public noticeWindow: NoticeWindow;
         public showNoticeWindow(): void {
             if (!this.noticeWindow) {
@@ -116,7 +127,7 @@ module game {
             this.addChild(this.popupHandleWindow);
             this.popupHandleWindow.show();
         }
-        
+
         public popupPromptWindow: PopupPromptWindow;
         public showPopupPromptWindow(str: string): void {
             if (!this.popupPromptWindow) {
@@ -126,7 +137,7 @@ module game {
             this.addChild(this.popupPromptWindow);
             this.popupPromptWindow.show();
         }
-        
+
         public popupFangWindow: PopupFangWindow;
         public showPopupFangWindow(str: number): void {
             if (!this.popupFangWindow) {
@@ -136,7 +147,7 @@ module game {
             this.addChild(this.popupFangWindow);
             this.popupFangWindow.show();
         }
-        
+
         public popupRoleWindow: PopupRoleWindow;
         public showPopupRoleWindow(roleId): void {
             if (!this.popupRoleWindow) {
@@ -146,7 +157,7 @@ module game {
             this.addChild(this.popupRoleWindow);
             this.popupRoleWindow.show();
         }
-        
+
         public popupRoundWindow: PopupRoundWindow;
         public showPopupRoundWindow(): void {
             if (!this.popupRoundWindow) {
@@ -155,7 +166,7 @@ module game {
             this.addChild(this.popupRoundWindow);
             this.popupRoundWindow.show();
         }
-        
+
         public popupAppraisalWindow: PopupAppraisalWindow;
         public showPopupAppraisalWindow(data: any): void {
             if (!this.popupAppraisalWindow) {
@@ -165,7 +176,7 @@ module game {
             this.addChild(this.popupAppraisalWindow);
             this.popupAppraisalWindow.show();
         }
-        
+
         public voteRecordWindow: PopupVoteRecordWindow;
         public showVoteRecordWindow(): void {
             if (!this.voteRecordWindow) {
@@ -174,7 +185,7 @@ module game {
             this.addChild(this.voteRecordWindow);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
-        
+
         public popupResultWindow: PopupVoteResultWindow;
         public showPopupResultWindow(): void {
             if (!this.popupResultWindow) {
@@ -183,7 +194,7 @@ module game {
             this.addChild(this.popupResultWindow);
             this.popupResultWindow.show();
         }
-        
+
         public popupGameInfoWindow: PopupGameInfoWindow;
         public showPopupGameInfoWindow(): void {
             if (!this.popupGameInfoWindow) {
@@ -192,7 +203,7 @@ module game {
             this.addChild(this.popupGameInfoWindow);
             this.popupGameInfoWindow.show();
         }
-        
+
         public guideVideoWindow: GuideVideoWindow;
         public showGuideVideoWindow(): void {
             if (!this.guideVideoWindow) {
@@ -246,7 +257,7 @@ module game {
             this.addChild(this.popupNumberKeyboard);
             this.popupNumberKeyboard.show();
         }
-        
+
         public moreWindow: MoreGameWindow;
         public showMoreWindow(): void {
             if (!this.moreWindow) {

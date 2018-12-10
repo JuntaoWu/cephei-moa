@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="SceneDetailsItemSkin" xmlns:e="http://ns.egret.com/eui" width="300">
+    <e:Image source="{data.res}" horizontalCenter="0" bottom="45" scaleX="{data.scale}" scaleY="{data.scale}"/>
+    <e:Label text="{data.name}" horizontalCenter="0" size="40" textColor="0x020202" bold="true" fontFamily="SimSun" bottom="0"/>
+</e:Skin>

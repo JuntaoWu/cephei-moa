@@ -1,0 +1,9 @@
+{"file":"start-btn.png","frames":{
+"btn-resume":{"x":0,"y":146,"w":665,"h":144,"offX":0,"offY":0,"sourceW":665,"sourceH":144},
+"btn-setting":{"x":667,"y":299,"w":68,"h":116,"offX":0,"offY":0,"sourceW":68,"sourceH":116},
+"btn-share":{"x":667,"y":0,"w":113,"h":150,"offX":0,"offY":0,"sourceW":113,"sourceH":150},
+"btn-store":{"x":667,"y":152,"w":112,"h":145,"offX":0,"offY":0,"sourceW":112,"sourceH":145},
+"btn-dev":{"x":0,"y":0,"w":665,"h":144,"offX":0,"offY":0,"sourceW":665,"sourceH":144},
+"btn-manage-start":{"x":0,"y":437,"w":665,"h":143,"offX":0,"offY":0,"sourceW":665,"sourceH":143},
+"btn-newgame":{"x":0,"y":292,"w":665,"h":143,"offX":0,"offY":0,"sourceW":665,"sourceH":143},
+"btn-picture-start":{"x":667,"y":417,"w":67,"h":115,"offX":0,"offY":0,"sourceW":67,"sourceH":115}}}

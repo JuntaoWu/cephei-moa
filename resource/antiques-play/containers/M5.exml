@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="M5Skin" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="165d1f10e2b" ></w:Config>
+	<e:Image id="BG" source="M5_bg_png" verticalCenter="0" horizontalCenter="0"/>
+	<e:Group id="Group" width="480" height="480" anchorOffsetX="0" horizontalCenter="-3" verticalCenter="2" anchorOffsetY="0">
+		<e:Image id="Start" source="M5_2_png" x="0" y="240" scaleX="1" scaleY="1"/>
+		<e:Image id="cube1" source="M5_1_png" x="120" y="0" scaleX="1" scaleY="1"/>
+		<e:Image id="cube2" source="M5_3_png" x="240" y="0" scaleX="1" scaleY="1"/>
+		<e:Image id="cube3" source="M5_8_png" x="360" y="0" scaleX="1" scaleY="1"/>
+		<e:Image id="cube4" source="M5_9_png" x="120" y="120" scaleX="1" scaleY="1"/>
+		<e:Image id="cube5" source="M5_9_png" x="120" y="360" scaleX="1" scaleY="1"/>
+		<e:Image id="cube6" source="M5_9_png" x="240" y="240" scaleX="1" scaleY="1"/>
+		<e:Image id="End" source="M5_6_png" x="240" y="120" scaleX="1" scaleY="1"/>
+		<e:Image id="cube7" source="M5_7_png" x="0" y="120" scaleX="1" scaleY="1"/>
+		<e:Image id="cube8" source="M5_4_png" x="0" y="360" scaleX="1" scaleY="1"/>
+		<e:Image id="cube9" source="M5_4_png" x="360" y="120" scaleX="1" scaleY="1"/>
+		<e:Image id="cube10" source="M5_5_png" x="120" y="240" scaleX="1" scaleY="1"/>
+		<e:Image id="cube11" x="360" y="360" scaleX="1" scaleY="1" source="M5_9_png"/>
+	</e:Group>
+	<e:Label id="win" text="解锁成功" verticalCenter="0" horizontalCenter="0" width="720" height="600" verticalAlign="middle" textAlign="center" size="100" textColor="0xff0000" visible="false"/>
+</e:Skin>

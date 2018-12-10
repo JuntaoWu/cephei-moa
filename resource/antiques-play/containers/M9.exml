@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="M9" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="bg" source="bg3" verticalCenter="0" horizontalCenter="0"/>
+	<e:Image id="ren" source="ren" x="427" y="169" anchorOffsetX="28" anchorOffsetY="56"/>
+</e:Skin>

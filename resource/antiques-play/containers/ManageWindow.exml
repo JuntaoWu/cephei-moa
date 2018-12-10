@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ManageWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*">
+    <e:Image source="background" height="100%"/>
+    <e:Group width="720">
+        <e:Image width="720" source="head-bg"/>
+        <e:Button id="closeButton" verticalCenter="0" x="35">
+            <e:Skin>
+                <e:Image source="btn-back-other"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Group horizontalCenter="0" verticalCenter="0">
+            <e:Image source="title-bg"></e:Image>
+            <e:Image source="{titleRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
+            <e:Label text="经营" textColor="0x020202" bold="true" size="50" horizontalCenter="0" verticalCenter="0" fontFamily="SimSun"/>
+        </e:Group>
+    </e:Group>
+    <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="150" bottom="30">
+        <e:viewport>
+            <e:Group>
+            </e:Group>
+        </e:viewport>
+    </e:Scroller>
+</e:Skin>

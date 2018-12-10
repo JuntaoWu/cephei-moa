@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="StoreWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*" xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="background" height="100%"/>
+    <e:Group width="720">
+        <e:Image width="720" source="head-bg"/>
+        <e:Button id="btnBack" verticalCenter="0" x="20">
+            <e:Skin>
+                <e:Image source="btn-back-game"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Group horizontalCenter="0" verticalCenter="0">
+            <e:Label text="商城" textColor="0x000000" size="60"  bold="true" fontFamily="SimSun"/>
+        </e:Group>
+    </e:Group>
+    <e:Scroller id="scrollGroup" width="640" y="145" horizontalCenter="0" height="1100">
+			<e:List id="shoplist" itemRendererSkinName="shop_list">
+				<e:layout>
+					<e:TileLayout orientation="rows" requestedColumnCount="2" columnWidth="311"/>
+				</e:layout>
+			</e:List>
+
+    </e:Scroller>
+</e:Skin>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="M14Skin" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="165eb764cd4" ></w:Config>
+	<e:Image verticalCenter="0" horizontalCenter="0" source="M14_bg_png"/>
+	<e:Group width="720" height="591" verticalCenter="0" horizontalCenter="0">
+		<e:Image id="no1" y="250" x="85.5" rotation="0" anchorOffsetX="84.5" anchorOffsetY="64.5" source="1_png" scaleX="1" scaleY="1"/>
+		<e:Image id="no2" y="100" x="270.5" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="2_png" scaleX="1" scaleY="1"/>
+		<e:Image id="no3" y="100" x="85.5" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="3_png" scaleX="1" scaleY="1"/>
+		<e:Image id="no4" y="100" x="450.5" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="4_png" scaleX="1" scaleY="1"/>
+		<e:Image id="no5" x="450.5" y="250" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="5_png" scaleX="1" scaleY="1"/>
+		<e:Image id="no6" x="270.5" y="250" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="6_png" scaleX="1" scaleY="1"/>
+		<e:Image id="no7" x="630.5" y="100" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="7_png" scaleX="1" scaleY="1"/>
+		<e:Image id="no8" x="630.5" y="250" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="8_png" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:Label id="win" text="解锁成功" verticalCenter="0" horizontalCenter="0" width="720" height="600" textColor="0xff0000" size="100" verticalAlign="middle" textAlign="center" visible="false"/>
+</e:Skin>

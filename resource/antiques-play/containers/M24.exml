@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="M24" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="M24_bg" verticalCenter="0" horizontalCenter="0"/>
+	<e:Image id="zhu" source="word_zhu" x="80" y="350"/>
+	<e:Image id="yi" source="word_yi" x="530" y="225"/>
+	<e:Image id="ti" source="word_ti" x="390" y="350"/>
+	<e:Image id="jiao" source="word_jiao" x="390" y="225"/>
+	<e:Image id="jia" source="word_jia" x="530" y="350"/>
+	<e:Image id="hei" source="word_hei" x="80" y="225"/>
+	<e:Image id="he" source="word_he" x="220" y="350"/>
+	<e:Image id="bai" source="word_bai" x="220" y="225"/>
+	<e:Label id="win" text="解锁成功" verticalCenter="0" horizontalCenter="0" width="720" height="600" verticalAlign="middle" textAlign="center" textColor="0xff0000" size="60" visible="false"/>
+</e:Skin>

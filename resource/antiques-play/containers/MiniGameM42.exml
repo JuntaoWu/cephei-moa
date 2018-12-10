@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MiniGameM42" currentState="up" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*" xmlns:w="http://ns.egret.com/wing" states="down,up" >
+    <e:Group width="720" height="900">
+        <e:Image source="m42-bg" left="0" top="0" bottom="0" right="0"/>
+        <e:Image visible="{showTipsImg}" source="m42-tips" left="0" top="0" right="0"/>
+        <e:Button id="btnBack" y="20" right="50">
+            <e:Skin states="up, down">
+                <e:Image source="btn-back" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Group id="jigsawGroup" y="-60" x="-25">
+            <e:Image source="ED-bg" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw01" source="ED-01" rotation="0" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw02" source="ED-02" rotation="-45" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw03" source="ED-03" rotation="-90" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw04" source="ED-04" rotation="45" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw05" source="ED-05" rotation="90" verticalCenter="0" horizontalCenter="0"/>
+        </e:Group>
+        <e:Group id="btnGroup" width="720" y="20">
+            <e:Button id="btnLeft" x="85" y="335">
+                <e:Skin states="up, down">
+                    <e:Image source="btn-left" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button id="btnRight" x="300" y="335">
+                <e:Skin states="up, down">
+                    <e:Image source="btn-right" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button id="btnED" right="50">
+                <e:Skin states="up, down">
+                    <e:Image source="btn-ED" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button id="btnConfirm" y="210" right="50">
+                <e:Skin states="up, down">
+                    <e:Image source="btn-confirm" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button id="btnReset" y="330" right="50">
+                <e:Skin states="up, down">
+                    <e:Image source="btn-reset" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                </e:Skin>
+            </e:Button>
+        </e:Group>
+        <e:Group id="jigsawResult" y="410" horizontalCenter="0">
+            <e:Image source="ED-bg" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw01" source="ED-01" rotation="-90" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw02" source="ED-02" rotation="45" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw03" source="ED-03" rotation="-135" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw04" source="ED-04" rotation="180" verticalCenter="0" horizontalCenter="0"/>
+            <e:Image name="jigsaw05" source="ED-05" rotation="-45" verticalCenter="0" horizontalCenter="0"/>
+        </e:Group>
+    </e:Group>
+</e:Skin>

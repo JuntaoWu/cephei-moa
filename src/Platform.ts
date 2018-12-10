@@ -53,7 +53,7 @@ declare interface Platform {
 
     shareAppMessage();
 
-    showPreImage(data: Array<string>, index);
+    showPreImage(data: any, index?: any);
 
     createBannerAd(name: string, adUnitId: string, style: any);
 
@@ -94,6 +94,38 @@ class DebugPlatform implements Platform {
 
     public async getVersion() {
 
+    }
+
+    public async checkForUpdate() {
+        
+    }
+
+    public getOpenDataContext() {
+
+    }
+
+    public showShareMenu() {
+
+    }
+
+    public getLaunchInfo() {
+
+    }
+
+    public createRewardedVideoAd() {
+
+    }
+
+    public showVideoAd() {
+
+    }
+
+    public isVideoAdDisabled() {
+        return true;
+    }
+
+    public disableVideoAd() {
+        
     }
 
     public applyUpdate() {
@@ -147,6 +179,7 @@ class DebugPlatform implements Platform {
     }
 
     public showPreImage(data, index) {
+
     }
 
     public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
@@ -277,10 +310,11 @@ class NativePlatform extends DebugPlatform implements Platform {
 
     public navigateToMiniProgram() {
 
+
         // location.href = ("https://gdjzj.hzsdgames.com:8095");
         // location.href = "http://tool.egret-labs.org/Weiduan/game/index.html";
 
-        egret.ExternalInterface.call("sendNavigateToMiniProgramToNative", "http://tool.egret-labs.org/Weiduan/game/index.html");
+        //egret.ExternalInterface.call("sendNavigateToMiniProgramToNative", "http://tool.egret-labs.org/Weiduan/game/index.html");
 
         // let iframe = document.createElement("iframe");
         // iframe.style.position = "absolute";
@@ -294,11 +328,12 @@ class NativePlatform extends DebugPlatform implements Platform {
 }
 
 if (!window.platform) {
-    //window.platform = new DebugPlatform();
-    window.platform = new NativePlatform();
+    window.platform = new DebugPlatform();
+    //window.platform = new NativePlatform();
 }
 
-declare let platform: Platform;
+// todo: in the wrapped project, the platform had been declared in the child lib project alreay.
+// declare let platform: Platform;
 
 declare interface Window {
 

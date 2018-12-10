@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="shop_list" width="311" height="417" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="power_bg" verticalCenter="0" horizontalCenter="0" />
+	<e:Image y="50" horizontalCenter="0" source="{data.res}" />
+	<e:Label text="{data.name}" x="59" y="208" anchorOffsetX="0" width="181" anchorOffsetY="0" height="48"
+	         verticalAlign="middle" textAlign="center" />
+	<e:Label text="{data.effect}" x="36" y="264" anchorOffsetX="0" width="235" verticalAlign="middle" textAlign="center" />
+	<e:Group id="pay" width="231" height="75" x="41" y="299.5">		
+				<e:Image source="pay_bg" y="0" horizontalCenter="1" x="0" scaleX="1" scaleY="1"/>
+				<e:Image source="pay" x="100" y="21.5" scaleX="1" scaleY="1" />
+				<e:Label id="pay_money" text="{data.money}" x="33" y="21.5" anchorOffsetY="0" height="33" verticalAlign="middle"
+				         textAlign="left" anchorOffsetX="0" width="162" scaleX="1" scaleY="1" />
+	</e:Group>
+</e:Skin>

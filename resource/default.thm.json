@@ -31,6 +31,7 @@
 		"resource/components/VotePeopleRenderer.exml",
 		"resource/containers/AboutWindow.exml",
 		"resource/containers/BarWindow.exml",
+		"resource/containers/ChildLoadingUI.exml",
 		"resource/containers/GameRoleList.exml",
 		"resource/containers/GameScreen.exml",
 		"resource/containers/GuideGameProcessWindow.exml",
