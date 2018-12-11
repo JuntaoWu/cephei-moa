@@ -93,7 +93,7 @@
 		<e:Group id="miniGameGroup" y="180" horizontalCenter="0">
 			<e:Group id="gameTrueFalse">
 			</e:Group>
-			<e:List id="gameList" horizontalCenter="0" width="640" y="120" visible="false">
+			<e:List id="gameList" horizontalCenter="0" width="720" y="120" visible="false">
 				<e:layout>
 					<e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="40" columnWidth="300" />
 				</e:layout>

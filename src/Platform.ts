@@ -13,9 +13,9 @@ namespace moa {
         appVersion: string;
         isConnected: boolean;
 
-        getUserInfo(): Promise<moa.UserInfo>;
+        getUserInfo(): Promise<UserInfo>;
 
-        authorizeUserInfo(): Promise<moa.UserInfo>;
+        authorizeUserInfo(): Promise<UserInfo>;
 
         login(): Promise<any>;
 
@@ -77,17 +77,17 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "0.2.24";
+            return "0.4.0";
         }
 
         public isConnected: boolean = true;
 
         public async getUserInfo() {
-            return { nickName: moa.CommonData.logon && moa.CommonData.logon.unionId || "username" };
+            return { nickName: CommonData.logon && CommonData.logon.unionId || "username" };
         }
 
         public async authorizeUserInfo() {
-            return { nickName: moa.CommonData.logon && moa.CommonData.logon.unionId || "username" };
+            return { nickName: CommonData.logon && CommonData.logon.unionId || "username" };
         }
 
         public async login() {
@@ -231,7 +231,7 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "0.3.1";
+            return "0.4.0";
         }
 
         public setStorage(key, data) {
@@ -311,20 +311,7 @@ namespace moa {
         }
 
         public navigateToMiniProgram() {
-
-
-            // location.href = ("https://gdjzj.hzsdgames.com:8095");
-            // location.href = "http://tool.egret-labs.org/Weiduan/game/index.html";
-
-            //egret.ExternalInterface.call("sendNavigateToMiniProgramToNative", "http://tool.egret-labs.org/Weiduan/game/index.html");
-
-            // let iframe = document.createElement("iframe");
-            // iframe.style.position = "absolute";
-            // iframe.style.top = iframe.style.left = "0px";
-            // iframe.width = `${screen.availWidth}px`;
-            // iframe.height = `${screen.availHeight}px`;
-            // document.body.appendChild(iframe);
-            // iframe.src = "http://tool.egret-labs.org/Weiduan/game/index.html"
+            throw "Don't do this in native.";
         }
 
     }
@@ -334,8 +321,3 @@ namespace moa {
     platform = window["platform"] || new DebugPlatform();
 
 }
-
-
-
-
-

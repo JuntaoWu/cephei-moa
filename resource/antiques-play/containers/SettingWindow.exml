@@ -14,7 +14,7 @@
             <e:Label text="设置" textColor="0x020202" bold="true" size="50" horizontalCenter="0" verticalCenter="0" fontFamily="SimSun"/>
         </e:Group>
     </e:Group>
-    <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="150" bottom="30" visible="false">
+    <e:Scroller id="scrollGroup" width="720" horizontalCenter="0" top="150" bottom="30" visible="false">
         <e:viewport>
             <e:Group>
             </e:Group>

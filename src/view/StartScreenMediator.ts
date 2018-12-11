@@ -17,9 +17,10 @@ namespace moa {
             this.startScreen.btnViewMore.addEventListener(egret.TouchEvent.TOUCH_TAP, this.viewMoreClick, this);
 
             this.startScreen.headGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showMyInfo, this);
+            this.startScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.guideClick, this);
             this.startScreen.btnNotice.addEventListener(egret.TouchEvent.TOUCH_TAP, this.noticeClick, this);
             this.startScreen.btnRank.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankClick, this);
-            this.startScreen.btnGuide.addEventListener(egret.TouchEvent.TOUCH_TAP, this.guideClick, this);
+            this.startScreen.btnClub.addEventListener(egret.TouchEvent.TOUCH_TAP, this.clubClick, this);
             this.startScreen.btnSetting.addEventListener(egret.TouchEvent.TOUCH_TAP, this.settingClick, this);
 
             this.initData();
@@ -42,18 +43,25 @@ namespace moa {
                 this.startScreen.isDebugPlatform = true;
                 this.startScreen.isWxPlatform = false;
                 this.startScreen.isNativePlatform = false;
+
+                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
+                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
             }
             else if (platform.name == "wxgame") {
                 console.log("wxgame");
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = true;
                 this.startScreen.isNativePlatform = false;
+
+                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
             }
             else if (platform.name == "native") {
                 console.log("native");
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = false;
                 this.startScreen.isNativePlatform = true;
+
+                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
             }
         }
 
@@ -87,6 +95,10 @@ namespace moa {
             }
         }
 
+        public guideClick(event: egret.TouchEvent) {
+            this.sendNotification(SceneCommand.SHOW_GUIDE_WINDOW);
+        }
+
         public viewMoreClick(event: egret.TouchEvent) {
             this.sendNotification(SceneCommand.SHOW_MORE_GAME);
         }
@@ -99,7 +111,7 @@ namespace moa {
             this.sendNotification(SceneCommand.SHOW_RANK_WINDOW);
         }
 
-        private guideClick(event: egret.TouchEvent) {
+        private clubClick(event: egret.TouchEvent) {
             this.sendNotification(SceneCommand.SHOW_BAR_WINDOW);
         }
 

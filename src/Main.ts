@@ -67,14 +67,27 @@ namespace moa {
             });
         }
 
+        private async retryAuthorize() {
+            const userInfo = await AccountAdapter.loadUserInfo();
+            if (userInfo && userInfo.userId) {
+                this.createGameScene();
+            }
+            else {
+                await this.retryAuthorize();
+            }
+        }
+
         private async runGame() {
             await this.loadResource();
             this.loadingView.groupLoading.visible = false;
 
             if (platform.name == "wxgame") {
                 await AccountAdapter.login();
-                await AccountAdapter.loadUserInfo();
-                this.createGameScene();
+                await this.retryAuthorize();
+                // const userInfo = await AccountAdapter.loadUserInfo();
+                // if (userInfo && userInfo.userId) {
+                //     this.createGameScene();
+                // }
             }
             else if (platform.name == "DebugPlatform") {
                 let anonymousToken = platform.getStorage("anonymoustoken");

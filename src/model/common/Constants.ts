@@ -12,11 +12,11 @@ namespace moa {
         }
 
         public static get ResourceEndpoint(): string {
-            return platform.env == "local" || platform.env == "dev" || platform.name != "wxgame" ? this.Endpoints.localResource : this.Endpoints.remoteResource;
+            return (platform.env == "local" || platform.env == "dev" || platform.name != "wxgame") ? this.Endpoints.localResource : this.Endpoints.remoteResource;
         };
 
         public static get photonMasterServer(): string {
-            return platform.env == "local" || platform.env == "dev" ? this.photonConfig.get("localMasterServer") : this.photonConfig.get("photonMasterServer");
+            return (platform.env == "local" || platform.env == "dev") ? this.photonConfig.get("localMasterServer") : this.photonConfig.get("photonMasterServer");
         }
 
         public static get photonNameServer(): string {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.AboutWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
+<e:Skin class="skins.AboutWindow" width="720" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
         xmlns:moa="moa.*">
-	<e:Image height="{imgHeight}" width="640" source="about" />
+	<e:Image height="{imgHeight}" width="720" source="about" />
         <e:Label text="{appVersion}" textColor="0x000000" horizontalCenter="0" y="600"></e:Label>
 </e:Skin>

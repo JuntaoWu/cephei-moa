@@ -14,7 +14,7 @@
             <e:Label text="制作人员" textColor="0x020202" bold="true" size="50" horizontalCenter="0" verticalCenter="0" fontFamily="SimSun"/>
         </e:Group>
     </e:Group>
-    <e:Scroller scrollPolicyH="off" id="scrollGroup" width="640" horizontalCenter="0" top="150" bottom="30">
+    <e:Scroller scrollPolicyH="off" id="scrollGroup" width="720" horizontalCenter="0" top="150" bottom="30">
         <e:viewport>
             <e:Group>
                 <e:Image anchorOffsetX="0" anchorOffsetY="0"  source="logo" horizontalCenter="0"/>

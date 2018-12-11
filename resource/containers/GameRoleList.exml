@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.GameRoleList" width="640" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="skins.GameRoleList" width="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
     <e:Group width="600" horizontalCenter="0" height="540">
         <e:Image source="game-box-border" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
         <e:Label text="录入身份" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>

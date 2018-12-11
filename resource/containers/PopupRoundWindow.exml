@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupRoundWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="640">
+<e:Skin class="skins.PopupRoundWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="720">
     <moa:Shade id="overlay" />
     <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="900">
         <e:Group y="61" horizontalCenter="0">

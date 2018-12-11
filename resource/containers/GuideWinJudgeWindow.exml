@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.GuideWinJudgeWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
+<e:Skin class="skins.GuideWinJudgeWindow" width="720" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
         xmlns:moa="moa.*" xmlns:w="http://ns.egret.com/wing">
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
 	<e:Group horizontalCenter="0">
 		<e:Image horizontalCenter="0" source="manual41"></e:Image>
 	</e:Group>
-    <e:Group id="navigationBar" y="1130" height="135" horizontalCenter="0" width="640">
+    <e:Group id="navigationBar" y="1130" height="135" horizontalCenter="0" width="720">
 		<e:Button id="closeButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
 			<e:Skin states="up,down">
 				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />

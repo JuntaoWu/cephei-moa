@@ -34,11 +34,11 @@ export class WxgamePlugin implements plugins.Command {
                 }
                 content = "var egret = window.egret;" + content;
                 if (filename == 'main.js') {
-                    content += ";window.Main = Main;window.game = game;"
+                    content += ";window.Main = moa.Main;window.moa = moa;"
                     fs.readdirSync("./src/view/panel").forEach(name => {
                         var dotIndex = name.indexOf(".");
                         name = name.slice(0, dotIndex);
-                        content += `;window["game"]["${name}"] = game.${name};`;
+                        content += `;window["moa"]["${name}"] = moa.${name};`;
                     });
                 }
 

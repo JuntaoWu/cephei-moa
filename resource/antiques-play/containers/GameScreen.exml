@@ -53,23 +53,23 @@
     </e:Group>
     <e:Group id="textGroup" bottom="0" top="725">
         <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
-        <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="25" bottom="372">
+        <e:Scroller id="scrollGroup" width="720" horizontalCenter="0" top="25" bottom="372">
             <e:viewport>
                 <e:Group>
-                    <e:Label text="{description}" y="15" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" fontFamily="Microsoft YaHei"/>
+                    <e:Label text="{description}" y="15" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="720" fontFamily="Microsoft YaHei"/>
                 </e:Group>
             </e:viewport>
         </e:Scroller>
         <e:Group id="footGroup" minHeight="200" horizontalCenter="0" bottom="0">
-            <e:Label text="{question}" y="20" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center" fontFamily="Microsoft YaHei"/>
+            <e:Label text="{question}" y="20" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="720" textAlign="center" fontFamily="Microsoft YaHei"/>
             <e:Group id="bottomGroup" top="80" bottom="130" horizontalCenter="0">
             </e:Group>
-            <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="640">
+            <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="720">
                 <e:layout>
                     <e:TileLayout orientation="columns" requestedColumnCount="1" verticalGap="20" columnWidth="640" />
                 </e:layout>
             </e:List>
-            <e:Group visible="{showReset}" bottom="20" horizontalCenter="0" width="640">
+            <e:Group visible="{showReset}" bottom="20" horizontalCenter="0" width="720">
                 <e:Button id="btnReset" left="10" width="45%">
                     <e:Skin>
                         <e:Image anchorOffsetX="0" width="100%" anchorOffsetY="0" source="option-bg" scale9Grid="45,43,224,37"/>

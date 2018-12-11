@@ -54,6 +54,6 @@
             <e:Image name="jigsaw04" source="ED-04" rotation="180" verticalCenter="0" horizontalCenter="0"/>
             <e:Image name="jigsaw05" source="ED-05" rotation="-45" verticalCenter="0" horizontalCenter="0"/>
         </e:Group>
-        <e:Label text="{question}" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center" fontFamily="Microsoft YaHei" bottom="40" size="40"/>
+        <e:Label text="{question}" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="720" textAlign="center" fontFamily="Microsoft YaHei" bottom="40" size="40"/>
     </e:Group>
 </e:Skin>

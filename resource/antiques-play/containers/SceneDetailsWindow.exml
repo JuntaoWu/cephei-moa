@@ -18,9 +18,9 @@
         <e:Image source="text3" verticalCenter="0"></e:Image>
         <e:Label fontFamily="SimSun" bold="true" size="35" text="{collectedText}" x="300" verticalCenter="0" textColor="0x332d27"/>
     </e:Group>
-    <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="220" bottom="20">
+    <e:Scroller id="scrollGroup" width="720" horizontalCenter="0" top="220" bottom="20">
         <e:viewport>
-            <e:List id="sceneList" width="640">
+            <e:List id="sceneList" width="720">
                 <e:layout>
                     <e:TileLayout orientation="rows" columnWidth="300" requestedColumnCount="2" verticalGap="40" horizontalGap="15" />
                 </e:layout>

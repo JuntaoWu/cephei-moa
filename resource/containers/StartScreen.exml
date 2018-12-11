@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.StartScreen" width="640" height="1386" xmlns:e="http://ns.egret.com/eui"
+<e:Skin class="skins.StartScreen" width="720" height="1560" xmlns:e="http://ns.egret.com/eui"
         xmlns:w="http://ns.egret.com/wing">
     <e:Image id="startBackground" left="0" right="0" bottom="-2" top="2" source="start-background" />
-    <e:Group id="headGroup" height="220" width="640">
-        <e:Image source="userinfo-background" width="640" verticalCenter="0"></e:Image>
+    <e:Group id="headGroup" height="220" width="720">
+        <e:Image source="userinfo-background" width="720" verticalCenter="0"></e:Image>
         <e:Group verticalCenter="0" horizontalCenter="0">
             <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="43" height="120"></e:Image>
             <e:Label text="{nickName}" bold="true" textColor="0x050505" verticalCenter="0" x="194" width="390" size="45" />
@@ -13,7 +13,7 @@
     <e:Scroller id="contentScroller" y="240" horizontalCenter="0">
         <e:viewport>
             <e:Group>
-                <e:Group width="620" height="350" horizontalCenter="0">
+                <e:Group width="700" height="350" horizontalCenter="0">
                     <e:Image left="0" right="0" top="0" bottom="0" source="assistant-bg"></e:Image>
                     <e:Image source="title-assistant" y="60" horizontalCenter="0" />
                     <e:Button id="btnCreateRoom" left="30" y="160" scaleX="0.9" scaleY="0.9">
@@ -27,7 +27,7 @@
                         </e:Skin>
                     </e:Button>
                 </e:Group>
-                <e:Group y="375" width="620" height="350">
+                <e:Group y="375" width="700" height="350">
                     <e:Image left="0" right="0" top="0" bottom="0" source="game-bg"></e:Image>
                     <e:Image source="title-tanbao" y="60" horizontalCenter="0" />
                     <e:Button id="btnTanbao" y="180" scaleX="0.8" scaleY="0.8" horizontalCenter="0">
@@ -36,43 +36,47 @@
                         </e:Skin>
                     </e:Button>
                 </e:Group>
-                <e:Group y="750" width="620" height="350">
-                    <e:Image left="0" right="0" top="0" bottom="0" source="game-bg"></e:Image>
-                    <e:Image source="title-more" y="60" horizontalCenter="0" />
-                    <e:Button id="btnViewMore" y="180" scaleX="0.8" scaleY="0.8" horizontalCenter="0">
-                        <e:Skin>
-                            <e:Image source="btn-view"></e:Image>
-                        </e:Skin>
-                    </e:Button>
-                </e:Group>
             </e:Group>
         </e:viewport>
     </e:Scroller>
-    <e:Group id="navigationBar" y="1011" width="640" height="170">
-        <e:Image source="navigation-bar" width="100%" top="-20" />
-        <e:Button id="btnNotice" left="17" verticalCenter="0">
-            <e:Skin>
-                <e:Image source="btn-board"></e:Image>
-                <e:Label text="公告" y="70" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
-            </e:Skin>
-        </e:Button>
-        <e:Button id="btnRank" x="180" verticalCenter="0">
-            <e:Skin>
-                <e:Image source="btn-rank"></e:Image>
-                <e:Label text="排行" y="130" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
-            </e:Skin>
-        </e:Button>
-        <e:Button id="btnGuide" x="380" verticalCenter="0">
-            <e:Skin>
-                <e:Image source="btn-game-bar"></e:Image>
-                <e:Label text="桌游吧" y="130" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
-            </e:Skin>
-        </e:Button>
-        <e:Button id="btnSetting" right="20" verticalCenter="0">
-            <e:Skin>
-                <e:Image source="btn-settings"></e:Image>
-                <e:Label text="关于" y="70" bold="true" textColor="0x000000" horizontalCenter="0"></e:Label>
-            </e:Skin>
-        </e:Button>
+    <e:Group id="navigationBar" y="1020" height="180">
+        <e:Image source="navigation-bar" width="100%" />
+        <e:Group id="groupNavigationBar" width="620" height="160" horizontalCenter="0" verticalCenter="0">
+            <e:layout>
+                <e:HorizontalLayout horizontalAlign="justify" verticalAlign="bottom"></e:HorizontalLayout>
+            </e:layout>
+            <e:Button width="124" id="btnGuide" verticalCenter="0">
+                <e:skinName>
+                    <e:Skin states="up,down,disabled">
+                        <e:Image source="nav-guide" />
+                    </e:Skin>
+                </e:skinName>
+            </e:Button>
+            <e:Button width="124" id="btnNotice" verticalCenter="0">
+                <e:Skin>
+                    <e:Image source="nav-notice"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button width="124" id="btnRank" verticalCenter="0">
+                <e:Skin>
+                    <e:Image source="nav-rank"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button width="124" id="btnSetting" verticalCenter="0">
+                <e:Skin>
+                    <e:Image source="nav-settings"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button width="124" visible="{isNativePlatform}" id="btnClub" verticalCenter="0">
+                <e:Skin>
+                    <e:Image source="nav-playbar"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button width="124" visible="{isWxPlatform}" id="btnViewMore" verticalCenter="0">
+                <e:Skin>
+                    <e:Image source="nav-more"></e:Image>
+                </e:Skin>
+            </e:Button>
+        </e:Group>
     </e:Group>
 </e:Skin>

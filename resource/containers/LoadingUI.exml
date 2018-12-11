@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.LoadingUI" width="640" xmlns:e="http://ns.egret.com/eui"
+<e:Skin class="skins.LoadingUI" width="720" xmlns:e="http://ns.egret.com/eui"
         xmlns:moa="moa.*">
     <e:Image id="loadingBackground" left="0" right="0" bottom="0" top="0" source="loading-background" />
-    <e:Group width="640" id="groupLoading">
+    <e:Group width="720" id="groupLoading">
         <e:Group id="loadingLabel" horizontalCenter="0">
             <e:Label id="loadingText" text="数据加载中，请等待..." fontFamily="Arial" bold="true" textColor="0xfdb449"
                      anchorOffsetX="0" left="0" verticalCenter="0" />
             <e:Label id="labelText" text="Loading..." fontFamily="Arial" textColor="0x000000" x="316" />
         </e:Group>
-        <e:Image id="progressBg" source="progress-bg" width="640" height="60" />
-        <e:Image id="progressBar" source="progress" height="60"  width="640"/>
+        <e:Image id="progressBg" source="progress-bg" width="720" height="60" />
+        <e:Image id="progressBar" source="progress" height="60"  width="720"/>
     </e:Group>
-    <e:Button id="btnAnonymousLogin" width="640" visible="false">
+    <e:Button id="btnAnonymousLogin" width="720" visible="false">
         <e:Skin states="up,down,disabled">
             <e:Image source="btn-anonymouslogin" width="100%" scaleX.down="0.9"></e:Image>
         </e:Skin>
     </e:Button>
-    <e:Button id="btnLogin" width="640" visible="false">
+    <e:Button id="btnLogin" width="720" visible="false">
         <e:Skin states="up,down,disabled">
             <e:Image source="btn-wxlogin" width="100%" scaleX.down="0.9"></e:Image>
         </e:Skin>
