@@ -6,9 +6,9 @@ import * as fileutil from 'library/file-util';
 
 class WxgamePlatform {
 
-  env = 'dev';
+  env = 'test';
   name = 'wxgame';
-  appVersion = '0.3.2';
+  appVersion = '0.4.0';
 
   login() {
     return new Promise((resolve, reject) => {
@@ -44,9 +44,11 @@ class WxgamePlatform {
     });
   }
 
+  userInfoButton = null;
+
   authorizeUserInfo() {
     let systemInfo = wx.getSystemInfoSync();
-    let button = wx.createUserInfoButton({
+    this.userInfoButton = this.userInfoButton || wx.createUserInfoButton({
       type: 'image',
       text: '微信登录',
       image: 'http://gdjzj.hzsdgames.com:8090/miniGame/resource/assets/Button/btn-wxlogin.png',
@@ -65,9 +67,9 @@ class WxgamePlatform {
     });
     return new Promise((resolve, reject) => {
 
-      button.onTap((res) => {
+      this.userInfoButton.onTap((res) => {
         if (res.userInfo) {
-          button.destroy();
+          this.userInfoButton.destroy();
           resolve({
             ...res,
             ...res.userInfo
