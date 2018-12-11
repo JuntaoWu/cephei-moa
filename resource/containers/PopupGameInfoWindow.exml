@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupGameInfoWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
-    <game:Shade id="overlay" />
-    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="1000">
+<e:Skin class="skins.PopupGameInfoWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="640">
+    <moa:Shade id="overlay" />
+    <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="1000">
         <e:Group left="100" y="60">
             <e:Label text="你" bold="true" textColor="0x000000" x="30" size="28"/>
             <e:Group y="45" scaleX="0.7" scaleY="0.7">
@@ -160,5 +160,5 @@
             </e:Group>
             <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{thirdRound.text}" text="{thirdRound.text}"/>
         </e:Group>
-    </game:PopupWindowWrapper>
+    </moa:PopupWindowWrapper>
 </e:Skin>

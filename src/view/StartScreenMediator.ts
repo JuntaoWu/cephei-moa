@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class StartScreenMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "StartScreenMediator";

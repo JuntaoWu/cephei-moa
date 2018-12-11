@@ -1,7 +1,7 @@
 
-module game {
+namespace moa {
 
-    export class PopupPromptWindow extends game.BasePanel {
+    export class PopupPromptWindow extends BasePanel {
 
         private message: string;
         private isStart: boolean;

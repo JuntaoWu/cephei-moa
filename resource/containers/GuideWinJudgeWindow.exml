@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.GuideWinJudgeWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
-        xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
+        xmlns:moa="moa.*" xmlns:w="http://ns.egret.com/wing">
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
 	<e:Group horizontalCenter="0">
 		<e:Image horizontalCenter="0" source="manual41"></e:Image>

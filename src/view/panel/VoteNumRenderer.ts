@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class VoteNumRenderer extends eui.ItemRenderer {
 

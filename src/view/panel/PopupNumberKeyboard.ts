@@ -1,7 +1,7 @@
 
-module game {
+namespace moa {
 
-    export class PopupNumberKeyboard extends game.BasePanel {
+    export class PopupNumberKeyboard extends moa.BasePanel {
 
         public num1: eui.Button;
         public num2: eui.Button;

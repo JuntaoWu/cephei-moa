@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class ActorUI extends eui.Component {
 

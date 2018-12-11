@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class BarWindow extends eui.Panel {
 

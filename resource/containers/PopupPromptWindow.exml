@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupPromptWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
-    <game:Shade id="overlay" />
-    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin">
+<e:Skin class="skins.PopupPromptWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="640">
+    <moa:Shade id="overlay" />
+    <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin">
         <e:Label text="{message}" bold="true" textColor="0x020202" horizontalCenter="0" y="100" width="400"/>
         
         <e:Label visible="{isStart}" text="开始本轮鉴宝" bold="true" size="45" textColor="0x020202" horizontalCenter="0" y="100"/>
@@ -10,5 +10,5 @@
 				<e:Image source="auth3" width="100%" horizontalCenter="0" verticalCenter="0" />
 			</e:Skin>
 		</e:Button>
-    </game:PopupWindowWrapper>
+    </moa:PopupWindowWrapper>
 </e:Skin>

@@ -1,40 +1,40 @@
 {
 	"groups": [
 		{
-			"keys": "question_json,select-options_json,game-bg,input-item,option-bg,input-bg,chapter-plot_json,plot-options_json,bar-bg,head-bg,scene_json,not-get,logo,start-btn_json,bar-icon_json,scene-btn_json,scene-text_json,game-btn_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small",
-			"name": "antiques-preload"
+			"keys": "question_json,select-options_json,game-bg,input-item,option-bg,input-bg,chapter-plot_json,plot-options_json,bar-bg,head-bg,scene_json,not-get,logo,start-btn_json,bar-icon_json,scene-btn_json,scene-text_json,game-btn_json,pay,pay_bg,power_bg,power_large,power_medium,note_bg,note_prop,shop_json,power_small,jiemi_ske_json,jiemi_tex_json,jiemi_tex_png,answer_right,heart,heiban,a,b,c,d,M17_bg,nono,yy,manage-event_json,yes,no,manage-change_json,money,tili,sound_close,sound_open,text_close,text_open,company,company_logo,music,music_close,music_open,sound,no_manage,no_btnmanage,tutorial,s99,yu_gao,mu,mu_gao,qing,qing_gao,shu,shu_gao,yu,btn-confirm-mini,popup-bg,btn-cancel-mini",
+			"name": "preload"
 		},
 		{
 			"keys": "progress-bg,progress,background",
 			"name": "loading"
 		},
 		{
-			"keys": "s0,s1,s2,s3,s4,s20,s53,s54,Y4,Y2,Y3,m01,s55,Y1,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,key2_png,key1_png",
+			"keys": "s0,s1,s2,s3,s4,s20,s53,s54,m01,s55,bai_png,hei_png,hong_png,huang_png,kuang_png,lan_png,M2bg_png,bg1_png,bg2_png,shang_png,trunoff_png,turnon_png,word_guo,word_ren,word_shi,word_xin,xia_png,key2_png,key1_png,Y4,Y2,Y1,Y3",
 			"name": "chapter0"
 		},
 		{
-			"keys": "s7,s5,s57,s6,s1,s0,s4,s58,s56,s9,Y5,m04,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png",
+			"keys": "s7,s5,s6,s1,s0,s4,s58,s56,s9,m04,M5_1_png,M5_2_png,M5_3_png,M5_4_png,M5_5_png,M5_6_png,M5_7_png,M5_8_png,M5_9_png,M5_bg_png,bg_png,ha1_png,ha2_png,ha3_png,ha4_png,ha5_png,Y5,s24,s8",
 			"name": "chapter1"
 		},
 		{
-			"keys": "m11,m10,m08-item_json,m08-bg,m07,Y8,Y7,Y6,Y17,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3,ren",
+			"keys": "m11,m10,m08-item_json,m08-bg,m07,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3,ren,m8.2-bg,m8.2-tips,m8.2_00,m8.2_01,m8.2_02,m8.2_03,m8.2_04,m8.2_05,m8.2_06,Y8,Y7,Y6,Y17",
 			"name": "chapter2"
 		},
 		{
-			"keys": "Y9,Y18,Y10,Y11,Y12,Y13,Y14,Y3,m16-item_json,m16-bg,m15,m13,m12,s71,s66,s60,s44,s17,s21,s19,s1,s0,s10,s20,s22,s23,s55,s63,s67,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png",
+			"keys": "m16-item_json,m16-bg,m15,m13,m12,s66,s60,s44,s17,s21,s19,s1,s0,s10,s20,s22,s23,s55,s63,s67,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,M14_bg_png,m14,Y14,Y13,Y12,Y11,Y10,Y18,Y3,Y9",
 			"name": "chapter3"
 		},
 		{
-			"keys": "Y15,m21,m20-item_json,m20-bg,m19,m18-item_json,m18-bg,m17,s0,s28,s32,s68,s26,s21,s1,s10,s18,s25,s27,s60,s38,s29",
+			"keys": "m21,m20-item_json,m20-bg,m19,m18-item_json,m18-bg,m17,s0,s28,s32,s26,s21,s1,s10,s18,s25,s27,s60,s38,s29,Y15,Y17",
 			"name": "chapter4"
 		},
 		{
-			"keys": "Y16,m42-tips,m42-item_json,m23,m22,s0,s17,s25,s35,s4,s68,s69,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu,m42-bg",
+			"keys": "m42-tips,m42-item_json,m23,m22,s0,s17,s25,s35,s4,s60,s38,s32,s18,s1,M24_bg,word_bai,word_he,word_hei,word_jia,word_jiao,word_ti,word_yi,word_zhu,m42-bg,Y16,s50,s39,s49",
 			"name": "chapter5"
 		},
 		{
-			"keys": "button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png",
-			"name": "antiques-lazyload"
+			"keys": "button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,hintCardNumber_png,tips-ellipse,hintCardNumber_fnt,manage-antiqe_json,manage-card2,manage-card1,manage-errer,manage-right,btn-plot,icon-group,icon-money,icon-clock,Y18,skip-btn,dialog-box,guide_json,ellipse,shop-icon-m,shop-icon-h,guide-img1,guide-img2,guide-img3,guide-img4",
+			"name": "lazyload"
 		}
 	],
 	"resources": [
@@ -799,11 +799,6 @@
 			"name": "s53"
 		},
 		{
-			"url": "assets/scene/s57.png",
-			"type": "image",
-			"name": "s57"
-		},
-		{
 			"url": "assets/game/head-bg.png",
 			"type": "image",
 			"name": "head-bg"
@@ -817,11 +812,6 @@
 			"url": "assets/scene/s65.jpg",
 			"type": "image",
 			"name": "s65"
-		},
-		{
-			"url": "assets/scene/s68.jpg",
-			"type": "image",
-			"name": "s68"
 		},
 		{
 			"url": "assets/scene/s2.jpg",
@@ -912,21 +902,6 @@
 			"type": "sheet",
 			"name": "game-btn_json",
 			"subkeys": "btn-back-game,btn-back-other,btn-finish,btn-help,btn-manage,btn-picture,btn-save,btn-tips"
-		},
-		{
-			"url": "assets/scene/s71.jpg",
-			"type": "image",
-			"name": "s71"
-		},
-		{
-			"url": "assets/scene/s70.png",
-			"type": "image",
-			"name": "s70"
-		},
-		{
-			"url": "assets/scene/s69.png",
-			"type": "image",
-			"name": "s69"
 		},
 		{
 			"url": "assets/scene/s9.png",
@@ -1067,6 +1042,417 @@
 			"url": "assets/questions/m42-bg.png",
 			"type": "image",
 			"name": "m42-bg"
+		},
+		{
+			"url": "assets/ani/jiemi_ske.json",
+			"type": "json",
+			"name": "jiemi_ske_json"
+		},
+		{
+			"url": "assets/ani/jiemi_tex.json",
+			"type": "json",
+			"name": "jiemi_tex_json"
+		},
+		{
+			"url": "assets/ani/jiemi_tex.png",
+			"type": "image",
+			"name": "jiemi_tex_png"
+		},
+		{
+			"url": "assets/questions/answer_right.png",
+			"type": "image",
+			"name": "answer_right"
+		},
+		{
+			"url": "assets/game/heart.png",
+			"type": "image",
+			"name": "heart"
+		},
+		{
+			"url": "assets/game/heiban.png",
+			"type": "image",
+			"name": "heiban"
+		},
+		{
+			"url": "assets/game/hintCardNumber.fnt",
+			"type": "font",
+			"name": "hintCardNumber_fnt"
+		},
+		{
+			"url": "assets/game/hintCardNumber.png",
+			"type": "image",
+			"name": "hintCardNumber_png"
+		},
+		{
+			"url": "assets/game/tips-ellipse.png",
+			"type": "image",
+			"name": "tips-ellipse"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2-bg.png",
+			"type": "image",
+			"name": "m8.2-bg"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2-tips.png",
+			"type": "image",
+			"name": "m8.2-tips"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_00.png",
+			"type": "image",
+			"name": "m8.2_00"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_01.png",
+			"type": "image",
+			"name": "m8.2_01"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_02.png",
+			"type": "image",
+			"name": "m8.2_02"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_03.png",
+			"type": "image",
+			"name": "m8.2_03"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_04.png",
+			"type": "image",
+			"name": "m8.2_04"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_05.png",
+			"type": "image",
+			"name": "m8.2_05"
+		},
+		{
+			"url": "assets/questions/m8.2/m8.2_06.png",
+			"type": "image",
+			"name": "m8.2_06"
+		},
+		{
+			"url": "assets/M17/a.png",
+			"type": "image",
+			"name": "a"
+		},
+		{
+			"url": "assets/M17/b.png",
+			"type": "image",
+			"name": "b"
+		},
+		{
+			"url": "assets/M17/c.png",
+			"type": "image",
+			"name": "c"
+		},
+		{
+			"url": "assets/M17/d.png",
+			"type": "image",
+			"name": "d"
+		},
+		{
+			"url": "assets/M17/M17_bg.png",
+			"type": "image",
+			"name": "M17_bg"
+		},
+		{
+			"url": "assets/M17/nono.png",
+			"type": "image",
+			"name": "nono"
+		},
+		{
+			"url": "assets/M17/yy.png",
+			"type": "image",
+			"name": "yy"
+		},
+		{
+			"url": "assets/M14/m14.png",
+			"type": "image",
+			"name": "m14"
+		},
+		{
+			"url": "config/manage-event.json",
+			"type": "json",
+			"name": "manage-event_json"
+		},
+		{
+			"url": "assets/game/yes.png",
+			"type": "image",
+			"name": "yes"
+		},
+		{
+			"url": "assets/game/no.png",
+			"type": "image",
+			"name": "no"
+		},
+		{
+			"url": "config/manage-change.json",
+			"type": "json",
+			"name": "manage-change_json"
+		},
+		{
+			"url": "assets/manage/manage-antiqe.json",
+			"type": "sheet",
+			"name": "manage-antiqe_json",
+			"subkeys": "ciqi(1),ciqi(2),ciqi(3),ciqi(4),ciqi(5),ciqi(6),ciqi(7),ciqi(8),muqi(1),muqi(2),muqi(3),muqi(4),muqi(5),muqi(6),muqi(7),muqi(8),qingtong(1),qingtong(2),qingtong(3),qingtong(4),qingtong(5),qingtong(6),qingtong(7),qingtong(8),shuhua(1),shuhua(2),shuhua(3),shuhua(4),shuhua(5),shuhua(6),shuhua(7),shuhua(8),yu(1),yu(2),yu(3),yu(4),yu(5),yu(6),yu(7),yu(8)"
+		},
+		{
+			"url": "assets/manage/manage-card2.png",
+			"type": "image",
+			"name": "manage-card2"
+		},
+		{
+			"url": "assets/manage/manage-card1.png",
+			"type": "image",
+			"name": "manage-card1"
+		},
+		{
+			"url": "assets/manage/manage-errer.png",
+			"type": "image",
+			"name": "manage-errer"
+		},
+		{
+			"url": "assets/manage/manage-right.png",
+			"type": "image",
+			"name": "manage-right"
+		},
+		{
+			"url": "assets/manage/btn-plot.png",
+			"type": "image",
+			"name": "btn-plot"
+		},
+		{
+			"url": "assets/manage/icon-group.png",
+			"type": "image",
+			"name": "icon-group"
+		},
+		{
+			"url": "assets/manage/icon-money.png",
+			"type": "image",
+			"name": "icon-money"
+		},
+		{
+			"url": "assets/manage/icon-clock.png",
+			"type": "image",
+			"name": "icon-clock"
+		},
+		{
+			"url": "assets/manage/money.png",
+			"type": "image",
+			"name": "money"
+		},
+		{
+			"url": "assets/game/tili.png",
+			"type": "image",
+			"name": "tili"
+		},
+		{
+			"url": "assets/setting/sound_close.png",
+			"type": "image",
+			"name": "sound_close"
+		},
+		{
+			"url": "assets/setting/sound_open.png",
+			"type": "image",
+			"name": "sound_open"
+		},
+		{
+			"url": "assets/setting/text_close.png",
+			"type": "image",
+			"name": "text_close"
+		},
+		{
+			"url": "assets/setting/text_open.png",
+			"type": "image",
+			"name": "text_open"
+		},
+		{
+			"url": "assets/setting/company.png",
+			"type": "image",
+			"name": "company"
+		},
+		{
+			"url": "assets/setting/company_logo.png",
+			"type": "image",
+			"name": "company_logo"
+		},
+		{
+			"url": "assets/setting/music.png",
+			"type": "image",
+			"name": "music"
+		},
+		{
+			"url": "assets/setting/music_close.png",
+			"type": "image",
+			"name": "music_close"
+		},
+		{
+			"url": "assets/setting/music_open.png",
+			"type": "image",
+			"name": "music_open"
+		},
+		{
+			"url": "assets/setting/sound.png",
+			"type": "image",
+			"name": "sound"
+		},
+		{
+			"url": "assets/start/no_manage.png",
+			"type": "image",
+			"name": "no_manage"
+		},
+		{
+			"url": "assets/game/no_btnmanage.png",
+			"type": "image",
+			"name": "no_btnmanage"
+		},
+		{
+			"url": "assets/manage/tutorial.png",
+			"type": "image",
+			"name": "tutorial"
+		},
+		{
+			"url": "assets/scene/s99.png",
+			"type": "image",
+			"name": "s99"
+		},
+		{
+			"url": "assets/manage/dialog-box.png",
+			"type": "image",
+			"name": "dialog-box"
+		},
+		{
+			"url": "assets/manage/skip-btn.png",
+			"type": "image",
+			"name": "skip-btn"
+		},
+		{
+			"url": "config/guide.json",
+			"type": "json",
+			"name": "guide_json"
+		},
+		{
+			"url": "assets/manage/yu_gao.png",
+			"type": "image",
+			"name": "yu_gao"
+		},
+		{
+			"url": "assets/manage/mu.png",
+			"type": "image",
+			"name": "mu"
+		},
+		{
+			"url": "assets/manage/mu_gao.png",
+			"type": "image",
+			"name": "mu_gao"
+		},
+		{
+			"url": "assets/manage/qing.png",
+			"type": "image",
+			"name": "qing"
+		},
+		{
+			"url": "assets/manage/qing_gao.png",
+			"type": "image",
+			"name": "qing_gao"
+		},
+		{
+			"url": "assets/manage/shu.png",
+			"type": "image",
+			"name": "shu"
+		},
+		{
+			"url": "assets/manage/shu_gao.png",
+			"type": "image",
+			"name": "shu_gao"
+		},
+		{
+			"url": "assets/manage/yu.png",
+			"type": "image",
+			"name": "yu"
+		},
+		{
+			"url": "assets/manage/ellipse.png",
+			"type": "image",
+			"name": "ellipse"
+		},
+		{
+			"url": "assets/Panel/btn-confirm.png",
+			"type": "image",
+			"name": "btn-confirm-mini"
+		},
+		{
+			"url": "assets/Panel/popup-bg.png",
+			"type": "image",
+			"name": "popup-bg"
+		},
+		{
+			"url": "assets/Panel/btn-cancel.png",
+			"type": "image",
+			"name": "btn-cancel-mini"
+		},
+		{
+			"url": "assets/scene/s24.png",
+			"type": "image",
+			"name": "s24"
+		},
+		{
+			"url": "assets/scene/s30.png",
+			"type": "image",
+			"name": "s30"
+		},
+		{
+			"url": "assets/scene/s39.jpg",
+			"type": "image",
+			"name": "s39"
+		},
+		{
+			"url": "assets/scene/s49.jpg",
+			"type": "image",
+			"name": "s49"
+		},
+		{
+			"url": "assets/scene/s50.jpg",
+			"type": "image",
+			"name": "s50"
+		},
+		{
+			"url": "assets/scene/s8.png",
+			"type": "image",
+			"name": "s8"
+		},
+		{
+			"url": "assets/manage/guide-img1.png",
+			"type": "image",
+			"name": "guide-img1"
+		},
+		{
+			"url": "assets/manage/guide-img2.png",
+			"type": "image",
+			"name": "guide-img2"
+		},
+		{
+			"url": "assets/manage/guide-img3.png",
+			"type": "image",
+			"name": "guide-img3"
+		},
+		{
+			"url": "assets/shop/shop-icon-m.png",
+			"type": "image",
+			"name": "shop-icon-m"
+		},
+		{
+			"url": "assets/shop/shop-icon-h.png",
+			"type": "image",
+			"name": "shop-icon-h"
+		},
+		{
+			"url": "assets/manage/guide-img4.png",
+			"type": "image",
+			"name": "guide-img4"
 		}
 	]
 }

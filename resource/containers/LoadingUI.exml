@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.LoadingUI" width="640" xmlns:e="http://ns.egret.com/eui"
-        xmlns:game="game.*">
+        xmlns:moa="moa.*">
     <e:Image id="loadingBackground" left="0" right="0" bottom="0" top="0" source="loading-background" />
     <e:Group width="640" id="groupLoading">
         <e:Group id="loadingLabel" horizontalCenter="0">

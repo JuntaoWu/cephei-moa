@@ -1,8 +1,5 @@
-/**
- * Created by xzper on 2014/11/15.
- */
 
-module game {
+namespace moa {
 
     export class SceneCommand extends puremvc.SimpleCommand implements puremvc.ICommand {
 

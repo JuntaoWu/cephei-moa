@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class AppContainer extends eui.UILayer {
 
@@ -27,12 +27,12 @@ module game {
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
-        private myChildGame: childGame.Main;
+        private myChildGame: ap.Main;
         public enterChildGame() {
             this.removeChildren();
 
             if (!this.myChildGame) {
-                this.myChildGame = new childGame.Main();
+                this.myChildGame = new ap.Main();
             }
             this.addChild(this.myChildGame);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);

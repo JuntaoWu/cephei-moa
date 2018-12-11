@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.GuideRoleSkillWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
-        xmlns:game="game.*" xmlns:w="http://ns.egret.com/wing">
+        xmlns:moa="moa.*" xmlns:w="http://ns.egret.com/wing">
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
 	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="70">
 		<e:Label text="技能介绍" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />

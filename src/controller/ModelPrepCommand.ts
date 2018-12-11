@@ -1,6 +1,6 @@
 
 
-module game {
+namespace moa {
 
     export class ModelPrepCommand extends puremvc.SimpleCommand implements puremvc.ICommand {
 

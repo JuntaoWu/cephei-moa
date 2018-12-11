@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
     export class UserInfo {
         public userId?: string;
         public wxgameOpenId?: string;

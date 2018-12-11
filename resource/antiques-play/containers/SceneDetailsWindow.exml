@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="SceneDetailsWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*">
+<e:Skin class="SceneDetailsWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="ap.*">
     <e:Image source="background" height="100%"/>
     <e:Group width="720">
         <e:Image source="head-bg"/>
@@ -11,6 +11,7 @@
         <e:Group horizontalCenter="0" verticalCenter="0">
             <e:Image source="title-bg"></e:Image>
             <e:Image source="{titleRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
+            <e:Label text="{title}"  textColor="0x000000" bold="true" size="50" verticalCenter="0" horizontalCenter="0" fontFamily="Microsoft YaHei"/>
         </e:Group>
     </e:Group>
     <e:Group y="165" horizontalCenter="0">

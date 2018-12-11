@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class GuideWinJudgeWindow extends eui.Panel {
 

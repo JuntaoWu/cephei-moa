@@ -1,4 +1,4 @@
-module game {
+namespace moa {
     export class ColorFilter {
         public static get grey() {
             const colorMatrix = [

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="GameScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="GameScreen" xmlns:e="http://ns.egret.com/eui" xmlns:moa="ap.*" xmlns:w="http://ns.egret.com/wing">
     <e:Group width="720">
         <e:Image width="720" source="head-bg"/>
         <e:Button id="btnBack" verticalCenter="0" x="20">
@@ -7,36 +7,37 @@
                 <e:Image source="btn-back-game"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnSave" x="130" verticalCenter="0">
-            <e:Skin>
-                <e:Image source="btn-save"></e:Image>
-            </e:Skin>
-        </e:Button>
-        <e:Button id="btnManage" x="240" verticalCenter="0">
+
+        <e:Button id="btnManage" x="108" verticalCenter="0.5" visible="false">
             <e:Skin>
                 <e:Image source="btn-manage"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnPicture" verticalCenter="0" x="350">
+        <e:Button id="btnPicture" verticalCenter="1" x="204">
             <e:Skin>
                 <e:Image source="btn-picture"></e:Image>
             </e:Skin>
         </e:Button>
-
-        <e:Button id="nextTest" x="442" anchorOffsetX="0" width="265" anchorOffsetY="0" height="144" verticalCenter="0">
+        
+        <e:Group x="300" anchorOffsetX="0" verticalCenter="15">
+            <e:Image source="tili" scaleX="1.5" scaleY="1.5"/>
+            <e:Label id="fatigueValue" text="0" anchorOffsetX="0" anchorOffsetY="0" height="49" verticalAlign="middle" textAlign="center" textColor="0xf7f7f7" verticalCenter="0" size="60" x="115"/>
+        </e:Group>
+        <!--<e:Button id="nextTest" anchorOffsetX="0" width="309" anchorOffsetY="0" verticalCenter="0" right="0">
             <e:Skin>
-                <e:Label text="下一步" verticalCenter="0" bold="true" textColor="0x000000" horizontalCenter="0" size="80"></e:Label>
+            <e:Label text="下一步" verticalCenter="0" bold="true" textColor="0x000000" horizontalCenter="0" size="80"/>
             </e:Skin>
-        </e:Button>
+        </e:Button>-->
+        <e:Image id="no_btnmanage" source="no_btnmanage" x="108" y="16"/>
     </e:Group>
-    <e:Group visible="{showScene}" width="720" top="135">
+    <e:Group visible="{showScene}" touchEnabled="false" touchChildren="false" width="720" top="135">
         <e:Image width="720" horizontalCenter="0" source="s0" height="590"/>
-        <e:Group id="sceneGroup">
+        <e:Group id="sceneGroup" touchEnabled="false">
             <e:Image id="sceneBg" width="720" horizontalCenter="0" source="s0" height="590"/>
             <e:Group id="sceneAddGroup" horizontalCenter="0" height="100%">
             </e:Group>
         </e:Group>
-        <e:Group width="720" y="5">
+        <e:Group id="pkBarGroup" width="720" y="5">
             <e:Image source="img-h" left="20"/>
             <e:Image source="img-m" right="20"/>
             <e:Group horizontalCenter="0" width="490" y="10">
@@ -52,30 +53,52 @@
     </e:Group>
     <e:Group id="textGroup" bottom="0" top="725">
         <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
-        <e:Scroller id="scrollGroup" width="640" y="40" horizontalCenter="0" height="150">
+        <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="25" bottom="372">
             <e:viewport>
                 <e:Group>
-                    <e:Label text="{description}" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" fontFamily="Microsoft YaHei"/>
+                    <e:Label text="{description}" y="15" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" fontFamily="Microsoft YaHei"/>
                 </e:Group>
             </e:viewport>
         </e:Scroller>
-        <e:Label text="{question}" y="240" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center" fontFamily="Microsoft YaHei"/>
-        <e:Group id="bottomGroup" bottom="0" horizontalCenter="0">
+        <e:Group id="footGroup" minHeight="200" horizontalCenter="0" bottom="0">
+            <e:Label text="{question}" y="20" lineSpacing="10" textColor="0x000000" horizontalCenter="0" width="640" textAlign="center" fontFamily="Microsoft YaHei"/>
+            <e:Group id="bottomGroup" top="80" bottom="130" horizontalCenter="0">
+            </e:Group>
+            <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="640">
+                <e:layout>
+                    <e:TileLayout orientation="columns" requestedColumnCount="1" verticalGap="20" columnWidth="640" />
+                </e:layout>
+            </e:List>
+            <e:Group visible="{showReset}" bottom="20" horizontalCenter="0" width="640">
+                <e:Button id="btnReset" left="10" width="45%">
+                    <e:Skin>
+                        <e:Image anchorOffsetX="0" width="100%" anchorOffsetY="0" source="option-bg" scale9Grid="45,43,224,37"/>
+                        <e:Label text="重置" horizontalCenter="0" verticalAlign="middle" anchorOffsetX="0" size="45" textColor="0xFFFFFF" bold="true" fontFamily="FangSong" verticalCenter="0" textAlign="center"></e:Label>
+                    </e:Skin>
+                </e:Button>
+                <e:Button id="btnConfirm" right="10" width="45%">
+                    <e:Skin>    
+                        <e:Image anchorOffsetX="0" width="100%" anchorOffsetY="0" source="option-bg" scale9Grid="45,43,224,37"/>
+                        <e:Label text="确认" horizontalCenter="0" verticalAlign="middle" anchorOffsetX="0" size="45" textColor="0xFFFFFF" bold="true" fontFamily="FangSong" verticalCenter="0" textAlign="center"></e:Label>
+                    </e:Skin>
+                </e:Button>
+
+            </e:Group>
         </e:Group>
-        <e:List id="plotSelectList" visible="false" bottom="20" horizontalCenter="0" width="640">
-            <e:layout>
-                <e:TileLayout orientation="columns" requestedColumnCount="1" verticalGap="20" columnWidth="640" />
-            </e:layout>
-        </e:List>
     </e:Group>
-    <e:Group id="questionGroup" visible="false" width="720" top="135">
+    <e:Group id="questionGroup" visible="true" width="720" top="135">
+
         <e:Group>
             <e:Image width="720" source="{questionRes}"/>
             <!-- 小游戏 -->
-            <game:MiniGame visible="{showMiniGame}" width="720" height="600" />
+            <moa:MiniGame id="miniGame" visible="{showMiniGame}" width="720" height="600" />
             <e:Button id="btnTips" bottom="35" left="30">
                 <e:Skin>
                     <e:Image source="btn-tips"></e:Image>
+                    <e:Group name="hintGroup" x="5">
+                        <e:Image source="tips-ellipse" horizontalCenter="0"></e:Image>
+                        <e:BitmapLabel name="hintCards" text="10" textAlign="center" verticalAlign="middle" horizontalCenter="0" x="200" font="hintCardNumber_fnt" verticalCenter="0"/>                
+                    </e:Group>
                 </e:Skin>
             </e:Button>
             <e:Button id="btnHelp" right="30" bottom="35">
@@ -83,10 +106,11 @@
                     <e:Image source="btn-help"></e:Image>
                 </e:Skin>
             </e:Button>
-            <e:Group visible="{points}" horizontalCenter="0" bottom="50">
-                <e:Image source="tips-bg" width="460" height="100%"/>
-                <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" maxWidth="450" verticalAlign="middle" textAlign="center" verticalCenter="0"/>       
+            <e:Group visible="{showPoints}" horizontalCenter="0" bottom="50">
+                <e:Image source="tips-bg" width="480" height="100%"/>
+                <e:Label text="{points}" textColor="0x000000" horizontalCenter="0" maxWidth="450" verticalAlign="middle" textAlign="center" top="10" bottom="10"/>       
             </e:Group>
+
         </e:Group>
     </e:Group>
     <e:Group visible="{showTransition}" top="135" bottom="0">

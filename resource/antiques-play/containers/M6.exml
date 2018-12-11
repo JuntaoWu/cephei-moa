@@ -52,9 +52,4 @@
 			</e:skinName>
 		</e:Button>
 	</e:Group>
-	<e:Label id="win" text="解锁成功" width="720" height="600" verticalCenter="0" horizontalCenter="0" verticalAlign="middle" textAlign="center" textColor="0xff0000" size="100" visible="false"/>
-	<e:Group id="lose" width="720" height="600" verticalCenter="0" horizontalCenter="0" visible="false">
-		<e:Label text="解锁失败" width="720" height="600" verticalCenter="0" horizontalCenter="0" verticalAlign="middle" textAlign="center" textColor="0xFF0000" size="100" x="0" y="0" scaleX="1" scaleY="1"/>
-		<e:Button id="again" label="再试一次" horizontalCenter="0" y="450" width="200" height="100"/>
-	</e:Group>
 </e:Skin>

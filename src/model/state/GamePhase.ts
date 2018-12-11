@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export enum GamePhase {
         Preparing = 1,  // 选座阶段

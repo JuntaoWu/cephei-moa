@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class UserInfoWindowMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "UserInfoWindowMediator";

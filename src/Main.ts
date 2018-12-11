@@ -27,128 +27,132 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class Main extends eui.UILayer {
+namespace moa {
 
-    private loadingView: LoadingUI;
+    export class Main extends eui.UILayer {
 
-    public constructor() {
-        super();
-        Object.entries = typeof Object.entries === 'function' ? Object.entries : obj => Object.keys(obj).map(k => [k, obj[k]] as [string, any]);
-    }
+        private loadingView: LoadingUI;
 
-    protected createChildren(): void {
-        super.createChildren();
-
-        egret.lifecycle.addLifecycleListener((context) => {
-            // custom lifecycle plugin
-        })
-
-        egret.lifecycle.onPause = () => {
-            egret.ticker.pause();
+        public constructor() {
+            super();
+            Object.entries = typeof Object.entries === 'function' ? Object.entries : obj => Object.keys(obj).map(k => [k, obj[k]] as [string, any]);
         }
 
-        egret.lifecycle.onResume = () => {
-            egret.ticker.resume();
-            console.log("egret onResume");
-            platform.resume();
-        }
+        protected createChildren(): void {
+            super.createChildren();
 
-        //inject the custom material parser
-        //注入自定义的素材解析器
-        let assetAdapter = new AssetAdapter();
-        egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
-        egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
+            egret.lifecycle.addLifecycleListener((context) => {
+                // custom lifecycle plugin
+            })
 
-        this.runGame().catch(e => {
-            console.error(e);
-            this.loadingView.showInformation(e);
-        });
-    }
-
-    private async runGame() {
-        await this.loadResource();
-        this.loadingView.groupLoading.visible = false;
-
-        if (platform.name == "wxgame") {
-            await AccountAdapter.login();
-            await AccountAdapter.loadUserInfo();
-            this.createGameScene();
-        }
-        else if (platform.name == "DebugPlatform") {
-            let anonymousToken = platform.getStorage("anonymoustoken");
-            await AccountAdapter.login({ token: anonymousToken });
-            this.createGameScene();
-        }
-        else {
-            this.loadingView.btnAnonymousLogin.visible = true;
-            this.loadingView.btnLogin.visible = true;
-            this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
-                egret.ExternalInterface.call("sendWxLoginToNative", "native");
-                egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
-                    this.loadingView.btnLogin.enabled = false;
-                    await AccountAdapter.login({ code: code });
-                    this.createGameScene();
-                });
-            }, this);
-            this.loadingView.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
-                let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
-                await AccountAdapter.login({ token: anonymousToken });
-                this.createGameScene();
-            }, this);
-        }
-    }
-
-    private async loadResource() {
-        try {
-            const checkVersionResult: any = await AccountAdapter.checkForUpdate();
-
-            if (checkVersionResult.hasUpdate) {
-                platform.applyUpdate(checkVersionResult.version);
+            egret.lifecycle.onPause = () => {
+                egret.ticker.pause();
             }
 
-            await RES.loadConfig("default.res.json", `${game.Constants.ResourceEndpoint}resource/`);
-            await this.loadTheme();
+            egret.lifecycle.onResume = () => {
+                egret.ticker.resume();
+                console.log("egret onResume");
+                platform.resume();
+            }
 
-            await RES.loadGroup("loading", 1);
-            this.loadingView = new LoadingUI();
-            this.stage.addChild(this.loadingView);
+            //inject the custom material parser
+            //注入自定义的素材解析器
+            let assetAdapter = new AssetAdapter();
+            egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
+            egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
-            await RES.loadGroup("preload", 0, this.loadingView);
-
-            RES.loadGroup("lazyload", 0);
-
-            platform.createBannerAd("top", "adunit-4616af6cd0c20ef1", "top");
+            this.runGame().catch(e => {
+                console.error(e);
+                this.loadingView.showInformation(e);
+            });
         }
-        catch (e) {
-            console.error(e);
+
+        private async runGame() {
+            await this.loadResource();
+            this.loadingView.groupLoading.visible = false;
+
+            if (platform.name == "wxgame") {
+                await AccountAdapter.login();
+                await AccountAdapter.loadUserInfo();
+                this.createGameScene();
+            }
+            else if (platform.name == "DebugPlatform") {
+                let anonymousToken = platform.getStorage("anonymoustoken");
+                await AccountAdapter.login({ token: anonymousToken });
+                this.createGameScene();
+            }
+            else {
+                this.loadingView.btnAnonymousLogin.visible = true;
+                this.loadingView.btnLogin.visible = true;
+                this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+                    egret.ExternalInterface.call("sendWxLoginToNative", "native");
+                    egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
+                        this.loadingView.btnLogin.enabled = false;
+                        await AccountAdapter.login({ code: code });
+                        this.createGameScene();
+                    });
+                }, this);
+                this.loadingView.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+                    let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
+                    await AccountAdapter.login({ token: anonymousToken });
+                    this.createGameScene();
+                }, this);
+            }
+        }
+
+        private async loadResource() {
+            try {
+                const checkVersionResult: any = await AccountAdapter.checkForUpdate();
+
+                if (checkVersionResult.hasUpdate) {
+                    platform.applyUpdate(checkVersionResult.version);
+                }
+
+                await RES.loadConfig("default.res.json", `${moa.Constants.ResourceEndpoint}resource/`);
+                await this.loadTheme();
+
+                await RES.loadGroup("loading", 1);
+                this.loadingView = new LoadingUI();
+                this.stage.addChild(this.loadingView);
+
+                await RES.loadGroup("preload", 0, this.loadingView);
+
+                RES.loadGroup("lazyload", 0);
+
+                platform.createBannerAd("top", "adunit-4616af6cd0c20ef1", "top");
+            }
+            catch (e) {
+                console.error(e);
+            }
+        }
+
+        private loadTheme() {
+            return new Promise((resolve, reject) => {
+                // load skin theme configuration file, you can manually modify the file. And replace the default skin.
+                //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
+                let theme = new eui.Theme("resource/default.thm.json", this.stage);
+                theme.addEventListener(eui.UIEvent.COMPLETE, () => {
+                    resolve();
+                }, this);
+            });
+        }
+
+        private textfield: egret.TextField;
+        /**
+         * 创建场景界面
+         * Create scene interface
+         */
+        protected createGameScene(): void {
+
+            egret.Tween.get(this.loadingView).to({ alpha: 0 }, 1500).call(() => {
+                this.stage.removeChild(this.loadingView);
+            });
+
+            const appContainer = new moa.AppContainer();
+            this.addChild(appContainer);
+
+            moa.ApplicationFacade.getInstance().startUp(appContainer);
         }
     }
 
-    private loadTheme() {
-        return new Promise((resolve, reject) => {
-            // load skin theme configuration file, you can manually modify the file. And replace the default skin.
-            //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
-            let theme = new eui.Theme("resource/default.thm.json", this.stage);
-            theme.addEventListener(eui.UIEvent.COMPLETE, () => {
-                resolve();
-            }, this);
-        });
-    }
-
-    private textfield: egret.TextField;
-    /**
-     * 创建场景界面
-     * Create scene interface
-     */
-    protected createGameScene(): void {
-
-        egret.Tween.get(this.loadingView).to({ alpha: 0 }, 1500).call(() => {
-            this.stage.removeChild(this.loadingView);
-        });
-
-        const appContainer = new game.AppContainer();
-        this.addChild(appContainer);
-
-        game.ApplicationFacade.getInstance().startUp(appContainer);
-    }
 }

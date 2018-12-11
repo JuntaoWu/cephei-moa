@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class RoleItemRenderer extends eui.ItemRenderer {
 

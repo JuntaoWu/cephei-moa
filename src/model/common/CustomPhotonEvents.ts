@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
     export enum CustomPhotonEvents {
         UserMessage,
         UserStartGame,

@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class GameCommand extends puremvc.SimpleCommand implements puremvc.ICommand {
 

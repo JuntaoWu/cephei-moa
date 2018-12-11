@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class Shade extends eui.Component {
         public constructor() {

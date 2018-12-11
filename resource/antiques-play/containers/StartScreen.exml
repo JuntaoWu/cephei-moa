@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="ChildStartScreen" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*">
+<e:Skin class="StartScreen" xmlns:e="http://ns.egret.com/eui" xmlns:moa="ap.*" xmlns:w="http://ns.egret.com/wing">
     <e:Image source="background" height="100%"/>
     <e:Image source="logo"  horizontalCenter="0" y="100"/>
     <e:Group y="440" horizontalCenter="0">
@@ -13,7 +13,7 @@
                 <e:Image source="btn-newgame"></e:Image>
             </e:Skin>
         </e:Button>
-        <e:Button id="btnManage" left="17" y="318">
+        <e:Button id="btnManage" left="17" y="318" visible="false">
             <e:Skin>
                 <e:Image source="btn-manage-start"></e:Image>
             </e:Skin>
@@ -23,6 +23,7 @@
                 <e:Image source="btn-dev"></e:Image>
             </e:Skin>
         </e:Button>
+			<e:Image id="no_manage" source="no_manage" x="17" y="318"/>
     </e:Group>
     <e:Group id="navigationBar" y="1180" width="665" height="170" horizontalCenter="0">
         <e:Button id="btnPicture" left="17" bottom="20">

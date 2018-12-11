@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.RankWindow" width="640" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
-        xmlns:game="game.*">
+        xmlns:moa="moa.*">
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
 	<e:Group id="headGroup" horizontalCenter="0" width="640" y="0" height="180">
 		<e:Label text="排行" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />

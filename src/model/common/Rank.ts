@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
     export class Rank {
         public userId: number;
         public mode: number;

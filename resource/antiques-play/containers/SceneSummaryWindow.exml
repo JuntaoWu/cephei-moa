@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="SceneSummaryWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*">
+<e:Skin class="SceneSummaryWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="ap.*">
     <e:Image source="background" height="100%"/>
     <e:Group width="720">
         <e:Image width="720" source="head-bg"/>

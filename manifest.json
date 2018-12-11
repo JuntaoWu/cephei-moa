@@ -13,7 +13,7 @@
 		"libs/modules/puremvc/puremvc.js",
 		"libs/modules/lodash/lodash.js",
 		"libs/modules/photon/photon.js",
-		"libs/modules/antiques-play-lib/antiques-play-lib.js"
+		"libs/modules/antiques-play/antiques-play.js"
 	],
 	"game": [
 		"bin-debug/view/panel/BasePanel.js",

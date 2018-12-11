@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class AboutWindow extends eui.Panel {
 

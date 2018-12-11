@@ -1,7 +1,7 @@
 
-module game {
+namespace moa {
 
-    export class PopupHandleWindow extends game.BasePanel {
+    export class PopupHandleWindow extends moa.BasePanel {
 
         public confirmButton: eui.Button;
         public btnCreateRoom: eui.Button;

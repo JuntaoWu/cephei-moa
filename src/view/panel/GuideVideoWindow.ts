@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class GuideVideoWindow extends eui.Panel {
 
@@ -15,7 +15,7 @@ module game {
 
             this.btnVideo1.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.video && this.video.destroy();
-                this.video = platform.playVideo(`${game.Constants.ResourceEndpoint}resource/assets/guide/video1.mp4`);
+                this.video = platform.playVideo(`${moa.Constants.ResourceEndpoint}resource/assets/guide/video1.mp4`);
                 this.video.poster = "resource/assets/guide/video1.png";
                 this.video.x = 15;
                 this.video.y = 50;
@@ -26,7 +26,7 @@ module game {
             }, this);
             this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.video && this.video.destroy();
-                this.video = platform.playVideo(`${game.Constants.ResourceEndpoint}resource/assets/guide/video2.mp4`);
+                this.video = platform.playVideo(`${moa.Constants.ResourceEndpoint}resource/assets/guide/video2.mp4`);
                 // this.video.poster = "resource/assets/guide/video2.png";
                 this.video.x = 15;
                 this.video.y = 50;
@@ -37,7 +37,7 @@ module game {
             }, this);
             this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.video && this.video.destroy();
-                this.video = platform.playVideo(`${game.Constants.ResourceEndpoint}resource/assets/guide/video3.mp4`);
+                this.video = platform.playVideo(`${moa.Constants.ResourceEndpoint}resource/assets/guide/video3.mp4`);
                 this.video.poster = "resource/assets/guide/video3.png";
                 this.video.x = 15;
                 this.video.y = 50;

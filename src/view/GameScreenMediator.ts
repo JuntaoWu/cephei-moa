@@ -1,6 +1,6 @@
 
 
-module game {
+namespace moa {
 
     const animConfig = [
         { controlName: "Anim1", index: 0 },

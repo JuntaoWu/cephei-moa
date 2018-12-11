@@ -1,4 +1,4 @@
-module game {
+namespace moa {
 
     export class Club {
         public attr: string;

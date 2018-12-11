@@ -27,42 +27,45 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
+namespace moa {
 
-    private loadingText: egret.TextField;
-    private labelText: egret.TextField;
+    export class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
 
-    private progressBg: egret.Bitmap;
-    private progressBar: egret.Bitmap;
-    private loadingLabel: egret.DisplayObject;
+        private loadingText: egret.TextField;
+        private labelText: egret.TextField;
 
-    public groupLoading: eui.Group;
-    public btnAnonymousLogin: eui.Button;
-    public btnLogin: eui.Button;
+        private progressBg: egret.Bitmap;
+        private progressBar: egret.Bitmap;
+        private loadingLabel: egret.DisplayObject;
 
-    public constructor() {
-        super();
-        this.skinName = "skins.LoadingUI";
-        this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
-    }
+        public groupLoading: eui.Group;
+        public btnAnonymousLogin: eui.Button;
+        public btnLogin: eui.Button;
 
-    public createCompleteEvent(event: eui.UIEvent): void {
-        this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
+        public constructor() {
+            super();
+            this.skinName = "skins.LoadingUI";
+            this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
+        }
 
-        this.progressBg.y = this.stage.stageHeight - 30;
-        this.progressBar.y = this.stage.stageHeight - 30;
-        this.loadingLabel.y = this.stage.stageHeight - 60;
-        this.btnLogin.y = this.stage.stageHeight - this.btnLogin.height;
-        this.btnAnonymousLogin.y = this.stage.stageHeight - this.btnLogin.height - this.btnAnonymousLogin.height - 20;
-    }
+        public createCompleteEvent(event: eui.UIEvent): void {
+            this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
-    public onProgress(current: number, total: number): void {
-        this.labelText.text = `${current}/${total}`;
-        this.progressBar.width = this.stage.width * current / total;
-    }
+            this.progressBg.y = this.stage.stageHeight - 30;
+            this.progressBar.y = this.stage.stageHeight - 30;
+            this.loadingLabel.y = this.stage.stageHeight - 60;
+            this.btnLogin.y = this.stage.stageHeight - this.btnLogin.height;
+            this.btnAnonymousLogin.y = this.stage.stageHeight - this.btnLogin.height - this.btnAnonymousLogin.height - 20;
+        }
 
-    public showInformation(message) {
-        this.loadingText.text = message;
-        this.labelText.text = "";
+        public onProgress(current: number, total: number): void {
+            this.labelText.text = `${current}/${total}`;
+            this.progressBar.width = this.stage.width * current / total;
+        }
+
+        public showInformation(message) {
+            this.loadingText.text = message;
+            this.labelText.text = "";
+        }
     }
 }

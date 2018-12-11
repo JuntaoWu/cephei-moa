@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupVoteResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
-    <game:Shade id="overlay" />
-    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="780">
+<e:Skin class="skins.PopupVoteResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="640">
+    <moa:Shade id="overlay" />
+    <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="780">
         <e:Group horizontalCenter="0" y="60">
             <e:Label text="投票结果" textColor="0x020202" bold="true" horizontalCenter="0" size="20"/>
             <e:Group horizontalCenter="0" y="35">   
@@ -18,5 +18,5 @@
             <e:Label text="公布得票第2的宝物" textColor="0x020202" bold="true" horizontalCenter="0" y="25" size="20"/>
             <e:Label text="若出现平票，则生肖顺序靠前的兽首得票更高" textColor="0x020202" bold="true" horizontalCenter="0" size="20" y="50"/>
         </e:Group>
-    </game:PopupWindowWrapper>
+    </moa:PopupWindowWrapper>
 </e:Skin>

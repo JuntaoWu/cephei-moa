@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="PopupWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="ap.*" xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="popup-bg"/>
+    <e:Group visible="{msg}" horizontalCenter="0" top="60" bottom="150" width="510">
+        <e:Label text="{msg}" horizontalCenter="0" maxWidth="500" verticalAlign="middle" textAlign="left" textColor="0x020202" bold="true" size="40" verticalCenter="0"/>
+    </e:Group>
+    <e:Group id="textGroup" horizontalCenter="0" verticalCenter="-50">
+        <e:Label id="textMsg" maxWidth="550" right="45" verticalAlign="middle" textAlign="left" textColor="0x020202" bold="true" size="40"/>
+        <e:Group id="textIconGroup" top="0" bottom="0" left="0" right="0">
+            <e:Image source="money" right="0"/>
+        </e:Group>
+    </e:Group>
+    <e:Button id="closeButton" visible="{hasCancel}" left="45" bottom="45">
+        <e:Skin>
+            <e:Image source="btn-cancel-mini"></e:Image>
+        </e:Skin>
+    </e:Button>
+    <e:Button id="btnConfirm" bottom="45" right="45">
+        <e:Skin>
+            <e:Image source="btn-confirm-mini"></e:Image>
+        </e:Skin>
+    </e:Button>
+</e:Skin>

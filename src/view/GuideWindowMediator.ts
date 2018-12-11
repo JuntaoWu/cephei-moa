@@ -1,6 +1,6 @@
 
 
-module game {
+namespace moa {
 
     export class GuideWindowMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "GuideWindowMediator";

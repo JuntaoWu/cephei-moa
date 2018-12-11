@@ -12,5 +12,4 @@
 		<e:Image id="no7" x="630.5" y="100" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="7_png" scaleX="1" scaleY="1"/>
 		<e:Image id="no8" x="630.5" y="250" anchorOffsetX="84.5" anchorOffsetY="64.5" rotation="0" source="8_png" scaleX="1" scaleY="1"/>
 	</e:Group>
-	<e:Label id="win" text="解锁成功" verticalCenter="0" horizontalCenter="0" width="720" height="600" textColor="0xff0000" size="100" verticalAlign="middle" textAlign="center" visible="false"/>
 </e:Skin>

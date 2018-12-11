@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupAppraisalWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
-    <game:Shade id="overlay" />
-    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="650">
+<e:Skin class="skins.PopupAppraisalWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="640">
+    <moa:Shade id="overlay" />
+    <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="650">
         <e:Group id="appraisalGroup" horizontalCenter="0" y="120">   
             <e:Group horizontalCenter="0" width="500">
                 <e:Group height="180" width="180" scaleX="0.88" scaleY="0.88">
@@ -22,5 +22,5 @@
                 <e:Image source="{result2.resultRes}" verticalCenter="0" x="400" scaleX="0.7" scaleY="0.7"></e:Image>
             </e:Group>
         </e:Group>
-    </game:PopupWindowWrapper>
+    </moa:PopupWindowWrapper>
 </e:Skin>

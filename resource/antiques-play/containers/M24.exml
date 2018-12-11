@@ -9,5 +9,4 @@
 	<e:Image id="hei" source="word_hei" x="80" y="225"/>
 	<e:Image id="he" source="word_he" x="220" y="350"/>
 	<e:Image id="bai" source="word_bai" x="220" y="225"/>
-	<e:Label id="win" text="解锁成功" verticalCenter="0" horizontalCenter="0" width="720" height="600" verticalAlign="middle" textAlign="center" textColor="0xff0000" size="60" visible="false"/>
 </e:Skin>

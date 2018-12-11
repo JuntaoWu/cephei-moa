@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
     export enum Receiver {
         Self,
         All,

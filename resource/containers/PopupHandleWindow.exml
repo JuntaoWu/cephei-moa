@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupHandleWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
-    <game:Shade id="overlay" />
+<e:Skin class="skins.PopupHandleWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="640">
+    <moa:Shade id="overlay" />
     <e:Group id="container" width="640" horizontalCenter="0" verticalCenter="0">
         <e:Image source="small-dialog-background" horizontalCenter="0" scaleX="0.88"></e:Image>
         <e:Label visible="{message}" text="{message}" bold="true" size="45" textColor="0x020202" horizontalCenter="0" y="100"/>

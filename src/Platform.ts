@@ -4,340 +4,335 @@
  * 推荐开发者通过这种方式封装平台逻辑，以保证整体结构的稳定
  * 由于不同平台的接口形式各有不同，白鹭推荐开发者将所有接口封装为基于 Promise 的异步形式
  */
-declare interface Platform {
+namespace moa {
 
-    env: string;
-    name: string;
-    appVersion: string;
-    isConnected: boolean;
+    export interface Platform {
 
-    getUserInfo(): Promise<game.UserInfo>;
+        env: string;
+        name: string;
+        appVersion: string;
+        isConnected: boolean;
 
-    authorizeUserInfo(): Promise<game.UserInfo>;
+        getUserInfo(): Promise<moa.UserInfo>;
 
-    login(): Promise<any>;
+        authorizeUserInfo(): Promise<moa.UserInfo>;
 
-    getVersion(): Promise<any>;
+        login(): Promise<any>;
 
-    applyUpdate(version: string);
+        getVersion(): Promise<any>;
 
-    onNetworkStatusChange(callback: Function);
+        applyUpdate(version: string);
 
-    onResume: Function;
+        onNetworkStatusChange(callback: Function);
 
-    registerOnResume(callback: Function);
+        onResume: Function;
 
-    resume();
+        registerOnResume(callback: Function);
 
-    showToast(message: string);
+        resume();
 
-    setStorage(key, data);
+        showToast(message: string);
 
-    getStorage(key);
+        setStorage(key, data);
 
-    setStorageAsync(key, data);
+        getStorage(key);
 
-    getStorageAsync(key);
+        setStorageAsync(key, data);
 
-    setSecurityStorageAsync(key, data);
+        getStorageAsync(key);
 
-    getSecurityStorageAsync(key);
+        setSecurityStorageAsync(key, data);
 
-    playVideo(src: string);
+        getSecurityStorageAsync(key);
 
-    showModal(message: string, confirmText?: string, cancelText?: string): Promise<any>;
+        playVideo(src: string);
 
-    showLoading(message?: string);
+        showModal(message: string, confirmText?: string, cancelText?: string): Promise<any>;
 
-    hideLoading();
+        showLoading(message?: string);
 
-    shareAppMessage();
+        hideLoading();
 
-    showPreImage(data: any, index?: any);
+        shareAppMessage();
 
-    createBannerAd(name: string, adUnitId: string, style: any);
+        showPreImage(data: any, index?: any);
 
-    showBannerAd(name: string);
+        createBannerAd(name: string, adUnitId: string, style: any);
 
-    hideAllBannerAds();
+        showBannerAd(name: string);
 
-    navigateToMiniProgram();
-}
+        hideAllBannerAds();
 
-class DebugPlatform implements Platform {
-
-    public get env(): string {
-        return "test";
+        navigateToMiniProgram();
     }
 
-    public get name(): string {
-        return "DebugPlatform";
+    export class DebugPlatform implements Platform {
+
+        public get env(): string {
+            return "test";
+        }
+
+        public get name(): string {
+            return "DebugPlatform";
+        }
+
+        public get appVersion(): string {
+            return "0.2.24";
+        }
+
+        public isConnected: boolean = true;
+
+        public async getUserInfo() {
+            return { nickName: moa.CommonData.logon && moa.CommonData.logon.unionId || "username" };
+        }
+
+        public async authorizeUserInfo() {
+            return { nickName: moa.CommonData.logon && moa.CommonData.logon.unionId || "username" };
+        }
+
+        public async login() {
+            return { code: "anonymous", token: "" };
+        }
+
+        public async getVersion() {
+
+        }
+
+        public async checkForUpdate() {
+
+        }
+
+        public getOpenDataContext() {
+
+        }
+
+        public showShareMenu() {
+
+        }
+
+        public getLaunchInfo() {
+
+        }
+
+        public createRewardedVideoAd() {
+
+        }
+
+        public showVideoAd() {
+
+        }
+
+        public isVideoAdDisabled() {
+            return true;
+        }
+
+        public disableVideoAd() {
+
+        }
+
+        public applyUpdate() {
+            return true;
+        }
+
+        public onNetworkStatusChange(callback: Function) {
+
+        }
+
+        public onResume: Function;
+
+        public registerOnResume(callback: Function) {
+
+        }
+
+        public resume() {
+
+        }
+
+        public showToast(message: string) {
+            console.log(message);
+        }
+
+        public setStorage(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        public getStorage(key) {
+            return JSON.parse(localStorage.getItem(key));
+        }
+
+        public async setStorageAsync(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        public async getStorageAsync(key) {
+            return JSON.parse(localStorage.getItem(key));
+        }
+
+        public async setSecurityStorageAsync(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        public async getSecurityStorageAsync(key) {
+            return JSON.parse(localStorage.getItem(key));
+        }
+
+        public playVideo() {
+            return {};
+        }
+
+        public showPreImage(data, index) {
+
+        }
+
+        public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
+            return { confirm: false, cancel: true };
+        }
+
+        public showLoading() {
+            return true;
+        }
+
+        public hideLoading() {
+            return true;
+        }
+
+        public shareAppMessage() {
+
+        }
+
+        public createBannerAd(name: string, adUnitId: string, style: any) {
+
+        }
+
+        public showBannerAd(name: string = "bottom") {
+
+        }
+
+        public hideAllBannerAds() {
+
+        }
+
+        public navigateToMiniProgram() {
+            location.href = "https://gdjzj.hzsdgames.com:8095";
+        }
     }
 
-    public get appVersion(): string {
-        return "0.2.24";
-    }
+    export class NativePlatform extends DebugPlatform implements Platform {
 
-    public isConnected: boolean = true;
+        private hasGetSecurityStorageAsyncCallback: boolean = false;
+        private hasSendShowModalCallback: boolean = false;
 
-    public async getUserInfo() {
-        return { nickName: game.CommonData.logon && game.CommonData.logon.unionId || "username" };
-    }
+        public get env(): string {
+            return "test";
+        }
 
-    public async authorizeUserInfo() {
-        return { nickName: game.CommonData.logon && game.CommonData.logon.unionId || "username" };
-    }
+        public get name(): string {
+            return "native";
+        }
 
-    public async login() {
-        return { code: "anonymous", token: "" };
-    }
+        public get appVersion(): string {
+            return "0.3.1";
+        }
 
-    public async getVersion() {
+        public setStorage(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
 
-    }
+        public getStorage(key) {
+            return JSON.parse(localStorage.getItem(key));
+        }
 
-    public async checkForUpdate() {
-        
-    }
+        public async setStorageAsync(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
 
-    public getOpenDataContext() {
+        public async getStorageAsync(key) {
+            return JSON.parse(localStorage.getItem(key));
+        }
 
-    }
+        public async setSecurityStorageAsync(key, data) {
+            let item = {
+                key: key,
+                value: data,
+            };
+            egret.ExternalInterface.call("setSecurityStorageAsync", JSON.stringify(item));
+        }
 
-    public showShareMenu() {
+        public async getSecurityStorageAsync(key): Promise<any> {
+            egret.ExternalInterface.call("getSecurityStorageAsync", key);
+            return new Promise((resolve, reject) => {
+                if (!this.hasGetSecurityStorageAsyncCallback) {
+                    this.hasGetSecurityStorageAsyncCallback = true;
+                    egret.ExternalInterface.addCallback("getSecurityStorageAsyncCallback", (value) => {
+                        return resolve(value);
+                    });
+                }
+            });
+        }
 
-    }
-
-    public getLaunchInfo() {
-
-    }
-
-    public createRewardedVideoAd() {
-
-    }
-
-    public showVideoAd() {
-
-    }
-
-    public isVideoAdDisabled() {
-        return true;
-    }
-
-    public disableVideoAd() {
-        
-    }
-
-    public applyUpdate() {
-        return true;
-    }
-
-    public onNetworkStatusChange(callback: Function) {
-
-    }
-
-    public onResume: Function;
-
-    public registerOnResume(callback: Function) {
-
-    }
-
-    public resume() {
-
-    }
-
-    public showToast(message: string) {
-        console.log(message);
-    }
-
-    public setStorage(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    public getStorage(key) {
-        return JSON.parse(localStorage.getItem(key));
-    }
-
-    public async setStorageAsync(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    public async getStorageAsync(key) {
-        return JSON.parse(localStorage.getItem(key));
-    }
-
-    public async setSecurityStorageAsync(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    public async getSecurityStorageAsync(key) {
-        return JSON.parse(localStorage.getItem(key));
-    }
-
-    public playVideo() {
-        return {};
-    }
-
-    public showPreImage(data, index) {
-
-    }
-
-    public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
-        return { confirm: false, cancel: true };
-    }
-
-    public showLoading() {
-        return true;
-    }
-
-    public hideLoading() {
-        return true;
-    }
-
-    public shareAppMessage() {
-
-    }
-
-    public createBannerAd(name: string, adUnitId: string, style: any) {
-
-    }
-
-    public showBannerAd(name: string = "bottom") {
-
-    }
-
-    public hideAllBannerAds() {
-
-    }
-
-    public navigateToMiniProgram() {
-        location.href = "https://gdjzj.hzsdgames.com:8095";
-    }
-}
-
-class NativePlatform extends DebugPlatform implements Platform {
-
-    private hasGetSecurityStorageAsyncCallback: boolean = false;
-    private hasSendShowModalCallback: boolean = false;
-
-    public get env(): string {
-        return "test";
-    }
-
-    public get name(): string {
-        return "native";
-    }
-
-    public get appVersion(): string {
-        return "0.3.1";
-    }
-
-    public setStorage(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    public getStorage(key) {
-        return JSON.parse(localStorage.getItem(key));
-    }
-
-    public async setStorageAsync(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    public async getStorageAsync(key) {
-        return JSON.parse(localStorage.getItem(key));
-    }
-
-    public async setSecurityStorageAsync(key, data) {
-        let item = {
-            key: key,
-            value: data,
-        };
-        egret.ExternalInterface.call("setSecurityStorageAsync", JSON.stringify(item));
-    }
-
-    public async getSecurityStorageAsync(key): Promise<any> {
-        egret.ExternalInterface.call("getSecurityStorageAsync", key);
-        return new Promise((resolve, reject) => {
-            if (!this.hasGetSecurityStorageAsyncCallback) {
-                this.hasGetSecurityStorageAsyncCallback = true;
-                egret.ExternalInterface.addCallback("getSecurityStorageAsyncCallback", (value) => {
-                    return resolve(value);
+        public onNetworkStatusChange(callback: Function) {
+            egret.ExternalInterface.addCallback("sendNetworkStatusChangeToJS", (statusCode) => {
+                this.isConnected = (statusCode && statusCode != "0");
+                callback && callback({
+                    isConnected: this.isConnected
                 });
-            }
-        });
-    }
+            });
+        }
 
-    public onNetworkStatusChange(callback: Function) {
-        egret.ExternalInterface.addCallback("sendNetworkStatusChangeToJS", (statusCode) => {
-            this.isConnected = (statusCode && statusCode != "0");
-            callback && callback({
+        public onResume: Function;
+
+        public registerOnResume(callback: Function) {
+            this.onResume = callback;
+        }
+
+        public resume() {
+            this.onResume && this.onResume({
                 isConnected: this.isConnected
             });
-        });
-    }
+        }
 
-    public onResume: Function;
-
-    public registerOnResume(callback: Function) {
-        this.onResume = callback;
-    }
-
-    public resume() {
-        this.onResume && this.onResume({
-            isConnected: this.isConnected
-        });
-    }
-
-    public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
-        egret.ExternalInterface.call("sendShowModalToNative", JSON.stringify({ message, confirmText, cancelText }));
-        return new Promise((resolve, reject) => {
-            if (!this.hasSendShowModalCallback) {
-                this.hasSendShowModalCallback = true;
-                egret.ExternalInterface.addCallback("sendShowModalResultToJS", (value) => {
-                    return resolve({
-                        confirm: value == "confirm",
-                        cancel: value == "cancel",
+        public async showModal(message: string, confirmText?: string, cancelText?: string): Promise<any> {
+            egret.ExternalInterface.call("sendShowModalToNative", JSON.stringify({ message, confirmText, cancelText }));
+            return new Promise((resolve, reject) => {
+                if (!this.hasSendShowModalCallback) {
+                    this.hasSendShowModalCallback = true;
+                    egret.ExternalInterface.addCallback("sendShowModalResultToJS", (value) => {
+                        return resolve({
+                            confirm: value == "confirm",
+                            cancel: value == "cancel",
+                        });
                     });
-                });
-            }
-        });
+                }
+            });
+        }
+
+        public showToast(message: string) {
+            egret.ExternalInterface.call("sendShowToastToNative", message);
+        }
+
+        public navigateToMiniProgram() {
+
+
+            // location.href = ("https://gdjzj.hzsdgames.com:8095");
+            // location.href = "http://tool.egret-labs.org/Weiduan/game/index.html";
+
+            //egret.ExternalInterface.call("sendNavigateToMiniProgramToNative", "http://tool.egret-labs.org/Weiduan/game/index.html");
+
+            // let iframe = document.createElement("iframe");
+            // iframe.style.position = "absolute";
+            // iframe.style.top = iframe.style.left = "0px";
+            // iframe.width = `${screen.availWidth}px`;
+            // iframe.height = `${screen.availHeight}px`;
+            // document.body.appendChild(iframe);
+            // iframe.src = "http://tool.egret-labs.org/Weiduan/game/index.html"
+        }
+
     }
 
-    public showToast(message: string) {
-        egret.ExternalInterface.call("sendShowToastToNative", message);
-    }
+    // todo: in the wrapped project, the platform had been declared in the child lib project alreay.
+    export let platform: Platform;
+    platform = window["platform"] || new DebugPlatform();
 
-    public navigateToMiniProgram() {
-
-
-        // location.href = ("https://gdjzj.hzsdgames.com:8095");
-        // location.href = "http://tool.egret-labs.org/Weiduan/game/index.html";
-
-        //egret.ExternalInterface.call("sendNavigateToMiniProgramToNative", "http://tool.egret-labs.org/Weiduan/game/index.html");
-
-        // let iframe = document.createElement("iframe");
-        // iframe.style.position = "absolute";
-        // iframe.style.top = iframe.style.left = "0px";
-        // iframe.width = `${screen.availWidth}px`;
-        // iframe.height = `${screen.availHeight}px`;
-        // document.body.appendChild(iframe);
-        // iframe.src = "http://tool.egret-labs.org/Weiduan/game/index.html"
-    }
-
-}
-
-if (!window.platform) {
-    window.platform = new DebugPlatform();
-    //window.platform = new NativePlatform();
-}
-
-// todo: in the wrapped project, the platform had been declared in the child lib project alreay.
-// declare let platform: Platform;
-
-declare interface Window {
-
-    platform: Platform
 }
 
 

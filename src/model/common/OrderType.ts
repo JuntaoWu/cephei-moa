@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
     
     export type OrderType = "winRate" | "countTotal";
 

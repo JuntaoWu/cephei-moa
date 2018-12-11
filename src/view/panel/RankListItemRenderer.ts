@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export class RankListItemRenderer extends eui.ItemRenderer {
 

@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
 
     export enum Scene {
         Start = 1,

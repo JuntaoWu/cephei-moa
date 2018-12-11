@@ -1,7 +1,7 @@
 
-module game {
+namespace moa {
 
-    export class PopupVoteResultWindow extends game.BasePanel {
+    export class PopupVoteResultWindow extends BasePanel {
 
         public constructor() {
             super();

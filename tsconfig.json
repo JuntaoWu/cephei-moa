@@ -1,15 +1,16 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "outDir": "bin-debug",
-        "experimentalDecorators": true,
+        "noImplicitAny": false,
         "sourceMap": true,
+        "declaration": true,
+        "outDir": "bin-debug/",
+        "experimentalDecorators": true,
         "lib": [
             "dom",
-            "es2015.promise",
-            "es2017"
-        ],
-        "types": []
+            "es2017",
+            "esnext"
+        ]
     },
     "include": [
         "src",

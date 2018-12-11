@@ -1,6 +1,6 @@
 
 
-module game {
+namespace moa {
 
     export class StartupCommand extends puremvc.MacroCommand {
 

@@ -1,4 +1,4 @@
-module game {
+namespace moa {
 
     export class Role {
         public id: number;

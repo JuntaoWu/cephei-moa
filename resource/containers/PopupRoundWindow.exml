@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupRoundWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
-    <game:Shade id="overlay" />
-    <game:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="900">
+<e:Skin class="skins.PopupRoundWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="640">
+    <moa:Shade id="overlay" />
+    <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="900">
         <e:Group y="61" horizontalCenter="0">
             <e:Label text="{roundText}" bold="true" textColor="0x000000" horizontalCenter="0"/>
             <e:Label text="本轮宝物" bold="true" textColor="0x000000" y="35" horizontalCenter="0"/>
@@ -25,5 +25,5 @@
             </e:Group>
         </e:Group>
         <e:Label text="摆好后开始游戏" bold="true" textColor="0x000000" horizontalCenter="0" bottom="196"/>
-    </game:PopupWindowWrapper>
+    </moa:PopupWindowWrapper>
 </e:Skin>

@@ -4,7 +4,7 @@
 	<e:Image y="50" horizontalCenter="0" source="{data.res}" />
 	<e:Label text="{data.name}" x="59" y="208" anchorOffsetX="0" width="181" anchorOffsetY="0" height="48"
 	         verticalAlign="middle" textAlign="center" />
-	<e:Label text="{data.effect}" x="36" y="264" anchorOffsetX="0" width="235" verticalAlign="middle" textAlign="center" />
+	<e:Label id="effect" text="{data.effect}" x="36" y="268" anchorOffsetX="0" width="235" verticalAlign="middle" textAlign="center"  size="25"/>
 	<e:Group id="pay" width="231" height="75" x="41" y="299.5">		
 				<e:Image source="pay_bg" y="0" horizontalCenter="1" x="0" scaleX="1" scaleY="1"/>
 				<e:Image source="pay" x="100" y="21.5" scaleX="1" scaleY="1" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupVoteRecordWindow" xmlns:e="http://ns.egret.com/eui" xmlns:game="game.*" width="640">
+<e:Skin class="skins.PopupVoteRecordWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="640">
     
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
     <e:Group horizontalCenter="0" y="40">

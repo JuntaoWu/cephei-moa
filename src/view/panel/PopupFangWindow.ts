@@ -1,7 +1,7 @@
 
-module game {
+namespace moa {
 
-    export class PopupFangWindow extends game.BasePanel {
+    export class PopupFangWindow extends BasePanel {
 
         public seatNum: number;
         public seat: any;

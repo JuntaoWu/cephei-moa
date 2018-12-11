@@ -1,7 +1,7 @@
 
-module game {
+namespace moa {
 
-    export class PopupRoundWindow extends game.BasePanel {
+    export class PopupRoundWindow extends BasePanel {
 
         public constructor() {
             super();

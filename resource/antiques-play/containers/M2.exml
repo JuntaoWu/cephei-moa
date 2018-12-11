@@ -2,7 +2,6 @@
 <e:Skin class="M2Skin" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
 	<w:Config id="165cbda4bdd" ></w:Config>
 	<e:Image id="BG" source="M2bg_png" verticalCenter="0" horizontalCenter="0"/>
-	<e:Label id="win" text="解锁成功" width="720" height="700" verticalCenter="0" horizontalCenter="0" verticalAlign="middle" textAlign="center" textColor="0xff0000" size="100" visible="false"/>
 	<e:Group width="516" height="516" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="-6" horizontalCenter="0">
 		<e:Image id="white1" source="bai_png" x="173" y="2" scaleX="1" scaleY="1"/>
 		<e:Image id="black1" source="hei_png" x="229" y="2" scaleX="1" scaleY="1"/>
@@ -51,18 +50,18 @@
 		<e:Image id="white9" source="bai_png" x="456" y="287" scaleX="1" scaleY="1"/>
 	</e:Group>
 	<e:Group width="720" height="591" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="0" horizontalCenter="0">
-		<e:Image id="row1_1" source="shang_png" x="68" y="215.5" scaleX="0.5" scaleY="0.5" rotation="90"/>
-		<e:Image id="row2_1" source="shang_png" x="68" y="274.5" scaleX="0.5" scaleY="0.5" rotation="90"/>
-		<e:Image id="row3_1" source="shang_png" x="68" y="331.5" scaleX="0.5" scaleY="0.5" rotation="90"/>
-		<e:Image id="row1_2" source="shang_png" x="661" y="255.5" scaleX="0.5" scaleY="0.5" rotation="270"/>
-		<e:Image id="row2_2" source="shang_png" x="661" y="314.5" scaleX="0.5" scaleY="0.5" rotation="270"/>
-		<e:Image id="row3_2" source="shang_png" x="661" y="371.5" scaleX="0.5" scaleY="0.5" rotation="270"/>
-		<e:Image id="column1_2" source="shang_png" x="287" y="581" scaleY="0.5" scaleX="0.5"/>
-		<e:Image id="column2_2" source="shang_png" x="344" y="581" scaleY="0.5" scaleX="0.5"/>
-		<e:Image id="column3_2" source="shang_png" x="402" y="581" scaleY="0.5" scaleX="0.5"/>
-		<e:Image id="column1_1" source="xia_png" x="287" y="-17" scaleX="0.5" scaleY="0.5"/>
-		<e:Image id="column2_1" source="xia_png" x="343" y="-17" scaleX="0.5" scaleY="0.5"/>
-		<e:Image id="column3_1" source="xia_png" x="400" y="-17" scaleX="0.5" scaleY="0.5"/>
+		<e:Image id="row1_1" source="shang_png" x="87" y="212.5" scaleX="0.5" scaleY="0.5" rotation="90" width="90" height="55"/>
+		<e:Image id="row2_1" source="shang_png" x="87" y="271.5" scaleX="0.5" scaleY="0.5" rotation="90" width="90" height="55"/>
+		<e:Image id="row3_1" source="shang_png" x="87" y="328.5" scaleX="0.5" scaleY="0.5" rotation="90" width="90" height="55"/>
+		<e:Image id="row1_2" source="shang_png" x="635" y="256.5" scaleX="0.5" scaleY="0.5" rotation="270" width="90" height="55"/>
+		<e:Image id="row2_2" source="shang_png" x="635" y="315.5" scaleX="0.5" scaleY="0.5" rotation="270" width="90" height="55"/>
+		<e:Image id="row3_2" source="shang_png" x="635" y="372.5" scaleX="0.5" scaleY="0.5" rotation="270" width="90" height="55"/>
+		<e:Image id="column1_2" source="shang_png" x="279" y="554" scaleY="0.5" scaleX="0.5" width="90" height="55"/>
+		<e:Image id="column2_2" source="shang_png" x="336" y="554" scaleY="0.5" scaleX="0.5" width="90" height="55"/>
+		<e:Image id="column3_2" source="shang_png" x="394" y="554" scaleY="0.5" scaleX="0.5" width="90" height="55"/>
+		<e:Image id="column1_1" source="xia_png" x="280" y="3" scaleX="0.5" scaleY="0.5" width="90" height="55"/>
+		<e:Image id="column2_1" source="xia_png" x="336" y="3" scaleX="0.5" scaleY="0.5" width="90" height="55"/>
+		<e:Image id="column3_1" source="xia_png" x="393" y="3" scaleX="0.5" scaleY="0.5" width="90" height="55"/>
 	</e:Group>
-	<e:Image source="kuang_png" verticalCenter="-3" horizontalCenter="0"/>
+	<e:Image source="kuang_png" verticalCenter="-3" horizontalCenter="0" rotation="0" scaleX="-1"/>
 </e:Skin>

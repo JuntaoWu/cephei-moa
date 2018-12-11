@@ -1,5 +1,5 @@
 
-module game {
+namespace moa {
     export class DragonBones {
 
         public static createDragonBone(dragonBoneName: string, armatureName: string): dragonBones.EgretArmatureDisplay {

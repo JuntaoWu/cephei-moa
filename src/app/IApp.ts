@@ -1,6 +1,6 @@
 
 
-module game {
+namespace moa {
 
     export interface IApp {
         enter(): void;

@@ -1,7 +1,7 @@
-module game {
+namespace moa {
     export class BasePanel extends eui.Panel {
 
-        public overlay: game.Shade;
+        public overlay: Shade;
         public container: eui.UIComponent;
 
         constructor() {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="MiniGameCubeStop" xmlns:e="http://ns.egret.com/eui" xmlns:game="childGame.*" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="MiniGameCubeStop" xmlns:e="http://ns.egret.com/eui" xmlns:moa="ap.*" xmlns:w="http://ns.egret.com/wing">
     <e:Image source="m20-bg"/>
-    <e:List id="buttonList" x="120" y="35" width="485" height="480">
+    <e:List id="buttonList" y="35" width="540" height="480" horizontalCenter="10">
         <e:layout>
-            <e:TileLayout orientation="rows" requestedColumnCount="3" verticalGap="23" horizontalGap="32" />
+            <e:TileLayout orientation="rows" requestedColumnCount="3" verticalGap="3" horizontalGap="60" />
         </e:layout>
     </e:List>
 </e:Skin>

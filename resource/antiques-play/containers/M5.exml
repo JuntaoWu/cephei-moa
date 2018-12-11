@@ -17,5 +17,4 @@
 		<e:Image id="cube10" source="M5_5_png" x="120" y="240" scaleX="1" scaleY="1"/>
 		<e:Image id="cube11" x="360" y="360" scaleX="1" scaleY="1" source="M5_9_png"/>
 	</e:Group>
-	<e:Label id="win" text="解锁成功" verticalCenter="0" horizontalCenter="0" width="720" height="600" verticalAlign="middle" textAlign="center" size="100" textColor="0xff0000" visible="false"/>
 </e:Skin>

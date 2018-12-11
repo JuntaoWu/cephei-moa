@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="M17" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group x="0" y="0">
+		<e:Image source="m17" x="0" y="0"/>
+		<e:Image source="nono" x="122" y="51"/>
+		<e:Image source="nono" x="243" y="50"/>
+		<e:Image source="nono" x="363" y="50"/>
+		<e:Image source="nono" x="484" y="50"/>
+		<e:Image source="nono" x="200" y="320"/>
+		<e:Image source="nono" x="400" y="320"/>
+		<e:Image source="b" x="176" y="105" anchorOffsetX="34" anchorOffsetY="40.5"/>
+		<e:Image source="c" x="297" y="105" anchorOffsetX="49.5" anchorOffsetY="49"/>
+		<e:Image source="d" x="416" y="105" anchorOffsetX="50" anchorOffsetY="49.5"/>
+		<e:Image source="a" x="538" y="105" anchorOffsetX="47" anchorOffsetY="49"/>
+	</e:Group>
+	<e:Image id="di" source="b" x="176" y="105" anchorOffsetX="34" anchorOffsetY="40.5"/>
+	<e:Image id="jian" source="c" x="297" y="105" anchorOffsetX="49.5" anchorOffsetY="49"/>
+	<e:Image id="mao" source="d" x="416" y="105" anchorOffsetX="50" anchorOffsetY="49.5"/>
+	<e:Image id="ji" source="a" x="538" y="105" anchorOffsetX="47" anchorOffsetY="49"/>
+</e:Skin>
