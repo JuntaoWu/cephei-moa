@@ -47,9 +47,10 @@
 			<e:Image source="sep" horizontalCenter="0" bottom="0"></e:Image>
 			<e:Image source="antiques-icon" verticalCenter="0" x="30"></e:Image>
 			<e:Image source="antiques-label" x="170" y="50"></e:Image>
-			<e:Image source="antiques-passed" x="175" y="100"></e:Image>
+			<e:Image visible="{isAntiquesPassed}" source="antiques-passed" x="175" y="100"></e:Image>
+			<e:Image visible="{isAntiquesUnPassed}" source="antiques-unpassed" x="175" y="100"></e:Image>
 			<e:Image source="antiques-played-time" x="360" y="50"></e:Image>
-			<e:Label text="00:00:00" x="360" y="105" size="40" textColor="0x111111"></e:Label>
+			<e:Label text="{antiquesGameTime}" x="360" y="105" size="40" textColor="0x111111"></e:Label>
 		</e:Group>
 	</e:Group>
 	<e:Group id="navigationBar" y="1080" width="720" height="135">
