@@ -15,13 +15,15 @@ namespace moa {
 
         getUserInfo(): Promise<UserInfo>;
 
-        authorizeUserInfo(): Promise<UserInfo>;
+        authorizeUserInfo(imageUrl?: string): Promise<UserInfo>;
 
         login(): Promise<any>;
 
         getVersion(): Promise<any>;
 
         applyUpdate(version: string);
+
+        getOpenDataContext();
 
         onNetworkStatusChange(callback: Function);
 
@@ -53,7 +55,9 @@ namespace moa {
 
         hideLoading();
 
-        shareAppMessage();
+        shareAppMessage(message?: string, imageUrl?: string, query?: string, callback?: Function);
+
+        showShareMenu(imageUrl?: string);
 
         showPreImage(data: any, index?: any);
 
@@ -62,6 +66,14 @@ namespace moa {
         showBannerAd(name: string);
 
         hideAllBannerAds();
+
+        createRewardedVideoAd(name: string, adUnitId: string, callback: Function, onError: Function);
+
+        showVideoAd(name: string);
+
+        isVideoAdDisabled(name: string);
+
+        disableVideoAd(name: string);
 
         navigateToMiniProgram();
     }
@@ -86,7 +98,7 @@ namespace moa {
             return { nickName: CommonData.logon && CommonData.logon.unionId || "username" };
         }
 
-        public async authorizeUserInfo() {
+        public async authorizeUserInfo(imageUrl?: string) {
             return { nickName: CommonData.logon && CommonData.logon.unionId || "username" };
         }
 
@@ -98,15 +110,14 @@ namespace moa {
 
         }
 
-        public async checkForUpdate() {
-
-        }
-
         public getOpenDataContext() {
-
+            return {
+                postMessage: () => { },
+                createDisplayObject: () => { },
+            };
         }
 
-        public showShareMenu() {
+        public showShareMenu(imageUrl: string) {
 
         }
 
@@ -180,7 +191,7 @@ namespace moa {
             return {};
         }
 
-        public showPreImage(data, index) {
+        public showPreImage(data, index?) {
 
         }
 
@@ -196,7 +207,7 @@ namespace moa {
             return true;
         }
 
-        public shareAppMessage() {
+        public shareAppMessage(message?: string, imageUrl?: string, query?: string, callback?: Function) {
 
         }
 

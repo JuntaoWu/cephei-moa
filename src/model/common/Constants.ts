@@ -12,19 +12,19 @@ namespace moa {
         }
 
         public static get ResourceEndpoint(): string {
-            return (platform.env == "local" || platform.env == "dev" || platform.name != "wxgame") ? this.Endpoints.localResource : this.Endpoints.remoteResource;
+            return (platform.env == "local" || platform.env == "dev" || platform.name != "wxgame") ? Constants.Endpoints.localResource : Constants.Endpoints.remoteResource;
         };
 
         public static get photonMasterServer(): string {
-            return (platform.env == "local" || platform.env == "dev") ? this.photonConfig.get("localMasterServer") : this.photonConfig.get("photonMasterServer");
+            return (platform.env == "local" || platform.env == "dev") ? Constants.photonConfig.get("localMasterServer") : Constants.photonConfig.get("photonMasterServer");
         }
 
         public static get photonNameServer(): string {
-            return this.photonConfig.get("photonNameServer");
+            return Constants.photonConfig.get("photonNameServer");
         }
 
         public static get photonRegion(): string {
-            return this.photonConfig.get("photonRegion");
+            return Constants.photonConfig.get("photonRegion");
         }
 
         public static get Endpoints() {
@@ -65,6 +65,10 @@ namespace moa {
                 };
             }
         }
+
+        public static authorizeButtonImageUrl = `${Constants.ResourceEndpoint}resource/assets/Button/btn-wxlogin.png`;
+        public static gameTitle = `古董局中局`;
+        public static shareImageUrl = `${Constants.ResourceEndpoint}resource/assets/shared/share.png`;
     }
 
     export const gameType = {

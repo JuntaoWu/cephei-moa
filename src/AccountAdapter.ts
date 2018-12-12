@@ -3,7 +3,7 @@ namespace moa {
 
     export class AccountAdapter {
 
-        private static userInfo: moa.UserInfo;
+        private static userInfo: UserInfo;
 
         public static async checkForUpdate() {
 
@@ -18,7 +18,7 @@ namespace moa {
 
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${moa.Constants.Endpoints.service}version/check?version=${version}`, egret.HttpMethod.GET);
+            request.open(`${Constants.Endpoints.service}version/check?version=${version}`, egret.HttpMethod.GET);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send();
 
@@ -52,7 +52,7 @@ namespace moa {
 
             const request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${moa.Constants.Endpoints.service}users/${platform.name == "native" ? "login-native" : "login-wxgame"}?code=${wxRes.code || ""}&token=${wxRes.token || ""}`, egret.HttpMethod.POST);
+            request.open(`${Constants.Endpoints.service}users/${platform.name == "native" ? "login-native" : "login-wxgame"}?code=${wxRes.code || ""}&token=${wxRes.token || ""}`, egret.HttpMethod.POST);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send();
 
@@ -65,7 +65,7 @@ namespace moa {
                         return reject(res.message);
                     }
                     else {
-                        moa.CommonData.logon = { ...moa.CommonData.logon, ...res.data };  //this is the unique Id.
+                        CommonData.logon = { ...CommonData.logon, ...res.data };  //this is the unique Id.
                         console.log(`Login app server end, unionId: ${res.data && res.data.unionId}, wxgameOpenId: ${res.data && res.data.wxgameOpenId}`);
                         return resolve();
                     }
@@ -75,14 +75,14 @@ namespace moa {
             });
         }
 
-        public static async loadUserInfo(): Promise<moa.UserInfo> {
+        public static async loadUserInfo(): Promise<UserInfo> {
             console.log(`platform.getUserInfo begin.`);
 
             if (this.userInfo && this.userInfo.userId) {
                 return this.userInfo;
             }
-            else if (moa.CommonData.logon && moa.CommonData.logon.userId) {
-                this.userInfo = moa.CommonData.logon;
+            else if (CommonData.logon && CommonData.logon.userId) {
+                this.userInfo = CommonData.logon;
                 if (platform.name == "native") {
                     platform.setSecurityStorageAsync(this.userInfo.anonymous ? "anonymoustoken" : "token", this.userInfo.token);
                 }
@@ -98,7 +98,7 @@ namespace moa {
 
             if (!userInfo) {
                 console.log("platform.getUserInfo failed now await authorizeUserInfo actively.");
-                userInfo = await platform.authorizeUserInfo().catch((error) => {
+                userInfo = await platform.authorizeUserInfo(Constants.authorizeButtonImageUrl).catch((error) => {
                     console.error(error);
                 });
             }
@@ -106,18 +106,18 @@ namespace moa {
             if (!userInfo) {
                 console.log(`platform.getUserInfo end, userInfo is null.`);
                 this.userInfo = {
-                    gameRecords: {} as moa.MyStats
+                    gameRecords: {} as MyStats
                 };
                 return this.userInfo;
             }
 
             console.log(`platform.getUserInfo end.`);
-            this.userInfo = { ...userInfo, session_key: moa.CommonData.logon.session_key };
+            this.userInfo = { ...userInfo, session_key: CommonData.logon.session_key };
 
             await this.authorizeUserInfoViaAppServer(this.userInfo);
-            moa.CommonData.logon.userId = this.userInfo.userId;
-            moa.CommonData.logon.unionId = this.userInfo.unionId;
-            moa.CommonData.logon.token = this.userInfo.token;
+            CommonData.logon.userId = this.userInfo.userId;
+            CommonData.logon.unionId = this.userInfo.unionId;
+            CommonData.logon.token = this.userInfo.token;
 
             console.log("userInfo after authorizeUserInfoViaAppServer", this.userInfo);
             return this.userInfo;
@@ -126,14 +126,14 @@ namespace moa {
         /**
          * authorizeUserInfoViaAppServer
          */
-        public static async authorizeUserInfoViaAppServer(user: moa.UserInfo) {
-            if (moa.CommonData.logon && moa.CommonData.logon.wxgameOpenId) {
-                console.log(`load users/info via app server begin, openId: ${moa.CommonData.logon.wxgameOpenId}.`);
-                this.userInfo.wxgameOpenId = moa.CommonData.logon.wxgameOpenId;
+        public static async authorizeUserInfoViaAppServer(user: UserInfo) {
+            if (CommonData.logon && CommonData.logon.wxgameOpenId) {
+                console.log(`load users/info via app server begin, openId: ${CommonData.logon.wxgameOpenId}.`);
+                this.userInfo.wxgameOpenId = CommonData.logon.wxgameOpenId;
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${moa.Constants.Endpoints.service}users/authorize-wxgame/?wxgameOpenId=${moa.CommonData.logon.wxgameOpenId}`, egret.HttpMethod.POST);
+                request.open(`${Constants.Endpoints.service}users/authorize-wxgame/?wxgameOpenId=${CommonData.logon.wxgameOpenId}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
                 request.send(JSON.stringify(this.userInfo));
 
@@ -148,7 +148,7 @@ namespace moa {
                             return reject(res.message);
                         }
 
-                        const data = res.data as moa.UserInfo;
+                        const data = res.data as UserInfo;
 
                         this.userInfo.userId = data.userId;
                         this.userInfo.unionId = data.unionId;
@@ -173,14 +173,14 @@ namespace moa {
         /**
          * loadUserGameRecords
          */
-        public static async loadUserGameRecords(): Promise<moa.UserInfo> {
+        public static async loadUserGameRecords(): Promise<UserInfo> {
 
-            if (moa.CommonData.logon && moa.CommonData.logon.userId) {
-                console.log(`loadUserGameRecords via app server begin, userId: ${moa.CommonData.logon.userId}.`);
+            if (CommonData.logon && CommonData.logon.userId) {
+                console.log(`loadUserGameRecords via app server begin, userId: ${CommonData.logon.userId}.`);
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${moa.Constants.Endpoints.service}records/?token=${moa.CommonData.logon.token}`, egret.HttpMethod.POST);
+                request.open(`${Constants.Endpoints.service}records/?token=${CommonData.logon.token}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send();
@@ -197,7 +197,7 @@ namespace moa {
                         }
                         else {
                             console.log("update current userInfo object");
-                            this.userInfo.gameRecords = res.data as moa.MyStats;
+                            this.userInfo.gameRecords = res.data as MyStats;
                             return resolve(this.userInfo);
                         }
                     }, this);
@@ -214,12 +214,12 @@ namespace moa {
          */
         public static saveUserGameRecords(records) {
 
-            if (moa.CommonData.logon && moa.CommonData.logon.userId) {
-                console.log(`saveUserGameRecords via app server begin, userId: ${moa.CommonData.logon.userId}.`);
+            if (CommonData.logon && CommonData.logon.userId) {
+                console.log(`saveUserGameRecords via app server begin, userId: ${CommonData.logon.userId}.`);
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${moa.Constants.Endpoints.service}records/create/?token=${moa.CommonData.logon.token}`, egret.HttpMethod.POST);
+                request.open(`${Constants.Endpoints.service}records/create/?token=${CommonData.logon.token}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send(JSON.stringify(records));
