@@ -21,7 +21,7 @@ namespace moa {
         private isInit: boolean = false;
 
         private shareClick() {
-            platform.shareAppMessage();
+            platform.shareAppMessage(Constants.gameTitle, Constants.shareImageUrl);
         }
 
         private confirmClick() {

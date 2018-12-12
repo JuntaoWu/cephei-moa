@@ -46,18 +46,18 @@ class WxgamePlatform {
 
   userInfoButton = null;
 
-  authorizeUserInfo() {
+  authorizeUserInfo(imageUrl) {
     let systemInfo = wx.getSystemInfoSync();
     this.userInfoButton = this.userInfoButton || wx.createUserInfoButton({
-      type: 'image',
+      type: imageUrl ? 'image' : 'text',
       text: '微信登录',
-      image: 'http://gdjzj.hzsdgames.com:8090/miniGame/resource/assets/Button/btn-wxlogin.png',
+      image: imageUrl,
       style: {
         left: (systemInfo.windowWidth - 300) / 2,
         top: (systemInfo.windowHeight - 100),
         width: 300,
-        height: 60,
-        lineHeight: 60,
+        height: imageUrl ? 60 : 40,
+        lineHeight: 40,
         backgroundColor: '#0084ff',
         color: '#ffffff',
         textAlign: 'center',
@@ -122,10 +122,10 @@ class WxgamePlatform {
     return this.openDataContext;
   }
 
-  shareAppMessage(message, query, callback) {
+  shareAppMessage(message, imageUrl, query, callback) {
     wx.shareAppMessage({
-      title: '古董局中局',
-      imageUrl: 'http://gdjzj.hzsdgames.com:8083/miniGame/resource/assets/shared/share.png',
+      title: message,
+      imageUrl: imageUrl,
       query: query,
       success: (res) => {
         console.log("shareAppMessage successfully.", res);
@@ -134,13 +134,13 @@ class WxgamePlatform {
     });
   }
 
-  showShareMenu() {
+  showShareMenu(imageurl) {
     wx.showShareMenu({
       withShareTicket: true,
       success: function(res) {
         wx.onShareAppMessage(function() {
           return {
-            imageUrl: 'http://gdjzj.hzsdgames.com:8083/miniGame/resource/assets/shared/share.png',
+            imageUrl: imageurl,
           };
         });
       },

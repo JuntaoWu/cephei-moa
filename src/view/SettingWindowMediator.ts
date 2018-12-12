@@ -18,7 +18,7 @@ namespace moa {
         }
 
         private shareButtonClick(event: egret.TouchEvent) {
-            platform.shareAppMessage();
+            platform.shareAppMessage(Constants.gameTitle, Constants.shareImageUrl);
         }
 
         private aboutButtonClick(event: egret.TouchEvent) {
