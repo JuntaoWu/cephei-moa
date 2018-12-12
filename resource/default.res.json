@@ -459,7 +459,7 @@
 			"url": "assets/myInfo/self-info.json",
 			"type": "sheet",
 			"name": "self-info_json",
-			"subkeys": "room6,room7,room8,score2,team_lao_2,team_xu_2,win_rate"
+			"subkeys": "antiques-icon,antiques-label,antiques-passed,antiques-played-time,antiques-unpassed,room6,room7,room8,score2,split,team_lao_2,team_xu_2,win_rate"
 		},
 		{
 			"url": "assets/game/game-icon.json",

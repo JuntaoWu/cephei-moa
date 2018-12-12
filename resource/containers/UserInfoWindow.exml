@@ -4,48 +4,55 @@
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
 	<e:Group id="headGroup" horizontalCenter="0" width="720" y="0" height="240">
 		<e:Label text="我的信息" bold="true" textColor="0x020202" horizontalCenter="0" y="25" />
-       	<e:Group height="170" y="70" horizontalCenter="0">
-		   <e:Image source="userinfo-background" width="620" verticalCenter="0" horizontalCenter="0" height="160"></e:Image>
-            <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="43" height="120"></e:Image>
-            <e:Label text="{nickName}" bold="true" textColor="0x050505" verticalCenter="0" x="194" width="390" size="45" />
+		<e:Group height="170" y="70" horizontalCenter="0">
+			<e:Image source="userinfo-background" width="620" verticalCenter="0" horizontalCenter="0" height="160"></e:Image>
+			<e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="43" height="120"></e:Image>
+			<e:Label text="{nickName}" bold="true" textColor="0x050505" verticalCenter="0" x="194" width="390" size="45" />
 		</e:Group>
 	</e:Group>
-	<e:Group id="content" width="600" horizontalCenter="0" anchorOffsetY="0" height="700" y="245">
-		<e:Group horizontalCenter="0" verticalCenter="0" width="600">
-			<e:Image source="meihua" horizontalCenter="0" y="50"></e:Image>
-			<e:Image source="sep" horizontalCenter="0"></e:Image>
-			<e:Image source="score2" horizontalCenter="0"  y="10"></e:Image>
-			<e:Label text="{winPlay}" bold="true"  y="45" horizontalCenter="-105"/>
-			<e:Label text="{failPlay}" bold="true"  y="45" horizontalCenter="105"/>
-			<e:Label text="{totalPlay}" bold="true"  horizontalCenter="0" y="100" textColor="0x020202"/>
+	<e:Group id="content" width="600" horizontalCenter="0" anchorOffsetY="0" height="800" y="245">
+		<e:Image source="meihua" horizontalCenter="0" verticalCenter="100"></e:Image>
+		<e:Group horizontalCenter="0" width="600" height="600" top="0">
+			<e:Image source="score2" horizontalCenter="0" y="10"></e:Image>
+			<e:Label text="{winPlay}" bold="true" y="45" horizontalCenter="-105" />
+			<e:Label text="{failPlay}" bold="true" y="45" horizontalCenter="105" />
+			<e:Label text="{totalPlay}" bold="true" horizontalCenter="0" y="100" textColor="0x020202" />
 			<e:Group y="150" left="0">
-				<e:Image source="win_rate" horizontalCenter="0" ></e:Image>
-				<e:Label text="{totalWinRate}" horizontalCenter="0" y="60"/>
+				<e:Image source="win_rate" horizontalCenter="0"></e:Image>
+				<e:Label text="{totalWinRate}" horizontalCenter="0" y="60" />
 			</e:Group>
 			<e:Group y="150" left="154">
-				<e:Image source="room6" horizontalCenter="0" ></e:Image>
-				<e:Label text="{gameWinRate6}" horizontalCenter="0" y="60"/>
+				<e:Image source="room6" horizontalCenter="0"></e:Image>
+				<e:Label text="{gameWinRate6}" horizontalCenter="0" y="60" />
 			</e:Group>
 			<e:Group y="150" left="308">
-				<e:Image source="room7" horizontalCenter="0" ></e:Image>
-				<e:Label text="{gameWinRate7}" horizontalCenter="0" y="60"/>
+				<e:Image source="room7" horizontalCenter="0"></e:Image>
+				<e:Label text="{gameWinRate7}" horizontalCenter="0" y="60" />
 			</e:Group>
 			<e:Group y="150" right="0">
-				<e:Image source="room8" horizontalCenter="0" ></e:Image>
-				<e:Label text="{gameWinRate8}" horizontalCenter="0" y="60"/>
+				<e:Image source="room8" horizontalCenter="0"></e:Image>
+				<e:Label text="{gameWinRate8}" horizontalCenter="0" y="60" />
 			</e:Group>
-			
 			<e:Group y="350" left="60">
-				<e:Image source="team_xu_2" horizontalCenter="0" ></e:Image>
-				<e:Label text="{campXuWinRate}" horizontalCenter="0" y="55"/>
+				<e:Image source="team_xu_2" horizontalCenter="0"></e:Image>
+				<e:Label text="{campXuWinRate}" horizontalCenter="0" y="55" />
 			</e:Group>
 			<e:Group y="350" right="60">
-				<e:Image source="team_lao_2" horizontalCenter="0" ></e:Image>
-				<e:Label text="{campLaoWinRate}" horizontalCenter="0" y="55"/>
+				<e:Image source="team_lao_2" horizontalCenter="0"></e:Image>
+				<e:Label text="{campLaoWinRate}" horizontalCenter="0" y="55" />
 			</e:Group>
 		</e:Group>
+		<e:Group horizontalCenter="0" width="600" height="200" bottom="0">
+			<e:Image source="sep" horizontalCenter="0"></e:Image>
+			<e:Image source="sep" horizontalCenter="0" bottom="0"></e:Image>
+			<e:Image source="antiques-icon" verticalCenter="0" x="30"></e:Image>
+			<e:Image source="antiques-label" x="170" y="50"></e:Image>
+			<e:Image source="antiques-passed" x="175" y="100"></e:Image>
+			<e:Image source="antiques-played-time" x="360" y="50"></e:Image>
+			<e:Label text="00:00:00" x="360" y="105" size="40" textColor="0x111111"></e:Label>
+		</e:Group>
 	</e:Group>
-    <e:Group id="navigationBar" y="1011" width="720" height="135">
+	<e:Group id="navigationBar" y="1080" width="720" height="135">
 		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
 			<e:Skin states="up,down">
 				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />

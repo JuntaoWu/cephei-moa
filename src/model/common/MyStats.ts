@@ -17,7 +17,8 @@ namespace moa {
         public countXuYuanWin: number;
         public countLaoChaofengWin: number;
 
-        
+        public isAntiquesPassed: boolean;
+        public antiquesGameTime: number;
     }
 
 }

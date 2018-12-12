@@ -23,6 +23,9 @@ namespace moa {
         public campXuWinRate: string;
         public campLaoWinRate: string;
 
+        public isAntiquesPassed: boolean;
+        public antiquesGameTime: string;
+
         public constructor() {
             super();
 
@@ -32,7 +35,7 @@ namespace moa {
 
         public createCompleteEvent(event: eui.UIEvent): void {
             this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 10;
-            this.content.height = this.stage.stageHeight - this.navigationBar.height - this.headGroup.height - 15;
+            //this.content.height = this.stage.stageHeight - this.navigationBar.height - this.headGroup.height - 15;
 
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new UserInfoWindowMediator(this));
