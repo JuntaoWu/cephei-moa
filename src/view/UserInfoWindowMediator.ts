@@ -41,6 +41,17 @@ namespace moa {
             this.userInfoWindow.campXuWinRate = `${Math.round((campXuWin / (campXu || 1)) * 100)}%`;
             this.userInfoWindow.campLaoWinRate = `${Math.round((campLaoWin / (campLao || 1)) * 100)}%`;
 
+            this.userInfoWindow.isAntiquesPassed = userInfo.gameRecords.isAntiquesPassed;
+            this.userInfoWindow.isAntiquesUnPassed = !userInfo.gameRecords.isAntiquesPassed;
+            const antiquesGameTime = userInfo.gameRecords.antiquesGameTime || 0;
+            let date = new Date(antiquesGameTime);
+            if (date.getUTCDay() > 0) {
+                this.userInfoWindow.antiquesGameTime = `${Math.floor(antiquesGameTime / 3600)}:${date.getUTCMinutes()}:${date.getUTCSeconds()}`;
+            }
+            else {
+                this.userInfoWindow.antiquesGameTime = `${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()}`;
+            }
+
             // this.userInfoWindow.totalPlay = `共99局`;
             // this.userInfoWindow.winPlay = 99;
             // this.userInfoWindow.failPlay = 0;

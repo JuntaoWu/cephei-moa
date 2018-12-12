@@ -24,6 +24,7 @@ namespace moa {
         public campLaoWinRate: string;
 
         public isAntiquesPassed: boolean;
+        public isAntiquesUnPassed: boolean = true;
         public antiquesGameTime: string;
 
         public constructor() {
