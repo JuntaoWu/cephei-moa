@@ -33,8 +33,8 @@ namespace moa {
                     service: "http://localhost:4040/",
                     localResource: "",
                     remoteResource: "http://localhost:4040/miniGame/",
-                    ws: "ws://192.168.2.117:9090",
-                    wss: "wss://192.168.2.117:19090",
+                    ws: "ws://192.168.2.117:9092",
+                    wss: "wss://192.168.2.117:19092",
                 };
             }
             if (platform.env == "dev") {
@@ -42,17 +42,17 @@ namespace moa {
                     service: "http://gdjzj.hzsdgames.com:8090/",
                     localResource: "",
                     remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/",
-                    ws: "ws://192.168.2.202:9090",
-                    wss: "wss://192.168.2.202:19090",
+                    ws: "ws://192.168.2.202:9092",
+                    wss: "wss://192.168.2.202:19092",
                 };
             }
             if (platform.env == "prod") {
                 return {
-                    service: "https://gdjzj.hzsdgames.com:8084/",
+                    service: "https://gdjzj.hzsdgames.com:8100/",
                     localResource: "",
-                    remoteResource: "https://gdjzj.hzsdgames.com:8084/miniGame/",
-                    ws: "ws://photon.hzsdgames.com:9090",
-                    wss: "wss://photon.hzsdgames.com:19090",
+                    remoteResource: "https://gdjzj.hzsdgames.com:8100/miniGame/",
+                    ws: "ws://photon.hzsdgames.com:9092",
+                    wss: "wss://photon.hzsdgames.com:19092",
                 };
             }
             if (platform.env == "test") {
