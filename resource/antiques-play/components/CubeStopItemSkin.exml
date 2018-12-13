@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="CubeStopItemSkin" width="137" height="143" xmlns:e="http://ns.egret.com/eui">
+    <e:Image source="{img}" verticalCenter="0" horizontalCenter="0" width="137" height="143"/>
+</e:Skin>

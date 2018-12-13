@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.ResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="720">
+    <e:Image source="start-background" left="0" right="0" bottom="0" top="0"/>
+    <e:Image id="borderBg" left="0" right="0" scale9Grid="90,160,540,960" y="-40" source="border_red"/>
+    <e:Scroller id="contentScroller" scrollPolicyH="off" horizontalCenter="0" y="40">
+        <e:viewport>
+            <e:Group width="560">
+                <e:Group  horizontalCenter="0" y="40">
+                    <e:Group  horizontalCenter="0">
+                        <e:Image source="jzj" />
+                        <e:Image source="true2"  x="75"/>
+                        <e:Image source="{campRes}"  x="180"/>
+                        <e:Image source="teasure12"  x="180" y="47"/>
+                    </e:Group>
+
+                    <e:Image source="{winResult}"  y="110" horizontalCenter="0"/>
+
+                    <e:Image source="meihua"  y="200" horizontalCenter="0"/>
+                    <e:Image source="{winRes}"  y="260" horizontalCenter="0"/>
+                </e:Group>
+                <e:Group y="730" left="5">
+                    <e:Image source="round1" verticalCenter="0" x="0"/>
+                    <e:DataGroup id="roundGroup1" scaleX="0.9" scaleY="0.9" verticalCenter="0" x="50" width="520"> 
+                        <e:layout>
+                            <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="10" />
+                        </e:layout> 
+                    </e:DataGroup>
+                </e:Group>
+                <e:Group y="900" left="5">
+                    <e:Image source="round2" verticalCenter="0" x="0"/>
+                    <e:DataGroup id="roundGroup2" scaleX="0.9" scaleY="0.9" verticalCenter="0" x="50" width="520">  
+                        <e:layout>
+                            <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="10" />
+                        </e:layout>
+                    </e:DataGroup>
+                </e:Group>
+                <e:Group y="1070" left="5">
+                    <e:Image source="round3" verticalCenter="0" x="0"/>
+                    <e:DataGroup id="roundGroup3" scaleX="0.9" scaleY="0.9" verticalCenter="0" x="50" width="520">  
+                        <e:layout>
+                            <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="10" />
+                        </e:layout>
+                    </e:DataGroup>
+                </e:Group>
+                <e:Group y="1250" horizontalCenter="0">
+                    <e:Label text="鉴宝部分许愿方得分" textColor="0x050505"/>
+                    <e:Label text="{findAntiqueScore}" textColor="0xa50606" x="315"/>
+                </e:Group>
+                <e:Group y="1310" horizontalCenter="0">
+                    <e:Group scaleX="0.8" scaleY="0.8">
+                        <e:Label text="许愿" textColor="0x000000" horizontalCenter="0" />
+                        <e:Image source="{roleXu.url}" y="50" width="135" height="135" />
+                        <e:Image source="head_bg" y="50" width="135" height="135"/>
+                        <e:Image source="{roleXu.color}" x="-20" y="35" />
+                    </e:Group>
+                    <e:Group x="170" scaleX="0.8" scaleY="0.8">
+                        <e:Label text="老朝奉" textColor="0x000000" horizontalCenter="0" />
+                        <e:Image source="{roleLao.url}" y="50" width="135" height="135" />
+                        <e:Image source="head_bg" y="50" width="135" height="135"/>
+                        <e:Image source="{roleLao.color}" x="-20" y="35" />
+                    </e:Group>
+                    <e:Group x="340" scaleX="0.8" scaleY="0.8">
+                        <e:Label text="方震" textColor="0x000000" horizontalCenter="0" />
+                        <e:Image source="{roleFang.url}" y="50" width="135" height="135" />
+                        <e:Image source="head_bg" y="50" width="135" height="135"/>
+                        <e:Image source="{roleFang.color}" x="-20" y="35" />
+                    </e:Group>
+                </e:Group>
+                <e:Group visible="{showFindPeople}" y="1510" horizontalCenter="0">
+                    <e:Label text="许愿方投票结果" textColor="0x050505" horizontalCenter="0"/>
+                    <e:DataGroup id="voteGroup" y="30">
+                        <e:layout>
+                            <e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="10" horizontalGap="15" />
+                        </e:layout>
+                    </e:DataGroup>
+                </e:Group>
+                <e:Group visible="{showFindPeople}" y="2020" horizontalCenter="0">
+                    <e:Group x="0">
+                        <e:Label text="老朝奉找许愿" textColor="0x050505" horizontalCenter="0" size="24"/>
+                        
+                        <e:Group y="40" scaleX="0.7" scaleY="0.7">
+                            <e:Group>
+                                <e:Image source="{voteLao.voterUrl}"  width="135" height="135"/>
+                                <e:Image source="head_bg"  width="135" height="135"/>
+                                <e:Image source="{voteLao.voterColor}" x="-20" y="-15" />
+                                <e:Label text="老朝奉" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                            <e:Image source="vote1" verticalCenter="0" x="140"/>
+                            <e:Group x="182">
+                                <e:Image source="{voteLao.votedUrl}"  width="135" height="135"/>
+                                <e:Image source="head_bg"  width="135" height="135"/>
+                                <e:Image source="{voteLao.votedColor}" x="-20" y="-15" />
+                                <e:Label text="{voteLao.votedName}" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                        </e:Group>
+                    </e:Group>
+                    <e:Group x="250">
+                        <e:Label text="药不然找方震" textColor="0x050505" horizontalCenter="0" size="24"/>
+                        
+                        <e:Group y="40" scaleX="0.7" scaleY="0.7">
+                            <e:Group>
+                                <e:Image source="{voteYao.voterUrl}"  width="135" height="135"/>
+                                <e:Image source="head_bg"  width="135" height="135"/>
+                                <e:Image source="{voteYao.voterColor}" x="-20" y="-15" />
+                                <e:Label text="药不然" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                            <e:Image source="vote1" verticalCenter="0" x="140"/>
+                            <e:Group x="182">
+                                <e:Image source="{voteYao.votedUrl}"  width="135" height="135"/>
+                                <e:Image source="head_bg"  width="135" height="135"/>
+                                <e:Image source="{voteYao.votedColor}" x="-20" y="-15" />
+                                <e:Label text="{voteYao.votedName}" textColor="0x000000" horizontalCenter="0"  bottom="-40"/>
+                            </e:Group>
+                        </e:Group>
+                    </e:Group>
+                </e:Group>
+                <e:Group visible="{showFindPeople}" y="2210" horizontalCenter="0">
+                    <e:Label text="鉴人部分许愿方得分" textColor="0x050505"/>
+                    <e:Label text="{findPeopleScore}" textColor="0xa50606" x="315"/>
+                </e:Group>
+                <e:Group id="totalScoreGroup" y="2320" horizontalCenter="0">
+                    <e:Label text="许愿方总分" textColor="0x050505" size="32"/>
+                    <e:Label text="{totalScore}" textColor="0xa50606" x="220" y="1"/>
+                    <e:Label y="150" horizontalCenter="0" />
+                </e:Group>
+            </e:Group>
+        </e:viewport>
+    </e:Scroller>
+    
+    <e:Group id="navigationBar" y="1011" width="720" >
+        <e:Button id="shareButton" anchorOffsetY="0" anchorOffsetX="0" left="80">
+            <e:Skin states="up,down">
+                <e:Image source="share2" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+            </e:Skin>
+        </e:Button>
+        <e:Button id="confirmButton" anchorOffsetY="0" anchorOffsetX="0" right="80">
+            <e:Skin states="up,down">
+                <e:Image source="ok3" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+</e:Skin>

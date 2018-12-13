@@ -1,0 +1,9 @@
+{"file":"scene-text.png","frames":{
+"text1":{"x":0,"y":85,"w":368,"h":41,"offX":0,"offY":0,"sourceW":368,"sourceH":41},
+"text2":{"x":0,"y":128,"w":290,"h":41,"offX":0,"offY":0,"sourceW":290,"sourceH":41},
+"text3":{"x":0,"y":275,"w":277,"h":31,"offX":0,"offY":0,"sourceW":277,"sourceH":31},
+"title-person-cg":{"x":0,"y":171,"w":235,"h":50,"offX":0,"offY":0,"sourceW":235,"sourceH":50},
+"title-props-cg":{"x":0,"y":223,"w":235,"h":50,"offX":0,"offY":0,"sourceW":235,"sourceH":50},
+"title-scene":{"x":237,"y":223,"w":151,"h":50,"offX":0,"offY":0,"sourceW":151,"sourceH":50},
+"title-scene-cg":{"x":237,"y":171,"w":235,"h":50,"offX":0,"offY":0,"sourceW":235,"sourceH":50},
+"title-bg":{"x":0,"y":0,"w":398,"h":83,"offX":0,"offY":0,"sourceW":398,"sourceH":83}}}

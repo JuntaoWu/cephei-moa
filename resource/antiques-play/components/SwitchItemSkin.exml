@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="SwitchItemSkin" width="187" height="139" xmlns:e="http://ns.egret.com/eui">
+    <e:Image id="buttonImg" source="{data.img}" verticalCenter="0" horizontalCenter="0" width="187" height="139"/>
+</e:Skin>

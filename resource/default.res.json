@@ -1,0 +1,547 @@
+{
+	"groups": [
+		{
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,description_json,start-background,btn-confirm,game-init-background,seat-background,small-dialog-background,btn-back,setting2,about,close,meihua,auth4,cancel,ok,ok3,black_2,white_2,game-box-border,number-keyboard-bg,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,antiques_json,game-term_json,lose,victory,share2,border_red,seats_json,botton,role_json,border_black,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,club_box,club_results,assistant-bg,game-bg,photon_json,clubs_json,rank-switch_json,antiques2_json,role2_json,club-icon_json,club-icon2_json,result_json,result2_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,video_json,guide_json,rank-icon_json,title-more,btn-view,three-kingdoms-bg,title-tanbao,more-item1,more-item2,start_json",
+			"name": "preload"
+		},
+		{
+			"keys": "loading-background,progress-bg,progress,btn-wxlogin,btn-anonymouslogin",
+			"name": "loading"
+		},
+		{
+			"keys": "tu_json",
+			"name": "lazyload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/CheckBox/checkbox_select_disabled.png",
+			"type": "image",
+			"name": "checkbox_select_disabled_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_down.png",
+			"type": "image",
+			"name": "checkbox_select_down_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_up.png",
+			"type": "image",
+			"name": "checkbox_select_up_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_unselect.png",
+			"type": "image",
+			"name": "checkbox_unselect_png"
+		},
+		{
+			"url": "assets/ItemRenderer/selected.png",
+			"type": "image",
+			"name": "selected_png"
+		},
+		{
+			"url": "assets/Panel/border.png",
+			"type": "image",
+			"name": "border_png"
+		},
+		{
+			"url": "assets/Panel/header.png",
+			"type": "image",
+			"name": "header_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_disabled.png",
+			"type": "image",
+			"name": "radiobutton_select_disabled_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_down.png",
+			"type": "image",
+			"name": "radiobutton_select_down_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_up.png",
+			"type": "image",
+			"name": "radiobutton_select_up_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_unselect.png",
+			"type": "image",
+			"name": "radiobutton_unselect_png"
+		},
+		{
+			"url": "assets/ScrollBar/roundthumb.png",
+			"type": "image",
+			"name": "roundthumb_png"
+		},
+		{
+			"url": "assets/Slider/thumb.png",
+			"type": "image",
+			"name": "thumb_png"
+		},
+		{
+			"url": "assets/Slider/track.png",
+			"type": "image",
+			"name": "track_png"
+		},
+		{
+			"url": "assets/Slider/tracklight.png",
+			"type": "image",
+			"name": "tracklight_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/handle.png",
+			"type": "image",
+			"name": "handle_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/off.png",
+			"type": "image",
+			"name": "off_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/on.png",
+			"type": "image",
+			"name": "on_png"
+		},
+		{
+			"url": "assets/Button/button_down.png",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "assets/Button/button_up.png",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "assets/ProgressBar/thumb_pb.png",
+			"type": "image",
+			"name": "thumb_pb_png"
+		},
+		{
+			"url": "assets/ProgressBar/track_pb.png",
+			"type": "image",
+			"name": "track_pb_png"
+		},
+		{
+			"url": "assets/ScrollBar/track_sb.png",
+			"type": "image",
+			"name": "track_sb_png"
+		},
+		{
+			"url": "assets/bg.jpg",
+			"type": "image",
+			"name": "bg_jpg"
+		},
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description_json"
+		},
+		{
+			"url": "assets/loading/loading-background.png",
+			"type": "image",
+			"name": "loading-background"
+		},
+		{
+			"url": "assets/loading/progress.png",
+			"type": "image",
+			"name": "progress"
+		},
+		{
+			"url": "assets/loading/progress-bg.png",
+			"type": "image",
+			"name": "progress-bg"
+		},
+		{
+			"url": "assets/background/start-background.png",
+			"type": "image",
+			"name": "start-background"
+		},
+		{
+			"url": "assets/seat/btn-confirm.png",
+			"type": "image",
+			"name": "btn-confirm"
+		},
+		{
+			"url": "assets/seat/game-init-background.png",
+			"type": "image",
+			"name": "game-init-background"
+		},
+		{
+			"url": "assets/seat/seat-background.png",
+			"type": "image",
+			"name": "seat-background"
+		},
+		{
+			"url": "assets/shared/small-dialog-background.png",
+			"type": "image",
+			"name": "small-dialog-background"
+		},
+		{
+			"url": "assets/Button/btn-back.png",
+			"type": "image",
+			"name": "btn-back"
+		},
+		{
+			"url": "assets/Panel/setting2.png",
+			"type": "image",
+			"name": "setting2"
+		},
+		{
+			"url": "assets/Panel/about.png",
+			"type": "image",
+			"name": "about"
+		},
+		{
+			"url": "assets/shared/close.png",
+			"type": "image",
+			"name": "close"
+		},
+		{
+			"url": "assets/myInfo/meihua.png",
+			"type": "image",
+			"name": "meihua"
+		},
+		{
+			"url": "assets/Button/auth4.png",
+			"type": "image",
+			"name": "auth4"
+		},
+		{
+			"url": "assets/Button/cancel.png",
+			"type": "image",
+			"name": "cancel"
+		},
+		{
+			"url": "assets/Button/ok.png",
+			"type": "image",
+			"name": "ok"
+		},
+		{
+			"url": "assets/Button/ok3.png",
+			"type": "image",
+			"name": "ok3"
+		},
+		{
+			"url": "assets/RadioButton/black_2.png",
+			"type": "image",
+			"name": "black_2"
+		},
+		{
+			"url": "assets/RadioButton/white_2.png",
+			"type": "image",
+			"name": "white_2"
+		},
+		{
+			"url": "assets/game/game-box-border.png",
+			"type": "image",
+			"name": "game-box-border"
+		},
+		{
+			"url": "assets/background/number-keyboard-bg.png",
+			"type": "image",
+			"name": "number-keyboard-bg"
+		},
+		{
+			"url": "assets/numberKeyboard/numberKeyboard.fnt",
+			"type": "font",
+			"name": "numberKeyboard_fnt"
+		},
+		{
+			"url": "assets/guide/manual41.png",
+			"type": "image",
+			"name": "manual41"
+		},
+		{
+			"url": "assets/guide/manual21.png",
+			"type": "image",
+			"name": "manual21"
+		},
+		{
+			"url": "assets/guide/manual22.png",
+			"type": "image",
+			"name": "manual22"
+		},
+		{
+			"url": "assets/guide/manual23.png",
+			"type": "image",
+			"name": "manual23"
+		},
+		{
+			"url": "assets/guide/manual31.png",
+			"type": "image",
+			"name": "manual31"
+		},
+		{
+			"url": "assets/guide/manual32.png",
+			"type": "image",
+			"name": "manual32"
+		},
+		{
+			"url": "assets/guide/manual33.png",
+			"type": "image",
+			"name": "manual33"
+		},
+		{
+			"url": "config/antiques.json",
+			"type": "json",
+			"name": "antiques_json"
+		},
+		{
+			"url": "config/game-term.json",
+			"type": "json",
+			"name": "game-term_json"
+		},
+		{
+			"url": "assets/result/lose.png",
+			"type": "image",
+			"name": "lose"
+		},
+		{
+			"url": "assets/result/victory.png",
+			"type": "image",
+			"name": "victory"
+		},
+		{
+			"url": "assets/Button/share2.png",
+			"type": "image",
+			"name": "share2"
+		},
+		{
+			"url": "assets/result/border_red.png",
+			"type": "image",
+			"name": "border_red"
+		},
+		{
+			"url": "config/seats.json",
+			"type": "json",
+			"name": "seats_json"
+		},
+		{
+			"url": "config/role.json",
+			"type": "json",
+			"name": "role_json"
+		},
+		{
+			"url": "assets/Button/botton.png",
+			"type": "image",
+			"name": "botton"
+		},
+		{
+			"url": "assets/result/border_black.png",
+			"type": "image",
+			"name": "border_black"
+		},
+		{
+			"url": "assets/game/number.png",
+			"type": "image",
+			"name": "number_png"
+		},
+		{
+			"url": "assets/game/number.fnt",
+			"type": "font",
+			"name": "number_fnt"
+		},
+		{
+			"url": "assets/club/club_box.png",
+			"type": "image",
+			"name": "club_box"
+		},
+		{
+			"url": "assets/club/club_results.png",
+			"type": "image",
+			"name": "club_results"
+		},
+		{
+			"url": "assets/dragonBones/skills_tex.json",
+			"type": "json",
+			"name": "skills_tex_json"
+		},
+		{
+			"url": "assets/dragonBones/skills_tex.png",
+			"type": "image",
+			"name": "skills_tex_png"
+		},
+		{
+			"url": "assets/dragonBones/skills_ske.json",
+			"type": "json",
+			"name": "skills_ske_json"
+		},
+		{
+			"url": "assets/start/assistant-bg.png",
+			"type": "image",
+			"name": "assistant-bg"
+		},
+		{
+			"url": "assets/start/game-bg.png",
+			"type": "image",
+			"name": "game-bg"
+		},
+		{
+			"url": "config/photon.json",
+			"type": "json",
+			"name": "photon_json"
+		},
+		{
+			"url": "assets/myInfo/tu.json",
+			"type": "sheet",
+			"name": "tu_json",
+			"subkeys": "url(1),url(10),url(11),url(12),url(13),url(14),url(15),url(16),url(17),url(18),url(19),url(2),url(20),url(3),url(4),url(5),url(6),url(7),url(8),url(9)"
+		},
+		{
+			"url": "config/clubs.json",
+			"type": "json",
+			"name": "clubs_json"
+		},
+		{
+			"url": "assets/ToggleSwitch/rank/rank-switch.json",
+			"type": "sheet",
+			"name": "rank-switch_json",
+			"subkeys": "auth_player_1,auth_player_2,auth_rate_1,auth_rate_2,btn-role,btn-role2,fang1,fang2,game6_1,game6_2,game7_1,game7_2,game8_1,game8_2,huang1,huang2,ji1,ji2,jushu1,jushu2,lao1,lao2,mu1,mu2,team_lao_3,team_lao_4,team_xu_3,team_xu_4,total_play_1,total_play_2,total_rate_1,total_rate_2,win_rate_1,win_rate_2,xu1,xu2,yao1,yao2,zheng1,zheng2"
+		},
+		{
+			"url": "assets/game/antiques.json",
+			"type": "sheet",
+			"name": "antiques2_json",
+			"subkeys": "t1,t10,t11,t12,t2,t3,t4,t5,t6,t7,t8,t9"
+		},
+		{
+			"url": "assets/game/role.json",
+			"type": "sheet",
+			"name": "role2_json",
+			"subkeys": "role1,role2,role3,role4-5,role6,role7,role8"
+		},
+		{
+			"url": "assets/club/club-icon.json",
+			"type": "sheet",
+			"name": "club-icon_json",
+			"subkeys": "club_attr,club_game1_1,club_game1_2,club_game2_1,club_game2_2,club_game3_1,club_game3_2,club_game4_1,club_game4_2,club_location,club_phone,club_search,club_time"
+		},
+		{
+			"url": "assets/club/club-icon2.json",
+			"type": "sheet",
+			"name": "club-icon2_json",
+			"subkeys": "club_box_1,club_box_2,club_lv1,club_lv2,club_lv3"
+		},
+		{
+			"url": "assets/result/result.json",
+			"type": "sheet",
+			"name": "result_json",
+			"subkeys": "result1,result2,result3,result4"
+		},
+		{
+			"url": "assets/result/result2.json",
+			"type": "sheet",
+			"name": "result2_json",
+			"subkeys": "false2,jzj,share_team_lao,share_team_xu,teasure12,true2,vote1"
+		},
+		{
+			"url": "assets/seat/seat.json",
+			"type": "sheet",
+			"name": "seat_json",
+			"subkeys": "back_2,black,blue,btn-help,green,head_bg,head_bg2,orange,purple,red,self-mark,white,yellow"
+		},
+		{
+			"url": "assets/seat/circle.json",
+			"type": "sheet",
+			"name": "circle_json",
+			"subkeys": "color-black,color-blue,color-green,color-orange,color-purple,color-red,color-white,color-yellow"
+		},
+		{
+			"url": "assets/numberKeyboard/number-keyboard-icon.json",
+			"type": "sheet",
+			"name": "number-keyboard-icon_json",
+			"subkeys": "input_cancel,input_ok,input_room,num_del"
+		},
+		{
+			"url": "assets/myInfo/self-info.json",
+			"type": "sheet",
+			"name": "self-info_json",
+			"subkeys": "antiques-icon,antiques-label,antiques-passed,antiques-played-time,antiques-unpassed,room6,room7,room8,score2,split,team_lao_2,team_xu_2,win_rate"
+		},
+		{
+			"url": "assets/game/game-icon.json",
+			"type": "sheet",
+			"name": "game-icon_json",
+			"subkeys": "auth2,bg2,bg3,false,game-record,hide,round1,round2,round3,self_info,true"
+		},
+		{
+			"url": "assets/game/wait-status.json",
+			"type": "sheet",
+			"name": "wait-status_json",
+			"subkeys": "talking,wait-1-players-enough,wait-2-master-confirm,wait-3-set-identity,wait-4-others-process,wait-5-vote,wait-6-others-vote"
+		},
+		{
+			"url": "assets/game/game-botton.json",
+			"type": "sheet",
+			"name": "game-botton_json",
+			"subkeys": "auth3,auth_png,btn-start,enter-info,skip,skip2,talk_over,vote-clear,vote_over"
+		},
+		{
+			"url": "assets/guide/video.json",
+			"type": "sheet",
+			"name": "video_json",
+			"subkeys": "video1,video2,video3"
+		},
+		{
+			"url": "assets/guide/guide.json",
+			"type": "sheet",
+			"name": "guide_json",
+			"subkeys": "manual1,manual2,manual3,manual4,manual5"
+		},
+		{
+			"url": "assets/ItemRenderer/rank/rank-icon.json",
+			"type": "sheet",
+			"name": "rank-icon_json",
+			"subkeys": "rank1,rank2,rank3,sep"
+		},
+		{
+			"url": "assets/start/title-more.png",
+			"type": "image",
+			"name": "title-more"
+		},
+		{
+			"url": "assets/start/btn-view.png",
+			"type": "image",
+			"name": "btn-view"
+		},
+		{
+			"url": "assets/background/three-kingdoms-bg.png",
+			"type": "image",
+			"name": "three-kingdoms-bg"
+		},
+		{
+			"url": "assets/start/title-tanbao.png",
+			"type": "image",
+			"name": "title-tanbao"
+		},
+		{
+			"url": "assets/start/more-item1.png",
+			"type": "image",
+			"name": "more-item1"
+		},
+		{
+			"url": "assets/start/more-item2.png",
+			"type": "image",
+			"name": "more-item2"
+		},
+		{
+			"url": "assets/Button/btn-wxlogin.png",
+			"type": "image",
+			"name": "btn-wxlogin"
+		},
+		{
+			"url": "assets/Button/btn-anonymouslogin.png",
+			"type": "image",
+			"name": "btn-anonymouslogin"
+		},
+		{
+			"url": "assets/start/start.json",
+			"type": "sheet",
+			"name": "start_json",
+			"subkeys": "btn-board,btn-create,btn-create-small,btn-game,btn-game-bar,btn-guide,btn-join,btn-rank,btn-settings,btn-share,nav-guide,nav-more,nav-notice,nav-playbar,nav-rank,nav-settings,navigation-bar,search,title-assistant,title-game,userinfo-background"
+		}
+	]
+}

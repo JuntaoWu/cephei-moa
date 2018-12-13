@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="skins.ActorUI" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui">
+    <e:Button id="btnActor" enabled="{enabled}" anchorOffsetX="0" width="130" height="130">
+            <e:Skin>
+                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="normalBg" source="head_bg" />
+                <e:Image name="masterBg" visible="false" source="head_bg2" />
+                <e:Image name="colorImage" source="red" x="-20" y="-15" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Label name="nickName" text="" size="25" textColor="0x000000" horizontalCenter="0" bottom="-40" />
+            </e:Skin>
+        </e:Button>
+</e:Skin>

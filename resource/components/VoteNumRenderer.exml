@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.VoteNumRenderer" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="{this.data.voterColor}" horizontalCenter="0" verticalCenter="0"/>
+    <!--<e:Label text="2" horizontalCenter="0" verticalCenter="0" bold="true" size="60"/>-->
+    <e:BitmapLabel text="{this.data.voteNum}" textAlign="center" verticalAlign="middle" horizontalCenter="0"  scaleX="2.5" scaleY="2.5" verticalCenter="0" font="number_fnt"/>
+</e:Skin>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MiniGameInput" xmlns:e="http://ns.egret.com/eui" xmlns:ap="ap.*" xmlns:w="http://ns.egret.com/wing">
+    <e:Group horizontalCenter="0">
+        <e:List id="inputItemList" maxWidth="640" horizontalCenter="0">
+            <e:layout>
+                <e:TileLayout orientation="columns" requestedColumnCount="4" verticalGap="20" horizontalGap="20" />
+            </e:layout>
+        </e:List>
+
+        <!--<e:Image source="input-bg"/>
+        <e:Button id="btnConfirm" right="10" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-finish"/>
+            </e:Skin>
+        </e:Button>-->
+        <e:TextInput alpha="0" width="100%" id="answerInput" height="75" horizontalCenter="0" bottom="0"/>
+    </e:Group>
+</e:Skin>

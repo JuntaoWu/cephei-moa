@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.ValidateItemRenderer" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Group>
+        <e:Image source="bg2"></e:Image>
+        <e:Image visible="{selected}" source="bg3"></e:Image>
+        <e:Image source="t1" verticalCenter="0"></e:Image>
+        <e:Label text="鼠首" verticalCenter="0" textColor="0x020202" bold="true" x="175" size="28"/>
+    </e:Group>
+</e:Skin>

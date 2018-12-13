@@ -1,0 +1,11 @@
+{"file":"numberKeyboard.png","frames":{
+"0":{"x":504,"y":0,"w":250,"h":104,"offX":0,"offY":0,"sourceW":250,"sourceH":104},
+"1":{"x":0,"y":107,"w":235,"h":104,"offX":0,"offY":0,"sourceW":235,"sourceH":104},
+"2":{"x":252,"y":0,"w":250,"h":104,"offX":0,"offY":0,"sourceW":250,"sourceH":104},
+"3":{"x":489,"y":106,"w":235,"h":104,"offX":0,"offY":0,"sourceW":235,"sourceH":104},
+"4":{"x":756,"y":103,"w":235,"h":105,"offX":0,"offY":0,"sourceW":235,"sourceH":105},
+"5":{"x":0,"y":0,"w":250,"h":105,"offX":0,"offY":0,"sourceW":250,"sourceH":105},
+"6":{"x":252,"y":106,"w":235,"h":105,"offX":0,"offY":0,"sourceW":235,"sourceH":105},
+"7":{"x":489,"y":212,"w":235,"h":101,"offX":0,"offY":0,"sourceW":235,"sourceH":101},
+"8":{"x":756,"y":0,"w":250,"h":101,"offX":0,"offY":0,"sourceW":250,"sourceH":101},
+"9":{"x":726,"y":210,"w":235,"h":101,"offX":0,"offY":0,"sourceW":235,"sourceH":101}}}

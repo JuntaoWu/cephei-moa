@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="M2Skin" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="165cbda4bdd" ></w:Config>
+	<e:Image id="BG" source="M2bg_png" verticalCenter="0" horizontalCenter="0"/>
+	<e:Group width="516" height="516" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="-6" horizontalCenter="0">
+		<e:Image id="white1" source="bai_png" x="173" y="2" scaleX="1" scaleY="1"/>
+		<e:Image id="black1" source="hei_png" x="229" y="2" scaleX="1" scaleY="1"/>
+		<e:Image id="red1" source="hong_png" x="285" y="2" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow1" source="huang_png" x="173" y="58" scaleX="1" scaleY="1"/>
+		<e:Image id="blue1" source="lan_png" x="173" y="114" scaleX="1" scaleY="1"/>
+		<e:Image id="red2" source="hong_png" x="229" y="58" scaleX="1" scaleY="1"/>
+		<e:Image id="red3" source="hong_png" x="285" y="58" scaleX="1" scaleY="1"/>
+		<e:Image id="blue2" source="lan_png" x="229" y="114" scaleX="1" scaleY="1"/>
+		<e:Image id="black2" source="hei_png" x="285" y="114" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow3" source="huang_png" x="173" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="white5" source="bai_png" x="229" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="blue4" source="lan_png" x="285" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="black6" source="hei_png" x="173" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow4" source="huang_png" x="229" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="white6" source="bai_png" x="285" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="black7" source="hei_png" x="173" y="287" scaleX="1" scaleY="1"/>
+		<e:Image id="blue7" source="lan_png" x="229" y="287" scaleX="1" scaleY="1"/>
+		<e:Image id="red5" source="hong_png" x="285" y="287" scaleX="1" scaleY="1"/>
+		<e:Image id="white2" source="bai_png" x="2" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="blue3" source="lan_png" x="58" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="black3" source="hei_png" x="114" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow2" source="huang_png" x="2" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="black4" source="hei_png" x="58" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="red4" source="hong_png" x="114" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="white3" source="bai_png" x="2" y="287" scaleX="1" scaleY="1"/>
+		<e:Image id="white4" source="bai_png" x="58" y="287" scaleX="1" scaleY="1"/>
+		<e:Image id="black5" source="hei_png" x="114" y="287" scaleX="1" scaleY="1"/>
+		<e:Image id="blue8" source="lan_png" x="173" y="348" scaleX="1" scaleY="1"/>
+		<e:Image id="white7" source="bai_png" x="229" y="348" scaleX="1" scaleY="1"/>
+		<e:Image id="black8" source="hei_png" x="285" y="348" scaleX="1" scaleY="1"/>
+		<e:Image id="red8" source="hong_png" x="173" y="403" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow7" source="huang_png" x="229" y="403" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow8" source="huang_png" x="285" y="403" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow9" source="huang_png" x="173" y="458" scaleX="1" scaleY="1"/>
+		<e:Image id="blue9" source="lan_png" x="229" y="458" scaleX="1" scaleY="1"/>
+		<e:Image id="red9" source="hong_png" x="285" y="458" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow5" source="huang_png" x="344" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="white8" source="bai_png" x="400" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="yellow6" source="huang_png" x="456" y="175" scaleX="1" scaleY="1"/>
+		<e:Image id="blue5" source="lan_png" x="344" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="blue6" source="lan_png" x="400" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="red6" source="hong_png" x="456" y="231" scaleX="1" scaleY="1"/>
+		<e:Image id="red7" source="hong_png" x="344" y="287" scaleX="1" scaleY="1"/>
+		<e:Image id="black9" x="400" y="287" source="hei_png" scaleX="1" scaleY="1"/>
+		<e:Image id="white9" source="bai_png" x="456" y="287" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:Group width="720" height="591" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="0" horizontalCenter="0">
+		<e:Image id="row1_1" source="shang_png" x="87" y="212.5" scaleX="0.5" scaleY="0.5" rotation="90" width="90" height="55"/>
+		<e:Image id="row2_1" source="shang_png" x="87" y="271.5" scaleX="0.5" scaleY="0.5" rotation="90" width="90" height="55"/>
+		<e:Image id="row3_1" source="shang_png" x="87" y="328.5" scaleX="0.5" scaleY="0.5" rotation="90" width="90" height="55"/>
+		<e:Image id="row1_2" source="shang_png" x="635" y="256.5" scaleX="0.5" scaleY="0.5" rotation="270" width="90" height="55"/>
+		<e:Image id="row2_2" source="shang_png" x="635" y="315.5" scaleX="0.5" scaleY="0.5" rotation="270" width="90" height="55"/>
+		<e:Image id="row3_2" source="shang_png" x="635" y="372.5" scaleX="0.5" scaleY="0.5" rotation="270" width="90" height="55"/>
+		<e:Image id="column1_2" source="shang_png" x="279" y="554" scaleY="0.5" scaleX="0.5" width="90" height="55"/>
+		<e:Image id="column2_2" source="shang_png" x="336" y="554" scaleY="0.5" scaleX="0.5" width="90" height="55"/>
+		<e:Image id="column3_2" source="shang_png" x="394" y="554" scaleY="0.5" scaleX="0.5" width="90" height="55"/>
+		<e:Image id="column1_1" source="xia_png" x="280" y="3" scaleX="0.5" scaleY="0.5" width="90" height="55"/>
+		<e:Image id="column2_1" source="xia_png" x="336" y="3" scaleX="0.5" scaleY="0.5" width="90" height="55"/>
+		<e:Image id="column3_1" source="xia_png" x="393" y="3" scaleX="0.5" scaleY="0.5" width="90" height="55"/>
+	</e:Group>
+	<e:Image source="kuang_png" verticalCenter="-3" horizontalCenter="0" rotation="0" scaleX="-1"/>
+</e:Skin>

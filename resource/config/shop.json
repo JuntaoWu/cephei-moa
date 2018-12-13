@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "res": "power_small",
+    "name": "茶水",
+    "effect": "增加10点体力",
+    "tili": 10,
+    "money": "20"
+  },
+  {
+    "id": 2,
+    "res": "power_medium",
+    "name": "小吃",
+    "effect": "增加30点体力",
+    "tili": 30,
+    "money": "50"
+  },
+  {
+    "id": 3,
+    "res": "power_large",
+    "name": "甜点",
+    "effect": "增加60点体力",
+    "tili": 60,
+    "money": "90"
+  },
+  {
+    "id": 4,
+    "res": "note_prop",
+    "name": "提示卡",
+    "effect": "可提示一次",
+    "money": "10"
+  },
+  {
+    "id": 5,
+    "res": "shop-icon-m",
+    "name": "木梳",
+    "effect": "增加木户加奈好感度",
+    "point": -4,
+    "money": "100"
+  },
+  {
+    "id": 6,
+    "res": "shop-icon-h",
+    "name": "发箍",
+    "effect": "增加黄烟烟好感度",
+    "point": 4,
+    "money": "100"
+  }
+]

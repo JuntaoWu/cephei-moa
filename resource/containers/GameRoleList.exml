@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.GameRoleList" width="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Group width="600" horizontalCenter="0" height="540">
+        <e:Image source="game-box-border" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
+        <e:Label text="录入身份" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
+        <e:Label text="选择对应图标，录入抽到的身份" y="40" textColor="0x000000" fontFamily="SimHei"
+                textAlign="center" verticalAlign="middle" horizontalCenter="0"></e:Label>
+        <e:DataGroup id="roleList" y="60" horizontalCenter="0">
+            <e:layout>
+                <e:TileLayout orientation="columns" requestedColumnCount="4" verticalGap="10" horizontalGap="0" />
+            </e:layout>
+        </e:DataGroup>
+     </e:Group>
+</e:Skin>

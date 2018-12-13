@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.PopupVoteResultWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="720">
+    <moa:Shade id="overlay" />
+    <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="780">
+        <e:Group horizontalCenter="0" y="60">
+            <e:Label text="投票结果" textColor="0x020202" bold="true" horizontalCenter="0" size="30"/>
+            <e:Group horizontalCenter="0" y="60">   
+                <e:Image verticalCenter="0" source="{round}"></e:Image>
+                <e:DataGroup id="voteGroup" verticalCenter="0" x="50">
+                    <e:layout>
+                        <e:TileLayout requestedRowCount="2" verticalGap="40" horizontalGap="40" />
+                    </e:layout> 
+                </e:DataGroup>
+            </e:Group>
+        </e:Group>
+        <e:Group bottom="160" horizontalCenter="0">
+            <e:Label text="得票第1和第2的宝物会被保护起来" textColor="0x020202" bold="true" horizontalCenter="0" size="22"/>
+            <e:Label text="公布得票第2的宝物" textColor="0x020202" bold="true" horizontalCenter="0" y="25" size="22"/>
+            <e:Label text="若出现平票，则生肖顺序靠前的兽首得票更高" textColor="0x020202" bold="true" horizontalCenter="0" size="22" y="50"/>
+        </e:Group>
+    </moa:PopupWindowWrapper>
+</e:Skin>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="StartScreen" xmlns:e="http://ns.egret.com/eui" xmlns:ap="ap.*" xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="background" height="100%"/>
+    <e:Image source="logo"  horizontalCenter="0" y="100"/>
+    <e:Group y="440" horizontalCenter="0">
+        <e:Button id="btnResumeGame" left="17">
+            <e:Skin>
+                <e:Image source="btn-resume"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnNewGame" left="17" y="163">
+            <e:Skin>
+                <e:Image source="btn-newgame"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnManage" left="17" y="318" visible="false">
+            <e:Skin>
+                <e:Image source="btn-manage-start"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnDev" left="17" y="475">
+            <e:Skin>
+                <e:Image source="btn-dev"></e:Image>
+            </e:Skin>
+        </e:Button>
+			<e:Image id="no_manage" source="no_manage" x="17" y="318"/>
+    </e:Group>
+    <e:Group id="navigationBar" y="1180" width="665" height="170" horizontalCenter="0">
+        <e:Button id="btnPicture" left="17" bottom="20">
+            <e:Skin>
+                <e:Image source="btn-picture-start"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnStore" x="175" bottom="20">
+            <e:Skin>
+                <e:Image source="btn-store"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnShare" right="160" bottom="20">
+            <e:Skin>
+                <e:Image source="btn-share"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnSetting" right="0" bottom="20">
+            <e:Skin>
+                <e:Image source="btn-setting"></e:Image>
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+</e:Skin>

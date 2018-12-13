@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.RankListItemRenderer" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Group width="600" bottom="25">
+        <e:Image visible="{rankRes}" source="{rankRes}"  verticalCenter="0" width="110" height="110"/>
+        <e:Group visible="{isNotTopThree}">
+            <e:Image source="bg2"  verticalCenter="0" width="110" height="110"/>
+            <e:Label text="{data.key}"  verticalCenter="0" horizontalCenter="0" size="45" textColor="0x020202"/>
+        </e:Group>
+        <e:Image source="{data.avatarUrl}"  x="120" width="110" height="110" verticalCenter="0"/>
+        <e:Label text="{data.nickName}"  verticalCenter="0" width="165" x="245" textColor="0x020202" height="30"/>
+        <e:Label verticalCenter="0" textColor="0x020202" bold="true" size="35" x="410" text="{col1}"/>
+        <e:Label verticalCenter="0" right="0" textColor="0x020202" text="{col2}"/>
+    </e:Group>
+    <e:Image source="sep"  bottom="0" horizontalCenter="0"/>
+</e:Skin>

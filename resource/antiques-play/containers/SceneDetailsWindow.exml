@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SceneDetailsWindow" xmlns:e="http://ns.egret.com/eui" xmlns:ap="ap.*">
+    <e:Image source="background" height="100%"/>
+    <e:Group width="720">
+        <e:Image source="head-bg"/>
+        <e:Button id="btnBack" verticalCenter="0" x="35">
+            <e:Skin>
+                <e:Image source="btn-back-other"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Group horizontalCenter="0" verticalCenter="0">
+            <e:Image source="title-bg"></e:Image>
+            <e:Image source="{titleRes}" horizontalCenter="0" verticalCenter="0"></e:Image>
+            <e:Label text="{title}"  textColor="0x000000" bold="true" size="50" verticalCenter="0" horizontalCenter="0" fontFamily="Microsoft YaHei"/>
+        </e:Group>
+    </e:Group>
+    <e:Group y="165" horizontalCenter="0">
+        <e:Image source="text3" verticalCenter="0"></e:Image>
+        <e:Label fontFamily="SimSun" bold="true" size="35" text="{collectedText}" x="300" verticalCenter="0" textColor="0x332d27"/>
+    </e:Group>
+    <e:Scroller id="scrollGroup" width="640" horizontalCenter="0" top="220" bottom="20">
+        <e:viewport>
+            <e:List id="sceneList" width="640">
+                <e:layout>
+                    <e:TileLayout orientation="rows" columnWidth="300" requestedColumnCount="2" verticalGap="40" horizontalGap="15" />
+                </e:layout>
+            </e:List>
+        </e:viewport>
+    </e:Scroller>
+</e:Skin>

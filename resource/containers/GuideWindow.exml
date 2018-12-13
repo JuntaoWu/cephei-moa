@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.GuideWindow" width="720" minHeight="1386" minWidth="450" xmlns:e="http://ns.egret.com/eui"
+        xmlns:moa="moa.*">
+	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
+	<e:Group id="headGroup" horizontalCenter="0" width="720" y="0" height="70">
+		<e:Label text="指南" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
+	</e:Group>
+	<e:Scroller id="contentScroller" scrollPolicyH="off" horizontalCenter="0" anchorOffsetY="0" height="1000" y="70">
+		<e:viewport>
+			<e:Group horizontalCenter="0">
+
+				<e:Button id="videoButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" scaleX="0.88" scaleY="0.88">
+					<e:Skin states="up,down">
+						<e:Image source="manual1" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+					</e:Skin>
+				</e:Button>
+				<e:Button id="gameProcessButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" y="225" scaleX="0.88" scaleY="0.88">
+					<e:Skin states="up,down">
+						<e:Image source="manual2" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+					</e:Skin>
+				</e:Button>
+				<e:Button id="roleSkillButton" anchorOffsetY="0" anchorOffsetX="0" y="455" horizontalCenter="0" scaleX="0.88" scaleY="0.88">
+					<e:Skin states="up,down">
+						<e:Image source="manual3" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+					</e:Skin>
+				</e:Button>
+				<e:Button id="winJudgeButton" anchorOffsetY="0" anchorOffsetX="0" y="685" left="0" scaleX="0.88" scaleY="0.88">
+					<e:Skin states="up,down">
+						<e:Image source="manual4" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+					</e:Skin>
+				</e:Button>
+				<e:Button id="gameTermButton" anchorOffsetY="0" anchorOffsetX="0" right="0" y="685" scaleX="0.88" scaleY="0.88">
+					<e:Skin states="up,down">
+						<e:Image source="manual5" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+					</e:Skin>
+				</e:Button>
+
+			</e:Group>
+	
+		</e:viewport>
+	</e:Scroller>
+    <e:Group id="navigationBar" y="1130" height="135" horizontalCenter="0" width="720">
+		<e:Button id="closeButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
+			<e:Skin states="up,down">
+				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+			</e:Skin>
+		</e:Button>
+	</e:Group>
+</e:Skin>

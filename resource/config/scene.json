@@ -1,0 +1,320 @@
+[
+  {
+    "res": "s1",
+    "name": "许愿",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s2",
+    "name": "密室桌子",
+    "type": "场景CG",
+    "description": "许愿被绑的密室"
+  },
+  {
+    "res": "s3",
+    "name": "老朝奉",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s4",
+    "name": "四悔斋",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s5",
+    "name": "车祸现场",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s6",
+    "name": "建筑工地",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s7",
+    "name": "许一城",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s8",
+    "name": "陆二康",
+    "type": "人物CG",
+    "description": "万货全小喽啰扮演的顾客给许愿送去了鲧王分水镜"
+  },
+  {
+    "res": "s9",
+    "name": "鲧王分水镜残品",
+    "type": "道具CG",
+    "description": "青铜器的质感"
+  },
+  {
+    "res": "s10",
+    "name": "万贯财",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s11",
+    "name": "青勒胡同拍卖所",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s12",
+    "name": "僻静之地",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s13",
+    "name": "万货全老巢",
+    "type": "场景CG",
+    "description": "东北农家大院"
+  },
+  {
+    "res": "s14",
+    "name": "方天尺",
+    "type": "道具CG",
+    "description": "青铜器质感，外观像尺子"
+  },
+  {
+    "res": "s15",
+    "name": "陆仁贾",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s16",
+    "name": "鲧王分水镜",
+    "type": "道具CG",
+    "description": ""
+  },
+  {
+    "res": "s17",
+    "name": "木户加奈",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s18",
+    "name": "山水",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s19",
+    "name": "资料书",
+    "type": "道具CG",
+    "description": "鲧王分水镜和方天尺的资料"
+  },
+  {
+    "res": "s20",
+    "name": "野地",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s21",
+    "name": "小弟A",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s22",
+    "name": "日本人",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s23",
+    "name": "博物馆",
+    "type": "场景CG",
+    "description": "北京故宫博物馆"
+  },
+  {
+    "res": "s24",
+    "name": "小弟B",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s25",
+    "name": "墓室甬道",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s26",
+    "name": "长白山壁画A",
+    "type": "场景CG",
+    "description": "描画燕丹的一生"
+  },
+  {
+    "res": "s27",
+    "name": "长白山壁画B",
+    "type": "场景CG",
+    "description": "描画修建墓室如何修建"
+  },
+  {
+    "res": "s28",
+    "name": "长白山地宫",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s29",
+    "name": "石像棋局",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s30",
+    "name": "小弟C",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s31",
+    "name": "东北胡同",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s32",
+    "name": "魔方",
+    "type": "场景CG",
+    "description": "魔方所在地"
+  },
+  {
+    "res": "s33",
+    "name": "长白山墓室转动",
+    "type": "场景CG",
+    "description": "墓室结构发生改变"
+  },
+  {
+    "res": "s35",
+    "name": "墨经壁画",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s38",
+    "name": "长白山墓室门口",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s39",
+    "name": "木户加奈亲吻许愿",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s43",
+    "name": "陆仁贾的家",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s44",
+    "name": "轿车",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s49",
+    "name": "木户加奈结局A",
+    "type": "场景CG",
+    "description": "许愿在机场目送木户加奈坐上飞机离开"
+  },
+  {
+    "res": "s50",
+    "name": "木户加奈结局B",
+    "type": "场景CG",
+    "description": "许愿和木户加奈共进烛光晚餐"
+  },
+  {
+    "res": "s53",
+    "name": "戴眼罩许愿",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s54",
+    "name": "密室开灯",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s55",
+    "name": "密室开门",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s56",
+    "name": "记账本",
+    "type": "道具CG",
+    "description": ""
+  },
+  {
+    "res": "s58",
+    "name": "鲧王分水镜缺失",
+    "type": "道具CG",
+    "description": ""
+  },
+  {
+    "res": "s59",
+    "name": "兵俑开道",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s60",
+    "name": "药不然",
+    "type": "人物CG",
+    "description": ""
+  },
+  {
+    "res": "s61",
+    "name": "破小木门",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s62",
+    "name": "县城房子",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s63",
+    "name": "密室关灯无密码锁",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s64",
+    "name": "废弃化工厂",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s66",
+    "name": "博物馆门口",
+    "type": "场景CG",
+    "description": ""
+  },
+  {
+    "res": "s67",
+    "name": "旅社",
+    "type": "场景CG",
+    "description": ""
+  }
+]

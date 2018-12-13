@@ -1,0 +1,178 @@
+{
+  "1": {
+    "id": 1,
+    "question": "",
+    "option1": "A 哼，明知故问。",
+    "option2": "B 你说什么我完全不知道！",
+    "result1": 1,
+    "result2": -1
+  },
+  "2": {
+    "id": 2,
+    "question": "",
+    "option1": "A 你到底是何方神圣？",
+    "option2": "B 你想从我这得到什么？",
+    "result1": -2,
+    "result2": 2
+  },
+  "3": {
+    "id": 3,
+    "question": "",
+    "option1": "A 做工的精美",
+    "option2": "B 历史的价值",
+    "result1": -2,
+    "result2": 2
+  },
+  "4": {
+    "id": 4,
+    "question": "",
+    "option1": "A 救人要紧，去看看驾驶室里还有没有人。",
+    "option2": "B 货车有危险，我还是尽量离远点吧。",
+    "result1": 2,
+    "result2": -2
+  },
+  "5": {
+    "id": 5,
+    "question": "",
+    "option1": "A 国家的尊严",
+    "option2": "B 家族的诺言",
+    "result1": 2,
+    "result2": -2
+  },
+  "6": {
+    "id": 6,
+    "question": "",
+    "option1": "A 万货全的历史",
+    "option2": "B 万贯财的身份",
+    "result1": -2,
+    "result2": 2
+  },
+  "7": {
+    "id": 7,
+    "question": "",
+    "option1": "A 鲧王分水镜的特点",
+    "option2": "B 鲧王分水镜的用途",
+    "result1": -2,
+    "result2": 2
+  },
+  "8": {
+    "id": 8,
+    "question": "",
+    "option1": "A 说说鲧王分水镜",
+    "option2": "B 说说青勒胡同",
+    "result1": 2,
+    "result2": -2
+  },
+  "9": {
+    "id": 9,
+    "question": "",
+    "option1": "A 你家是做什么的？",
+    "option2": "B 你知道方天尺？",
+    "result1": -2,
+    "result2": 2
+  },
+  "10": {
+    "id": 10,
+    "question": "",
+    "option1": "A 关于鲧王分水镜",
+    "option2": "B 关于陆家的历史",
+    "result1": 2,
+    "result2": -2
+  },
+  "11": {
+    "id": 11,
+    "question": "",
+    "option1": "A 木户加奈？你怎么会在这儿",
+    "option2": "B 现在外面的情况怎么样？你没事儿吧？",
+    "result1": 2,
+    "result2": -2
+  },
+  "12": {
+    "id": 12,
+    "question": "",
+    "option1": "A 鲧王分水镜的资料里写了什么？",
+    "option2": "B 关于方天尺的情报你还知道些什么？",
+    "result1": 2,
+    "result2": -2
+  },
+  "13": {
+    "id": 13,
+    "question": "",
+    "option1": "A 满洲国时期的秘闻",
+    "option2": "B 长白山的传说",
+    "result1": -2,
+    "result2": 2
+  },
+  "14": {
+    "id": 14,
+    "question": "",
+    "option1": "A 你怎么知道我们在这里？",
+    "option2": "B 你究竟有什么目的？",
+    "result1": -2,
+    "result2": 2
+  },
+  "15": {
+    "id": 15,
+    "question": "",
+    "option1": "A 先看左边壁画",
+    "option2": "B 先看右边壁画",
+    "result1": -2,
+    "result2": 2
+  },
+  "16": {
+    "id": 16,
+    "question": "",
+    "option1": "A 看给你厉害的，你们这组织不就是个造假的小团伙吗？",
+    "option2": "B 你这五大三粗的，连墓室里有什么都不知道吧？",
+    "result1": 2,
+    "result2": -2
+  },
+  "17": {
+    "id": 17,
+    "question": "",
+    "option1": "A 为什么你会这样认为？",
+    "option2": "B 也许有更好的办法呢？",
+    "result1": -2,
+    "result2": 2
+  },
+  "18": {
+    "id": 18,
+    "question": "",
+    "option1": "A 侵华战争？",
+    "option2": "B 朝鲜战争？",
+    "result1": 2,
+    "result2": -2
+  },
+  "19": {
+    "id": 19,
+    "question": "",
+    "option1": "A 正序查看",
+    "option2": "B 倒序查看",
+    "result1": 2,
+    "result2": -2
+  },
+  "20": {
+    "id": 20,
+    "question": "",
+    "option1": "A 欺骗山中",
+    "option2": "B 告诉实情",
+    "result1": -2,
+    "result2": 2
+  },
+  "21": {
+    "id": 21,
+    "question": "",
+    "option1": "A 这里的秘密决不可泄露出去",
+    "option2": "B 应当告知国家墓室的存在",
+    "result1": -2,
+    "result2": 2
+  },
+  "22": {
+    "id": 22,
+    "question": "",
+    "option1": "A 缄默不语",
+    "option2": "B 全盘托出",
+    "result1": 2,
+    "result2": -2
+  }
+}

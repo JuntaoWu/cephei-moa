@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MiniGameM8_2" currentState="up" xmlns:e="http://ns.egret.com/eui" xmlns:ap="ap.*" xmlns:w="http://ns.egret.com/wing" states="down,up" >
+    <e:Group width="720" height="100%">
+        <e:Image source="m8.2-bg"/>
+        <e:Group right="20">
+            <e:Image source="m8.2_00" horizontalCenter="0" y="30"/>
+            <e:Image source="m8.2-tips" horizontalCenter="0" bottom="-50"/>
+        </e:Group>
+        <e:Group id="jigsawGroup" y="20" width="720">
+            <e:Image name="jigsaw06" source="m8.2_06" anchorOffsetX="72" x="75" anchorOffsetY="91" y="90"/>
+            <e:Image name="jigsaw05" source="m8.2_05" x="215" anchorOffsetX="72" anchorOffsetY="91" y="90"/>
+            <e:Image name="jigsaw04" source="m8.2_04" y="275" anchorOffsetX="72" anchorOffsetY="92" x="75"/>
+            <e:Image name="jigsaw03" source="m8.2_03" x="215" y="275" anchorOffsetY="91" anchorOffsetX="72"/>
+            <e:Image name="jigsaw02" source="m8.2_02" y="460" anchorOffsetX="72" anchorOffsetY="91" x="75"/>
+            <e:Image name="jigsaw01" source="m8.2_01" x="215" y="460" anchorOffsetY="92" anchorOffsetX="72"/>    
+            <e:Label text="1" x="515" y="185" size="12"/>  
+        </e:Group>
+    </e:Group>
+</e:Skin>

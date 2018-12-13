@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="ManageGameItemSkin" xmlns:e="http://ns.egret.com/eui">
+    <e:Image source="manage-card2" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="0"/>
+    <e:Image source="{data.res}" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="0"/>
+    <e:Label text="已选择" visible="{data.isSelected}" horizontalCenter="0" bottom="20" />
+</e:Skin>

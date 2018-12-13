@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.PopupVoteRecordWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="720">
+    
+	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
+    <e:Group horizontalCenter="0" y="40">
+        <e:Label horizontalCenter="0" text="鉴定顺序" bold="true" textColor="0x000000" size="26"/>
+        <e:Group y="40">
+            <e:Label text="第一轮" bold="true" textColor="0x000000" size="26" verticalCenter="0"/>
+            <e:DataGroup id="orderGroup1" scaleX="0.6" scaleY="0.6" verticalCenter="0" x="100" width="790">
+                <e:layout>
+                    <e:TileLayout orientation="rows" requestedColumnCount="8" horizontalGap="6" />
+                </e:layout> 
+            </e:DataGroup>
+        </e:Group>
+        <e:Group y="100">
+            <e:Label text="第二轮" bold="true" textColor="0x000000" size="26" verticalCenter="0"/>
+            <e:DataGroup id="orderGroup2" scaleX="0.6" scaleY="0.6" verticalCenter="0" x="100" width="790">
+                <e:layout>
+                    <e:TileLayout orientation="rows" requestedColumnCount="8" horizontalGap="6" />
+                </e:layout> 
+            </e:DataGroup>
+        </e:Group>
+        <e:Group y="160">
+            <e:Label text="第三轮" bold="true" textColor="0x000000" size="26" verticalCenter="0"/>
+            <e:DataGroup id="orderGroup3" scaleX="0.6" scaleY="0.6" verticalCenter="0" x="100" width="790">
+                <e:layout>
+                    <e:TileLayout orientation="rows" requestedColumnCount="8" horizontalGap="6" />
+                </e:layout> 
+            </e:DataGroup>
+        </e:Group>
+    </e:Group>   
+    <e:Group horizontalCenter="0" y="260">
+        <e:Label horizontalCenter="0" text="宝物信息" bold="true" textColor="0x000000" size="26"/>  
+        <e:Group y="40">
+            <e:Image source="round1" verticalCenter="0"></e:Image>
+            <e:DataGroup id="roundGroup1" verticalCenter="0" x="50" width="520"> 
+                <e:layout>
+                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="15" />
+                </e:layout> 
+            </e:DataGroup>
+        </e:Group>
+        <e:Group y="250">
+            <e:Image source="round2" verticalCenter="0"></e:Image>
+            <e:DataGroup id="roundGroup2" verticalCenter="0" x="50" width="520">  
+                <e:layout>
+                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="15" />
+                </e:layout>
+            </e:DataGroup>
+        </e:Group>
+        <e:Group y="460">
+            <e:Image source="round3" verticalCenter="0"></e:Image>
+            <e:DataGroup id="roundGroup3" verticalCenter="0" x="50" width="520">  
+                <e:layout>
+                    <e:TileLayout orientation="rows" requestedColumnCount="4" horizontalGap="15" />
+                </e:layout>
+            </e:DataGroup>  
+        </e:Group>
+    </e:Group>
+    
+    <e:Group id="navigationBar" y="1011" width="720" height="135">
+		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0">
+			<e:Skin states="up,down">
+				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+			</e:Skin>
+		</e:Button>
+	</e:Group>
+</e:Skin>

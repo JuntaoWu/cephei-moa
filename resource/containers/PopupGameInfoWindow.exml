@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.PopupGameInfoWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="720">
+    <moa:Shade id="overlay" />
+    <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin" height="1000">
+        <e:Group left="100" y="60">
+            <e:Label text="你" bold="true" textColor="0x000000" x="30" size="28"/>
+            <e:Group y="45" scaleX="0.7" scaleY="0.7">
+                <e:Image width="135" height="135" source="{avatarUrl}"></e:Image>
+                <e:Image source="head_bg"  width="135" height="135"/>
+                <e:Image source="{selfColor}" x="-20" y="-15" />
+            </e:Group>
+            <e:Group x="100" y="45">
+                <e:Label bold="true" textColor="0x000000" horizontalCenter="0" text="{nickName}" size="24"/>
+                <e:Label text="{role.camp}" bold="true" textColor="0x000000" y="35" horizontalCenter="0" size="24"/>
+                <e:Label text="{role.name}" bold="true" textColor="0x000000" y="70" horizontalCenter="0" size="24"/>
+            </e:Group>
+        </e:Group>
+        <e:Group visible="{teammate}" right="100" y="60">
+            <e:Label text="队友" bold="true" textColor="0x000000" size="28" right="20"/>
+            <e:Group y="45" scaleX="0.7" scaleY="0.7" right="0">
+                <e:Image width="135" height="135" source="{teammate.avatarUrl}"></e:Image>
+                <e:Image source="head_bg"  width="135" height="135"/>
+                <e:Image source="{teammate.color}" x="-20" y="-15" />
+            </e:Group>
+            <e:Group y="45" right="100">
+                <e:Label bold="true" textColor="0x000000" text="{teammate.nickName}" size="24" width="120" horizontalCenter="0" textAlign="center" height="50" verticalAlign="top"/>
+                <e:Label text="{teammate.name}" bold="true" textColor="0x000000" y="70" horizontalCenter="0" size="24" width="120" textAlign="center" verticalAlign="top"/>
+            </e:Group>
+        </e:Group>
+        <e:Group left="100" y="255">
+            <e:Image verticalCenter="0" scaleX="0.7" scaleY="0.7" source="{role.res}"></e:Image>
+            <e:Group x="115" height="100%" verticalCenter="0">
+                <e:Label text="{role.skillDescription}" lineSpacing="10" bold="true" textColor="0x000000" horizontalCenter="0" verticalCenter="0" width="400" size="24" textAlign="center"/>
+                <!--<e:Label text="{role.name}" bold="true" textColor="0x000000" y="80" horizontalCenter="0"/>-->
+            </e:Group>
+        </e:Group>
+        <e:Group left="100" y="460">
+            <e:Image source="round1"></e:Image>
+            <e:Group verticalCenter="0">
+                <e:Group visible="{firstRound.fang}" x="50" verticalCenter="0" scaleX="0.5" scaleY="0.5">
+                    <e:Group>
+                        <e:Image source="{firstRound.fang.actorUrl}"  width="135" height="135"/>
+                        <e:Image source="head_bg"  width="135" height="135"/>
+                        <e:Image source="{firstRound.fang.color}" x="-20" y="-15" />
+                        <e:Label text="{firstRound.fang.name}" textColor="0x000000" horizontalCenter="0" bottom="-40" size="40"/>
+                    </e:Group>
+                    <e:Label text="{firstRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
+                </e:Group>
+                <e:Group visible="{firstRound.r1}" x="50" verticalCenter="0">
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{firstRound.r1.source}"></e:Image>
+                    </e:Group>
+                    <e:Image source="{firstRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{firstRound.r1.resultLabel}" size="22" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
+                </e:Group>
+                <e:Group visible="{firstRound.r2}" x="230" verticalCenter="0">
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{firstRound.r2.source}"></e:Image>
+                    </e:Group>
+                    <e:Image source="{firstRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{firstRound.r2.resultLabel}" size="22" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
+                </e:Group>
+                <e:Label text="{firstRound.skillText}" size="22" textColor="0x000000" verticalCenter="0" x="250" bold="true"/>
+                <e:Group visible="{firstRound.yaoSkill}" x="350" verticalCenter="0" scaleX="0.6" scaleY="0.6" width="130" height="130">
+                    <e:Image source="{firstRound.yaoSkill.url}" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                    <e:Image source="head_bg" width="100%" height="100%" />
+                    <e:Image source="{firstRound.yaoSkill.color}" x="-20" y="-15" />
+                    <e:Label width="140" height="35" text="{firstRound.yaoSkill.name}" textColor="0x000000" horizontalCenter="0"
+                             bottom="-40" />
+                </e:Group>
+                <e:Group visible="{firstRound.zhengSkill}" x="350" scaleX="0.6" scaleY="0.6" verticalCenter="0">
+                    <e:Image source="{firstRound.zhengSkill.source}" horizontalCenter="0" verticalCenter="0" />  
+                </e:Group>
+            </e:Group>
+            <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{firstRound.text}" text="{firstRound.text}"/>
+        </e:Group>
+        <e:Group left="100" y="575">
+            <e:Image source="round2"></e:Image>
+            <e:Group verticalCenter="0">
+                <e:Group visible="{secondRound.fang}" x="50" verticalCenter="0" scaleX="0.5" scaleY="0.5">
+                    <e:Group>
+                        <e:Image source="{secondRound.fang.actorUrl}"  width="135" height="135"/>
+                        <e:Image source="head_bg"  width="135" height="135"/>
+                        <e:Image source="{secondRound.fang.color}" x="-20" y="-15" />
+                        <e:Label text="{secondRound.fang.name}" textColor="0x000000" horizontalCenter="0" bottom="-40" size="40"/>
+                    </e:Group>
+                    <e:Label text="{secondRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
+                </e:Group>
+                <e:Group visible="{secondRound.r1}" x="50" verticalCenter="0">
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{secondRound.r1.source}"></e:Image>
+                    </e:Group>
+                    <e:Image source="{secondRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{secondRound.r1.resultLabel}" size="22" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
+                </e:Group>
+                <e:Group visible="{secondRound.r2}" x="230" verticalCenter="0">
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{secondRound.r2.source}"></e:Image>
+                    </e:Group>
+                    <e:Image source="{secondRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{secondRound.r2.resultLabel}" size="22" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
+                </e:Group>
+                <e:Label text="{secondRound.skillText}" size="22" textColor="0x000000" verticalCenter="0" x="250" bold="true"/>
+                <e:Group visible="{secondRound.yaoSkill}" x="350" verticalCenter="0" scaleX="0.6" scaleY="0.6" width="130" height="130">
+                    <e:Image source="{secondRound.yaoSkill.url}" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                    <e:Image source="head_bg" width="100%" height="100%" />
+                    <e:Image source="{secondRound.yaoSkill.color}" x="-20" y="-15" />
+                    <e:Label width="140" height="35" text="{secondRound.yaoSkill.name}" textColor="0x000000" horizontalCenter="0"
+                             bottom="-40" />
+                </e:Group>
+                <e:Group visible="{secondRound.zhengSkill}" x="350" scaleX="0.6" scaleY="0.6" verticalCenter="0">
+                    <e:Image source="{secondRound.zhengSkill.source}" horizontalCenter="0" verticalCenter="0" />  
+                </e:Group>
+            </e:Group>
+            <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{secondRound.text}" text="{secondRound.text}"/>
+        </e:Group>
+        <e:Group left="100" y="690">
+            <e:Image source="round3"></e:Image>
+            <e:Group verticalCenter="0">
+                <e:Group visible="{thirdRound.fang}" x="50" verticalCenter="0" scaleX="0.5" scaleY="0.5">
+                    <e:Group>
+                        <e:Image source="{thirdRound.fang.actorUrl}"  width="135" height="135"/>
+                        <e:Image source="head_bg"  width="135" height="135"/>
+                        <e:Image source="{thirdRound.fang.color}" x="-20" y="-15" />
+                        <e:Label text="{thirdRound.fang.name}" textColor="0x000000" horizontalCenter="0" bottom="-40" size="40"/>
+                    </e:Group>
+                    <e:Label text="{thirdRound.fang.result}" textColor="0x000000" verticalCenter="0" x="150" bold="true" size="50"/>
+                </e:Group>
+                <e:Group visible="{thirdRound.r1}" x="50" verticalCenter="0">
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{thirdRound.r1.source}"></e:Image>
+                    </e:Group>
+                    <e:Image source="{thirdRound.r1.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{thirdRound.r1.resultLabel}" size="22" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
+                </e:Group>
+                <e:Group visible="{thirdRound.r2}" x="230" verticalCenter="0">
+                    <e:Group scaleX="0.6" scaleY="0.6" height="180" width="180">
+                        <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
+                        <e:Image horizontalCenter="0" verticalCenter="0" source="{thirdRound.r2.source}"></e:Image>
+                    </e:Group>
+                    <e:Image source="{thirdRound.r2.resultRes}" verticalCenter="0" x="96" scaleX="0.6" scaleY="0.6"></e:Image>
+                    <e:Label text="{thirdRound.r2.resultLabel}" size="22" textColor="0x000000" verticalCenter="0" x="100" bold="true"/>
+                </e:Group>
+                <e:Label text="{thirdRound.skillText}" size="22" textColor="0x000000" verticalCenter="0" x="250" bold="true"/>
+                <e:Group visible="{thirdRound.yaoSkill}" x="350" verticalCenter="0" scaleX="0.6" scaleY="0.6" width="130" height="130">
+                    <e:Image source="{thirdRound.yaoSkill.url}" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
+                    <e:Image source="head_bg" width="100%" height="100%" />
+                    <e:Image source="{thirdRound.yaoSkill.color}" x="-20" y="-15" />
+                    <e:Label width="140" height="35" text="{thirdRound.yaoSkill.name}" textColor="0x000000" horizontalCenter="0"
+                             bottom="-40" />
+                </e:Group>
+                <e:Group visible="{thirdRound.zhengSkill}" x="350" scaleX="0.6" scaleY="0.6" verticalCenter="0">
+                    <e:Image source="{thirdRound.zhengSkill.source}" horizontalCenter="0" verticalCenter="0" />  
+                </e:Group>
+            </e:Group>
+            <e:Label bold="true" textColor="0x000000" verticalCenter="0" x="50" visible="{thirdRound.text}" text="{thirdRound.text}"/>
+        </e:Group>
+    </moa:PopupWindowWrapper>
+</e:Skin>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ManageWindow" xmlns:e="http://ns.egret.com/eui" xmlns:ap="ap.*" xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="background" height="100%"/>
+    <e:Group width="720">
+        <e:Image width="720" source="head-bg"/>
+        <e:Button id="closeButton" verticalCenter="0" x="35">
+            <e:Skin>
+                <e:Image source="btn-back-other"></e:Image>
+            </e:Skin>
+        </e:Button>
+		
+        <e:Button id="btnPlot" x="152" verticalCenter="0">
+            <e:Skin>
+                <e:Image source="btn-plot"></e:Image>
+            </e:Skin>
+        </e:Button>
+        <e:Button id="btnPicture" verticalCenter="1" x="252">
+            <e:Skin>
+                <e:Image source="btn-picture"></e:Image>
+            </e:Skin>
+        </e:Button>
+			<e:Button id="btnTutorial" verticalCenter="1" x="358">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="tutorial"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</e:skinName>
+			</e:Button>
+
+    </e:Group>
+
+	<e:Group width="720" anchorOffsetY="0" horizontalCenter="0" top="135" bottom="1">
+		<e:Image source="game-bg" top="0" bottom="0" left="0" right="0" scale9Grid="90,70,540,422"/>
+		<e:Group id="eventGroup" horizontalCenter="0" top="0" bottom="0">
+			<e:Image source="s4" horizontalCenter="0"/>
+			<e:Image id="juese" verticalCenter="0" horizontalCenter="0" source="s60"/>
+			<e:Image source="game-bg" horizontalCenter="0" x="0" scaleX="1" scaleY="1" top="566" bottom="0"/>
+			<e:Group id="option" width="720" height="129" horizontalCenter="0" bottom="0" anchorOffsetY="0">
+				<e:Button id="yes" bottom="0" left="0" label="{yes_text}" width="360">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="yes"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</e:skinName>
+				</e:Button>
+				<e:Button id="no" bottom="0" right="0" label="{no_text}" width="360">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="no"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+				</e:skinName>
+				</e:Button>
+			</e:Group>
+		</e:Group>
+		<e:Group y="20" horizontalCenter="0">
+			<e:Image source="icon-group"/>
+			<e:Group x="415" y="4" width="60">
+				<e:Image source="mu" x="-75" y="0"/>
+				<e:Image id="bao1" x="-81" y="-6" source="mu_gao" visible="false"/>
+				<e:BitmapLabel id="gu1" text="6" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" y="40"/>
+				<e:BitmapLabel id="coll1" text="0" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" y="0" horizontalCenter="0"/>
+			</e:Group>
+			<e:Group x="75" width="60" y="5">
+				<e:Image source="shu" x="-74" y="-6"/>
+				<e:Image x="-79" y="-11" id="bao2" source="shu_gao" visible="false"/>
+				<e:BitmapLabel id="gu2" text="2" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" y="40"/>
+				<e:BitmapLabel id="coll2" text="2" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" top="0"/>
+			</e:Group>
+			<e:Group x="585" width="60" y="6">
+				<e:Image source="qing" x="-70" y="-2"/>
+				<e:Image x="-76" y="-8" id="bao3" source="qing_gao" visible="false"/>
+				<e:BitmapLabel id="gu3" text="3" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" y="40"/>
+				<e:BitmapLabel id="coll3" text="3" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" top="0"/>
+			</e:Group>
+			<e:Group width="60" y="5" x="245">
+				<e:Image source="yu" x="-79" y="0"/>
+				<e:Image id="bao4" x="-85" y="-6" source="yu_gao" visible="false"/>
+				<e:BitmapLabel id="gu4" text="4" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" y="40"/>
+				<e:BitmapLabel id="coll4" text="4" textAlign="center" verticalAlign="middle" font="hintCardNumber_fnt" scaleX="1.5" scaleY="1.5" horizontalCenter="0" top="0"/>
+			</e:Group>
+			<e:Group y="85" x="0">
+				<e:Image source="icon-clock" verticalCenter="0" x="5"/>
+				<e:Label id="clock" text="24" textColor="0x000000" verticalCenter="0" x="70" width="90" height="40" verticalAlign="middle" textAlign="center"/>
+			</e:Group>
+			<e:Group y="85" right="0">
+				<e:Image source="icon-money" verticalCenter="0" x="5"/>
+				<e:Label id="gold" text="0" textColor="0x000000" verticalCenter="5" x="75" height="40" width="90" verticalAlign="middle" textAlign="center"/>
+			</e:Group>
+		</e:Group>
+		<e:Group id="miniGameGroup" y="180" horizontalCenter="0">
+			<e:Group id="gameTrueFalse">
+			</e:Group>
+			<e:List id="gameList" horizontalCenter="0" width="640" y="120" visible="false">
+				<e:layout>
+					<e:TileLayout orientation="columns" requestedColumnCount="2" verticalGap="40" columnWidth="300" />
+				</e:layout>
+			</e:List>
+		</e:Group>
+		<e:Label id="text1" text="{description}" width="670" horizontalCenter="0" textColor="0x000000" size="35" anchorOffsetY="0" verticalAlign="middle" textAlign="center" y="800" fontFamily="Microsoft YaHei"/>
+		<e:Button id="setMiniGame" alpha="0" width="720" horizontalCenter="0" bottom="0" anchorOffsetY="0" top="566">
+		</e:Button>
+	</e:Group>
+	<e:Label id="text2" text="" left="0" right="0" bottom="0" top="726"/>
+
+</e:Skin>
