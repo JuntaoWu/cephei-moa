@@ -6,7 +6,7 @@ import * as fileutil from 'library/file-util';
 
 class WxgamePlatform {
 
-  env = 'test';
+  env = 'prod';
   name = 'wxgame';
   appVersion = '0.4.0';
 
@@ -247,11 +247,14 @@ class WxgamePlatform {
     });
   }
 
-  showPreImage(imgList) {
+  showPreImage(imgList, currentIndex) {
+    var urls = imgList.map(m => {
+      return `${m}?v=${this.getVersion()}`;
+    })
+    var current = currentIndex ? urls[currentIndex] : urls[0];
     wx.previewImage({
-      urls: imgList.map(m => {
-        return `${m}?v=${this.getVersion()}`;
-      }),
+      current: current,
+      urls: urls,
     });
   }
 
