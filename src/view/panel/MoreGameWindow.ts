@@ -30,8 +30,8 @@ namespace moa {
 
         public viewMoreClick(index?: number) {
             let imgList = [
-                "https://gdjzj.hzsdgames.com:8084/miniGame/resource/assets/start/qrcode-tk2048.jpg",
-                "https://gdjzj.hzsdgames.com:8084/miniGame/resource/assets/start/qrcode-img.jpg"
+                `${Constants.ResourceEndpoint}resource/assets/start/qrcode-tk2048.jpg`,
+                `${Constants.ResourceEndpoint}resource/assets/start/qrcode-img.jpg`
             ]
             platform.showPreImage(imgList, index);
         }

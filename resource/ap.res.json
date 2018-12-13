@@ -5,7 +5,7 @@
 			"name": "preload"
 		},
 		{
-			"keys": "progress-bg,progress,background",
+			"keys": "progress-bg,progress,background,btn-anonymouslogin,btn-wxlogin,loading-background",
 			"name": "loading"
 		},
 		{
@@ -1453,6 +1453,21 @@
 			"url": "assets/manage/guide-img4.png",
 			"type": "image",
 			"name": "guide-img4"
+		},
+		{
+			"url": "assets/Button/btn-wxlogin.png",
+			"type": "image",
+			"name": "btn-wxlogin"
+		},
+		{
+			"url": "assets/Button/btn-anonymouslogin.png",
+			"type": "image",
+			"name": "btn-anonymouslogin"
+		},
+		{
+			"url": "assets/background/loading-background.jpg",
+			"type": "image",
+			"name": "loading-background"
 		}
 	]
 }

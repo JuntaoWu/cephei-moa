@@ -172,7 +172,7 @@ namespace moa {
         public createCompleteEvent(event: eui.UIEvent): void {
             this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height;
             // this.poweredLabel.y = this.stage.stageHeight - this.poweredLabel.height - 30;
-
+            this.gameBackground.height = this.stage.stageHeight;
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
 
