@@ -6,20 +6,20 @@
             <e:Label text="{roundText}" bold="true" textColor="0x000000" horizontalCenter="0"/>
             <e:Label text="本轮宝物" bold="true" textColor="0x000000" y="35" horizontalCenter="0"/>
         </e:Group>
-        <e:Group y="200" horizontalCenter="0" width="400">
-            <e:Group height="180" width="180">
+        <e:Group y="180" horizontalCenter="0" width="440">
+            <e:Group height="200" width="200">
                 <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
                 <e:Image horizontalCenter="0" verticalCenter="0" source="{ant1}"></e:Image>
             </e:Group>
-            <e:Group height="180" width="180" right="0">
+            <e:Group height="200" width="200" right="0">
                 <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
                 <e:Image horizontalCenter="0" verticalCenter="0" source="{ant2}"></e:Image>
             </e:Group>
-            <e:Group height="180" width="180" y="200">
+            <e:Group height="200" width="200" y="220">
                 <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
                 <e:Image horizontalCenter="0" verticalCenter="0" source="{ant3}"></e:Image>
             </e:Group>
-            <e:Group height="180" width="180" right="0" y="200">
+            <e:Group height="200" width="200" right="0" y="220">
                 <e:Image source="bg2" horizontalCenter="0" verticalCenter="0"></e:Image>                    
                 <e:Image horizontalCenter="0" verticalCenter="0" source="{ant4}"></e:Image>
             </e:Group>
