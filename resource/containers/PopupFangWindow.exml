@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.PopupFangWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*">
+<e:Skin class="skins.PopupFangWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" width="720">
     <moa:Shade id="overlay" />
     <moa:PopupWindowWrapper id="container" skinName="skins.PopupWindowSkin">
-        <e:Group x="140" width="140" height="140" y="80">
+        <e:Group x="150" width="130" height="130" y="90">
             <e:Image source="{seat.url}" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
             <e:Image source="head_bg" width="100%" height="100%" />
             <e:Image source="{seat.color}" x="-20" y="-15" />
-            <e:Label width="150" height="35" text="{seat.name}" textColor="0x000000" horizontalCenter="0"
+            <e:Label width="140" height="35" text="{seat.name}" textColor="0x000000" horizontalCenter="0"
                         bottom="-40" />
         </e:Group>
-        <e:Label text="{message}" bold="true" textColor="0x020202" y="137" width="320" x="300"/>
+        <e:Label text="{message}" bold="true" textColor="0x020202" y="137" width="250" x="300"/>
     </moa:PopupWindowWrapper>
 </e:Skin>

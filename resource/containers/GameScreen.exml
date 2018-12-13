@@ -16,7 +16,7 @@
             <e:Label text="{maxPlayers}" textColor="0x000000" horizontalCenter="30"></e:Label>
         </e:Group>
     </e:Group>
-    <e:Group id="contentArea" y="50" width="680" horizontalCenter="0" height="600">
+    <e:Group id="contentArea" y="50" width="600" horizontalCenter="0" height="540">
         <e:Image source="meihua" verticalCenter="0" horizontalCenter="0"></e:Image>
         <e:Image source="game-box-border" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
         <e:Group visible="{isPhasePreparing}" width="600" horizontalCenter="0" height="540">
@@ -101,7 +101,7 @@
                          verticalCenter="0" size="25" bold="true"></e:Label>
             </e:Group>
         </e:Group>
-        <e:Group horizontalCenter="0" height="100%" visible="{isPhaseGameInProgress}">
+        <e:Group horizontalCenter="0" height="560" visible="{isPhaseGameInProgress}">
             <e:Label visible="{isFirstRound}" text="第一轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Label visible="{isSecondRound}" text="第二轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
             <e:Label visible="{isThirdRound}" text="第三轮" textColor="0x000000" horizontalCenter="0" bold="true"></e:Label>
@@ -494,20 +494,20 @@
             <e:Group visible="{isWaitOthersTouRen}" horizontalCenter="0" verticalCenter="0">
                 <e:Label text="等待其他玩家投票" textColor="0x000000"></e:Label>
             </e:Group>
-            <e:Button id="btnGameInfo" horizontalCenter="-55" bottom="-15">
+            <e:Button id="btnGameInfo" horizontalCenter="-70" bottom="0">
                 <e:Skin states="up,down">
                     <e:Image source="self_info"></e:Image>
                 </e:Skin>
             </e:Button>
-            <e:Button id="btnGameRecord" horizontalCenter="55" bottom="-15">
+            <e:Button id="btnGameRecord" horizontalCenter="70" bottom="0">
                 <e:Skin states="up,down">
                     <e:Image source="game-record"></e:Image>
                 </e:Skin>
             </e:Button>
         </e:Group>
     </e:Group>
-    <e:Group id="seatArea" anchorOffsetY="0" y="680" anchorOffsetX="0" width="680" x="25" height="365">
-        <e:Button enabled="{canChooseSeat}" id="btnSeat1" anchorOffsetX="0" width="150" height="150">
+    <e:Group id="seatArea" anchorOffsetY="0" y="620" anchorOffsetX="0" width="590" x="25" height="400">
+        <e:Button enabled="{canChooseSeat}" id="btnSeat1" anchorOffsetX="0" width="130" height="130">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -518,7 +518,7 @@
                          bottom="-40" />
             </e:Skin>
         </e:Button>
-        <e:Button enabled="{canChooseSeat}" id="btnSeat2" x="175" width="150" height="150">
+        <e:Button enabled="{canChooseSeat}" id="btnSeat2" x="155" width="130" height="130">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -529,7 +529,7 @@
                          bottom="-40" />
             </e:Skin>
         </e:Button>
-        <e:Button enabled="{canChooseSeat}" id="btnSeat3" x="350" width="150" height="150">
+        <e:Button enabled="{canChooseSeat}" id="btnSeat3" x="310" width="130" height="130">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -540,7 +540,7 @@
                          bottom="-40" />
             </e:Skin>
         </e:Button>
-        <e:Button enabled="{canChooseSeat}" id="btnSeat4" width="150" height="150" right="0">
+        <e:Button enabled="{canChooseSeat}" id="btnSeat4" x="465" width="130" height="130">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -551,7 +551,7 @@
                          bottom="-40" />
             </e:Skin>
         </e:Button>
-        <e:Button enabled="{canChooseSeat}" id="btnSeat5" y="210" width="150" height="150">
+        <e:Button enabled="{canChooseSeat}" id="btnSeat5" y="190" width="130" height="130">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -562,7 +562,7 @@
                          bottom="-40" />
             </e:Skin>
         </e:Button>
-        <e:Button enabled="{canChooseSeat}" id="btnSeat6" y="210" x="175" width="150" height="150">
+        <e:Button enabled="{canChooseSeat}" id="btnSeat6" y="190" x="158" width="130" height="130">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -573,7 +573,7 @@
                          bottom="-40" />
             </e:Skin>
         </e:Button>
-        <e:Button enabled="{canChooseSeat}" id="btnSeat7" y="210" x="350" width="150" height="150">
+        <e:Button enabled="{canChooseSeat}" id="btnSeat7" y="190" x="317" width="130" height="130">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -584,7 +584,7 @@
                          bottom="-40" />
             </e:Skin>
         </e:Button>
-        <e:Button enabled="{canChooseSeat}" id="btnSeat8" y="210" width="150" height="150" right="0">
+        <e:Button enabled="{canChooseSeat}" id="btnSeat8" y="190" x="470" width="130" height="130">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
@@ -602,7 +602,7 @@
                 <e:Image source="btn-help" />
             </e:Skin>
         </e:Button>
-        <e:Group anchorOffsetX="0" right="10" width="580" y="0">
+        <e:Group anchorOffsetX="0" right="0" width="520" y="0">
             <e:Group width="100%">
                 <e:Group visible="{isNormalClient}" width="100%">
                     <e:Button enabled="false" width="100%" visible="{isWaiting}">
