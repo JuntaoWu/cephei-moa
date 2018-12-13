@@ -3,9 +3,7 @@
         xmlns:moa="moa.*">
 	<e:Image left="0" right="0" bottom="0" top="0" source="start-background" />
 	<e:Group id="headGroup" horizontalCenter="0" width="720" y="0" height="180">
-		<e:Label text="排行" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
-		
-		
+		<e:Label text="排行" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />	
 		<e:Group y="75" width="620" horizontalCenter="0" height="80">
 			<!-- 下拉框 -->
 			<e:Group id="rateTimeFilter" left="0" anchorOffsetY="0" verticalCenter="0" width="140">
@@ -35,49 +33,51 @@
 			</e:List>
 		</e:viewport>
 	</e:Scroller>
-	<e:Group left="10" anchorOffsetY="0" y="150">
-		<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
-			<e:viewport>
-				<e:List id="rateTimeList" anchorOffsetX="0" anchorOffsetY="0" width="140">
-					<e:layout>
-						<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
-					</e:layout>
-				</e:List>
-			</e:viewport>
-		</e:Scroller>
-	</e:Group>
-	<e:Group y="150" x="170">
-		<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
-			<e:viewport>
-				<e:List id="gameTypeList" anchorOffsetX="0" anchorOffsetY="0" width="140">
-					<e:layout>
-						<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
-					</e:layout>
-				</e:List>
-			</e:viewport>
-		</e:Scroller>
-	</e:Group>
-	<e:Group y="150" x="330">
-		<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
-			<e:viewport>
-				<e:List id="roleList" anchorOffsetX="0" anchorOffsetY="0" width="140">
-					<e:layout>
-						<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
-					</e:layout>
-				</e:List>
-			</e:viewport>
-		</e:Scroller>
-	</e:Group>
-	<e:Group y="150" right="10">
-		<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
-			<e:viewport>
-				<e:List id="otherList" anchorOffsetX="0" anchorOffsetY="0" width="140">
-					<e:layout>
-						<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
-					</e:layout>
-				</e:List>
-			</e:viewport>
-		</e:Scroller>
+	<e:Group width="640" y="150" horizontalCenter="0">
+		<e:Group left="10" anchorOffsetY="0">
+			<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
+				<e:viewport>
+					<e:List id="rateTimeList" anchorOffsetX="0" anchorOffsetY="0" width="140">
+						<e:layout>
+							<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
+						</e:layout>
+					</e:List>
+				</e:viewport>
+			</e:Scroller>
+		</e:Group>
+		<e:Group x="170">
+			<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
+				<e:viewport>
+					<e:List id="gameTypeList" anchorOffsetX="0" anchorOffsetY="0" width="140">
+						<e:layout>
+							<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
+						</e:layout>
+					</e:List>
+				</e:viewport>
+			</e:Scroller>
+		</e:Group>
+		<e:Group x="330">
+			<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
+				<e:viewport>
+					<e:List id="roleList" anchorOffsetX="0" anchorOffsetY="0" width="140">
+						<e:layout>
+							<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
+						</e:layout>
+					</e:List>
+				</e:viewport>
+			</e:Scroller>
+		</e:Group>
+		<e:Group right="10">
+			<e:Scroller scrollPolicyH="off" maxHeight="350" horizontalCenter="0" anchorOffsetY="0">
+				<e:viewport>
+					<e:List id="otherList" anchorOffsetX="0" anchorOffsetY="0" width="140">
+						<e:layout>
+							<e:TileLayout orientation="rows" columnWidth="140" requestedColumnCount="1" verticalGap="0" horizontalGap="0" />
+						</e:layout>
+					</e:List>
+				</e:viewport>
+			</e:Scroller>
+		</e:Group>
 	</e:Group>
     <e:Group id="navigationBar" y="1011" width="720" height="135">
 		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
