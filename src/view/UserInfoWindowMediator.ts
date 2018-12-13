@@ -43,13 +43,13 @@ namespace moa {
 
             this.userInfoWindow.isAntiquesPassed = userInfo.gameRecords.isAntiquesPassed;
             this.userInfoWindow.isAntiquesUnPassed = !userInfo.gameRecords.isAntiquesPassed;
-            const antiquesGameTime = userInfo.gameRecords.antiquesGameTime || 0;
+            const antiquesGameTime = (+userInfo.gameRecords.antiquesGameTime || 0) * 1000;  // seconds to ms.
             let date = new Date(antiquesGameTime);
             if (date.getUTCDay() > 0) {
-                this.userInfoWindow.antiquesGameTime = `${Math.floor(antiquesGameTime / 3600)}:${date.getUTCMinutes()}:${date.getUTCSeconds()}`;
+                this.userInfoWindow.antiquesGameTime = `${_.padStart(Math.floor(antiquesGameTime / 1000 / 3600).toString(), 2, "0")}:${_.padStart(date.getUTCMinutes().toString(), 2, "0")}:${_.padStart(date.getUTCSeconds().toString(), 2, "0")}`;
             }
             else {
-                this.userInfoWindow.antiquesGameTime = `${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()}`;
+                this.userInfoWindow.antiquesGameTime = `${_.padStart(date.getUTCHours().toString(), 2, "0")}:${_.padStart(date.getUTCMinutes().toString(), 2, "0")}:${_.padStart(date.getUTCSeconds().toString(), 2, "0")}`;
             }
 
             // this.userInfoWindow.totalPlay = `共99局`;

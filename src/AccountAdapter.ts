@@ -180,7 +180,7 @@ namespace moa {
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${Constants.Endpoints.service}records/?token=${CommonData.logon.token}`, egret.HttpMethod.POST);
+                request.open(`${Constants.Endpoints.service}records/?token=${CommonData.logon.token}`, egret.HttpMethod.GET);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send();
@@ -240,6 +240,32 @@ namespace moa {
             else {
                 console.log(`We don't have openId now, skip.`);
             }
+        }
+
+        /** loadPreference */
+        public static async loadPreference(): Promise<Preference> {
+            var request = new egret.HttpRequest();
+            request.responseType = egret.HttpResponseType.TEXT;
+            request.open(`${Constants.Endpoints.service}preferences/${platform.name}`, egret.HttpMethod.GET);
+            request.setRequestHeader("Content-Type", "application/json");
+
+            request.send();
+
+            return new Promise((resolve, reject) => {
+                request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
+                    console.log(`loadPreference via app server end.`);
+
+                    let req = <egret.HttpRequest>(event.currentTarget);
+                    let res = JSON.parse(req.response);
+                    if (res.error) {
+                        console.error(res.message);
+                        return reject(res.message);
+                    }
+                    else {
+                        return resolve(res.data);
+                    }
+                }, this);
+            });
         }
 
     }

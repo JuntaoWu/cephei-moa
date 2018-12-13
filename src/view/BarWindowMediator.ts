@@ -4,9 +4,13 @@ namespace moa {
     export class BarWindowMediator extends puremvc.Mediator implements puremvc.IMediator {
         public static NAME: string = "BarWindowMediator";
 
+        private proxy: ClubProxy;
+
         public constructor(viewComponent: any) {
             super(BarWindowMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
+
+            this.proxy = this.facade().retrieveProxy(ClubProxy.NAME) as ClubProxy;
 
             this.barWindow.backButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backButtonClick, this);
             this.barWindow.provinceGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showProvinceList, this);
@@ -29,15 +33,11 @@ namespace moa {
         private selectedDistrict: any;
 
 
-        private _allClubs: Club[];
-        public get allClubs(): Club[] {
-            if (!this._allClubs) {
-                this._allClubs = RES.getRes("clubs_json") as Club[];
-            }
-            return this._allClubs;
-        }
+        private allClubs: Club[];
 
         public async initData() {
+
+            this.allClubs = await this.proxy.loadClub();
 
             this.barWindow.showListProvince = this.barWindow.showListCity = this.barWindow.showListDistrict = false;
 

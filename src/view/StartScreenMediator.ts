@@ -27,6 +27,16 @@ namespace moa {
         }
 
         public async initData() {
+
+            const preference = await AccountAdapter.loadPreference();
+
+            if (!preference.showClub) {
+                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
+            }
+            if (!preference.showMore) {
+                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
+            }
+
             console.log("StartScreen initData:");
             this.accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
             this.gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
@@ -43,25 +53,18 @@ namespace moa {
                 this.startScreen.isDebugPlatform = true;
                 this.startScreen.isWxPlatform = false;
                 this.startScreen.isNativePlatform = false;
-
-                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
-                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
             }
             else if (platform.name == "wxgame") {
                 console.log("wxgame");
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = true;
-                this.startScreen.isNativePlatform = false;
-
-                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
+                this.startScreen.isNativePlatform = false;  // todo: turn Club on.
             }
             else if (platform.name == "native") {
                 console.log("native");
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = false;
                 this.startScreen.isNativePlatform = true;
-
-                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
             }
         }
 
