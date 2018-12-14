@@ -74,64 +74,93 @@ namespace moa {
                         component['watch'] = true
                     }
                 }
-            })
-            let textFlow = this._TextImageData.map(text =>
-                typeof text === "string" || egret.is(text, 'eui.Label')
-                    ? { type: egret.is(text, 'eui.Label') ? "label" : "string", text: egret.is(text, 'eui.Label') ? text.text : text }
-                    : { type: "image", text: ' ', style: { size: text.width } }
-            )
-            let TextField: egret.TextField = this.templet = new egret.TextField();
-            TextField.size = this.size;
-            TextField.lineSpacing = 0;
-            TextField.width = this.width
-            TextField.textFlow = textFlow
-            TextField.height = TextField.height
+            });
 
-            this.height = 0
-            this.lineHeightArray = []
-
-            let componentTestIndex = 0 //测量高度的组件序号
-            let componentIndex = 0 //布局的组件序号
-            TextField['linesArr'].forEach((item, lines) => {
-                console.log('item=>', item)
-                //获取最大高度
-                let maxheight = item.height || this.size;
-                //组件序号
-                item.elements.forEach((element) => {
-                    if (element.type != "string") {
-                        let c = this.components[componentTestIndex++]
-                        maxheight = Math.max(maxheight, c.height)
+            let x = 0;
+            let y = 0;
+            this.components.forEach((component: eui.Component) => {
+                component.x = x;
+                component.y = y;
+                let height = 0;
+                if (egret.is(component, "eui.Label")) {
+                    for (let i = 0; i < component["linesArr"].length; ++i) {
+                        if (component["linesArr"][i].hasNextLine) {
+                            x = 0;
+                            y += component["linesArr"][i].height;
+                            height = 0;
+                        }
+                        else {
+                            x += component["linesArr"][i].width;
+                            height = component["linesArr"][i].height;
+                        }
                     }
-                })
-                maxheight = this._lineSpacing + maxheight
-                this.lineHeightArray.push(maxheight)
-
-                //开始布局
-                let x = 0
-                item.elements.forEach(element => {
-                    let component;
-                    if (element.type != "string") {
-                        component = this.components[componentIndex++];
-                        component.x = x;
-                        component.y = this.height + (maxheight - component.height) / 2;
-                    }
-                    else {
-                        component = new egret.TextField()
-                        component.x = x
-                        component.size = this.size
-                        component.text = element.text
-                        component.width = element.width
-                        component.textColor = this._textColor
-                        component.height = maxheight
-                        component.y = this.height
-                        component.verticalAlign = this._verticalAlign;
-                    }
+                }
+                else {
                     x += component.width;
-                    this.addChild(component);
-                });
-                this.height += maxheight
-            })
-            this._width = this.templet.width
+                    y += component.height;
+                }
+                // y += (component.height - height) / 2;
+
+                this.addChild(component);
+            });
+
+            // let textFlow = this._TextImageData.map(text =>
+            //     typeof text === "string" || egret.is(text, 'eui.Label')
+            //         ? { type: egret.is(text, 'eui.Label') ? "label" : "string", text: egret.is(text, 'eui.Label') ? text.text : text }
+            //         : { type: "image", text: ' ', style: { size: text.width } }
+            // )
+            // let TextField: egret.TextField = this.templet = new egret.TextField();
+            // TextField.size = this.size;
+            // TextField.lineSpacing = 0;
+            // TextField.width = this.width
+            // TextField.textFlow = textFlow
+            // TextField.height = TextField.height
+
+            // this.height = 0
+            // this.lineHeightArray = []
+
+            // let componentTestIndex = 0 //测量高度的组件序号
+            // let componentIndex = 0 //布局的组件序号
+            // TextField['linesArr'].forEach((item, lines) => {
+            //     console.log('item=>', item)
+            //     //获取最大高度
+            //     let maxheight = item.height || this.size;
+            //     //组件序号
+            //     item.elements.forEach((element) => {
+            //         if (element.type != "string") {
+            //             let c = this.components[componentTestIndex++]
+            //             maxheight = Math.max(maxheight, c.height)
+            //         }
+            //     })
+            //     maxheight = this._lineSpacing + maxheight
+            //     this.lineHeightArray.push(maxheight)
+
+            //     //开始布局
+            //     let x = 0
+            //     item.elements.forEach(element => {
+            //         let component;
+            //         if (element.type != "string") {
+            //             component = this.components[componentIndex++];
+            //             component.x = x;
+            //             component.y = this.height + (maxheight - component.height) / 2;
+            //         }
+            //         else {
+            //             component = new egret.TextField()
+            //             component.x = x
+            //             component.size = this.size
+            //             component.text = element.text
+            //             component.width = element.width
+            //             component.textColor = this._textColor
+            //             component.height = maxheight
+            //             component.y = this.height
+            //             component.verticalAlign = this._verticalAlign;
+            //         }
+            //         x += component.width;
+            //         this.addChild(component);
+            //     });
+            //     this.height += maxheight
+            // })
+            // this._width = this.templet.width
 
         }
         _textColor: number = 0x000000
