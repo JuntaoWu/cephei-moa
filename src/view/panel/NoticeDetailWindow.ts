@@ -9,7 +9,7 @@ namespace moa {
         private contentScroller: eui.Scroller;
         private navigationBar: eui.Group;
 
-        public txtContent: eui.Label;
+        public txtContent: eui.Group;
 
         public data: Notice;
 
@@ -27,10 +27,7 @@ namespace moa {
 
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
 
-            if (this.txtContent && this.data) {
-                const textElements = new egret.HtmlTextParser().parser(this.data.content);
-                this.txtContent.textFlow = textElements;
-            }
+            this.setData(this.data);
         }
 
         public partAdded(partName: string, instance: any): void {
@@ -40,9 +37,37 @@ namespace moa {
         public setData(data: Notice) {
             this.data = data;
 
-            if (this.txtContent) {
-                const textElements = new egret.HtmlTextParser().parser(data.content);
-                this.txtContent.textFlow = textElements;
+            if (this.txtContent && this.data) {
+                this.txtContent.removeChildren();
+
+                const regexp = /<img [^>]*src=['"]([^'"]+)[^>]*>/gim;
+                let match = regexp.exec(this.data.content);
+                let previousIndex = 0;
+                let elements = [];
+                while (match) {
+                    elements.push({ type: "text", value: this.data.content.slice(previousIndex, match.index) });
+                    elements.push({ type: "image", value: match[1] });
+                    previousIndex = match.index + match[0].length;
+                    match = regexp.exec(this.data.content);
+                }
+                elements.push({ type: "text", value: this.data.content.slice(previousIndex) });
+
+                const parsedElements = elements.map(element => {
+                    if (element.type == "text") {
+                        const label = new eui.Label();
+                        const textElements = new egret.HtmlTextParser().parser(element.value);
+                        label.textFlow = textElements;
+                        return label;
+                    }
+                    else {
+                        const image = new eui.Image(element.value);
+                        return image;
+                    }
+                });
+
+                const textImage = new TextImage(parsedElements);
+
+                this.txtContent.addChild(textImage);
             }
         }
     }

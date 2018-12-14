@@ -4,7 +4,7 @@ namespace moa {
     export class NoticeItemRenderer extends eui.ItemRenderer {
         constructor() {
             super();
-            this.skinName = "skins.NoticetemRenderer";
+            this.skinName = "skins.NoticeItemRenderer";
         }
 
         protected createChildren(): void {
@@ -13,6 +13,7 @@ namespace moa {
 
         protected dataChanged(): void {
             super.dataChanged();
+            this.data.createdAtLocaleString = this.data.createdAt.toLocaleDateString();
         }
 
     }

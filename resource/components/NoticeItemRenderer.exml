@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="skins.NoticeItemRenderer" width="600" xmlns:e="http://ns.egret.com/eui">
-    <e:Image source="item-bg" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" bottom="1" top="1" />
-    <e:Image source="name-bg" anchorOffsetX="0" anchorOffsetY="0" scaleX="2.5" x="20" y="10" scaleY="1.5" />
-    <e:Label text="{data.title}" size="60" fontFamily="微软雅黑,思源黑体,华文黑体" textColor="0xa04310" bold="true" y="15" x="50" />
-    <e:Label text="{data.createdAt}" size="60" fontFamily="微软雅黑,思源黑体,华文黑体" textColor="0xa04310" x="50" y="90" />
+    <e:Group width="600" height="200">
+        <e:Label text="{data.title}" fontFamily="微软雅黑,思源黑体,华文黑体" textColor="0xa04310" bold="true" y="15"
+                 x="50" />
+        <e:Label text="{data.createdAtLocaleString}" fontFamily="微软雅黑,思源黑体,华文黑体" textColor="0xa04310" x="50" y="90" />
+    </e:Group>
 </e:Skin>

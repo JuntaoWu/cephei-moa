@@ -36,6 +36,9 @@ namespace moa {
             });
             this.noticeWindow.noticeList.dataProvider = new eui.ArrayCollection(noticeListData);
             this.noticeWindow.noticeList.itemRenderer = NoticeItemRenderer;
+            this.noticeWindow.noticeList.dataProviderRefreshed();
+
+            this.noticeWindow.noticeList.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.viewNotice, this);
         }
 
         private viewNotice(event: eui.ItemTapEvent) {

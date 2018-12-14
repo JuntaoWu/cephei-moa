@@ -8,9 +8,7 @@
     <e:Scroller id="contentScroller" scrollPolicyH="off" width="600" horizontalCenter="0" anchorOffsetY="0" height="900"
                 y="110">
         <e:viewport>
-            <e:Group>
-                <e:Label id="txtContent"></e:Label>
-            </e:Group>
+            <e:Group id="txtContent"></e:Group>
         </e:viewport>
     </e:Scroller>
     <e:Group id="navigationBar" y="1011" width="720" height="135">

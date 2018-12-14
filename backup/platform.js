@@ -201,7 +201,7 @@ class WxgamePlatform {
       wx.getStorage({
         key: `${this.env}${key}`,
         success: function(res) {
-          resolve(res);
+          resolve(res.data);
         },
         fail: function(res) {
           reject(res);

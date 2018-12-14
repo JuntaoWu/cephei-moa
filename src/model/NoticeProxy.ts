@@ -53,10 +53,10 @@ namespace moa {
             }
 
             if (platform.name == "native") {
-                await platform.setSecurityStorageAsync("lastSeenNoticeAt", _(this.notice).maxBy("createdAt").createdAt);
+                await platform.setSecurityStorageAsync("lastSeenNoticeAt", _(this.notice).maxBy("createdAt").createdAt.toJSON());
             }
             else {
-                await platform.setStorageAsync("lastSeenNoticeAt", _(this.notice).maxBy("createdAt").createdAt);
+                await platform.setStorageAsync("lastSeenNoticeAt", _(this.notice).maxBy("createdAt").createdAt.toJSON());
             }
         }
 
@@ -72,10 +72,16 @@ namespace moa {
 
             let lastSeenNoticeAt = new Date(0);
             if (platform.name == "native") {
-                lastSeenNoticeAt = await platform.getSecurityStorageAsync("lastSeenNoticeAt");
+                let storedValue: string = await platform.getSecurityStorageAsync("lastSeenNoticeAt");
+                if (storedValue) {
+                    lastSeenNoticeAt = new Date(storedValue);
+                }
             }
             else {
-                lastSeenNoticeAt = await platform.getStorageAsync("lastSeenNoticeAt");
+                let storedValue: string = await platform.getStorageAsync("lastSeenNoticeAt");
+                if (storedValue) {
+                    lastSeenNoticeAt = new Date(storedValue);
+                }
             }
 
             return this.notice.some(i => i.createdAt > lastSeenNoticeAt);

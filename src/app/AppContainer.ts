@@ -272,8 +272,8 @@ namespace moa {
             if (!this.noticeDetailWindow) {
                 this.noticeDetailWindow = new NoticeDetailWindow();
             }
-            this.noticeDetailWindow.setData(data);
             this.addChild(this.noticeDetailWindow);
+            this.noticeDetailWindow.setData(data);
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
