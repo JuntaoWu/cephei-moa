@@ -50,5 +50,15 @@ namespace moa {
         public partAdded(partName: string, instance: any): void {
             super.partAdded(partName, instance);
         }
+
+        public showNoticeTips() {
+            let redtips = this.btnNotice.getChildByName("redtips");
+            redtips.visible = true;
+        }
+
+        public hideNoticeTips() {
+            let redtips = this.btnNotice.getChildByName("redtips");
+            redtips.visible = false;
+        }
     }
 }

@@ -30,10 +30,10 @@ namespace moa {
 
             const preference = await AccountAdapter.loadPreference();
 
-            if (!preference.showClub) {
+            if (!preference || !preference.showClub) {
                 this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
             }
-            if (!preference.showMore) {
+            if (!preference || !preference.showMore) {
                 this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
             }
 
@@ -66,6 +66,10 @@ namespace moa {
                 this.startScreen.isWxPlatform = false;
                 this.startScreen.isNativePlatform = true;
             }
+
+            const noticeProxy = this.facade().retrieveProxy(NoticeProxy.NAME) as NoticeProxy;
+            const hasUnreadNotice = await noticeProxy.hasUnreadNotice();
+            hasUnreadNotice && this.startScreen.showNoticeTips();
         }
 
         // public async changeOpenIdClick(event: egret.TouchEvent) {

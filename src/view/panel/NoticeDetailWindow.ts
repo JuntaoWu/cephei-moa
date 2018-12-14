@@ -1,7 +1,7 @@
 
 namespace moa {
 
-    export class NoticeWindow extends eui.Panel {
+    export class NoticeDetailWindow extends eui.Panel {
 
         public backButton: eui.Button;
 
@@ -9,12 +9,14 @@ namespace moa {
         private contentScroller: eui.Scroller;
         private navigationBar: eui.Group;
 
-        public noticeList: eui.List;
+        public txtContent: eui.Label;
+
+        public data: Notice;
 
         public constructor() {
             super();
 
-            this.skinName = "skins.NoticeWindow";
+            this.skinName = "skins.NoticeDetailWindow";
             this.addEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             this.backButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.close, this);
         }
@@ -24,11 +26,24 @@ namespace moa {
             this.contentScroller.height = this.stage.stageHeight - this.headGroup.height - this.navigationBar.height - 20;
 
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
-            ApplicationFacade.getInstance().registerMediator(new NoticeWindowMediator(this));
+
+            if (this.txtContent && this.data) {
+                const textElements = new egret.HtmlTextParser().parser(this.data.content);
+                this.txtContent.textFlow = textElements;
+            }
         }
 
         public partAdded(partName: string, instance: any): void {
             super.partAdded(partName, instance);
+        }
+
+        public setData(data: Notice) {
+            this.data = data;
+
+            if (this.txtContent) {
+                const textElements = new egret.HtmlTextParser().parser(data.content);
+                this.txtContent.textFlow = textElements;
+            }
         }
     }
 }

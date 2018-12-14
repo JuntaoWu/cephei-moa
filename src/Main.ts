@@ -26,7 +26,9 @@
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //////////////////////////////////////////////////////////////////////////////////////
-
+/** 
+ * namespace Mystery of Antiques。
+ */
 namespace moa {
 
     export class Main extends eui.UILayer {

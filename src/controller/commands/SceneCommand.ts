@@ -31,7 +31,7 @@ namespace moa {
         public static SHOW_HANDLE_POPUP: string = "show_handle_popup";
         public static SHOW_PROMPT_POPUP: string = "show_prompt_popup";
         public static SHOW_FANG_POPUP: string = "show_fang_popup";
-        public static SHOW_ROUND_POPUP:string="show_round_popup";
+        public static SHOW_ROUND_POPUP: string = "show_round_popup";
         public static SHOW_ROLE_POPUP: string = "show_role_popup";
         public static SHOW_RESULT_POPUP: string = "show_result_popup";
         public static SHOW_APPRAISAL_POPUP: string = "show_appraisal_popup";
@@ -46,6 +46,8 @@ namespace moa {
         public static SHOW_GUIDE_TERM: string = "show_guide_term";
 
         public static SHOW_MORE_GAME: string = "show_more_game";
+
+        public static SHOW_NOTICE_DETAIL: string = "show_notice_detail";
 
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
@@ -81,6 +83,7 @@ namespace moa {
             this.facade().registerCommand(SceneCommand.SHOW_GUIDE_TERM, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_VOTERECORD_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_MORE_GAME, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_NOTICE_DETAIL, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -175,7 +178,7 @@ namespace moa {
                     appMediator.main.showPopupNumberKeyboard();
                     break;
                 }
-                
+
                 case SceneCommand.SHOW_GUIDE_VIDEO: {
                     appMediator.main.showGuideVideoWindow();
                     break;
@@ -198,6 +201,10 @@ namespace moa {
                 }
                 case SceneCommand.SHOW_MORE_GAME: {
                     appMediator.main.showMoreWindow();
+                    break;
+                }
+                case SceneCommand.SHOW_NOTICE_DETAIL: {
+                    appMediator.main.showNoticeDetailWindow(data);
                     break;
                 }
             }

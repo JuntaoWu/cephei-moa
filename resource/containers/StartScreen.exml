@@ -48,6 +48,7 @@
             <e:Button width="124" id="btnNotice" verticalCenter="0">
                 <e:Skin>
                     <e:Image source="nav-notice"></e:Image>
+                    <e:Image visible="false" name="redtips" source="redtips" top="15" left="15" scaleX="0.7" scaleY="0.7"></e:Image>
                 </e:Skin>
             </e:Button>
             <e:Button width="124" id="btnGuide" verticalCenter="0">
