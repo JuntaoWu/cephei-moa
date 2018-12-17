@@ -1,77 +1,149 @@
 namespace moa {
+
     export class TextImage extends eui.Group {
-        public templet: egret.TextField
-        constructor(protected _TextImageData: Array<any> = []) {
+
+        private textImageData: Array<egret.DisplayObject>;
+        private components: Array<eui.Component> = [];
+
+        constructor(content: string = "") {
             super();
-            this.init()
+            this.content = content;
         }
-        set TextImageData(val: Array<any>) { this._TextImageData = val; this.init(); }
-        get TextImageData() { return this._TextImageData }
-        _size = 36
-        /**设置文字字体大小 */
-        set size(val: number) {
-            this._size = val
+
+        /**
+         * content
+         */
+        private _content: string;
+        public get content(): string {
+            return this._content;
         }
-        get size(): number {
-            return this._size
+        public set content(v: string) {
+            this._content = v;
+            this.initialize();
         }
+
+        /**
+         * size
+         */
+        private _size = 30;
+        public get size(): number {
+            return this._size;
+        }
+        public set size(val: number) {
+            this._size = val;
+        }
+
+        /**
+         * width
+         */
         private _width: number;
-        /**设置宽度 */
-        set width(val) { this._width = val; this.invalidate(); }
-        get width() { return this._width };
+        public get width() {
+            return this._width;
+        }
+        public set width(val) {
+            this._width = val;
+            this.invalidate();
+        }
 
-
-        private _verticalAlign = egret.VerticalAlign.MIDDLE;
-        /**设置vercatical */
-        set verticalAlign(val) { this._verticalAlign = val; this.invalidate(); }
-        get verticalAlign() { return this._verticalAlign };
-
-        _maxWidth: number
-        /**设置组件的最大宽度 */
-        set maxWidth(val: number) {
-            this._maxWidth = val
-            if (this.templet.width > val) {
-                this.width = val
-                this.invalidate()
+        /**
+         * maxWidth
+         */
+        private _maxWidth: number;
+        public get maxWidth(): number {
+            return this._maxWidth;
+        }
+        public set maxWidth(val: number) {
+            this._maxWidth = val;
+            if (this.width === undefined || this.width > val) {
+                this.width = val;
+                this.invalidate();
             }
         }
-        get maxWidth(): number {
-            return this._maxWidth
+
+        /**
+         * lineSpacing
+         */
+        private _lineSpacing = 15;
+        public get lineSpacing(): number {
+            return this._lineSpacing;
         }
-        private _lineSpacing = 0
-        /**设置组件的行间距 */
-        set lineSpacing(val: number) {
-            if (this._lineSpacing === val) return
-            this._lineSpacing = val
-            this.invalidate()
-        }
-        get lineSpacing(): number {
-            return this._lineSpacing
-        }
-        /**立即计算布局 */
-        validateNow() {
-            this.init()
-            this.invalidate_Flag = false
-        }
-        /**组件的每行高度 */
-        lineHeightArray: Array<number> = []
-        components: any[] = []
-        protected init() {
-            this.removeChildren()
-            if (this._TextImageData.length == 0) {
-                this.width = this.height = 0
-                return
+        public set lineSpacing(val: number) {
+            if (this._lineSpacing === val) {
+                return;
             }
-            // 保存组件,清除事件绑定
-            this.components = []
-            this._TextImageData.forEach((component: eui.Component) => {
+            this._lineSpacing = val;
+            this.invalidate();
+        }
+
+        private _textColor: number = 0x000000;
+        public get textColor() {
+            return this._textColor;
+        }
+        public set textColor(val) {
+            this._textColor = val;
+            this.invalidate();
+        }
+
+        private _linkColor: number = 0x09bab4;
+        public get linkColor(): number {
+            return this._linkColor;
+        }
+        public set linkColor(v: number) {
+            this._linkColor = v;
+        }
+
+        private initialize() {
+            const regexp = /<img [^>]*src=['"]([^'"]+)[^>]*>/gim;
+            let match = regexp.exec(this.content);
+            let previousIndex = 0;
+            let elements = [];
+            while (match) {
+                elements.push({ type: "text", value: this.content.slice(previousIndex, match.index) });
+                elements.push({ type: "image", value: match[1] });
+                previousIndex = match.index + match[0].length;
+                match = regexp.exec(this.content);
+            }
+            elements.push({ type: "text", value: this.content.slice(previousIndex) });
+
+            const parsedElements = elements.map(element => {
+                if (element.type == "text") {
+                    const label = new eui.Label();
+                    const textElements = new egret.HtmlTextParser().parser(element.value);
+                    label.textFlow = textElements;
+                    label.wordWrap = true;
+                    return label;
+                }
+                else {
+                    const image = new eui.Image(element.value);
+                    return image;
+                }
+            });
+
+            this.textImageData = parsedElements;
+
+            this.init();
+        }
+
+        public validateNow() {
+            this.init();
+            this.invalidateFlag = false;
+        }
+
+        private init() {
+            this.removeChildren();
+            if (!this.textImageData || this.textImageData.length == 0) {
+                this.width = this.height = 0;
+                return;
+            }
+            this.components = [];
+            this.textImageData.forEach((component: eui.Component) => {
                 if (typeof component == 'object') {
-                    this.components.push(component)
+                    this.components.push(component);
                     if (!component['watch']) {
-                        egret.is(component, 'eui.Image') && component.once(egret.Event.ADDED, this.invalidate, this)
-                        eui.Watcher.watch(component, ['width'], this.invalidate, this)
-                        eui.Watcher.watch(component, ['height'], this.invalidate, this)
-                        component['watch'] = true
+                        egret.is(component, 'eui.Image') && component.once(egret.Event.COMPLETE, this.invalidate, this);
+                        eui.Watcher.watch(component, ['width'], this.invalidate, this);
+                        eui.Watcher.watch(component, ['height'], this.invalidate, this);
+                        component['watch'] = true;
                     }
                 }
             });
@@ -79,112 +151,76 @@ namespace moa {
             let x = 0;
             let y = 0;
             this.components.forEach((component: eui.Component) => {
-                component.x = x;
-                component.y = y;
-                let height = 0;
-                if (egret.is(component, "eui.Label")) {
-                    for (let i = 0; i < component["linesArr"].length; ++i) {
-                        if (component["linesArr"][i].hasNextLine) {
-                            x = 0;
-                            y += component["linesArr"][i].height;
-                            height = 0;
-                        }
-                        else {
-                            x += component["linesArr"][i].width;
-                            height = component["linesArr"][i].height;
-                        }
+                if (egret.is(component, 'eui.Label')) {
+                    if ((component as any).textArr.some(text => text && text.style && text.style.href)) {
+                        // hyperlink:
+                        (component as any as eui.Label).textColor = this.linkColor;
+                        (component as any).textArr.filter(text => text && text.style && text.style.href).forEach(text => {
+                            if (/^event:/.test(text.style.href)) {
+                                // todo: this matches egret.TextEvent.LINK -> event:text pattern.
+                            }
+                            else {
+                                text.style.href = 'event:' + text.style.href;
+                            }
+                            text.style.underline = true;
+                        });
+                    }
+                    else {
+                        (component as any as eui.Label).textColor = this.textColor;
                     }
                 }
-                else {
-                    x += component.width;
-                    y += component.height;
-                }
-                // y += (component.height - height) / 2;
 
+                if (this.maxWidth !== undefined && (!component.maxWidth || component.maxWidth > this.maxWidth)) {
+                    component.maxWidth = this.maxWidth;
+                }
+
+                component.x = x;
+                component.y = y;
+
+                y += component.height + this.lineSpacing;
+
+                component.addEventListener(egret.TextEvent.LINK, this.textLink, this);
                 this.addChild(component);
             });
-
-            // let textFlow = this._TextImageData.map(text =>
-            //     typeof text === "string" || egret.is(text, 'eui.Label')
-            //         ? { type: egret.is(text, 'eui.Label') ? "label" : "string", text: egret.is(text, 'eui.Label') ? text.text : text }
-            //         : { type: "image", text: ' ', style: { size: text.width } }
-            // )
-            // let TextField: egret.TextField = this.templet = new egret.TextField();
-            // TextField.size = this.size;
-            // TextField.lineSpacing = 0;
-            // TextField.width = this.width
-            // TextField.textFlow = textFlow
-            // TextField.height = TextField.height
-
-            // this.height = 0
-            // this.lineHeightArray = []
-
-            // let componentTestIndex = 0 //测量高度的组件序号
-            // let componentIndex = 0 //布局的组件序号
-            // TextField['linesArr'].forEach((item, lines) => {
-            //     console.log('item=>', item)
-            //     //获取最大高度
-            //     let maxheight = item.height || this.size;
-            //     //组件序号
-            //     item.elements.forEach((element) => {
-            //         if (element.type != "string") {
-            //             let c = this.components[componentTestIndex++]
-            //             maxheight = Math.max(maxheight, c.height)
-            //         }
-            //     })
-            //     maxheight = this._lineSpacing + maxheight
-            //     this.lineHeightArray.push(maxheight)
-
-            //     //开始布局
-            //     let x = 0
-            //     item.elements.forEach(element => {
-            //         let component;
-            //         if (element.type != "string") {
-            //             component = this.components[componentIndex++];
-            //             component.x = x;
-            //             component.y = this.height + (maxheight - component.height) / 2;
-            //         }
-            //         else {
-            //             component = new egret.TextField()
-            //             component.x = x
-            //             component.size = this.size
-            //             component.text = element.text
-            //             component.width = element.width
-            //             component.textColor = this._textColor
-            //             component.height = maxheight
-            //             component.y = this.height
-            //             component.verticalAlign = this._verticalAlign;
-            //         }
-            //         x += component.width;
-            //         this.addChild(component);
-            //     });
-            //     this.height += maxheight
-            // })
-            // this._width = this.templet.width
-
-        }
-        _textColor: number = 0x000000
-        set textColor(val) {
-            this._textColor = val
-            this.invalidate()
-        }
-        get textColor() {
-            return this._textColor
         }
 
-
-
-        /**失效验证 */
-        private invalidate_Flag: boolean = false
+        private invalidateFlag: boolean = false;
         private invalidate(e?: egret.Event): void {
-            if (this.invalidate_Flag) {
-                return
+            if (this.invalidateFlag) {
+                return;
             }
-            this.invalidate_Flag = true
+            this.invalidateFlag = true;
             this.once(egret.Event.ENTER_FRAME, () => {
-                this.init()
-                this.invalidate_Flag = false
+                this.init();
+                this.invalidateFlag = false;
             }, this);
+        }
+
+        private textLink(event: egret.TextEvent) {
+            console.log("event.text:", event.text);
+            if (/^http/.test(event.text)) {
+                if (platform.name == "wxgame") {  // note this is for wxgame/miniProgram only.
+                    platform.showModal(`请复制该链接并在外部浏览器打开\r\n${event.text}`, '复制').then(async res => {
+                        platform.setClipboardData(event.text).then(() => {
+                            platform.showToast('复制成功');
+                        });
+                    });
+                }
+                else if (platform.name == "native") {
+                    window.open(event.text);
+                }
+                else {
+                    window.open(event.text);
+                }
+            }
+            else {
+                let pair = event.text.split(":");
+                return this[pair[0]] && this[pair[0]].call(this, pair[1]);
+            }
+        }
+
+        private showToast(args: string) {
+            platform.showToast(args);
         }
     }
 }

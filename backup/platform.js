@@ -204,7 +204,7 @@ class WxgamePlatform {
           resolve(res.data);
         },
         fail: function(res) {
-          reject(res);
+          resolve("");
         }
       });
     });
@@ -216,7 +216,7 @@ class WxgamePlatform {
         title: '提示',
         content: message,
         showCancel: !!cancelText,
-        cancelText: cancelText,
+        cancelText: cancelText || '',
         confirmText: confirmText || '确定',
         success: function(res) {
           resolve(res);
@@ -382,6 +382,20 @@ class WxgamePlatform {
       })
     })
   }
+
+  setClipboardData(data) {
+    return new Promise((resolve, reject) => {
+      wx.setClipboardData({
+        data: data,
+        success: function (res) {
+          return resolve(res)
+         },
+        fail: function (res) { },
+        complete: function (res) { },
+      });
+    });
+  }
+
 }
 
 class WxgameOpenDataContext {

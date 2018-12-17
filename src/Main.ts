@@ -69,13 +69,14 @@ namespace moa {
             });
         }
 
-        private async retryAuthorize() {
+        private async tryAuthorize() {
             const userInfo = await AccountAdapter.loadUserInfo();
             if (userInfo && userInfo.userId) {
                 this.createGameScene();
+                platform.createBannerAd("top", "adunit-4616af6cd0c20ef1", "top");
             }
             else {
-                await this.retryAuthorize();
+                await this.tryAuthorize();
             }
         }
 
@@ -85,11 +86,7 @@ namespace moa {
 
             if (platform.name == "wxgame") {
                 await AccountAdapter.login();
-                await this.retryAuthorize();
-                // const userInfo = await AccountAdapter.loadUserInfo();
-                // if (userInfo && userInfo.userId) {
-                //     this.createGameScene();
-                // }
+                await this.tryAuthorize();
             }
             else if (platform.name == "DebugPlatform") {
                 let anonymousToken = platform.getStorage("anonymoustoken");
@@ -133,8 +130,6 @@ namespace moa {
                 await RES.loadGroup("preload", 0, this.loadingView);
 
                 RES.loadGroup("lazyload", 0);
-
-                platform.createBannerAd("top", "adunit-4616af6cd0c20ef1", "top");
             }
             catch (e) {
                 console.error(e);
@@ -152,7 +147,6 @@ namespace moa {
             });
         }
 
-        private textfield: egret.TextField;
         /**
          * 创建场景界面
          * Create scene interface

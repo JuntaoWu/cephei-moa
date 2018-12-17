@@ -55,6 +55,10 @@
       "path": "../3rdparty-libs/photon"
     },
     {
+      "name": "clipboard",
+      "path": "../3rdparty-libs/clipboard"
+    },
+    {
       "name": "antiques-play",
       "path": "../antiques-play"
     }

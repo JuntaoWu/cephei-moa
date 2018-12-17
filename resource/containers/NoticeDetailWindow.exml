@@ -5,7 +5,7 @@
     <e:Group id="headGroup" horizontalCenter="0" width="720" y="0" height="100">
         <e:Label text="{data.title}" bold="true" textColor="0x020202" horizontalCenter="0" y="30" />
     </e:Group>
-    <e:Scroller id="contentScroller" scrollPolicyH="off" width="600" horizontalCenter="0" anchorOffsetY="0" height="900"
+    <e:Scroller id="contentScroller" scrollPolicyH="off" width="600" horizontalCenter="0" anchorOffsetY="0" height="870"
                 y="110">
         <e:viewport>
             <e:Group id="txtContent"></e:Group>

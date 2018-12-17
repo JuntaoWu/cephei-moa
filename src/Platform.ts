@@ -71,6 +71,8 @@ namespace moa {
         disableVideoAd(name: string);
 
         navigateToMiniProgram();
+
+        setClipboardData(data: string): Promise<any>;
     }
 
     export class DebugPlatform implements Platform {
@@ -220,6 +222,11 @@ namespace moa {
 
         public navigateToMiniProgram() {
             location.href = "https://gdjzj.hzsdgames.com:8095";
+        }
+
+
+        public async setClipboardData(data: string): Promise<any> {
+            
         }
     }
 
