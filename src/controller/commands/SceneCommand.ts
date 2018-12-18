@@ -48,6 +48,7 @@ namespace moa {
         public static SHOW_MORE_GAME: string = "show_more_game";
 
         public static SHOW_NOTICE_DETAIL: string = "show_notice_detail";
+        public static SHOW_AD_WINDOW: string = "show_ad_window";
 
         public register(): void {
             this.initializeNotifier("ApplicationFacade");
@@ -84,6 +85,7 @@ namespace moa {
             this.facade().registerCommand(SceneCommand.SHOW_VOTERECORD_WINDOW, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_MORE_GAME, SceneCommand);
             this.facade().registerCommand(SceneCommand.SHOW_NOTICE_DETAIL, SceneCommand);
+            this.facade().registerCommand(SceneCommand.SHOW_AD_WINDOW, SceneCommand);
         }
 
         public async execute(notification: puremvc.INotification): Promise<any> {
@@ -205,6 +207,10 @@ namespace moa {
                 }
                 case SceneCommand.SHOW_NOTICE_DETAIL: {
                     appMediator.main.showNoticeDetailWindow(data);
+                    break;
+                }
+                case SceneCommand.SHOW_AD_WINDOW: {
+                    appMediator.main.showAdWindow(data);
                     break;
                 }
             }

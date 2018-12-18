@@ -277,5 +277,19 @@ namespace moa {
             egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
+        private adWindow: AdWindow;
+        public showAdWindow(data?: Ad): void {
+            if (!data || !data.enabled) {
+                return;
+            }
+            if (!this.adWindow) {
+                this.adWindow = new AdWindow();
+            }
+            this.addChild(this.adWindow);
+            this.adWindow.setData(data);
+            this.adWindow.show();
+            // egret.Tween.get(this).to({ alpha: 1 }, 1500);
+        }
+
     }
 }

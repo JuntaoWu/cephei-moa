@@ -58,14 +58,14 @@
                     </e:Skin>
                 </e:skinName>
             </e:Button>
-            <e:Button width="124" id="btnRank" verticalCenter="0">
-                <e:Skin>
-                    <e:Image source="nav-rank"></e:Image>
-                </e:Skin>
-            </e:Button>
             <e:Button width="124" id="btnClub" verticalCenter="0">
                 <e:Skin>
                     <e:Image source="nav-playbar"></e:Image>
+                </e:Skin>
+            </e:Button>
+            <e:Button width="124" id="btnRank" verticalCenter="0">
+                <e:Skin>
+                    <e:Image source="nav-rank"></e:Image>
                 </e:Skin>
             </e:Button>
             <e:Button width="124" id="btnViewMore" verticalCenter="0">

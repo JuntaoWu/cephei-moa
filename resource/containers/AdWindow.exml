@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.AdWindow" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*">
+    <moa:Shade id="overlay" />
+    <e:Group id="container" width="100%" height="100%">
+        <e:Image source="{data.src}" horizontalCenter="0" verticalCenter="0" />
+        <e:Button top="0" right="0">
+            <e:Skin>
+                <e:Image source="close"></e:Image>
+            </e:Skin>
+        </e:Button>
+    </e:Group>
+</e:Skin>

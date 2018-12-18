@@ -30,6 +30,9 @@ namespace moa {
 
             const preference = await AccountAdapter.loadPreference();
 
+            if (!preference || !preference.showGuide) {
+                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnGuide);
+            }
             if (!preference || !preference.showClub) {
                 this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
             }
@@ -65,6 +68,12 @@ namespace moa {
                 this.startScreen.isDebugPlatform = false;
                 this.startScreen.isWxPlatform = false;
                 this.startScreen.isNativePlatform = true;
+            }
+
+            const adProxy = this.facade().retrieveProxy(AdProxy.NAME) as AdProxy;
+            const ad = await adProxy.loadAd();
+            if(ad && ad.length && ad.some(i => i.enabled)) {
+                this.sendNotification(SceneCommand.SHOW_AD_WINDOW, ad.find(i => i.enabled));
             }
 
             const noticeProxy = this.facade().retrieveProxy(NoticeProxy.NAME) as NoticeProxy;

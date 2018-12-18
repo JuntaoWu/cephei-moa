@@ -12,6 +12,7 @@ namespace moa {
             this.facade().registerProxy(new GameProxy());
             this.facade().registerProxy(new ClubProxy());
             this.facade().registerProxy(new NoticeProxy());
+            this.facade().registerProxy(new AdProxy());
         }
     }
 }
