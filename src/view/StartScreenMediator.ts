@@ -145,7 +145,7 @@ namespace moa {
         }
 
         public listNotificationInterests(): Array<any> {
-            return [GameProxy.INPUT_NUMBER, GameProxy.FINISH_INPUT];
+            return [GameProxy.INPUT_NUMBER, GameProxy.FINISH_INPUT, NoticeProxy.NOTICE_READ];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
@@ -158,6 +158,9 @@ namespace moa {
                     const roomName = this.startScreen.roomNum;
                     this.sendNotification(GameCommand.JOIN_ROOM, roomName);
                     this.startScreen.roomNum = "";
+                    break;
+                case NoticeProxy.NOTICE_READ:
+                    this.startScreen.hideNoticeTips();
                     break;
             }
         }

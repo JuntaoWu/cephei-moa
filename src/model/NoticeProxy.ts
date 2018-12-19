@@ -9,6 +9,8 @@ namespace moa {
             super(NoticeProxy.NAME);
         }
 
+		public static NOTICE_READ: string = "notice_read";
+
         public notice: Notice[];
 
         public async getNotice(): Promise<Notice[]> {
@@ -58,6 +60,8 @@ namespace moa {
             else {
                 await platform.setStorageAsync("lastSeenNoticeAt", _(this.notice).maxBy("createdAt").createdAt.toJSON());
             }
+
+            this.sendNotification(NoticeProxy.NOTICE_READ);
         }
 
         public async hasUnreadNotice(): Promise<boolean> {

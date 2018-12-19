@@ -34,8 +34,11 @@ namespace moa {
 
 
         private allClubs: Club[];
+        private globalGameIcons: GameIcon[];
 
         public async initData() {
+
+            this.globalGameIcons = await AccountAdapter.loadGameIcons();
 
             this.allClubs = await this.proxy.loadClub();
 
@@ -52,15 +55,15 @@ namespace moa {
                 .filter(m => !this.selectedCity || m.city == this.selectedCity)
                 .filter(m => !this.selectedDistrict || m.district == this.selectedDistrict)
                 .map(m => {
+                    let gameIcons = this.globalGameIcons.map(i => {
+                        return (m.games || []).includes(i.iconId) ? i.iconEnabled : i.iconDisabled;
+                    });
                     return {
                         clubName: m.name,
                         time: m.time,
                         phone: m.phone,
                         attr: m.attr,
-                        game_1: `club_game1_${m.game_1 == "1" ? 1 : 2}`,
-                        game_2: `club_game2_${m.game_2 == "1" ? 1 : 2}`,
-                        game_3: `club_game3_${m.game_3 == "1" ? 1 : 2}`,
-                        game_4: `club_game4_${m.game_4 == "1" ? 1 : 2}`
+                        gameIcons: gameIcons
                     };
                 });
             this.barWindow.listClub.dataProvider = new eui.ArrayCollection(this.clubList);

@@ -3,6 +3,7 @@ namespace moa {
 
     export class ClubListItemRenderer extends eui.ItemRenderer {
 
+        public listIcons: eui.List;
         public constructor() {
             super();
             this.skinName = "skins.ClubListItemRenderer";
@@ -11,9 +12,11 @@ namespace moa {
         protected createChildren(): void {
             super.createChildren();
         }
-        
-        protected dataChanged(): void {
+
+        protected async dataChanged() {
             super.dataChanged();
+            this.listIcons.dataProvider = new eui.ArrayCollection(this.data.gameIcons);
+            this.listIcons.itemRenderer = GameIconItemRenderer;
         }
     }
 }

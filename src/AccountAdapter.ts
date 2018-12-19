@@ -5,6 +5,7 @@ namespace moa {
 
         private static userInfo: UserInfo;
         private static preference: Preference;
+        private static gameIcons: GameIcon[];
 
         public static async checkForUpdate() {
 
@@ -246,7 +247,7 @@ namespace moa {
         /** loadPreference */
         public static async loadPreference(): Promise<Preference> {
 
-            if(AccountAdapter.preference) {
+            if (AccountAdapter.preference) {
                 return AccountAdapter.preference;
             }
 
@@ -274,6 +275,37 @@ namespace moa {
                 }, this);
             });
         }
-        
+
+        /** loadGameIcons */
+        public static async loadGameIcons(): Promise<GameIcon[]> {
+
+            if (AccountAdapter.gameIcons) {
+                return AccountAdapter.gameIcons;
+            }
+
+            var request = new egret.HttpRequest();
+            request.responseType = egret.HttpResponseType.TEXT;
+            request.open(`${Constants.Endpoints.service}gameIcons`, egret.HttpMethod.GET);
+            request.setRequestHeader("Content-Type", "application/json");
+
+            request.send();
+
+            return new Promise<GameIcon[]>((resolve, reject) => {
+                request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
+                    console.log(`loadGameIcons via app server end.`);
+
+                    let req = <egret.HttpRequest>(event.currentTarget);
+                    let res = JSON.parse(req.response);
+                    if (res.error) {
+                        console.error(res.message);
+                        return reject(res.message);
+                    }
+                    else {
+                        AccountAdapter.gameIcons = res.data;
+                        return resolve(AccountAdapter.gameIcons);
+                    }
+                }, this);
+            });
+        }
     }
 }

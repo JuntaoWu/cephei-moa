@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="skins.ClubListItemRenderer" width="600" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-    <e:Image source="club_box" width="600" height="350"/>
-    <e:Label text="{this.data.clubName}" horizontalCenter="0" textColor="0x000000" y="30" size="35"/>
-    <e:Image source="club_lv3" left="50" y="115" scaleX="0.88" scaleY="0.88"/>
+<e:Skin class="skins.ClubListItemRenderer" width="600" xmlns:e="http://ns.egret.com/eui"
+        xmlns:w="http://ns.egret.com/wing">
+    <e:Image source="club_box" width="600" height="350" />
+    <e:Label text="{this.data.clubName}" horizontalCenter="0" textColor="0x000000" y="30" size="35" />
+    <e:Image source="club_lv3" left="50" y="115" scaleX="0.88" scaleY="0.88" />
     <e:Group y="100" x="210">
-        <e:Image source="club_time" verticalCenter="0" scaleX="0.88" scaleY="0.88"/>
-        <e:Label text="{this.data.time}" textColor="0x000000" x="35" verticalCenter="0" size="24"/>
+        <e:Image source="club_time" verticalCenter="0" scaleX="0.88" scaleY="0.88" />
+        <e:Label text="{this.data.time}" textColor="0x000000" x="35" verticalCenter="0" size="24" />
     </e:Group>
     <e:Group y="140" x="210">
-        <e:Image source="club_phone" verticalCenter="0"/>
-        <e:Label text="{this.data.phone}" textColor="0x000000" x="35" verticalCenter="0" size="24"/>
+        <e:Image source="club_phone" verticalCenter="0" />
+        <e:Label text="{this.data.phone}" textColor="0x000000" x="35" verticalCenter="0" size="24" />
     </e:Group>
     <e:Group y="180" x="210">
-        <e:Image source="club_attr" verticalCenter="0"/>
-        <e:Label text="{this.data.attr}" lineSpacing="5" textColor="0x000000" x="35" verticalCenter="0" width="310" size="24"/>
+        <e:Image source="club_attr" verticalCenter="0" />
+        <e:Label text="{this.data.attr}" lineSpacing="5" textColor="0x000000" x="35" verticalCenter="0" width="310"
+                 size="24" />
     </e:Group>
-    <e:Group y="250" horizontalCenter="10" scaleX="0.88" scaleY="0.88">
-        <e:Image source="{data.game_1}"/>
-        <e:Image source="{data.game_2}" x="140"/>
-        <e:Image source="{data.game_3}" x="280"/>
-        <e:Image source="{data.game_4}" x="420"/>
+    <e:Group y="250" horizontalCenter="0" scaleX="0.88" scaleY="0.88" width="400">
+        <e:Scroller scrollPolicyV="off" id="contentScroller" width="500" horizontalCenter="0" anchorOffsetY="0">
+            <e:viewport>
+                <e:List id="listIcons">
+                    <e:layout>
+                        <e:HorizontalLayout></e:HorizontalLayout>
+                    </e:layout>
+                </e:List>
+            </e:viewport>
+        </e:Scroller>
     </e:Group>
- </e:Skin>
+</e:Skin>

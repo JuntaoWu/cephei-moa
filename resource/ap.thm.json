@@ -55,6 +55,7 @@
 		"resource/components/ActorUI.exml",
 		"resource/components/CityItemRenderer.exml",
 		"resource/components/ClubListItemRenderer.exml",
+		"resource/components/GameIconItemRenderer.exml",
 		"resource/components/GameRoundSkin.exml",
 		"resource/components/NoticeItemRenderer.exml",
 		"resource/components/PopupWindowSkin.exml",
