@@ -28,7 +28,7 @@
                     </e:Button>
                 </e:Group>
                 <e:Group y="332" width="669" height="322">
-                    <e:Image left="0" right="0" top="0" bottom="0" source="game-bg"></e:Image>
+                    <e:Image left="0" right="0" top="0" bottom="0" source="game-bg-main"></e:Image>
                     <e:Image source="title-tanbao" y="60" horizontalCenter="0" />
                     <e:Button id="btnTanbao" y="180" scaleX="0.8" scaleY="0.8" horizontalCenter="0">
                         <e:Skin>
