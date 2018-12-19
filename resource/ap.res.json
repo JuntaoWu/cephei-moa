@@ -5,7 +5,7 @@
 			"name": "preload"
 		},
 		{
-			"keys": "progress-bg,progress,background,btn-anonymouslogin,btn-wxlogin,loading-background",
+			"keys": "progress-bg,progress,background,btn-anonymouslogin,btn-wxlogin,ap-loading-background",
 			"name": "loading"
 		},
 		{
@@ -1465,9 +1465,9 @@
 			"name": "btn-anonymouslogin"
 		},
 		{
-			"url": "assets/background/loading-background.jpg",
+			"url": "assets/background/ap-loading-background.jpg",
 			"type": "image",
-			"name": "loading-background"
+			"name": "ap-loading-background"
 		}
 	]
 }

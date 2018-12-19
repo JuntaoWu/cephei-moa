@@ -53,9 +53,7 @@ namespace moa {
                 }
             }, this);
             this.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {
-                if (platform.name == "wxgame") {
-                    this.video && platform.destroyVideo(this.video);
-                }
+                platform.destroyVideo(this.video);
             }, this);
 
             // this.video1 = new egret.Video();

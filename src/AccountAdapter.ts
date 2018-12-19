@@ -4,6 +4,7 @@ namespace moa {
     export class AccountAdapter {
 
         private static userInfo: UserInfo;
+        private static preference: Preference;
 
         public static async checkForUpdate() {
 
@@ -244,6 +245,11 @@ namespace moa {
 
         /** loadPreference */
         public static async loadPreference(): Promise<Preference> {
+
+            if(AccountAdapter.preference) {
+                return AccountAdapter.preference;
+            }
+
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
             request.open(`${Constants.Endpoints.service}preferences/${platform.name}`, egret.HttpMethod.GET);
@@ -262,7 +268,8 @@ namespace moa {
                         return reject(res.message);
                     }
                     else {
-                        return resolve(res.data);
+                        AccountAdapter.preference = res.data;
+                        return resolve(AccountAdapter.preference);
                     }
                 }, this);
             });

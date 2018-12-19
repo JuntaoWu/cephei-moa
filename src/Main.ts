@@ -84,6 +84,8 @@ namespace moa {
             await this.loadResource();
             this.loadingView.groupLoading.visible = false;
 
+            await AccountAdapter.loadPreference();
+
             if (platform.name == "wxgame") {
                 await AccountAdapter.login();
                 await this.tryAuthorize();
