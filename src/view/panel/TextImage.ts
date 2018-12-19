@@ -199,19 +199,7 @@ namespace moa {
         private textLink(event: egret.TextEvent) {
             console.log("event.text:", event.text);
             if (/^http/.test(event.text)) {
-                if (platform.name == "wxgame") {  // note this is for wxgame/miniProgram only.
-                    platform.showModal(`请复制该链接并在外部浏览器打开\r\n${event.text}`, '复制').then(async res => {
-                        platform.setClipboardData(event.text).then(() => {
-                            platform.showToast('复制成功');
-                        });
-                    });
-                }
-                else if (platform.name == "native") {
-                    window.open(event.text);
-                }
-                else {
-                    window.open(event.text);
-                }
+                platform.openExternalLink(event.text);
             }
             else {
                 let pair = event.text.split(":");

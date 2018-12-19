@@ -3,6 +3,8 @@ namespace moa {
 
     export class AdWindow extends BasePanel {
 
+        public imageAd: eui.Image;
+
         public data: Ad = {
             src: "",
             href: "",
@@ -18,6 +20,7 @@ namespace moa {
 
         public createCompleteEvent(event: eui.UIEvent): void {
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
+            this.imageAd.addEventListener(egret.TouchEvent.TOUCH_TAP, this.navigateToExternalLink, this);
         }
 
         public partAdded(partName: string, instance: any): void {
@@ -30,6 +33,10 @@ namespace moa {
                 href: data.href,
                 enabled: data.enabled,
             };
+        }
+
+        public navigateToExternalLink(event: egret.TouchEvent) {
+            this.data && this.data.href && platform.openExternalLink(this.data.href);
         }
     }
 }

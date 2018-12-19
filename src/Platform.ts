@@ -73,6 +73,8 @@ namespace moa {
         navigateToMiniProgram();
 
         setClipboardData(data: string): Promise<any>;
+
+        openExternalLink(url: string);
     }
 
     export class DebugPlatform implements Platform {
@@ -184,8 +186,13 @@ namespace moa {
             return JSON.parse(localStorage.getItem(key));
         }
 
-        public playVideo() {
-            return {};
+        public playVideo(url) {
+            const video = new egret.Video();
+            video.load(url);
+            video.once(egret.Event.COMPLETE, () => {
+                video.play();
+            }, this);
+            return video;
         }
 
         public showPreImage(data, index?) {
@@ -226,7 +233,11 @@ namespace moa {
 
 
         public async setClipboardData(data: string): Promise<any> {
-            
+
+        }
+
+        public openExternalLink(url: string) {
+            window.open(url);
         }
     }
 
