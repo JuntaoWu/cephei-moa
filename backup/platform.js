@@ -247,6 +247,10 @@ class WxgamePlatform {
     });
   }
 
+  destroyVideo(videoContainer) {
+    videoContainer && videoContainer.destroy && videoContainer.destroy();
+  }
+
   showPreImage(imgList, currentIndex) {
     var urls = imgList.map(m => {
       return `${m}?v=${this.getVersion()}`;
@@ -388,10 +392,19 @@ class WxgamePlatform {
       wx.setClipboardData({
         data: data,
         success: function (res) {
-          return resolve(res)
+          return resolve()
          },
         fail: function (res) { },
         complete: function (res) { },
+      });
+    });
+  }
+
+  openExternalLink(url) {
+    let self = this;
+    self.showModal(`请复制该链接并在外部浏览器打开\r\n${url}`, '复制').then(res => {
+      self.setClipboardData(url).then(() => {
+        self.showToast('复制成功');
       });
     });
   }

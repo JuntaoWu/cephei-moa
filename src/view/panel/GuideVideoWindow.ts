@@ -14,42 +14,50 @@ namespace moa {
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
             this.btnVideo1.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                this.video && this.video.destroy();
+                this.video && platform.destroyVideo(this.video);
                 this.video = platform.playVideo(`${Constants.ResourceEndpoint}resource/assets/guide/video1.mp4`);
                 // this.video.poster = `${Constants.ResourceEndpoint}resource/assets/guide/video1.png`;
                 this.video.x = 55;
                 this.video.y = 50;
-                this.video.requestFullScreen().then(() => this.video.play());
-                this.video.onEnded(() => {
-                    this.video.destroy();
-                })
+                if (platform.name == "wxgame") {
+                    this.video.requestFullScreen().then(() => this.video.play());
+                    this.video.onEnded(() => {
+                        platform.destroyVideo(this.video);
+                    });
+                }
             }, this);
             this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                this.video && this.video.destroy();
+                this.video && platform.destroyVideo(this.video);
                 this.video = platform.playVideo(`${Constants.ResourceEndpoint}resource/assets/guide/video2.mp4`);
                 // this.video.poster = "resource/assets/guide/video2.png";
                 this.video.x = 55;
                 this.video.y = 50;
-                this.video.requestFullScreen().then(() => this.video.play());
-                this.video.onEnded(() => {
-                    this.video.destroy();
-                })
+                if (platform.name == "wxgame") {
+                    this.video.requestFullScreen().then(() => this.video.play());
+                    this.video.onEnded(() => {
+                        platform.destroyVideo(this.video);
+                    });
+                }
             }, this);
             this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                this.video && this.video.destroy();
+                this.video && platform.destroyVideo(this.video);
                 this.video = platform.playVideo(`${Constants.ResourceEndpoint}resource/assets/guide/video3.mp4`);
                 // this.video.poster = "resource/assets/guide/video3.png";
                 this.video.x = 55;
                 this.video.y = 50;
-                this.video.requestFullScreen().then(() => this.video.play());
-                this.video.onEnded(() => {
-                    this.video.destroy();
-                })
+                if (platform.name == "wxgame") {
+                    this.video.requestFullScreen().then(() => this.video.play());
+                    this.video.onEnded(() => {
+                        platform.destroyVideo(this.video);
+                    });
+                }
             }, this);
             this.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {
-                this.video && this.video.destroy();
+                if (platform.name == "wxgame") {
+                    this.video && platform.destroyVideo(this.video);
+                }
             }, this);
-            
+
             // this.video1 = new egret.Video();
             // this.video2 = new egret.Video();
             // this.video3 = new egret.Video();
@@ -74,9 +82,9 @@ namespace moa {
             // }, this);
             // //监听视频加载失败
             // this.video1.once(egret.IOErrorEvent.IO_ERROR, this.onLoadErr, this);
-            
+
         }
-        
+
         private onLoadErr(e: egret.Event) {
             console.log("video load error happened");
         }

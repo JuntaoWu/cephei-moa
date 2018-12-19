@@ -44,6 +44,8 @@ namespace moa {
 
         playVideo(src: string);
 
+        destroyVideo(videoContainer);
+
         showModal(message: string, confirmText?: string, cancelText?: string): Promise<any>;
 
         showLoading(message?: string);
@@ -193,6 +195,10 @@ namespace moa {
                 video.play();
             }, this);
             return video;
+        }
+
+        public destroyVideo(videoContainer) {
+            videoContainer && videoContainer.video && videoContainer.video.remove();
         }
 
         public showPreImage(data, index?) {
