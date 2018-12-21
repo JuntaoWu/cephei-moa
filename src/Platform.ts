@@ -294,6 +294,7 @@ namespace moa {
                 if (!this.hasGetSecurityStorageAsyncCallback) {
                     this.hasGetSecurityStorageAsyncCallback = true;
                     egret.ExternalInterface.addCallback("getSecurityStorageAsyncCallback", (value) => {
+                        console.log("getSecurityStorageAsyncCallback:", value);
                         return resolve(value);
                     });
                 }

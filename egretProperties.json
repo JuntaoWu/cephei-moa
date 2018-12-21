@@ -63,6 +63,11 @@
     "android": {
       "appname": "moa-client-android",
       "packagename": "com.toolbar.childar"
+    },
+    "ios": {
+      "appname": "古董局中局",
+      "packagename": "com.fb.gdjzj",
+      "hybrid": false
     }
   }
 }
