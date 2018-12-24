@@ -82,7 +82,7 @@ namespace moa {
     export class DebugPlatform implements Platform {
 
         public get env(): string {
-            return "test";
+            return "prod";
         }
 
         public get name(): string {
@@ -90,7 +90,7 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "0.4.0";
+            return "0.4.1";
         }
 
         public isConnected: boolean = true;
@@ -253,7 +253,7 @@ namespace moa {
         private hasSendShowModalCallback: boolean = false;
 
         public get env(): string {
-            return "test";
+            return "prod";
         }
 
         public get name(): string {
@@ -261,7 +261,7 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "0.4.0";
+            return "0.4.1";
         }
 
         public setStorage(key, data) {
@@ -294,6 +294,7 @@ namespace moa {
                 if (!this.hasGetSecurityStorageAsyncCallback) {
                     this.hasGetSecurityStorageAsyncCallback = true;
                     egret.ExternalInterface.addCallback("getSecurityStorageAsyncCallback", (value) => {
+                        console.log("getSecurityStorageAsyncCallback:", value);
                         return resolve(value);
                     });
                 }
@@ -344,10 +345,18 @@ namespace moa {
             throw "Don't do this in native.";
         }
 
+        public destroyVideo(videoContainer) {
+            console.log("destroyVideo did nothing.");
+        }
+
+        public openExternalLink(url) {
+            egret.ExternalInterface.call("sendOpenExternalLinkToNative", url);
+        }
+
     }
 
     // todo: in the wrapped project, the platform had been declared in the child lib project alreay.
     export let platform: Platform;
-    platform = window["platform"] || new DebugPlatform();
+    platform = window["platform"] || new NativePlatform();
 
 }

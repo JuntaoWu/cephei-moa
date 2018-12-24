@@ -3,7 +3,7 @@
   "compilerVersion": "5.2.13",
   "template": {},
   "target": {
-    "current": "wxgame"
+    "current": "web"
   },
   "eui": {
     "exmlRoot": [
@@ -61,13 +61,13 @@
   ],
   "targets": {
     "android": {
-      "appname": "moa-client",
+      "appname": "moa-client-android",
       "packagename": "com.toolbar.childar"
     },
     "ios": {
-      "appname": "moa-client",
-      "packagename": "com.toolbar.childar",
-      "hybrid": true
+      "appname": "古董局中局",
+      "packagename": "com.fb.gdjzj",
+      "hybrid": false
     }
   }
 }

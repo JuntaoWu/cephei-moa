@@ -3,7 +3,7 @@ var game_file_list = manifest.initial.concat(manifest.game);
 
 var window = this;
 
-egret_native.setSearchPaths(["https://gdjzj.hzsdgames.com:8095"]);
+egret_native.setSearchPaths([""]);
 
 egret_native.requireFiles = function () {
     for (var key in game_file_list) {

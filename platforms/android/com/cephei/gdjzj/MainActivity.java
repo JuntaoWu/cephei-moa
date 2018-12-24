@@ -3,7 +3,9 @@ package com.toolbar.childar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.util.Log;
@@ -163,6 +165,11 @@ public class MainActivity extends Activity {
 
         nativeAndroid.setExternalInterface("sendShowToastToNative", (String message) -> {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        });
+
+        nativeAndroid.setExternalInterface("sendOpenExternalLinkToNative", (String message) -> {
+            Intent intent= new Intent(Intent.ACTION_VIEW, Uri.parse(message));
+            startActivity(intent);
         });
     }
 
