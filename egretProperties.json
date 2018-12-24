@@ -61,7 +61,7 @@
   ],
   "targets": {
     "android": {
-      "appname": "moa-client-android",
+      "appname": "爱德岛",
       "packagename": "com.toolbar.childar"
     },
     "ios": {
