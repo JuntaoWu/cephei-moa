@@ -611,6 +611,7 @@ namespace moa {
 
             if (this.proxy.isActorLocal(this.proxy.gameState.role[2]) && this.proxy.gameState.ybrskill[2][this.proxy.gameState.lunci]) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
+                this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
             }
 
             console.log("skipSkill");
