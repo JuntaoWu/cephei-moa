@@ -70,6 +70,8 @@ namespace moa {
 		public static TOUPIAO_END: string = "toupiao_end";
 		public static START_TWO: string = "start_two";
 		public static ONE_YBRSKILL: string = "one_ybrskill";
+		public static TWO_YBRSKILL: string = "two_ybrskill";
+		public static THREE_YBRSKILL: string = "three_ybrskill";
 		public static ONE_ZGQSKILL: string = "one_zgqskill";
 		public static TOUREN: string = "touren";
 		public static TOUREN_JIEGUO: string = "touren_jieguo";
@@ -423,13 +425,13 @@ namespace moa {
 				case CustomPhotonEvents.twoybrtongbu: {
 					const Nr = +message;
 					this.gameState.twoybrskill = Nr;
-					this.sendNotification(GameProxy.ONE_YBRSKILL, Nr);
+					this.sendNotification(GameProxy.TWO_YBRSKILL, Nr);
 					break;
 				}
 				case CustomPhotonEvents.threeybrtongbu: {
 					const Nr = +message;
 					this.gameState.threeybrskill = Nr;
-					this.sendNotification(GameProxy.ONE_YBRSKILL, Nr);
+					this.sendNotification(GameProxy.THREE_YBRSKILL, Nr);
 					break;
 				}
 				case CustomPhotonEvents.onezgqtongbu: {

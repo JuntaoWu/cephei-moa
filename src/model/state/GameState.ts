@@ -47,7 +47,7 @@ namespace moa {
         public lcfpiao: number = 0;
         public findPeopleScore: number = 0;
         public jueselist: Array<any> = ["许愿", "方震", "姬云浮", "黄烟烟", "木户加奈", "老朝奉", "药不然", "郑国渠"];
-        public ybrskill: Array<Object> = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
+        public ybrskill: Array<number> = [0, 0, 0, 0, 0, 0, 0, 0, 0];
         public jyfskill: boolean = true;
 
         public playerInfor: Array<PlayerInfo> = [];
