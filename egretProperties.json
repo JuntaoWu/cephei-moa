@@ -3,7 +3,7 @@
   "compilerVersion": "5.2.13",
   "template": {},
   "target": {
-    "current": "web"
+    "current": "wxgame"
   },
   "eui": {
     "exmlRoot": [
@@ -65,8 +65,8 @@
       "packagename": "com.toolbar.childar"
     },
     "ios": {
-      "appname": "古董局中局",
-      "packagename": "com.fb.gdjzj",
+      "appname": "爱德岛",
+      "packagename": "com.toolbar.childar",
       "hybrid": false
     }
   }
