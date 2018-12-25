@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="M9" width="720" height="591" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="bg" source="bg3" verticalCenter="0" horizontalCenter="0"/>
+	<e:Image id="bg" source="bg3_png" verticalCenter="0" horizontalCenter="0"/>
 	<e:Image id="ren" source="ren" x="427" y="169" anchorOffsetX="28" anchorOffsetY="56"/>
 	<e:Label text="剩余步数：" x="100" y="520" width="176" height="30" verticalAlign="middle" textAlign="center" anchorOffsetX="0"/>
 	<e:Label id="bushu" text="" x="231" y="520" width="100" height="30" verticalAlign="middle" textAlign="center"/>

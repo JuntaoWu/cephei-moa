@@ -17,7 +17,7 @@
 			"name": "chapter1"
 		},
 		{
-			"keys": "m11,m10,m08-item_json,m08-bg,m07,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3,ren,m8.2-bg,m8.2-tips,m8.2_00,m8.2_01,m8.2_02,m8.2_03,m8.2_04,m8.2_05,m8.2_06,Y8,Y7,Y6,Y17",
+			"keys": "m11,m10,m08-item_json,m08-bg,m07,s62,s60,s43,s31,s21,s16,s15,s14,s13,s12,s11,s10,s1,s0,s18,s22,s3,s59,s61,bg3_png,ren,m8.2-bg,m8.2-tips,m8.2_00,m8.2_01,m8.2_02,m8.2_03,m8.2_04,m8.2_05,m8.2_06,Y8,Y7,Y6,Y17",
 			"name": "chapter2"
 		},
 		{
@@ -986,7 +986,7 @@
 		{
 			"url": "assets/M9/bg.png",
 			"type": "image",
-			"name": "bg3"
+			"name": "bg3_png"
 		},
 		{
 			"url": "assets/M9/ren.png",
