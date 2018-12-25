@@ -15,7 +15,7 @@ namespace moa {
 			platform.onNetworkStatusChange((res) => {
 				console.log(res);
 				if (!res || !res.isConnected) {
-					console.log("onResume: not connected");
+					console.log("onNetworkStatusChange: not connected");
 					return;
 				}
 				console.log(self.loadBalancingClient.state);
@@ -30,9 +30,9 @@ namespace moa {
 			});
 
 			platform.registerOnResume((res) => {
-				console.log("registered onResume");
+				console.log(res);
 				if (!res || !res.isConnected) {
-					console.log("onResume: not connected");
+					console.log("OnResume: not connected");
 					return;
 				}
 				console.log(self.loadBalancingClient.state);

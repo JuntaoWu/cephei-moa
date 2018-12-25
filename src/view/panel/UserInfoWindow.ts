@@ -27,6 +27,8 @@ namespace moa {
         public isAntiquesUnPassed: boolean = true;
         public antiquesGameTime: string;
 
+        public isWeChatLogin: boolean = false;
+
         public constructor() {
             super();
 

@@ -41,6 +41,8 @@ namespace moa {
             this.userInfoWindow.campXuWinRate = `${Math.round((campXuWin / (campXu || 1)) * 100)}%`;
             this.userInfoWindow.campLaoWinRate = `${Math.round((campLaoWin / (campLao || 1)) * 100)}%`;
 
+            this.userInfoWindow.isWeChatLogin = !userInfo.anonymous;
+
             this.userInfoWindow.isAntiquesPassed = userInfo.gameRecords.isAntiquesPassed;
             this.userInfoWindow.isAntiquesUnPassed = !userInfo.gameRecords.isAntiquesPassed;
             const antiquesGameTime = (+userInfo.gameRecords.antiquesGameTime || 0) * 1000;  // seconds to ms.

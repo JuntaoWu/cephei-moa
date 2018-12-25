@@ -90,7 +90,7 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "0.4.1";
+            return "0.4.6";
         }
 
         public isConnected: boolean = true;
@@ -258,10 +258,6 @@ namespace moa {
 
         public get name(): string {
             return "native";
-        }
-
-        public get appVersion(): string {
-            return "0.4.1";
         }
 
         public setStorage(key, data) {
