@@ -628,9 +628,10 @@ namespace moa {
 
 			this.roomName = roomName;
 			if (this.loadBalancingClient.isInLobby()) {
-				console.log(`Begin joinRoom: ${roomName}`);
+				let joinToken = this.getCurrentJoinToken(roomName);
+				console.log(`Begin joinRoom: ${roomName} with joinToken: ${joinToken}`);
 				this.loadBalancingClient.joinRoom(roomName, {
-					joinToken: this.getCurrentJoinToken(roomName)
+					joinToken: joinToken
 				});
 			}
 			else if (this.loadBalancingClient.isJoinedToRoom()) {
