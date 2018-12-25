@@ -84,7 +84,7 @@ namespace moa {
             await this.loadResource();
             this.loadingView.groupLoading.visible = false;
 
-            await AccountAdapter.loadPreference();
+            const preference = await AccountAdapter.loadPreference();
 
             if (platform.name == "wxgame") {
                 await AccountAdapter.login();
@@ -96,8 +96,8 @@ namespace moa {
                 this.createGameScene();
             }
             else {
-                this.loadingView.btnAnonymousLogin.visible = true;
-                this.loadingView.btnLogin.visible = true;
+                this.loadingView.btnAnonymousLogin.visible = preference.showAnonymousLogin;
+                this.loadingView.btnLogin.visible = preference.showWeChatLogin;
                 this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
                     egret.ExternalInterface.call("sendWxLoginToNative", "native");
                     egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {

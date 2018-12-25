@@ -254,6 +254,7 @@ namespace moa {
 				userId: userInfo.userId,
 				avatarUrl: userInfo.avatarUrl,
 				nickName: userInfo.nickName,
+				anonymous: userInfo.anonymous,
 			});
 		}
 

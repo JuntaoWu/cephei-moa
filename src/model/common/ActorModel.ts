@@ -15,6 +15,8 @@ namespace moa {
 
         public userId?: number;
 
+        public anonymous?: boolean;
+
         public constructor(actor: Photon.LoadBalancing.Actor, seatNumber?: number) {
 
             if (actor) {
@@ -22,7 +24,9 @@ namespace moa {
 
                 this.userId = actor.getCustomProperty("userId");
 
-                this.name = actor.getCustomProperty("nickName");
+                this.anonymous = actor.getCustomProperty("anonymous");
+
+                this.name = this.anonymous ? this.userId : actor.getCustomProperty("nickName");
 
                 this.avatarUrl = actor.getCustomProperty("avatarUrl");
 
