@@ -7,6 +7,7 @@ namespace moa {
         name: string;
         appVersion: string;
         isConnected: boolean;
+        os: string;
 
         getUserInfo(): Promise<UserInfo>;
 
@@ -90,7 +91,11 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "0.4.6";
+            return "0.4.7";
+        }
+
+        public get os(): string {
+            return "Browser";
         }
 
         public isConnected: boolean = true;
@@ -211,12 +216,12 @@ namespace moa {
             return { confirm: false, cancel: true };
         }
 
-        public showLoading() {
-            return true;
+        public showLoading(message?: string) {
+            return;
         }
 
         public hideLoading() {
-            return true;
+            return;
         }
 
         public shareAppMessage(message?: string, imageUrl?: string, query?: string, callback?: Function) {
@@ -260,6 +265,10 @@ namespace moa {
 
         public get name(): string {
             return "native";
+        }
+
+        public get os(): string {
+            return "ios";
         }
 
         public setStorage(key, data) {
@@ -337,6 +346,14 @@ namespace moa {
 
         public showToast(message: string) {
             egret.ExternalInterface.call("sendShowToastToNative", message);
+        }
+
+        public showLoading(message?: string) {
+            egret.ExternalInterface.call("sendShowToastToNative", message || "Loading");
+        }
+
+        public hideLoading() {
+            egret.ExternalInterface.call("sendHideToastToNative", "");
         }
 
         public navigateToMiniProgram() {

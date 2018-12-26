@@ -13,9 +13,12 @@ namespace moa {
             this.skinName = "skins.GuideVideoWindow";
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
+            const resourceRoot = platform.os == "ios" ? Constants.Endpoints.remoteResource : Constants.ResourceEndpoint;
+
             this.btnVideo1.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.video && platform.destroyVideo(this.video);
-                this.video = platform.playVideo(`${Constants.ResourceEndpoint}resource/assets/guide/video1.mp4`);
+
+                this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video1.mp4`);
                 this.addChild(this.video);
                 // this.video.poster = `${Constants.ResourceEndpoint}resource/assets/guide/video1.png`;
                 this.video.x = 55;
@@ -29,7 +32,7 @@ namespace moa {
             }, this);
             this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.video && platform.destroyVideo(this.video);
-                this.video = platform.playVideo(`${Constants.ResourceEndpoint}resource/assets/guide/video2.mp4`);
+                this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video2.mp4`);
                 this.addChild(this.video);
                 // this.video.poster = "resource/assets/guide/video2.png";
                 this.video.x = 55;
@@ -43,7 +46,7 @@ namespace moa {
             }, this);
             this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.video && platform.destroyVideo(this.video);
-                this.video = platform.playVideo(`${Constants.ResourceEndpoint}resource/assets/guide/video3.mp4`);
+                this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video3.mp4`);
                 this.addChild(this.video);
                 // this.video.poster = "resource/assets/guide/video3.png";
                 this.video.x = 55;
