@@ -33,7 +33,7 @@
 			"name": "chapter5"
 		},
 		{
-			"keys": "button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,hintCardNumber_png,tips-ellipse,hintCardNumber_fnt,manage-antiqe_json,manage-card2,manage-card1,manage-errer,manage-right,btn-plot,icon-group,icon-money,icon-clock,Y18,skip-btn,dialog-box,guide_json,ellipse,shop-icon-m,shop-icon-h,guide-img1,guide-img2,guide-img3,guide-img4",
+			"keys": "button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,thumb_pb_png,track_pb_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,track_sb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,hintCardNumber_png,tips-ellipse,hintCardNumber_fnt,manage-antiqe_json,manage-card2,manage-card1,manage-errer,manage-right,btn-plot,icon-group,icon-money,icon-clock,Y18,skip-btn,dialog-box,guide_config,ellipse,shop-icon-m,shop-icon-h,guide-img1,guide-img2,guide-img3,guide-img4",
 			"name": "lazyload"
 		}
 	],
@@ -1332,7 +1332,7 @@
 		{
 			"url": "config/guide.json",
 			"type": "json",
-			"name": "guide_json"
+			"name": "guide_config"
 		},
 		{
 			"url": "assets/manage/yu_gao.png",
