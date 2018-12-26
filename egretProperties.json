@@ -65,8 +65,8 @@
       "packagename": "com.toolbar.childar"
     },
     "ios": {
-      "appname": "爱德岛",
-      "packagename": "com.toolbar.childar",
+      "appname": "古董局中局",
+      "packagename": "com.fb.gdjzj",
       "hybrid": false
     }
   }

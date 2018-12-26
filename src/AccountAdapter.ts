@@ -253,7 +253,7 @@ namespace moa {
 
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${Constants.Endpoints.service}preferences/${platform.name}`, egret.HttpMethod.GET);
+            request.open(`${Constants.Endpoints.service}preferences/${platform.name}?timestamp=${+new Date()}`, egret.HttpMethod.GET);
             request.setRequestHeader("Content-Type", "application/json");
 
             request.send();

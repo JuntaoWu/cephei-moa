@@ -113,6 +113,9 @@
 
         </e:Group>
     </e:Group>
+
+    <e:Button alpha="0" id="nextBtn" bottom="0" top="725" width="100%">
+    </e:Button>
     <e:Group visible="{showTransition}" top="135" bottom="0">
         <e:Image width="720" source="game-bg" height="100%" scale9Grid="90,70,540,422"/>
         <e:Label text="{transitionText}"  horizontalCenter="0" verticalCenter="0" textColor="0x020202" size="60"/>
