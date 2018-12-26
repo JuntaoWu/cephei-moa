@@ -7,19 +7,24 @@ namespace moa {
 
 		public userInfo: UserInfo;
 
+		private lastSeenErrorAt = 0;
+
 		public constructor() {
 			super(GameProxy.NAME);
 
 			const self = this;
 
 			platform.onNetworkStatusChange((res) => {
-				console.log(res);
+				
+				this.gameState && this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
+
 				if (!res || !res.isConnected) {
 					console.log("onNetworkStatusChange: not connected");
 					return;
 				}
-				console.log(self.loadBalancingClient.state);
-				console.log("reset retried", self.loadBalancingClient.retried);
+				console.log("onNetworkStatusChange reset retried:", self.loadBalancingClient.retried,
+					"state:", self.loadBalancingClient.state, Photon.LoadBalancing.LoadBalancingClient.StateToName(self.loadBalancingClient.state));
+
 				self.loadBalancingClient.retried = 0;
 				// network is connected now.
 				if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected
@@ -30,13 +35,13 @@ namespace moa {
 			});
 
 			platform.registerOnResume((res) => {
-				console.log(res);
 				if (!res || !res.isConnected) {
-					console.log("OnResume: not connected");
+					console.log("onResume: not connected");
 					return;
 				}
-				console.log(self.loadBalancingClient.state);
-				console.log("reset retried", self.loadBalancingClient.retried);
+				console.log("onResume reset retried:", self.loadBalancingClient.retried,
+					"state:", self.loadBalancingClient.state, Photon.LoadBalancing.LoadBalancingClient.StateToName(self.loadBalancingClient.state));
+
 				self.loadBalancingClient.retried = 0;
 				// network is connected now.
 				if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected
@@ -177,25 +182,47 @@ namespace moa {
 		private onStateChange() {
 
 			const state = this.loadBalancingClient.state;
+			console.log("onStateChange: ", state, Photon.LoadBalancing.LoadBalancingClient.StateToName(state));
 			switch (state) {
+				case Photon.LoadBalancing.LoadBalancingClient.State.Error:
+					this.lastSeenErrorAt = +new Date();
+					break;
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
 					platform.showToast("连接服务器成功");
 
-					if (this.roomName) {  // UI triggered goes here.
-						this.loadBalancingClient.retried = 0;
-						if (this.isMasterClient && this.isCreating) {
-							this.createRoomWithDefaultOptions();
-						}
-						else {
-							this.joinRoom(this.roomName);
-						}
+					const rejoinAt = this.lastSeenErrorAt + 12000;
+					const delay = Math.max(rejoinAt - (+new Date()), 0);
+					console.log("Will rejoin after: ", delay);
+
+					if (delay > 0 && (this.roomName || (this.loadBalancingClient.autoRejoin && this.currentRoom && this.currentRoom.roomName))) {
+						platform.showLoading("加载中");
 					}
-					else if (this.loadBalancingClient.autoRejoin) {  // Auto rejoin goes here.
-						const currentRoom = this.currentRoom;
-						if (currentRoom && currentRoom.roomName) {
-							this.joinRoom(currentRoom.roomName);
+
+					egret.setTimeout(() => {
+
+						if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby) {
+							if (this.roomName) {  // UI triggered goes here.
+								console.log("UI triggered create/join room:", this.roomName);
+								this.loadBalancingClient.retried = 0;
+								if (this.isMasterClient && this.isCreating) {
+									this.createRoomWithDefaultOptions();
+								}
+								else {
+									this.joinRoom(this.roomName);
+								}
+							}
+							else if (this.loadBalancingClient.autoRejoin) {  // Auto rejoin goes here.
+								const currentRoom = this.currentRoom;
+								if (currentRoom && currentRoom.roomName) {
+									console.log("autoRejoin room:", currentRoom.roomName);
+									this.joinRoom(currentRoom.roomName);
+								}
+							}
 						}
-					}
+					}, this, delay);
+					break;
+				case Photon.LoadBalancing.LoadBalancingClient.State.Joined:
+					platform.showToast("加入房间成功");
 					break;
 			}
 		}
@@ -624,10 +651,12 @@ namespace moa {
 
 		public joinRoom(roomName: string) {
 
+			console.log(`joinRoom: ${roomName}`);
+
 			platform.showLoading();
 
 			this.roomName = roomName;
-			if (this.loadBalancingClient.isInLobby()) {
+			if (this.loadBalancingClient.isInLobby() && !this.loadBalancingClient.isJoinedToRoom()) {
 				let joinToken = this.getCurrentJoinToken(roomName);
 				console.log(`Begin joinRoom: ${roomName} with joinToken: ${joinToken}`);
 				this.loadBalancingClient.joinRoom(roomName, {

@@ -8,6 +8,8 @@ namespace moa {
 
     export class MyLoadBalancingClient extends Photon.LoadBalancing.LoadBalancingClient {
 
+        private isWaitingForStart: boolean = false;
+
         private static get photonWss() {
             return platform.env == "prod" || platform.env == "test";
         }
@@ -43,9 +45,10 @@ namespace moa {
         public updateRoomInfoSubject = () => { };
         public onJoinRoomSubject = () => { };
         public receiveMessageSubject = (event, message, sender) => { };
-        public onOperationResponseSubject = (errorCode) => {};
+        public onOperationResponseSubject = (errorCode) => { };
 
         start() {
+            this.isWaitingForStart = false;
             if (connectOnStart) {
                 this.output(this.logger.format("Init", Constants.photonMasterServer || this.getNameServerAddress(), photonAppVersion));
                 this.logger.info("Init", Constants.photonMasterServer || this.getNameServerAddress(), photonAppVersion);
@@ -77,12 +80,17 @@ namespace moa {
                 if (++this.retried < this.maxRetriedCount) {
                     this.start();
                 }
-                else {
+                else if (!this.isWaitingForStart) {
+                    this.isWaitingForStart = true;
+
                     platform.showModal("服务器连接已重置,请检查网络或尝试重连", "重试", "取消").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
                             this.autoRejoin = false;
-                            this.start();
+                            
+                            egret.setTimeout(() => {
+                                this.start();
+                            }, this, 4000);
                         }
                         else if (res && res.cancel) {
                             this.autoRejoin = false;
@@ -94,11 +102,16 @@ namespace moa {
                 if (++this.retried < this.maxRetriedCount) {
                     this.start();
                 }
-                else {
+                else if (!this.isWaitingForStart) {
+                    this.isWaitingForStart = true;
+
                     platform.showModal("服务器连接超时,请检查网络或尝试重连", "重试", "取消").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
-                            this.start();
+
+                            egret.setTimeout(() => {
+                                this.start();
+                            }, this, 4000);
                         }
                         else if (res && res.cancel) {
                             this.autoRejoin = false;
@@ -110,11 +123,16 @@ namespace moa {
                 if (++this.retried < this.maxRetriedCount) {
                     this.start();
                 }
-                else {
+                else if (!this.isWaitingForStart) {
+                    this.isWaitingForStart = true;
+
                     platform.showModal("服务器连接失败,请检查网络或尝试重连", "重试", "取消").then(res => {
                         if (res && res.confirm) {
                             this.retried = 0;
-                            this.start();
+
+                            egret.setTimeout(() => {
+                                this.start();
+                            }, this, 4000);
                         }
                         else if (res && res.cancel) {
                             this.autoRejoin = false;

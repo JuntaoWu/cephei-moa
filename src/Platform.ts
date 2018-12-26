@@ -189,11 +189,13 @@ namespace moa {
         }
 
         public playVideo(url) {
+
             const video = new egret.Video();
             video.load(url);
             video.once(egret.Event.COMPLETE, () => {
                 video.play();
             }, this);
+
             return video;
         }
 

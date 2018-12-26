@@ -440,7 +440,7 @@ namespace moa {
                     content.visible = true;
                     nickName.visible = true;
 
-                    control.filters = seats[config.seatNumber].suspended ? [ColorFilter.grey] : [];
+                    control.filters = (!platform.isConnected || seats[config.seatNumber].suspended) ? [ColorFilter.grey] : [];
                 }
                 else {
                     normalBg.visible = true;
