@@ -8,7 +8,7 @@ class WxgamePlatform {
 
   env = 'prod';
   name = 'wxgame';
-  appVersion = '0.4.3';
+  appVersion = '1.1.0';
   isConnected = true;
 
   login() {
@@ -152,6 +152,7 @@ class WxgamePlatform {
 
   onNetworkStatusChange(callback) {
     wx.onNetworkStatusChange((res) => {
+      this.isConnected = res.isConnected;
       this.showToast(`当前网络${res.isConnected ? '已连接' : '未连接'}`);
       callback(res);
     });
