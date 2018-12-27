@@ -11,12 +11,12 @@
         <e:Image id="progressBg" source="progress-bg" width="720" height="60" />
         <e:Image id="progressBar" source="progress" height="60"  width="720"/>
     </e:Group>
-    <e:Button id="btnAnonymousLogin" width="720" visible="false">
+    <e:Button id="btnAnonymousLogin" width="640" horizontalCenter="0" visible="false">
         <e:Skin states="up,down,disabled">
             <e:Image source="btn-anonymouslogin" width="100%" scaleX.down="0.9"></e:Image>
         </e:Skin>
     </e:Button>
-    <e:Button id="btnLogin" width="720" visible="false">
+    <e:Button id="btnLogin" width="640" horizontalCenter="0" visible="false">
         <e:Skin states="up,down,disabled">
             <e:Image source="btn-wxlogin" width="100%" scaleX.down="0.9"></e:Image>
         </e:Skin>

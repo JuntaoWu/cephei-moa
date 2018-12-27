@@ -54,8 +54,8 @@ namespace moa {
             this.progressBg.y = this.stage.stageHeight - 30;
             this.progressBar.y = this.stage.stageHeight - 30;
             this.loadingLabel.y = this.stage.stageHeight - 60;
-            this.btnLogin.y = this.stage.stageHeight - this.btnLogin.height;
-            this.btnAnonymousLogin.y = this.stage.stageHeight - this.btnLogin.height - this.btnAnonymousLogin.height - 20;
+            this.btnLogin.y = this.stage.stageHeight - this.btnLogin.height - 10;
+            this.btnAnonymousLogin.y = this.stage.stageHeight - this.btnLogin.height - this.btnAnonymousLogin.height - 30;
         }
 
         public onProgress(current: number, total: number): void {

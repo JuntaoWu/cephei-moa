@@ -47,7 +47,6 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
     public void onResp(BaseResp baseResp) {
         SendAuth.Resp resp = (SendAuth.Resp)baseResp;
         Log.d(TAG, "onResp");
-        Toast.makeText(this, "baseresp.getType = " + resp.getType(), Toast.LENGTH_SHORT).show();
         switch (resp.errCode) {
             case BaseResp.ErrCode.ERR_OK:
                 MainActivity.nativeAndroid.callExternalInterface("sendWxLoginCodeToJS", resp.code);

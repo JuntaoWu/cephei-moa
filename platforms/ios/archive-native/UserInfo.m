@@ -33,33 +33,11 @@
 }
 
 + (void)save:(NSString *)key Value:(NSString *)value {
-    int ret = 0;
     NSMutableDictionary *keyChainQuery = [self getKeychainQuery:key];
     
-    CFDataRef keyData = NULL;
-    if(SecItemCopyMatching((CFDictionaryRef)keyChainQuery, (CFTypeRef *)&keyData) == noErr) {
-        @try {
-            NSMutableDictionary *attributesToUpdate = [NSMutableDictionary dictionary];
-            attributesToUpdate[(__bridge id)kSecValueData] = [value dataUsingEncoding:NSUTF8StringEncoding];
-            
-            OSStatus status = SecItemUpdate((__bridge CFDictionaryRef)keyChainQuery, (__bridge CFDictionaryRef)attributesToUpdate);
-            NSLog(@"Error Code: %d", (int)status);
-            ret = (int)status;
-        } @catch (NSException *exception) {
-
-        } @finally {
-            
-        }
-    }
-    else {
-        NSLog(@"Unable to find your key, %@", key);
-        keyChainQuery[(__bridge id)kSecValueData] = [value dataUsingEncoding:NSUTF8StringEncoding];
-        
-        OSStatus status = SecItemAdd((__bridge CFDictionaryRef)keyChainQuery, NULL);
-
-        NSLog(@"Error Code: %d", (int)status);
-        ret = (int)status;
-    }
+    SecItemDelete((CFDictionaryRef)keyChainQuery);
+    [keyChainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:value] forKey:(id)kSecValueData];
+    SecItemAdd((__bridge CFDictionaryRef)keyChainQuery, NULL);
 }
     
 + (NSMutableDictionary *)getKeychainQuery:(NSString *)service {

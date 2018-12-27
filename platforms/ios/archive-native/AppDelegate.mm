@@ -1,46 +1,126 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import <EgretNativeIOS.h>
+#import <Toast.h>
 
 @implementation AppDelegate {
     EgretNativeIOS* _native;
+    UIViewController* _viewController;
+    UIImageView* _imageView;
 }
+
+const static NSString* appError = @"error";
+// 加载首页失败
+const static NSString* errorIndexLoadFailed = @"load";
+// 启动引擎失败
+const static NSString* errorJSLoadFailed = @"start";
+// 引擎停止运行
+const static NSString* errorJSCorrupted = @"stopRunning";
+const static NSString* appState = @"state";
+// 正在启动引擎
+const static NSString* stateEngineStarted = @"starting";
+// 引擎正在运行
+const static NSString* stateEngineRunning = @"running";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
  
 
-    [WXApi registerApp:@"wxa5357874f32269ac"];
+    [WXApi registerApp:@"wxcf2407196cc520b7"];
     NSString* gameUrl = @"http://tool.egret-labs.org/Weiduan/game/index.html";
     
     _native = [[EgretNativeIOS alloc] init];
-    _native.config.showFPS = true;
+    _native.config.showFPS = false;
     _native.config.fpsLogTime = 30;
     _native.config.disableNativeRender = false;
     _native.config.clearCache = false;
     
-    UIViewController* viewController = [[ViewController alloc] initWithEAGLView:[_native createEAGLView]];
-    if (![_native initWithViewController:viewController]) {
+    _viewController = [[ViewController alloc] initWithEAGLView:[_native createEAGLView]];
+    if (![_native initWithViewController:_viewController]) {
         return false;
     }
     [self setExternalInterfaces];
     
     NSString* networkState = [_native getNetworkState];
+    __block AppDelegate* thiz = self;
+    
+    __block bool isStarted = true;
+
     if ([networkState isEqualToString:@"NotReachable"]) {
+        isStarted = false;
+        
         __block EgretNativeIOS* native = _native;
+        [self showLoadingView];
+        [self showModal:@"蜂窝数据未连接" Message:@"请开启移动数据或使用WiFi联网进行游戏。"];
+        
         [_native setNetworkStatusChangeCallback:^(NSString* state) {
+            NSLog(@"NetworkStatus Change: %@", state);
+            
+            [native callExternalInterface:@"sendNetworkStatusChangeToJS" Value:[thiz getConnectivityStatus:state]];
+            
             if (![state isEqualToString:@"NotReachable"]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [native startGame:gameUrl];
-                });
+                
+                [thiz showToast:[thiz getConnectivityName:state]];
+                if(!isStarted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [native startGame:gameUrl];
+                    });
+                    isStarted = true;
+                }
+            }
+            else {
+                [thiz showModal:@"蜂窝数据未连接" Message:@"请开启移动数据或使用WiFi联网进行游戏。"];
             }
         }];
         return true;
     }
     
+    [_native setNetworkStatusChangeCallback:^(NSString* state) {
+        NSLog(@"NetworkStatus Change: %@", state);
+        
+        [_native callExternalInterface:@"sendNetworkStatusChangeToJS" Value:[thiz getConnectivityStatus:state]];
+        
+        if (![state isEqualToString:@"NotReachable"]) {
+            [thiz showToast:[thiz getConnectivityName:state]];
+        }
+        else {
+            [thiz showModal:@"蜂窝数据未连接" Message:@"请开启移动数据或使用WiFi联网进行游戏。"];
+        }
+    }];
+    
     [_native startGame:gameUrl];
     
     return true;
+}
+
+- (NSString *)getConnectivityStatus:state {
+    if ([state isEqualToString:@"NotReachable"] ) {
+        return @"0";
+    }
+    return @"1";
+}
+
+- (NSString *)getConnectivityName:state {
+    if([state isEqualToString:@"ReachableViaWiFi"]) {
+        return @"Wi-Fi已连接";
+    }
+    else if ([state isEqualToString:@"ReachableViaWWAN"]) {
+        return @"移动数据已连接";
+    }
+    else {
+        return @"当前网络未连接";
+    }
+}
+
+- (void)showLoadingView {
+    _imageView = [[UIImageView alloc] initWithFrame:_viewController.view.frame];
+    [_imageView setImage:[UIImage imageNamed:@"background"]];
+    [_viewController.view addSubview:_imageView];
+    [_viewController.view bringSubviewToFront:_imageView];
+}
+
+- (void)hideLoadingView {
+    [_imageView removeFromSuperview];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -70,9 +150,118 @@
     // Saves changes in the application's managed object context before the application terminates.
 }
 
+// according to the error msg, do different action
+- (void)handleErrorEvent:(NSString*)error {
+    if ([errorIndexLoadFailed isEqualToString:error]) {
+        NSLog(@"errorIndexLoadFailed");
+    } else if ([errorJSLoadFailed isEqualToString:error]) {
+        NSLog(@"errorJSLoadFailed");
+    } else if ([errorJSCorrupted isEqualToString:error]) {
+        NSLog(@"errorJSCorrupted");
+    }
+}
+
+// according to the state msg, do different action
+- (void)handleStateEvent:(NSString*)state {
+    if ([stateEngineStarted isEqualToString:state]) {
+        NSLog(@"stateEngineStarted");
+    } else if ([stateEngineRunning isEqualToString:state]) {
+        NSLog(@"stateEngineRunning");
+        [self hideLoadingView];
+    }
+}
+
+- (void)showModal:(NSString *)title Message:(NSString *)message {
+    NSString *confirmText = @"OK";
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:confirmText
+                                                       style:UIAlertActionStyleDefault
+                                                       handler: ^(UIAlertAction *action) {
+                                                           NSLog(@"OK choosed");
+                                                       }];
+    [alert addAction:okAction];
+    
+    UIViewController *hostVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (hostVC.presentedViewController) {
+        hostVC = hostVC.presentedViewController;
+    }
+    [hostVC presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showToast:(NSString*)msg {
+    
+    //UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:msg preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIViewController *hostVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (hostVC.presentedViewController) {
+        hostVC = hostVC.presentedViewController;
+    }
+    [hostVC.view hideAllToasts];
+    [hostVC.view makeToast:msg];
+    //[hostVC presentViewController:alert animated:YES completion:nil];
+    
+    //int duration = 1;
+    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //[alert dismissViewControllerAnimated:YES completion:nil];
+    //});
+}
+
+- (void)hideToast {
+    UIViewController *hostVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (hostVC.presentedViewController) {
+        hostVC = hostVC.presentedViewController;
+    }
+    [hostVC.view hideAllToasts];
+}
+
 - (void)setExternalInterfaces {
 
     __block EgretNativeIOS* support = _native;
+    __block AppDelegate* thiz = self;
+    
+    [_native setExternalInterface:@"@onError" Callback:^(NSString* message) {
+        NSString* str = @"Native get onError message: ";
+        
+        NSData* jsonData = [message dataUsingEncoding:NSUTF8StringEncoding];
+        NSError* err;
+        NSDictionary* dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:&err];
+        if (err) {
+            NSLog(@"onError message failed to analyze");
+            return;
+        }
+        
+        NSString* error = [dic objectForKey:appError];
+        [thiz handleErrorEvent:error];
+        
+        str = [str stringByAppendingString:error];
+        NSLog(@"%@", str);
+    }];
+    
+    [_native setExternalInterface:@"@onState" Callback:^(NSString* message) {
+        NSString* str = @"Native get onState message: ";
+        
+        NSData* jsonData = [message dataUsingEncoding:NSUTF8StringEncoding];
+        NSError* err;
+        NSDictionary* dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:&err];
+        if (err) {
+            NSLog(@"onState message failed to analyze");
+            return;
+        }
+        
+        NSString* state = [dic objectForKey:appState];
+        [thiz handleStateEvent:state];
+        
+        str = [str stringByAppendingString:state];
+        NSLog(@"%@", str);
+    }];
+    
     [_native setExternalInterface:@"sendToNative" Callback:^(NSString* message) {
         NSString* str = @"Native get message: ";
         str = [str stringByAppendingString:message];
@@ -166,18 +355,13 @@
     [_native setExternalInterface:@"sendShowToastToNative" Callback:^(NSString* msg) {
         NSLog(@"sendShowToastToNative message: %@", msg);
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:msg preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIViewController *hostVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-        while (hostVC.presentedViewController) {
-            hostVC = hostVC.presentedViewController;
-        }
-        [hostVC presentViewController:alert animated:YES completion:nil];
-        
-        int duration = 1;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [alert dismissViewControllerAnimated:YES completion:nil];
-        });
+        [thiz showToast:msg];
+    }];
+    
+    [_native setExternalInterface:@"sendHideToastToNative" Callback:^(NSString* msg) {
+        NSLog(@"sendShowToastToNative message: %@", msg);
+
+        [thiz hideToast];
     }];
     
     [_native setExternalInterface:@"sendOpenExternalLinkToNative" Callback:^(NSString* msg) {
@@ -211,6 +395,8 @@
 }
 
 - (void)onResp:(BaseResp *)resp {
+    NSLog(@"sendAuth onResp");
+    
     if([resp isKindOfClass:[SendAuthResp class]]) {
         SendAuthResp *authResp = (SendAuthResp*)resp;
         if(authResp.code != nil) {

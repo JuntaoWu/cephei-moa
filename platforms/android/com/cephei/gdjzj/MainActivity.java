@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     private final String TAG = "MainActivity";
     public static EgretNativeAndroid nativeAndroid;
     public static IWXAPI api;
-    private static final String APP_ID = "wxcf2407196cc520b7";
+    private static final String APP_ID = "wxa5357874f32269ac";
     private static final String SECURITY_PREFENCE = "security_preference";
 
     @Override
@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
             return;
         }
 
-        nativeAndroid.config.showFPS = true;
+        nativeAndroid.config.showFPS = false;
         nativeAndroid.config.fpsLogTime = 30;
         nativeAndroid.config.disableNativeRender = false;
         nativeAndroid.config.clearCache = false;
@@ -165,6 +165,10 @@ public class MainActivity extends Activity {
 
         nativeAndroid.setExternalInterface("sendShowToastToNative", (String message) -> {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        });
+
+        nativeAndroid.setExternalInterface("sendHideToastToNative", (String message) -> {
+            // do nothing in android.
         });
 
         nativeAndroid.setExternalInterface("sendOpenExternalLinkToNative", (String message) -> {
