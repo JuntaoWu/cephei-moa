@@ -61,8 +61,8 @@
   ],
   "targets": {
     "android": {
-      "appname": "爱德岛",
-      "packagename": "com.toolbar.childar"
+      "appname": "古董局中局",
+      "packagename": "com.fb.gdjzj"
     },
     "ios": {
       "appname": "古董局中局",

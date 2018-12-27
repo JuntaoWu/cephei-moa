@@ -8,6 +8,8 @@ namespace moa {
         private video2: egret.Video;
         private video3: egret.Video;
 
+        private shade: Shade;
+
         public constructor() {
             super();
             this.skinName = "skins.GuideVideoWindow";
@@ -20,9 +22,14 @@ namespace moa {
 
                 this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video1.mp4`);
                 this.addChild(this.video);
-                // this.video.poster = `${Constants.ResourceEndpoint}resource/assets/guide/video1.png`;
-                this.video.x = 55;
-                this.video.y = 50;
+
+                if (platform.os == "android") {
+                    this.shade.visible = true;
+                    (this.video as egret.Video).addEventListener(egret.Event.REMOVED, () => {
+                        this.shade.visible = false;
+                    }, this);
+                }
+
                 if (platform.name == "wxgame") {
                     this.video.requestFullScreen().then(() => this.video.play());
                     this.video.onEnded(() => {
@@ -34,9 +41,14 @@ namespace moa {
                 this.video && platform.destroyVideo(this.video);
                 this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video2.mp4`);
                 this.addChild(this.video);
-                // this.video.poster = "resource/assets/guide/video2.png";
-                this.video.x = 55;
-                this.video.y = 50;
+
+                if (platform.os == "android") {
+                    this.shade.visible = true;
+                    (this.video as egret.Video).addEventListener(egret.Event.REMOVED, () => {
+                        this.shade.visible = false;
+                    }, this);
+                }
+
                 if (platform.name == "wxgame") {
                     this.video.requestFullScreen().then(() => this.video.play());
                     this.video.onEnded(() => {
@@ -48,9 +60,14 @@ namespace moa {
                 this.video && platform.destroyVideo(this.video);
                 this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video3.mp4`);
                 this.addChild(this.video);
-                // this.video.poster = "resource/assets/guide/video3.png";
-                this.video.x = 55;
-                this.video.y = 50;
+
+                if (platform.os == "android") {
+                    this.shade.visible = true;
+                    (this.video as egret.Video).addEventListener(egret.Event.REMOVED, () => {
+                        this.shade.visible = false;
+                    }, this);
+                }
+                
                 if (platform.name == "wxgame") {
                     this.video.requestFullScreen().then(() => this.video.play());
                     this.video.onEnded(() => {

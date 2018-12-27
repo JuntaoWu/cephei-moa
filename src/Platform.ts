@@ -349,11 +349,11 @@ namespace moa {
         }
 
         public showLoading(message?: string) {
-            egret.ExternalInterface.call("sendShowToastToNative", message || "Loading");
+            egret.ExternalInterface.call("sendShowLoadingToNative", message || "Loading");
         }
 
         public hideLoading() {
-            egret.ExternalInterface.call("sendHideToastToNative", "");
+            egret.ExternalInterface.call("sendHideLoadingToNative", "");
         }
 
         public navigateToMiniProgram() {

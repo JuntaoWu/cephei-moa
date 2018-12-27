@@ -30,9 +30,9 @@ namespace moa {
         public static get Endpoints() {
             if (platform.env == "local") {
                 return {
-                    service: "http://localhost:4040/",
+                    service: "http://localhost:8090/",
                     localResource: "",
-                    remoteResource: "http://localhost:4040/miniGame/",
+                    remoteResource: "http://localhost:8090/miniGame/",
                     ws: "ws://192.168.2.117:9092",
                     wss: "wss://192.168.2.117:19092",
                 };

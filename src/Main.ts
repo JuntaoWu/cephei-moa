@@ -107,8 +107,14 @@ namespace moa {
                     });
                 }, this);
                 this.loadingView.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+                    
+                    platform.showLoading("加载中");
+
                     let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
                     await AccountAdapter.login({ token: anonymousToken });
+
+                    platform.hideLoading();
+
                     this.createGameScene();
                 }, this);
             }

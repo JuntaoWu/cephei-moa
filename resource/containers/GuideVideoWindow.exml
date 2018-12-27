@@ -34,4 +34,5 @@
 			</e:Skin>
 		</e:Button>
 	</e:Group>
+	<moa:Shade id="shade" visible="false" width="100%" height="100%" />
 </e:Skin>

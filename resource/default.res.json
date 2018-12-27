@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,start-background,btn-confirm,game-init-background,seat-background,small-dialog-background,btn-back,setting2,about,close,meihua,auth4,cancel,ok,ok3,black_2,white_2,game-box-border,number-keyboard-bg,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,antiques_json,game-term_json,lose,victory,share2,border_red,seats_json,botton,role_json,border_black,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,club_box,club_results,assistant-bg,game-bg-main,photon_json,clubs_json,rank-switch_json,antiques2_json,role2_json,club-icon_json,club-icon2_json,result_json,result2_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,video_json,guide_json,rank-icon_json,title-more,btn-view,title-tanbao,more-item1,more-item2,start_json,redtips",
+			"keys": "description_json,start-background,btn-confirm,game-init-background,seat-background,small-dialog-background,btn-back,setting2,about,close,meihua,auth4,cancel,ok,ok3,black_2,white_2,game-box-border,number-keyboard-bg,numberKeyboard_fnt,manual41,manual21,manual22,manual23,manual31,manual32,manual33,antiques_json,game-term_json,lose,victory,share2,border_red,seats_json,botton,role_json,border_black,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,club_box,club_results,assistant-bg,game-bg-main,photon_json,clubs_json,antiques2_json,role2_json,club-icon_json,club-icon2_json,result_json,result2_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,video_json,guide_json,rank-icon_json,title-more,btn-view,title-tanbao,more-item1,more-item2,start_json,redtips,default_json",
 			"name": "preload"
 		},
 		{
@@ -14,121 +14,6 @@
 		}
 	],
 	"resources": [
-		{
-			"url": "assets/CheckBox/checkbox_select_disabled.png",
-			"type": "image",
-			"name": "checkbox_select_disabled_png"
-		},
-		{
-			"url": "assets/CheckBox/checkbox_select_down.png",
-			"type": "image",
-			"name": "checkbox_select_down_png"
-		},
-		{
-			"url": "assets/CheckBox/checkbox_select_up.png",
-			"type": "image",
-			"name": "checkbox_select_up_png"
-		},
-		{
-			"url": "assets/CheckBox/checkbox_unselect.png",
-			"type": "image",
-			"name": "checkbox_unselect_png"
-		},
-		{
-			"url": "assets/ItemRenderer/selected.png",
-			"type": "image",
-			"name": "selected_png"
-		},
-		{
-			"url": "assets/Panel/border.png",
-			"type": "image",
-			"name": "border_png"
-		},
-		{
-			"url": "assets/Panel/header.png",
-			"type": "image",
-			"name": "header_png"
-		},
-		{
-			"url": "assets/RadioButton/radiobutton_select_disabled.png",
-			"type": "image",
-			"name": "radiobutton_select_disabled_png"
-		},
-		{
-			"url": "assets/RadioButton/radiobutton_select_down.png",
-			"type": "image",
-			"name": "radiobutton_select_down_png"
-		},
-		{
-			"url": "assets/RadioButton/radiobutton_select_up.png",
-			"type": "image",
-			"name": "radiobutton_select_up_png"
-		},
-		{
-			"url": "assets/RadioButton/radiobutton_unselect.png",
-			"type": "image",
-			"name": "radiobutton_unselect_png"
-		},
-		{
-			"url": "assets/ScrollBar/roundthumb.png",
-			"type": "image",
-			"name": "roundthumb_png"
-		},
-		{
-			"url": "assets/Slider/thumb.png",
-			"type": "image",
-			"name": "thumb_png"
-		},
-		{
-			"url": "assets/Slider/track.png",
-			"type": "image",
-			"name": "track_png"
-		},
-		{
-			"url": "assets/Slider/tracklight.png",
-			"type": "image",
-			"name": "tracklight_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/handle.png",
-			"type": "image",
-			"name": "handle_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/off.png",
-			"type": "image",
-			"name": "off_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/on.png",
-			"type": "image",
-			"name": "on_png"
-		},
-		{
-			"url": "assets/Button/button_down.png",
-			"type": "image",
-			"name": "button_down_png"
-		},
-		{
-			"url": "assets/Button/button_up.png",
-			"type": "image",
-			"name": "button_up_png"
-		},
-		{
-			"url": "assets/ProgressBar/thumb_pb.png",
-			"type": "image",
-			"name": "thumb_pb_png"
-		},
-		{
-			"url": "assets/ProgressBar/track_pb.png",
-			"type": "image",
-			"name": "track_pb_png"
-		},
-		{
-			"url": "assets/ScrollBar/track_sb.png",
-			"type": "image",
-			"name": "track_sb_png"
-		},
 		{
 			"url": "config/description.json",
 			"type": "json",
@@ -391,12 +276,6 @@
 			"name": "clubs_json"
 		},
 		{
-			"url": "assets/ToggleSwitch/rank/rank-switch.json",
-			"type": "sheet",
-			"name": "rank-switch_json",
-			"subkeys": "auth_player_1,auth_player_2,auth_rate_1,auth_rate_2,btn-role,btn-role2,fang1,fang2,game6_1,game6_2,game7_1,game7_2,game8_1,game8_2,huang1,huang2,ji1,ji2,jushu1,jushu2,lao1,lao2,mu1,mu2,team_lao_3,team_lao_4,team_xu_3,team_xu_4,total_play_1,total_play_2,total_rate_1,total_rate_2,win_rate_1,win_rate_2,xu1,xu2,yao1,yao2,zheng1,zheng2"
-		},
-		{
 			"url": "assets/game/antiques.json",
 			"type": "sheet",
 			"name": "antiques2_json",
@@ -537,6 +416,12 @@
 			"url": "assets/redtips.png",
 			"type": "image",
 			"name": "redtips"
+		},
+		{
+			"url": "assets/default/default.json",
+			"type": "sheet",
+			"name": "default_json",
+			"subkeys": "border_png,button_down_png,button_up_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,handle_png,header_png,off_png,on_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,selected_png,thumb_pb_png,thumb_png,track_pb_png,track_png,track_sb_png,tracklight_png"
 		}
 	]
 }
