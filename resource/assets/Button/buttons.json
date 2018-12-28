@@ -1,0 +1,11 @@
+{"file":"buttons.png","frames":{
+"btn-back":{"x":1,"y":258,"w":690,"h":131,"offX":0,"offY":0,"sourceW":690,"sourceH":131},
+"cancel":{"x":781,"y":480,"w":210,"h":98,"offX":0,"offY":0,"sourceW":210,"sourceH":98},
+"ok3":{"x":693,"y":347,"w":195,"h":131,"offX":0,"offY":0,"sourceW":195,"sourceH":131},
+"btn-view":{"x":495,"y":101,"w":339,"h":144,"offX":0,"offY":0,"sourceW":339,"sourceH":144},
+"btn-confirm":{"x":495,"y":1,"w":514,"h":98,"offX":0,"offY":0,"sourceW":514,"sourceH":98},
+"auth4":{"x":1,"y":391,"w":581,"h":131,"offX":0,"offY":0,"sourceW":581,"sourceH":131},
+"botton":{"x":1,"y":1,"w":492,"h":255,"offX":0,"offY":0,"sourceW":492,"sourceH":255},
+"share2":{"x":584,"y":480,"w":195,"h":131,"offX":0,"offY":0,"sourceW":195,"sourceH":131},
+"ok":{"x":693,"y":247,"w":301,"h":98,"offX":0,"offY":0,"sourceW":301,"sourceH":98},
+"close":{"x":584,"y":391,"w":82,"h":82,"offX":0,"offY":0,"sourceW":82,"sourceH":82}}}

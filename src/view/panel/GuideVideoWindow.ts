@@ -21,9 +21,9 @@ namespace moa {
                 this.video && platform.destroyVideo(this.video);
 
                 this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video1.mp4`);
-                this.addChild(this.video);
 
                 if (platform.os == "android") {
+                    this.addChild(this.video);
                     this.shade.visible = true;
                     (this.video as egret.Video).addEventListener(egret.Event.REMOVED, () => {
                         this.shade.visible = false;
@@ -40,9 +40,9 @@ namespace moa {
             this.btnVideo2.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.video && platform.destroyVideo(this.video);
                 this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video2.mp4`);
-                this.addChild(this.video);
 
                 if (platform.os == "android") {
+                    this.addChild(this.video);
                     this.shade.visible = true;
                     (this.video as egret.Video).addEventListener(egret.Event.REMOVED, () => {
                         this.shade.visible = false;
@@ -59,15 +59,15 @@ namespace moa {
             this.btnVideo3.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
                 this.video && platform.destroyVideo(this.video);
                 this.video = platform.playVideo(`${resourceRoot}resource/assets/guide/video3.mp4`);
-                this.addChild(this.video);
 
                 if (platform.os == "android") {
+                    this.addChild(this.video);
                     this.shade.visible = true;
                     (this.video as egret.Video).addEventListener(egret.Event.REMOVED, () => {
                         this.shade.visible = false;
                     }, this);
                 }
-                
+
                 if (platform.name == "wxgame") {
                     this.video.requestFullScreen().then(() => this.video.play());
                     this.video.onEnded(() => {

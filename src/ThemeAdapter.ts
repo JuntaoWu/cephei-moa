@@ -39,7 +39,6 @@ namespace moa {
          * @param thisObject 回调的this引用
          */
         public getTheme(url: string, onSuccess: Function, onError: Function, thisObject: any): void {
-
             function onResGet(e: string): void {
                 onSuccess.call(thisObject, e);
             }
@@ -63,6 +62,30 @@ namespace moa {
                     }, this);
                 }, this, RES.ResourceItem.TYPE_JSON);
             }
+            else if (typeof generateJSON !== 'undefined') {
+                if (url.indexOf(".exml") > -1) {
+                    let dataPath = url.split("/");
+                    dataPath.pop();
+                    let dirPath = dataPath.join("/") + "_EUI.json";
+                    if (!generateJSON.paths[url]) {
+                        RES.getResByUrl(dirPath, (data) => {
+                            window["JSONParseClass"]["setData"](data);
+                            egret.callLater(() => {
+                                onSuccess.call(thisObject, generateJSON.paths[url]);
+                            }, this);
+                        }, this, RES.ResourceItem.TYPE_JSON);
+                    } else {
+                        egret.callLater(() => {
+                            onSuccess.call(thisObject, generateJSON.paths[url]);
+                        }, this);
+                    }
+                }
+                else {
+                    egret.callLater(() => {
+                        onSuccess.call(thisObject, generateJSON);
+                    }, this);
+                }
+            }
             else {
                 RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onResError, null);
                 RES.getResByUrl(url, onResGet, this, RES.ResourceItem.TYPE_TEXT);
@@ -72,4 +95,5 @@ namespace moa {
 
     declare var generateEUI: { paths: string[], skins: any }
     declare var generateEUI2: { paths: string[], skins: any }
+    declare var generateJSON: { paths: string[], skins: any }
 }

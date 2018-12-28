@@ -91,7 +91,7 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "1.1.0";
+            return "1.1.1";
         }
 
         public get os(): string {

@@ -8,8 +8,9 @@ class WxgamePlatform {
 
   env = 'prod';
   name = 'wxgame';
-  appVersion = '1.1.0';
+  appVersion = '1.1.1';
   isConnected = true;
+  os = 'wxgame';
 
   login() {
     return new Promise((resolve, reject) => {

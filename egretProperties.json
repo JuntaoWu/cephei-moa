@@ -5,15 +5,6 @@
   "target": {
     "current": "wxgame"
   },
-  "eui": {
-    "exmlRoot": [
-      "resource/eui_skins"
-    ],
-    "themes": [
-      "resource/default.thm.json"
-    ],
-    "exmlPublishPolicy": "commonjs"
-  },
   "modules": [
     {
       "name": "egret"
