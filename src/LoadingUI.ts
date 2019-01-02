@@ -42,10 +42,15 @@ namespace moa {
         public btnAnonymousLogin: eui.Button;
         public btnLogin: eui.Button;
 
+        public isStandalone: boolean = true;
+        public isWxGame: boolean = false;
+
         public constructor() {
             super();
             this.skinName = "skins.LoadingUI";
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
+            this.isStandalone = platform.name != "wxgame";
+            this.isWxGame = platform.name == "wxgame";
         }
 
         public createCompleteEvent(event: eui.UIEvent): void {

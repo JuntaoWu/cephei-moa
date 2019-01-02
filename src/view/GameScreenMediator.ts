@@ -193,6 +193,7 @@ namespace moa {
                 //set current player's role
                 let roleIndex = data.role.findIndex(r => this.proxy.isActorLocal(r));
                 this.myRole = this.proxy.rolesMap.get(roleIndex.toString());
+
                 this.gameScreen.role = this.myRole;
                 this.gameScreen.isNotFangZhen = this.myRole.name != "方震"
                 this.gameScreen.isFangZhen = this.myRole.name == "方震";

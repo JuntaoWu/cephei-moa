@@ -5,7 +5,7 @@
 			"name": "preload"
 		},
 		{
-			"keys": "progress-bg,progress,btn-wxlogin,btn-anonymouslogin,loading-background",
+			"keys": "progress-bg,progress,btn-wxlogin,btn-anonymouslogin,loading-background,mini-game-loading-background",
 			"name": "loading"
 		},
 		{
@@ -337,6 +337,11 @@
 			"type": "sheet",
 			"name": "buttons_json",
 			"subkeys": "auth4,botton,btn-back,btn-confirm,btn-view,cancel,close,ok,ok3,share2"
+		},
+		{
+			"url": "assets/background/mini-game-loading-background.jpg",
+			"type": "image",
+			"name": "mini-game-loading-background"
 		}
 	]
 }
