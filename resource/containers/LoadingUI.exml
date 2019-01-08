@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.LoadingUI" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*">
     <e:Image visible="{isStandalone}" id="loadingBackground"
-             source="loading-background" />
+             source="loading-background" top="0" left="0" right="0" bottom="0"/>
     <e:Image visible="{isWxGame}" id="miniGameLoadingBackground"
              source="mini-game-loading-background" />
     <e:Group width="720" id="groupLoading">

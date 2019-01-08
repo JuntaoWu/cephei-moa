@@ -1,5 +1,5 @@
 {
-    "localMasterServer": "photon.hzsdgames.com:9092",
+    "localMasterServer": "localhost:9090",
     "photonNameServer": "",
     "photonMasterServer": "photon.hzsdgames.com:19092",
     "photonRegion": ""

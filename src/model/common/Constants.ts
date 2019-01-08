@@ -33,8 +33,8 @@ namespace moa {
                     service: "http://localhost:8090/",
                     localResource: "",
                     remoteResource: "http://localhost:8090/miniGame/",
-                    ws: "ws://192.168.2.117:9092",
-                    wss: "wss://192.168.2.117:19092",
+                    ws: "ws://192.168.2.117:9090",
+                    wss: "wss://192.168.2.117:19090",
                 };
             }
             if (platform.env == "dev") {

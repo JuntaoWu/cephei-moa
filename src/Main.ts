@@ -83,6 +83,9 @@ namespace moa {
         private async runGame() {
             await this.loadResource();
             this.loadingView.groupLoading.visible = false;
+            if(platform.name == "native") {
+                platform.hideLoading();
+            }
 
             const preference = await AccountAdapter.loadPreference();
 
@@ -96,8 +99,9 @@ namespace moa {
                 this.createGameScene();
             }
             else {
+                const isWeChatInstalled = await platform.checkIfWeChatInstalled();
                 this.loadingView.btnAnonymousLogin.visible = preference.showAnonymousLogin;
-                this.loadingView.btnLogin.visible = preference.showWeChatLogin;
+                this.loadingView.btnLogin.visible = preference.showWeChatLogin && isWeChatInstalled;
                 this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
                     egret.ExternalInterface.call("sendWxLoginToNative", "native");
                     egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
@@ -107,7 +111,7 @@ namespace moa {
                     });
                 }, this);
                 this.loadingView.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
-                    
+
                     platform.showLoading("加载中");
 
                     let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
@@ -122,10 +126,13 @@ namespace moa {
 
         private async loadResource() {
             try {
-                const checkVersionResult: any = await AccountAdapter.checkForUpdate();
 
-                if (checkVersionResult.hasUpdate) {
-                    platform.applyUpdate(checkVersionResult.version);
+                if (platform.name != "native") {
+                    const checkVersionResult: any = await AccountAdapter.checkForUpdate();
+
+                    if (checkVersionResult.hasUpdate) {
+                        platform.applyUpdate(checkVersionResult.version);
+                    }
                 }
 
                 await RES.loadConfig("default.res.json", `${moa.Constants.ResourceEndpoint}resource/`);
