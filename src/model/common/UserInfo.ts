@@ -22,5 +22,8 @@ namespace moa {
 
         public token?: string;  // jwt-token here
         public anonymous?: boolean;
+
+        public imAccId?: string;
+        public imToken?: string;
     }
 }

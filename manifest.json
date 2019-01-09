@@ -45,6 +45,7 @@
 		"bin-debug/model/common/Constants.js",
 		"bin-debug/model/common/CustomPhotonEvents.js",
 		"bin-debug/model/common/GameIcon.js",
+		"bin-debug/model/common/IMInfo.js",
 		"bin-debug/model/common/MyStats.js",
 		"bin-debug/model/common/Notice.js",
 		"bin-debug/model/common/OrderType.js",

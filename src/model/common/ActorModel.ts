@@ -17,6 +17,8 @@ namespace moa {
 
         public anonymous?: boolean;
 
+        public imAccId?: string;
+
         public constructor(actor: Photon.LoadBalancing.Actor, seatNumber?: number) {
 
             if (actor) {
@@ -31,6 +33,8 @@ namespace moa {
                 this.avatarUrl = actor.getCustomProperty("avatarUrl");
 
                 this.seatNumber = seatNumber;
+
+                this.imAccId = actor.getCustomProperty("imAccId");
             }
 
         }

@@ -80,6 +80,12 @@ namespace moa {
         openExternalLink(url: string);
 
         checkIfWeChatInstalled(): Promise<boolean>;
+
+        loginIM(imInfo): Promise<any>;
+
+        createGroupChat(users: any[]): Promise<any>;
+
+        openGroupChat(teamId: string): Promise<any>;
     }
 
     export class DebugPlatform implements Platform {
@@ -93,7 +99,7 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "1.1.2";
+            return "1.1.3";
         }
 
         public get os(): string {
@@ -258,6 +264,18 @@ namespace moa {
         public async checkIfWeChatInstalled() {
             return false;
         }
+
+        public async loginIM(imInfo: any): Promise<any> {
+            return;
+        }
+
+        public async createGroupChat(users: any[]): Promise<any> {
+            return;
+        }
+
+        public async openGroupChat(teamId: string): Promise<any> {
+            return;
+        }
     }
 
     export class NativePlatform extends DebugPlatform implements Platform {
@@ -383,6 +401,37 @@ namespace moa {
             });
         }
 
+        public async loginIM(imInfo: IMInfo): Promise<any> {
+            if (!imInfo || !imInfo.account || !imInfo.token) {
+                return;
+            }
+            egret.ExternalInterface.call("sendLoginIMToNative", JSON.stringify(imInfo));
+        }
+
+        // return teamId
+        public async createGroupChat(users: any[]): Promise<string> {
+            if (!users || !users.length) {
+                console.log("No chat users found.");
+                return;
+            }
+            console.log("platform.createGroupChat, users count:", users.length);
+            egret.ExternalInterface.call("sendCreateGroupSessionToNative", JSON.stringify(users));
+            return new Promise<string>((resolve, reject) => {
+                egret.ExternalInterface.addCallback("sendCreateGroupSessionToNativeCallback", (value) => {
+                    console.log("createGroupChat completed, teamId: ", value);
+                    return resolve(value);
+                });
+            });
+        }
+
+        public async openGroupChat(teamId: string): Promise<any> {
+            if(!teamId) {
+                console.log("No teamId found.");
+                return;
+            }
+            console.log("platform.openGroupChat, teamId:", teamId);
+            egret.ExternalInterface.call("sendOpenGroupSessionToNative", teamId);
+        }
     }
 
     // todo: in the wrapped project, the platform had been declared in the child lib project alreay.

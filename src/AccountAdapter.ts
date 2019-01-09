@@ -6,6 +6,7 @@ namespace moa {
         private static userInfo: UserInfo;
         private static preference: Preference;
         private static gameIcons: GameIcon[];
+        private static imInfo: IMInfo;
 
         public static async checkForUpdate() {
 
@@ -303,6 +304,47 @@ namespace moa {
                     else {
                         AccountAdapter.gameIcons = res.data;
                         return resolve(AccountAdapter.gameIcons);
+                    }
+                }, this);
+            });
+        }
+
+        public static async loadIMInfo(): Promise<IMInfo> {
+            if (AccountAdapter.imInfo) {
+                return AccountAdapter.imInfo;
+            }
+
+            if (this.userInfo && this.userInfo.imAccId && this.userInfo.imToken) {
+                AccountAdapter.imInfo = {
+                    account: this.userInfo.imAccId,
+                    token: this.userInfo.imToken,
+                };
+                return AccountAdapter.imInfo;
+            }
+
+            var request = new egret.HttpRequest();
+            request.responseType = egret.HttpResponseType.TEXT;
+            request.open(`${Constants.Endpoints.service}im/load?token=${this.userInfo.token}`, egret.HttpMethod.GET);
+            request.setRequestHeader("Content-Type", "application/json");
+
+            request.send();
+
+            return new Promise<IMInfo>((resolve, reject) => {
+                request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
+                    console.log(`loadIMInfo via app server end.`);
+
+                    let req = <egret.HttpRequest>(event.currentTarget);
+                    let res = JSON.parse(req.response);
+                    if (res.error || !res.data) {
+                        console.error(res.message);
+                        return reject(res.message);
+                    }
+                    else {
+                        AccountAdapter.imInfo = {
+                            account: res.data.imAccId,
+                            token: res.data.imToken,
+                        };
+                        return resolve(AccountAdapter.imInfo);
                     }
                 }, this);
             });

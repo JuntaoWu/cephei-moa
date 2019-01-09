@@ -15,7 +15,7 @@ namespace moa {
 			const self = this;
 
 			platform.onNetworkStatusChange((res) => {
-				
+
 				this.gameState && this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 
 				if (!res || !res.isConnected) {
@@ -283,6 +283,10 @@ namespace moa {
 				nickName: userInfo.nickName,
 				anonymous: userInfo.anonymous,
 			});
+
+			const imInfo = await AccountAdapter.loadIMInfo();
+			await platform.loginIM(imInfo);
+			this.loadBalancingClient.myActor().setCustomProperty("imAccId", imInfo.account);
 		}
 
 		private onMessage(event: CustomPhotonEvents, message: any, sender: Photon.LoadBalancing.Actor) {
@@ -536,6 +540,15 @@ namespace moa {
 
 					if (this.isMasterClient) {
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
+						if (message && message.action == "isSpeaking") {
+							console.log("MasterClient notified: isSpeaking");
+							const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
+							platform.createGroupChat(chatUsers).then(teamId => {
+								if(teamId) {
+									this.loadBalancingClient.sendMessage(CustomPhotonEvents.OpenGroupChat, teamId);
+								}
+							});
+						}
 					}
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					break;
@@ -563,6 +576,10 @@ namespace moa {
 				case CustomPhotonEvents.DestroyRoom: {
 					this.leaveRoom();
 					this.sendNotification(SceneCommand.CHANGE, Scene.Start);
+					break;
+				}
+				case CustomPhotonEvents.OpenGroupChat: {
+					platform.openGroupChat(message);
 					break;
 				}
 			}

@@ -41,5 +41,6 @@ namespace moa {
         UpdateCurrentActor,
         DestroyRoom,
         userinfo,
+        OpenGroupChat,
     }
 }
