@@ -81,11 +81,13 @@ namespace moa {
 
         checkIfWeChatInstalled(): Promise<boolean>;
 
+        setupIM(): Promise<any>;
+
         loginIM(imInfo): Promise<any>;
 
         createGroupChat(users: any[]): Promise<any>;
 
-        openGroupChat(teamId: string): Promise<any>;
+        openGroupChat(teamId: string, users: any[]): Promise<any>;
     }
 
     export class DebugPlatform implements Platform {
@@ -265,6 +267,10 @@ namespace moa {
             return false;
         }
 
+        public async setupIM(): Promise<any> {
+            return;
+        }
+
         public async loginIM(imInfo: any): Promise<any> {
             return;
         }
@@ -273,7 +279,7 @@ namespace moa {
             return;
         }
 
-        public async openGroupChat(teamId: string): Promise<any> {
+        public async openGroupChat(teamId: string, users: any[]): Promise<any> {
             return;
         }
     }
@@ -314,7 +320,7 @@ namespace moa {
         public async setSecurityStorageAsync(key, data) {
             let item = {
                 key: key,
-                value: data,
+                value: data !== undefined ? JSON.stringify(data) : "",
             };
             egret.ExternalInterface.call("setSecurityStorageAsync", JSON.stringify(item));
         }
@@ -322,13 +328,20 @@ namespace moa {
         public async getSecurityStorageAsync(key): Promise<any> {
             egret.ExternalInterface.call("getSecurityStorageAsync", key);
             return new Promise((resolve, reject) => {
-                if (!this.hasGetSecurityStorageAsyncCallback) {
-                    this.hasGetSecurityStorageAsyncCallback = true;
-                    egret.ExternalInterface.addCallback("getSecurityStorageAsyncCallback", (value) => {
-                        console.log("getSecurityStorageAsyncCallback:", value);
-                        return resolve(value);
-                    });
-                }
+                // if (!this.hasGetSecurityStorageAsyncCallback) {
+                //     this.hasGetSecurityStorageAsyncCallback = true;
+                egret.ExternalInterface.addCallback("getSecurityStorageAsyncCallback", (value) => {
+                    console.log("getSecurityStorageAsyncCallback:", value);
+                    let result = "";
+                    try {
+                        result = value ? JSON.parse(value) : "";
+                    }
+                    catch (error) {
+                        result = value || undefined;
+                    }
+                    return resolve(result);
+                });
+                // }
             });
         }
 
@@ -401,6 +414,10 @@ namespace moa {
             });
         }
 
+        public async setupIM(): Promise<any> {
+            egret.ExternalInterface.call("sendSetupIMToNative", "");
+        }
+
         public async loginIM(imInfo: IMInfo): Promise<any> {
             if (!imInfo || !imInfo.account || !imInfo.token) {
                 return;
@@ -414,6 +431,15 @@ namespace moa {
                 console.log("No chat users found.");
                 return;
             }
+            users = _(users).orderBy(item => item).value();
+            const key = JSON.stringify(users);
+            const teamId = await platform.getSecurityStorageAsync(key);
+
+            if (teamId) {
+                console.log("Local GroupChat found, teamId: ", teamId);
+                return teamId;
+            }
+
             console.log("platform.createGroupChat, users count:", users.length);
             egret.ExternalInterface.call("sendCreateGroupSessionToNative", JSON.stringify(users));
             return new Promise<string>((resolve, reject) => {
@@ -424,13 +450,23 @@ namespace moa {
             });
         }
 
-        public async openGroupChat(teamId: string): Promise<any> {
-            if(!teamId) {
+        public async openGroupChat(teamId: string, users: any[]): Promise<any> {
+            if (!teamId) {
                 console.log("No teamId found.");
                 return;
             }
             console.log("platform.openGroupChat, teamId:", teamId);
-            egret.ExternalInterface.call("sendOpenGroupSessionToNative", teamId);
+            egret.ExternalInterface.call("sendOpenGroupSessionToNative", teamId.toString());
+
+            try {
+                if (users && users.length) {
+                    const key = JSON.stringify(users);
+                    await platform.setSecurityStorageAsync(key, teamId);
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
         }
     }
 

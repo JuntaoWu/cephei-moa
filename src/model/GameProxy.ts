@@ -200,6 +200,8 @@ namespace moa {
 
 					egret.setTimeout(() => {
 
+						console.log("Rejoining after a delay");
+
 						if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby) {
 							if (this.roomName) {  // UI triggered goes here.
 								console.log("UI triggered create/join room:", this.roomName);
@@ -284,9 +286,12 @@ namespace moa {
 				anonymous: userInfo.anonymous,
 			});
 
-			const imInfo = await AccountAdapter.loadIMInfo();
-			await platform.loginIM(imInfo);
-			this.loadBalancingClient.myActor().setCustomProperty("imAccId", imInfo.account);
+			const preference = await AccountAdapter.loadPreference();
+			if (preference.enabledIM) {
+				const imInfo = await AccountAdapter.loadIMInfo();
+				await platform.loginIM(imInfo);
+				this.loadBalancingClient.myActor().setCustomProperty("imAccId", imInfo.account);
+			}
 		}
 
 		private onMessage(event: CustomPhotonEvents, message: any, sender: Photon.LoadBalancing.Actor) {
@@ -542,12 +547,14 @@ namespace moa {
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
 						if (message && message.action == "isSpeaking") {
 							console.log("MasterClient notified: isSpeaking");
-							const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
-							platform.createGroupChat(chatUsers).then(teamId => {
-								if(teamId) {
-									this.loadBalancingClient.sendMessage(CustomPhotonEvents.OpenGroupChat, teamId);
-								}
-							});
+							if (AccountAdapter.preference && AccountAdapter.preference.enabledIM) {
+								const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
+								platform.createGroupChat(chatUsers).then(teamId => {
+									if (teamId) {
+										this.loadBalancingClient.sendMessage(CustomPhotonEvents.OpenGroupChat, teamId);
+									}
+								});
+							}
 						}
 					}
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
@@ -579,7 +586,10 @@ namespace moa {
 					break;
 				}
 				case CustomPhotonEvents.OpenGroupChat: {
-					platform.openGroupChat(message);
+					if (AccountAdapter.preference && AccountAdapter.preference.enabledIM) {
+						const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
+						platform.openGroupChat(message, chatUsers);
+					}
 					break;
 				}
 			}

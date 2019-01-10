@@ -4,7 +4,7 @@ namespace moa {
     export class AccountAdapter {
 
         private static userInfo: UserInfo;
-        private static preference: Preference;
+        public static preference: Preference;
         private static gameIcons: GameIcon[];
         private static imInfo: IMInfo;
 
@@ -260,7 +260,7 @@ namespace moa {
             request.send();
 
             return new Promise((resolve, reject) => {
-                request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
+                request.addEventListener(egret.Event.COMPLETE, async (event: egret.Event) => {
                     console.log(`loadPreference via app server end.`);
 
                     let req = <egret.HttpRequest>(event.currentTarget);
@@ -271,6 +271,16 @@ namespace moa {
                     }
                     else {
                         AccountAdapter.preference = res.data;
+                        const personalPreference: Preference = await platform.getSecurityStorageAsync("preference");
+
+                        if (personalPreference) {
+                            AccountAdapter.preference.showGuide = personalPreference.showGuide !== undefined ? personalPreference.showGuide : AccountAdapter.preference.showGuide;
+                            AccountAdapter.preference.showClub = personalPreference.showClub !== undefined ? personalPreference.showClub : AccountAdapter.preference.showClub;
+                            AccountAdapter.preference.showMore = personalPreference.showMore !== undefined ? personalPreference.showMore : AccountAdapter.preference.showMore;
+                            AccountAdapter.preference.showWeChatLogin = personalPreference.showWeChatLogin !== undefined ? personalPreference.showWeChatLogin : AccountAdapter.preference.showWeChatLogin;
+                            AccountAdapter.preference.enabledIM = personalPreference.enabledIM !== undefined ? personalPreference.enabledIM : AccountAdapter.preference.enabledIM;
+                        }
+
                         return resolve(AccountAdapter.preference);
                     }
                 }, this);

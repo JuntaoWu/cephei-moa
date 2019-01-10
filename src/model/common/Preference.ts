@@ -7,5 +7,6 @@ namespace moa {
         public showMore?: boolean;
         public showWeChatLogin?: boolean;
         public showAnonymousLogin?: boolean;
+        public enabledIM?: boolean;
     }
 }

@@ -7,6 +7,18 @@ namespace moa {
         public aboutButton: eui.Button;
         public backButton: eui.Button;
 
+        public showGuide: boolean;
+        public showClub: boolean;
+        public showMore: boolean;
+        public showWeChatLogin: boolean;
+        public enabledIM: boolean;
+
+        public toggleShowGuide: eui.ToggleSwitch;
+        public toggleShowClub: eui.ToggleSwitch;
+        public toggleShowMore: eui.ToggleSwitch;
+        public toggleShowWeChatLogin: eui.ToggleSwitch;
+        public toggleEnabledIM: eui.ToggleSwitch;
+
         private navigationBar: eui.Group;
 
         public constructor() {

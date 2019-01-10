@@ -81,13 +81,19 @@ namespace moa {
         }
 
         private async runGame() {
+            
             await this.loadResource();
             this.loadingView.groupLoading.visible = false;
-            if(platform.name == "native") {
+            
+            if (platform.name == "native") {
                 platform.hideLoading();
             }
 
             const preference = await AccountAdapter.loadPreference();
+
+            if (preference.enabledIM) {
+                platform.setupIM();
+            }
 
             if (platform.name == "wxgame") {
                 await AccountAdapter.login();
