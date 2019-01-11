@@ -192,17 +192,17 @@ namespace moa {
 					this.lastSeenErrorAt = +new Date();
 					break;
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
-					// platform.showToast("连接服务器成功");
+					platform.showToast("连接服务器成功");
 
 					const rejoinAt = this.lastSeenErrorAt + 6000;
-					const delay = Math.max(rejoinAt - (+new Date()), 0);
+					const delay = Math.max(rejoinAt - (+new Date()), 500);
 					console.log("Will rejoin after: ", delay);
 
 					if (delay > 0 && (this.roomName || (this.loadBalancingClient.autoRejoin && this.currentRoom && this.currentRoom.roomName))) {
 						egret.setTimeout(() => {
-							console.log("showLoading after a delay of 200ms");
+							console.log("showLoading after a delay of 50ms");
 							platform.showLoading("加载中");
-						}, this, 200);
+						}, this, 50);
 					}
 
 					egret.setTimeout(() => {
@@ -653,7 +653,7 @@ namespace moa {
 
 		public createRoom(maxPlayers: number) {
 
-			platform.showLoading();
+			platform.showLoading("加载中");
 
 			this.roomName = this.generateRoomNumber();
 			if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized
@@ -688,7 +688,7 @@ namespace moa {
 
 			console.log(`joinRoom: ${roomName}`);
 
-			platform.showLoading();
+			platform.showLoading("加载中");
 
 			this.roomName = roomName;
 			if (this.loadBalancingClient.isInLobby() && !this.loadBalancingClient.isJoinedToRoom()) {

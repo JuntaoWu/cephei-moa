@@ -21,7 +21,7 @@ namespace moa {
 
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${Constants.Endpoints.service}version/check?version=${version}`, egret.HttpMethod.GET);
+            request.open(`${Constants.Endpoints.service}version/check?version=${version}&timestamp=${+new Date()}`, egret.HttpMethod.GET);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             request.send();
 
@@ -183,7 +183,7 @@ namespace moa {
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${Constants.Endpoints.service}records/?token=${CommonData.logon.token}`, egret.HttpMethod.GET);
+                request.open(`${Constants.Endpoints.service}records/?token=${CommonData.logon.token}&timestamp=${+new Date()}`, egret.HttpMethod.GET);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send();
@@ -296,7 +296,7 @@ namespace moa {
 
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${Constants.Endpoints.service}gameIcons`, egret.HttpMethod.GET);
+            request.open(`${Constants.Endpoints.service}gameIcons/?timestamp=${+new Date()}`, egret.HttpMethod.GET);
             request.setRequestHeader("Content-Type", "application/json");
 
             request.send();
@@ -334,7 +334,7 @@ namespace moa {
 
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${Constants.Endpoints.service}im/load?token=${this.userInfo.token}`, egret.HttpMethod.GET);
+            request.open(`${Constants.Endpoints.service}im/load?token=${this.userInfo.token}&timestamp=${+new Date()}`, egret.HttpMethod.GET);
             request.setRequestHeader("Content-Type", "application/json");
 
             request.send();

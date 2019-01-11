@@ -12,7 +12,7 @@ namespace moa {
         public async loadRank(orderType: OrderType = OrderType.winRate, mode: number = 0, role: number = 0, minimumCount: number = 10): Promise<Rank[]> {
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${moa.Constants.Endpoints.service}ranks/?orderType=${orderType}&mode=${mode}&role=${role}&minimumCount=${minimumCount}`, egret.HttpMethod.GET);
+            request.open(`${moa.Constants.Endpoints.service}ranks/?orderType=${orderType}&mode=${mode}&role=${role}&minimumCount=${minimumCount}&timestamp=${+new Date()}`, egret.HttpMethod.GET);
             request.setRequestHeader("Content-Type", "application/json");
 
             request.send();

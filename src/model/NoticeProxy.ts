@@ -16,7 +16,7 @@ namespace moa {
         public async getNotice(): Promise<Notice[]> {
             var request = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.TEXT;
-            request.open(`${Constants.Endpoints.service}notice/`, egret.HttpMethod.GET);
+            request.open(`${Constants.Endpoints.service}notice/?timestamp=${+new Date()}`, egret.HttpMethod.GET);
             request.setRequestHeader("Content-Type", "application/json");
 
             request.send();
