@@ -83,6 +83,8 @@ namespace moa {
 
         setupIM(): Promise<any>;
 
+        quitIM(): Promise<any>;
+
         loginIM(imInfo): Promise<any>;
 
         createGroupChat(users: any[]): Promise<any>;
@@ -275,6 +277,10 @@ namespace moa {
             return;
         }
 
+        public async quitIM(): Promise<any> {
+            return;
+        }
+
         public async createGroupChat(users: any[]): Promise<any> {
             return;
         }
@@ -416,6 +422,10 @@ namespace moa {
 
         public async setupIM(): Promise<any> {
             egret.ExternalInterface.call("sendSetupIMToNative", "");
+        }
+
+        public async quitIM(): Promise<any> {
+            egret.ExternalInterface.call("sendQuitIMToNative", "");
         }
 
         public async loginIM(imInfo: IMInfo): Promise<any> {

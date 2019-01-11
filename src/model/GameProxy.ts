@@ -8,6 +8,7 @@ namespace moa {
 		public userInfo: UserInfo;
 
 		private lastSeenErrorAt = 0;
+		private imLoggedIn = false;
 
 		public constructor() {
 			super(GameProxy.NAME);
@@ -35,6 +36,9 @@ namespace moa {
 			});
 
 			platform.registerOnResume((res) => {
+				// todo: check if quitIM works.
+				platform.quitIM();
+
 				if (!res || !res.isConnected) {
 					console.log("onResume: not connected");
 					return;
@@ -188,14 +192,17 @@ namespace moa {
 					this.lastSeenErrorAt = +new Date();
 					break;
 				case Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby:
-					platform.showToast("连接服务器成功");
+					// platform.showToast("连接服务器成功");
 
-					const rejoinAt = this.lastSeenErrorAt + 12000;
+					const rejoinAt = this.lastSeenErrorAt + 6000;
 					const delay = Math.max(rejoinAt - (+new Date()), 0);
 					console.log("Will rejoin after: ", delay);
 
 					if (delay > 0 && (this.roomName || (this.loadBalancingClient.autoRejoin && this.currentRoom && this.currentRoom.roomName))) {
-						platform.showLoading("加载中");
+						egret.setTimeout(() => {
+							console.log("showLoading after a delay of 200ms");
+							platform.showLoading("加载中");
+						}, this, 200);
 					}
 
 					egret.setTimeout(() => {
@@ -287,9 +294,10 @@ namespace moa {
 			});
 
 			const preference = await AccountAdapter.loadPreference();
-			if (preference.enabledIM) {
+			if (preference.enabledIM && !this.imLoggedIn) {
 				const imInfo = await AccountAdapter.loadIMInfo();
 				await platform.loginIM(imInfo);
+				this.imLoggedIn = true;
 				this.loadBalancingClient.myActor().setCustomProperty("imAccId", imInfo.account);
 			}
 		}
