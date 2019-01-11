@@ -63,6 +63,15 @@ namespace moa {
             egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
             egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
+            if (platform.name == "native") {
+                let ratio = this.stage.stageHeight / this.stage.stageWidth;
+                console.log("ratio: ", ratio);
+                if (ratio < 1.67) {
+                    this.stage.scaleMode = egret.StageScaleMode.SHOW_ALL;
+                    this.stage.height = 1280;
+                }
+            }
+
             this.runGame().catch(e => {
                 console.error(e);
                 this.loadingView.showInformation(e);
@@ -81,10 +90,10 @@ namespace moa {
         }
 
         private async runGame() {
-            
+
             await this.loadResource();
             this.loadingView.groupLoading.visible = false;
-            
+
             if (platform.name == "native") {
                 platform.hideLoading();
             }
