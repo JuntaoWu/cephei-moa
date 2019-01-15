@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fb.gdjzj">
+
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <!-- 访问网络状态-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 外置存储存取权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- 多媒体相关 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+    <!-- 和下面的 uses-permission 一起加入到你的 AndroidManifest 文件中。 -->
+    <permission
+        android:name="com.fb.gdjzj.permission.permission.RECEIVE_MSG"
+        android:protectionLevel="signature"/>
+    <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+    <uses-permission android:name="com.fb.gdjzj.permission.RECEIVE_MSG"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" >
+        <meta-data
+            android:name="com.netease.nim.appKey"
+            android:value="21c9e758ffc1e3d3848cc3ab073e856b" />
+        <activity android:name=".MainActivity" android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".wxapi.WXEntryActivity" android:label="@string/app_name" android:exported="true" android:theme="@android:style/Theme.Translucent"  android:screenOrientation="nosensor"></activity>
+        <activity android:name=".TestActivity" android:parentActivityName=".MainActivity" android:theme="@android:style/Theme.DeviceDefault.Light"  android:screenOrientation="nosensor">
+        </activity>
+        <receiver
+            android:name="com.fb.gdjzj.NetworkChangeReceiver"
+            android:label="NetworkChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

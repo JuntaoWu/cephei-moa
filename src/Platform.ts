@@ -304,7 +304,7 @@ namespace moa {
         }
 
         public get os(): string {
-            return "ios";
+            return "android";
         }
 
         public setStorage(key, data) {
