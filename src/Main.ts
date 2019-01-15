@@ -66,7 +66,7 @@ namespace moa {
             if (platform.name == "native") {
                 let ratio = this.stage.stageHeight / this.stage.stageWidth;
                 console.log("ratio: ", ratio);
-                if (ratio < 1.67) {
+                if (ratio <= 1.5) {
                     this.stage.scaleMode = egret.StageScaleMode.SHOW_ALL;
                     this.stage.height = 1280;
                 }
