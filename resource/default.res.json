@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,meihua,game-box-border,numberKeyboard_fnt,antiques_json,game-term_json,seats_json,role_json,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,assistant-bg,game-bg-main,photon_json,antiques2_json,role2_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,guide_json,start_json,default_json,small-dialog-background,buttons_json,club_box,number-keyboard-bg,start-background",
+			"keys": "description_json,meihua,game-box-border,numberKeyboard_fnt,antiques_json,game-term_json,seats_json,role_json,number_png,number_fnt,skills_tex_json,skills_tex_png,skills_ske_json,assistant-bg,game-bg-main,photon_json,antiques2_json,role2_json,seat_json,circle_json,number-keyboard-icon_json,self-info_json,game-icon_json,wait-status_json,game-botton_json,guide_json,start_json,default_json,small-dialog-background,buttons_json,club_box,number-keyboard-bg,start-background,join,create",
 			"name": "preload"
 		},
 		{
@@ -342,6 +342,16 @@
 			"url": "assets/background/mini-game-loading-background.jpg",
 			"type": "image",
 			"name": "mini-game-loading-background"
+		},
+		{
+			"url": "assets/start/join.png",
+			"type": "image",
+			"name": "join"
+		},
+		{
+			"url": "assets/start/create.png",
+			"type": "image",
+			"name": "create"
 		}
 	]
 }

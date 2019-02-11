@@ -13,7 +13,7 @@ namespace moa {
 
             this.startScreen.btnCreateRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createRoomClick, this);
             this.startScreen.btnJoinRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.joinRoomClick, this);
-            this.startScreen.btnTanbao.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameTanbaoClick, this);
+            // this.startScreen.btnTanbao.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameTanbaoClick, this);
             this.startScreen.btnViewMore.addEventListener(egret.TouchEvent.TOUCH_TAP, this.viewMoreClick, this);
 
             this.startScreen.headGroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showMyInfo, this);

@@ -2,7 +2,7 @@
 <e:Skin class="skins.StartScreen" width="720" height="1560" xmlns:e="http://ns.egret.com/eui"
         xmlns:w="http://ns.egret.com/wing">
     <e:Image id="startBackground" left="0" right="0" bottom="-2" top="2" source="start-background" />
-    <e:Group id="headGroup" height="220" width="720">
+    <e:Group id="headGroup" height="220">
         <e:Image source="userinfo-background" verticalCenter="0" horizontalCenter="0"></e:Image>
         <e:Group verticalCenter="0" horizontalCenter="0">
             <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="43" height="120"></e:Image>
@@ -10,36 +10,23 @@
         </e:Group>
         <e:Image source="navigation-bar" width="100%" bottom="-15" />
     </e:Group>
-    <e:Scroller id="contentScroller" y="240" horizontalCenter="0">
+    <e:Scroller id="contentScroller" y="250" horizontalCenter="0" scrollPolicyH="off">
         <e:viewport>
-            <e:Group>
-                <e:Group width="669" height="322" horizontalCenter="0">
-                    <e:Image left="0" right="0" top="0" bottom="0" source="assistant-bg"></e:Image>
-                    <e:Image source="title-assistant" y="60" horizontalCenter="0" />
-                    <e:Button id="btnCreateRoom" left="30" y="160" scaleX="0.9" scaleY="0.9">
-                        <e:Skin>
-                            <e:Image source="btn-create"></e:Image>
-                        </e:Skin>
-                    </e:Button>
-                    <e:Button id="btnJoinRoom" right="30" y="160" scaleX="0.9" scaleY="0.9">
-                        <e:Skin>
-                            <e:Image source="btn-join"></e:Image>
-                        </e:Skin>
-                    </e:Button>
-                </e:Group>
-                <e:Group y="332" width="669" height="322">
-                    <e:Image left="0" right="0" top="0" bottom="0" source="game-bg-main"></e:Image>
-                    <e:Image source="title-tanbao" y="60" horizontalCenter="0" />
-                    <e:Button id="btnTanbao" y="180" scaleX="0.8" scaleY="0.8" horizontalCenter="0">
-                        <e:Skin>
-                            <e:Image source="btn-game"></e:Image>
-                        </e:Skin>
-                    </e:Button>
-                </e:Group>
+            <e:Group horizontalCenter="0">
+                <e:Button id="btnCreateRoom" horizontalCenter="0">
+                    <e:Skin states="up,down,disabled">
+                        <e:Image source="create" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                    </e:Skin>
+                </e:Button>
+                <e:Button id="btnJoinRoom" horizontalCenter="0" y="385">
+                    <e:Skin states="up,down,disabled">
+                        <e:Image source="join" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                    </e:Skin>
+                </e:Button>
             </e:Group>
         </e:viewport>
     </e:Scroller>
-    <e:Group id="navigationBar" y="1020" height="180">
+    <e:Group id="navigationBar" y="1054" height="180">
         <e:Image source="navigation-bar" width="100%" />
         <e:Group id="groupNavigationBar" width="670" height="160" horizontalCenter="0" verticalCenter="0">
             <e:layout>

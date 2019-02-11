@@ -32,7 +32,7 @@ namespace moa {
             let rectMask: eui.Rect = new eui.Rect(stage.stageWidth, stage.stageHeight, 0x000000);
             rectMask.x = 0;
             rectMask.y = 0;
-            rectMask.alpha = 0.8;
+            rectMask.alpha = 0.6;
             maskGroup.addChild(rectMask);
             doc.addChildAt(maskGroup, 0);
         }
