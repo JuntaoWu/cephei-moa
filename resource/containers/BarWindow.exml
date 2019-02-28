@@ -74,7 +74,7 @@
 	<e:Group id="navigationBar" y="1011" width="720" height="135">
 		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
 			<e:Skin states="up,down">
-				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+				<e:Image source="btn-back" width="630" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
 			</e:Skin>
 		</e:Button>
 	</e:Group>

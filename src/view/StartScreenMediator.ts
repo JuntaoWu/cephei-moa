@@ -26,6 +26,34 @@ namespace moa {
             this.initData();
         }
 
+        public async updatePreference() {
+            const preference = await AccountAdapter.loadPreference();
+
+            if (!preference || !preference.showGuide) {
+                this.startScreen.groupNavigationBar.getChildByName("guide")
+                    && this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnGuide);
+            }
+            else {
+                this.startScreen.groupNavigationBar.addChildAt(this.startScreen.btnGuide, 2);
+            }
+
+            if (!preference || !preference.showClub) {
+                this.startScreen.groupNavigationBar.getChildByName("club")
+                    && this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
+            }
+            else {
+                this.startScreen.groupNavigationBar.addChildAt(this.startScreen.btnClub, 2);
+            }
+
+            if (!preference || !preference.showMore) {
+                this.startScreen.groupNavigationBar.getChildByName("viewmore")
+                    && this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
+            }
+            else {
+                this.startScreen.groupNavigationBar.addChildAt(this.startScreen.btnViewMore, 2);
+            }
+        }
+
         public async initData() {
 
             const preference = await AccountAdapter.loadPreference();
@@ -47,7 +75,7 @@ namespace moa {
             const userInfo = await AccountAdapter.loadUserInfo();
             console.log("loadUserInfo completed.", userInfo);
             this.startScreen.nickName = userInfo.nickName;
-            this.startScreen.avatarUrl = userInfo.avatarUrl;
+            this.startScreen.avatarUrl = userInfo.avatarUrl || "meihua";
 
             await this.gameProxy.initialize();
 
@@ -145,7 +173,7 @@ namespace moa {
         }
 
         public listNotificationInterests(): Array<any> {
-            return [GameProxy.INPUT_NUMBER, GameProxy.FINISH_INPUT, NoticeProxy.NOTICE_READ];
+            return [GameProxy.INPUT_NUMBER, GameProxy.FINISH_INPUT, NoticeProxy.NOTICE_READ, SettingProxy.PREFERENCE_UPDATE];
         }
 
         public handleNotification(notification: puremvc.INotification): void {
@@ -161,6 +189,9 @@ namespace moa {
                     break;
                 case NoticeProxy.NOTICE_READ:
                     this.startScreen.hideNoticeTips();
+                    break;
+                case SettingProxy.PREFERENCE_UPDATE:
+                    this.updatePreference();
                     break;
             }
         }

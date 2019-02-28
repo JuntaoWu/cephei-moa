@@ -96,7 +96,10 @@ namespace moa {
             var gameProxy: GameProxy = <GameProxy><any>this.facade().retrieveProxy(GameProxy.NAME);
             switch (notification.getName()) {
                 case SceneCommand.CHANGE: {
-                    if (data == Scene.Start) {
+                    if (data == Scene.Login) {
+                        appMediator.main.enterLoginScreen();
+                    }
+                    else if (data == Scene.Start) {
                         appMediator.main.enterStartScreen();
                     }
                     else if (data == Scene.Game) {

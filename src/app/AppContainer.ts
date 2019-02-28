@@ -3,12 +3,18 @@ namespace moa {
 
     export class AppContainer extends eui.UILayer {
 
+        public loginScreen: LoginScreen = new LoginScreen();
         public startScreen: StartScreen = new StartScreen();
         public gameScreen: GameScreen = new GameScreen();
 
         public constructor() {
             super();
-            this.alpha = 0;
+        }
+
+        public enterLoginScreen(): void {
+            platform.hideAllBannerAds();
+
+            this.addChild(this.loginScreen);
         }
 
         /**
@@ -24,7 +30,6 @@ namespace moa {
             this.removeChildren();
 
             this.addChild(this.startScreen);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         private myChildGame: ap.Main;
@@ -35,14 +40,12 @@ namespace moa {
                 this.myChildGame = new ap.Main();
             }
             this.addChild(this.myChildGame);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public enterGameScreen(): void {
             platform.hideAllBannerAds();
 
             this.addChild(this.gameScreen);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public userInfoWindow: UserInfoWindow;
@@ -51,7 +54,6 @@ namespace moa {
                 this.userInfoWindow = new UserInfoWindow();
             }
             this.addChild(this.userInfoWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public noticeWindow: NoticeWindow;
@@ -60,7 +62,6 @@ namespace moa {
                 this.noticeWindow = new NoticeWindow();
             }
             this.addChild(this.noticeWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public rankWindow: RankWindow;
@@ -69,7 +70,6 @@ namespace moa {
                 this.rankWindow = new RankWindow();
             }
             this.addChild(this.rankWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public guideWindow: GuideWindow;
@@ -78,7 +78,6 @@ namespace moa {
                 this.guideWindow = new GuideWindow();
             }
             this.addChild(this.guideWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public barWindow: BarWindow;
@@ -87,7 +86,6 @@ namespace moa {
                 this.barWindow = new BarWindow();
             }
             this.addChild(this.barWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public settingWindow: SettingWindow;
@@ -96,7 +94,6 @@ namespace moa {
                 this.settingWindow = new SettingWindow();
             }
             this.addChild(this.settingWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public aboutWindow: AboutWindow;
@@ -105,7 +102,6 @@ namespace moa {
                 this.aboutWindow = new AboutWindow();
             }
             this.addChild(this.aboutWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public resultWindow: ResultWindow;
@@ -114,7 +110,6 @@ namespace moa {
                 this.resultWindow = new ResultWindow();
             }
             this.addChild(this.resultWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
         public popupHandleWindow: PopupHandleWindow;
@@ -183,7 +178,7 @@ namespace moa {
                 this.voteRecordWindow = new PopupVoteRecordWindow();
             }
             this.addChild(this.voteRecordWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+
         }
 
         public popupResultWindow: PopupVoteResultWindow;
@@ -210,7 +205,7 @@ namespace moa {
                 this.guideVideoWindow = new GuideVideoWindow();
             }
             this.addChild(this.guideVideoWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+
         }
 
         public guideGameProcessWindow: GuideGameProcessWindow;
@@ -219,7 +214,7 @@ namespace moa {
                 this.guideGameProcessWindow = new GuideGameProcessWindow();
             }
             this.addChild(this.guideGameProcessWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+
         }
 
         public guideRoleSkillWindow: GuideRoleSkillWindow;
@@ -228,7 +223,7 @@ namespace moa {
                 this.guideRoleSkillWindow = new GuideRoleSkillWindow();
             }
             this.addChild(this.guideRoleSkillWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+
         }
 
         public guideWinJudgeWindow: GuideWinJudgeWindow;
@@ -237,7 +232,7 @@ namespace moa {
                 this.guideWinJudgeWindow = new GuideWinJudgeWindow();
             }
             this.addChild(this.guideWinJudgeWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+
         }
 
         public guideGameTermWindow: GuideGameTermWindow;
@@ -246,7 +241,7 @@ namespace moa {
                 this.guideGameTermWindow = new GuideGameTermWindow();
             }
             this.addChild(this.guideGameTermWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+
         }
 
         public popupNumberKeyboard: PopupNumberKeyboard;
@@ -264,7 +259,7 @@ namespace moa {
                 this.moreWindow = new MoreGameWindow();
             }
             this.addChild(this.moreWindow);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+
         }
 
         public noticeDetailWindow: NoticeDetailWindow;
@@ -274,7 +269,7 @@ namespace moa {
             }
             this.addChild(this.noticeDetailWindow);
             this.noticeDetailWindow.setData(data);
-            egret.Tween.get(this).to({ alpha: 1 }, 1500);
+
         }
 
         private adWindow: AdWindow;
@@ -288,7 +283,6 @@ namespace moa {
             this.addChild(this.adWindow);
             this.adWindow.setData(data);
             this.adWindow.show();
-            // egret.Tween.get(this).to({ alpha: 1 }, 1500);
         }
 
     }

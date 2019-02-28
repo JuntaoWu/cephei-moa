@@ -6,6 +6,7 @@ namespace moa {
         public shareButton: eui.Button;
         public aboutButton: eui.Button;
         public backButton: eui.Button;
+        public logoutButton: eui.Button;
 
         public showGuide: boolean;
         public showClub: boolean;
@@ -15,8 +16,8 @@ namespace moa {
 
         public toggleShowGuide: eui.ToggleSwitch;
         public toggleShowClub: eui.ToggleSwitch;
-        public toggleShowMore: eui.ToggleSwitch;
         public toggleShowWeChatLogin: eui.ToggleSwitch;
+        public groupShowWeChatLogin: eui.Group;
         public toggleEnabledIM: eui.ToggleSwitch;
 
         private navigationBar: eui.Group;
@@ -32,6 +33,11 @@ namespace moa {
             this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height - 10;
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new SettingWindowMediator(this));
+
+            if (platform.name == "wxgame") {
+                this.logoutButton.visible = false;
+                this.groupShowWeChatLogin.visible = false;
+            }
         }
 
         public partAdded(partName: string, instance: any): void {

@@ -11,6 +11,7 @@ namespace moa {
             this.settingWindow.shareButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.shareButtonClick, this);
             this.settingWindow.aboutButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.aboutButtonClick, this);
             this.settingWindow.backButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backButtonClick, this);
+            this.settingWindow.logoutButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.logoutButtonClick, this);
 
             this.initData();
         }
@@ -29,9 +30,6 @@ namespace moa {
             this.settingWindow.toggleShowClub.addEventListener(egret.Event.CHANGE, async (event) => {
                 await this.setPreference("showClub", (event.target as eui.ToggleSwitch).selected);
             }, this);
-            this.settingWindow.toggleShowMore.addEventListener(egret.Event.CHANGE, async (event) => {
-                await this.setPreference("showMore", (event.target as eui.ToggleSwitch).selected);
-            }, this);
             this.settingWindow.toggleShowWeChatLogin.addEventListener(egret.Event.CHANGE, async (event) => {
                 await this.setPreference("showWeChatLogin", (event.target as eui.ToggleSwitch).selected);
             }, this);
@@ -45,6 +43,7 @@ namespace moa {
             preference = preference || {};
             preference[key] = value;
             await platform.setSecurityStorageAsync("preference", preference);
+            this.sendNotification(SettingProxy.PREFERENCE_UPDATE, preference);
         }
 
         private backButtonClick(event: egret.TouchEvent) {
@@ -57,6 +56,13 @@ namespace moa {
 
         private aboutButtonClick(event: egret.TouchEvent) {
             this.sendNotification(SceneCommand.SHOW_ABOUT_WINDOW);
+        }
+
+        private async logoutButtonClick(event: egret.TouchEvent) {
+            // todo: logout.
+            await platform.setSecurityStorageAsync("token", "");
+            await platform.setSecurityStorageAsync("anonymoustoken", "");
+            this.sendNotification(SceneCommand.CHANGE, Scene.Login);
         }
 
         public get settingWindow(): SettingWindow {

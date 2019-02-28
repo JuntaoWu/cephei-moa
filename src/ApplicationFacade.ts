@@ -28,7 +28,7 @@ namespace moa {
         public startUp(rootView: egret.DisplayObjectContainer): void {
             this.sendNotification(ApplicationFacade.STARTUP, rootView);
             this.removeCommand(ApplicationFacade.STARTUP); //PureMVC初始化完成，注销STARUP命令
-            this.sendNotification(moa.SceneCommand.CHANGE, Scene.Start);
+            this.sendNotification(moa.SceneCommand.CHANGE, Scene.Login);
         }
 
         public registerMediator(mediator: puremvc.IMediator) {

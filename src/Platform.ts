@@ -103,7 +103,7 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "1.1.4";
+            return "1.1.5";
         }
 
         public get os(): string {
@@ -178,7 +178,7 @@ namespace moa {
         }
 
         public showToast(message: string) {
-            console.log(message);
+            console.log("DebugPlatform toast:", message);
         }
 
         public setStorage(key, data) {

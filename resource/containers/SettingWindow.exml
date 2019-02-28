@@ -11,32 +11,34 @@
 		<e:Button id="aboutButton" alpha="0" x="330" y="370" width="290" height="235" anchorOffsetX="0" anchorOffsetY="0" />
 	</e:Group>
 	<e:Group y="638" width="640" horizontalCenter="0">
-		<e:Label text="以下设置将在重启应用后生效" size="30" textColor="0x000000" horizontalCenter="0"></e:Label>
 		<e:Group width="500" y="50" horizontalCenter="0">
-			<e:Label text="首页显示帮助按钮" textColor="000000" size="45" left="0"></e:Label>
-			<e:ToggleSwitch id="toggleShowGuide" selected="{showGuide}" label="lksjdflkjasdwqwqet" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
+			<e:Label text="首页显示指南" textColor="000000" size="45" left="0"></e:Label>
+			<e:ToggleSwitch id="toggleShowGuide" selected="{showGuide}" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
 		</e:Group>
 		<e:Group y="130" width="500" horizontalCenter="0">
 			<e:Label text="首页显示桌游吧" textColor="000000" size="45" left="0"></e:Label>
-			<e:ToggleSwitch id="toggleShowClub" selected="{showClub}" label="lksjdflkjasdwqwqet" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
+			<e:ToggleSwitch id="toggleShowClub" selected="{showClub}" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
 		</e:Group>
 		<e:Group y="210" width="500" horizontalCenter="0">
-			<e:Label text="首页显示更多游戏" textColor="000000" size="45" left="0"></e:Label>
-			<e:ToggleSwitch id="toggleShowMore" selected="{showMore}" label="lksjdflkjasdwqwqet" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
-		</e:Group>
-		<e:Group y="290" width="500" horizontalCenter="0">
-			<e:Label text="显示微信登录" textColor="000000" size="45" left="0"></e:Label>
-			<e:ToggleSwitch id="toggleShowWeChatLogin" selected="{showWeChatLogin}" label="lksjdflkjasdwqwqet" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
-		</e:Group>
-		<e:Group y="370" width="500" horizontalCenter="0">
 			<e:Label text="启用IM" textColor="000000" size="45" left="0"></e:Label>
-			<e:ToggleSwitch id="toggleEnabledIM" selected="{enabledIM}" label="lksjdflkjasdwqwqet" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
+			<e:ToggleSwitch id="toggleEnabledIM" selected="{enabledIM}" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
+		</e:Group>
+		<e:Group id="groupShowWeChatLogin" y="290" width="500" horizontalCenter="0">
+			<e:Label text="显示微信登录" textColor="000000" size="45" left="0"></e:Label>
+			<e:ToggleSwitch id="toggleShowWeChatLogin" selected="{showWeChatLogin}" right="0" verticalCenter="0" scaleX="1.5"
+			                scaleY="1.5"></e:ToggleSwitch>
 		</e:Group>
 	</e:Group>
-	<e:Group id="navigationBar" y="1079" width="720" height="135">
-		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" width="630">
+	<e:Group id="navigationBar" y="1000" width="640" height="280" horizontalCenter="0">
+		<e:Button id="logoutButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" top="0">
 			<e:Skin states="up,down">
-				<e:Image source="btn-back" width="100%" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
+				<e:Image source="btn-logout" width="640" height="120" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9"
+				         scaleY.down="0.9" />
+			</e:Skin>
+		</e:Button>
+		<e:Button id="backButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" bottom="0">
+			<e:Skin states="up,down">
+				<e:Image source="btn-back" width="640" height="120" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9" scaleY.down="0.9" />
 			</e:Skin>
 		</e:Button>
 	</e:Group>

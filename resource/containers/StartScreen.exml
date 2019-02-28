@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.StartScreen" width="720" height="1560" xmlns:e="http://ns.egret.com/eui"
         xmlns:w="http://ns.egret.com/wing">
-    <e:Image id="startBackground" left="0" right="0" bottom="-2" top="2" source="start-background" />
-    <e:Group id="headGroup" height="220">
+	<w:Config id="16932ed811c"/>
+    <e:Image id="startBackground" left="0" right="0" bottom="0" top="0" source="start-background" />
+    <e:Group id="headGroup" height="220" y="50">
         <e:Image source="userinfo-background" verticalCenter="0" horizontalCenter="0"></e:Image>
         <e:Group verticalCenter="0" horizontalCenter="0">
             <e:Image source="{avatarUrl}" width="120" verticalCenter="0" x="43" height="120"></e:Image>
@@ -10,57 +11,57 @@
         </e:Group>
         <e:Image source="navigation-bar" width="100%" bottom="-15" />
     </e:Group>
-    <e:Scroller id="contentScroller" y="250" horizontalCenter="0" scrollPolicyH="off">
+    <e:Scroller id="contentScroller" y="300" horizontalCenter="0" scrollPolicyH="off">
         <e:viewport>
             <e:Group horizontalCenter="0">
                 <e:Button id="btnCreateRoom" horizontalCenter="0">
                     <e:Skin states="up,down,disabled">
-                        <e:Image source="create" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                        <e:Image source="create" scaleX.down="0.95" scaleY.down="0.95"></e:Image>
                     </e:Skin>
                 </e:Button>
                 <e:Button id="btnJoinRoom" horizontalCenter="0" y="385">
                     <e:Skin states="up,down,disabled">
-                        <e:Image source="join" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+                        <e:Image source="join" scaleX.down="0.95" scaleY.down="0.95"></e:Image>
                     </e:Skin>
                 </e:Button>
             </e:Group>
         </e:viewport>
     </e:Scroller>
-    <e:Group id="navigationBar" y="1054" height="180">
+    <e:Group id="navigationBar" y="1080" height="180">
         <e:Image source="navigation-bar" width="100%" />
         <e:Group id="groupNavigationBar" width="670" height="160" horizontalCenter="0" verticalCenter="0">
             <e:layout>
                 <e:HorizontalLayout horizontalAlign="justify" verticalAlign="bottom"></e:HorizontalLayout>
             </e:layout>
-            <e:Button width="124" id="btnNotice" verticalCenter="0">
+            <e:Button name="notice" width="124" id="btnNotice" verticalCenter="0">
                 <e:Skin>
                     <e:Image source="nav-notice"></e:Image>
                     <e:Image visible="false" name="redtips" source="redtips" top="15" left="15" scaleX="0.7" scaleY="0.7"></e:Image>
                 </e:Skin>
             </e:Button>
-            <e:Button width="124" id="btnGuide" verticalCenter="0">
+            <e:Button name="guide" width="124" id="btnGuide" verticalCenter="0">
                 <e:skinName>
                     <e:Skin states="up,down,disabled">
                         <e:Image source="nav-guide" />
                     </e:Skin>
                 </e:skinName>
             </e:Button>
-            <e:Button width="124" id="btnClub" verticalCenter="0">
+            <e:Button name="club" width="124" id="btnClub" verticalCenter="0">
                 <e:Skin>
                     <e:Image source="nav-playbar"></e:Image>
                 </e:Skin>
             </e:Button>
-            <e:Button width="124" id="btnRank" verticalCenter="0">
+            <e:Button name="rank" width="124" id="btnRank" verticalCenter="0">
                 <e:Skin>
                     <e:Image source="nav-rank"></e:Image>
                 </e:Skin>
             </e:Button>
-            <e:Button width="124" id="btnViewMore" verticalCenter="0">
+            <e:Button name="viewmore" width="124" id="btnViewMore" verticalCenter="0">
                 <e:Skin>
                     <e:Image source="nav-more"></e:Image>
                 </e:Skin>
             </e:Button>
-            <e:Button width="124" id="btnSetting" verticalCenter="0">
+            <e:Button name="setting" width="124" id="btnSetting" verticalCenter="0">
                 <e:Skin>
                     <e:Image source="nav-settings"></e:Image>
                 </e:Skin>

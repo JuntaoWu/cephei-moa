@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.LoginScreen" xmlns:e="http://ns.egret.com/eui" xmlns:moa="moa.*" xmlns:w="http://ns.egret.com/wing">
+    <w:Config id="16932f7499c" />
+    <e:Image visible="{isStandalone}" id="loadingBackground" source="loading-background" top="0" left="0" right="0"
+             bottom="0" scale9Grid="90,901,540,219" />
+    <e:Image visible="{isWxGame}" id="miniGameLoadingBackground" source="mini-game-loading-background" />
+    <e:Button id="btnAnonymousLogin" width="640" horizontalCenter="0" y="1080">
+        <e:Skin states="up,down,disabled">
+            <e:Image source="btn-anonymouslogin" width="640" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+        </e:Skin>
+    </e:Button>
+    <e:Button id="btnLogin" width="640" horizontalCenter="0" y="1240">
+        <e:Skin states="up,down,disabled">
+            <e:Image source="btn-wxlogin" width="640" scaleX.down="0.9" scaleY.down="0.9"></e:Image>
+        </e:Skin>
+    </e:Button>
+</e:Skin>

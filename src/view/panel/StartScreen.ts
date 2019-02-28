@@ -24,7 +24,7 @@ namespace moa {
         public btnViewMore: eui.Button;
 
         public nickName: string = "";
-        public avatarUrl: string = "btn-share";
+        public avatarUrl: string = "meihua";
         public isDebugPlatform: boolean = false;
         public isWxPlatform: boolean = true;
         public isNativePlatform: boolean = false;

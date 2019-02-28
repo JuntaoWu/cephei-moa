@@ -98,45 +98,65 @@ namespace moa {
                 platform.hideLoading();
             }
 
-            const preference = await AccountAdapter.loadPreference();
+            const preference: Preference = await AccountAdapter.loadPreference().catch((error) => {
+                console.error(`AccountAdapter.loadPreference catch error ${error}.`);
+                platform.showToast(error);
+                return null;
+            });
+            if (!preference) {
+                console.error("AccountAdapter.loadPreference failed.");
+                return;
+            }
 
             if (preference.enabledIM) {
                 platform.setupIM();
             }
 
-            if (platform.name == "wxgame") {
-                await AccountAdapter.login();
-                await this.tryAuthorize();
-            }
-            else if (platform.name == "DebugPlatform") {
-                let anonymousToken = platform.getStorage("anonymoustoken");
-                await AccountAdapter.login({ token: anonymousToken });
-                this.createGameScene();
-            }
-            else {
-                const isWeChatInstalled = await platform.checkIfWeChatInstalled();
-                this.loadingView.btnAnonymousLogin.visible = preference.showAnonymousLogin;
-                this.loadingView.btnLogin.visible = preference.showWeChatLogin && isWeChatInstalled;
-                this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
-                    egret.ExternalInterface.call("sendWxLoginToNative", "native");
-                    egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
-                        this.loadingView.btnLogin.enabled = false;
-                        await AccountAdapter.login({ code: code });
-                        this.createGameScene();
-                    });
-                }, this);
-                this.loadingView.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+            this.createGameScene();
 
-                    platform.showLoading("加载中");
+            // if (platform.name == "wxgame") {
+            //     await AccountAdapter.login();
+            //     await this.tryAuthorize();
+            // }
+            // else if (platform.name == "DebugPlatform") {
+            //     let anonymousToken = platform.getStorage("anonymoustoken");
+            //     await AccountAdapter.login({ token: anonymousToken });
+            //     this.createGameScene();
+            // }
+            // else {
 
-                    let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
-                    await AccountAdapter.login({ token: anonymousToken });
+            //     let savedToken = await platform.getSecurityStorageAsync("token");
+            //     let savedAnonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
+            //     if (savedToken || savedAnonymousToken) {
+            //         await AccountAdapter.login({ token: savedToken || savedAnonymousToken });
+            //         platform.hideLoading();
+            //         this.createGameScene();
+            //     }
+            //     else {
+            //         const isWeChatInstalled = await platform.checkIfWeChatInstalled();
+            //         this.loadingView.btnAnonymousLogin.visible = preference.showAnonymousLogin;
+            //         this.loadingView.btnLogin.visible = preference.showWeChatLogin && isWeChatInstalled;
+            //         this.loadingView.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+            //             egret.ExternalInterface.call("sendWxLoginToNative", "native");
+            //             egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
+            //                 this.loadingView.btnLogin.enabled = false;
+            //                 await AccountAdapter.login({ code: code });
+            //                 this.createGameScene();
+            //             });
+            //         }, this);
+            //         this.loadingView.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
 
-                    platform.hideLoading();
+            //             platform.showLoading("加载中");
 
-                    this.createGameScene();
-                }, this);
-            }
+            //             let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
+            //             await AccountAdapter.login({ token: anonymousToken });
+
+            //             platform.hideLoading();
+
+            //             this.createGameScene();
+            //         }, this);
+            //     }
+            // }
         }
 
         private async loadResource() {
@@ -183,9 +203,11 @@ namespace moa {
          */
         protected createGameScene(): void {
 
-            egret.Tween.get(this.loadingView).to({ alpha: 0 }, 1500).call(() => {
-                this.stage.removeChild(this.loadingView);
-            });
+            // egret.Tween.get(this.loadingView).to({ alpha: 0 }, 1500).call(() => {
+            //     this.stage.removeChild(this.loadingView);
+            // });
+
+            this.stage.removeChild(this.loadingView);
 
             const appContainer = new moa.AppContainer();
             this.addChild(appContainer);

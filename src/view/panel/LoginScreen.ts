@@ -29,23 +29,17 @@
 
 namespace moa {
 
-    export class LoadingUI extends eui.Component implements RES.PromiseTaskReporter {
+    export class LoginScreen extends eui.Component {
 
-        private loadingText: egret.TextField;
-        private labelText: egret.TextField;
-
-        private progressBg: egret.Bitmap;
-        private progressBar: egret.Bitmap;
-        private loadingLabel: egret.DisplayObject;
-
-        public groupLoading: eui.Group;
+        public btnAnonymousLogin: eui.Button;
+        public btnLogin: eui.Button;
 
         public isStandalone: boolean = true;
         public isWxGame: boolean = false;
 
         public constructor() {
             super();
-            this.skinName = "skins.LoadingUI";
+            this.skinName = "skins.LoginScreen";
             this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
             this.isStandalone = platform.name != "wxgame";
             this.isWxGame = platform.name == "wxgame";
@@ -54,22 +48,14 @@ namespace moa {
         public createCompleteEvent(event: eui.UIEvent): void {
             this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
 
-            if(platform.name === "native") {
-                this.groupLoading.visible = false;
-                platform.showLoading("加载中");
-            }
+            this.btnAnonymousLogin.visible = false;
+            this.btnLogin.visible = false;
 
-            this.groupLoading.y = this.stage.stageHeight - 60;
+            this.btnLogin.y = this.stage.stageHeight - this.btnLogin.height - 10;
+            this.btnAnonymousLogin.y = this.stage.stageHeight - this.btnLogin.height - this.btnAnonymousLogin.height - 30;
+
+            ApplicationFacade.getInstance().registerMediator(new LoginScreenMediator(this));
         }
 
-        public onProgress(current: number, total: number): void {
-            this.labelText.text = `${current}/${total}`;
-            this.progressBar.width = this.stage.width * current / total;
-        }
-
-        public showInformation(message) {
-            this.loadingText.text = message;
-            this.labelText.text = "";
-        }
     }
 }

@@ -80,6 +80,7 @@
 		"resource/containers/GuideWinJudgeWindow.exml",
 		"resource/containers/JoinWindow.exml",
 		"resource/containers/LoadingUI.exml",
+		"resource/containers/LoginScreen.exml",
 		"resource/containers/MoreGameWindow.exml",
 		"resource/containers/NoticeDetailWindow.exml",
 		"resource/containers/NoticeWindow.exml",
