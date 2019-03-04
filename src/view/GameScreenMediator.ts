@@ -37,6 +37,8 @@ namespace moa {
             this.gameScreen.btnGameInfo.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameInfo, this);
             this.gameScreen.btnGameRecord.addEventListener(egret.TouchEvent.TOUCH_TAP, this.showGameRecord, this);
 
+            this.gameScreen.btnEnableMic.addEventListener(egret.TouchEvent.CHANGE, this.changeEnableMic, this);
+
             this.findSeat();
         }
 
@@ -63,6 +65,10 @@ namespace moa {
 
         private showGameRecord() {
             this.sendNotification(SceneCommand.SHOW_VOTERECORD_WINDOW);
+        }
+
+        private changeEnableMic(event: egret.TouchEvent) {
+            this.proxy.enableMic(this.gameScreen.btnEnableMic.enabled);
         }
 
         public listNotificationInterests(): Array<any> {

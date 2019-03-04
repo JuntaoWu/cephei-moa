@@ -108,9 +108,9 @@ namespace moa {
                 return;
             }
 
-            if (preference.enabledIM) {
-                platform.setupIM();
-            }
+            // if (preference.enabledIM) {
+            //     platform.setupIM();
+            // }
 
             this.createGameScene();
 

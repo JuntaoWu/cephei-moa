@@ -10,26 +10,26 @@
 		<e:Button id="shareButton" alpha="0" x="20" y="370" width="290" height="235" />
 		<e:Button id="aboutButton" alpha="0" x="330" y="370" width="290" height="235" anchorOffsetX="0" anchorOffsetY="0" />
 	</e:Group>
-	<e:Group y="638" width="640" horizontalCenter="0">
-		<e:Group width="500" y="50" horizontalCenter="0">
+	<e:Group y="619" width="640" horizontalCenter="0">
+		<e:Group width="500" y="20" horizontalCenter="0">
 			<e:Label text="首页显示指南" textColor="000000" size="45" left="0"></e:Label>
 			<e:ToggleSwitch id="toggleShowGuide" selected="{showGuide}" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
 		</e:Group>
-		<e:Group y="130" width="500" horizontalCenter="0">
+		<e:Group y="100" width="500" horizontalCenter="0">
 			<e:Label text="首页显示桌游吧" textColor="000000" size="45" left="0"></e:Label>
 			<e:ToggleSwitch id="toggleShowClub" selected="{showClub}" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
 		</e:Group>
-		<e:Group y="210" width="500" horizontalCenter="0">
+		<e:Group y="180" width="500" horizontalCenter="0">
 			<e:Label text="启用IM" textColor="000000" size="45" left="0"></e:Label>
 			<e:ToggleSwitch id="toggleEnabledIM" selected="{enabledIM}" right="0" verticalCenter="0" scaleX="1.5" scaleY="1.5"></e:ToggleSwitch>
 		</e:Group>
-		<e:Group id="groupShowWeChatLogin" y="290" width="500" horizontalCenter="0">
+		<e:Group id="groupShowWeChatLogin" y="250" width="500" horizontalCenter="0">
 			<e:Label text="显示微信登录" textColor="000000" size="45" left="0"></e:Label>
 			<e:ToggleSwitch id="toggleShowWeChatLogin" selected="{showWeChatLogin}" right="0" verticalCenter="0" scaleX="1.5"
 			                scaleY="1.5"></e:ToggleSwitch>
 		</e:Group>
 	</e:Group>
-	<e:Group id="navigationBar" y="1000" width="640" height="280" horizontalCenter="0">
+	<e:Group id="navigationBar" y="1000" width="640" height="250" horizontalCenter="0">
 		<e:Button id="logoutButton" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" top="0">
 			<e:Skin states="up,down">
 				<e:Image source="btn-logout" width="640" height="120" horizontalCenter="0" verticalCenter="0" scaleX.down="0.9"

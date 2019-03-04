@@ -73,7 +73,7 @@ namespace moa {
             this.gameProxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
 
             const userInfo = await AccountAdapter.loadUserInfo();
-            console.log("loadUserInfo completed.", userInfo);
+            console.log("loadUserInfo completed.", JSON.stringify(userInfo));
             this.startScreen.nickName = userInfo.nickName;
             this.startScreen.avatarUrl = userInfo.avatarUrl || "meihua";
 

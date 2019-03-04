@@ -47,6 +47,28 @@ namespace moa {
                 this.sendNotification(SceneCommand.CHANGE, Scene.Start);
             }
             else {
+                const isWeChatInstalled = await platform.checkIfWeChatInstalled();
+                this.viewComponent.btnAnonymousLogin.visible = preference.showAnonymousLogin;
+                this.viewComponent.btnLogin.visible = preference.showWeChatLogin && isWeChatInstalled;
+                this.viewComponent.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+                    egret.ExternalInterface.call("sendWxLoginToNative", "native");
+                    egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
+                        this.viewComponent.btnLogin.enabled = false;
+                        await AccountAdapter.login({ code: code });
+                        this.sendNotification(SceneCommand.CHANGE, Scene.Start);
+                    });
+                }, this);
+                this.viewComponent.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
+
+                    platform.showLoading("加载中");
+
+                    let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
+                    await AccountAdapter.login({ token: anonymousToken });
+
+                    platform.hideLoading();
+
+                    this.sendNotification(SceneCommand.CHANGE, Scene.Start);
+                }, this);
 
                 let savedToken = await platform.getSecurityStorageAsync("token");
                 let savedAnonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
@@ -54,30 +76,6 @@ namespace moa {
                     await AccountAdapter.login({ token: savedToken || savedAnonymousToken });
                     platform.hideLoading();
                     this.sendNotification(SceneCommand.CHANGE, Scene.Start);
-                }
-                else {
-                    const isWeChatInstalled = await platform.checkIfWeChatInstalled();
-                    this.viewComponent.btnAnonymousLogin.visible = preference.showAnonymousLogin;
-                    this.viewComponent.btnLogin.visible = preference.showWeChatLogin && isWeChatInstalled;
-                    this.viewComponent.btnLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
-                        egret.ExternalInterface.call("sendWxLoginToNative", "native");
-                        egret.ExternalInterface.addCallback("sendWxLoginCodeToJS", async (code) => {
-                            this.viewComponent.btnLogin.enabled = false;
-                            await AccountAdapter.login({ code: code });
-                            this.sendNotification(SceneCommand.CHANGE, Scene.Start);
-                        });
-                    }, this);
-                    this.viewComponent.btnAnonymousLogin.addEventListener(egret.TouchEvent.TOUCH_TAP, async () => {
-
-                        platform.showLoading("加载中");
-
-                        let anonymousToken = await platform.getSecurityStorageAsync("anonymoustoken");
-                        await AccountAdapter.login({ token: anonymousToken });
-
-                        platform.hideLoading();
-
-                        this.sendNotification(SceneCommand.CHANGE, Scene.Start);
-                    }, this);
                 }
             }
 

@@ -15,6 +15,8 @@ namespace moa {
         public btnGameInfo: eui.Button;
         public btnGameRecord: eui.Button;
 
+        public btnEnableMic: eui.ToggleButton;
+
         //bindings:
         public roomName: string = "";
         public role: Role;
@@ -176,6 +178,7 @@ namespace moa {
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
 
+            this.btnEnableMic.enabled = false;
         }
 
         public partAdded(partName: string, instance: any): void {

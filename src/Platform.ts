@@ -81,11 +81,17 @@ namespace moa {
 
         checkIfWeChatInstalled(): Promise<boolean>;
 
-        setupIM(): Promise<any>;
+        setupIM(userId?: string): Promise<any>;
 
         quitIM(): Promise<any>;
 
         loginIM(imInfo): Promise<any>;
+
+        enterChatRoom(roomId): Promise<any>;
+
+        exitChatRoom(): Promise<any>;
+
+        enableMic(value: boolean): Promise<any>;
 
         createGroupChat(users: any[]): Promise<any>;
 
@@ -269,7 +275,7 @@ namespace moa {
             return false;
         }
 
-        public async setupIM(): Promise<any> {
+        public async setupIM(userId?: string): Promise<any> {
             return;
         }
 
@@ -278,6 +284,18 @@ namespace moa {
         }
 
         public async quitIM(): Promise<any> {
+            return;
+        }
+
+        public async enterChatRoom(roomId: string): Promise<any> {
+            return;
+        }
+
+        public async exitChatRoom(): Promise<any> {
+            return;
+        }
+
+        public async enableMic(value: boolean): Promise<any> {
             return;
         }
 
@@ -304,7 +322,7 @@ namespace moa {
         }
 
         public get os(): string {
-            return "android";
+            return "ios";
         }
 
         public setStorage(key, data) {
@@ -420,8 +438,11 @@ namespace moa {
             });
         }
 
-        public async setupIM(): Promise<any> {
-            egret.ExternalInterface.call("sendSetupIMToNative", "");
+        public async setupIM(userId?: string): Promise<any> {
+            if (!userId) {
+                return;
+            }
+            egret.ExternalInterface.call("sendSetupIMToNative", userId.toString());
         }
 
         public async quitIM(): Promise<any> {
@@ -433,6 +454,21 @@ namespace moa {
                 return;
             }
             egret.ExternalInterface.call("sendLoginIMToNative", JSON.stringify(imInfo));
+        }
+
+        public async enterChatRoom(roomId: string): Promise<any> {
+            if (!roomId) {
+                return;
+            }
+            egret.ExternalInterface.call("sendEnterChatRoomToNative", roomId);
+        }
+
+        public async exitChatRoom(): Promise<any> {
+            egret.ExternalInterface.call("sendExitChatRoomToNative", "");
+        }
+
+        public async enableMic(value: boolean): Promise<any> {
+            egret.ExternalInterface.call("sendEnableMicToNative", value ? "true" : "false");
         }
 
         // return teamId
@@ -482,6 +518,6 @@ namespace moa {
 
     // todo: in the wrapped project, the platform had been declared in the child lib project alreay.
     export let platform: Platform;
-    platform = window["platform"] || new DebugPlatform();
+    platform = window["platform"] || new NativePlatform();
 
 }

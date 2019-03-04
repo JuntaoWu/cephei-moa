@@ -14,6 +14,12 @@
             <e:Label text="/" textColor="0x000000" horizontalCenter="0"></e:Label>
             <e:Label text="{maxPlayers}" textColor="0x000000" horizontalCenter="30"></e:Label>
         </e:Group>
+        <e:ToggleButton id="btnEnableMic" width="64" height="64" right="20">
+            <e:Skin states="up,down,disabled,upAndSelected,downAndSelected,disabledAndSelected">
+                <e:Image width="64" height="64" includeIn="up,down" source="mic-enabled" verticalCenter="0" horizontalCenter="0"></e:Image>
+                <e:Image width="64" height="64" includeIn="upAndSelected,downAndSelected" source="mic-disabled" verticalCenter="0" horizontalCenter="0"></e:Image>
+            </e:Skin>
+        </e:ToggleButton>
     </e:Group>
     <e:Group id="contentArea" y="110" width="680" horizontalCenter="0" height="600">
         <e:Image source="meihua" verticalCenter="0" horizontalCenter="0"></e:Image>

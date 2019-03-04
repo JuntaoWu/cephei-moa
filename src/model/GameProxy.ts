@@ -59,9 +59,18 @@ namespace moa {
 		public async initialize() {
 			this.userInfo = await AccountAdapter.loadUserInfo();
 
+			const preference = await AccountAdapter.loadPreference();
+			if(preference.enabledIM) {
+				platform.setupIM(this.userInfo.userId);
+			}
+
 			this.loadBalancingClient.setCustomAuthentication(`userId=${this.userInfo.userId}`,
 				Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom);
 			this.loadBalancingClient.start();
+		}
+
+		public enableMic(value) {
+			platform.enableMic(value);
 		}
 
 		public static PLAYER_UPDATE: string = "player_update";
@@ -295,10 +304,11 @@ namespace moa {
 
 			const preference = await AccountAdapter.loadPreference();
 			if (preference.enabledIM && !this.imLoggedIn) {
-				const imInfo = await AccountAdapter.loadIMInfo();
-				await platform.loginIM(imInfo);
+				await platform.enterChatRoom(this.loadBalancingClient.myRoom().name);
+				// const imInfo = await AccountAdapter.loadIMInfo();
+				// await platform.loginIM(imInfo);
 				this.imLoggedIn = true;
-				this.loadBalancingClient.myActor().setCustomProperty("imAccId", imInfo.account);
+				// this.loadBalancingClient.myActor().setCustomProperty("imAccId", imInfo.account);
 			}
 		}
 
@@ -556,12 +566,12 @@ namespace moa {
 						if (message && message.action == "isSpeaking") {
 							console.log("MasterClient notified: isSpeaking");
 							if (AccountAdapter.preference && AccountAdapter.preference.enabledIM) {
-								const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
-								platform.createGroupChat(chatUsers).then(teamId => {
-									if (teamId) {
-										this.loadBalancingClient.sendMessage(CustomPhotonEvents.OpenGroupChat, teamId);
-									}
-								});
+								// const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
+								// platform.createGroupChat(chatUsers).then(teamId => {
+								// 	if (teamId) {
+								// 		this.loadBalancingClient.sendMessage(CustomPhotonEvents.OpenGroupChat, teamId);
+								// 	}
+								// });
 							}
 						}
 					}
@@ -595,8 +605,8 @@ namespace moa {
 				}
 				case CustomPhotonEvents.OpenGroupChat: {
 					if (AccountAdapter.preference && AccountAdapter.preference.enabledIM) {
-						const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
-						platform.openGroupChat(message, chatUsers);
+						// const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
+						// platform.openGroupChat(message, chatUsers);
 					}
 					break;
 				}
@@ -728,9 +738,11 @@ namespace moa {
 		public leaveRoom() {
 			this.reset();
 			this.loadBalancingClient.leaveRoom();
+			platform.exitChatRoom();
 		}
 
 		public reset() {
+			this.imLoggedIn = false;
 			this.roomName = undefined;
 			this.actorNr = -1;
 			this.loadBalancingClient.autoRejoin = false;
