@@ -19,6 +19,7 @@ namespace moa {
         public toggleShowWeChatLogin: eui.ToggleSwitch;
         public groupShowWeChatLogin: eui.Group;
         public toggleEnabledIM: eui.ToggleSwitch;
+        public groupEnabledIM: eui.Group;
 
         private navigationBar: eui.Group;
 
@@ -37,6 +38,7 @@ namespace moa {
             if (platform.name == "wxgame") {
                 this.logoutButton.visible = false;
                 this.groupShowWeChatLogin.visible = false;
+                this.groupEnabledIM.visible = false;
             }
         }
 

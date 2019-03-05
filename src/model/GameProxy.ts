@@ -8,7 +8,10 @@ namespace moa {
 		public userInfo: UserInfo;
 
 		private lastSeenErrorAt = 0;
-		private imLoggedIn = false;
+
+		public isIMEnabled = false;
+		private isIMInitialized = false;
+		private isEnteredChatRoom = false;
 
 		public constructor() {
 			super(GameProxy.NAME);
@@ -60,17 +63,23 @@ namespace moa {
 			this.userInfo = await AccountAdapter.loadUserInfo();
 
 			const preference = await AccountAdapter.loadPreference();
-			if(preference.enabledIM) {
-				platform.setupIM(this.userInfo.userId);
-			}
+			this.enableIM(preference && preference.enabledIM);
 
 			this.loadBalancingClient.setCustomAuthentication(`userId=${this.userInfo.userId}`,
 				Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom);
 			this.loadBalancingClient.start();
 		}
 
-		public enableMic(value) {
-			platform.enableMic(value);
+		public enableIM(enabled: boolean) {
+			this.isIMEnabled = enabled;
+			if (this.isIMEnabled && !this.isIMInitialized) {
+				this.isIMInitialized = true;
+				platform.setupIM(this.userInfo.userId);
+			}
+		}
+
+		public enableMic(enabled: boolean) {
+			platform.enableMic(enabled);
 		}
 
 		public static PLAYER_UPDATE: string = "player_update";
@@ -302,12 +311,11 @@ namespace moa {
 				anonymous: userInfo.anonymous,
 			});
 
-			const preference = await AccountAdapter.loadPreference();
-			if (preference.enabledIM && !this.imLoggedIn) {
+			if (this.isIMEnabled && !this.isEnteredChatRoom) {
 				await platform.enterChatRoom(this.loadBalancingClient.myRoom().name);
 				// const imInfo = await AccountAdapter.loadIMInfo();
 				// await platform.loginIM(imInfo);
-				this.imLoggedIn = true;
+				this.isEnteredChatRoom = true;
 				// this.loadBalancingClient.myActor().setCustomProperty("imAccId", imInfo.account);
 			}
 		}
@@ -565,7 +573,7 @@ namespace moa {
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
 						if (message && message.action == "isSpeaking") {
 							console.log("MasterClient notified: isSpeaking");
-							if (AccountAdapter.preference && AccountAdapter.preference.enabledIM) {
+							if (this.isIMEnabled) {
 								// const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
 								// platform.createGroupChat(chatUsers).then(teamId => {
 								// 	if (teamId) {
@@ -604,7 +612,7 @@ namespace moa {
 					break;
 				}
 				case CustomPhotonEvents.OpenGroupChat: {
-					if (AccountAdapter.preference && AccountAdapter.preference.enabledIM) {
+					if (this.isIMEnabled) {
 						// const chatUsers = this.gameState.seats.filter(seat => seat && seat.imAccId).map(seat => seat.imAccId);
 						// platform.openGroupChat(message, chatUsers);
 					}
@@ -742,7 +750,7 @@ namespace moa {
 		}
 
 		public reset() {
-			this.imLoggedIn = false;
+			this.isEnteredChatRoom = false;
 			this.roomName = undefined;
 			this.actorNr = -1;
 			this.loadBalancingClient.autoRejoin = false;

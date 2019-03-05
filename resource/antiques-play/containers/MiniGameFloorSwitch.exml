@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="MiniGameFloorSwitch" xmlns:e="http://ns.egret.com/eui" xmlns:ap="ap.*" xmlns:w="http://ns.egret.com/wing">
-    <e:Image source="m18-bg"/>
-    <e:List id="buttonList" verticalCenter="0" horizontalCenter="0">
-        <e:layout>
-            <e:TileLayout orientation="columns" requestedColumnCount="3" verticalGap="5" horizontalGap="5" />
-        </e:layout>
-    </e:List>
-</e:Skin>

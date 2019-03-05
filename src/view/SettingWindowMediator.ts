@@ -34,7 +34,10 @@ namespace moa {
                 await this.setPreference("showWeChatLogin", (event.target as eui.ToggleSwitch).selected);
             }, this);
             this.settingWindow.toggleEnabledIM.addEventListener(egret.Event.CHANGE, async (event) => {
-                await this.setPreference("enabledIM", (event.target as eui.ToggleSwitch).selected);
+                const enabledIM = (event.target as eui.ToggleSwitch).selected;
+                await this.setPreference("enabledIM", enabledIM);
+                const proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
+                proxy.enableIM(enabledIM);
             }, this);
         }
 

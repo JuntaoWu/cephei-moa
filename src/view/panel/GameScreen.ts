@@ -175,10 +175,10 @@ namespace moa {
             this.navigationBar.y = this.stage.stageHeight - this.navigationBar.height;
             // this.poweredLabel.y = this.stage.stageHeight - this.poweredLabel.height - 30;
             this.gameBackground.height = this.stage.stageHeight;
+            this.btnEnableMic.enabled = false;
+
             this.removeEventListener(eui.UIEvent.ADDED, this.createCompleteEvent, this);
             ApplicationFacade.getInstance().registerMediator(new GameScreenMediator(this));
-
-            this.btnEnableMic.enabled = false;
         }
 
         public partAdded(partName: string, instance: any): void {

@@ -44,20 +44,16 @@
     {
       "name": "photon",
       "path": "../3rdparty-libs/photon"
-    },
-    {
-      "name": "antiques-play",
-      "path": "../antiques-play"
     }
   ],
   "targets": {
     "android": {
       "appname": "古董局中局",
-      "packagename": "com.fb.gdjzj"
+      "packagename": "com.hzsdgames.gdjzj"
     },
     "ios": {
       "appname": "古董局中局",
-      "packagename": "com.fb.gdjzj",
+      "packagename": "com.hzsdgames.gdjzj",
       "hybrid": false
     }
   }

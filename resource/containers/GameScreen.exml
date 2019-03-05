@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="skins.GameScreen" width="720" height="1386" xmlns:e="http://ns.egret.com/eui"
         xmlns:w="http://ns.egret.com/wing" xmlns:moa="moa.*">
+	<w:Config id="1694bea21df"/>
     <e:Image id="gameBackground" source="start-background" x="0" y="0" width="720" height="1386" />
     <e:Group id="topNavigationBar" y="50" width="720">
         <e:Label text="{roomName}" x="100" textColor="0x000000" verticalCenter="0"></e:Label>
@@ -14,14 +15,14 @@
             <e:Label text="/" textColor="0x000000" horizontalCenter="0"></e:Label>
             <e:Label text="{maxPlayers}" textColor="0x000000" horizontalCenter="30"></e:Label>
         </e:Group>
-        <e:ToggleButton id="btnEnableMic" width="64" height="64" right="20">
+        <e:ToggleButton id="btnEnableMic" right="30">
             <e:Skin states="up,down,disabled,upAndSelected,downAndSelected,disabledAndSelected">
-                <e:Image width="64" height="64" includeIn="up,down" source="mic-enabled" verticalCenter="0" horizontalCenter="0"></e:Image>
-                <e:Image width="64" height="64" includeIn="upAndSelected,downAndSelected" source="mic-disabled" verticalCenter="0" horizontalCenter="0"></e:Image>
+                <e:Image width="50" height="75" includeIn="up,down" source="mic-disabled"></e:Image>
+                <e:Image width="50" height="75" includeIn="upAndSelected,downAndSelected" source="mic-enabled"></e:Image>
             </e:Skin>
         </e:ToggleButton>
     </e:Group>
-    <e:Group id="contentArea" y="110" width="680" horizontalCenter="0" height="600">
+    <e:Group id="contentArea" y="130" width="680" horizontalCenter="0" height="600">
         <e:Image source="meihua" verticalCenter="0" horizontalCenter="0"></e:Image>
         <e:Image source="game-box-border" anchorOffsetX="0" width="100%" horizontalCenter="0" height="100%"></e:Image>
         <e:Group visible="{isPhasePreparing}" width="600" horizontalCenter="0" height="540">
@@ -511,7 +512,7 @@
             </e:Button>
         </e:Group>
     </e:Group>
-    <e:Group id="seatArea" anchorOffsetY="0" y="730" anchorOffsetX="0" width="680" x="25" height="365">
+    <e:Group id="seatArea" anchorOffsetY="0" y="740" anchorOffsetX="0" width="680" x="25" height="365">
         <e:Button enabled="{canChooseSeat}" id="btnSeat1" anchorOffsetX="0" width="150" height="150">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
@@ -601,7 +602,7 @@
             </e:Skin>
         </e:Button>
     </e:Group>
-    <e:Group id="navigationBar" width="720" y="1059" height="130">
+    <e:Group id="navigationBar" width="720" y="1160" height="130">
         <e:Button id="btnGuide">
             <e:Skin>
                 <e:Image source="btn-help" />

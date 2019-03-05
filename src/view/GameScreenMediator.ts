@@ -43,11 +43,18 @@ namespace moa {
         }
 
         public async initData() {
-            console.log("GameScreen initData");
             this.ybrskillHasBeenHandled = [false, false, false];
             this.proxy = this.facade().retrieveProxy(GameProxy.NAME) as GameProxy;
             this.skillAnimAdded = false;
             this.gameScreen.isLastPlayer = false;
+
+            console.log("GameScreen initData");
+
+            this.gameScreen.btnEnableMic.enabled = this.proxy.isIMEnabled;
+            this.gameScreen.btnEnableMic.selected = false;
+
+            console.log("EnableMic:", this.gameScreen.btnEnableMic.selected);
+
             this.updateGameScreen(this.proxy.gameState);
         }
 
@@ -68,7 +75,8 @@ namespace moa {
         }
 
         private changeEnableMic(event: egret.TouchEvent) {
-            this.proxy.enableMic(this.gameScreen.btnEnableMic.enabled);
+            console.log("changeEnableMic", this.gameScreen.btnEnableMic.selected);
+            this.proxy.enableMic(this.gameScreen.btnEnableMic.selected);
         }
 
         public listNotificationInterests(): Array<any> {
@@ -629,7 +637,7 @@ namespace moa {
         public skipSkill(event: egret.TouchEvent) {
             let roleId = this.myRole.id;
             if (roleId == 6 || roleId == 7 || roleId == 8
-            || (this.proxy.isActorLocal(this.proxy.gameState.role[2]) && this.proxy.gameState.ybrskill[2] <= 0)) {
+                || (this.proxy.isActorLocal(this.proxy.gameState.role[2]) && this.proxy.gameState.ybrskill[2] <= 0)) {
                 // set playerInfo for history.
                 this.proxy.updatePlayerInfo(`skipskill${this.proxy.gameState.lunci}`, true);
             }

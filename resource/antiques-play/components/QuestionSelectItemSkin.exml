@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<e:Skin class="QuestionSelectItemSkin" xmlns:e="http://ns.egret.com/eui">
-    <e:Image anchorOffsetX="0" anchorOffsetY="0" source="option-bg" width="100%" x="0" height="100" y="0" scale9Grid="45,43,224,37"/>
-    <e:Label text="{data.option}" horizontalCenter="0" verticalAlign="middle" width="90%" anchorOffsetX="0" size="{fontSize}" textColor="0xFFFFFF" bold="true" fontFamily="FangSong" verticalCenter="0" textAlign="center"></e:Label>
-</e:Skin>
