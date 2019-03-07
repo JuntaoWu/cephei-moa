@@ -27,6 +27,8 @@ namespace moa {
 
         public async initData() {
 
+            this.viewComponent.btnLogin.enabled = true;
+
             const preference: Preference = await AccountAdapter.loadPreference().catch((error) => {
                 console.error(`AccountAdapter.loadPreference catch error ${error}.`);
                 platform.showToast(error);

@@ -13,6 +13,8 @@ namespace moa {
 		private isIMInitialized = false;
 		private isEnteredChatRoom = false;
 
+		private isBotEnabled = false;
+
 		public constructor() {
 			super(GameProxy.NAME);
 
@@ -64,10 +66,15 @@ namespace moa {
 
 			const preference = await AccountAdapter.loadPreference();
 			this.enableIM(preference && preference.enabledIM);
+			this.enableBot(preference && preference.enabledBot);
 
 			this.loadBalancingClient.setCustomAuthentication(`userId=${this.userInfo.userId}`,
 				Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom);
 			this.loadBalancingClient.start();
+		}
+
+		public enableBot(enabled: boolean) {
+			this.isBotEnabled = enabled;
 		}
 
 		public enableIM(enabled: boolean) {
@@ -647,10 +654,14 @@ namespace moa {
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.FirstOneNr, this.gameState.firstOne.toString());
 		}
 
-		private generateRoomNumber() {
-			let random = _.padStart(Math.floor(1000 * Math.random()).toString(), 3, '0');
-			let name = parseInt(`${random}${new Date().getMilliseconds()}`).toString(10);
-			return _.padStart(name, 6, '0').toUpperCase();
+		private generateRoomNumber(roomNameLength: number) {
+			if(!+roomNameLength || roomNameLength <= 0) {
+				roomNameLength = 6;
+			}
+			const name = _.random(0, Math.pow(10, roomNameLength) - 1);
+			// let random = _.padStart(Math.floor(1000 * Math.random()).toString(), 3, '0');
+			// let name = parseInt(`${random}${new Date().getMilliseconds()}`).toString(10);
+			return _.padStart(name.toString(), roomNameLength, '0');
 		}
 
 		private createRoomWithDefaultOptions() {
@@ -669,11 +680,11 @@ namespace moa {
 			}
 		}
 
-		public createRoom(maxPlayers: number) {
+		public createRoom(maxPlayers: number = 6, roomNameLength: number = 6) {
 
 			platform.showLoading("加载中");
 
-			this.roomName = this.generateRoomNumber();
+			this.roomName = this.generateRoomNumber(roomNameLength);
 			if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized
 				|| this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
 				// this.loadBalancingClient.setCustomAuthentication(`access_token=${me.access_token}`, Photon.LoadBalancing.Constants.CustomAuthenticationType.Custom, "");
@@ -703,6 +714,11 @@ namespace moa {
 		}
 
 		public joinRoom(roomName: string) {
+
+			if(this.isBotEnabled && roomName == "0000") {
+				this.createRoom(6, 4);
+				return;
+			}
 
 			console.log(`joinRoom: ${roomName}`);
 

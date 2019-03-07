@@ -11,6 +11,8 @@ namespace moa {
             super(StartScreenMediator.NAME, viewComponent);
             super.initializeNotifier("ApplicationFacade");
 
+            this.startScreen.addEventListener(egret.Event.ADDED_TO_STAGE, this.initData, this);
+
             this.startScreen.btnCreateRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.createRoomClick, this);
             this.startScreen.btnJoinRoom.addEventListener(egret.TouchEvent.TOUCH_TAP, this.joinRoomClick, this);
             // this.startScreen.btnTanbao.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameTanbaoClick, this);
@@ -22,8 +24,6 @@ namespace moa {
             this.startScreen.btnRank.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rankClick, this);
             this.startScreen.btnClub.addEventListener(egret.TouchEvent.TOUCH_TAP, this.clubClick, this);
             this.startScreen.btnSetting.addEventListener(egret.TouchEvent.TOUCH_TAP, this.settingClick, this);
-
-            this.initData();
         }
 
         public async updatePreference() {
@@ -59,13 +59,16 @@ namespace moa {
             const preference = await AccountAdapter.loadPreference();
 
             if (!preference || !preference.showGuide) {
-                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnGuide);
+                this.startScreen.groupNavigationBar.getChildByName("guide")
+                    && this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnGuide);
             }
             if (!preference || !preference.showClub) {
-                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
+                this.startScreen.groupNavigationBar.getChildByName("club")
+                    && this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnClub);
             }
             if (!preference || !preference.showMore) {
-                this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
+                this.startScreen.groupNavigationBar.getChildByName("viewmore")
+                    && this.startScreen.groupNavigationBar.removeChild(this.startScreen.btnViewMore);
             }
 
             console.log("StartScreen initData:");

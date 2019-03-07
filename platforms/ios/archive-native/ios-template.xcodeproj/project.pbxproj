@@ -28,6 +28,13 @@
 		30CE267B2063AC44000F4D0D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30CE267A2063AC44000F4D0D /* icon.png */; };
 		30E559EA200F1DE2001C0B78 /* libEgretNativeIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E559E9200F1DE2001C0B78 /* libEgretNativeIOS.a */; };
 		39E44E9626204A95CE1D8D01 /* libPods-古董局中局.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9D7AFEF22ED4FEDA81C555 /* libPods-古董局中局.a */; };
+		3B7FFC95222D14CE00D948AE /* GMESDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7FFC94222D14CE00D948AE /* GMESDK.framework */; };
+		3B7FFC97222D156D00D948AE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7FFC96222D156D00D948AE /* CoreMedia.framework */; };
+		3B7FFC99222D157500D948AE /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7FFC98222D157500D948AE /* VideoToolbox.framework */; };
+		3B7FFC9B222D157F00D948AE /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7FFC9A222D157F00D948AE /* libresolv.tbd */; };
+		3B7FFC9D222D15A100D948AE /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7FFC9C222D15A100D948AE /* CoreAudio.framework */; };
+		3B7FFCA3222D1A2C00D948AE /* DispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FFC9F222D1A2C00D948AE /* DispatchCenter.m */; };
+		3B7FFCA4222D1A2C00D948AE /* EnginePollHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FFCA0222D1A2C00D948AE /* EnginePollHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3BDB357721D3999F001C7388 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDB357521D3999F001C7388 /* UserInfo.m */; };
 		3BDB357821D3999F001C7388 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BDB357621D3999F001C7388 /* background.png */; };
 		3BDB357E21D3A52C001C7388 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BDB357A21D3A52C001C7388 /* LaunchScreen.storyboard */; };
@@ -64,6 +71,15 @@
 		307B49CE2059046B003D64E0 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		30CE267A2063AC44000F4D0D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		30E559E9200F1DE2001C0B78 /* libEgretNativeIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libEgretNativeIOS.a; path = "egret-libs/libEgretNativeIOS.a"; sourceTree = "<group>"; };
+		3B7FFC94222D14CE00D948AE /* GMESDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GMESDK.framework; path = GME_SDK/GMESDK.framework; sourceTree = "<group>"; };
+		3B7FFC96222D156D00D948AE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		3B7FFC98222D157500D948AE /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		3B7FFC9A222D157F00D948AE /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		3B7FFC9C222D15A100D948AE /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		3B7FFC9F222D1A2C00D948AE /* DispatchCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchCenter.m; sourceTree = "<group>"; };
+		3B7FFCA0222D1A2C00D948AE /* EnginePollHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnginePollHelper.m; sourceTree = "<group>"; };
+		3B7FFCA1222D1A2C00D948AE /* DispatchCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchCenter.h; sourceTree = "<group>"; };
+		3B7FFCA2222D1A2C00D948AE /* EnginePollHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnginePollHelper.h; sourceTree = "<group>"; };
 		3B9D7AFEF22ED4FEDA81C555 /* libPods-古董局中局.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-古董局中局.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BDB357421D3999F001C7388 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		3BDB357521D3999F001C7388 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
@@ -82,6 +98,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B7FFC9D222D15A100D948AE /* CoreAudio.framework in Frameworks */,
+				306A7AAB200C88E500E1EBB6 /* AVFoundation.framework in Frameworks */,
+				3B7FFC9B222D157F00D948AE /* libresolv.tbd in Frameworks */,
+				3B7FFC99222D157500D948AE /* VideoToolbox.framework in Frameworks */,
+				3B7FFC97222D156D00D948AE /* CoreMedia.framework in Frameworks */,
 				ED9FBC3221830D63005A5DF0 /* CoreGraphics.framework in Frameworks */,
 				ED9FBC3021830D50005A5DF0 /* CoreText.framework in Frameworks */,
 				ED9FBC2E21830D2A005A5DF0 /* UIKit.framework in Frameworks */,
@@ -97,8 +118,8 @@
 				306A7AB3200C890E00E1EBB6 /* SystemConfiguration.framework in Frameworks */,
 				306A7AAF200C88F600E1EBB6 /* Foundation.framework in Frameworks */,
 				306A7AB1200C890300E1EBB6 /* OpenAL.framework in Frameworks */,
+				3B7FFC95222D14CE00D948AE /* GMESDK.framework in Frameworks */,
 				306A7AAD200C88EA00E1EBB6 /* AudioToolbox.framework in Frameworks */,
-				306A7AAB200C88E500E1EBB6 /* AVFoundation.framework in Frameworks */,
 				39E44E9626204A95CE1D8D01 /* libPods-古董局中局.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +158,10 @@
 		306A7A8F200C83F500E1EBB6 /* ios-template */ = {
 			isa = PBXGroup;
 			children = (
+				3B7FFCA1222D1A2C00D948AE /* DispatchCenter.h */,
+				3B7FFC9F222D1A2C00D948AE /* DispatchCenter.m */,
+				3B7FFCA2222D1A2C00D948AE /* EnginePollHelper.h */,
+				3B7FFCA0222D1A2C00D948AE /* EnginePollHelper.m */,
 				3BDB357921D3A52C001C7388 /* Base.lproj */,
 				3BDB357621D3999F001C7388 /* background.png */,
 				3BDB357421D3999F001C7388 /* UserInfo.h */,
@@ -164,6 +189,11 @@
 		306A7AA7200C88C500E1EBB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B7FFC9C222D15A100D948AE /* CoreAudio.framework */,
+				3B7FFC9A222D157F00D948AE /* libresolv.tbd */,
+				3B7FFC98222D157500D948AE /* VideoToolbox.framework */,
+				3B7FFC96222D156D00D948AE /* CoreMedia.framework */,
+				3B7FFC94222D14CE00D948AE /* GMESDK.framework */,
 				ED9FBC3121830D63005A5DF0 /* CoreGraphics.framework */,
 				ED9FBC2F21830D50005A5DF0 /* CoreText.framework */,
 				ED9FBC2D21830D2A005A5DF0 /* UIKit.framework */,
@@ -242,7 +272,7 @@
 		306A7A85200C83F500E1EBB6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = egret;
 				TargetAttributes = {
 					306A7A8C200C83F500E1EBB6 = {
@@ -359,8 +389,10 @@
 			files = (
 				3BDB357721D3999F001C7388 /* UserInfo.m in Sources */,
 				306A7A98200C83F500E1EBB6 /* ViewController.mm in Sources */,
+				3B7FFCA4222D1A2C00D948AE /* EnginePollHelper.m in Sources */,
 				306A7A95200C83F500E1EBB6 /* AppDelegate.mm in Sources */,
 				306A7A92200C83F500E1EBB6 /* main.m in Sources */,
+				3B7FFCA3222D1A2C00D948AE /* DispatchCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,15 +428,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -445,15 +485,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -485,7 +533,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HERZ4NTH96;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					GME_SDK,
+					"$(PROJECT_DIR)/GME_SDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/egret-libs/include",
 					"$(inherited)",
@@ -510,7 +562,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HERZ4NTH96;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					GME_SDK,
+					"$(PROJECT_DIR)/GME_SDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/egret-libs/include",
 					"$(inherited)",

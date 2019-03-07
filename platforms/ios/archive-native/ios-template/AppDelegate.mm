@@ -1,6 +1,17 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
+
+#import "GMESDK/TMGEngine.h"
+#import "GMESDK/QAVAuthBuffer.h"
+#import "EnginePollHelper.h"
+#import "DispatchCenter.h"
+
+#import <AVFoundation/AVFoundation.h>
+
 #import <EgretNativeIOS.h>
+
+#define SDKAPPID3RD @"1400190077"
+#define AUTHKEY @"tOJe545ehHja250P"
 
 @implementation AppDelegate {
     EgretNativeIOS* _native;
@@ -22,6 +33,10 @@ const static NSString* stateEngineStarted = @"starting";
 const static NSString* stateEngineRunning = @"running";
 
 static bool enabledIM = false;
+
+static NSString* identifier = @"";
+
+static bool isInRoom = false;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -233,14 +248,153 @@ static bool enabledIM = false;
     // [hostVC.view hideAllToasts];
 }
 
-- (void)setupIM {
-    NSString *appKey        = @"21c9e758ffc1e3d3848cc3ab073e856b";
-    NIMSDKOption *option    = [NIMSDKOption optionWithAppKey:appKey];
+- (void)setupIM:(NSString*) userId {
+    // NSString *appKey        = @"21c9e758ffc1e3d3848cc3ab073e856b";
+    // NIMSDKOption *option    = [NIMSDKOption optionWithAppKey:appKey];
     // option.apnsCername      = @"your APNs cer name";
     // option.pkCername        = @"your pushkit cer name";
-    [[NIMSDK sharedSDK] registerWithOption:option];
+    // [[NIMSDK sharedSDK] registerWithOption:option];
     enabledIM = true;
+    
+    identifier = userId;
+    [[ITMGContext GetInstance] InitEngine:SDKAPPID3RD openID:identifier];
+    
+    [EnginePollHelper createEnginePollHelper];
+    [[DispatchCenter getInstance] addDelegate:self];
 }
+
+- (void)enterChatRoom:(NSString*) roomId {
+    NSData* authBuffer = [QAVAuthBuffer GenAuthBuffer:SDKAPPID3RD.intValue roomID:roomId openID:identifier key:AUTHKEY];
+    
+    [[ITMGContext GetInstance] EnterRoom:roomId roomType:(int)1 authBuffer:authBuffer];
+}
+
+- (void)exitChatRoom {
+    [[ITMGContext GetInstance] ExitRoom];
+}
+
+- (void)enableMic:(NSString*) enabled {
+    if(isInRoom) {
+        [[[ITMGContext GetInstance] GetAudioCtrl] EnableAudioCaptureDevice:([enabled isEqualToString:@"true"])];
+        
+        [[[ITMGContext GetInstance] GetAudioCtrl] EnableAudioSend:([enabled isEqualToString:@"true"])];
+    }
+}
+
+-(void)OnEvent:(ITMG_MAIN_EVENT_TYPE)eventType data:(NSDictionary *)data{
+    NSString* log =[NSString stringWithFormat:@"OnEvent:%d,data:%@", (int)eventType, data];
+    NSLog(@"====%@====",log);
+    switch (eventType) {
+            case ITMG_MAIN_EVENT_TYPE_ENTER_ROOM:
+        {
+            int result = ((NSNumber*)[data objectForKey:@"result"]).intValue;
+            NSString* error_info = [data objectForKey:@"error_info"];
+            
+            if (result == 0)
+            {
+                isInRoom = true;
+                
+                [[[ITMGContext GetInstance] GetAudioCtrl] EnableAudioRecv:true];
+                
+                [[[ITMGContext GetInstance] GetAudioCtrl] EnableAudioPlayDevice:true];
+                
+                [[[ITMGContext GetInstance] GetAudioCtrl] TrackingVolume:2.1] ;
+            }
+        }
+            break;
+            case ITMG_MAIN_EVENT_TYPE_EXIT_ROOM:
+            case ITMG_MAIN_EVENT_TYPE_ROOM_DISCONNECT:
+        {
+            isInRoom = false;
+            [[[ITMGContext GetInstance] GetAudioCtrl] StopTrackingVolume];
+        }
+            break;
+            
+            case ITMG_EVENT_ID_USER_HAS_AUDIO:
+        {
+            
+        }
+            break;
+            case ITMG_EVENT_ID_USER_NO_AUDIO:
+        {
+            
+        }
+            break;
+            
+            case ITMG_MAIN_EVNET_TYPE_USER_UPDATE:
+        {
+            
+        }
+            break;
+            
+            case ITMG_MAIN_EVNET_TYPE_PTT_PLAY_COMPLETE:
+        {
+            int result = ((NSNumber*)[data objectForKey:@"result"]).intValue;
+            NSString* file_path = [data objectForKey:@"file_path"];
+            
+            NSLog(@"PlayRecordedFile:%@ result:%x",file_path,result);
+        }
+            break;
+            case ITMG_MAIN_EVENT_TYPE_ACCOMPANY_FINISH:
+        {
+            int result = ((NSNumber*)[data objectForKey:@"result"]).intValue;
+            NSString* file_path = [data objectForKey:@"file_path"];
+            NSNumber* is_finished = [data objectForKey:@"is_finished"];
+            
+            NSLog(@"ITMG_MAIN_EVENT_TYPE_ACCOMPANY_FINISH:%@ result:%x",file_path,result);
+            
+            if(is_finished.boolValue){
+                NSString* songPath =[[NSBundle mainBundle] pathForResource:@"song" ofType:@"mp3"];
+                [[[ITMGContext GetInstance] GetAudioEffectCtrl] StartAccompany:songPath loopBack:YES loopCount:1];
+            }else{
+
+            }
+        }
+            break;
+            
+            case ITMG_MAIN_EVNET_TYPE_USER_VOLUMES:
+        {
+            NSLog(@"ITMG_MAIN_EVNET_TYPE_USER_VOLUMES:%@ ",data);
+            
+            NSString* msg=[NSString stringWithFormat:@"vol:%@",data];
+            msg = [msg stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        }
+            break;
+            
+            case ITMG_MAIN_EVENT_TYPE_CHANGE_ROOM_TYPE:
+        {
+            NSLog(@"ITMG_MAIN_EVENT_TYPE_CHANGE_ROOM_TYPE:%@ ",data);
+            int result = ((NSNumber*)[data objectForKey:@"result"]).intValue;
+            
+            NSString* msg=[NSString stringWithFormat:@"change room Type:%d msg:%@",result,data];
+            int newRoomType = ((NSNumber*) [data objectForKey:@"new_room_type"]).intValue;
+            int subEventType = ((NSNumber*) [data objectForKey:@"sub_event_type"]).intValue;
+            switch (subEventType)
+            {
+                    case ITMG_ROOM_CHANGE_EVENT_ENTERROOM:
+                    break;
+                    case ITMG_ROOM_CHANGE_EVENT_COMPLETE:
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
+            
+            case ITMG_MAIN_EVENT_TYPE_CHANGE_ROOM_QUALITY:
+        {
+            NSLog(@"ITMG_MAIN_EVENT_TYPE_CHANGE_ROOM_QUALITY:%@ ", data);
+            int nWeight = ((NSNumber*)[data objectForKey:@"weight"]).intValue;
+            float fLoss = ((NSNumber*)[data objectForKey:@"loss"]).floatValue;
+            int nDelay = ((NSNumber*)[data objectForKey:@"delay"]).intValue;
+            NSString* msg=[NSString stringWithFormat:@"Weight=%d, Loss=%f, Delay=%d", nWeight, fLoss, nDelay];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 
 - (void)setExternalInterfaces {
 
@@ -431,7 +585,7 @@ static bool enabledIM = false;
     [_native setExternalInterface:@"sendSetupIMToNative" Callback:^(NSString* msg) {
         NSLog(@"sendSetupIMToNative message: %@", msg);
         
-        [self setupIM];
+        [self setupIM:msg];
     }];
     
     [_native setExternalInterface:@"sendQuitIMToNative" Callback:^(NSString* msg) {
@@ -463,6 +617,26 @@ static bool enabledIM = false;
         
             [[[NIMSDK sharedSDK] loginManager] autoLogin:loginData];
         }
+    }];
+    
+    [_native setExternalInterface:@"sendEnterChatRoomToNative" Callback:^(NSString* msg) {
+        NSLog(@"sendEnterChatRoomToNative message: %@", msg);
+        
+        [self enterChatRoom:msg];
+    }];
+    
+    [_native setExternalInterface:@"sendExitChatRoomToNative" Callback:^(NSString* msg) {
+        NSLog(@"sendExitChatRoomToNative message: %@", msg);
+        
+        isInRoom = false;
+        
+        [self exitChatRoom];
+    }];
+    
+    [_native setExternalInterface:@"sendEnableMicToNative" Callback:^(NSString* msg) {
+        NSLog(@"sendEnableMicToNative message: %@", msg);
+        
+        [self enableMic:msg];
     }];
     
     [_native setExternalInterface:@"sendCreateGroupSessionToNative" Callback:^(NSString* msg) {
@@ -574,5 +748,6 @@ static bool enabledIM = false;
 - (void)onAutoLoginFailed:(NSError *)error {
     NSLog(@"%@", error);
 }
+
 
 @end
