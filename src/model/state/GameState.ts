@@ -8,7 +8,7 @@ namespace moa {
 
         public roomName: string = undefined;
         public players: number = 0;
-        public maxPlayers: number = (platform.env == "local" || platform.env == "dev") ? 2 : 8;
+        public maxPlayers: number = (platform.env == "local" || platform.env == "dev") ? 2 : 2;
 
         public phase: GamePhase = GamePhase.Preparing;
 

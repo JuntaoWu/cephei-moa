@@ -101,7 +101,7 @@ namespace moa {
     export class DebugPlatform implements Platform {
 
         public get env(): string {
-            return "dev";
+            return "prod";
         }
 
         public get name(): string {
@@ -518,6 +518,6 @@ namespace moa {
 
     // todo: in the wrapped project, the platform had been declared in the child lib project alreay.
     export let platform: Platform;
-    platform = window["platform"] || new NativePlatform();
+    platform = window["platform"] || new DebugPlatform();
 
 }

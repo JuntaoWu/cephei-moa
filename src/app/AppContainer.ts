@@ -32,15 +32,15 @@ namespace moa {
             this.addChild(this.startScreen);
         }
 
-        private myChildGame: ap.Main;
-        public enterChildGame() {
-            this.removeChildren();
+        // private myChildGame: ap.Main;
+        // public enterChildGame() {
+        //     this.removeChildren();
 
-            if (!this.myChildGame) {
-                this.myChildGame = new ap.Main();
-            }
-            this.addChild(this.myChildGame);
-        }
+        //     if (!this.myChildGame) {
+        //         this.myChildGame = new ap.Main();
+        //     }
+        //     this.addChild(this.myChildGame);
+        // }
 
         public enterGameScreen(): void {
             platform.hideAllBannerAds();

@@ -92,6 +92,8 @@ namespace moa {
                 GameProxy.ZONG_PIAOSHU,
                 GameProxy.START_TWO,
                 GameProxy.ONE_YBRSKILL,
+                GameProxy.TWO_YBRSKILL,
+                GameProxy.THREE_YBRSKILL,
                 GameProxy.ONE_ZGQSKILL,
                 GameProxy.TOUREN,
                 GameProxy.TOUREN_JIEGUO,

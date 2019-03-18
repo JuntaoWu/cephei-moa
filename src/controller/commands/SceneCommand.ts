@@ -108,7 +108,7 @@ namespace moa {
                     break;
                 }
                 case SceneCommand.NAVIGATE_TO_CHILD_GAME: {
-                    appMediator.main.enterChildGame();
+                    // appMediator.main.enterChildGame();
                     break;
                 }
                 case SceneCommand.SHOW_USERINFO_WINDOW: {
