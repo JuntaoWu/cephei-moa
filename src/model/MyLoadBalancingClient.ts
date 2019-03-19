@@ -163,7 +163,7 @@ namespace moa {
                     this.receiveMessageSubject(event, message, sender);
                     break;
             }
-            this.logger.debug("onEvent", event, "message:", message, "actor:", actorNr);
+            this.output(`onEvent: ${event}, message: ${JSON.stringify(message)}, actor: ${actorNr}`);
 
         }
         updateUserIdAndNickname(vals, logger) {
@@ -235,6 +235,8 @@ namespace moa {
         }
 
         onMyRoomPropertiesChange() {
+            super.onMyRoomPropertiesChange();
+            console.log("onMyRoomPropertiesChange");
             this.updateRoomInfo();
         }
 

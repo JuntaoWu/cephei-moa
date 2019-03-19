@@ -43,7 +43,7 @@ namespace moa {
                     localResource: "",
                     remoteResource: "http://gdjzj.hzsdgames.com:8090/miniGame/",
                     ws: "ws://192.168.2.202:9092",
-                    wss: "wss://192.168.2.202:19092",
+                    wss: "wss://blgserver.hzsdgames.com:19092",
                 };
             }
             if (platform.env == "prod") {

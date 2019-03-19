@@ -92,6 +92,8 @@ namespace moa {
                 GameProxy.ZONG_PIAOSHU,
                 GameProxy.START_TWO,
                 GameProxy.ONE_YBRSKILL,
+                GameProxy.TWO_YBRSKILL,
+                GameProxy.THREE_YBRSKILL,
                 GameProxy.ONE_ZGQSKILL,
                 GameProxy.TOUREN,
                 GameProxy.TOUREN_JIEGUO,
@@ -506,7 +508,7 @@ namespace moa {
         }
 
         public first_one(message: string) {
-            this.setAnims();
+            // this.setAnims();
 
             const firstoneNr = +message;
             this.proxy.gameState.shunwei_one_been[1] = this.proxy.gameState.seats[firstoneNr];
@@ -642,8 +644,9 @@ namespace moa {
                 this.proxy.updatePlayerInfo(`skipskill${this.proxy.gameState.lunci}`, true);
             }
 
-            if (this.proxy.isActorLocal(this.proxy.gameState.role[2]) && this.proxy.gameState.ybrskill[2] > 0) {
-                this.proxy.gameState.ybrskill[2]--;
+            if (this.hasBeenAttacked()) {
+                // if (this.proxy.isActorLocal(this.proxy.gameState.role[2]) && this.proxy.gameState.ybrskill[2] > 0) {
+                // this.proxy.gameState.ybrskill[2]--;
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                 this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
             }
@@ -674,10 +677,11 @@ namespace moa {
             }
 
             if (this.proxy.isActorLocal(this.proxy.gameState.role[1])) {
-                if (this.proxy.gameState.ybrskill[1] > 0) {
+                if (this.hasBeenAttacked()) {
+                    // if (this.proxy.gameState.ybrskill[1] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
-                    this.proxy.gameState.ybrskill[1]--;
+                    // this.proxy.gameState.ybrskill[1]--;
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
@@ -749,11 +753,12 @@ namespace moa {
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[3])) {
-                if (this.proxy.gameState.ybrskill[3] > 0) {
+                if (this.hasBeenAttacked()) {
+                    // if (this.proxy.gameState.ybrskill[3] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
                     this.proxy.gameState.jyfskill = false;
-                    this.proxy.gameState.ybrskill[3]--;
+                    // this.proxy.gameState.ybrskill[3]--;
                 } else if (!this.proxy.gameState.jyfskill) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "无法鉴定");
                     if (this.proxy.gameState.lunci == 1) {
@@ -801,11 +806,11 @@ namespace moa {
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[4])) {
-
-                if (this.proxy.gameState.ybrskill[4] > 0) {
+                if (this.hasBeenAttacked()) {
+                    // if (this.proxy.gameState.ybrskill[4] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
-                    this.proxy.gameState.ybrskill[4]--;
+                    // this.proxy.gameState.ybrskill[4]--;
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
@@ -855,10 +860,11 @@ namespace moa {
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[5])) {
-                if (this.proxy.gameState.ybrskill[5] > 0) {
+                if (this.hasBeenAttacked()) {
+                    // if (this.proxy.gameState.ybrskill[5] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
-                    this.proxy.gameState.ybrskill[5]--;
+                    // this.proxy.gameState.ybrskill[5]--;
                 }
                 else {
                     if (this.proxy.gameState.lunci == 1) {
@@ -909,10 +915,11 @@ namespace moa {
                 this.chuanshunwei();
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[6])) {
-                if (this.proxy.gameState.ybrskill[6] > 0) {
+                if (this.hasBeenAttacked()) {
+                    // if (this.proxy.gameState.ybrskill[6] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
-                    this.proxy.gameState.ybrskill[6]--;
+                    // this.proxy.gameState.ybrskill[6]--;
                     this.chuanshunwei();
                 }
                 else {
@@ -980,10 +987,11 @@ namespace moa {
                 }
             }
             else if (this.proxy.isActorLocal(this.proxy.gameState.role[8])) {
-                if (this.proxy.gameState.ybrskill[8] > 0) {
+                if (this.hasBeenAttacked()) {
+                    // if (this.proxy.gameState.ybrskill[8] > 0) {
                     this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                     this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
-                    this.proxy.gameState.ybrskill[8]--;
+                    // this.proxy.gameState.ybrskill[8]--;
                     this.chuanshunwei();
                 }
                 else {
@@ -1155,17 +1163,20 @@ namespace moa {
 
         public ybrskilling(message: string) {
             console.log("GameScreenMediator triggered ybrskilling:", message);
-            const Nr = +message;
-            if (this.proxy.isActorLocal(this.proxy.gameState.seats[Nr])) {
+            const seatNumber = +message;
+            if (this.proxy.isActorLocal(this.proxy.gameState.seats[seatNumber])) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "不能对自己使用此技能");
             } else {
-                if (this.proxy.gameState.lunci == 1) {
-                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.oneybrtongbu, message);
-                } else if (this.proxy.gameState.lunci == 2) {
-                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.twoybrtongbu, message);
-                } else if (this.proxy.gameState.lunci == 3) {
-                    this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.threeybrtongbu, message);
-                }
+
+                this.proxy.ybrskilling(seatNumber);
+
+                // if (this.proxy.gameState.lunci == 1) {
+                //     this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.oneybrtongbu, message);
+                // } else if (this.proxy.gameState.lunci == 2) {
+                //     this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.twoybrtongbu, message);
+                // } else if (this.proxy.gameState.lunci == 3) {
+                //     this.proxy.loadBalancingClient.sendMessage(CustomPhotonEvents.threeybrtongbu, message);
+                // }
                 this.gameScreen.ybrskill1.visible = false;
                 this.gameScreen.ybrskill2.visible = false;
                 this.gameScreen.ybrskill3.visible = false;
@@ -1211,11 +1222,24 @@ namespace moa {
             this.chuanshunwei();
         }
 
+        public hasBeenAttacked() {
+            /**
+             * actorNr: actorNr,
+				seatNumber: seatNumber,
+				roleNumber: roleNumber,
+				affectRound: affectRound
+             */
+            this.proxy.ybrSkillTable.some(attack => {
+                return attack.affectRound === this.proxy.gameState.lunci
+                    && this.proxy.isActorLocal(this.proxy.gameState.seats[attack.seatNumber]);
+            });
+        }
+
         public fangzhenskill() {
-            if (this.proxy.gameState.ybrskill[2] > 0) {
+            if (this.hasBeenAttacked()) {
                 this.sendNotification(SceneCommand.SHOW_PROMPT_POPUP, "你被偷袭");
                 this.proxy.updatePlayerInfo(`touxi${this.proxy.gameState.lunci}`, true);
-                this.proxy.gameState.ybrskill[2]--;
+                // this.proxy.gameState.ybrskill[2]--;
                 this.chuanshunwei();
             } else {
                 this.gameScreen.fangzhenskill1.visible = true;

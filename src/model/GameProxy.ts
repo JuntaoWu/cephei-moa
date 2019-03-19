@@ -140,6 +140,8 @@ namespace moa {
 
 		public gameState: GameState = new GameState();
 
+		public ybrSkillTable = [];
+
 		public isActorMaster(actorModel: ActorModel): boolean {
 			return actorModel && actorModel.actorNr == this.loadBalancingClient.myRoomMasterActorNr();
 		}
@@ -281,6 +283,8 @@ namespace moa {
 				}
 			}
 
+			// this.ybrSkillTable = this.loadBalancingClient.myRoom().getCustomProperty("ybrSkillTable");
+
 			if (this.isMasterClient) {
 				if (this.gameState.phase == GamePhase.Preparing) {
 					console.log("GamePhase.Preparing: setCustomProperty");
@@ -307,6 +311,8 @@ namespace moa {
 			this.sendNotification(SceneCommand.CHANGE, Scene.Game);
 
 			this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState") || this.gameState;
+
+			this.ybrSkillTable = this.loadBalancingClient.myRoom().getCustomProperty("ybrSkillTable") || this.ybrSkillTable;
 
 			const accountProxy = this.facade().retrieveProxy(AccountProxy.NAME) as AccountProxy;
 			const userInfo = await AccountAdapter.loadUserInfo();
@@ -335,6 +341,8 @@ namespace moa {
 
 			switch (event) {
 				case CustomPhotonEvents.TakeSeat: {
+
+					console.log("CustomPhotonEvents.TakeSeat");
 
 					const { oldSeatNumber, newSeatNumber } = message;
 
@@ -394,7 +402,10 @@ namespace moa {
 					this.gameState = this.loadBalancingClient.myRoom().getCustomProperty("gameState");
 					this.sendNotification(SceneCommand.SHOW_ROUND_POPUP);
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
-					this.sendNotification(GameProxy.FIRST_ONE, message);
+					// if (this.loadBalancingClient.myActor().actorNr == actorNr) {
+					// 	this.updateActorState(actorNr, "isAuthing", true);
+					// 	// this.sendNotification(GameProxy.FIRST_ONE, message);
+					// }
 					break;
 				}
 				case CustomPhotonEvents.nextNr: {
@@ -607,6 +618,8 @@ namespace moa {
 						}
 					});
 
+					this.ybrSkillTable = this.loadBalancingClient.myRoom().getCustomProperty("ybrSkillTable");
+
 					if (this.isMasterClient) {
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
 					}
@@ -644,18 +657,71 @@ namespace moa {
 
 			this.gameState.phase = GamePhase.GameInProgress;
 
+			const firstActor = this.gameState.seats[this.gameState.firstOne];
+
+			this.gameState.shunwei_one_been[1] = firstActor;
+
+			this.updateCurrentActor({
+				actorNr: firstActor.actorNr,
+				action: "isAuthing",
+				updateOthers: true,
+			});
+
+			this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+
 			//sync gameState
 			console.log("MasterClient startGame: setCustomProperty");
 			console.log(this.gameState.baowulist);
 			console.log(this.gameState.onezj);
 			console.log(this.gameState.twozj);
 			console.log(this.gameState.threezj);
-			this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+
 			this.loadBalancingClient.sendMessage(CustomPhotonEvents.FirstOneNr, this.gameState.firstOne.toString());
 		}
 
+		private updateCurrentActor(message) {
+			this.gameState.seats.forEach(seat => {
+				if (!seat) {
+					return;
+				}
+
+				if (seat.actorNr == message.actorNr) {
+					seat.action = message.action;
+				}
+				else if (message.updateOthers) {
+					seat.action = "";
+				}
+			});
+		}
+
+		public ybrskilling(seatNumber: number) {
+			const ybrSkillTable = this.ybrSkillTable || [];
+			const actorNr = this.gameState.seats[seatNumber].actorNr;
+			const roleNumber = this.gameState.role.findIndex(r => r && r.actorNr == actorNr);
+
+			// check if actor had moved in current round.
+			let affectRound = this.gameState.lunci;
+			if (this.gameState.lunci === 1
+				&& this.gameState.shunwei_one_been.some(actor => actor && actor.actorNr == actorNr)) {
+				affectRound = 2;
+			}
+			else if (this.gameState.lunci === 2
+				&& this.gameState.shunwei_two_been.some(actor => actor && actor.actorNr == actorNr)) {
+				affectRound = 3;
+			}
+
+			ybrSkillTable.push({
+				actorNr: actorNr,
+				seatNumber: seatNumber,
+				roleNumber: roleNumber,
+				affectRound: affectRound
+			});
+
+			this.loadBalancingClient.myRoom().setCustomProperty("ybrSkillTable", ybrSkillTable, false, null);
+		}
+
 		private generateRoomNumber(roomNameLength: number) {
-			if(!+roomNameLength || roomNameLength <= 0) {
+			if (!+roomNameLength || roomNameLength <= 0) {
 				roomNameLength = 6;
 			}
 			const name = _.random(0, Math.pow(10, roomNameLength) - 1);
@@ -715,7 +781,7 @@ namespace moa {
 
 		public joinRoom(roomName: string) {
 
-			if(this.isBotEnabled && roomName == "0000") {
+			if (this.isBotEnabled && roomName == "0000") {
 				this.createRoom(6, 4);
 				return;
 			}
@@ -771,6 +837,7 @@ namespace moa {
 			this.actorNr = -1;
 			this.loadBalancingClient.autoRejoin = false;
 			this.gameState = new GameState();
+			this.ybrSkillTable = [];
 			this.resetPlayerInfo();
 		}
 

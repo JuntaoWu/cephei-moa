@@ -50,6 +50,8 @@ namespace moa {
         public ybrskill: Array<number> = [0, 0, 0, 0, 0, 0, 0, 0, 0];
         public jyfskill: boolean = true;
 
+        public ybrskillTable = [];
+
         public playerInfor: Array<PlayerInfo> = [];
 
         public weizhi_xuyuan: number;
