@@ -36,9 +36,6 @@ namespace moa {
         public onelcfskill: boolean = false;
         public twolcfskill: boolean = false;
         public threelcfskill: boolean = false;
-        public oneybrskill: number = 0;
-        public twoybrskill: number = 0;
-        public threeybrskill: number = 0;
         public onezgqskill: number = 100;
         public twozgqskill: number = 100;
         public threezgqskill: number = 100;

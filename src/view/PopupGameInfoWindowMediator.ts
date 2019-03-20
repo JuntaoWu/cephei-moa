@@ -117,8 +117,9 @@ namespace moa {
                 else if (playerInfor.skipskill1) { //跳过技能
                     this.popupGameInfoWindow.firstRound.skillText = GameInfo.skipSkill;
                 }
-                else if (i == RoleId.YaoBuRan && this.proxy.gameState.oneybrskill) { //药不然技能
-                    let seat = this.proxy.gameState.seats[this.proxy.gameState.oneybrskill];
+                else if (i == RoleId.YaoBuRan && this.proxy.ybrSkillTable.some(ybr => ybr.attackRound == 1)) { //药不然技能
+                    let attack = this.proxy.ybrSkillTable.find(ybr => ybr.attackRound == 1);
+                    let seat = this.proxy.gameState.seats[attack.seatNumber];
                     this.popupGameInfoWindow.firstRound.skillText = GameInfo.attack;
                     this.popupGameInfoWindow.firstRound.yaoSkill = {
                         color: seat.color.source,
@@ -178,8 +179,9 @@ namespace moa {
                 else if (playerInfor.skipskill2) { //跳过技能
                     this.popupGameInfoWindow.secondRound.skillText = GameInfo.skipSkill;
                 }
-                else if (i == RoleId.YaoBuRan && this.proxy.gameState.twoybrskill) { //药不然技能
-                    let seat = this.proxy.gameState.seats[this.proxy.gameState.twoybrskill];
+                else if (i == RoleId.YaoBuRan && this.proxy.ybrSkillTable.some(ybr => ybr.attackRound == 2)) { //药不然技能
+                    let attack = this.proxy.ybrSkillTable.find(ybr => ybr.attackRound == 2);
+                    let seat = this.proxy.gameState.seats[attack.seatNumber];
                     this.popupGameInfoWindow.secondRound.skillText = GameInfo.attack;
                     this.popupGameInfoWindow.secondRound.yaoSkill = {
                         color: seat.color.source,
@@ -239,8 +241,9 @@ namespace moa {
                 else if (playerInfor.skipskill3) { //跳过技能
                     this.popupGameInfoWindow.thirdRound.skillText = GameInfo.skipSkill;
                 }
-                else if (i == RoleId.YaoBuRan && this.proxy.gameState.threeybrskill) { //药不然技能
-                    let seat = this.proxy.gameState.seats[this.proxy.gameState.threeybrskill];
+                else if (i == RoleId.YaoBuRan && this.proxy.ybrSkillTable.some(ybr => ybr.attackRound == 3)) { //药不然技能
+                    let attack = this.proxy.ybrSkillTable.find(ybr => ybr.attackRound == 3);
+                    let seat = this.proxy.gameState.seats[attack.seatNumber];
                     this.popupGameInfoWindow.thirdRound.skillText = GameInfo.attack;
                     this.popupGameInfoWindow.thirdRound.yaoSkill = {
                         color: seat.color.source,

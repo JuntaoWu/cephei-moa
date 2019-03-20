@@ -40,6 +40,7 @@
 		"bin-debug/model/SettingProxy.js",
 		"bin-debug/model/common/ActorModel.js",
 		"bin-debug/model/common/Ad.js",
+		"bin-debug/model/common/Attack.js",
 		"bin-debug/model/common/Club.js",
 		"bin-debug/model/common/CommonData.js",
 		"bin-debug/model/common/Constants.js",

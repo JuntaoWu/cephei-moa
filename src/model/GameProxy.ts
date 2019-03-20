@@ -103,9 +103,6 @@ namespace moa {
 		public static PIAO_SHU: string = "piao_shu";
 		public static TOUPIAO_END: string = "toupiao_end";
 		public static START_TWO: string = "start_two";
-		public static ONE_YBRSKILL: string = "one_ybrskill";
-		public static TWO_YBRSKILL: string = "two_ybrskill";
-		public static THREE_YBRSKILL: string = "three_ybrskill";
 		public static ONE_ZGQSKILL: string = "one_zgqskill";
 		public static TOUREN: string = "touren";
 		public static TOUREN_JIEGUO: string = "touren_jieguo";
@@ -140,7 +137,7 @@ namespace moa {
 
 		public gameState: GameState = new GameState();
 
-		public ybrSkillTable = [];
+		public ybrSkillTable: Attack[] = [];
 
 		public isActorMaster(actorModel: ActorModel): boolean {
 			return actorModel && actorModel.actorNr == this.loadBalancingClient.myRoomMasterActorNr();
@@ -497,24 +494,6 @@ namespace moa {
 					this.gameState.threelcfskill = true;
 					break;
 				}
-				case CustomPhotonEvents.oneybrtongbu: {
-					const Nr = +message;
-					this.gameState.oneybrskill = Nr;
-					this.sendNotification(GameProxy.ONE_YBRSKILL, Nr);
-					break;
-				}
-				case CustomPhotonEvents.twoybrtongbu: {
-					const Nr = +message;
-					this.gameState.twoybrskill = Nr;
-					this.sendNotification(GameProxy.TWO_YBRSKILL, Nr);
-					break;
-				}
-				case CustomPhotonEvents.threeybrtongbu: {
-					const Nr = +message;
-					this.gameState.threeybrskill = Nr;
-					this.sendNotification(GameProxy.THREE_YBRSKILL, Nr);
-					break;
-				}
 				case CustomPhotonEvents.onezgqtongbu: {
 					const Nr = +message;
 					this.gameState.onezgqskill = Nr;
@@ -703,18 +682,20 @@ namespace moa {
 			let affectRound = this.gameState.lunci;
 			if (this.gameState.lunci === 1
 				&& this.gameState.shunwei_one_been.some(actor => actor && actor.actorNr == actorNr)) {
-				affectRound = 2;
+				++affectRound;
 			}
 			else if (this.gameState.lunci === 2
-				&& this.gameState.shunwei_two_been.some(actor => actor && actor.actorNr == actorNr)) {
-				affectRound = 3;
+				&& (this.gameState.shunwei_two_been.some(actor => actor && actor.actorNr == actorNr))
+				|| ybrSkillTable.some(attack => attack.actorNr == actorNr && attack.attackRound == 1 && attack.affectRound == 2)) {
+				++affectRound;
 			}
 
 			ybrSkillTable.push({
 				actorNr: actorNr,
 				seatNumber: seatNumber,
 				roleNumber: roleNumber,
-				affectRound: affectRound
+				affectRound: affectRound,
+				attackRound: this.gameState.lunci,
 			});
 
 			this.loadBalancingClient.myRoom().setCustomProperty("ybrSkillTable", ybrSkillTable, false, null);
