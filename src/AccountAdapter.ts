@@ -218,14 +218,14 @@ namespace moa {
         /**
          * saveUserGameRecords
          */
-        public static saveUserGameRecords(records) {
+        public static saveUserGameRecords(records, roomName, createdBy) {
 
             if (CommonData.logon && CommonData.logon.userId) {
-                console.log(`saveUserGameRecords via app server begin, userId: ${CommonData.logon.userId}.`);
+                console.log(`saveUserGameRecords via app server begin, userId: ${CommonData.logon.userId}, createdBy: ${createdBy}.`);
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${Constants.Endpoints.service}records/create/?token=${CommonData.logon.token}`, egret.HttpMethod.POST);
+                request.open(`${Constants.Endpoints.service}records/create/?token=${CommonData.logon.token}&roomName=${roomName}&createdBy=${createdBy}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send(JSON.stringify(records));
@@ -373,6 +373,28 @@ namespace moa {
                     }
                 }, this);
             });
+        }
+
+        public static async logCurrentRoomReady(roomName: string, createdBy: string): Promise<any> {
+            if (CommonData.logon && CommonData.logon.userId) {
+                console.log(`logCurrentRoomReady via app server begin, userId: ${CommonData.logon.userId}, createdBy: ${createdBy}.`);
+
+                var request = new egret.HttpRequest();
+                request.responseType = egret.HttpResponseType.TEXT;
+                request.open(`${Constants.Endpoints.service}games/ready/?token=${CommonData.logon.token}&roomName=${roomName}&createdBy=${createdBy}`, egret.HttpMethod.POST);
+                request.setRequestHeader("Content-Type", "application/json");
+
+                request.send();
+
+                request.addEventListener(egret.Event.COMPLETE, (event: egret.Event) => {
+                    console.log(`logCurrentRoomReady via app server end.`);
+                }, this);
+
+                request.addEventListener(egret.IOErrorEvent.IO_ERROR, () => { }, this);
+            }
+            else {
+                console.log(`We don't have openId now, skip.`);
+            }
         }
     }
 }

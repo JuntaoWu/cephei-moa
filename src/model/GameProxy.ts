@@ -135,6 +135,13 @@ namespace moa {
 			platform.setStorage("currentRoom", value);
 		}
 
+		public get isLastPlayer(): boolean {
+			return platform.getStorage("isLastPlayer") && platform.getStorage("isLastPlayer") == "true";
+		}
+		public set isLastPlayer(v: boolean) {
+			platform.setStorage("isLastPlayer", (!!v).toString());
+		}
+
 		public gameState: GameState = new GameState();
 
 		public ybrSkillTable: Attack[] = [];
@@ -219,8 +226,10 @@ namespace moa {
 					platform.showToast("连接服务器成功");
 
 					const rejoinAt = this.lastSeenErrorAt + 6000;
-					const delay = Math.max(rejoinAt - (+new Date()), 500);
+					let delay = Math.max(rejoinAt - (+new Date()), 500);
 					console.log("Will rejoin after: ", delay);
+
+					delay = 0;
 
 					if (delay > 0 && (this.roomName || (this.loadBalancingClient.autoRejoin && this.currentRoom && this.currentRoom.roomName))) {
 						egret.setTimeout(() => {
@@ -368,6 +377,8 @@ namespace moa {
 					if (this.isMasterClient) {
 						console.log("CustomPhotonEvents.StartChoosingRole: setCustomProperty");
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
+
+						AccountAdapter.logCurrentRoomReady(this.roomName, this.loadBalancingClient.getUserId());
 					}
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					break;
@@ -678,7 +689,7 @@ namespace moa {
 			const actorNr = this.gameState.seats[seatNumber].actorNr;
 			const roleNumber = this.gameState.role.findIndex(r => r && r.actorNr == actorNr);
 
-			// check if actor had moved in current round.
+			// check if actor completed his turn in current round.
 			let affectRound = this.gameState.lunci;
 			if (this.gameState.lunci === 1
 				&& this.gameState.shunwei_one_been.some(actor => actor && actor.actorNr == actorNr)) {
@@ -720,7 +731,6 @@ namespace moa {
 					maxPlayers: this.gameState.maxPlayers,
 					suspendedPlayerLiveTime: -1,
 					emptyRoomLiveTime: 12000,
-					uniqueUserId: true,
 					propsListedInLobby: []
 				});
 				this.isCreating = false;
@@ -746,9 +756,9 @@ namespace moa {
 			if (this.actorNr && this.actorNr != -1) {
 				return this.actorNr;
 			}
-			else if (this.loadBalancingClient.myActor().getJoinToken()) {
-				return this.loadBalancingClient.myActor().getJoinToken();
-			}
+			// else if (this.loadBalancingClient.myActor().getJoinToken()) {
+			// 	return this.loadBalancingClient.myActor().getJoinToken();
+			// }
 			else {
 				const currentRoom = platform.getStorage("currentRoom");
 				if (currentRoom && currentRoom.roomName == roomName) {
@@ -776,7 +786,7 @@ namespace moa {
 				let joinToken = this.getCurrentJoinToken(roomName);
 				console.log(`Begin joinRoom: ${roomName} with joinToken: ${joinToken}`);
 				this.loadBalancingClient.joinRoom(roomName, {
-					joinToken: joinToken
+					rejoin: joinToken
 				});
 			}
 			else if (this.loadBalancingClient.isJoinedToRoom()) {
@@ -820,6 +830,7 @@ namespace moa {
 			this.gameState = new GameState();
 			this.ybrSkillTable = [];
 			this.resetPlayerInfo();
+			this.isLastPlayer = false;
 		}
 
 		public joinSeat(data: any) {
@@ -848,6 +859,14 @@ namespace moa {
 
 		public getSyPiaoshu() {
 			return this.loadBalancingClient.myActor().getCustomProperty("syPiaoshu");
+		}
+
+		public setIsLastPlayer(isLastPlayer) {
+			this.loadBalancingClient.myActor().setCustomProperty("isLastPlayer", isLastPlayer);
+		}
+
+		public getIsLastPlayer() {
+			return this.loadBalancingClient.myActor().getCustomProperty("isLastPlayer");
 		}
 
 		public updatePlayerInfo(key, value) {
@@ -897,7 +916,7 @@ namespace moa {
 				return result;
 			}).filter(record => record);
 
-			await AccountAdapter.saveUserGameRecords(records);
+			await AccountAdapter.saveUserGameRecords(records, this.roomName, this.loadBalancingClient.getUserId());
 		}
 	}
 }

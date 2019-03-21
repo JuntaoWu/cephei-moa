@@ -109,7 +109,7 @@ namespace moa {
         }
 
         public get appVersion(): string {
-            return "1.1.7";
+            return "1.1.8";
         }
 
         public get os(): string {
@@ -322,7 +322,7 @@ namespace moa {
         }
 
         public get os(): string {
-            return "ios";
+            return "android";
         }
 
         public setStorage(key, data) {
@@ -518,6 +518,6 @@ namespace moa {
 
     // todo: in the wrapped project, the platform had been declared in the child lib project alreay.
     export let platform: Platform;
-    platform = window["platform"] || new DebugPlatform();
+    platform = window["platform"] || new NativePlatform();
 
 }

@@ -166,11 +166,11 @@ namespace moa {
             this.output(`onEvent: ${event}, message: ${JSON.stringify(message)}, actor: ${actorNr}`);
 
         }
-        updateUserIdAndNickname(vals, logger) {
-            super.updateUserIdAndNickname(vals, logger);
-            let data = vals[Photon.LoadBalancing.Constants.ParameterCode.Data];
-            this.myActor().setCustomProperty("data", data);
-        }
+        // updateUserIdAndNickname(vals, logger) {
+        //     super.updateUserIdAndNickname(vals, logger);
+        //     let data = vals[Photon.LoadBalancing.Constants.ParameterCode.Data];
+        //     this.myActor().setCustomProperty("data", data);
+        // }
         onOperationResponse(errorCode, errorMsg, code, content) {
             super.onOperationResponse(errorCode, errorMsg, code, content);  // important to call, to keep state up to date
             if (errorCode) {
