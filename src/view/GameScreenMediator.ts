@@ -299,6 +299,8 @@ namespace moa {
 
                     this.gameScreen.isWaitNextTurnOrWaitTouRen = this.gameScreen.isWaitNextTurn || this.gameScreen.isWaitTouRen;
                     break;
+                case GamePhase.GameOver:
+                    this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
             }
 
             this.touxiang(data.seats);
@@ -1036,6 +1038,11 @@ namespace moa {
         }
 
         private setZhengGuoquSkill() {
+
+            if(this.proxy.gameState.lunci == 99) {
+                return;
+            }
+
             const animConfig = [
                 { controlName: "zgqskill1", index: 0 },
                 { controlName: "zgqskill2", index: 1 },
@@ -1530,14 +1537,13 @@ namespace moa {
         public isWaitTouRen() {
             if (this.proxy.gameState.defen < 2) {
                 this.gameScreen.startno2.visible = false;
-                this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 if (this.proxy.isMasterClient) {
                     this.proxy.updateUserGameRecords();
                 }
             }
             else if (this.proxy.gameState.defen == 6) {
                 this.gameScreen.startno2.visible = false;
-                this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
+                // this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 if (this.proxy.isMasterClient) {
                     this.proxy.updateUserGameRecords();
                 }
@@ -1668,7 +1674,7 @@ namespace moa {
                 console.log(message2);
                 console.log(message3);
 
-                this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
+                // this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
                 if (this.proxy.isMasterClient) {
                     this.proxy.updateUserGameRecords();
                 }
@@ -1686,7 +1692,10 @@ namespace moa {
                 }
             });
             if (i == this.proxy.gameState.maxPlayers) {
-                this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
+                if (this.proxy.isMasterClient) {
+                    this.proxy.updateUserGameRecords();
+                }
+                // this.sendNotification(SceneCommand.SHOW_RESULT_WINDOW);
             }
         }
 

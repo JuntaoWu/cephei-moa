@@ -400,7 +400,7 @@ namespace moa {
 						console.log("CustomPhotonEvents.StartChoosingRole: setCustomProperty");
 						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState, false, null);
 
-						AccountAdapter.logCurrentRoomReady(this.roomName, this.loadBalancingClient.getUserId());
+						AccountAdapter.logCurrentRoomReady(this.roomName, this.loadBalancingClient.myRoom().getCustomProperty("createdBy"));
 					}
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					break;
@@ -599,8 +599,12 @@ namespace moa {
 						}
 					});
 
+					if (message && message.action == "GameOver") {
+						this.gameState.phase = GamePhase.GameOver;
+					}
+
 					if (this.isMasterClient) {
-						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
+
 						if (message && message.action == "isSpeaking") {
 							console.log("MasterClient notified: isSpeaking");
 							if (this.isIMEnabled) {
@@ -612,6 +616,8 @@ namespace moa {
 								// });
 							}
 						}
+
+						this.loadBalancingClient.myRoom().setCustomProperty("gameState", this.gameState);
 					}
 					this.sendNotification(GameProxy.PLAYER_UPDATE, this.gameState);
 					break;
@@ -753,7 +759,10 @@ namespace moa {
 					maxPlayers: this.gameState.maxPlayers,
 					suspendedPlayerLiveTime: -1,
 					emptyRoomLiveTime: 12000,
-					propsListedInLobby: []
+					propsListedInLobby: [],
+					customGameProperties: {
+						createdBy: this.userInfo.userId,
+					}
 				});
 				this.isCreating = false;
 			}
@@ -918,6 +927,7 @@ namespace moa {
 		}
 
 		public async updateUserGameRecords(): Promise<void> {
+			this.updateMyState("GameOver", false, Receiver.All);
 
 			const masterRoleId = this.gameState.role.findIndex(r => this.isActorLocal(r));
 			const masterCamp = this.rolesMap.get(masterRoleId.toString()).camp;
@@ -940,7 +950,7 @@ namespace moa {
 				return result;
 			}).filter(record => record);
 
-			await AccountAdapter.saveUserGameRecords(records, this.roomName, this.loadBalancingClient.getUserId());
+			await AccountAdapter.saveUserGameRecords(records, this.roomName, this.loadBalancingClient.myRoom().getCustomProperty("createdBy"));
 		}
 	}
 }
