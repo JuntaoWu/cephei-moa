@@ -1,7 +1,7 @@
 
 namespace moa {
 
-    const photonAppId = "f0e09630-c30e-4d9d-8d60-64d91ebf642b";
+    export const photonAppId = "f0e09630-c30e-4d9d-8d60-64d91ebf642b";
     const photonAppVersion = "1.0";
 
     const connectOnStart = true;
@@ -11,7 +11,8 @@ namespace moa {
         private isWaitingForStart: boolean = false;
 
         private static get photonWss() {
-            return platform.env == "prod" || platform.env == "test";
+            return true;
+            // return platform.env == "prod" || platform.env == "test";
         }
 
         public retried: number = 0;
@@ -77,7 +78,7 @@ namespace moa {
             }
 
             if (errorCode == 1003) {
-                if (++this.retried < this.maxRetriedCount) {
+                if (++this.retried <= this.maxRetriedCount) {
                     this.start();
                 }
                 else if (!this.isWaitingForStart) {
@@ -99,7 +100,7 @@ namespace moa {
                 }
             }
             else if (errorCode == 1004) {
-                if (++this.retried < this.maxRetriedCount) {
+                if (++this.retried <= this.maxRetriedCount) {
                     this.start();
                 }
                 else if (!this.isWaitingForStart) {
@@ -120,7 +121,7 @@ namespace moa {
                 }
             }
             else {
-                if (++this.retried < this.maxRetriedCount) {
+                if (++this.retried <= this.maxRetriedCount) {
                     this.start();
                 }
                 else if (!this.isWaitingForStart) {
@@ -178,7 +179,7 @@ namespace moa {
                 switch (errorCode) {
                     case 32746:
                         platform.showToast("不能重复加入");
-                        this.autoRejoin = false;
+                        // this.autoRejoin = false;
                         break;
                     case 32748:
                         platform.showToast("房间已关闭");

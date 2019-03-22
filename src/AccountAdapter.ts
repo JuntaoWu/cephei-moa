@@ -381,7 +381,7 @@ namespace moa {
 
                 var request = new egret.HttpRequest();
                 request.responseType = egret.HttpResponseType.TEXT;
-                request.open(`${Constants.Endpoints.service}games/ready/?token=${CommonData.logon.token}&roomName=${roomName}&createdBy=${createdBy}`, egret.HttpMethod.POST);
+                request.open(`${Constants.Endpoints.service}games/${photonAppId}/ready/?token=${CommonData.logon.token}&roomName=${roomName}&createdBy=${createdBy}`, egret.HttpMethod.POST);
                 request.setRequestHeader("Content-Type", "application/json");
 
                 request.send();

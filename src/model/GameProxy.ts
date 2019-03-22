@@ -36,7 +36,17 @@ namespace moa {
 				if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected
 					|| self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
 					self.loadBalancingClient.autoRejoin = true;
-					self.loadBalancingClient.start();
+					egret.setTimeout(() => {
+						self.loadBalancingClient.start();
+					}, this, 1000);
+				}
+				else if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby
+					&& this.loadBalancingClient.autoRejoin) {
+					const currentRoom = this.currentRoom;
+					if (currentRoom && currentRoom.roomName) {
+						console.log("autoRejoin room:", currentRoom.roomName);
+						this.joinRoom(currentRoom.roomName);
+					}
 				}
 			});
 
@@ -56,7 +66,17 @@ namespace moa {
 				if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Disconnected
 					|| self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Error) {
 					self.loadBalancingClient.autoRejoin = true;
-					self.loadBalancingClient.start();
+					egret.setTimeout(() => {
+						self.loadBalancingClient.start();
+					}, this, 1000);
+				}
+				else if (self.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.JoinedLobby
+					&& this.loadBalancingClient.autoRejoin) {
+					const currentRoom = this.currentRoom;
+					if (currentRoom && currentRoom.roomName) {
+						console.log("autoRejoin room:", currentRoom.roomName);
+						this.joinRoom(currentRoom.roomName);
+					}
 				}
 			});
 		}
@@ -307,6 +327,8 @@ namespace moa {
 		private async onJoinRoom() {
 
 			console.log("onJoinRoom hideLoading");
+
+			platform.setStorage(this.roomName, (+new Date()).toString());
 
 			platform.hideLoading();
 
@@ -753,21 +775,7 @@ namespace moa {
 		}
 
 		private getCurrentJoinToken(roomName: string): any {
-			if (this.actorNr && this.actorNr != -1) {
-				return this.actorNr;
-			}
-			// else if (this.loadBalancingClient.myActor().getJoinToken()) {
-			// 	return this.loadBalancingClient.myActor().getJoinToken();
-			// }
-			else {
-				const currentRoom = platform.getStorage("currentRoom");
-				if (currentRoom && currentRoom.roomName == roomName) {
-					return currentRoom.actorNr;
-				}
-				else {
-					return this.userInfo.unionId && this.userInfo.unionId.substr(5);
-				}
-			}
+			return platform.getStorage(roomName);
 		}
 
 		public joinRoom(roomName: string) {
@@ -782,11 +790,13 @@ namespace moa {
 			platform.showLoading("加载中");
 
 			this.roomName = roomName;
+			const joinToken = this.getCurrentJoinToken(roomName);
+			this.loadBalancingClient.autoRejoin = !!joinToken;
+
 			if (this.loadBalancingClient.isInLobby() && !this.loadBalancingClient.isJoinedToRoom()) {
-				let joinToken = this.getCurrentJoinToken(roomName);
 				console.log(`Begin joinRoom: ${roomName} with joinToken: ${joinToken}`);
 				this.loadBalancingClient.joinRoom(roomName, {
-					rejoin: joinToken
+					rejoin: !!joinToken,
 				});
 			}
 			else if (this.loadBalancingClient.isJoinedToRoom()) {
@@ -796,7 +806,9 @@ namespace moa {
 				}
 				else {
 					this.loadBalancingClient.leaveRoom();
-					this.loadBalancingClient.joinRoom(roomName);
+					this.loadBalancingClient.joinRoom(roomName, {
+						rejoin: !!joinToken
+					});
 				}
 			}
 			else if (this.loadBalancingClient.state == Photon.LoadBalancing.LoadBalancingClient.State.Uninitialized
@@ -818,15 +830,27 @@ namespace moa {
 
 		public leaveRoom() {
 			this.reset();
+			this.cleanup();
 			this.loadBalancingClient.leaveRoom();
+		}
+
+		// cleanup persist room info when LeaveRoom manually.
+		// so autoRejoining based on persist room info will be stopped.
+		public cleanup() {
+			platform.setStorage(this.loadBalancingClient.myRoom().name, "");
+			platform.setStorage("currentRoom", {
+				roomName: "",
+				actorNr: -1
+			});
+			this.isEnteredChatRoom = false;
 			platform.exitChatRoom();
 		}
 
+		// reset memory room info when Disconnected
+		// so UI triggered joinRoom won't be retried again.
+		// autoRejoining based on persist room info will still work.
 		public reset() {
-			this.isEnteredChatRoom = false;
 			this.roomName = undefined;
-			this.actorNr = -1;
-			this.loadBalancingClient.autoRejoin = false;
 			this.gameState = new GameState();
 			this.ybrSkillTable = [];
 			this.resetPlayerInfo();
