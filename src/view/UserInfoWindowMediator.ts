@@ -29,7 +29,7 @@ namespace moa {
             let campLaoWin = userInfo.gameRecords.countLaoChaofengWin;
 
             this.userInfoWindow.nickName = userInfo.nickName;
-            this.userInfoWindow.avatarUrl = userInfo.avatarUrl;
+            this.userInfoWindow.avatarUrl = userInfo.avatarUrl || 'head';
             this.userInfoWindow.totalPlay = `共${totalPlay}局`;
             this.userInfoWindow.winPlay = winPlay;
             this.userInfoWindow.failPlay = totalPlay - winPlay;

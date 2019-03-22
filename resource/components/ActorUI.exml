@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<e:Skin class="skins.ActorUI" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui">
+<e:Skin class="skins.ActorUI" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<w:Config id="169a46384cb"/>
     <e:Button id="btnActor" enabled="{enabled}" anchorOffsetX="0" width="130" height="130">
             <e:Skin>
-                <e:Image name="content" horizontalCenter="0" verticalCenter="0" />
+                <e:Image name="content" horizontalCenter="0" verticalCenter="0" maxWidth="120" maxHeight="120" />
                 <e:Image name="normalBg" source="head_bg" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" />
                 <e:Image name="colorImage" source="red" x="-20" y="-15" />

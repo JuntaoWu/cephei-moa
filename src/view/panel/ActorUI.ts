@@ -28,7 +28,7 @@ namespace moa {
         public update(data) {
             this.data = data;
             let content = this.btnActor.getChildByName("content") as eui.Image;
-            content.source = this.data.avatarUrl;
+            content.source = this.data.avatarUrl || "head";
 
             let nickName = this.btnActor.getChildByName("nickName") as eui.Label;
             nickName.text = this.data.name;

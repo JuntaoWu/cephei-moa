@@ -411,14 +411,14 @@ namespace moa {
         public touxiang(seats: Array<ActorModel>) {
 
             const seatConfig = [
-                { seatNumber: 1, controlName: "btnSeat1", defaultSource: "color-black" },
-                { seatNumber: 2, controlName: "btnSeat2", defaultSource: "color-blue" },
-                { seatNumber: 3, controlName: "btnSeat3", defaultSource: "color-green" },
-                { seatNumber: 4, controlName: "btnSeat4", defaultSource: "color-orange" },
-                { seatNumber: 5, controlName: "btnSeat5", defaultSource: "color-purple" },
-                { seatNumber: 6, controlName: "btnSeat6", defaultSource: "color-red" },
-                { seatNumber: 7, controlName: "btnSeat7", defaultSource: "color-white" },
-                { seatNumber: 8, controlName: "btnSeat8", defaultSource: "color-yellow" },
+                { seatNumber: 1, controlName: "btnSeat1", defaultSource: "head" },
+                { seatNumber: 2, controlName: "btnSeat2", defaultSource: "head" },
+                { seatNumber: 3, controlName: "btnSeat3", defaultSource: "head" },
+                { seatNumber: 4, controlName: "btnSeat4", defaultSource: "head" },
+                { seatNumber: 5, controlName: "btnSeat5", defaultSource: "head" },
+                { seatNumber: 6, controlName: "btnSeat6", defaultSource: "head" },
+                { seatNumber: 7, controlName: "btnSeat7", defaultSource: "head" },
+                { seatNumber: 8, controlName: "btnSeat8", defaultSource: "head" },
             ];
 
             seatConfig.forEach((config, index) => {

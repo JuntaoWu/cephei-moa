@@ -85,7 +85,7 @@ namespace moa {
                             this.proxy.gameState[voteNumList[i]].forEach((v, k) => {
                                 if (v && +v.toString().substr(j * 2, 2)) {
                                     obj.voteDetail.push({
-                                        voterColor: this.proxy.gameState.seats[k].color.source,
+                                        voterColor: this.proxy.gameState.seatsClone[k].color.source,
                                         voteNum: + v.toString().substr(j * 2, 2)
                                     });
                                 }
@@ -113,36 +113,36 @@ namespace moa {
             this.resultWindow.voteYao = null;
             //许愿
             if (this.proxy.gameState.role[RoleId.XuYuan]) {
-                let seatXu = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.XuYuan].actorNr);
+                let seatXu = this.proxy.gameState.seatsClone.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.XuYuan].actorNr);
                 this.resultWindow.roleXu = {
                     color: seatXu && seatXu.color.source,
-                    url: seatXu && seatXu.avatarUrl,
+                    url: seatXu && seatXu.avatarUrl || 'head',
                 }
             }
             //方震
             if (this.proxy.gameState.role[RoleId.FangZheng]) {
-                let seatFang = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.FangZheng].actorNr);
+                let seatFang = this.proxy.gameState.seatsClone.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.FangZheng].actorNr);
                 this.resultWindow.roleFang = {
                     color: seatFang && seatFang.color.source,
-                    url: seatFang && seatFang.avatarUrl,
+                    url: seatFang && seatFang.avatarUrl || 'head',
                 }
             }
             //老朝奉
             if (this.proxy.gameState.role[RoleId.LaoChaoFen]) {
-                let seatLao = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.LaoChaoFen].actorNr);
+                let seatLao = this.proxy.gameState.seatsClone.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.LaoChaoFen].actorNr);
                 this.resultWindow.roleLao = {
                     color: seatLao && seatLao.color.source,
-                    url: seatLao && seatLao.avatarUrl,
+                    url: seatLao && seatLao.avatarUrl || 'head',
                 }
                 //老朝奉投人
                 let votedLao = this.proxy.gameState.touren[RoleId.LaoChaoFen];
                 if (seatLao && votedLao) {
                     this.resultWindow.voteLao = {
                         voterColor: seatLao.color.source,
-                        voterUrl: seatLao.avatarUrl,
+                        voterUrl: seatLao.avatarUrl || 'head',
                         votedColor: votedLao.color.source,
                         votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == votedLao.actorNr)).toString()).name,
-                        votedUrl: votedLao.avatarUrl,
+                        votedUrl: votedLao.avatarUrl || 'head',
                     }
                 }
 
@@ -150,15 +150,15 @@ namespace moa {
             //药不然投人
             if (this.proxy.gameState.role[RoleId.YaoBuRan]) {
 
-                let seatYao = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.YaoBuRan].actorNr);
+                let seatYao = this.proxy.gameState.seatsClone.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.YaoBuRan].actorNr);
                 let votedYao = this.proxy.gameState.touren[RoleId.YaoBuRan];
                 if (seatYao && votedYao) {
                     this.resultWindow.voteYao = {
                         voterColor: seatYao.color.source,
-                        voterUrl: seatYao.avatarUrl,
+                        voterUrl: seatYao.avatarUrl || 'head',
                         votedColor: votedYao.color.source,
                         votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == votedYao.actorNr)).toString()).name,
-                        votedUrl: votedYao.avatarUrl,
+                        votedUrl: votedYao.avatarUrl || 'head',
                     }
                 }
             }
@@ -169,14 +169,14 @@ namespace moa {
                 let campXuVotes = [];
                 this.proxy.gameState.touren.forEach((item, index) => {
                     if (index < 6 && item) {
-                        let voterSeat = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[index].actorNr);
+                        let voterSeat = this.proxy.gameState.seatsClone.find(seat => seat && seat.actorNr == this.proxy.gameState.role[index].actorNr);
                         campXuVotes.push({
                             voterColor: voterSeat.color.source,
                             voterName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == voterSeat.actorNr)).toString()).name,
-                            voterUrl: voterSeat.avatarUrl,
+                            voterUrl: voterSeat.avatarUrl || 'head',
                             votedColor: item.color.source,
                             votedName: this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == item.actorNr)).toString()).name,
-                            votedUrl: item.avatarUrl,
+                            votedUrl: item.avatarUrl || 'head',
                         })
                     }
                 })

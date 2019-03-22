@@ -14,6 +14,8 @@ namespace moa {
 
         public seats: Array<ActorModel> = [];
 
+        public seatsClone: Array<ActorModel> = [];
+
         public role: Array<ActorModel> = [];
         public touren: Array<ActorModel> = [];
         public shunwei_one_been: Array<ActorModel> = [];

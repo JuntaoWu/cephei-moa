@@ -78,7 +78,7 @@ namespace moa {
             const userInfo = await AccountAdapter.loadUserInfo();
             console.log("loadUserInfo completed.", JSON.stringify(userInfo));
             this.startScreen.nickName = userInfo.nickName;
-            this.startScreen.avatarUrl = userInfo.avatarUrl || "meihua";
+            this.startScreen.avatarUrl = userInfo.avatarUrl || 'head';
 
             await this.gameProxy.initialize();
 

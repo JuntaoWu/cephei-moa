@@ -21,14 +21,14 @@ namespace moa {
             this.popupGameInfoWindow.role = this.proxy.rolesMap.get(selfId.toString());
             let selfSeat = this.proxy.gameState.seats.find(i => i && i.actorNr == this.proxy.gameState.role[selfId].actorNr);
             this.popupGameInfoWindow.nickName = selfSeat.name;
-            this.popupGameInfoWindow.avatarUrl = selfSeat.avatarUrl;
+            this.popupGameInfoWindow.avatarUrl = selfSeat.avatarUrl || 'head';
             this.popupGameInfoWindow.selfColor = selfSeat.color.source;
 
             this.popupGameInfoWindow.teammate = null;
             if (selfId == RoleId.LaoChaoFen && this.proxy.gameState.role[RoleId.YaoBuRan]) {
                 let seatYao = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.YaoBuRan].actorNr);
                 this.popupGameInfoWindow.teammate = {
-                    avatarUrl: seatYao.avatarUrl,
+                    avatarUrl: seatYao.avatarUrl || 'head',
                     color: seatYao.color.source,
                     nickName: seatYao.name,
                     name: "药不然",
@@ -37,7 +37,7 @@ namespace moa {
             else if (selfId == RoleId.YaoBuRan && this.proxy.gameState.role[RoleId.LaoChaoFen]) {
                 let seatLao = this.proxy.gameState.seats.find(seat => seat && seat.actorNr == this.proxy.gameState.role[RoleId.LaoChaoFen].actorNr);
                 this.popupGameInfoWindow.teammate = {
-                    avatarUrl: seatLao.avatarUrl,
+                    avatarUrl: seatLao.avatarUrl || 'head',
                     color: seatLao.color.source,
                     nickName: seatLao.name,
                     name: "老朝奉",
@@ -85,7 +85,7 @@ namespace moa {
                     if (i == RoleId.FangZheng) {
                         let seeSeat = this.proxy.gameState.seats[playerInfor.onebaowu];
                         this.popupGameInfoWindow.firstRound.fang = {
-                            actorUrl: seeSeat.avatarUrl,
+                            actorUrl: seeSeat.avatarUrl || 'head',
                             color: seeSeat.color.source,
                             name: seeSeat.name,
                             result: playerInfor.onezhenjia
@@ -123,7 +123,7 @@ namespace moa {
                     this.popupGameInfoWindow.firstRound.skillText = GameInfo.attack;
                     this.popupGameInfoWindow.firstRound.yaoSkill = {
                         color: seat.color.source,
-                        url: seat.avatarUrl,
+                        url: seat.avatarUrl || 'head',
                         name: seat.name,
                     };
                 }
@@ -147,7 +147,7 @@ namespace moa {
                     if (i == RoleId.FangZheng) {
                         let seeSeat = this.proxy.gameState.seats[playerInfor.twobaowu];
                         this.popupGameInfoWindow.secondRound.fang = {
-                            actorUrl: seeSeat.avatarUrl,
+                            actorUrl: seeSeat.avatarUrl || 'head',
                             color: seeSeat.color.source,
                             name: seeSeat.name,
                             result: playerInfor.twozhenjia
@@ -185,7 +185,7 @@ namespace moa {
                     this.popupGameInfoWindow.secondRound.skillText = GameInfo.attack;
                     this.popupGameInfoWindow.secondRound.yaoSkill = {
                         color: seat.color.source,
-                        url: seat.avatarUrl,
+                        url: seat.avatarUrl || 'head',
                         name: seat.name,
                     };
                 }
@@ -209,7 +209,7 @@ namespace moa {
                     if (i == RoleId.FangZheng) {
                         let seeSeat = this.proxy.gameState.seats[playerInfor.threebaowu];
                         this.popupGameInfoWindow.thirdRound.fang = {
-                            actorUrl: seeSeat.avatarUrl,
+                            actorUrl: seeSeat.avatarUrl || 'head',
                             color: seeSeat.color.source,
                             name: seeSeat.name,
                             result: playerInfor.threezhenjia
@@ -247,7 +247,7 @@ namespace moa {
                     this.popupGameInfoWindow.thirdRound.skillText = GameInfo.attack;
                     this.popupGameInfoWindow.thirdRound.yaoSkill = {
                         color: seat.color.source,
-                        url: seat.avatarUrl,
+                        url: seat.avatarUrl || 'head',
                         name: seat.name,
                     };
                 }

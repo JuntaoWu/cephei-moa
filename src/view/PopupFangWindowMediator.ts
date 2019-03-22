@@ -20,7 +20,7 @@ namespace moa {
             let seat = this.proxy.gameState.seats[this.popupFangWindow.seatNum];
             this.popupFangWindow.seat = {
                 color: seat.color.source,
-                url: seat.avatarUrl,
+                url: seat.avatarUrl || 'head',
                 name: seat.name,
             };
             let role = this.proxy.rolesMap.get((this.proxy.gameState.role.findIndex(i => i && i.actorNr == seat.actorNr)).toString());

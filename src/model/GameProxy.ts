@@ -600,6 +600,7 @@ namespace moa {
 					});
 
 					if (message && message.action == "GameOver") {
+						this.gameState.seatsClone = this.gameState.seats.slice();
 						this.gameState.phase = GamePhase.GameOver;
 					}
 
@@ -927,6 +928,7 @@ namespace moa {
 		}
 
 		public async updateUserGameRecords(): Promise<void> {
+
 			this.updateMyState("GameOver", false, Receiver.All);
 
 			const masterRoleId = this.gameState.role.findIndex(r => this.isActorLocal(r));

@@ -14,10 +14,10 @@ namespace moa {
 
         public async initData() {
             let filterList = [
-                [ 
+                [
                     { key: OrderType.winRate, name: "胜率榜" }
-                    , { key: OrderType.countTotal, name: "场次榜" } 
-                ], 
+                    , { key: OrderType.countTotal, name: "场次榜" }
+                ],
                 [
                     { key: 0, name: "全部人数" }
                     , { key: 6, name: "六人局" }
@@ -47,7 +47,7 @@ namespace moa {
             this.nameList = ["rateTime", "gameType", "role", "other"];
             this.nameList.forEach((v, i) => {
                 this.rankWindow[`${v}Filter`].addEventListener(egret.TouchEvent.TOUCH_TAP, () => this.showFilterGroup(i), this);
-                
+
                 this.rankWindow[`${v}List`].visible = false;
                 this.rankWindow[`${v}List`].addEventListener(eui.ItemTapEvent.ITEM_TAP, () => this.selectedItem(i), this);
                 this.rankWindow[`${v}List`].dataProvider = new eui.ArrayCollection(filterList[i]);
@@ -99,8 +99,9 @@ namespace moa {
                     return {
                         OrderType: this.filterKeyList[0],
                         key: i + 1,
-                        ...v
-                    }
+                        ...v,
+                        avatarUrl: v.avatarUrl || 'head'
+                    };
                 });
                 this.rankWindow.rankList.dataProvider = new eui.ArrayCollection(this.rankList);
                 this.rankWindow.rankList.itemRenderer = RankListItemRenderer;

@@ -512,14 +512,14 @@
             </e:Button>
         </e:Group>
     </e:Group>
-    <e:Group id="seatArea" anchorOffsetY="0" y="740" anchorOffsetX="0" width="680" x="25" height="365">
+    <e:Group id="seatArea" anchorOffsetY="0" y="750" anchorOffsetX="0" width="680" x="25" height="365">
         <e:Button enabled="{canChooseSeat}" id="btnSeat1" anchorOffsetX="0" width="150" height="150">
             <e:Skin>
                 <e:Image name="content" maxWidth="100%" maxHeight="100%" horizontalCenter="0" verticalCenter="0" />
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="red" x="-20" y="-15" />
-                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="60" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
                          bottom="-40" />
             </e:Skin>
@@ -530,7 +530,7 @@
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="orange" x="-20" y="-15" />
-                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="60" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
                          bottom="-40" />
             </e:Skin>
@@ -541,7 +541,7 @@
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="yellow" x="-20" y="-15" />
-                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="60" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
                          bottom="-40" />
             </e:Skin>
@@ -552,7 +552,7 @@
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="green" x="-20" y="-15" />
-                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="60" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
                          bottom="-40" />
             </e:Skin>
@@ -563,7 +563,7 @@
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="blue" x="-20" y="-15" />
-                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="60" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
                          bottom="-40" />
             </e:Skin>
@@ -574,7 +574,7 @@
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="purple" x="-20" y="-15" />
-                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="60" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
                          bottom="-40" />
             </e:Skin>
@@ -585,7 +585,7 @@
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="white" x="-20" y="-15" />
-                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="60" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
                          bottom="-40" />
             </e:Skin>
@@ -596,7 +596,7 @@
                 <e:Image name="normalBg" source="head_bg" width="100%" height="100%" />
                 <e:Image name="masterBg" visible="false" source="head_bg2" width="100%" height="100%" />
                 <e:Image source="black" x="-20" y="-15" />
-                <e:Image name="selfMark" visible="false" source="self-mark" x="50" y="100" />
+                <e:Image name="selfMark" visible="false" source="self-mark" x="60" y="100" />
                 <e:Label name="nickName" width="140" height="35" text="" textColor="0x000000" horizontalCenter="0"
                          bottom="-40" />
             </e:Skin>
