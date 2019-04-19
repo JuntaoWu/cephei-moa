@@ -32,7 +32,7 @@ namespace moa {
 
         constructor() {
             super(MyLoadBalancingClient.photonWss ? Photon.ConnectionProtocol.Wss : Photon.ConnectionProtocol.Ws, photonAppId, photonAppVersion);
-
+            
             Constants.photonNameServer && this.setNameServerAddress(Constants.photonNameServer);
 
             this.setLogLevel(Exitgames.Common.Logger.Level.ERROR);

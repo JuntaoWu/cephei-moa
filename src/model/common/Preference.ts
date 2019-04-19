@@ -8,5 +8,6 @@ namespace moa {
         public showWeChatLogin?: boolean;
         public showAnonymousLogin?: boolean;
         public enabledIM?: boolean;
+        public enabledBot?: boolean;
     }
 }

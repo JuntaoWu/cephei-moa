@@ -44,6 +44,9 @@ namespace moa {
         }
 
         public static async login(option?: { token?: string, code?: string }): Promise<any> {
+
+            this.userInfo = null;
+
             let wxRes = option;
             if (!option || (!option.code && !option.token)) {
                 wxRes = await platform.login();
